@@ -45,7 +45,7 @@ body{background:#050505;height:100dvh;overflow:hidden;font-family:Montserrat,san
 
 .feed{flex:1;position:relative;overflow:hidden;background:#080808;transform-style:preserve-3d}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.9) contrast(1.1);transform:translateZ(0) scale(1.02);transition:transform 6s ease}
-.feed:active .bg{transform:translateZ(0) scale(1.08)}
+.feed:active.bg{transform:translateZ(0) scale(1.08)}
 .ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.4) 35%,transparent 65%,rgba(0,0,0,.25) 100%),radial-gradient(ellipse at 30% 50%,transparent 40%,rgba(0,0,0,.5) 100%);pointer-events:none}
 
 /* BOTÕES COM PROFUNDIDADE + AUMENTA E DIMINUI */
@@ -59,7 +59,7 @@ border-radius:50%;
 display:flex;align-items:center;justify-content:center;font-size:24px;
 border:1px solid rgba(255,255,255,.18);
 box-shadow:0 8px 20px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.4),0 1px 0 rgba(255,255,255,.25) inset,0 -1px 0 rgba(0,0,0,.3) inset;
-transition:all .18s cubic-bezier(.34,1.56,.64,1);
+transition:all.18s cubic-bezier(.34,1.56,.64,1);
 transform:translateZ(20px);
 color:#fff;
 }
@@ -68,7 +68,7 @@ transform:translateZ(0) scale(.82);
 box-shadow:0 2px 8px rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.15) inset;
 }
 .btn3d.pop{
-animation:popBtn .5s cubic-bezier(.34,1.56,.64,1);
+animation:popBtn.5s cubic-bezier(.34,1.56,.64,1);
 }
 @keyframes popBtn{
 0%{transform:scale(.8) translateZ(0)}
@@ -90,7 +90,7 @@ color:#fff;
 
 /* BOTTOM NAV COM PROFUNDIDADE */
 .bottom{height:68px;background:linear-gradient(180deg,#0f0f0f 0%,#000 100%);border-top:1px solid #1e1e1e;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -8px 30px rgba(0,0,0,.9),0 1px 0 rgba(212,175,55,.1) inset;z-index:30;transform:translateZ(20px)}
-.tab{color:#555;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:8px 18px;border-radius:14px;transition:all .22s cubic-bezier(.34,1.56,.64,1);transform:translateZ(0)}
+.tab{color:#555;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:8px 18px;border-radius:14px;transition:all.22s cubic-bezier(.34,1.56,.64,1);transform:translateZ(0)}
 .tab:active{transform:scale(.85) translateZ(-10px)}
 .tab.active{color:#D4AF37;background:linear-gradient(135deg,rgba(212,175,55,.18),rgba(212,175,55,.06));box-shadow:0 4px 15px rgba(212,175,55,.15),0 1px 0 rgba(255,255,255,.08) inset;border:1px solid rgba(212,175,55,.2);transform:translateZ(15px) scale(1.05)}
 .tab b{font-size:22px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
@@ -98,7 +98,7 @@ color:#fff;
 .add3d:active{transform:scale(.82)}
 
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.94);backdrop-filter:blur(20px);z-index:100;display:none;flex-direction:column;transform:translateZ(0)}
-.modal.on{display:flex;animation:modalIn .35s cubic-bezier(.2,.8,.2,1)}
+.modal.on{display:flex;animation:modalIn.35s cubic-bezier(.2,.8,.2,1)}
 @keyframes modalIn{0%{opacity:0;transform:translateY(30px) scale(.97)}100%{opacity:1;transform:translateY(0) scale(1)}}
 .mh{height:58px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;border-bottom:1px solid #1e1e1e;background:linear-gradient(180deg,#111,#0a0a0a);color:#fff;font-weight:900;box-shadow:0 4px 20px rgba(0,0,0,.5)}
 .mb{flex:1;overflow:auto;padding:18px}
@@ -142,4 +142,57 @@ let videos=[
 ];
 let cur=0, saldo="40,80";
 
-function render
+function render(){
+let v=videos[cur];
+document.getElementById('feed').innerHTML=`
+<div class="bg" style="background-image:url('${v.img}')"></div>
+<div class="ov"></div>
+<div class="right">
+<div class="action-wrap" onclick="likeBtn(this)">
+<div class="btn3d ${v.liked?'liked':''}" id="bL">${v.liked?'♥':'♡'}</div>
+<div class="count">${v.likes}</div>
+</div>
+<div class="action-wrap" onclick="commentBtn(this)"><div class="btn3d">💬</div><div class="count">${v.com}</div></div>
+<div class="action-wrap" onclick="giftBtn(this)"><div class="btn3d">🎁</div><div class="count">${v.gift}</div></div>
+<div class="action-wrap" onclick="shareBtn(this)"><div class="btn3d">↗</div><div class="count">${v.share}</div></div>
+</div>
+<div class="info"><div class="u">${v.user}</div><div class="d">${v.desc}</div><div class="h">${v.hash}</div></div>`;
+}
+setTimeout(()=>{let s=document.getElementById('splash');s.style.transition='opacity 1s ease';s.style.opacity='0';setTimeout(()=>{s.style.display='none';document.getElementById('app').style.opacity='1';document.getElementById('app').style.transition='opacity.6s';render()},1000)},8000);
+
+function pop(el){
+let b=el.querySelector('.btn3d');
+b.classList.remove('pop');void b.offsetWidth;
+b.classList.add('pop');
+}
+
+function likeBtn(el){pop(el);let v=videos[cur];if(!v.liked){v.likes++;v.liked=true}else{v.likes--;v.liked=false}setTimeout(render,180)}
+function commentBtn(el){pop(el);setTimeout(()=>{document.getElementById('listC').innerHTML=videos[cur].comments.map(c=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222"><div style="width:32px;height:32px;background:#D4AF37;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px">${c.u[1].toUpperCase()}</div><div><b style="font-size:13px">${c.u}</b><p style="font-size:13px;color:#ccc">${c.t}</p></div></div>`).join('');document.getElementById('mC').classList.add('on')},200)}
+function giftBtn(el){pop(el);setTimeout(()=>{videos[cur].gift++;alert('🎁 Presente enviado para '+videos[cur].user);render()},200)}
+function shareBtn(el){pop(el);setTimeout(()=>{videos[cur].share++;alert('Link copiado! '+location.href);render()},200)}
+
+function envC(){let i=document.getElementById('inC');if(!i.value.trim())return;videos[cur].comments.push({u:"@usuario.teste",t:i.value});videos[cur].com++;i.value='';commentBtn({querySelector:()=>document.querySelector('.btn3d')});setTimeout(()=>{document.getElementById('listC').innerHTML=videos[cur].comments.map(c=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222"><div style="width:32px;height:32px;background:#D4AF37;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px">${c.u[1].toUpperCase()}</div><div><b>${c.u}</b><p style="color:#ccc">${c.t}</p></div></div>`).join('')},100)}
+
+function tabI(){closeM();render();act('tI')}
+function tabE(){let g=document.getElementById('gE');g.innerHTML=videos.map((v,i)=>`<div class="gcard" style="background-image:url('${v.img}')" onclick="cur=${i};closeM();render();act('tI')"><span>${v.user}</span></div>`).join('');document.getElementById('mE').classList.add('on');act('tE')}
+function tabC(){document.getElementById('mCr').classList.add('on')}
+function tabW(){document.getElementById('sW').innerText='R$ '+saldo;document.getElementById('mW').classList.add('on')}
+function tabP(){document.getElementById('mP').classList.add('on')}
+function adminGo(){if(document.getElementById('sen').value==='admin123'){closeM();document.getElementById('mA').classList.add('on')}else alert('Senha: admin123')}
+function pub(){let u=document.getElementById('aU').value||'@novo';let d=document.getElementById('aD').value||'Novo';let h=document.getElementById('aH').value||'#work';let im=document.getElementById('aI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,liked:false,com:0,gift:0,share:0,comments:[]});cur=0;closeM();render()}
+function criar(){let u=document.getElementById('cU').value||'@usuario.teste';let d=document.getElementById('cD').value||'Novo vídeo';let h=document.getElementById('cH').value||'#work';let im=document.getElementById('cI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,liked:false,com:0,gift:0,share:0,comments:[]});cur=0;closeM();render()}
+function updS(){let ns=document.getElementById('aS').value;if(ns){saldo=ns;document.getElementById('saldoTop').innerText='R$ '+saldo;closeM()}}
+function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
+function act(id){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id)?.classList.add('active')}
+
+let sy=0;
+document.addEventListener('touchstart',e=>sy=e.touches[0].clientY);
+document.addEventListener('touchend',e=>{
+if(document.querySelector('.modal.on'))return;
+let d=sy-e.changedTouches[0].clientY;
+if(Math.abs(d)>70){if(d>0&&cur<videos.length-1)cur++;if(d<0&&cur>0)cur--;render()}
+});
+let em=document.getElementById('embers');for(let i=0;i<40;i++){let s=document.createElement('div');s.className='emb';s.style.left=Math.random()*100+'%';s.style.bottom=Math.random()*30+'%';s.style.animationDelay=Math.random()*3+'s';s.style.animationDuration=(0.8+Math.random()*1.2)+'s';s.style.setProperty('--x',(Math.random()*120-60)+'px');em.appendChild(s)}
+</script>
+</body>
+</html>
