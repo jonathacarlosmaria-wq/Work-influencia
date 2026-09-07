@@ -1,1 +1,92 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;background:#000;height:100vh;display:flex;align-items:center;justify-content:center}h1{font-size:44px;font-weight:900;text-align:center;font-family:sans-serif;animation:a 5s forwards}@keyframes a{0%{color:red;text-shadow:0 0 20px red,0 0 60px red;opacity:0;transform:scale(.7)}10%{opacity:1;transform:scale(1)}30%{color:red;text-shadow:0 0 40px red}55%{color:gold;text-shadow:0 0 30px gold}100%{background:linear-gradient(110deg,#D4AF37,#FFD700,#FFF,#FFD700,#D4AF37);background-size:300% auto;-webkit-background-clip:text;color:transparent;background-clip:text;filter:drop-shadow(0 0 20px gold) drop-shadow(0 0 60px gold);animation:s .6s linear infinite}@keyframes s{0%{background-position:0%}100%{background-position:300%}}}</style></head><body><h1>★ WORK<br>INFLUÊNCIA</h1></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>WORK INFLUÊNCIA</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;overflow:hidden;height:100dvh;font-family:'Anton',sans-serif}
+#splash{position:fixed;inset:0;background:radial-gradient(ellipse at center,#1a0a00 0%,#000 70%);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.fire-wrap{position:relative;text-align:center;filter:drop-shadow(0 10px 20px rgba(0,0,0,.8))}
+.txt{font-size:58px;line-height:.9;letter-spacing:2px;position:relative;transform-style:preserve-3d}
+.work{animation:workFire 5s ease forwards}
+.inf{animation:infFire 5s ease forwards;margin-top:8px}
+@keyframes workFire{
+0%{color:#FF0000;text-shadow:0 1px 0 #8B0000,0 2px 0 #8B0000,0 3px 0 #8B0000,0 4px 0 #8B0000,0 5px 0 #5a0000,0 6px 10px #000,0 0 20px red,0 0 50px red,0 0 100px #FF4500;transform:scale(.6) rotateX(20deg);opacity:0}
+15%{opacity:1;transform:scale(1.1) rotateX(0)}
+35%{color:#FF2000;text-shadow:0 1px 0 #8B0000,0 2px 0 #8B0000,0 3px 0 #8B0000,0 4px 0 #8B0000,0 5px 0 #5a0000,0 8px 15px #000,0 0 30px red,0 0 70px #FF4500,0 0 120px red;transform:scale(1.15)}
+60%{color:#FF8C00;text-shadow:0 1px 0 #B8860B,0 2px 0 #B8860B,0 3px 0 #8B6914,0 4px 0 #8B6914,0 5px 0 #5a4500,0 8px 15px #000,0 0 30px orange,0 0 60px gold}
+100%{color:#FFD700;background:linear-gradient(100deg,#D4AF37 10%,#FFD700 30%,#FFF 50%,#FFD700 70%,#D4AF37 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 1px 0 #B8941F,0 2px 0 #B8941F,0 3px 0 #8B6914,0 4px 0 #8B6914,0 5px 0 #5a4500,0 10px 20px #000,0 0 20px gold,0 0 50px #D4AF37;transform:scale(1.2);filter:brightness(1.3)}
+}
+@keyframes infFire{
+0%{color:#8B0000;text-shadow:0 1px 0 #5a0000,0 2px 0 #5a0000,0 3px 0 #3a0000,0 4px 10px #000;transform:scale(.6);opacity:0}
+20%{opacity:1}
+40%{color:#FFD700;text-shadow:0 1px 0 #B8941F,0 2px 0 #B8941F,0 3px 0 #8B6914,0 4px 0 #8B6914,0 5px 0 #5a4500,0 8px 15px #000,0 0 20px gold}
+100%{color:#FFD700;background:linear-gradient(100deg,#B8941F 5%,#D4AF37 20%,#FFD700 35%,#FFFFFF 50%,#FFD700 65%,#D4AF37 80%,#FFD700 95%);background-size:250% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 1px 0 #B8941F,0 2px 0 #8B6914,0 3px 0 #8B6914,0 4px 0 #5a4500,0 12px 25px #000,0 0 30px gold,0 0 70px #D4AF37;background-position:250% center;transform:scale(1.25);animation:goldShine.7s linear infinite}
+}
+@keyframes goldShine{0%{background-position:0% center}100%{background-position:250% center}}
+.flames{position:absolute;bottom:-25px;left:0;right:0;height:60px;background:linear-gradient(to top,#FF4500 0%,#FF8C00 30%,#FFD700 60%,transparent 100%);filter:blur(8px) brightness(1.5);opacity:0;animation:flameAnim 5s ease forwards;mix-blend-mode:screen}
+@keyframes flameAnim{0%,30%{opacity:0;transform:scaleY(0)}45%{opacity:.9;transform:scaleY(1.2)}75%{opacity:.7}100%{opacity:.5;transform:scaleY(.8)}}
+.sparks{position:absolute;inset:0;pointer-events:none}
+.spark{position:absolute;width:3px;height:3px;background:#FFD700;border-radius:50%;animation:sparkUp 1s linear infinite}
+@keyframes sparkUp{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-150px) translateX(var(--x)) scale(0);opacity:0}}
+.sub{margin-top:28px;color:#D4AF37;letter-spacing:12px;font-size:11px;font-family:Montserrat,sans-serif;font-weight:900;opacity:0;animation:subIn 5s forwards}
+@keyframes subIn{0%,80%{opacity:0}100%{opacity:1;text-shadow:0 0 15px gold}}
+.app{height:100dvh;display:flex;flex-direction:column;opacity:0;background:#000}
+.topbar{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #151515}
+.logo{font-weight:900;font-size:18px;color:#fff}.logo span{color:#D4AF37}
+.saldo{border:1px solid #D4AF37;color:#D4AF37;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700}
+.feed{flex:1;position:relative;overflow:hidden}
+.video-bg-img{position:absolute;inset:0;background-size:cover;background-position:center}
+.overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 55%,rgba(0,0,0,.2) 100%)}
+.right-actions{position:absolute;right:12px;bottom:105px;display:flex;flex-direction:column;gap:16px;z-index:2}
+.icon{width:48px;height:48px;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px}
+.action{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:700;color:#fff}
+.bottom-info{position:absolute;left:16px;right:80px;bottom:18px;z-index:2;color:#fff}
+.u{font-size:18px;font-weight:900}.d{font-size:14px;color:#e0e0e0;margin:3px 0}.h{color:#D4AF37;font-size:13px}
+.bottom-nav{height:58px;background:#000;border-top:1px solid #151515;display:flex;justify-content:space-around;align-items:center}
+.nav{color:#555;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px}.nav.active{color:#D4AF37}.nav b{font-size:18px}
+.add{width:36px;height:24px;background:#D4AF37;border-radius:6px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900}
+#adminPanel,#perfilModal{position:fixed;inset:0;background:#000;z-index:100;display:none;padding:20px;overflow:auto;color:#fff}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:16px;margin-bottom:14px}
+input{background:#000;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;width:100%;margin-bottom:10px}
+button.main{background:linear-gradient(90deg,#D4AF37,#B8941F);border:none;padding:14px;border-radius:12px;font-weight:900;width:100%;color:#000}
+</style>
+</head>
+<body>
+<div id="splash">
+<div class="fire-wrap">
+<div class="txt work">WORK</div>
+<div class="flames"></div>
+<div class="txt inf">INFLUÊNCIA</div>
+<div class="sparks" id="sparks"></div>
+</div>
+<div class="sub">PREMIUM</div>
+</div>
+<div class="app" id="app">
+<div class="topbar"><div class="logo">★ WORK <span>INFLUÊNCIA</span></div><div class="saldo" id="saldoTop">R$ 40,80</div></div>
+<div class="feed" id="feed"></div>
+<div class="bottom-nav">
+<div class="nav active"><b>⌂</b>Início</div><div class="nav"><b>◎</b>Explorar</div><div class="nav"><div class="add">+</div></div><div class="nav" onclick="alert('Carteira: R$ '+saldo)"><b>◧</b>Carteira</div><div class="nav" onclick="openPerfil()"><b>◉</b>Perfil</div>
+</div>
+</div>
+<div id="perfilModal"><h2>Perfil</h2><br><div class="card" style="text-align:center"><div style="width:80px;height:80px;background:#D4AF37;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:36px;color:#000;font-weight:900">U</div><p style="font-weight:900">@usuario.teste</p><p id="saldoPerfil" style="color:#D4AF37;margin:10px 0"></p><input id="pass" type="password" placeholder="admin123"><button class="main" onclick="check()">ADMIN</button><br><br><button class="main" style="background:#222;color:#fff" onclick="closeP()">VOLTAR</button></div></div>
+<div id="adminPanel"><h2 style="color:#D4AF37">Painel</h2><br><div class="card"><input id="vU" placeholder="@usuario"><input id="vD" placeholder="Descrição"><input id="vH" placeholder="#hashtag"><input id="vI" placeholder="Link imagem"><button class="main" onclick="add()">PUBLICAR</button></div><div class="card"><input id="nS" placeholder="Novo saldo"><button class="main" onclick="upS()">ATUALIZAR</button></div><button class="main" style="background:#222;color:#fff" onclick="closeA()">FECHAR</button></div>
+<script>
+let videos=[{user:"@mariana.influ",desc:"Dica de ouro para ganhar pontos",hash:"#workinfluencia",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:"1.2k",com:"89",gift:"12",share:"34"}];
+let saldo="40,80";let cur=0;
+function render(){let f=document.getElementById('feed');let v=videos[cur];f.innerHTML=`<div class="video-bg-img" style="background-image:url('${v.img}')"></div><div class="overlay"></div><div class="right-actions"><div class="action"><div class="icon">♥</div>${v.likes}</div><div class="action"><div class="icon">💬</div>${v.com}</div><div class="action"><div class="icon">🎁</div>${v.gift}</div><div class="action"><div class="icon">↗</div>${v.share}</div></div><div class="bottom-info"><div class="u">${v.user}</div><div class="d">${v.desc}</div><div class="h">${v.hash}</div></div>`}
+setTimeout(()=>{document.getElementById('splash').style.transition='opacity 1s';document.getElementById('splash').style.opacity='0';setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('app').style.opacity='1';document.getElementById('app').style.transition='opacity.6s';render()},1000)},5000);
+function openPerfil(){document.getElementById('perfilModal').style.display='block';document.getElementById('saldoPerfil').innerText='R$ '+saldo}
+function closeP(){document.getElementById('perfilModal').style.display='none'}
+function check(){if(document.getElementById('pass').value==='admin123'){closeP();document.getElementById('adminPanel').style.display='block'}else alert('Senha: admin123')}
+function closeA(){document.getElementById('adminPanel').style.display='none';render()}
+function add(){let u=document.getElementById('vU').value||'@novo.influ';let d=document.getElementById('vD').value||'Novo';let h=document.getElementById('vH').value||'#work';let im=document.getElementById('vI').value||'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:'0',com:'0',gift:'0',share:'0'});cur=0;closeA()}
+function upS(){let ns=document.getElementById('nS').value;if(ns){saldo=ns;document.getElementById('saldoTop').innerText='R$ '+saldo}}
+let sy=0;document.addEventListener('touchstart',e=>sy=e.touches[0].clientY);document.addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>50){if(d>0&&cur<videos.length-1)cur++;if(d<0&&cur>0)cur--;render()}});
+let sp=document.getElementById('sparks');for(let i=0;i<30;i++){let s=document.createElement('div');s.className='spark';s.style.left=Math.random()*100+'%';s.style.bottom='0%';s.style.animationDelay=Math.random()*2+'s';s.style.setProperty('--x',(Math.random()*80-40)+'px');sp.appendChild(s)}
+</script>
+</body>
+</html>
