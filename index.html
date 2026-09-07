@@ -208,4 +208,4 @@ let sy=0;document.addEventListener('touchstart',e=>sy=e.touches[0].clientY,{pass
 document.addEventListener('touchend',e=>{if(document.getElementById('cam').classList.contains('on'))return;if(document.querySelector('.modal.on'))return;let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0&&WORK.cur<WORK.videos.length-1) WORK.cur++;if(d<0&&WORK.cur>0) WORK.cur--;WORK.render()}},{passive:true});
 </script>
 </body>
-</html>
+</html>>
