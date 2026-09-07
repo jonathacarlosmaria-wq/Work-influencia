@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK - FINAL POSTAR E COMPARTILHAR</title>
+<title>WORK - FINAL BOTÕES LATERAIS + COMPARTILHAR</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;overflow:hidden}
@@ -12,26 +12,29 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
 .media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.96) 0%,transparent 58%)}
-.prog{position:absolute;top:0;left:0;height:4px;background:linear-gradient(90deg,#8a6d3b,#D4AF37,#FFD700);z-index:20;transition:width.1s linear}
+.prog{position:absolute;top:0;left:0;height:4px;background:linear-gradient(90deg,#D4AF37,#FFD700);z-index:20;transition:width.1s linear}
 .top{position:absolute;top:10px;left:0;right:0;height:58px;display:flex;justify-content:center;align-items:center;gap:10px;z-index:10;padding:0 14px}
 .pill{padding:10px 16px;border-radius:28px;font-size:11px;font-weight:900;background:rgba(0,0,0,.38);backdrop-filter:blur(20px);border:1.5px solid rgba(212,175,55,.28)}.pill.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700}
-.del{position:absolute;top:16px;right:16px;background:#111;color:#FF3B30;padding:10px 16px;border-radius:28px;font-size:11px;font-weight:900;z-index:10;display:none;border:1.5px solid rgba(255,59,48,.35);cursor:pointer}.del.on{display:block}
-.actions{position:absolute;right:12px;bottom:102px;display:flex;flex-direction:column;gap:18px;z-index:10;align-items:center}
-.act{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
-.btn{width:64px;height:64px;border-radius:24px;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.26),rgba(0,0,0,.35)),linear-gradient(145deg,#1e1e1e,#0a0a0a);border:1.5px solid rgba(212,175,55,.38);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:inset 0 1.5px 1.5px rgba(255,255,255,.16),0 8px 22px rgba(0,0,0,.65);transition:all.22s}
+/* BOTÕES LATERAIS CERTINHO */
+.actions{position:absolute;right:10px;bottom:102px;display:flex;flex-direction:column;gap:16px;z-index:10;align-items:center;width:78px}
+.act{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;width:100%}
+.btn{width:62px;height:62px;border-radius:22px;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.26),rgba(0,0,0,.35)),linear-gradient(145deg,#1e1e1e,#0a0a0a);border:1.5px solid rgba(212,175,55,.38);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:inset 0 1.5px 1.5px rgba(255,255,255,.16),0 8px 22px rgba(0,0,0,.65);transition:all.22s}
 .btn.mexendo{animation:mexe9s 9s ease-in-out!important}
-@keyframes mexe9s{0%{transform:scale(1)}10%{transform:translate(-4px,-6px) rotate(-8deg) scale(1.3)}20%{transform:translate(5px,4px) rotate(8deg) scale(1.4)}40%{transform:translate(4px,-5px) rotate(6deg) scale(1.3)}50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.42)}100%{transform:scale(1)}}
+@keyframes mexe9s{0%{transform:scale(1)}10%{transform:translate(-4px,-6px) rotate(-8deg) scale(1.25)}30%{transform:translate(-6px,3px) rotate(-6deg) scale(1.3)}50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.35)}100%{transform:scale(1)}}
 .btn.liked{background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);color:#fff}
-.btn.followed{background:linear-gradient(145deg,#FFE55C,#D4AF37,#B8960C);color:#000;border-color:#FFD700}
-.cnt{font-size:10px;font-weight:900;background:rgba(0,0,0,.35);padding:3px 8px;border-radius:20px;border:1px solid rgba(212,175,55,.18)}
-.meta{position:absolute;left:16px;bottom:18px;right:84px;z-index:10;background:rgba(0,0,0,.32);backdrop-filter:blur(24px);padding:14px 16px;border-radius:22px;border:1.5px solid rgba(212,175,55,.18)}
-.user{font-weight:900;font-size:15px;display:flex;gap:8px;align-items:center}
-.own{background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900}
+.btn.share-btn{background:linear-gradient(145deg,#1e1e1e,#0a0a0a);border-color:rgba(212,175,55,.45)}
+.btn.followed{border-color:#FFD700}
+.cnt{font-size:9px;font-weight:900;background:rgba(0,0,0,.45);padding:3px 7px;border-radius:20px;border:1px solid rgba(212,175,55,.18);text-align:center;min-width:36px}
+.cnt-share{font-size:7.5px;font-weight:900;color:#FFD700;letter-spacing:.5px;margin-top:1px}
+.del{position:absolute;top:16px;right:16px;background:#111;color:#FF3B30;padding:10px 16px;border-radius:28px;font-size:11px;font-weight:900;z-index:10;display:none;border:1.5px solid rgba(255,59,48,.35);cursor:pointer}.del.on{display:block}
+.meta{position:absolute;left:16px;bottom:18px;right:88px;z-index:10;background:rgba(0,0,0,.32);backdrop-filter:blur(24px);padding:14px 16px;border-radius:22px;border:1.5px solid rgba(212,175,55,.18)}
+.user{font-weight:900;font-size:14px;display:flex;gap:8px;align-items:center}
+.own{background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;padding:3px 8px;border-radius:20px;font-size:8px;font-weight:900}
 .nav{height:96px!important;background:linear-gradient(180deg,#FFE55C,#FFD700,#D4AF37,#B8960C)!important;display:flex!important;justify-content:space-around!important;align-items:center!important;padding:12px 8px 18px!important;border-radius:32px 32px 0 0!important;margin-top:-20px!important;border-top:3px solid #FFD700!important;z-index:50!important;position:relative!important}
 .tab{color:#3d2e00!important;font-size:10px;text-align:center;padding:10px 14px;border-radius:22px;min-width:64px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;border:1.5px solid rgba(0,0,0,.18)!important;background:rgba(0,0,0,.12)!important;font-weight:800}
 .tab.on{background:#000!important;color:#FFD700!important}
 .tab.mexendo{animation:mexeGoldBar 9s ease-in-out!important}
-@keyframes mexeGoldBar{50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.24)}}
+@keyframes mexeGoldBar{50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.22)}}
 .ico{font-size:28px;display:block}
 .create{width:78px;height:54px;border-radius:24px;background:#000!important;display:flex;align-items:center;justify-content:center;border:2px solid #FFD700!important}
 .create span{background:linear-gradient(145deg,#FFD700,#D4AF37)!important;color:#000!important;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:20px;font-size:36px;font-weight:900}
@@ -87,7 +90,7 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 <h3 id="pNameView">Seu Nome</h3><p id="pNickView" style="font-size:13px;color:#D4AF37;margin-top:2px">@apelido</p>
 </div>
 <div class="profile-body">
-<div class="input-group"><span class="input-label">Foto - Vai no botão Seguir + Comentários</span><button onclick="WORK.pickAvatar()" style="width:100%;background:rgba(212,175,55,.12);border:1.5px dashed rgba(212,175,55,.35);border-radius:18px;padding:12px;color:#D4AF37;font-weight:800">📸 Escolher Foto</button></div>
+<div class="input-group"><span class="input-label">Foto - Vai no botão Seguir</span><button onclick="WORK.pickAvatar()" style="width:100%;background:rgba(212,175,55,.12);border:1.5px dashed rgba(212,175,55,.35);border-radius:18px;padding:12px;color:#D4AF37;font-weight:800">📸 Escolher Foto</button></div>
 <div class="input-group"><span class="input-label">Nome</span><input id="inName" class="input" placeholder="Seu nome"></div>
 <div class="row"><div class="input-group"><span class="input-label">Apelido</span><input id="inNick" class="input" placeholder="apelido"></div><div class="input-group"><span class="input-label">Idade</span><input id="inAge" class="input" type="number" placeholder="25"></div></div>
 <div class="input-group"><span class="input-label">Sobre você</span><textarea id="inBio" class="input" style="min-height:84px;resize:none" placeholder="Sobre você..." maxlength="120"></textarea></div>
@@ -112,9 +115,9 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 <script>
 const WORK={
 db:null,profile:{name:'',nick:'',age:'',bio:'',avatar:''},
-videos:[{id:'w1',user:"@work",desc:"Vídeo exemplo - posta o seu que fica gravado! Só você apaga o seu 👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:3,share:89,follow:false,type:"img",isDefault:true,comments:[{user:"@maria",text:"Top! Botão compartilhar funciona!",time:"2h",avatar:""},{user:"@ana",text:"Meu vídeo ficou gravado mesmo!",time:"1h",avatar:""}],userId:"system"}],
+videos:[{id:'w1',user:"@work",desc:"Vídeo exemplo - posta o seu que fica gravado! Só você apaga o seu 👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:3,share:89,follow:false,type:"img",isDefault:true,comments:[{user:"@maria",text:"Botão compartilhar top!",time:"2h",avatar:""}],userId:"system"}],
 cur:0,stream:null,facing:'user',mode:'video',recorder:null,chunks:[],sec:0,inter:null,rec:false,
-initDB(){return new Promise(r=>{let req=indexedDB.open('WorkFinalV2',2);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{this.db=e.target.result;r()}})},
+initDB(){return new Promise(r=>{let req=indexedDB.open('WorkFinalV3',3);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{this.db=e.target.result;r()}})},
 async save(v){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').put(v);return new Promise(r=>tx.oncomplete=()=>r())},
 async loadAll(){await this.initDB();return new Promise(r=>{let tx=this.db.transaction('videos','readonly');let req=tx.objectStore('videos').getAll();req.onsuccess=()=>r(req.result)})},
 async del(id){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').delete(id);return new Promise(r=>tx.oncomplete=()=>r())},
@@ -130,7 +133,7 @@ try{let s=JSON.parse(localStorage.getItem('work_comments_'+v.id)||'null');if(s) 
 document.getElementById('commentCount').innerText=v.comments?v.comments.length:0;
 let list=document.getElementById('commentsList');
 if(!v.comments) v.comments=[];
-list.innerHTML=v.comments.map(c=>`<div class="comment-item"><div class="comment-avatar">${c.avatar?`<img src="${c.avatar}">`:c.user.charAt(1).toUpperCase()}</div><div class="comment-body"><div class="comment-user">${c.user}</div><div class="comment-text">${c.text}</div><div style="font-size:10px;color:#666;margin-top:3px">${c.time}</div></div></div>`).join('')||'<div style="text-align:center;padding:30px;color:#666">Nenhum comentário ainda</div>';
+list.innerHTML=v.comments.map(c=>`<div class="comment-item"><div class="comment-avatar">${c.avatar?`<img src="${c.avatar}">`:c.user.charAt(1).toUpperCase()}</div><div class="comment-body"><div class="comment-user">${c.user}</div><div class="comment-text">${c.text}</div></div></div>`).join('')||'<div style="text-align:center;padding:30px;color:#666">Nenhum comentário</div>';
 let m=document.getElementById('commentsM');m.classList.add('on');m.style.display='flex';
 },
 sendComment(){
@@ -139,90 +142,73 @@ let v=this.videos[this.cur];if(!v.comments) v.comments=[];
 v.comments.push({user:this.profile.nick?'@'+this.profile.nick:'@voce',text:text,time:'agora',avatar:this.profile.avatar||''});
 v.com=v.comments.length;input.value='';this.openComments();this.render();
 localStorage.setItem('work_comments_'+v.id, JSON.stringify(v.comments));
-this.toast('💬 Comentário visível pra todos!');
+this.toast('💬 Todos podem ver!');
 },
-// COMPARTILHAR DE VERDADE - BOTÃO LINK VIROU COMPARTILHAR
+// BOTÃO COMPARTILHAR AJUSTADO
 share(){
 let v=this.videos[this.cur];
-let url = location.origin + location.pathname + '#video='+v.id;
-let texto = `${v.desc} - Veja no WORK 👑`;
+let url = location.origin + location.pathname;
+let texto = `${v.desc} - WORK Influencer 👑`;
 if(navigator.share){
- navigator.share({title:'WORK Vídeo', text:texto, url:url}).then(()=>{v.share++;this.render();this.toast('✅ Compartilhado!')}).catch(()=>{});
+ navigator.share({title:'WORK', text:texto, url:url}).then(()=>{v.share++;this.render();this.toast('✅ Compartilhado!')});
 }else{
- navigator.clipboard.writeText(url).then(()=>{v.share++;this.render();this.toast('🔗 Link copiado! Todos podem ver')});
+ navigator.clipboard.writeText(url).then(()=>{v.share++;this.render();this.toast('🔗 Link copiado!')});
 }
 },
-canDelete(v){
- let myId=localStorage.getItem('work_my_id');
- if(v.isDefault) return false;
- if(!myId) return true;
- return v.userId===myId || v.isMine;
-},
-// POSTAR E FICAR GRAVADO
-async postVideo(blob, isCamera){
- let myId=localStorage.getItem('work_my_id'); if(!myId){myId='user_'+Date.now(); localStorage.setItem('work_my_id',myId)}
- let url=URL.createObjectURL(blob);
- let novo={
-  id:Date.now(), userId:myId, user:this.profile.nick?'@'+this.profile.nick:'@voce',
-  desc:this.profile.bio||"Meu vídeo WORK 👑", img:url, blob:blob, blobUrl:url,
-  likes:0,liked:false,com:0,share:0,follow:false,type:"video",isDefault:false,comments:[],isMine:true,duration:this.sec
- };
- await this.save(novo);
- this.videos.unshift(novo);
- this.cur=0;
- this.render();
- this.toast('✅ Vídeo postado e gravado! Só você pode apagar');
- this.closeCam(); this.closeM();
+canDelete(v){let myId=localStorage.getItem('work_my_id'); if(v.isDefault) return false; return!myId || v.userId===myId || v.isMine;},
+async postVideo(blobOrFile, isCamera){
+ try{
+  let myId=localStorage.getItem('work_my_id'); if(!myId){myId='user_'+Date.now(); localStorage.setItem('work_my_id',myId);}
+  let url=URL.createObjectURL(blobOrFile);
+  let novo={id:Date.now(), userId:myId, user:this.profile.nick?'@'+this.profile.nick:'@voce', desc:this.profile.bio||"Meu vídeo WORK 👑", img:url, blob:blobOrFile, blobUrl:url, likes:0,liked:false,com:0,share:0,follow:false,type:"video",isDefault:false,comments:[],isMine:true,duration:this.sec};
+  await this.save(novo); this.videos.unshift(novo); this.cur=0; this.render(); this.closeCam(); this.closeM(); this.toast('✅ Vídeo postado e gravado!');
+ }catch(e){this.toast('❌ Erro ao postar');}
 },
 delCur(){
  let v=this.videos[this.cur];
- if(!this.canDelete(v)){this.toast('❌ Só o dono pode apagar esse vídeo'); return;}
- if(!confirm('Apagar SEU vídeo? Ele será removido do app.')) return;
- this.del(v.id).then(()=>{
-  this.videos.splice(this.cur,1);
-  if(this.cur>=this.videos.length) this.cur=this.videos.length-1;
-  if(this.cur<0) this.cur=0;
-  this.render(); this.toast('🗑️ Seu vídeo apagado');
- });
+ if(!this.canDelete(v)){this.toast('❌ Só o dono pode apagar'); return;}
+ if(!confirm('Apagar SEU vídeo?')) return;
+ this.del(v.id).then(()=>{this.videos.splice(this.cur,1); if(this.cur>=this.videos.length) this.cur=this.videos.length-1; if(this.cur<0) this.cur=0; this.render(); this.toast('🗑️ Apagado');});
 },
 closeM(){document.querySelectorAll('.modal').forEach(m=>{m.classList.remove('on');m.style.display='none'})},
 saveProfile(){
- let name=document.getElementById('inName').value.trim();
- let nick=document.getElementById('inNick').value.trim().replace('@','');
- let age=document.getElementById('inAge').value.trim();
- let bio=document.getElementById('inBio').value.trim();
- this.profile={...this.profile,name,nick,age,bio};
- localStorage.setItem('work_profile',JSON.stringify(this.profile));
- document.getElementById('pNameView').innerText=name||'Seu Nome';
- document.getElementById('pNickView').innerText=`@${nick||'apelido'} ${age?'• '+age+' anos':''}`;
- this.toast('👑 Perfil salvo!'); this.closeM(); this.render();
+ let name=document.getElementById('inName').value.trim(); let nick=document.getElementById('inNick').value.trim().replace('@',''); let age=document.getElementById('inAge').value.trim(); let bio=document.getElementById('inBio').value.trim();
+ this.profile={...this.profile,name,nick,age,bio}; localStorage.setItem('work_profile',JSON.stringify(this.profile));
+ document.getElementById('pNameView').innerText=name||'Seu Nome'; document.getElementById('pNickView').innerText=`@${nick||'apelido'} ${age?'• '+age+' anos':''}`;
+ this.toast('👑 Salvo!'); this.closeM(); this.render();
 },
 pickAvatar(){document.getElementById('fileAvatar').click()},
+// BOTÕES LATERAIS CERTINHO - AJUSTADO
 render(){
  let v=this.videos[this.cur]; if(!v) return;
- let prof=this.profile;
  try{let s=JSON.parse(localStorage.getItem('work_comments_'+v.id)||'null');if(s){v.comments=s;v.com=s.length}}catch{}
  let media=v.type==='video'?`<video class="media" id="vid" src="${v.blobUrl||v.img}" autoplay loop muted playsinline></video><div class="prog" id="prog" style="width:0%"></div>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
- let followBtn=prof.avatar?`<div style="position:relative;width:68px;height:68px;border-radius:26px;border:3px solid #FFD700;overflow:visible;box-shadow:0 10px 28px rgba(0,0,0,.7)"><img src="${prof.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:23px"><div style="position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;background:${v.follow?'#000':'linear-gradient(145deg,#FFD700,#D4AF37)'};border:2.5px solid #000;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:${v.follow?'#FFD700':'#000'}">${v.follow?'✓':'＋'}</div></div>`:`<div class="btn ${v.follow?'followed':''}">${v.follow?'✓':'＋'}</div>`;
+ // BOTÃO SEGUIR COM FOTO - 62px IGUAL AOS OUTROS
+ let followBtn='';
+ if(this.profile.avatar){
+  followBtn=`<div style="position:relative;width:62px;height:62px;border-radius:22px;border:2.5px solid #FFD700;overflow:visible;box-shadow:0 8px 22px rgba(0,0,0,.65)"><img src="${this.profile.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:19px;display:block"><div style="position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:${v.follow?'#000':'linear-gradient(145deg,#FFD700,#D4AF37)'};border:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:${v.follow?'#FFD700':'#000'}">${v.follow?'✓':'＋'}</div></div>`;
+ }else{
+  followBtn=`<div class="btn ${v.follow?'followed':''}">${v.follow?'✓':'＋'}</div>`;
+ }
  let delBtn = this.canDelete(v)? `<div class="del on" onclick="WORK.delCur()">🗑️ Apagar meu vídeo</div>` : ``;
  document.getElementById('stage').innerHTML=`
  ${media}<div class="grad"></div>
- <div class="top"><div class="pill">Seguindo</div><div class="pill on">POSTAR GRAVADO ✨</div><div class="pill">🔍</div></div>
+ <div class="top"><div class="pill">Seguindo</div><div class="pill on">BOTÕES CERTINHO ✨</div><div class="pill">🔍</div></div>
  ${delBtn}
  <div class="actions">
   <div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.like()"><div class="btn ${v.liked?'liked':''}">${v.liked?'❤️':'♡'}</div><div class="cnt">${this.fmt(v.likes)}</div></div>
   <div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.openComments()"><div class="btn">💬</div><div class="cnt">${v.comments?v.comments.length:v.com}</div></div>
-  <div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.share()"><div class="btn" style="background:linear-gradient(145deg,#1e1e1e,#0a0a0a)">🔗</div><div class="cnt">${this.fmt(v.share)}</div><div style="font-size:8px;font-weight:900;color:#FFD700;margin-top:2px">COMPARTILHAR</div></div>
-  <div class="act" onclick="WORK.mexe(this.querySelector('.follow-wrap,.btn'));WORK.follow()"><div class="follow-wrap">${followBtn}</div><div class="cnt" style="margin-top:10px">${v.follow?'Seguindo':'Seguir'}</div></div>
+  <div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.share()"><div class="btn share-btn">🔗</div><div class="cnt">${this.fmt(v.share)}</div><div class="cnt-share">COMPARTILHAR</div></div>
+  <div class="act" onclick="WORK.mexe(this.querySelector('.follow-wrap,.btn'));WORK.follow()"><div class="follow-wrap">${followBtn}</div><div class="cnt" style="margin-top:8px">${v.follow?'Seguindo':'Seguir'}</div></div>
   <div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.openCam('live')"><div class="btn" style="background:linear-gradient(145deg,#ff4d6d,#ff0a42,#900)">●</div><div class="cnt">LIVE</div></div>
  </div>
- <div class="meta"><div class="user">${prof.avatar&&v.isMine?`<img src="${prof.avatar}" style="width:34px;height:34px;border-radius:50%;border:2px solid #D4AF37;object-fit:cover">`:''} ${v.user} ${v.isMine?'<span class="own">EU</span>':''}</div><div style="font-size:13px;margin-top:6px">${v.desc}</div><div style="font-size:10px;color:#D4AF37;margin-top:4px">${v.isMine?'Seu vídeo - fica gravado e só você apaga • ':''}♫ WORK</div></div>
+ <div class="meta"><div class="user">${this.profile.avatar&&v.isMine?`<img src="${this.profile.avatar}" style="width:32px;height:32px;border-radius:50%;border:2px solid #D4AF37;object-fit:cover">`:''} ${v.user} ${v.isMine?'<span class="own">EU</span>':''}</div><div style="font-size:13px;margin-top:6px">${v.desc}</div></div>
  `;
  let vd=document.getElementById('vid'); if(vd){vd.addEventListener('timeupdate',()=>{let p=document.getElementById('prog'); if(p&&vd.duration) p.style.width=(vd.currentTime/vd.duration*100)+'%'}); vd.play().catch(()=>{})}
 },
 like(){let v=this.videos[this.cur];v.liked=!v.liked;v.likes+=v.liked?1:-1;this.render()},
 follow(){let v=this.videos[this.cur];v.follow=!v.follow;this.render()},
-my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length;document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:18px;overflow:hidden;border:1.5px solid rgba(212,175,55,.22)"><video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted></video><div style="position:absolute;bottom:4px;left:4px;right:4px;background:rgba(0,0,0,.6);border-radius:10px;padding:3px 6px;font-size:9px;text-align:center">${v.isMine?'MEU • Só eu apago':''}</div></div>`).join('')||'<p style="color:#666;text-align:center">Nenhum vídeo gravado ainda</p>';let m=document.getElementById('listM');m.classList.add('on');m.style.display='flex'})},
+my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length;document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:18px;overflow:hidden;border:1.5px solid rgba(212,175,55,.22)"><video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted></video><div style="position:absolute;bottom:4px;left:4px;right:4px;background:rgba(0,0,0,.6);border-radius:10px;padding:3px 6px;font-size:9px;text-align:center">${v.isMine?'MEU':''}</div></div>`).join('')||'<p style="color:#666;text-align:center">Nenhum vídeo gravado</p>';let m=document.getElementById('listM');m.classList.add('on');m.style.display='flex'})},
 openCam(m){this.mode=m;this.setMode(m);document.getElementById('cam').classList.add('on');document.getElementById('cam').style.display='flex';navigator.mediaDevices.getUserMedia({video:{facingMode:this.facing,width:{ideal:720},height:{ideal:1280}},audio:true}).then(s=>{this.stream=s;document.getElementById('camEl').srcObject=s;document.getElementById('camEl').play()}).catch(()=>alert('Permita câmera'))},
 closeCam(){if(this.rec) this.stop();if(this.stream){this.stream.getTracks().forEach(t=>t.stop());this.stream=null}let c=document.getElementById('cam');c.classList.remove('on');c.style.display='none'},
 setMode(m){this.mode=m;let mv=document.getElementById('mV'), ml=document.getElementById('mL'); if(mv) mv.classList.toggle('on',m==='video'); if(ml) ml.classList.toggle('on',m==='live')},
@@ -241,10 +227,11 @@ start(){
 stop(){if(!this.rec) return; clearInterval(this.inter); this.rec=false; document.getElementById('rec').classList.remove('on'); if(this.recorder) this.recorder.stop()},
 pick(){document.getElementById('file').click()},
 };
-document.getElementById('file').addEventListener('change', async e=>{
+const fileInput = document.getElementById('file');
+fileInput.addEventListener('change', async e=>{
  let f=e.target.files[0]; if(!f) return;
- if(f.size>80*1024*1024){WORK.toast('❌ Vídeo muito grande (max 80MB)'); return;}
- await WORK.postVideo(f,false);
+ WORK.toast(`⏳ Postando ${Math.round(f.size/1024/1024)}MB...`);
+ try{await WORK.postVideo(f,false);}catch(err){WORK.toast('❌ Erro ao postar');}
  e.target.value='';
 });
 document.getElementById('fileAvatar').addEventListener('change',e=>{
@@ -255,7 +242,7 @@ document.getElementById('fileAvatar').addEventListener('change',e=>{
   document.getElementById('icoEu').innerHTML=`<img src="${b64}" style="width:28px;height:28px;border-radius:50%;border:1.5px solid #FFD700;object-fit:cover">`;
   document.getElementById('commentMyAvatar').innerHTML=`<img src="${b64}" style="width:100%;height:100%;object-fit:cover">`;
   localStorage.setItem('work_profile',JSON.stringify(WORK.profile));
-  WORK.toast('📸 Foto no Seguir e nos comentários!'); WORK.render();
+  WORK.toast('📸 Foto no Seguir!'); WORK.render();
  }; r.readAsDataURL(f);
 });
 document.getElementById('commentInput').addEventListener('keypress',e=>{if(e.key==='Enter') WORK.sendComment()});
