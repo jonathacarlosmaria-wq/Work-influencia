@@ -3,58 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK INFLUENCER - Oficial</title>
-<meta name="description" content="WORK INFLUENCER - Plataforma original onde você tem liberdade total">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#D4AF37">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23D4AF37%22/><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+<title>WORK INFLUENCER - GOLD PREMIUM</title>
 <style>
-/* WORK INFLUENCER v2 OFICIAL - CÓDIGO ORIGINAL © JONATHA CARLOS - 2026 */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;overflow:hidden}
+body{background:#0a0a0a;color:#fff;font-family:-apple-system,Arial;height:100dvh;overflow:hidden}
 .app{height:100dvh;display:flex;flex-direction:column}
 .stage{flex:1;position:relative;background:#000;overflow:hidden}
-.media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
-.grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,transparent 55%)}
-.prog{position:absolute;top:0;left:0;height:3px;background:#D4AF37;z-index:20;transition:width.1s linear}
-.top{position:absolute;top:0;left:0;right:0;height:50px;display:flex;justify-content:center;align-items:center;gap:8px;z-index:10}
-.pill{padding:7px 14px;border-radius:20px;background:rgba(255,255,255,.12);font-size:12px;font-weight:800;backdrop-filter:blur(10px)}.pill.on{background:#D4AF37;color:#000}
-.del{position:absolute;top:10px;right:10px;background:#ff2c55;padding:7px 14px;border-radius:20px;font-size:11px;font-weight:900;z-index:10;display:none;cursor:pointer}.del.on{display:block}
-.actions{position:absolute;right:8px;bottom:88px;display:flex;flex-direction:column;gap:15px;z-index:10;align-items:center}
-.act{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
-.btn{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:22px;backdrop-filter:blur(14px);transition:.15s}
-.btn:active{transform:scale(.82)}.btn.liked{background:#ff2c55;border-color:#ff2c55}.btn.live{background:#ff2c55;animation:pulse 1.3s infinite;box-shadow:0 0 20px rgba(255,44,85,.7)}.btn.followed{background:#D4AF37;color:#000;border-color:#D4AF37}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-.cnt{font-size:10px;font-weight:800;text-shadow:0 1px 3px #000}
-.meta{position:absolute;left:12px;bottom:14px;right:74px;z-index:10}
+.grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,transparent 50%,rgba(0,0,0,.5) 100%)}
+
+/* BARRA DE PROGRESSO OURO REALISTA */
+.prog{position:absolute;top:0;left:0;height:3px;z-index:20;background:linear-gradient(90deg,#8a6d3b,#D4AF37,#FFD700,#D4AF37);box-shadow:0 0 10px #D4AF37, 0 0 20px rgba(212,175,55,.5);transition:width.1s linear}
+
+/* TOPO OURO */
+.top{position:absolute;top:0;left:0;right:0;height:54px;display:flex;justify-content:center;align-items:center;gap:10px;z-index:10;padding:0 12px}
+.pill{padding:8px 16px;border-radius:22px;font-size:12px;font-weight:900;background:rgba(0,0,0,.4);backdrop-filter:blur(16px);border:1px solid rgba(212,175,55,.2);box-shadow:inset 0 1px 1px rgba(255,255,255,.1), 0 4px 12px rgba(0,0,0,.4);transition:.2s}
+.pill.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700;box-shadow:inset 0 1px 1px rgba(255,255,255,.6), 0 4px 20px rgba(212,175,55,.6), 0 0 0 1px rgba(255,215,0,.3)}
+
+/* BOTÃO APAGAR OURO */
+.del{position:absolute;top:12px;right:12px;background:linear-gradient(145deg,#1a1a1a,#2a2a2a);color:#D4AF37;padding:8px 14px;border-radius:20px;font-size:11px;font-weight:900;z-index:10;display:none;border:1px solid rgba(212,175,55,.3);box-shadow:0 4px 12px rgba(0,0,0,.5);cursor:pointer}.del.on{display:block}
+
+/* AÇÕES LATERAIS - BOTÕES VIVOS OURO REALISTA */
+.actions{position:absolute;right:10px;bottom:92px;display:flex;flex-direction:column;gap:18px;z-index:10;align-items:center}
+.act{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer}
+
+/* BOTÃO OURO COM PROFUNDIDADE REALISTA */
+.btn{
+width:56px;height:56px;border-radius:50%;
+background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), rgba(0,0,0,.2) 60%), linear-gradient(145deg, #1e1e1e, #0f0f0f);
+border:1px solid rgba(212,175,55,.25);
+display:flex;align-items:center;justify-content:center;font-size:23px;
+backdrop-filter:blur(16px);
+box-shadow:
+ inset 0 1px 1px rgba(255,255,255,.15),
+ inset 0 -1px 1px rgba(0,0,0,.8),
+ 0 6px 16px rgba(0,0,0,.6),
+ 0 2px 6px rgba(0,0,0,.4);
+transition:all.22s cubic-bezier(.34,1.56,.64,1);
+position:relative;
+overflow:hidden;
+}
+.btn::before{
+content:'';
+position:absolute;inset:0;
+background:radial-gradient(circle at 50% 0%, rgba(212,175,55,.15), transparent 70%);
+opacity:0;transition:opacity.22s;
+}
+.btn:active{
+transform:scale(1.32);
+background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), rgba(0,0,0,.1) 60%), linear-gradient(145deg, #2a2a2a, #1a1a1a);
+border-color:rgba(212,175,55,.6);
+box-shadow:
+ inset 0 1px 2px rgba(255,255,255,.25),
+ inset 0 -1px 1px rgba(0,0,0,.8),
+ 0 12px 28px rgba(0,0,0,.7),
+ 0 0 20px rgba(212,175,55,.35);
+}
+.btn:active::before{opacity:1}
+
+/* BOTÃO CURTIDO - OURO VIVO */
+.btn.liked{
+background:radial-gradient(circle at 30% 30%, #ff6b8a, #ff2c55 60%), linear-gradient(145deg, #ff2c55, #c41e3a);
+border-color:#ff5a7a;
+box-shadow:
+ inset 0 1px 1px rgba(255,255,255,.4),
+ 0 6px 20px rgba(255,44,85,.6),
+ 0 0 0 1px rgba(255,44,85,.3);
+color:#fff;
+}
+.btn.liked:active{transform:scale(1.35);box-shadow:0 10px 30px rgba(255,44,85,.8), 0 0 30px rgba(255,44,85,.5)}
+
+/* BOTÃO LIVE - OURO + VERMELHO PREMIUM */
+.btn.live{
+background:radial-gradient(circle at 30% 30%, #ff5a7a, #ff0a42 60%), linear-gradient(145deg, #ff2c55, #a00);
+border-color:#ff8fa3;
+box-shadow:
+ inset 0 1px 1px rgba(255,255,255,.4),
+ 0 8px 24px rgba(255,0,80,.7),
+ 0 0 0 1px rgba(255,0,80,.4),
+ 0 0 20px rgba(255,0,80,.4);
+animation:goldPulse 1.6s infinite;
+}
+@keyframes goldPulse{
+0%,100%{transform:scale(1);box-shadow:0 8px 24px rgba(255,0,80,.7), 0 0 20px rgba(255,0,80,.4)}
+50%{transform:scale(1.08);box-shadow:0 12px 32px rgba(255,0,80,.9), 0 0 30px rgba(255,0,80,.6)}
+}
+.btn.live:active{transform:scale(1.38);animation:none}
+
+/* BOTÃO SEGUIR - OURO PURO */
+.btn.followed{
+background:linear-gradient(145deg, #D4AF37, #FFD700, #D4AF37);
+background-size:200% 200%;
+border-color:#FFD700;
+color:#000;
+box-shadow:
+ inset 0 1px 1px rgba(255,255,255,.8),
+ inset 0 -1px 1px rgba(0,0,0,.2),
+ 0 6px 20px rgba(212,175,55,.6),
+ 0 0 0 1px rgba(255,215,0,.4);
+font-weight:900;
+}
+.btn.followed:active{transform:scale(1.32);filter:brightness(1.15);box-shadow:0 12px 32px rgba(212,175,55,.8), 0 0 30px rgba(255,215,0,.6)}
+
+.cnt{font-size:10px;font-weight:900;text-shadow:0 2px 4px #000;letter-spacing:.3px}
+
+/* INFO COM BORDA OURO */
+.meta{position:absolute;left:14px;bottom:16px;right:78px;z-index:10;background:rgba(0,0,0,.25);backdrop-filter:blur(20px);padding:10px 12px;border-radius:16px;border:1px solid rgba(212,175,55,.15);box-shadow:0 8px 24px rgba(0,0,0,.5)}
 .user{font-weight:900;font-size:15px;display:flex;gap:8px;align-items:center}
-.own{background:#D4AF37;color:#000;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:900}
-.desc{font-size:13px;margin-top:4px;line-height:1.35}
-.sound{font-size:11px;margin-top:6px;opacity:.8}
-.nav{height:56px;background:#000;border-top:1px solid #1e1e1e;display:flex;justify-content:space-around;align-items:center}
-.tab{color:#555;font-size:9px;text-align:center}.tab.on{color:#fff}
-.create{width:44px;height:28px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:20px;position:relative}
-.create::before{content:'';position:absolute;inset:0;transform:translateX(-2px);background:#D4AF37;border-radius:8px;z-index:-1}
-.create span{background:#000;color:#fff;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.own{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;padding:3px 9px;border-radius:10px;font-size:9px;font-weight:900;box-shadow:0 2px 8px rgba(212,175,55,.5)}
+.desc{font-size:13px;margin-top:5px;line-height:1.35}
+.sound{font-size:11px;margin-top:6px;opacity:.85;display:flex;align-items:center;gap:6px}
+
+/* NAV OURO */
+.nav{height:60px;background:linear-gradient(180deg,#0a0a0a,#000);border-top:1px solid rgba(212,175,55,.15);display:flex;justify-content:space-around;align-items:center;box-shadow:0 -4px 20px rgba(0,0,0,.8)}
+.tab{color:#555;font-size:9px;text-align:center;transition:.2s}.tab.on{color:#D4AF37;text-shadow:0 0 10px rgba(212,175,55,.6)}
+.create{
+width:48px;height:30px;border-radius:10px;
+background:linear-gradient(145deg,#D4AF37,#FFD700);
+display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:20px;position:relative;
+box-shadow:inset 0 1px 1px rgba(255,255,255,.8), 0 4px 16px rgba(212,175,55,.5), 0 0 0 1px rgba(255,215,0,.3);
+transition:all.22s cubic-bezier(.34,1.56,.64,1);
+}
+.create span{
+background:linear-gradient(145deg,#000,#111);
+color:#D4AF37;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:8px;
+box-shadow:inset 0 1px 1px rgba(255,255,255,.1)
+}
+.create:active{transform:scale(1.28);box-shadow:0 8px 24px rgba(212,175,55,.7), 0 0 30px rgba(255,215,0,.5)}
+
 #cam{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column}#cam.on{display:flex}
-#camEl{width:100%;height:100%;object-fit:cover;background:#000}
-.camT{position:absolute;top:0;left:0;right:0;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 14px;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)}
-.camB{position:absolute;bottom:0;left:0;right:0;height:175px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);z-index:2}
-.mode{display:flex;gap:10px}.mode i{padding:8px 16px;border-radius:20px;background:rgba(255,255,255,.14);font-size:12px;font-weight:800;color:#888;font-style:normal}.mode i.on{background:#D4AF37;color:#000}
-.ctrls{display:flex;align-items:center;gap:28px}.ctrl{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:20px}
-.rec{width:76px;height:76px;border-radius:50%;border:4px solid #fff;display:flex;align-items:center;justify-content:center}.rec div{width:60px;height:60px;background:#ff2c55;border-radius:50%}.rec.on div{width:26px;height:26px;border-radius:4px}
-.timer{display:none;background:#ff2c55;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:900}.timer.on{display:block}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex}
-.sheet{position:absolute;bottom:0;left:0;right:0;background:#111;border-radius:22px 22px 0 0;max-height:78dvh;display:flex;flex-direction:column;padding:16px;animation:up.25s ease}
+#camEl{width:100%;height:100%;object-fit:cover}
+.camT{position:absolute;top:0;left:0;right:0;height:64px;display:flex;justify-content:space-between;align-items:center;padding:0 14px;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.8),transparent)}
+.camB{position:absolute;bottom:0;left:0;right:0;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(0deg,rgba(0,0,0,.95),transparent);z-index:2}
+.mode{display:flex;gap:10px}.mode i{padding:9px 18px;border-radius:22px;background:rgba(255,255,255,.1);font-size:12px;font-weight:900;color:#888;font-style:normal;border:1px solid rgba(255,255,255,.08);transition:.2s;backdrop-filter:blur(10px)}.mode i.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700;box-shadow:0 4px 16px rgba(212,175,55,.5)}
+.ctrls{display:flex;align-items:center;gap:30px}.ctrl{width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.15), rgba(0,0,0,.3)), linear-gradient(145deg,#1e1e1e,#0f0f0f);display:flex;align-items:center;justify-content:center;font-size:21px;border:1px solid rgba(212,175,55,.18);box-shadow:inset 0 1px 1px rgba(255,255,255,.1), 0 4px 12px rgba(0,0,0,.5);transition:.22s cubic-bezier(.34,1.56,.64,1)}.ctrl:active{transform:scale(1.32);border-color:rgba(212,175,55,.5)}
+.rec{width:80px;height:80px;border-radius:50%;border:3px solid #D4AF37;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.1), transparent 60%);box-shadow:0 0 0 4px rgba(212,175,55,.15), 0 8px 24px rgba(0,0,0,.6);transition:.22s cubic-bezier(.34,1.56,.64,1)}.rec div{width:62px;height:62px;background:linear-gradient(145deg,#ff2c55,#c41e3a);border-radius:50%;box-shadow:inset 0 2px 4px rgba(255,255,255,.3), 0 4px 12px rgba(255,44,85,.5);transition:.22s}.rec.on div{width:28px;height:28px;border-radius:6px}.rec:active{transform:scale(1.18);box-shadow:0 0 0 8px rgba(212,175,55,.25), 0 12px 32px rgba(0,0,0,.7)}
+.timer{display:none;background:linear-gradient(145deg,#ff2c55,#a00);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:900;box-shadow:0 4px 16px rgba(255,44,85,.6);border:1px solid rgba(255,255,255,.2)}.timer.on{display:block}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex}
+.sheet{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1a1a1a,#0f0f0f);border-radius:24px 24px 0 0;max-height:78dvh;display:flex;flex-direction:column;padding:16px;border-top:1px solid rgba(212,175,55,.25);box-shadow:0 -10px 40px rgba(0,0,0,.9), inset 0 1px 1px rgba(255,255,255,.08);animation:up.3s cubic-bezier(.34,1.56,.64,1)}
 @keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
-#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(20,20,20,.95);padding:14px 22px;border-radius:14px;z-index:2000;display:none;text-align:center;border:1px solid #333;font-size:12px;font-weight:700}#toast.on{display:block}
+#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(145deg,#1a1a1a,#0f0f0f);padding:14px 24px;border-radius:16px;z-index:2000;display:none;text-align:center;border:1px solid rgba(212,175,55,.3);font-size:12px;font-weight:800;box-shadow:0 12px 32px rgba(0,0,0,.8), 0 0 20px rgba(212,175,55,.2)}#toast.on{display:block}
 </style>
 </head>
 <body>
 <div id="toast"></div>
 <div class="app">
-<div class="stage" id="stage" ondblclick="WORK.like()"></div>
+<div class="stage" id="stage"></div>
 <div class="nav">
 <div class="tab on">⌂<br>Início</div>
 <div class="tab" onclick="WORK.my()">◧<br>Meus vídeos</div>
@@ -66,42 +161,41 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 
 <div id="cam">
 <video id="camEl" autoplay playsinline muted></video>
-<div class="camT"><button onclick="WORK.closeCam()" style="background:rgba(0,0,0,.6);color:#fff;border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:20px;font-weight:700">✕</button><div class="timer" id="timer">00:00 / 01:30</div><button onclick="WORK.flip()" style="background:rgba(0,0,0,.6);color:#fff;border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:20px">🔄</button></div>
+<div class="camT"><button onclick="WORK.closeCam()" style="background:rgba(0,0,0,.5);color:#D4AF37;border:1px solid rgba(212,175,55,.3);padding:8px 14px;border-radius:20px;font-weight:800">✕</button><div class="timer" id="timer">00:00 / 01:30</div><button onclick="WORK.flip()" style="background:rgba(0,0,0,.5);color:#D4AF37;border:1px solid rgba(212,175,55,.3);padding:8px 14px;border-radius:20px">🔄</button></div>
 <div class="camB">
 <div class="mode"><i class="on" id="mV" onclick="WORK.setMode('video')">VÍDEO 90s</i><i id="mL" onclick="WORK.setMode('live')">LIVE 30min</i></div>
 <div class="ctrls"><div class="ctrl" onclick="WORK.pick()">🖼️</div><div class="rec" id="rec" onclick="WORK.press()"><div></div></div><div class="ctrl">⚡</div></div>
-<p style="font-size:10px;color:#666">WORK INFLUENCER • Liberdade total • Salvo até você apagar</p>
+<p style="font-size:10px;color:#8a6d3b;letter-spacing:1px;font-weight:700">WORK INFLUENCER • GOLD PREMIUM</p>
 </div>
 </div>
 
-<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div class="sheet"><div style="display:flex;justify-content:space-between;font-weight:900"><span>Meus vídeos • <span id="cMy">0</span> salvos</span><span onclick="WORK.closeM()" style="font-size:24px">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;overflow:auto;max-height:55vh"></div><button onclick="WORK.pick()" style="margin-top:12px;width:100%;background:#D4AF37;color:#000;border:none;padding:14px;border-radius:12px;font-weight:900">🖼️ ESCOLHER DA GALERIA (ATÉ 1:30)</button><p style="font-size:10px;color:#666;text-align:center;margin-top:8px">Você tem liberdade total: posta quando quiser e apaga quando quiser</p></div></div>
+<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div class="sheet"><div style="display:flex;justify-content:space-between;font-weight:900"><span style="color:#D4AF37">Meus vídeos • <span id="cMy">0</span></span><span onclick="WORK.closeM()" style="font-size:24px;color:#D4AF37">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;overflow:auto;max-height:55vh"></div><button onclick="WORK.pick()" style="margin-top:14px;width:100%;background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border:none;padding:14px;border-radius:14px;font-weight:900;box-shadow:0 6px 20px rgba(212,175,55,.5)">🖼️ GALERIA PREMIUM (ATÉ 1:30)</button></div></div>
 
 <input type="file" id="file" accept="video/*" style="display:none">
 
 <script>
-/* WORK INFLUENCER - APP OFICIAL - CÓDIGO 100% ORIGINAL - © JONATHA CARLOS - IDEIA + NOME WORK INFLUENCER */
 const WORK={
 db:null,
 videos:[
-{id:'w1',user:"@work.influencer",desc:"Bem-vindo ao WORK INFLUENCER 🔥 Aqui você tem liberdade total!",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:34,share:89,follow:false,type:"img",isDefault:true,sound:"som original - WORK INFLUENCER"},
-{id:'w2',user:"@jonatha.oficial",desc:"App original criado por nós. Poste 1:30 e LIVE 30min/dia",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:1823,liked:false,com:21,share:45,follow:false,type:"img",isDefault:true,sound:"WORK INFLUENCER • oficial"}
+{id:'w1',user:"@work.influencer",desc:"WORK INFLUENCER GOLD PREMIUM 🔥 Tema ouro realista!",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:34,share:89,follow:false,type:"img",isDefault:true,sound:"som original - GOLD"},
+{id:'w2',user:"@gold.premium",desc:"Botões vivos que expandem ao tocar ✨ Profissional!",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:1823,liked:false,com:21,share:45,follow:false,type:"img",isDefault:true,sound:"WORK INFLUENCER • GOLD"}
 ],
 cur:0,stream:null,facing:'user',mode:'video',recorder:null,chunks:[],sec:0,inter:null,rec:false,
 toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2200)},
-initDB(){return new Promise(r=>{let req=indexedDB.open('WorkInfluencerOficial',1);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{this.db=e.target.result;r()}})},
+initDB(){return new Promise(r=>{let req=indexedDB.open('WorkGoldPremium',1);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{this.db=e.target.result;r()}})},
 async save(v){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').put(v);return new Promise(r=>tx.oncomplete=()=>r())},
 async loadAll(){await this.initDB();return new Promise(r=>{let tx=this.db.transaction('videos','readonly');let req=tx.objectStore('videos').getAll();req.onsuccess=()=>r(req.result)})},
 async del(id){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').delete(id);return new Promise(r=>tx.oncomplete=()=>r())},
 async loadSaved(){let s=await this.loadAll();if(s.length){s.forEach(v=>{if(v.blob){try{v.img=URL.createObjectURL(v.blob);v.blobUrl=v.img}catch{}}});this.videos=s.concat(this.videos.filter(v=>v.isDefault))}this.render()},
 fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':n||0},
 render(){
-if(!this.videos.length){document.getElementById('stage').innerHTML=`<div style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;text-align:center"><p style="font-size:50px">🔥</p><b>WORK INFLUENCER</b><p style="color:#777;font-size:12px;margin-top:6px">Seu app oficial<br>Liberdade total</p><button onclick="WORK.openCam('video')" style="margin-top:16px;background:#D4AF37;color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:900">CRIAR PRIMEIRO VÍDEO</button></div>`;return}
+if(!this.videos.length){document.getElementById('stage').innerHTML=`<div style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;text-align:center"><p style="font-size:50px">👑</p><b style="color:#D4AF37">WORK INFLUENCER GOLD</b><p style="color:#8a6d3b;font-size:12px;margin-top:6px">Tema ouro premium<br>Botões vivos profissionais</p><button onclick="WORK.openCam('video')" style="margin-top:16px;background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:900;box-shadow:0 6px 20px rgba(212,175,55,.5)">CRIAR VÍDEO GOLD</button></div>`;return}
 let v=this.videos[this.cur];
-let media=v.type==='video'?`<video class="media" id="vid" src="${v.img}" autoplay loop muted playsinline webkit-playsinline preload="auto"></video><div class="prog" id="prog" style="width:0%"></div>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
+let media=v.type==='video'?`<video class="media" id="vid" src="${v.img}" autoplay loop muted playsinline webkit-playsinline></video><div class="prog" id="prog" style="width:0%"></div>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
 document.getElementById('stage').innerHTML=`
 ${media}<div class="grad"></div>
-<div class="top"><div class="pill">Seguindo</div><div class="pill on">Para você • WORK INFLUENCER</div><div class="pill">🔍</div></div>
-<div class="del ${!v.isDefault?'on':''}" onclick="WORK.delCur()">🗑️ Apagar meu vídeo</div>
+<div class="top"><div class="pill">Seguindo</div><div class="pill on">GOLD PREMIUM • WORK</div><div class="pill">🔍</div></div>
+<div class="del ${!v.isDefault?'on':''}" onclick="WORK.delCur()">🗑️ Apagar</div>
 <div class="actions">
 <div class="act" onclick="WORK.like()"><div class="btn ${v.liked?'liked':''}">${v.liked?'❤️':'♡'}</div><div class="cnt">${this.fmt(v.likes)}</div></div>
 <div class="act" onclick="WORK.comment()"><div class="btn">💬</div><div class="cnt">${this.fmt(v.com)}</div></div>
@@ -109,41 +203,39 @@ ${media}<div class="grad"></div>
 <div class="act" onclick="WORK.follow()"><div class="btn ${v.follow?'followed':''}">${v.follow?'✓':'＋'}</div><div class="cnt">${v.follow?'Seguindo':'Seguir'}</div></div>
 <div class="act" onclick="WORK.openCam('live')"><div class="btn live">●</div><div class="cnt">LIVE</div></div>
 </div>
-<div class="meta"><div class="user">${v.user} ${!v.isDefault?'<span class="own">MEU VÍDEO</span>':''}</div><div class="desc">${v.desc}</div><div class="sound">♫ ${v.sound}</div></div>
+<div class="meta"><div class="user">${v.user} ${!v.isDefault?'<span class="own">GOLD</span>':''}</div><div class="desc">${v.desc}</div><div class="sound">♫ ${v.sound}</div></div>
 `;
 let vd=document.getElementById('vid');if(vd){vd.addEventListener('timeupdate',()=>{let p=document.getElementById('prog');if(p&&vd.duration) p.style.width=(vd.currentTime/vd.duration*100)+'%'});vd.play().catch(()=>{})}
 },
-like(){let v=this.videos[this.cur];v.liked=!v.liked;v.likes=v.liked?v.likes+1:v.likes-1;if(navigator.vibrate) navigator.vibrate(40);this.render();this.toast(v.liked?'❤️ Curtido!':'💔 Descurtido')},
-follow(){let v=this.videos[this.cur];v.follow=!v.follow;this.render();this.toast(v.follow?'✅ Seguindo!':'❌ Deixou de seguir')},
-comment(){let v=this.videos[this.cur];let c=prompt(`💬 Comentários (${v.com}):\n\nDigite seu comentário:`);if(c){v.com++;this.render();this.toast('💬 Comentário postado!')}},
-share(){let v=this.videos[this.cur];let txt=`🔥 Olha no WORK INFLUENCER: ${v.desc} - ${location.href}`;if(navigator.share) navigator.share({title:'WORK INFLUENCER',text:v.desc,url:location.href});else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(()=>this.toast('🔗 Link copiado! Compartilhar funcionando!'));window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`,'_blank')}v.share++;this.render()},
-delCur(){let v=this.videos[this.cur];if(v.isDefault) return this.toast('Exemplo não apaga');if(!confirm(`Apagar seu vídeo?\n\nWORK INFLUENCER te dá liberdade total.\nVocê apaga quando quiser.`))return;this.del(v.id).then(()=>{this.videos.splice(this.cur,1);if(this.cur>=this.videos.length) this.cur=this.videos.length-1;if(this.cur<0) this.cur=0;this.render();this.toast('🗑️ Vídeo apagado - liberdade total!')})},
-openCam(m){this.mode=m;this.setMode(m);document.getElementById('cam').classList.add('on');navigator.mediaDevices.getUserMedia({video:{facingMode:this.facing,width:{ideal:720},height:{ideal:1280}},audio:true}).then(s=>{this.stream=s;let el=document.getElementById('camEl');el.srcObject=s;el.play()}).catch(()=>alert('Permita a câmera'))},
+like(){let v=this.videos[this.cur];v.liked=!v.liked;v.likes=v.liked?v.likes+1:v.likes-1;if(navigator.vibrate) navigator.vibrate([30,50,30]);this.render();this.toast(v.liked?'❤️ Curtido com ouro!':'💔')},
+follow(){let v=this.videos[this.cur];v.follow=!v.follow;this.render();this.toast(v.follow?'👑 Seguindo GOLD!':'❌')},
+comment(){let v=this.videos[this.cur];let c=prompt(`💬 Comentários (${v.com}):\nDigite:`);if(c){v.com++;this.render();this.toast('💬 Comentado!')}},
+share(){let v=this.videos[this.cur];let txt=`👑 WORK INFLUENCER GOLD: ${v.desc} - ${location.href}`;if(navigator.share) navigator.share({title:'WORK GOLD',text:v.desc,url:location.href});else navigator.clipboard.writeText(location.href).then(()=>this.toast('🔗 Link GOLD copiado!'));v.share++;this.render()},
+delCur(){let v=this.videos[this.cur];if(v.isDefault) return this.toast('Exemplo');if(!confirm('Apagar seu vídeo GOLD?'))return;this.del(v.id).then(()=>{this.videos.splice(this.cur,1);if(this.cur>=this.videos.length) this.cur=this.videos.length-1;if(this.cur<0) this.cur=0;this.render();this.toast('🗑️ Apagado')})},
+openCam(m){this.mode=m;this.setMode(m);document.getElementById('cam').classList.add('on');navigator.mediaDevices.getUserMedia({video:{facingMode:this.facing,width:{ideal:720},height:{ideal:1280}},audio:true}).then(s=>{this.stream=s;let el=document.getElementById('camEl');el.srcObject=s;el.play()}).catch(()=>alert('Permita câmera'))},
 closeCam(){if(this.rec) this.stop();if(this.stream){this.stream.getTracks().forEach(t=>t.stop());this.stream=null}document.getElementById('cam').classList.remove('on')},
 setMode(m){this.mode=m;document.getElementById('mV').classList.toggle('on',m==='video');document.getElementById('mL').classList.toggle('on',m==='live')},
 flip(){this.facing=this.facing==='user'?'environment':'user';if(this.stream) this.stream.getTracks().forEach(t=>t.stop());navigator.mediaDevices.getUserMedia({video:{facingMode:this.facing},audio:true}).then(s=>{this.stream=s;document.getElementById('camEl').srcObject=s})},
-press(){if(this.mode==='live'){this.toast('🔴 LIVE WORK INFLUENCER 30min/dia iniciada!');return}if(!this.rec) this.start(); else this.stop()},
+press(){if(this.mode==='live'){this.toast('🔴 LIVE GOLD 30min!');return}if(!this.rec) this.start(); else this.stop()},
 start(){
-if(!this.stream) return this.toast('Câmera não iniciou');
+if(!this.stream) return;
 this.chunks=[];let mime='';if(MediaRecorder.isTypeSupported('video/mp4')) mime='video/mp4';let o=mime?{mimeType:mime}:{};try{this.recorder=new MediaRecorder(this.stream,o)}catch{this.recorder=new MediaRecorder(this.stream)}
 this.recorder.ondataavailable=e=>{if(e.data.size>0) this.chunks.push(e.data)};
-this.recorder.onstop=async ()=>{let blob=new Blob(this.chunks,{type:this.recorder.mimeType||'video/webm'});let url=URL.createObjectURL(blob);let obj={id:Date.now(),user:"@voce",desc:"Meu vídeo WORK INFLUENCER - liberdade total! 🔥",img:url,blob:blob,blobUrl:url,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:this.sec,isDefault:false,sound:"som original - você"};await this.save(obj);this.videos.unshift(obj);this.cur=0;this.closeCam();this.render();this.toast(`✅ Vídeo ${this.sec}s salvo até você apagar!`)};
+this.recorder.onstop=async ()=>{let blob=new Blob(this.chunks,{type:this.recorder.mimeType||'video/webm'});let url=URL.createObjectURL(blob);let obj={id:Date.now(),user:"@voce.gold",desc:"Meu vídeo GOLD PREMIUM WORK INFLUENCER 👑",img:url,blob:blob,blobUrl:url,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:this.sec,isDefault:false,sound:"GOLD • original"};await this.save(obj);this.videos.unshift(obj);this.cur=0;this.closeCam();this.render();this.toast(`👑 GOLD ${this.sec}s salvo!`)};
 this.recorder.start(100);this.rec=true;this.sec=0;
 document.getElementById('rec').classList.add('on');document.getElementById('timer').classList.add('on');
 this.inter=setInterval(()=>{this.sec++;let mm=String(Math.floor(this.sec/60)).padStart(2,'0'), ss=String(this.sec%60).padStart(2,'0');document.getElementById('timer').innerText=`${mm}:${ss} / 01:30`;if(this.sec>=90) this.stop()},1000);
 },
 stop(){if(!this.rec) return;clearInterval(this.inter);this.rec=false;document.getElementById('rec').classList.remove('on');if(this.recorder) this.recorder.stop()},
 pick(){document.getElementById('file').click()},
-my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length;document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:12px;overflow:hidden"><video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted playsinline></video><div style="position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer" onclick="WORK.del(${v.id}).then(()=>{WORK.videos=WORK.videos.filter(x=>x.id!==${v.id});WORK.render();WORK.my()})">✕</div><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent);padding:6px"><p style="font-size:9px;font-weight:900">${v.duration||''}s • MEU</p></div></div>`).join('')||'<p style="color:#666;text-align:center">Nenhum vídeo ainda</p>';document.getElementById('listM').classList.add('on')})},
+my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length;document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:14px;overflow:hidden;border:1px solid rgba(212,175,55,.2);box-shadow:0 4px 16px rgba(0,0,0,.5)"><video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted></video><div style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.7);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;border:1px solid rgba(212,175,55,.3)" onclick="WORK.del(${v.id}).then(()=>{WORK.videos=WORK.videos.filter(x=>x.id!==${v.id});WORK.render();WORK.my()})">✕</div><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);padding:8px"><p style="font-size:9px;font-weight:900;color:#D4AF37">${v.duration||''}s • GOLD</p></div></div>`).join('')||'<p style="color:#666;text-align:center">Nenhum vídeo GOLD</p>';document.getElementById('listM').classList.add('on')})},
 closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
 };
-
 document.getElementById('file').addEventListener('change',e=>{
-let file=e.target.files[0];if(!file||!file.type.startsWith('video/')) return WORK.toast('Escolha um VÍDEO');
-let url=URL.createObjectURL(file);let tv=document.createElement('video');tv.preload='metadata';tv.src=url;
-tv.onloadedmetadata=async ()=>{let d=Math.round(tv.duration||0);if(d>90){WORK.toast(`Muito longo ${d}s, máx 90s`);return}let o={id:Date.now(),user:"@voce",desc:"Vídeo da galeria WORK INFLUENCER",img:url,blob:file,blobUrl:url,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:d,isDefault:false,sound:"som original"};await WORK.save(o);WORK.videos.unshift(o);WORK.cur=0;WORK.closeM();WORK.closeCam();WORK.render();WORK.toast(`✅ Galeria ${d}s salva!`)};tv.onerror=()=>WORK.toast('Erro ao ler vídeo');
+let f=e.target.files[0];if(!f||!f.type.startsWith('video/')) return;
+let u=URL.createObjectURL(f);let tv=document.createElement('video');tv.preload='metadata';tv.src=u;
+tv.onloadedmetadata=async ()=>{let d=Math.round(tv.duration||0);if(d>90){WORK.toast(`Muito longo ${d}s`);return}let o={id:Date.now(),user:"@voce.gold",desc:"Vídeo GOLD da galeria 👑",img:u,blob:f,blobUrl:u,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:d,isDefault:false,sound:"GOLD"};await WORK.save(o);WORK.videos.unshift(o);WORK.cur=0;WORK.closeM();WORK.closeCam();WORK.render();WORK.toast(`👑 GOLD ${d}s salvo!`)};
 });
-
 WORK.loadSaved();
 let sy=0;document.addEventListener('touchstart',e=>sy=e.touches[0].clientY,{passive:true});
 document.addEventListener('touchend',e=>{if(document.getElementById('cam').classList.contains('on'))return;if(document.querySelector('.modal.on'))return;let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0&&WORK.cur<WORK.videos.length-1) WORK.cur++;if(d<0&&WORK.cur>0) WORK.cur--;WORK.render()}},{passive:true});
