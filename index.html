@@ -2,326 +2,228 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK - CÂMERA REAL</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WORK - CAMERA FUNCIONANDO</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{background:#000;height:100dvh;overflow:hidden;font-family:Montserrat,sans-serif;color:#fff}
-#splash{position:fixed;inset:0;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.t{font-family:Anton;font-size:62px;line-height:.9}
-.w{animation:w8 8s forwards}.i{margin-top:8px;animation:i8 8s forwards}
-@keyframes w8{0%{color:red;transform:scale(.3);opacity:0}20%{opacity:1;transform:scale(1.1)}100%{background:linear-gradient(100deg,#D4AF37,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;transform:scale(1.3);background-position:400% 0}}
-@keyframes i8{0%{opacity:0}30%{opacity:1;color:gold}100%{background:linear-gradient(100deg,#D4AF37,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;transform:scale(1.3);background-position:400% 0}}
-.app{height:100dvh;display:flex;flex-direction:column;opacity:0;background:#000;position:relative}
-.topbar{position:absolute;top:0;left:0;right:0;height:46px;display:flex;justify-content:center;align-items:center;gap:28px;z-index:20;background:linear-gradient(180deg,rgba(0,0,0,.6),transparent)}
-.top-tab{font-size:14px;font-weight:700;color:#aaa;cursor:pointer}.top-tab.active{color:#fff;border-bottom:2px solid #fff}
-.feed{flex:1;position:relative;background:#111;overflow:hidden}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#000;height:100dvh;overflow:hidden;font-family:Arial;color:#fff}
+.app{height:100dvh;display:flex;flex-direction:column}
+.feed{flex:1;position:relative;background:#111}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
-.vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 60%);pointer-events:none}
-.live-float{position:absolute;top:60px;left:14px;background:linear-gradient(90deg,#ff0050,#ff2d55);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:900;z-index:15;display:flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(255,0,80,.5);cursor:pointer}
-.live-dot{width:8px;height:8px;background:#fff;border-radius:50%;animation:pulse 1s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.live-timer{position:absolute;top:60px;right:14px;background:rgba(0,0,0,.7);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:900;z-index:15;border:1px solid #ff0050}
-.right{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:22px;z-index:15;align-items:center}
-.avatar{width:50px;height:50px;border-radius:50%;border:2px solid #fff;overflow:hidden;background-size:cover;background-position:center;position:relative;cursor:pointer}
-.follow-plus{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:20px;height:20px;background:#ff0050;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;border:2px solid #000}
-.follow-plus.done{background:#D4AF37;color:#000}
-.act{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
-.btn{width:52px;height:52px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;transition:transform.15s;color:#fff}
-.btn:active{transform:scale(.65)!important}.btn.pop{animation:vivo.5s cubic-bezier(.34,1.56,.64,1)}@keyframes vivo{0%{transform:scale(.65)}15%{transform:scale(1.4)}30%{transform:scale(.85)}50%{transform:scale(1.2)}100%{transform:scale(1)}}.btn.liked{color:#fe2c55}
-.count{font-size:12px;font-weight:700;text-shadow:0 1px 4px #000}
-.info{position:absolute;left:14px;right:82px;bottom:14px;z-index:10}
-.u{font-weight:700;font-size:15px}.d{font-size:14px;margin:4px 0}.h{font-size:13px;font-weight:600;color:#D4AF37}
-.bottom{height:54px;background:#000;border-top:1px solid #111;display:flex;justify-content:space-around;align-items:center;z-index:20}
-.tab{color:#888;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}.tab.active{color:#fff}.tab b{font-size:22px}
-.tab-plus{width:46px;height:32px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative}
-.tab-plus::before{content:'';position:absolute;inset:0;transform:translateX(-3px);background:#25f4ee;border-radius:8px;z-index:-1}
-.tab-plus::after{content:'';position:absolute;inset:0;transform:translateX(3px);background:#fe2c55;border-radius:8px;z-index:-2}
-.tab-plus span{background:#000;color:#fff;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:6px;font-size:22px;font-weight:900}
+.ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.8) 0%,transparent 60%)}
+.live-btn{position:absolute;top:20px;left:14px;background:red;color:#fff;padding:8px 16px;border-radius:20px;font-weight:900;z-index:10;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.right{position:absolute;right:12px;bottom:100px;display:flex;flex-direction:column;gap:20px;z-index:10;text-align:center}
+.btn{width:54px;height:54px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px}
+.bottom{height:60px;background:#000;border-top:1px solid #222;display:flex;justify-content:space-around;align-items:center}
+.tab{color:#666;font-size:11px;text-align:center;cursor:pointer}.tab.active{color:#fff}
+.plus{width:44px;height:30px;background:#fff;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px}
 
-/* CÂMERA */
-.create-screen{position:fixed;inset:0;background:#000;z-index:200;display:none;flex-direction:column}
-.create-screen.on{display:flex}
-.cam-preview{flex:1;position:relative;background:#000;overflow:hidden}
-#camera{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
-#camera.front{transform:scaleX(-1)}#camera.back{transform:scaleX(1)}
-.cam-ui{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:16px}
-.cam-top{display:flex;justify-content:space-between;align-items:center}
-.cam-top button{background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);color:#fff;padding:8px 14px;border-radius:20px;font-weight:700;backdrop-filter:blur(10px)}
-.rec-indicator{display:none;align-items:center;gap:8px;background:rgba(255,0,0,.9);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:900}
-.rec-indicator.on{display:flex}
-.rec-dot{width:10px;height:10px;background:#fff;border-radius:50%;animation:pulse 1s infinite}
-.cam-bottom{height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent)}
-.cam-types{display:flex;gap:12px}
-.cam-type{padding:8px 18px;border-radius:20px;font-size:12px;font-weight:700;color:#888;background:rgba(255,255,255,.1);border:1px solid transparent;cursor:pointer}
-.cam-type.active{background:#fff;color:#000}
-.cam-controls{display:flex;align-items:center;gap:28px}
-.cam-btn{width:48px;height:48px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;border:1px solid rgba(255,255,255,.2)}
-.cam-record{width:78px;height:78px;border-radius:50%;border:4px solid #fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s}
-.cam-record div{width:62px;height:62px;background:#fe2c55;border-radius:50%;transition:.2s}
-.cam-record.recording div{width:30px;height:30px;border-radius:6px;background:#fe2c55}
-.cam-record:active{transform:scale(.9)}
-.cam-timer{font-size:13px;font-weight:900;color:#fff;background:rgba(0,0,0,.6);padding:4px 10px;border-radius:12px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:250;display:none;flex-direction:column}.modal.on{display:flex}
-.mh{height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;border-bottom:1px solid #222;font-weight:900;background:#111}
-.mb{flex:1;overflow:auto;padding:16px}
-.card{background:#151515;border:1px solid #222;border-radius:16px;padding:14px;margin-bottom:12px}
-input,textarea{width:100%;background:#000;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;margin-bottom:10px;font-family:Montserrat}
-button.main{width:100%;background:#fff;border:none;padding:14px;border-radius:12px;font-weight:900;color:#000}
-button.sec{background:#222;color:#fff}
+/* CAMERA TELA CHEIA */
+#camScreen{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column}
+#camScreen.on{display:flex}
+#camera{width:100%;height:100%;object-fit:cover;background:#000}
+.cam-top{position:absolute;top:0;left:0;right:0;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)}
+.cam-top button{background:rgba(0,0,0,.6);color:#fff;border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:20px;font-weight:700}
+.cam-bottom{position:absolute;bottom:0;left:0;right:0;height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:2;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent)}
+.types{display:flex;gap:10px}
+.type{padding:8px 16px;border-radius:20px;background:rgba(255,255,255,.15);font-size:12px;font-weight:700;color:#aaa}
+.type.active{background:#fff;color:#000}
+.controls{display:flex;align-items:center;gap:30px}
+.ctrl{width:44px;height:44px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.record{width:76px;height:76px;border-radius:50%;border:4px solid #fff;display:flex;align-items:center;justify-content:center}
+.record div{width:60px;height:60px;background:red;border-radius:50%}
+.record.rec div{width:28px;height:28px;border-radius:4px}
+.timer{font-size:13px;font-weight:900;background:rgba(255,0,0,.8);padding:5px 12px;border-radius:20px;display:none}
+.timer.on{display:block}
 </style>
 </head>
 <body>
-<div id="splash"><div style="text-align:center"><div class="t w" style="color:#fe2c55">WORK</div><div class="t i" style="color:#25f4ee">INFLUÊNCIA</div></div></div>
 <div class="app" id="app">
-<div class="topbar"><div class="top-tab">Seguindo</div><div class="top-tab active">Para você</div><div class="top-tab" style="color:#fe2c55">LIVE</div></div>
-<div class="live-float" onclick="openCamera('live')"><div class="live-dot"></div>LIVE</div>
-<div class="live-timer" id="liveTimer" style="display:none">🔴 30:00</div>
 <div class="feed" id="feed"></div>
 <div class="bottom">
-<div class="tab active"><b>⌂</b>Início</div>
-<div class="tab" onclick="tabExplore()"><b>◎</b>Descobrir</div>
-<div class="tab" onclick="openCamera('video')"><div class="tab-plus"><span>+</span></div></div>
-<div class="tab" onclick="tabInbox()"><b>◧</b>Entrada</div>
-<div class="tab" onclick="tabPerfil()"><b>◉</b>Eu</div>
+<div class="tab active" onclick="location.reload()">⌂ Início</div>
+<div class="tab">◎ Descobrir</div>
+<div class="tab" onclick="openCam('video')"><div class="plus">+</div></div>
+<div class="tab" onclick="openCam('live')" style="color:red">● LIVE</div>
+<div class="tab">◉ Eu</div>
 </div>
 </div>
 
-<!-- TELA CÂMERA REAL -->
-<div class="create-screen" id="camScreen">
-<div class="cam-preview">
+<div id="camScreen">
 <video id="camera" autoplay playsinline muted></video>
-<div class="cam-ui">
 <div class="cam-top">
-<button onclick="closeCamera()">✕ Fechar</button>
-<div class="rec-indicator" id="recInd"><div class="rec-dot"></div><span id="recTime">00:00 / 01:30</span></div>
-<button onclick="switchCam()">🔄 Virar</button>
+<button onclick="closeCam()">✕ Fechar</button>
+<div class="timer" id="camTimer">00:00 / 01:30</div>
+<button onclick="flipCam()">🔄 Virar</button>
 </div>
 <div class="cam-bottom">
-<div class="cam-types">
-<div class="cam-type active" id="typeV" onclick="setCamMode('video')">VÍDEO 90s</div>
-<div class="cam-type" id="typeL" onclick="setCamMode('live')">LIVE 30min</div>
+<div class="types">
+<div class="type active" id="tVideo" onclick="setMode('video')">VÍDEO 90s</div>
+<div class="type" id="tLive" onclick="setMode('live')">LIVE 30min</div>
 </div>
-<div class="cam-timer" id="camTimer">Pronto para gravar • Máx 1:30</div>
-<div class="cam-controls">
-<div class="cam-btn" onclick="openGallery()">🖼️</div>
-<div class="cam-record" id="recBtn" onclick="toggleRecord()"><div></div></div>
-<div class="cam-btn" onclick="toggleFlash()">⚡</div>
+<div class="controls">
+<div class="ctrl" onclick="document.getElementById('gal').click()">🖼️</div>
+<div class="record" id="recBtn" onclick="pressRec()"><div></div></div>
+<div class="ctrl">⚡</div>
 </div>
-</div>
-</div>
+<p id="camInfo" style="font-size:11px;color:#aaa">Toque no vermelho para gravar • Máx 1:30</p>
 </div>
 </div>
 
-<!-- CONFIRMAR POST -->
-<div class="modal" id="postModal"><div class="mh"><span id="postTitle">Postar vídeo?</span><span onclick="closePost()" style="font-size:28px">×</span></div><div class="mb">
-<div class="card"><video id="previewPost" style="width:100%;border-radius:12px;max-height:50vh" controls playsinline></video><p id="postInfo" style="font-size:12px;color:#25f4ee;margin:8px 0"></p><textarea id="descPost" placeholder="Descreva seu vídeo... #hashtag"></textarea><button class="main" onclick="confirmPost()">POSTAR AGORA</button><button class="main sec" style="margin-top:10px" onclick="closePost()">GRAVAR DE NOVO</button></div>
-</div></div>
-
-<div class="modal" id="mC"><div class="mh"><span>Comentários</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div id="listC"></div><div class="card"><input id="inC" placeholder="Adicionar comentário..."><button class="main" onclick="envC()">Enviar</button></div></div></div>
-<div class="modal" id="mP"><div class="mh"><span>Eu</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div class="card" style="text-align:center"><div style="width:80px;height:80px;background:#fff;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:32px;color:#000;font-weight:900">U</div><b>@usuario.teste</b><p style="color:#888;margin:8px 0">Live usada hoje: <span id="liveUsedText">0/30</span> min</p><input id="sen" type="password" placeholder="admin123"><button class="main" onclick="adminGo()">ADMIN</button><br><br><button class="main sec" onclick="closeM()">Voltar</button></div></div></div>
-<div class="modal" id="mA"><div class="mh"><span>Admin</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div class="card"><input id="aU" placeholder="@usuario"><input id="aD" placeholder="Descrição"><input id="aH" placeholder="#hashtag"><input id="aI" placeholder="Link"><button class="main" onclick="pub()">Publicar</button></div><button class="main sec" onclick="closeM()">Fechar</button></div></div>
-<div class="modal" id="mE"><div class="mh"><span>Descobrir</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="gE"></div></div></div>
-
-<input type="file" id="galleryInput" accept="video/*" style="display:none">
+<input type="file" id="gal" accept="video/*" style="display:none">
 
 <script>
 let videos=[
-{user:"@mariana",desc:"Dica que vai mudar seu dia! 🔥",hash:"#work #viral",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:1243,liked:false,com:12,share:34,follow:false,followers:1200,comments:[{u:"@joao",t:"Muito boa!"}],type:"img"},
-{user:"@joao",desc:"Como crescer rápido aqui",hash:"#dicas",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:890,liked:false,com:5,share:22,follow:false,followers:890,comments:[],type:"img"}
+{user:"@mariana",desc:"Dica de ouro",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:1234,com:12,share:30},
+{user:"@joao",desc:"Como crescer rápido",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:890,com:5,share:22}
 ];
 let cur=0;
-let stream=null, recorder=null, chunks=[], recordedBlob=null, recordedUrl=null;
-let camMode='video', facing='user', isRecording=false, recTimer=null, recSec=0;
-let liveUsedMin = parseInt(localStorage.getItem('liveUsed')||'0');
-let liveDate = localStorage.getItem('liveDate');
-let today=new Date().toDateString();
-if(liveDate!==today){liveUsedMin=0;localStorage.setItem('liveUsed','0');localStorage.setItem('liveDate',today)}
-let liveInterval=null, liveSecLeft=0, isLive=false;
+let stream=null, facing='user', mode='video', recorder=null, chunks=[], recSec=0, recInterval=null, isRec=false;
 
 function render(){
 let v=videos[cur];
-let media = v.type==='video'?`<video class="vid" src="${v.img}" autoplay loop muted playsinline></video>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
-let liveTag = v.isLive?`<div class="live-float" style="top:90px"><div class="live-dot"></div>LIVE</div>`:'';
 document.getElementById('feed').innerHTML=`
-${media}<div class="ov" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 60%);pointer-events:none"></div>${liveTag}
-<div class="right" style="position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:22px;z-index:15;align-items:center">
-<div class="avatar" style="background-image:url('${v.img}')" onclick="followAct()"><div class="follow-plus ${v.follow?'done':''}" style="position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:20px;height:20px;background:${v.follow?'#D4AF37':'#fe2c55'};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;border:2px solid #000">${v.follow?'✓':'+'}</div></div>
-<div class="act" onclick="likeAct(this)"><div class="btn ${v.liked?'liked':''}" style="${v.liked?'color:#fe2c55':''}">${v.liked?'♥':'♡'}</div><div class="count" style="font-size:12px;font-weight:700;text-shadow:0 1px 4px #000">${fmt(v.likes)}</div></div>
-<div class="act" onclick="commentAct(this)"><div class="btn">💬</div><div class="count">${v.com}</div></div>
-<div class="act" onclick="shareAct(this)"><div class="btn">↗</div><div class="count">${v.share}</div></div>
+<div class="bg" style="background-image:url('${v.img}')"></div>
+<div class="ov"></div>
+<div class="live-btn" onclick="openCam('live')">🔴 LIVE</div>
+<div class="right">
+<div><div class="btn">♡</div><div style="font-size:11px;margin-top:4px">${v.likes}</div></div>
+<div><div class="btn">💬</div><div style="font-size:11px;margin-top:4px">${v.com}</div></div>
+<div><div class="btn">↗</div><div style="font-size:11px;margin-top:4px">${v.share}</div></div>
+<div><div class="btn">＋</div><div style="font-size:11px;margin-top:4px">Seguir</div></div>
 </div>
-<div class="info" style="position:absolute;left:14px;right:82px;bottom:14px;z-index:10"><div class="u" style="font-weight:700;font-size:15px">@${v.user.replace('@','')}</div><div class="d" style="font-size:14px;margin:4px 0">${v.desc}</div><div class="h" style="font-size:13px;font-weight:600;color:#D4AF37">${v.hash}</div></div>`;
+<div style="position:absolute;left:14px;bottom:14px;right:80px;z-index:10"><b>${v.user}</b><p style="font-size:13px;margin-top:4px">${v.desc}</p></div>
+`;
 }
-function fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':n}
-setTimeout(()=>{let s=document.getElementById('splash');s.style.transition='opacity 1s';s.style.opacity='0';setTimeout(()=>{s.style.display='none';document.getElementById('app').style.opacity='1';render();updLive()},1000)},4000);
+render();
 
-function anim(el){let b=el.querySelector('.btn');if(!b)return; b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');if(navigator.vibrate) navigator.vibrate(30)}
-function likeAct(el){anim(el);setTimeout(()=>{let v=videos[cur];v.liked=!v.liked;v.likes+=v.liked?1:-1;render()},180)}
-function commentAct(el){anim(el);setTimeout(()=>{let v=videos[cur];document.getElementById('listC').innerHTML=v.comments.map(c=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222"><div style="width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px">${c.u[1].toUpperCase()}</div><div><b>${c.u}</b><p style="color:#ccc">${c.t}</p></div></div>`).join('')||'<p style="color:#666;text-align:center;padding:20px">Nenhum comentário</p>';document.getElementById('mC').classList.add('on')},180)}
-function shareAct(el){anim(el);setTimeout(()=>{videos[cur].share++;alert('Link copiado!');render()},180)}
-function followAct(){let v=videos[cur];v.follow=!v.follow;v.followers+=v.follow?1:-1;render()}
-
-async function openCamera(mode){
-camMode=mode;
-setCamMode(mode);
+async function openCam(m){
+mode=m;
+setMode(m);
 document.getElementById('camScreen').classList.add('on');
+document.getElementById('camTimer').classList.remove('on');
+document.getElementById('camTimer').innerText='00:00 / 01:30';
+document.getElementById('camInfo').innerText=m==='live'?'MODO LIVE - 30min por dia':'Toque no vermelho para gravar • Máx 1:30';
 try{
+console.log('Pedindo câmera...');
 if(stream){stream.getTracks().forEach(t=>t.stop())}
-stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing, width:{ideal:1280}, height:{ideal:720}}, audio:true});
-document.getElementById('camera').srcObject=stream;
-document.getElementById('camera').className=facing==='user'?'front':'back';
-}catch(e){alert('Precisa permitir a câmera! Erro: '+e.message)}
+// PRIMEIRO TENTA COM AUDIO
+try{
+stream=await navigator.mediaDevices.getUserMedia({
+video:{facingMode:facing, width:{ideal:1280}, height:{ideal:720}},
+audio:true
+});
+}catch(e){
+// SE FALHAR AUDIO, TENTA SÓ VIDEO
+console.log('Tentando só vídeo',e);
+stream=await navigator.mediaDevices.getUserMedia({
+video:{facingMode:facing},
+audio:false
+});
+}
+let video=document.getElementById('camera');
+video.srcObject=stream;
+await video.play();
+console.log('Câmera abriu!');
+}catch(err){
+alert('❌ Câmera não abriu: '+err.message+'\n\n1. Use Chrome no celular\n2. Clique em PERMITIR quando pedir câmera\n3. Precisa ser HTTPS - seu link já é HTTPS\n\nErro: '+err.name);
+console.error(err);
+}
 }
 
-function closeCamera(){
-if(isRecording) stopRecord();
+function closeCam(){
+if(isRec) stopRec();
 if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}
 document.getElementById('camScreen').classList.remove('on');
 }
 
-function setCamMode(m){
-camMode=m;
-document.getElementById('typeV').classList.toggle('active',m==='video');
-document.getElementById('typeL').classList.toggle('active',m==='live');
-document.getElementById('camTimer').innerText=m==='live'?`LIVE - ${30-liveUsedMin} min restantes hoje`:'Pronto para gravar • Máx 1:30';
-document.getElementById('recInd').style.display='none';
+function setMode(m){
+mode=m;
+document.getElementById('tVideo').classList.toggle('active',m==='video');
+document.getElementById('tLive').classList.toggle('active',m==='live');
+document.getElementById('camInfo').innerText=m==='live'?'🔴 MODO LIVE - 30min/dia - Aperte vermelho para iniciar':'📹 MODO VÍDEO - Máx 1:30 - Aperte vermelho para gravar';
 }
 
-async function switchCam(){
+async function flipCam(){
 facing=facing==='user'?'environment':'user';
-if(stream) {stream.getTracks().forEach(t=>t.stop())}
+if(stream){stream.getTracks().forEach(t=>t.stop())}
 try{
-stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing}, audio:true});
+stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:mode==='video'});
 document.getElementById('camera').srcObject=stream;
-document.getElementById('camera').className=facing==='user'?'front':'back';
-}catch(e){alert('Erro ao virar câmera')}
+await document.getElementById('camera').play();
+}catch(e){alert('Erro ao virar: '+e.message)}
 }
 
-function toggleFlash(){alert('Flash - em breve! (precisa de HTTPS)')}
+function pressRec(){
+if(mode==='live'){startLiveCam();return}
+if(!isRec) startRec(); else stopRec();
+}
 
-function openGallery(){document.getElementById('galleryInput').click()}
-document.getElementById('galleryInput').addEventListener('change',e=>{
+function startRec(){
+if(!stream){alert('Câmera não iniciou, feche e abra de novo');return}
+chunks=[];recorder=new MediaRecorder(stream);
+recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
+recorder.onstop=()=>{
+let blob=new Blob(chunks,{type:'video/webm'});
+let url=URL.createObjectURL(blob);
+let v=document.createElement('video');v.src=url;
+v.onloadedmetadata=()=>{
+if(v.duration>90){alert('Muito longo! Máx 1:30');return}
+if(confirm(`Vídeo de ${Math.round(v.duration)}s gravado! Postar agora?`)){
+videos.unshift({user:"@voce",desc:"Vídeo gravado pela câmera! #work",img:url,likes:0,com:0,share:0,type:"video"});
+cur=0;closeCam();render();
+}
+}
+};
+recorder.start();isRec=true;recSec=0;
+document.getElementById('recBtn').classList.add('rec');
+document.getElementById('camTimer').classList.add('on');
+recInterval=setInterval(()=>{
+recSec++;
+let mm=String(Math.floor(recSec/60)).padStart(2,'0'), ss=String(recSec%60).padStart(2,'0');
+document.getElementById('camTimer').innerText=`${mm}:${ss} / 01:30`;
+if(recSec>=90) stopRec();
+},1000);
+}
+
+function stopRec(){
+if(!isRec)return;
+clearInterval(recInterval);isRec=false;
+document.getElementById('recBtn').classList.remove('rec');
+if(recorder) recorder.stop();
+}
+
+function startLiveCam(){
+let used=parseInt(localStorage.getItem('liveUsed')||'0');
+if(used>=30){alert('Você já usou 30min hoje! Volta amanhã');return}
+if(!confirm(`Iniciar LIVE? Você tem ${30-used} min hoje.`))return;
+alert('🔴 LIVE iniciada! (câmera ao vivo)\n\nEm um app real, aqui entraria no servidor de Live.\nPor enquanto sua câmera está ao vivo!');
+// Simula live
+videos.unshift({user:"@voce",desc:"🔴 AO VIVO AGORA!",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:0,com:0,share:0,isLive:true});
+cur=0;closeCam();render();
+localStorage.setItem('liveUsed',used+1);
+}
+
+document.getElementById('gal').addEventListener('change',e=>{
 let file=e.target.files[0];if(!file)return;
-if(file.duration>90){} // file duration check via video
 let url=URL.createObjectURL(file);
 let v=document.createElement('video');v.src=url;
 v.onloadedmetadata=()=>{
-if(v.duration>90){alert('Vídeo muito longo! Máx 1:30. Seu tem '+Math.round(v.duration)+'s');return}
-recordedBlob=file;recordedUrl=url;showPostConfirm(file,url,Math.round(v.duration),'video');
+if(v.duration>90){alert('Vídeo muito longo! Máx 1:30, seu tem '+Math.round(v.duration)+'s');return}
+if(confirm(`Vídeo da galeria ${Math.round(v.duration)}s - Postar?`)){
+videos.unshift({user:"@voce",desc:"Vídeo da galeria",img:url,likes:0,com:0,share:0,type:"video"});
+cur=0;closeCam();render();
+}
 }
 });
 
-function toggleRecord(){
-if(camMode==='live'){toggleLive();return}
-if(!isRecording) startRecord(); else stopRecord();
-}
-
-function startRecord(){
-if(!stream){alert('Câmera não iniciada');return}
-chunks=[];recorder=new MediaRecorder(stream,{mimeType:'video/webm'});
-recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)}
-recorder.onstop=()=>{
-recordedBlob=new Blob(chunks,{type:'video/webm'});
-recordedUrl=URL.createObjectURL(recordedBlob);
-showPostConfirm(recordedBlob,recordedUrl,recSec,'video');
-}
-recorder.start();isRecording=true;recSec=0;
-document.getElementById('recBtn').classList.add('recording');
-document.getElementById('recInd').classList.add('on');
-recTimer=setInterval(()=>{
-recSec++;
-let m=String(Math.floor(recSec/60)).padStart(2,'0'), s=String(recSec%60).padStart(2,'0');
-document.getElementById('recTime').innerText=`${m}:${s} / 01:30`;
-document.getElementById('camTimer').innerText=`🔴 Gravando ${m}:${s} - Máx 01:30`;
-if(recSec>=90){stopRecord()}
-},1000);
-}
-
-function stopRecord(){
-if(!isRecording)return;
-clearInterval(recTimer);
-isRecording=false;
-document.getElementById('recBtn').classList.remove('recording');
-document.getElementById('recInd').classList.remove('on');
-if(recorder)recorder.stop();
-}
-
-function showPostConfirm(blob,url,sec,type){
-closeCamera();
-document.getElementById('previewPost').src=url;
-document.getElementById('postInfo').innerText=type==='live'?`LIVE de ${sec}s pronta para iniciar!`:`Vídeo de ${sec}s - OK! Máx 1:30`;
-document.getElementById('postTitle').innerText=type==='live'?'Iniciar LIVE?':'Postar vídeo?';
-document.getElementById('postModal').classList.add('on');
-document.getElementById('postModal').dataset.type=type;
-}
-
-function closePost(){
-document.getElementById('postModal').classList.remove('on');
-recordedBlob=null;recordedUrl=null;
-}
-
-function confirmPost(){
-let type=document.getElementById('postModal').dataset.type;
-let desc=document.getElementById('descPost').value||(type==='live'?'🔴 AO VIVO AGORA!':'Meu vídeo novo! #work');
-if(type==='live'){startLiveWithStream()}else{
-videos.unshift({user:"@usuario.teste",desc:desc,hash:"#work #fyp",img:recordedUrl,likes:0,liked:false,com:0,share:0,follow:false,followers:0,comments:[],type:"video"});
-cur=0;closePost();render();document.getElementById('descPost').value='';
-alert('✅ Vídeo postado! 1:30 respeitado, câmera funcionou!');
-}
-}
-
-function toggleLive(){
-if(isLive){stopLive();return}
-startLiveWithStream();
-}
-
-function startLiveWithStream(){
-let rest=30-liveUsedMin;
-if(rest<=0){alert('Você já usou seus 30 min de Live hoje!');return}
-isLive=true;liveSecLeft=rest*60;
-document.getElementById('liveTimer').style.display='block';
-closePost();closeCamera();
-videos.unshift({user:"@usuario.teste",desc:document.getElementById('descPost').value||"🔴 AO VIVO AGORA - Entra!",hash:"#live #aovivo",img:recordedUrl||"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:0,liked:false,com:0,share:0,follow:false,followers:0,comments:[],type:recordedUrl?"video":"img",isLive:true,viewers:"1"});
-cur=0;render();
-liveInterval=setInterval(()=>{
-liveSecLeft--;
-let m=Math.floor(liveSecLeft/60), s=liveSecLeft%60;
-document.getElementById('liveTimer').innerText=`🔴 ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')} • ${rest}min`;
-if(liveSecLeft<=0){stopLive()}
-},1000);
-alert('🔴 LIVE iniciada! Câmera ao vivo no ar!');
-}
-
-function stopLive(){
-if(liveInterval)clearInterval(liveInterval);
-if(isLive){
-let used=Math.ceil((30*60-liveSecLeft)/60);
-liveUsedMin+=used;if(liveUsedMin>30)liveUsedMin=30;
-localStorage.setItem('liveUsed',liveUsedMin);localStorage.setItem('liveDate',today);updLive();
-}
-isLive=false;document.getElementById('liveTimer').style.display='none';
-if(videos[cur]&&videos[cur].isLive){videos[cur].isLive=false;videos[cur].desc="Live encerrada ❤️ Obrigado!"}
-render();
-}
-
-function updLive(){let rest=30-liveUsedMin;document.getElementById('liveUsedText').innerText=liveUsedMin+'/30';}
-function tabExplore(){let g=document.getElementById('gE');g.innerHTML=videos.map((v,i)=>`<div style="aspect-ratio:9/16;background-size:cover;background-position:center;border-radius:12px;position:relative;overflow:hidden;background-image:url('${v.img}')" onclick="cur=${i};closeM();render()"><div style="position:absolute;bottom:6px;left:6px;font-size:10px;background:rgba(0,0,0,.6);padding:3px 6px;border-radius:10px">${v.isLive?'🔴 LIVE':''} ${v.user}</div></div>`).join('');document.getElementById('mE').classList.add('on')}
-function tabInbox(){alert('Inbox em breve')}
-function tabPerfil(){document.getElementById('mP').classList.add('on');updLive()}
-function adminGo(){if(document.getElementById('sen').value==='admin123'){closeM();document.getElementById('mA').classList.add('on')}else alert('admin123')}
-function pub(){let u=document.getElementById('aU').value||'@novo';let d=document.getElementById('aD').value||'Novo';let h=document.getElementById('aH').value||'#work';let im=document.getElementById('aI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,liked:false,com:0,share:0,follow:false,followers:0,comments:[],type:im.includes('.mp4')?'video':'img'});cur=0;closeM();render()}
-function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
-function envC(){let i=document.getElementById('inC');if(!i.value.trim())return;videos[cur].comments.push({u:"@usuario.teste",t:i.value});videos[cur].com++;i.value='';document.getElementById('listC').innerHTML=videos[cur].comments.map(c=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222"><div style="width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900">${c.u[1].toUpperCase()}</div><div><b>${c.u}</b><p style="color:#ccc">${c.t}</p></div></div>`).join('');render()}
-
+// Swipe
 let sy=0;
 document.addEventListener('touchstart',e=>sy=e.touches[0].clientY);
 document.addEventListener('touchend',e=>{
-if(document.querySelector('.modal.on')||document.querySelector('.create-screen.on'))return;
+if(document.getElementById('camScreen').classList.contains('on'))return;
 let d=sy-e.changedTouches[0].clientY;
-if(Math.abs(d)>70){if(d>0&&cur<videos.length-1)cur++;if(d<0&&cur>0)cur--;render()}
+if(Math.abs(d)>60){if(d>0&&cur<videos.length-1)cur++;if(d<0&&cur>0)cur--;render()}
 });
 </script>
 </body>
