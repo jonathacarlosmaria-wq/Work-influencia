@@ -3,247 +3,267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK INFLUÊNCIA - LIVE + VÍDEO 1:30</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+<title>WORK - TIKTOK STYLE</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{background:#000;height:100dvh;overflow:hidden;font-family:Montserrat,sans-serif}
+body{background:#000;height:100dvh;overflow:hidden;font-family:Montserrat,sans-serif;color:#fff}
 #splash{position:fixed;inset:0;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.t{font-family:Anton,sans-serif;font-size:62px;line-height:.9}
-.w{animation:w8 8s forwards}.i{margin-top:8px;animation:i8 8s forwards}
+.t{font-family:Anton;font-size:64px;line-height:.9}
+.w{animation:w8 8s forwards}.i{animation:i8 8s forwards;margin-top:8px}
 @keyframes w8{0%{color:red;transform:scale(.3);opacity:0}20%{opacity:1;transform:scale(1.1)}100%{background:linear-gradient(100deg,#D4AF37,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;transform:scale(1.3);background-position:400% 0}}
 @keyframes i8{0%{opacity:0}30%{opacity:1;color:gold}100%{background:linear-gradient(100deg,#D4AF37,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;transform:scale(1.3);background-position:400% 0}}
-.sub{margin-top:30px;color:#D4AF37;letter-spacing:10px;font-size:11px;font-weight:900;opacity:0;animation:s8 8s forwards}
+.sub{margin-top:30px;color:#D4AF37;letter-spacing:12px;font-size:11px;font-weight:900;opacity:0;animation:s8 8s forwards}
 @keyframes s8{85%{opacity:0}100%{opacity:1}}
 
-.app{height:100dvh;display:flex;flex-direction:column;opacity:0;background:#000}
-.topbar{height:56px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;border-bottom:1px solid #222;color:#fff;background:#0a0a0a;z-index:20}
-.logo{font-weight:900}.logo span{color:#D4AF37}
-.saldo{border:1px solid #D4AF37;color:#D4AF37;padding:7px 15px;border-radius:20px;font-size:12px;font-weight:900;cursor:pointer}
+.app{height:100dvh;display:flex;flex-direction:column;opacity:0;background:#000;position:relative}
+.topbar{position:absolute;top:0;left:0;right:0;height:46px;display:flex;justify-content:center;align-items:center;gap:28px;z-index:20;background:linear-gradient(180deg,rgba(0,0,0,.6),transparent)}
+.top-tab{font-size:15px;font-weight:700;color:#aaa;cursor:pointer;padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+.top-tab.active{color:#fff;border-color:#fff}
+
 .feed{flex:1;position:relative;background:#111;overflow:hidden}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
-.ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,transparent 60%);pointer-events:none}
-video.vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.live-badge{position:absolute;top:70px;left:16px;background:red;color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:900;display:flex;align-items:center;gap:6px;z-index:15;box-shadow:0 4px 15px rgba(255,0,0,.5)}
-.live-dot{width:8px;height:8px;background:#fff;border-radius:50%;animation:pulse 1s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 40%,rgba(0,0,0,.3) 100%);pointer-events:none}
 
-.right{position:absolute;right:14px;bottom:115px;display:flex;flex-direction:column;gap:20px;z-index:20}
-.act{cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px}
-.btn{width:58px;height:58px;background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.08));backdrop-filter:blur(18px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;border:1.5px solid rgba(255,255,255,.25);box-shadow:0 10px 25px rgba(0,0,0,.6);transition:transform.15s;will-change:transform;color:#fff}
-.btn:active{transform:scale(0.65)!important}
-.btn.pop{animation:vivo.55s cubic-bezier(.34,1.56,.64,1) forwards}
-@keyframes vivo{0%{transform:scale(.65)}15%{transform:scale(1.45)}30%{transform:scale(.85)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
-.btn.liked{background:linear-gradient(145deg,#ff2d55,#ff1744)!important;box-shadow:0 12px 30px rgba(255,23,68,.6)!important}
-.btn.followed{background:linear-gradient(145deg,#D4AF37,#FFD700)!important;color:#000!important;border-color:gold!important}
-.count{font-size:11px;font-weight:900;color:#fff;text-shadow:0 2px 8px #000}
-.info{position:absolute;left:18px;right:90px;bottom:18px;color:#fff;z-index:10;pointer-events:none}
-.u{font-weight:900;font-size:16px;display:flex;align-items:center;gap:8px}
-.follow-mini{pointer-events:auto;background:#D4AF37;color:#000;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:900;cursor:pointer}
-.d{font-size:13px;margin:5px 0}.h{color:#D4AF37;font-size:12px}
+/* BOTÃO LIVE FIXO ESTILO TIKTOK */
+.live-float{
+position:absolute;top:60px;left:14px;
+background:linear-gradient(90deg,#ff0050,#ff2d55);
+color:#fff;padding:6px 14px;border-radius:20px;
+font-size:12px;font-weight:900;z-index:15;
+display:flex;align-items:center;gap:6px;
+box-shadow:0 4px 15px rgba(255,0,80,.5);
+cursor:pointer;
+animation:livePulse 1.5s infinite;
+}
+.live-float.dot{width:8px;height:8px;background:#fff;border-radius:50%}
+@keyframes livePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 
-.bottom{height:70px;background:#000;border-top:1px solid #222;display:flex;justify-content:space-around;align-items:center;z-index:30}
-.tab{color:#555;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:10px 16px;border-radius:14px;transition:transform.2s}
-.tab:active{transform:scale(.75)}.tab.active{color:#D4AF37;background:rgba(212,175,55,.12)}
-.tab b{font-size:22px}
-.add{width:46px;height:34px;background:linear-gradient(145deg,#FFD700,#D4AF37);border-radius:10px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:26px;box-shadow:0 6px 15px rgba(212,175,55,.4)}
+.live-timer{position:absolute;top:60px;right:14px;background:rgba(0,0,0,.7);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:900;z-index:15;border:1px solid #ff0050}
 
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:100;display:none;flex-direction:column}
+/* LADO DIREITO - TIKTOK STYLE */
+.right{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:22px;z-index:15;align-items:center}
+.avatar-wrap{width:50px;height:50px;border-radius:50%;border:2px solid #fff;overflow:hidden;position:relative;cursor:pointer;background-size:cover;background-position:center;box-shadow:0 4px 12px rgba(0,0,0,.5)}
+.follow-plus{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:20px;height:20px;background:#ff0050;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;border:2px solid #000}
+.follow-plus.done{background:#D4AF37;color:#000}
+
+.act{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.btn{width:52px;height:52px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;transition:transform.15s;color:#fff}
+.btn:active{transform:scale(.65)!important}
+.btn.pop{animation:vivo.5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes vivo{0%{transform:scale(.65)}15%{transform:scale(1.4)}30%{transform:scale(.85)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+.btn.liked{color:#ff2d55}
+.count{font-size:12px;font-weight:700;text-shadow:0 1px 4px #000}
+
+.info{position:absolute;left:14px;right:82px;bottom:14px;z-index:10}
+.u{font-weight:700;font-size:15px}.d{font-size:14px;margin:4px 0;line-height:1.3}.h{font-size:13px;font-weight:600}.music{margin-top:8px;font-size:12px;display:flex;align-items:center;gap:6px;opacity:.9}
+
+/* BOTTOM TIKTOK */
+.bottom{height:50px;background:#000;border-top:1px solid #111;display:flex;justify-content:space-around;align-items:center;z-index:20}
+.tab{color:#888;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;transition:transform.15s}
+.tab:active{transform:scale(.8)}.tab.active{color:#fff}.tab b{font-size:22px}
+.tab-plus{width:46px;height:32px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 0 2px #000}
+.tab-plus::before{content:'';position:absolute;inset:0;transform:translateX(-3px);background:#25f4ee;border-radius:8px;z-index:-1}
+.tab-plus::after{content:'';position:absolute;inset:0;transform:translateX(3px);background:#fe2c55;border-radius:8px;z-index:-2}
+.tab-plus span{background:#000;color:#fff;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:6px;font-size:22px;font-weight:900}
+
+/* TELA CRIAR - TIKTOK */
+.create-screen{position:fixed;inset:0;background:#000;z-index:200;display:none;flex-direction:column}
+.create-screen.on{display:flex}
+.c-top{height:50px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;border-bottom:1px solid #222}
+.c-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:20px}
+.c-option{width:100%;max-width:320px;background:#111;border:1px solid #222;border-radius:20px;padding:20px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:.2s}
+.c-option:active{transform:scale(.96);background:#1a1a1a}
+.c-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.c-option.vid.c-icon{background:linear-gradient(135deg,#25f4ee,#000);box-shadow:0 6px 20px rgba(37,244,238,.3)}
+.c-option.live.c-icon{background:linear-gradient(135deg,#fe2c55,#ff0050);box-shadow:0 6px 20px rgba(254,44,85,.4)}
+.c-text b{font-size:16px;display:block}.c-text span{font-size:12px;color:#888}
+
+.c-bottom{height:90px;background:#111;border-top:1px solid #222;display:flex;align-items:center;justify-content:center;gap:20px}
+.c-type{padding:10px 18px;border-radius:20px;font-size:13px;font-weight:700;color:#666;cursor:pointer;border:1px solid transparent}
+.c-type.active{background:#fff;color:#000}
+.c-record{width:72px;height:72px;border-radius:50%;border:4px solid #fe2c55;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s}
+.c-record:active{transform:scale(.9)}
+.c-record div{width:54px;height:54px;background:#fe2c55;border-radius:50%}
+
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:150;display:none;flex-direction:column}
 .modal.on{display:flex}
-.mh{height:56px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;border-bottom:1px solid #222;color:#fff;font-weight:900;background:#111}
+.mh{height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;border-bottom:1px solid #222;font-weight:900;background:#111}
 .mb{flex:1;overflow:auto;padding:16px}
-.card{background:#151515;border:1px solid #222;border-radius:16px;padding:14px;margin-bottom:12px;color:#fff}
+.card{background:#151515;border:1px solid #222;border-radius:16px;padding:14px;margin-bottom:12px}
 input,textarea{width:100%;background:#000;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;margin-bottom:10px;font-family:Montserrat}
-button.main{width:100%;background:linear-gradient(90deg,#D4AF37,#B8941F);border:none;padding:14px;border-radius:12px;font-weight:900;color:#000}
+button.main{width:100%;background:#fff;border:none;padding:14px;border-radius:12px;font-weight:900;color:#000}
 button.sec{background:#222;color:#fff}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.gcard{aspect-ratio:3/4;background-size:cover;border-radius:14px;border:1px solid #222;position:relative;overflow:hidden}
-.gcard span{position:absolute;bottom:6px;left:6px;background:rgba(0,0,0,.7);padding:4px 8px;border-radius:20px;font-size:10px;font-weight:900}
-.live-timer{position:fixed;top:70px;right:16px;background:rgba(0,0,0,.8);color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:900;z-index:25;border:1px solid red}
 </style>
 </head>
 <body>
-<div id="splash"><div style="text-align:center"><div class="t w" style="color:red">WORK</div><div class="t i" style="color:gold">INFLUÊNCIA</div></div><div class="sub">PREMIUM</div></div>
+<div id="splash"><div style="text-align:center"><div class="t w" style="color:#fe2c55">WORK</div><div class="t i" style="color:#25f4ee">INFLUÊNCIA</div></div><div class="sub">TIKTOK STYLE</div></div>
 
 <div class="app" id="app">
-<div class="topbar"><div class="logo">★ WORK <span>INFLUÊNCIA</span></div><div class="saldo" onclick="tabW()">LIVE • R$ 40,80</div></div>
+<div class="topbar"><div class="top-tab active">Seguindo</div><div class="top-tab active" style="color:#fff;border-color:#fff">Para você</div><div class="top-tab">LIVE</div></div>
+
+<!-- BOTÃO LIVE SEMPRE APARECE -->
+<div class="live-float" id="liveFloat" onclick="openCreateLive()"><div class="dot"></div>LIVE</div>
+<div class="live-timer" id="liveTimer" style="display:none">🔴 30:00</div>
+
 <div class="feed" id="feed"></div>
-<div id="liveTimer" class="live-timer" style="display:none">🔴 30:00</div>
+
 <div class="bottom">
-<div class="tab active" onclick="tabI()"><b>⌂</b>Início</div>
-<div class="tab" onclick="tabE()"><b>◎</b>Explorar</div>
-<div class="tab" onclick="tabC()"><div class="add">+</div></div>
-<div class="tab" onclick="startLive()"><b style="color:red">●</b>Live</div>
-<div class="tab" onclick="tabP()"><b>◉</b>Perfil</div>
+<div class="tab active"><b>⌂</b>Início</div>
+<div class="tab" onclick="tabExplore()"><b>◎</b>Descobrir</div>
+<div class="tab" onclick="openCreate()"><div class="tab-plus"><span>+</span></div></div>
+<div class="tab" onclick="tabInbox()"><b>◧</b>Entrada</div>
+<div class="tab" onclick="tabPerfil()"><b>◉</b>Eu</div>
 </div>
 </div>
 
-<div class="modal" id="mC"><div class="mh"><span>COMENTÁRIOS</span><span onclick="closeM()" style="font-size:30px">×</span></div><div class="mb"><div id="listC"></div><div class="card"><input id="inC" placeholder="Escreva..."><button class="main" onclick="envC()">ENVIAR</button></div></div></div>
-<div class="modal" id="mP"><div class="mh"><span>PERFIL</span><span onclick="closeM()" style="font-size:30px">×</span></div><div class="mb"><div class="card" style="text-align:center"><div style="width:80px;height:80px;background:#D4AF37;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:32px;color:#000;font-weight:900">U</div><b>@usuario.teste</b><p style="color:#888;margin:8px 0;font-size:12px">Vídeos: <span id="myVideosCount">0</span> • Seguindo: <span id="myFollow">0</span></p><p style="color:#D4AF37;margin:8px 0">R$ 40,80</p><p style="color:#888;font-size:11px">Live hoje: <span id="liveUsed">0</span>/30 min</p><input id="sen" type="password" placeholder="admin123"><button class="main" onclick="adminGo()">ADMIN</button><br><br><button class="main sec" onclick="closeM()">VOLTAR</button></div></div></div>
-<div class="modal" id="mA"><div class="mh"><span>ADMIN</span><span onclick="closeM()" style="font-size:30px">×</span></div><div class="mb"><div class="card"><input id="aU" placeholder="@usuario"><input id="aD" placeholder="Descrição"><input id="aH" placeholder="#hashtag"><input id="aI" placeholder="Link imagem (ou vídeo)"><button class="main" onclick="pub()">PUBLICAR</button></div><div class="card"><input id="aS" placeholder="Novo saldo"><button class="main" onclick="updS()">ATUALIZAR SALDO</button></div><button class="main sec" onclick="closeM()">FECHAR</button></div></div>
-<div class="modal" id="mW"><div class="mh"><span>CARTEIRA / LIVE</span><span onclick="closeM()" style="font-size:30px">×</span></div><div class="mb"><div class="card" style="text-align:center"><p>SALDO</p><p style="font-size:32px;color:#D4AF37;font-weight:900">R$ 40,80</p><br><p style="font-size:12px;color:#888">Tempo de Live usado hoje</p><p style="font-size:20px;font-weight:900" id="liveInfoW">0 / 30 min</p><br><button class="main" onclick="startLive()">INICIAR LIVE AGORA</button></div></div></div>
-<div class="modal" id="mE"><div class="mh"><span>EXPLORAR</span><span onclick="closeM()" style="font-size:30px">×</span></div><div class="mb"><div class="grid" id="gE"></div></div></div>
+<!-- TELA CRIAR TIPO TIKTOK -->
+<div class="create-screen" id="createScreen">
+<div class="c-top"><span onclick="closeCreate()" style="font-size:22px">✕</span><b id="createTitle">Criar</b><span style="color:#fe2c55;font-weight:900" onclick="postarTiktok()">Postar</span></div>
 
-<div class="modal" id="mCr"><div class="mh"><span>CRIAR VÍDEO (1:30 máx)</span><span onclick="closeM()" style="font-size:30px">×</span></div><div class="mb">
-<div class="card">
-<p style="font-weight:900;color:#D4AF37;margin-bottom:10px">📹 POSTAR VÍDEO - ATÉ 1 MIN 30 SEG</p>
-<input id="cU" placeholder="@seu usuario">
-<textarea id="cD" placeholder="Descrição do vídeo" rows="3"></textarea>
-<input id="cH" placeholder="#hashtag">
-<p style="font-size:11px;color:#888;margin:5px 0">Escolha um vídeo (mp4) até 90 segundos:</p>
-<input type="file" id="cFile" accept="video/*">
-<p style="font-size:10px;color:#666;margin:5px 0">Ou use link de imagem/vídeo:</p>
-<input id="cI" placeholder="https://... (opcional se escolheu arquivo)">
-<div id="preview" style="margin:10px 0"></div>
-<button class="main" onclick="criar()">POSTAR VÍDEO</button>
-<p style="font-size:10px;color:#666;margin-top:8px;text-align:center">Sem limite de vídeos • Máx 1:30 cada</p>
+<div class="c-center" id="createOptions">
+<div class="c-option vid" onclick="selectType('video')">
+<div class="c-icon">📹</div>
+<div class="c-text"><b>Vídeo • até 1:30</b><span>Poste vídeos sem limite de quantidade</span></div>
+<div style="margin-left:auto;color:#666">›</div>
 </div>
-<div class="card">
-<p style="font-weight:900;color:red;margin-bottom:10px">🔴 FAZER LIVE - 30 MIN/DIA</p>
-<p style="font-size:12px;color:#ccc;margin-bottom:10px">Você tem <span id="liveRest" style="color:red;font-weight:900">30 min</span> restantes hoje.</p>
-<button class="main" style="background:red;color:#fff" onclick="startLive()">COMEÇAR LIVE AGORA</button>
+<div class="c-option live" onclick="selectType('live')">
+<div class="c-icon">🔴</div>
+<div class="c-text"><b>LIVE • 30 min/dia</b><span id="liveRestText">30 min restantes hoje</span></div>
+<div style="margin-left:auto;color:#666">›</div>
 </div>
-</div></div>
+<div style="width:100%;max-width:320px;margin-top:10px">
+<input type="file" id="fileVid" accept="video/*" style="display:none">
+<div id="previewTiktok"></div>
+<input id="descTiktok" placeholder="Descreva seu vídeo... #hashtag" style="margin-top:10px">
+</div>
+</div>
+
+<div class="c-bottom">
+<div class="c-type" id="typeVideo" onclick="selectType('video')">Vídeo 90s</div>
+<div class="c-record" onclick="triggerFile()"><div></div></div>
+<div class="c-type active" id="typeLive" onclick="selectType('live')">LIVE</div>
+</div>
+</div>
+
+<!-- MODAIS -->
+<div class="modal" id="mC"><div class="mh"><span>Comentários</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div id="listC"></div><div class="card"><input id="inC" placeholder="Adicionar comentário..."><button class="main" onclick="envC()">Enviar</button></div></div></div>
+<div class="modal" id="mP"><div class="mh"><span>Perfil</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div class="card" style="text-align:center"><div style="width:80px;height:80px;background:#fff;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:32px;color:#000;font-weight:900">U</div><b>@usuario.teste</b><p style="color:#888;margin:8px 0">Live: <span id="liveUsedText">0/30 min</span></p><input id="sen" type="password" placeholder="admin123"><button class="main" onclick="adminGo()">ADMIN</button><br><br><button class="main sec" onclick="closeM()">Voltar</button></div></div></div>
+<div class="modal" id="mA"><div class="mh"><span>Admin</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div class="card"><input id="aU" placeholder="@usuario"><input id="aD" placeholder="Descrição"><input id="aH" placeholder="#hashtag"><input id="aI" placeholder="Link"><button class="main" onclick="pub()">Publicar</button></div><button class="main sec" onclick="closeM()">Fechar</button></div></div>
+<div class="modal" id="mE"><div class="mh"><span>Descobrir</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="gE"></div></div></div>
 
 <script>
 let videos=[
-{user:"@mariana.influ",desc:"Dica de ouro para ganhar pontos",hash:"#workinfluencia",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:1243,liked:false,com:2,follow:false,followers:1200,share:34,comments:[{u:"@joao",t:"Top!"}],type:"img"},
-{user:"@joao.influ",desc:"Como crescer rápido aqui",hash:"#dicas",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:890,liked:false,com:1,follow:false,followers:890,share:22,comments:[],type:"img"}
+{user:"@mariana",desc:"Essa dica vai mudar seu dia! 🔥",hash:"#work #viral",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:1243,liked:false,com:12,share:34,follow:false,followers:1200,comments:[{u:"@joao",t:"Muito boa!"}],type:"img"},
+{user:"@joao",desc:"Como ganhar seguidores rápido",hash:"#dicas #tiktok",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:890,liked:false,com:5,share:22,follow:false,followers:890,comments:[],type:"img"}
 ];
-let cur=0, saldo="40,80";
+let cur=0, selectedType='video', pendingVideoUrl=null, pendingVideoDuration=0;
 let liveUsedMin = parseInt(localStorage.getItem('liveUsed')||'0');
 let liveDate = localStorage.getItem('liveDate');
-let today = new Date().toDateString();
+let today=new Date().toDateString();
 if(liveDate!==today){liveUsedMin=0;localStorage.setItem('liveUsed','0');localStorage.setItem('liveDate',today)}
 let liveInterval=null, liveSecLeft=0, isLive=false;
 
 function render(){
 let v=videos[cur];
 let media = v.type==='video'?`<video class="vid" src="${v.img}" autoplay loop muted playsinline></video>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
-let liveTag = v.isLive?`<div class="live-badge"><div class="live-dot"></div>LIVE • ${v.viewers||'1.2k'}</div>`:'';
+let liveTag = v.isLive?`<div class="live-float" style="top:90px"><div class="dot"></div>LIVE ${v.viewers||''}</div>`:'';
 document.getElementById('feed').innerHTML=`
-${media}
-<div class="ov"></div>
-${liveTag}
+${media}<div class="ov"></div>${liveTag}
 <div class="right">
-<div class="act" onclick="likeAct(this)"><div class="btn ${v.liked?'liked':''}">${v.liked?'♥':'♡'}</div><div class="count">${v.likes}</div></div>
+<div class="avatar-wrap" style="background-image:url('${v.img}')" onclick="followAct(this)"><div class="follow-plus ${v.follow?'done':''}">${v.follow?'✓':'+'}</div></div>
+<div class="act" onclick="likeAct(this)"><div class="btn ${v.liked?'liked':''}" style="${v.liked?'color:#fe2c55':''}">${v.liked?'♥':'♡'}</div><div class="count">${fmt(v.likes)}</div></div>
 <div class="act" onclick="commentAct(this)"><div class="btn">💬</div><div class="count">${v.com}</div></div>
 <div class="act" onclick="shareAct(this)"><div class="btn">↗</div><div class="count">${v.share}</div></div>
-<div class="act" onclick="followAct(this)"><div class="btn ${v.follow?'followed':''}">${v.follow?'✓':'＋'}</div><div class="count">${v.follow?'Seguindo':v.followers}</div></div>
 </div>
-<div class="info"><div class="u">${v.user} <span class="follow-mini" onclick="followAct(document.querySelector('.right.act:last-child'))">${v.follow?'Seguindo':'Seguir'}</span></div><div class="d">${v.desc}</div><div class="h">${v.hash}</div></div>`;
+<div class="info"><div class="u">@${v.user.replace('@','')}</div><div class="d">${v.desc}</div><div class="h">${v.hash}</div><div class="music">♫ som original - ${v.user}</div></div>`;
 }
-setTimeout(()=>{let s=document.getElementById('splash');s.style.transition='opacity 1s';s.style.opacity='0';setTimeout(()=>{s.style.display='none';document.getElementById('app').style.opacity='1';render();updLiveUI()},1000)},8000);
+function fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':n}
+setTimeout(()=>{let s=document.getElementById('splash');s.style.transition='opacity 1s';s.style.opacity='0';setTimeout(()=>{s.style.display='none';document.getElementById('app').style.opacity='1';render();updLive()},1000)},8000);
 
-function anim(el){
-let b=el.querySelector('.btn');
-b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');
-if(navigator.vibrate) navigator.vibrate(40);
+function anim(el){let b=el.querySelector('.btn');if(!b)return; b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');if(navigator.vibrate) navigator.vibrate(30)}
+function likeAct(el){anim(el);setTimeout(()=>{let v=videos[cur];v.liked=!v.liked;v.likes+=v.liked?1:-1;render()},180)}
+function commentAct(el){anim(el);setTimeout(()=>{let v=videos[cur];document.getElementById('listC').innerHTML=v.comments.map(c=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222"><div style="width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px">${c.u[1].toUpperCase()}</div><div><b>${c.u}</b><p style="color:#ccc">${c.t}</p></div></div>`).join('')||'<p style="color:#666;text-align:center;padding:20px">Nenhum comentário</p>';document.getElementById('mC').classList.add('on')},180)}
+function shareAct(el){anim(el);setTimeout(()=>{videos[cur].share++;alert('Link copiado!');render()},180)}
+function followAct(el){let v=videos[cur];v.follow=!v.follow;v.followers+=v.follow?1:-1;render()}
+
+function openCreate(){document.getElementById('createScreen').classList.add('on');selectType('video')}
+function openCreateLive(){openCreate();selectType('live')}
+function closeCreate(){document.getElementById('createScreen').classList.remove('on');document.getElementById('previewTiktok').innerHTML='';pendingVideoUrl=null}
+function selectType(t){
+selectedType=t;
+document.getElementById('typeVideo').classList.toggle('active',t==='video');
+document.getElementById('typeLive').classList.toggle('active',t==='live');
+document.getElementById('createTitle').innerText=t==='live'?'LIVE - 30 min/dia':'Vídeo até 1:30';
 }
-function likeAct(el){anim(el);setTimeout(()=>{let v=videos[cur];v.liked=!v.liked;v.likes+=v.liked?1:-1;render()},200)}
-function commentAct(el){anim(el);setTimeout(()=>{let v=videos[cur];document.getElementById('listC').innerHTML=v.comments.map(c=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222"><div style="width:32px;height:32px;background:#D4AF37;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px">${c.u[1].toUpperCase()}</div><div><b>${c.u}</b><p style="color:#ccc">${c.t}</p></div></div>`).join('')||'<p style="color:#666;text-align:center;padding:20px">Seja o primeiro!</p>';document.getElementById('mC').classList.add('on')},200)}
-function shareAct(el){anim(el);setTimeout(()=>{videos[cur].share++;alert('Link copiado! '+location.href);render()},200)}
-function followAct(el){anim(el);setTimeout(()=>{let v=videos[cur];v.follow=!v.follow;if(v.follow){v.followers++;alert('Você começou a seguir '+v.user)}else{v.followers--}render()},200)}
+function triggerFile(){document.getElementById('fileVid').click()}
 
-function tabI(){closeM();render()}
-function tabE(){let g=document.getElementById('gE');g.innerHTML=videos.map((v,i)=>`<div class="gcard" style="background-image:url('${v.img||''}')"><video style="width:100%;height:100%;object-fit:cover;display:${v.type==='video'?'block':'none'}" src="${v.type==='video'?v.img:''}" muted></video><div style="position:absolute;inset:0;background:url('${v.img}') center/cover;display:${v.type==='video'?'none':'block'}"></div><span>${v.user}${v.isLive?' 🔴LIVE':''}</span></div>`).join('');document.getElementById('mE').classList.add('on');[...document.querySelectorAll('.gcard')].forEach((c,i)=>c.onclick=()=>{cur=i;closeM();render()})}
-function tabC(){document.getElementById('mCr').classList.add('on')}
-function tabW(){document.getElementById('mW').classList.add('on');updLiveUI()}
-function tabP(){document.getElementById('mP').classList.add('on');updLiveUI()}
-function adminGo(){if(document.getElementById('sen').value==='admin123'){closeM();document.getElementById('mA').classList.add('on')}else alert('Senha: admin123')}
-function pub(){let u=document.getElementById('aU').value||'@novo';let d=document.getElementById('aD').value||'Novo';let h=document.getElementById('aH').value||'#work';let im=document.getElementById('aI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';let type=im.includes('.mp4')?'video':'img';videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,liked:false,com:0,follow:false,followers:0,share:0,comments:[],type:type});cur=0;closeM();render()}
-function updS(){let ns=document.getElementById('aS').value;if(ns){saldo=ns;closeM()}}
-function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
-function envC(){let i=document.getElementById('inC');if(!i.value.trim())return;videos[cur].comments.push({u:"@usuario.teste",t:i.value});videos[cur].com++;i.value='';document.getElementById('listC').innerHTML=videos[cur].comments.map(c=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222"><div style="width:32px;height:32px;background:#D4AF37;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900">${c.u[1].toUpperCase()}</div><div><b>${c.u}</b><p style="color:#ccc">${c.t}</p></div></div>`).join('');render()}
-
-document.getElementById('cFile').addEventListener('change',function(e){
+document.getElementById('fileVid').addEventListener('change',e=>{
 let file=e.target.files[0];if(!file)return;
 let url=URL.createObjectURL(file);
 let vid=document.createElement('video');
 vid.src=url;
 vid.onloadedmetadata=()=>{
-if(vid.duration>90){alert('Vídeo muito longo! Máx 1 minuto e 30 segundos (90s). Seu vídeo tem '+Math.round(vid.duration)+'s');e.target.value='';document.getElementById('preview').innerHTML='';return}
-document.getElementById('preview').innerHTML=`<video src="${url}" style="width:100%;border-radius:12px;max-height:200px" controls></video><p style="color:#0f0;font-size:11px;margin-top:6px">✓ Duração: ${Math.round(vid.duration)}s - OK para postar!</p>`;
-document.getElementById('cI').value=url;
-document.getElementById('cI').dataset.type='video';
-document.getElementById('cI').dataset.url=url;
+if(vid.duration>90){alert('Vídeo muito longo! Máx 1:30 (90s). Seu vídeo tem '+Math.round(vid.duration)+'s');e.target.value='';return}
+pendingVideoUrl=url;pendingVideoDuration=Math.round(vid.duration);
+document.getElementById('previewTiktok').innerHTML=`<video src="${url}" style="width:100%;border-radius:12px;max-height:240px" controls playsinline></video><p style="color:#25f4ee;font-size:11px;margin-top:6px">✓ ${Math.round(vid.duration)}s - OK para postar!</p>`;
+selectType('video');
 }
 });
 
-function criar(){
-let u=document.getElementById('cU').value||'@usuario.teste';
-let d=document.getElementById('cD').value||'Meu vídeo novo!';
-let h=document.getElementById('cH').value||'#work';
-let fileInput=document.getElementById('cFile');
-let url=document.getElementById('cI').value;
-let type='img';
-
-if(fileInput.files[0]){
-let fUrl=document.getElementById('cI').dataset.url||url;
-if(!fUrl){alert('Escolha o vídeo de novo');return}
-url=fUrl;type='video';
-}else{
-if(!url){url='https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';type='img'}
-else type=url.includes('.mp4')||document.getElementById('cI').dataset.type==='video'?'video':'img';
+function postarTiktok(){
+if(selectedType==='live'){startLive();return}
+let desc=document.getElementById('descTiktok').value||'Meu vídeo novo! #work';
+if(!pendingVideoUrl){alert('Escolha um vídeo de até 1:30 clicando no botão vermelho do meio!');return}
+videos.unshift({user:"@usuario.teste",desc:desc,hash:"#work #fyp",img:pendingVideoUrl,likes:0,liked:false,com:0,share:0,follow:false,followers:0,comments:[],type:"video"});
+cur=0;closeCreate();render();document.getElementById('descTiktok').value='';document.getElementById('fileVid').value='';pendingVideoUrl=null;
+alert('✅ Vídeo postado!');
 }
 
-videos.unshift({user:u,desc:d,hash:h,img:url,likes:0,liked:false,com:0,follow:false,followers:0,share:0,comments:[],type:type,isLive:false});
-cur=0;closeM();render();
-document.getElementById('preview').innerHTML='';document.getElementById('cFile').value='';document.getElementById('cI').value='';
-document.getElementById('myVideosCount').innerText=parseInt(document.getElementById('myVideosCount').innerText||0)+1;
-alert('✅ Vídeo postado! Duração máx 1:30 respeitada.');
-}
-
-function updLiveUI(){
-let rest=30-liveUsedMin;
-document.getElementById('liveUsed').innerText=liveUsedMin;
-document.getElementById('liveInfoW').innerText=liveUsedMin+' / 30 min';
-document.getElementById('liveRest').innerText=rest+' min';
-}
+function updLive(){let rest=30-liveUsedMin;document.getElementById('liveRestText').innerText=rest+' min restantes hoje';document.getElementById('liveUsedText').innerText=liveUsedMin+'/30 min';document.getElementById('liveFloat').style.display=rest<=0?'none':'flex'}
 
 function startLive(){
 let rest=30-liveUsedMin;
 if(rest<=0){alert('Você já usou seus 30 min de Live hoje! Volta amanhã.');return}
 if(isLive){stopLive();return}
-if(!confirm(`Iniciar Live? Você tem ${rest} min restantes hoje.`))return;
-
-isLive=true;
-liveSecLeft=rest*60;
+if(!confirm(`Iniciar LIVE? Você tem ${rest} min hoje.`))return;
+isLive=true;liveSecLeft=rest*60;
 document.getElementById('liveTimer').style.display='block';
-closeM();
-
-// simula live com câmera se tiver
-videos.unshift({user:"@usuario.teste",desc:"🔴 AO VIVO AGORA - Me assiste!",hash:"#live #aovivo",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:0,liked:false,com:0,follow:false,followers:0,share:0,comments:[],type:"img",isLive:true,viewers:"0"});
+closeCreate();
+videos.unshift({user:"@usuario.teste",desc:"🔴 AO VIVO - Entra aí!",hash:"#live #aovivo",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:0,liked:false,com:0,share:0,follow:false,followers:0,comments:[],type:"img",isLive:true,viewers:"128"});
 cur=0;render();
-
 liveInterval=setInterval(()=>{
 liveSecLeft--;
 let m=Math.floor(liveSecLeft/60), s=liveSecLeft%60;
-document.getElementById('liveTimer').innerText=`🔴 ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')} • ${rest}min hoje`;
-if(liveSecLeft<=0){stopLive();alert('Sua Live de 30 min acabou!');}
+document.getElementById('liveTimer').innerText=`🔴 ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+if(liveSecLeft<=0){stopLive()}
 },1000);
 }
-
 function stopLive(){
 if(liveInterval)clearInterval(liveInterval);
 if(isLive){
-let used = Math.ceil(( (30*60 - liveSecLeft) )/60);
-liveUsedMin+=used;
-if(liveUsedMin>30)liveUsedMin=30;
-localStorage.setItem('liveUsed',liveUsedMin);
-localStorage.setItem('liveDate',today);
-updLiveUI();
+let used=Math.ceil((30*60-liveSecLeft)/60);
+liveUsedMin+=used;if(liveUsedMin>30)liveUsedMin=30;
+localStorage.setItem('liveUsed',liveUsedMin);localStorage.setItem('liveDate',today);updLive();
 }
-isLive=false;
-document.getElementById('liveTimer').style.display='none';
-if(videos[cur]&&videos[cur].isLive&&videos[cur].user==="@usuario.teste"){videos[cur].isLive=false;videos[cur].desc="Live encerrada - Obrigado a todos!"}
+isLive=false;document.getElementById('liveTimer').style.display='none';
+if(videos[cur]&&videos[cur].isLive) {videos[cur].isLive=false;videos[cur].desc="Live encerrada ❤️"}
 render();
 }
+
+function tabExplore(){let g=document.getElementById('gE');g.innerHTML=videos.map((v,i)=>`<div style="aspect-ratio:9/16;background-size:cover;background-position:center;border-radius:12px;position:relative;overflow:hidden;background-image:url('${v.img}')" onclick="cur=${i};closeM();render()"><div style="position:absolute;bottom:6px;left:6px;font-size:10px;background:rgba(0,0,0,.6);padding:3px 6px;border-radius:10px">${v.isLive?'🔴 LIVE':''} ${v.user}</div></div>`).join('');document.getElementById('mE').classList.add('on')}
+function tabInbox(){alert('Mensagens - em breve!')}
+function tabPerfil(){document.getElementById('mP').classList.add('on');updLive()}
+function adminGo(){if(document.getElementById('sen').value==='admin123'){closeM();document.getElementById('mA').classList.add('on')}else alert('admin123')}
+function pub(){let u=document.getElementById('aU').value||'@novo';let d=document.getElementById('aD').value||'Novo';let h=document.getElementById('aH').value||'#work';let im=document.getElementById('aI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,liked:false,com:0,share:0,follow:false,followers:0,comments:[],type:im.includes('.mp4')?'video':'img'});cur=0;closeM();render()}
+function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
+function envC(){let i=document.getElementById('inC');if(!i.value.trim())return;videos[cur].comments.push({u:"@usuario.teste",t:i.value});videos[cur].com++;i.value='';document.getElementById('listC').innerHTML=videos[cur].comments.map(c=>`<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222"><div style="width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900">${c.u[1].toUpperCase()}</div><div><b>${c.u}</b><p style="color:#ccc">${c.t}</p></div></div>`).join('');render()}
 
 let sy=0;
 document.addEventListener('touchstart',e=>sy=e.touches[0].clientY);
 document.addEventListener('touchend',e=>{
-if(document.querySelector('.modal.on'))return;
+if(document.querySelector('.modal.on')||document.querySelector('.create-screen.on'))return;
 let d=sy-e.changedTouches[0].clientY;
 if(Math.abs(d)>70){if(d>0&&cur<videos.length-1)cur++;if(d<0&&cur>0)cur--;render()}
 });
