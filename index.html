@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK INFLUENCER - ROUNDED GOLD</title>
+<title>WORK INFLUENCER - BARRA DOURADA</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;overflow:hidden}
@@ -12,98 +12,62 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 .media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center;border-radius:0 0 28px 28px}
 .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.96) 0%,transparent 58%);border-radius:0 0 28px 28px}
-.prog{position:absolute;top:0;left:0;height:4px;background:linear-gradient(90deg,#8a6d3b,#D4AF37,#FFD700,#D4AF37);box-shadow:0 0 14px #D4AF37;z-index:20;transition:width.1s linear;border-radius:0 2px 2px 0}
-
-/* PILLS BEM ARREDONDADOS COM BORDA DOURADA FINA */
+.prog{position:absolute;top:0;left:0;height:4px;background:linear-gradient(90deg,#8a6d3b,#D4AF37,#FFD700);box-shadow:0 0 14px #D4AF37;z-index:20;transition:width.1s linear;border-radius:0 2px 2px 0}
 .top{position:absolute;top:10px;left:0;right:0;height:58px;display:flex;justify-content:center;align-items:center;gap:12px;z-index:10;padding:0 14px}
-.pill{padding:10px 18px;border-radius:28px;font-size:12px;font-weight:900;background:rgba(0,0,0,.38);backdrop-filter:blur(20px);border:1.5px solid rgba(212,175,55,.28);box-shadow:inset 0 1px 1px rgba(255,255,255,.1), 0 6px 18px rgba(0,0,0,.4);letter-spacing:.3px;transition:.22s}
-.pill.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700;box-shadow:inset 0 1px 1px rgba(255,255,255,.7), 0 8px 24px rgba(212,175,55,.55), 0 0 0 2px rgba(255,215,0,.15)}
-.pill::after{content:'';position:absolute;inset:0;border-radius:28px;border:1px solid rgba(255,215,0,.12);pointer-events:none}
-
-/* BOTÃO APAGAR ARREDONDADO GOLD */
-.del{position:absolute;top:16px;right:16px;background:linear-gradient(145deg,#1a1a1a,#0f0f0f);color:#D4AF37;padding:10px 16px;border-radius:28px;font-size:11px;font-weight:900;z-index:10;display:none;border:1.5px solid rgba(212,175,55,.35);backdrop-filter:blur(12px);box-shadow:0 6px 16px rgba(0,0,0,.5), inset 0 1px 1px rgba(255,255,255,.08)}.del.on{display:block}
-
-/* BOTÕES LATERAIS SUPER ARREDONDADOS COM DETALHE DOURADO */
-.actions{position:absolute;right:12px;bottom:100px;display:flex;flex-direction:column;gap:20px;z-index:10;align-items:center}
+.pill{padding:10px 18px;border-radius:28px;font-size:12px;font-weight:900;background:rgba(0,0,0,.38);backdrop-filter:blur(20px);border:1.5px solid rgba(212,175,55,.28);box-shadow:inset 0 1px 1px rgba(255,255,255,.1), 0 6px 18px rgba(0,0,0,.4)}
+.pill.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700;box-shadow:0 8px 24px rgba(212,175,55,.55)}
+.del{position:absolute;top:16px;right:16px;background:linear-gradient(145deg,#1a1a1a,#0f0f0f);color:#D4AF37;padding:10px 16px;border-radius:28px;font-size:11px;font-weight:900;z-index:10;display:none;border:1.5px solid rgba(212,175,55,.35)}.del.on{display:block}
+.actions{position:absolute;right:12px;bottom:102px;display:flex;flex-direction:column;gap:20px;z-index:10;align-items:center}
 .act{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
-.btn{
-width:64px;height:64px;border-radius:24px;
-background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.26),rgba(0,0,0,.35)),linear-gradient(145deg,#1e1e1e,#0a0a0a);
-border:1.5px solid rgba(212,175,55,.38);
-display:flex;align-items:center;justify-content:center;font-size:26px;
-box-shadow:
- inset 0 1.5px 1.5px rgba(255,255,255,.16),
- inset 0 -1px 1px rgba(0,0,0,.8),
- 0 8px 22px rgba(0,0,0,.65),
- 0 0 0 1px rgba(212,175,55,.08);
-position:relative;
-transition:all.22s cubic-bezier(.34,1.56,.64,1);
-}
-.btn::before{
-content:'';
-position:absolute;inset:0;border-radius:24px;
-border:1px solid rgba(255,215,0,.14);
-pointer-events:none;
-}
-.btn::after{
-content:'';
-position:absolute;top:4px;left:6px;right:6px;height:1px;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
-border-radius:1px;
-}
+.btn{width:64px;height:64px;border-radius:24px;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.26),rgba(0,0,0,.35)),linear-gradient(145deg,#1e1e1e,#0a0a0a);border:1.5px solid rgba(212,175,55,.38);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:inset 0 1.5px 1.5px rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.65);position:relative;transition:all.22s cubic-bezier(.34,1.56,.64,1)}
 .btn.mexendo{animation:mexe9s 9s ease-in-out}
-@keyframes mexe9s{
-0%{transform:translate(0,0) rotate(0) scale(1)}
-10%{transform:translate(-4px,-6px) rotate(-8deg) scale(1.3)}
-20%{transform:translate(5px,4px) rotate(8deg) scale(1.4)}
-30%{transform:translate(-6px,3px) rotate(-6deg) scale(1.35)}
-40%{transform:translate(4px,-5px) rotate(6deg) scale(1.3)}
-50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.42)}
-60%{transform:translate(6px,-3px) rotate(10deg) scale(1.35)}
-70%{transform:translate(-5px,-4px) rotate(-8deg) scale(1.3)}
-80%{transform:translate(3px,5px) rotate(8deg) scale(1.25)}
-90%{transform:translate(-2px,-2px) rotate(-4deg) scale(1.1)}
-100%{transform:translate(0,0) rotate(0) scale(1)}
-}
-.btn.liked{background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);border-color:rgba(255,90,122,.6);box-shadow:0 10px 28px rgba(255,44,85,.65), 0 0 0 1px rgba(255,44,85,.15), inset 0 1px 1px rgba(255,255,255,.2);color:#fff}
-.btn.live{background:linear-gradient(145deg,#ff4d6d,#ff0a42,#900);border-color:rgba(255,143,163,.7);box-shadow:0 10px 28px rgba(255,0,80,.75), 0 0 20px rgba(255,0,80,.35)}
-.btn.followed{background:linear-gradient(145deg,#FFE55C,#D4AF37,#B8960C);color:#000;border-color:#FFD700;box-shadow:0 10px 28px rgba(212,175,55,.7), inset 0 1px 1px rgba(255,255,255,.7)}
-.cnt{font-size:10px;font-weight:900;text-shadow:0 2px 4px #000;background:rgba(0,0,0,.35);padding:3px 8px;border-radius:20px;border:1px solid rgba(212,175,55,.18);backdrop-filter:blur(8px)}
-
-/* META ARREDONDADA COM DETALHE GOLD */
-.meta{position:absolute;left:16px;bottom:18px;right:84px;z-index:10;background:rgba(0,0,0,.32);backdrop-filter:blur(24px);padding:14px 16px;border-radius:22px;border:1.5px solid rgba(212,175,55,.18);box-shadow:0 10px 32px rgba(0,0,0,.55), inset 0 1px 1px rgba(255,255,255,.08)}
-.meta::before{content:'';position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.35),transparent)}
+@keyframes mexe9s{0%{transform:translate(0,0) rotate(0) scale(1)}10%{transform:translate(-4px,-6px) rotate(-8deg) scale(1.3)}20%{transform:translate(5px,4px) rotate(8deg) scale(1.4)}30%{transform:translate(-6px,3px) rotate(-6deg) scale(1.35)}40%{transform:translate(4px,-5px) rotate(6deg) scale(1.3)}50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.42)}60%{transform:translate(6px,-3px) rotate(10deg) scale(1.35)}70%{transform:translate(-5px,-4px) rotate(-8deg) scale(1.3)}80%{transform:translate(3px,5px) rotate(8deg) scale(1.25)}90%{transform:translate(-2px,-2px) rotate(-4deg) scale(1.1)}100%{transform:translate(0,0) rotate(0) scale(1)}}
+.btn.liked{background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);border-color:rgba(255,90,122,.6);color:#fff}
+.btn.live{background:linear-gradient(145deg,#ff4d6d,#ff0a42,#900)}
+.btn.followed{background:linear-gradient(145deg,#FFE55C,#D4AF37,#B8960C);color:#000;border-color:#FFD700}
+.cnt{font-size:10px;font-weight:900;background:rgba(0,0,0,.35);padding:3px 8px;border-radius:20px;border:1px solid rgba(212,175,55,.18);backdrop-filter:blur(8px)}
+.meta{position:absolute;left:16px;bottom:18px;right:84px;z-index:10;background:rgba(0,0,0,.32);backdrop-filter:blur(24px);padding:14px 16px;border-radius:22px;border:1.5px solid rgba(212,175,55,.18);box-shadow:0 10px 32px rgba(0,0,0,.55)}
 .user{font-weight:900;font-size:15px;display:flex;gap:8px;align-items:center}
-.own{background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900;box-shadow:0 3px 10px rgba(212,175,55,.5);border:1px solid rgba(255,255,255,.4)}
+.own{background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900}
 .desc{font-size:13px;margin-top:6px;line-height:1.4}
-.sound{font-size:11px;margin-top:8px;opacity:.9;background:rgba(212,175,55,.12);padding:5px 10px;border-radius:20px;border:1px solid rgba(212,175,55,.15);display:inline-flex;align-items:center;gap:6px}
 
-/* NAV SUPER ARREDONDADA COM DETALHES GOLD */
-.nav{height:88px;background:linear-gradient(180deg,#151515,#0a0a0a);border-top:1.5px solid rgba(212,175,55,.22);display:flex;justify-content:space-around;align-items:center;padding:8px 8px 12px 8px;border-radius:26px 26px 0 0;margin-top:-16px;box-shadow:0 -10px 32px rgba(0,0,0,.85), inset 0 1px 1px rgba(255,255,255,.06)}
-.tab{color:#666;font-size:10px;text-align:center;padding:10px 14px;border-radius:22px;transition:all.22s cubic-bezier(.34,1.56,.64,1);min-width:64px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;border:1px solid transparent;position:relative}
-.tab::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:0;height:2px;background:linear-gradient(90deg,#D4AF37,#FFD700);border-radius:2px;transition:width.22s}
-.tab.on{color:#D4AF37;background:linear-gradient(145deg,rgba(212,175,55,.14),rgba(255,215,0,.08));border-color:rgba(212,175,55,.32);box-shadow:inset 0 1px 1px rgba(255,255,255,.08), 0 4px 14px rgba(212,175,55,.18)}
-.tab.on::after{width:18px}
-.tab.mexendo{animation:mexe9s 9s ease-in-out}
-.ico{font-size:28px;display:block;transition:all.22s}
-.create{width:72px;height:48px;border-radius:22px;background:linear-gradient(145deg,#D4AF37,#FFD700,#D4AF37);background-size:200% 200%;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1.5px 2px rgba(255,255,255,.85), 0 8px 26px rgba(212,175,55,.6), 0 0 0 1.5px rgba(255,215,0,.35);transition:all.22s cubic-bezier(.34,1.56,.64,1);position:relative}
-.create::before{content:'';position:absolute;inset:0;border-radius:22px;border:1px solid rgba(255,255,255,.25);pointer-events:none}
-.create span{background:linear-gradient(145deg,#000,#1a1a1a);color:#D4AF37;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:20px;font-size:34px;box-shadow:inset 0 1px 1px rgba(255,255,255,.1)}
-.create.mexendo{animation:mexe9s 9s ease-in-out}
-.create:active{transform:scale(1.12)}
-
-#cam{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column;border-radius:0}#cam.on{display:flex}
+/* BARRA DOURADA - FUNDO OURO MACIÇO */
+.nav{
+height:92px;
+background:linear-gradient(180deg,#FFD700,#D4AF37,#B8960C,#8a6d3b);
+background-size:100% 200%;
+display:flex;justify-content:space-around;align-items:center;
+padding:10px 8px 16px 8px;
+border-radius:32px 32px 0 0;
+margin-top:-18px;
+box-shadow:0 -12px 36px rgba(0,0,0,.85), inset 0 2px 3px rgba(255,255,255,.7), inset 0 -2px 3px rgba(0,0,0,.25), 0 0 0 1px rgba(255,215,0,.5);
+border-top:2px solid rgba(255,255,255,.45);
+position:relative;z-index:10;
+animation:goldBg 4s ease infinite;
+}
+@keyframes goldBg{0%,100%{background-position:0% 0%}50%{background-position:0% 100%}}
+.nav::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);border-radius:1px}
+.nav::after{content:'';position:absolute;inset:0;border-radius:32px 32px 0 0;border:1px solid rgba(255,255,255,.25);pointer-events:none}
+.tab{color:#3a2a00;font-size:10px;text-align:center;padding:10px 14px;border-radius:22px;transition:all.24s cubic-bezier(.34,1.56,.64,1);min-width:64px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;border:1.5px solid rgba(0,0,0,.12);background:linear-gradient(145deg,rgba(0,0,0,.08),rgba(0,0,0,.18));box-shadow:inset 0 1px 1px rgba(255,255,255,.25), 0 4px 12px rgba(0,0,0,.25);font-weight:800}
+.tab.on{color:#000;background:linear-gradient(145deg,#000,#1a1a1a);border-color:rgba(0,0,0,.4);box-shadow:inset 0 1px 1px rgba(255,255,255,.15), 0 8px 20px rgba(0,0,0,.5);font-weight:900}
+.tab.on.ico{color:#D4AF37;text-shadow:0 0 12px rgba(212,175,55,.8)}
+.tab.mexendo{animation:mexeGoldBar 9s ease-in-out}
+@keyframes mexeGoldBar{0%{transform:translate(0,0) rotate(0) scale(1)}10%{transform:translate(-4px,-6px) rotate(-8deg) scale(1.18)}20%{transform:translate(5px,4px) rotate(8deg) scale(1.22)}30%{transform:translate(-6px,3px) rotate(-6deg) scale(1.18)}40%{transform:translate(4px,-5px) rotate(6deg) scale(1.16)}50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.24); background:#000; color:#FFD700}60%{transform:translate(6px,-3px) rotate(10deg) scale(1.18)}70%{transform:translate(-5px,-4px) rotate(-8deg) scale(1.16)}80%{transform:translate(3px,5px) rotate(8deg) scale(1.14)}90%{transform:translate(-2px,-2px) rotate(-4deg) scale(1.08)}100%{transform:translate(0,0) rotate(0) scale(1)}}
+.ico{font-size:28px;display:block}
+.create{width:76px;height:52px;border-radius:22px;background:linear-gradient(145deg,#000,#1a1a1a,#000);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1.5px 2px rgba(255,255,255,.15), 0 10px 28px rgba(0,0,0,.6), 0 0 0 1.5px rgba(0,0,0,.3);border:1.5px solid rgba(0,0,0,.5);transition:all.24s}
+.create span{background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:20px;font-size:36px;font-weight:900;box-shadow:inset 0 1px 2px rgba(255,255,255,.8)}
+#cam{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column}#cam.on{display:flex}
 #camEl{width:100%;height:100%;object-fit:cover}
 .camT{position:absolute;top:0;left:0;right:0;height:68px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.85),transparent)}
 .camB{position:absolute;bottom:0;left:0;right:0;height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(0deg,rgba(0,0,0,.96),transparent);z-index:2;border-radius:28px 28px 0 0}
-.mode{display:flex;gap:12px}.mode i{padding:10px 20px;border-radius:26px;background:rgba(255,255,255,.08);font-size:12px;font-weight:900;color:#888;font-style:normal;border:1.5px solid rgba(255,255,255,.08);transition:.22s;backdrop-filter:blur(12px)}.mode i.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700;box-shadow:0 6px 18px rgba(212,175,55,.5)}
-.ctrls{display:flex;align-items:center;gap:32px}.ctrl{width:54px;height:54px;border-radius:20px;background:linear-gradient(145deg,#1e1e1e,#0f0f0f);display:flex;align-items:center;justify-content:center;font-size:22px;border:1.5px solid rgba(212,175,55,.22);box-shadow:0 6px 16px rgba(0,0,0,.5), inset 0 1px 1px rgba(255,255,255,.08);transition:.22s}.ctrl.mexendo{animation:mexe9s 9s ease-in-out}
-.rec{width:86px;height:86px;border-radius:28px;border:2.5px solid #D4AF37;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(212,175,55,.12), 0 10px 28px rgba(0,0,0,.6);transition:.22s;background:rgba(0,0,0,.25);backdrop-filter:blur(8px)}.rec div{width:68px;height:68px;background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);border-radius:20px;transition:.22s;box-shadow:inset 0 2px 3px rgba(255,255,255,.25)}.rec.on div{width:30px;height:30px;border-radius:8px}
-.timer{display:none;background:linear-gradient(145deg,#ff2c55,#a00);padding:7px 16px;border-radius:24px;font-size:12px;font-weight:900;box-shadow:0 6px 18px rgba(255,44,85,.6);border:1.5px solid rgba(255,255,255,.2)}.timer.on{display:block}
+.mode{display:flex;gap:12px}.mode i{padding:10px 20px;border-radius:26px;background:rgba(255,255,255,.08);font-size:12px;font-weight:900;color:#888;font-style:normal;border:1.5px solid rgba(255,255,255,.08)}.mode i.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700}
+.ctrls{display:flex;align-items:center;gap:32px}.ctrl{width:54px;height:54px;border-radius:20px;background:linear-gradient(145deg,#1e1e1e,#0f0f0f);display:flex;align-items:center;justify-content:center;font-size:22px;border:1.5px solid rgba(212,175,55,.22)}.ctrl.mexendo{animation:mexe9s 9s ease-in-out}
+.rec{width:86px;height:86px;border-radius:28px;border:2.5px solid #D4AF37;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(212,175,55,.12), 0 10px 28px rgba(0,0,0,.6)}.rec div{width:68px;height:68px;background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);border-radius:20px;transition:.22s}.rec.on div{width:30px;height:30px;border-radius:8px}
+.timer{display:none;background:linear-gradient(145deg,#ff2c55,#a00);padding:7px 16px;border-radius:24px;font-size:12px;font-weight:900}.timer.on{display:block}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex}
-.sheet{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1d1d1d,#0f0f0f);border-radius:28px 28px 0 0;max-height:82dvh;display:flex;flex-direction:column;padding:18px;border-top:1.5px solid rgba(212,175,55,.28);box-shadow:0 -14px 48px rgba(0,0,0,.9), inset 0 1px 1px rgba(255,255,255,.08);animation:up.35s cubic-bezier(.34,1.56,.64,1)}
+.sheet{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1d1d1d,#0f0f0f);border-radius:28px 28px 0 0;max-height:82dvh;display:flex;flex-direction:column;padding:18px;border-top:1.5px solid rgba(212,175,55,.28);animation:up.35s cubic-bezier(.34,1.56,.64,1)}
 @keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
-#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(145deg,#1d1d1d,#0f0f0f);padding:14px 24px;border-radius:24px;z-index:2000;display:none;text-align:center;border:1.5px solid rgba(212,175,55,.3);font-size:12px;font-weight:800;box-shadow:0 14px 36px rgba(0,0,0,.8), 0 0 24px rgba(212,175,55,.15)}#toast.on{display:block}
+#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(145deg,#1d1d1d,#0f0f0f);padding:14px 24px;border-radius:24px;z-index:2000;display:none;text-align:center;border:1.5px solid rgba(212,175,55,.3);font-size:12px;font-weight:800}#toast.on{display:block}
 </style>
 </head>
 <body>
@@ -118,50 +82,39 @@ border-radius:1px;
 <div class="tab" onclick="WORK.mexe(this);WORK.my()"><span class="ico">👤</span><span>Eu</span></div>
 </div>
 </div>
-
 <div id="cam">
 <video id="camEl" autoplay playsinline muted></video>
-<div class="camT"><button onclick="WORK.closeCam()" style="background:rgba(0,0,0,.45);color:#D4AF37;border:1.5px solid rgba(212,175,55,.3);padding:9px 16px;border-radius:24px;font-weight:800;backdrop-filter:blur(12px)">✕ Fechar</button><div class="timer" id="timer">00:00 / 01:30</div><button onclick="WORK.flip()" style="background:rgba(0,0,0,.45);color:#D4AF37;border:1.5px solid rgba(212,175,55,.3);padding:9px 16px;border-radius:24px;backdrop-filter:blur(12px)">🔄</button></div>
+<div class="camT"><button onclick="WORK.closeCam()" style="background:rgba(0,0,0,.45);color:#D4AF37;border:1.5px solid rgba(212,175,55,.3);padding:9px 16px;border-radius:24px;font-weight:800">✕ Fechar</button><div class="timer" id="timer">00:00 / 01:30</div><button onclick="WORK.flip()" style="background:rgba(0,0,0,.45);color:#D4AF37;border:1.5px solid rgba(212,175,55,.3);padding:9px 16px;border-radius:24px">🔄</button></div>
 <div class="camB">
 <div class="mode"><i class="on" id="mV" onclick="WORK.setMode('video')">VÍDEO 90s</i><i id="mL" onclick="WORK.setMode('live')">LIVE 30min</i></div>
 <div class="ctrls"><div class="ctrl" onclick="WORK.mexe(this);WORK.pick()">🖼️</div><div class="rec" id="rec" onclick="WORK.press()"><div></div></div><div class="ctrl" onclick="WORK.mexe(this)">⚡</div></div>
-<p style="font-size:10px;color:#8a6d3b;font-weight:800;letter-spacing:1px;background:rgba(212,175,55,.1);padding:6px 14px;border-radius:20px;border:1px solid rgba(212,175,55,.18)">ROUNDED GOLD • DETALHES DOURADOS 👑</p>
+<p style="font-size:10px;color:#8a6d3b;font-weight:800;background:rgba(212,175,55,.1);padding:6px 14px;border-radius:20px;border:1px solid rgba(212,175,55,.18)">BARRA DOURADA • OURO MACIÇO 👑</p>
 </div>
 </div>
-
-<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div class="sheet"><div style="display:flex;justify-content:space-between;font-weight:900"><span style="color:#D4AF37">✨ Meus vídeos • <span id="cMy">0</span> • Rounded</span><span onclick="WORK.closeM()" style="font-size:26px;color:#D4AF37;background:rgba(212,175,55,.12);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(212,175,55,.25)">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;overflow:auto;max-height:55vh"></div><button onclick="WORK.pick()" style="margin-top:16px;width:100%;background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border:none;padding:16px;border-radius:22px;font-weight:900;box-shadow:0 8px 24px rgba(212,175,55,.5);border:1px solid rgba(255,255,255,.3)">🖼️ GALERIA ROUNDED ATÉ 1:30</button><p style="font-size:10px;color:#666;text-align:center;margin-top:10px">Tema arredondado com detalhes dourados finos</p></div></div>
-
+<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div class="sheet"><div style="display:flex;justify-content:space-between;font-weight:900"><span style="color:#D4AF37">✨ Meus vídeos • <span id="cMy">0</span> • Barra Dourada</span><span onclick="WORK.closeM()" style="font-size:26px;color:#D4AF37;background:rgba(212,175,55,.12);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(212,175,55,.25)">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;overflow:auto;max-height:55vh"></div><button onclick="WORK.pick()" style="margin-top:16px;width:100%;background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border:none;padding:16px;border-radius:22px;font-weight:900">🖼️ GALERIA ATÉ 1:30</button></div></div>
 <input type="file" id="file" accept="video/*" style="display:none">
-
 <script>
 const WORK={
 db:null,
 videos:[
-{id:'w1',user:"@work.influencer",desc:"Tema super arredondado com detalhes dourados finos 👑✨",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:34,share:89,follow:false,type:"img",isDefault:true,sound:"ROUNDED GOLD • premium"},
-{id:'w2',user:"@rounded.gold",desc:"Tudo arredondado 24px-28px + borda dourada 1.5px ✨",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:1823,liked:false,com:21,share:45,follow:false,type:"img",isDefault:true,sound:"WORK • ROUNDED"}
+{id:'w1',user:"@work.influencer",desc:"Barra inferior toda dourada - ouro maciço 👑✨",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:34,share:89,follow:false,type:"img",isDefault:true,sound:"BARRA DOURADA • premium"},
+{id:'w2',user:"@barra.gold",desc:"Fundo dourado + botões pretos contrastando ✨",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:1823,liked:false,com:21,share:45,follow:false,type:"img",isDefault:true,sound:"WORK • BARRA GOLD"}
 ],
 cur:0,stream:null,facing:'user',mode:'video',recorder:null,chunks:[],sec:0,inter:null,rec:false,
 toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2000)},
-initDB(){return new Promise(r=>{let req=indexedDB.open('WorkRoundedGold',1);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{this.db=e.target.result;r()}})},
+initDB(){return new Promise(r=>{let req=indexedDB.open('WorkBarraGold',1);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{this.db=e.target.result;r()}})},
 async save(v){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').put(v);return new Promise(r=>tx.oncomplete=()=>r())},
 async loadAll(){await this.initDB();return new Promise(r=>{let tx=this.db.transaction('videos','readonly');let req=tx.objectStore('videos').getAll();req.onsuccess=()=>r(req.result)})},
 async del(id){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').delete(id);return new Promise(r=>tx.oncomplete=()=>r())},
 async loadSaved(){let s=await this.loadAll();if(s.length){s.forEach(v=>{if(v.blob){try{v.img=URL.createObjectURL(v.blob);v.blobUrl=v.img}catch{}}});this.videos=s.concat(this.videos.filter(v=>v.isDefault))}this.render()},
 fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':n||0},
-mexe(el){
-if(!el) return;
-el.classList.remove('mexendo');
-void el.offsetWidth;
-el.classList.add('mexendo');
-if(navigator.vibrate) navigator.vibrate([30,50,30,50,30]);
-setTimeout(()=>el.classList.remove('mexendo'),9000);
-},
+mexe(el){if(!el) return;el.classList.remove('mexendo');void el.offsetWidth;el.classList.add('mexendo');if(navigator.vibrate) navigator.vibrate([30,50,30,50,30]);setTimeout(()=>el.classList.remove('mexendo'),9000)},
 render(){
 let v=this.videos[this.cur];
 let media=v.type==='video'?`<video class="media" id="vid" src="${v.img}" autoplay loop muted playsinline></video><div class="prog" id="prog" style="width:0%"></div>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
 document.getElementById('stage').innerHTML=`
 ${media}<div class="grad"></div>
-<div class="top"><div class="pill">Seguindo</div><div class="pill on">ROUNDED GOLD ✨</div><div class="pill">🔍</div></div>
+<div class="top"><div class="pill">Seguindo</div><div class="pill on">BARRA GOLD ✨</div><div class="pill">🔍</div></div>
 <div class="del ${!v.isDefault?'on':''}" onclick="WORK.delCur()">🗑️ Apagar</div>
 <div class="actions">
 <div class="act" onclick="WORK.like(this)"><div class="btn ${v.liked?'liked':''}">${v.liked?'❤️':'♡'}</div><div class="cnt">${this.fmt(v.likes)}</div></div>
@@ -170,42 +123,42 @@ ${media}<div class="grad"></div>
 <div class="act" onclick="WORK.follow(this)"><div class="btn ${v.follow?'followed':''}">${v.follow?'✓':'＋'}</div><div class="cnt">${v.follow?'Seguindo':'Seguir'}</div></div>
 <div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.openCam('live')"><div class="btn live">●</div><div class="cnt">LIVE</div></div>
 </div>
-<div class="meta"><div class="user">${v.user} ${!v.isDefault?'<span class="own">ROUNDED</span>':''}</div><div class="desc">${v.desc}</div><div class="sound">♫ ${v.sound}</div></div>
+<div class="meta"><div class="user">${v.user} ${!v.isDefault?'<span class="own">BARRA GOLD</span>':''}</div><div class="desc">${v.desc}</div><div class="sound">♫ ${v.sound}</div></div>
 `;
 let vd=document.getElementById('vid');if(vd){vd.addEventListener('timeupdate',()=>{let p=document.getElementById('prog');if(p&&vd.duration) p.style.width=(vd.currentTime/vd.duration*100)+'%'});vd.play().catch(()=>{})}
 },
-like(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];v.liked=!v.liked;v.likes=v.liked?v.likes+1:v.likes-1;this.render();this.toast(v.liked?'❤️ ROUNDED GOLD!':'💔')},
-comment(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];let c=prompt(`💬 Comentários (${v.com}):`);if(c){v.com++;this.render();this.toast('💬 ROUNDED!')}},
-share(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];if(navigator.share) navigator.share({title:'WORK ROUNDED',text:v.desc,url:location.href});else navigator.clipboard.writeText(location.href).then(()=>this.toast('🔗 ROUNDED GOLD copiado!'));v.share++;this.render()},
-follow(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];v.follow=!v.follow;this.render();this.toast(v.follow?'👑 ROUNDED! Seguindo!':'❌')},
+like(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];v.liked=!v.liked;v.likes=v.liked?v.likes+1:v.likes-1;this.render();this.toast(v.liked?'❤️ BARRA GOLD!':'💔')},
+comment(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];let c=prompt(`💬 Comentários (${v.com}):`);if(c){v.com++;this.render();this.toast('💬 GOLD!')}},
+share(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];if(navigator.share) navigator.share({title:'WORK BARRA GOLD',text:v.desc,url:location.href});else navigator.clipboard.writeText(location.href).then(()=>this.toast('🔗 BARRA GOLD!'));v.share++;this.render()},
+follow(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];v.follow=!v.follow;this.render();this.toast(v.follow?'👑 BARRA GOLD!':'❌')},
 delCur(){let v=this.videos[this.cur];if(v.isDefault) return this.toast('Exemplo');if(!confirm('Apagar?'))return;this.del(v.id).then(()=>{this.videos.splice(this.cur,1);if(this.cur>=this.videos.length) this.cur=this.videos.length-1;if(this.cur<0) this.cur=0;this.render()})},
 openCam(m){this.mode=m;this.setMode(m);document.getElementById('cam').classList.add('on');navigator.mediaDevices.getUserMedia({video:{facingMode:this.facing,width:{ideal:720},height:{ideal:1280}},audio:true}).then(s=>{this.stream=s;document.getElementById('camEl').srcObject=s;document.getElementById('camEl').play()}).catch(()=>alert('Permita câmera'))},
 closeCam(){if(this.rec) this.stop();if(this.stream){this.stream.getTracks().forEach(t=>t.stop());this.stream=null}document.getElementById('cam').classList.remove('on')},
 setMode(m){this.mode=m;document.getElementById('mV').classList.toggle('on',m==='video');document.getElementById('mL').classList.toggle('on',m==='live')},
 flip(){this.facing=this.facing==='user'?'environment':'user';if(this.stream) this.stream.getTracks().forEach(t=>t.stop());navigator.mediaDevices.getUserMedia({video:{facingMode:this.facing},audio:true}).then(s=>{this.stream=s;document.getElementById('camEl').srcObject=s})},
-press(){if(this.mode==='live'){this.toast('🔴 LIVE ROUNDED 30min!');return}if(!this.rec) this.start(); else this.stop()},
+press(){if(this.mode==='live'){this.toast('🔴 LIVE BARRA GOLD 30min!');return}if(!this.rec) this.start(); else this.stop()},
 start(){
 if(!this.stream) return;
 this.chunks=[];let mime='';if(MediaRecorder.isTypeSupported('video/mp4')) mime='video/mp4';let o=mime?{mimeType:mime}:{};try{this.recorder=new MediaRecorder(this.stream,o)}catch{this.recorder=new MediaRecorder(this.stream)}
 this.recorder.ondataavailable=e=>{if(e.data.size>0) this.chunks.push(e.data)};
-this.recorder.onstop=async ()=>{let blob=new Blob(this.chunks,{type:this.recorder.mimeType||'video/webm'});let url=URL.createObjectURL(blob);let obj={id:Date.now(),user:"@voce.rounded",desc:"Vídeo ROUNDED GOLD WORK 👑",img:url,blob:blob,blobUrl:url,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:this.sec,isDefault:false,sound:"ROUNDED"};await this.save(obj);this.videos.unshift(obj);this.cur=0;this.closeCam();this.render();this.toast(`👑 ROUNDED ${this.sec}s salvo!`)};
+this.recorder.onstop=async ()=>{let blob=new Blob(this.chunks,{type:this.recorder.mimeType||'video/webm'});let url=URL.createObjectURL(blob);let obj={id:Date.now(),user:"@voce.barragold",desc:"Vídeo BARRA DOURADA WORK 👑",img:url,blob:blob,blobUrl:url,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:this.sec,isDefault:false,sound:"BARRA GOLD"};await this.save(obj);this.videos.unshift(obj);this.cur=0;this.closeCam();this.render();this.toast(`👑 BARRA GOLD ${this.sec}s salvo!`)};
 this.recorder.start(100);this.rec=true;this.sec=0;
 document.getElementById('rec').classList.add('on');document.getElementById('timer').classList.add('on');
 this.inter=setInterval(()=>{this.sec++;let mm=String(Math.floor(this.sec/60)).padStart(2,'0'), ss=String(this.sec%60).padStart(2,'0');document.getElementById('timer').innerText=`${mm}:${ss} / 01:30`;if(this.sec>=90) this.stop()},1000);
 },
 stop(){if(!this.rec) return;clearInterval(this.inter);this.rec=false;document.getElementById('rec').classList.remove('on');if(this.recorder) this.recorder.stop()},
 pick(){document.getElementById('file').click()},
-my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length;document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:22px;overflow:hidden;border:1.5px solid rgba(212,175,55,.22);box-shadow:0 6px 18px rgba(0,0,0,.5)"><video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted></video><div style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,.7);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;border:1.5px solid rgba(212,175,55,.3)">✕</div><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);padding:10px;border-radius:0 0 20px 20px"><p style="font-size:9px;font-weight:900;color:#D4AF37;background:rgba(212,175,55,.15);padding:3px 8px;border-radius:20px;display:inline-block;border:1px solid rgba(212,175,55,.2)">${v.duration||''}s • ROUNDED</p></div></div>`).join('')||'<p style="color:#666;text-align:center">Nenhum vídeo ROUNDED</p>';document.getElementById('listM').classList.add('on')})},
+my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length;document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:22px;overflow:hidden;border:1.5px solid rgba(212,175,55,.22)"><video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted></video><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);padding:10px"><p style="font-size:9px;font-weight:900;color:#D4AF37">${v.duration||''}s • BARRA GOLD</p></div></div>`).join('')||'<p style="color:#666;text-align:center">Nenhum vídeo</p>';document.getElementById('listM').classList.add('on')})},
 closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
 };
 document.getElementById('file').addEventListener('change',e=>{
 let f=e.target.files[0];if(!f||!f.type.startsWith('video/')) return;
 let u=URL.createObjectURL(f);let tv=document.createElement('video');tv.preload='metadata';tv.src=u;
-tv.onloadedmetadata=async ()=>{let d=Math.round(tv.duration||0);if(d>90){WORK.toast(`Muito longo ${d}s`);return}let o={id:Date.now(),user:"@voce.rounded",desc:"Vídeo ROUNDED GOLD da galeria 👑",img:u,blob:f,blobUrl:u,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:d,isDefault:false,sound:"ROUNDED"};await WORK.save(o);WORK.videos.unshift(o);WORK.cur=0;WORK.closeM();WORK.closeCam();WORK.render();WORK.toast(`👑 ROUNDED ${d}s salvo!`)};
+tv.onloadedmetadata=async ()=>{let d=Math.round(tv.duration||0);if(d>90){WORK.toast(`Muito longo ${d}s`);return}let o={id:Date.now(),user:"@voce.barragold",desc:"Vídeo BARRA GOLD da galeria 👑",img:u,blob:f,blobUrl:u,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:d,isDefault:false,sound:"BARRA GOLD"};await WORK.save(o);WORK.videos.unshift(o);WORK.cur=0;WORK.closeM();WORK.closeCam();WORK.render();WORK.toast(`👑 BARRA GOLD ${d}s salvo!`)};
 });
 WORK.loadSaved();
 let sy=0;document.addEventListener('touchstart',e=>sy=e.touches[0].clientY,{passive:true});
 document.addEventListener('touchend',e=>{if(document.getElementById('cam').classList.contains('on'))return;if(document.querySelector('.modal.on'))return;let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0&&WORK.cur<WORK.videos.length-1) WORK.cur++;if(d<0&&WORK.cur>0) WORK.cur--;WORK.render()}},{passive:true});
 </script>
 </body>
-</html>>
+</html>
