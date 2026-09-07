@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK - COMENTÁRIOS VISÍVEIS</title>
+<title>WORK - EU FIX</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;overflow:hidden}
@@ -12,23 +12,24 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 .bg{position:absolute;inset:0;background-size:cover;background-position:center;border-radius:0 0 28px 28px}
 .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.96) 0%,transparent 58%);border-radius:0 0 28px 28px}
 .top{position:absolute;top:10px;left:0;right:0;height:58px;display:flex;justify-content:center;align-items:center;gap:12px;z-index:10;padding:0 14px}
-.pill{padding:10px 18px;border-radius:28px;font-size:12px;font-weight:900;background:rgba(0,0,0,.38);backdrop-filter:blur(20px);border:1.5px solid rgba(212,175,55,.28)}.pill.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000}
-.actions{position:absolute;right:12px;bottom:102px;display:flex;flex-direction:column;gap:20px;z-index:10;align-items:center}
+.pill{padding:10px 18px;border-radius:28px;font-size:12px;font-weight:900;background:rgba(0,0,0,.38);backdrop-filter:blur(20px);border:1.5px solid rgba(212,175,55,.28)}.pill.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700}
+.actions{position:absolute;right:12px;bottom:102px;display:flex;flex-direction:column;gap:18px;z-index:10;align-items:center}
 .act{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
-.btn{width:64px;height:64px;border-radius:24px;background:linear-gradient(145deg,#1e1e1e,#0a0a0a);border:1.5px solid rgba(212,175,55,.38);display:flex;align-items:center;justify-content:center;font-size:26px;transition:all.22s}
+.btn{width:64px;height:64px;border-radius:24px;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.26),rgba(0,0,0,.35)),linear-gradient(145deg,#1e1e1e,#0a0a0a);border:1.5px solid rgba(212,175,55,.38);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:inset 0 1.5px 1.5px rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.65);transition:all.22s}
 .btn.mexendo{animation:mexe9s 9s ease-in-out}
-@keyframes mexe9s{0%{transform:scale(1)}50%{transform:scale(1.3) rotate(10deg)}100%{transform:scale(1)}}
-.cnt{font-size:10px;font-weight:900;background:rgba(0,0,0,.35);padding:3px 8px;border-radius:20px;border:1px solid rgba(212,175,55,.18)}
+@keyframes mexe9s{0%{transform:translate(0,0) rotate(0) scale(1)}10%{transform:translate(-4px,-6px) rotate(-8deg) scale(1.3)}20%{transform:translate(5px,4px) rotate(8deg) scale(1.4)}30%{transform:translate(-6px,3px) rotate(-6deg) scale(1.35)}40%{transform:translate(4px,-5px) rotate(6deg) scale(1.3)}50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.42)}60%{transform:translate(6px,-3px) rotate(10deg) scale(1.35)}70%{transform:translate(-5px,-4px) rotate(-8deg) scale(1.3)}80%{transform:translate(3px,5px) rotate(8deg) scale(1.25)}90%{transform:translate(-2px,-2px) rotate(-4deg) scale(1.1)}100%{transform:translate(0,0) rotate(0) scale(1)}}
+.btn.liked{background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);border-color:rgba(255,90,122,.6);color:#fff}
+.btn.followed{background:linear-gradient(145deg,#FFE55C,#D4AF37,#B8960C);color:#000;border-color:#FFD700}
+.cnt{font-size:10px;font-weight:900;background:rgba(0,0,0,.45);padding:4px 9px;border-radius:20px;border:1px solid rgba(212,175,55,.22);backdrop-filter:blur(8px);margin-top:2px}
 .meta{position:absolute;left:16px;bottom:18px;right:84px;z-index:10;background:rgba(0,0,0,.32);backdrop-filter:blur(24px);padding:14px 16px;border-radius:22px;border:1.5px solid rgba(212,175,55,.18)}
 .user{font-weight:900;font-size:15px;display:flex;gap:8px;align-items:center}
-.nav{height:96px!important;background:linear-gradient(180deg,#FFE55C,#FFD700,#D4AF37,#B8960C)!important;display:flex!important;justify-content:space-around!important;align-items:center!important;padding:12px 8px 18px!important;border-radius:32px 32px 0 0!important;margin-top:-20px!important;border-top:3px solid #FFD700!important;z-index:50!important;position:relative!important}
+.own{background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900}
+.nav{height:96px!important;background:linear-gradient(180deg,#FFE55C 0%,#FFD700 15%,#D4AF37 40%,#B8960C 75%,#8a6d3b 100%)!important;display:flex!important;justify-content:space-around!important;align-items:center!important;padding:12px 8px 18px 8px!important;border-radius:32px 32px 0 0!important;margin-top:-20px!important;border-top:3px solid #FFD700!important;position:relative!important;z-index:50!important}
 .tab{color:#3d2e00!important;font-size:10px;text-align:center;padding:10px 14px;border-radius:22px;min-width:64px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer!important;border:1.5px solid rgba(0,0,0,.18)!important;background:rgba(0,0,0,.12)!important;font-weight:800}
 .tab.on{background:#000!important;color:#FFD700!important}
 .ico{font-size:28px;display:block}
 .create{width:78px;height:54px;border-radius:24px;background:#000!important;display:flex;align-items:center;justify-content:center;border:2px solid #FFD700!important}
 .create span{background:linear-gradient(145deg,#FFD700,#D4AF37)!important;color:#000!important;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:20px;font-size:36px;font-weight:900}
-
-/* PERFIL */
 .profile-sheet{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1f1f1f,#0f0f0f);border-radius:32px 32px 0 0;max-height:88dvh;display:flex;flex-direction:column;padding:0;border-top:3px solid #FFD700;overflow:hidden;animation:up.35s}
 .profile-head{padding:22px 20px 14px;text-align:center;background:linear-gradient(180deg,rgba(212,175,55,.12),transparent)}
 .avatar-wrap{width:110px;height:110px;margin:0 auto 14px;position:relative;cursor:pointer}
@@ -40,23 +41,19 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 .input{width:100%;background:rgba(0,0,0,.45);border:1.5px solid rgba(212,175,55,.22);border-radius:18px;padding:13px 16px;color:#fff;font-size:14px;font-weight:600;outline:none}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .save-btn{width:100%;background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;border:none;padding:16px;border-radius:22px;font-weight:900;font-size:15px;margin-top:8px}
-
-/* COMENTARIOS - NOVO */
+/* COMENTARIOS SO ISSO QUE MUDEI */
 .comments-sheet{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1e1e1e,#0f0f0f);border-radius:32px 32px 0 0;max-height:85dvh;display:flex;flex-direction:column;border-top:3px solid #D4AF37;animation:up.35s;overflow:hidden}
 .comments-head{padding:16px 20px;border-bottom:1.5px solid rgba(212,175,55,.15);display:flex;justify-content:space-between;align-items:center;background:rgba(212,175,55,.06)}
-.comments-list{flex:1;overflow:auto;padding:12px 16px;display:flex;flex-direction:column;gap:14px;max-height:52vh}
+.comments-list{flex:1;overflow:auto;padding:12px 16px;display:flex;flex-direction:column;gap:12px;max-height:52vh}
 .comment-item{display:flex;gap:10px;align-items:flex-start;background:rgba(0,0,0,.35);border:1px solid rgba(212,175,55,.12);border-radius:20px;padding:12px 14px}
-.comment-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#2a2a2a,#111);border:1.5px solid #D4AF37;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;overflow:hidden}
-.comment-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.comment-avatar{width:36px;height:36px;border-radius:50%;background:#222;border:1.5px solid #D4AF37;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;overflow:hidden}
+.comment-avatar img{width:100%;height:100%;object-fit:cover}
 .comment-body{flex:1}
-.comment-user{font-size:12px;font-weight:900;color:#FFD700;display:flex;gap:6px;align-items:center}
+.comment-user{font-size:12px;font-weight:900;color:#FFD700}
 .comment-text{font-size:13px;color:#ddd;margin-top:3px;line-height:1.35}
-.comment-time{font-size:10px;color:#666;margin-top:4px}
-.comment-input-area{padding:14px 16px;border-top:1.5px solid rgba(212,175,55,.15);display:flex;gap:10px;align-items:center;background:rgba(0,0,0,.4);backdrop-filter:blur(20px)}
+.comment-input-area{padding:14px 16px;border-top:1.5px solid rgba(212,175,55,.15);display:flex;gap:10px;align-items:center;background:rgba(0,0,0,.4)}
 .comment-input{flex:1;background:rgba(255,255,255,.08);border:1.5px solid rgba(212,175,55,.2);border-radius:24px;padding:12px 18px;color:#fff;font-size:14px;outline:none}
-.comment-input:focus{border-color:#FFD700;background:rgba(255,255,255,.12)}
-.send-btn{width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg,#FFD700,#D4AF37);border:none;display:flex;align-items:center;justify-content:center;font-size:18px;color:#000;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(212,175,55,.4)}
-
+.send-btn{width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg,#FFD700,#D4AF37);border:none;display:flex;align-items:center;justify-content:center;font-size:18px;color:#000;font-weight:900;cursor:pointer}
 @keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex!important}
 #toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1d1d1d;padding:14px 24px;border-radius:24px;z-index:3000;display:none;text-align:center;border:1.5px solid rgba(212,175,55,.3);font-size:12px;font-weight:800}#toast.on{display:block}
@@ -69,15 +66,14 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 <div class="app">
 <div class="stage" id="stage"></div>
 <div class="nav">
-<div class="tab on"><span class="ico">⌂</span><span>Início</span></div>
+<div class="tab on" onclick="WORK.mexe(this)"><span class="ico">⌂</span><span>Início</span></div>
 <div class="tab" onclick="WORK.my()"><span class="ico">◧</span><span>Meus</span></div>
-<div class="tab" onclick="WORK.openCam('video')"><div class="create"><span>+</span></div></div>
-<div class="tab" onclick="WORK.openCam('live')"><span class="ico">●</span><span>LIVE</span></div>
+<div class="tab" onclick="WORK.openCam()"><div class="create"><span>+</span></div></div>
+<div class="tab" onclick="WORK.openCam()"><span class="ico">●</span><span>LIVE</span></div>
 <div class="tab" id="tabEu" onclick="WORK.openProfile()"><span class="ico" id="icoEu">👤</span><span>Eu</span></div>
 </div>
 </div>
 
-<!-- PERFIL -->
 <div class="modal" id="profileM">
 <div style="flex:1" onclick="WORK.closeM()"></div>
 <div class="profile-sheet">
@@ -99,26 +95,23 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 </div>
 </div>
 
-<!-- COMENTÁRIOS - NOVO MODAL -->
 <div class="modal" id="commentsM">
 <div style="flex:1" onclick="WORK.closeM()"></div>
 <div class="comments-sheet">
 <div class="comments-head">
-<span style="color:#D4AF37;font-weight:900;font-size:14px">💬 COMENTÁRIOS • <span id="commentCount">0</span> comentários</span>
-<span onclick="WORK.closeM()" style="font-size:26px;color:#D4AF37;background:rgba(212,175,55,.15);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(212,175,55,.3);cursor:pointer">×</span>
+<span style="color:#D4AF37;font-weight:900">💬 COMENTÁRIOS • <span id="commentCount">0</span> - Todos podem ver</span>
+<span onclick="WORK.closeM()" style="font-size:26px;color:#D4AF37;background:rgba(212,175,55,.15);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer">×</span>
 </div>
-<div class="comments-list" id="commentsList">
-<!-- comentários aparecem aqui -->
-</div>
+<div class="comments-list" id="commentsList"></div>
 <div class="comment-input-area">
-<div id="commentMyAvatar" style="width:36px;height:36px;border-radius:50%;background:#222;border:1.5px solid #D4AF37;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden">👤</div>
-<input id="commentInput" class="comment-input" placeholder="Adicionar comentário...">
+<div id="commentMyAvatar" style="width:36px;height:36px;border-radius:50%;background:#222;border:1.5px solid #D4AF37;display:flex;align-items:center;justify-content:center;overflow:hidden">👤</div>
+<input id="commentInput" class="comment-input" placeholder="Adicionar comentário... (todos veem)">
 <button class="send-btn" onclick="WORK.sendComment()">➤</button>
 </div>
 </div>
 </div>
 
-<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1d1d1d;border-radius:28px 28px 0 0;padding:18px;border-top:1.5px solid rgba(212,175,55,.28)"><div style="display:flex;justify-content:space-between;font-weight:900"><span style="color:#D4AF37">Meus vídeos • <span id="cMy">0</span></span><span onclick="WORK.closeM()" style="font-size:26px;color:#D4AF37">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px"></div></div></div>
+<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1d1d1d;border-radius:28px 28px 0 0;padding:18px;border-top:1.5px solid rgba(212,175,55,.28)"><div style="display:flex;justify-content:space-between;font-weight:900"><span style="color:#D4AF37">Meus vídeos</span><span onclick="WORK.closeM()" style="font-size:26px;color:#D4AF37">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px"></div></div></div>
 <div id="cam"><video id="camEl" autoplay playsinline muted></video><button onclick="WORK.closeCam()" style="position:absolute;top:16px;left:16px;background:rgba(0,0,0,.5);color:#D4AF37;border:1.5px solid rgba(212,175,55,.3);padding:9px 16px;border-radius:24px;z-index:2">✕ Fechar</button></div>
 <input type="file" id="fileAvatar" accept="image/*" style="display:none">
 
@@ -126,67 +119,37 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 const WORK={
 profile:{name:'',nick:'',age:'',bio:'',avatar:''},
 videos:[
-{id:'w1',user:"@work.influencer",desc:"Agora qualquer um pode ver e comentar! 💬✨",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:3,share:89,follow:false,type:"img",isDefault:true,
-comments:[
-{user:"@maria.gold",text:"Que app lindo! Amei a barra dourada 👑",time:"2h",avatar:""},
-{user:"@jonathan",text:"Top demais! Meu perfil ficou massa",time:"1h",avatar:""},
-{user:"@influencer",text:"Como faz pra colocar foto no seguir?",time:"30min",avatar:""}
+{id:'w1',user:"@work",desc:"Clica em EU agora funciona! 👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:3,share:89,follow:false,type:"img",isDefault:true,comments:[
+{user:"@maria.gold",text:"Amei a barra dourada! 👑",time:"2h",avatar:""},
+{user:"@jonathan",text:"Botão EU agora abre!",time:"1h",avatar:""},
+{user:"@ana",text:"Como coloca foto no seguir?",time:"30min",avatar:""}
 ]},
-{id:'w2',user:"@coment.gold",desc:"Clica no 💬 pra ver todos os comentários",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:1823,liked:false,com:2,share:45,follow:false,type:"img",isDefault:true,
-comments:[
-{user:"@ana",text:"Perfeito 😍",time:"3h",avatar:""},
-{user:"@carlos",text:"Funciona mesmo, todos veem!",time:"1h",avatar:""}
-]}
 ],
 cur:0,
 toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2000)},
 mexe(el){if(!el)return;el.classList.remove('mexendo');void el.offsetWidth;el.classList.add('mexendo');setTimeout(()=>el.classList.remove('mexendo'),9000)},
 loadProfile(){try{let p=JSON.parse(localStorage.getItem('work_profile')||'null');if(p){this.profile=p;document.getElementById('inName').value=p.name||'';document.getElementById('inNick').value=p.nick||'';document.getElementById('inAge').value=p.age||'';document.getElementById('inBio').value=p.bio||'';if(p.avatar){document.getElementById('avatarBox').innerHTML=`<img src="${p.avatar}">`;document.getElementById('icoEu').innerHTML=`<img src="${p.avatar}" style="width:28px;height:28px;border-radius:50%;border:1.5px solid #FFD700;object-fit:cover">`;document.getElementById('commentMyAvatar').innerHTML=`<img src="${p.avatar}" style="width:100%;height:100%;object-fit:cover">`}document.getElementById('pNameView').innerText=p.name||'Seu Nome';document.getElementById('pNickView').innerText=`@${p.nick||'apelido'} ${p.age?'• '+p.age+' anos':''}`}}catch{}},
-openProfile(){this.loadProfile();document.getElementById('profileM').classList.add('on');document.getElementById('profileM').style.display='flex'},
+openProfile(){this.loadProfile();let m=document.getElementById('profileM');m.classList.add('on');m.style.display='flex'},
 openComments(){
 let v=this.videos[this.cur];
 document.getElementById('commentCount').innerText=v.comments?v.comments.length:0;
 let list=document.getElementById('commentsList');
 if(!v.comments) v.comments=[];
-if(v.comments.length===0){
-list.innerHTML=`<div style="text-align:center;padding:40px 20px;color:#666"><div style="font-size:42px;margin-bottom:12px">💬</div><p style="font-weight:800">Nenhum comentário ainda</p><p style="font-size:12px;margin-top:4px">Seja o primeiro a comentar!</p></div>`;
-}else{
 list.innerHTML=v.comments.map(c=>`
 <div class="comment-item">
-<div class="comment-avatar">${c.avatar?`<img src="${c.avatar}">`:(c.user.charAt(1).toUpperCase()||'U')}</div>
-<div class="comment-body">
-<div class="comment-user">${c.user} <span style="font-size:10px;color:#666;font-weight:600">• ${c.time}</span></div>
-<div class="comment-text">${c.text}</div>
+<div class="comment-avatar">${c.avatar?`<img src="${c.avatar}">`:c.user.charAt(1).toUpperCase()}</div>
+<div class="comment-body"><div class="comment-user">${c.user}</div><div class="comment-text">${c.text}</div><div style="font-size:10px;color:#666;margin-top:3px">${c.time} • Curtir • Responder</div></div>
 </div>
-<div style="font-size:16px;color:#444;cursor:pointer">♡</div>
-</div>
-`).join('');
-}
-document.getElementById('commentsM').classList.add('on');
-document.getElementById('commentsM').style.display='flex';
-setTimeout(()=>{list.scrollTop=list.scrollHeight},100);
-if(this.profile.avatar){document.getElementById('commentMyAvatar').innerHTML=`<img src="${this.profile.avatar}" style="width:100%;height:100%;object-fit:cover">`}
+`).join('')||'<div style="text-align:center;padding:40px;color:#666">Nenhum comentário ainda<br><span style="font-size:12px">Seja o primeiro!</span></div>';
+document.getElementById('commentsM').classList.add('on');document.getElementById('commentsM').style.display='flex';
 },
 sendComment(){
-let input=document.getElementById('commentInput');
-let text=input.value.trim();
-if(!text) return;
-let v=this.videos[this.cur];
-if(!v.comments) v.comments=[];
-let newComment={
-user: this.profile.nick? '@'+this.profile.nick : '@voce',
-text: text,
-time: 'agora',
-avatar: this.profile.avatar||''
-};
-v.comments.push(newComment);
-v.com=v.comments.length;
-input.value='';
-this.openComments();
-this.render();
-this.toast('💬 Comentário adicionado! Todos podem ver!');
-// Salva comentários no localStorage
+let input=document.getElementById('commentInput');let text=input.value.trim();if(!text)return;
+let v=this.videos[this.cur];if(!v.comments) v.comments=[];
+v.comments.push({user:this.profile.nick?'@'+this.profile.nick:'@voce',text:text,time:'agora',avatar:this.profile.avatar||''});
+v.com=v.comments.length;input.value='';this.openComments();this.render();
 localStorage.setItem('work_comments_'+v.id, JSON.stringify(v.comments));
+this.toast('💬 Comentário visível pra todos!');
 },
 closeM(){document.querySelectorAll('.modal').forEach(m=>{m.classList.remove('on');m.style.display='none'})},
 saveProfile(){
@@ -198,37 +161,30 @@ this.profile={...this.profile,name,nick,age,bio};
 localStorage.setItem('work_profile',JSON.stringify(this.profile));
 document.getElementById('pNameView').innerText=name||'Seu Nome';
 document.getElementById('pNickView').innerText=`@${nick||'apelido'} ${age?'• '+age+' anos':''}`;
-this.toast('👑 Perfil salvo! Foto no botão SEGUIR!');
-this.closeM();this.render();
+this.toast('👑 Salvo!');this.closeM();this.render();
 },
 pickAvatar(){document.getElementById('fileAvatar').click()},
 render(){
 let v=this.videos[this.cur];let prof=this.profile;
-let media=`<div style="position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('${v.img}')"></div>`;
-let followBtn='';
-if(prof.avatar){
-followBtn=`<div style="position:relative;width:68px;height:68px;border-radius:26px;border:3px solid #FFD700;overflow:visible"><img src="${prof.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:23px"><div style="position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;background:${v.follow?'#000':'linear-gradient(145deg,#FFD700,#D4AF37)'};border:2.5px solid #000;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:${v.follow?'#FFD700':'#000'}">${v.follow?'✓':'＋'}</div></div>`;
-}else{
-followBtn=`<div class="btn">${v.follow?'✓':'＋'}</div>`;
-}
-// Carrega comentários salvos
-try{let saved=JSON.parse(localStorage.getItem('work_comments_'+v.id)||'null');if(saved){v.comments=saved;v.com=saved.length}}catch{}
+try{let s=JSON.parse(localStorage.getItem('work_comments_'+v.id)||'null');if(s){v.comments=s;v.com=s.length}}catch{}
+let media=`<div class="bg" style="background-image:url('${v.img}')"></div>`;
+let followBtn=prof.avatar?`<div style="position:relative;width:68px;height:68px;border-radius:26px;border:3px solid #FFD700;overflow:visible"><img src="${prof.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:23px"><div style="position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;background:${v.follow?'#000':'linear-gradient(145deg,#FFD700,#D4AF37)'};border:2.5px solid #000;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:${v.follow?'#FFD700':'#000'}">${v.follow?'✓':'＋'}</div></div>`:`<div class="btn">${v.follow?'✓':'＋'}</div>`;
 document.getElementById('stage').innerHTML=`
-${media}<div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.96) 0%,transparent 58%)"></div>
-<div class="top"><div class="pill on">COMENTÁRIOS VISÍVEIS 💬</div></div>
+${media}<div class="grad"></div>
+<div class="top"><div class="pill on">EU CORRIGIDO ✨</div></div>
 <div class="actions">
-<div class="act" onclick="WORK.like()"><div class="btn">${v.liked?'❤️':'♡'}</div><div class="cnt">${v.likes}</div></div>
-<div class="act" onclick="WORK.openComments()"><div class="btn">💬</div><div class="cnt">${v.comments?v.comments.length:v.com}</div></div>
-<div class="act" onclick="WORK.share()"><div class="btn">↗</div><div class="cnt">${v.share}</div></div>
+<div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.like()"><div class="btn ${v.liked?'liked':''}">${v.liked?'❤️':'♡'}</div><div class="cnt">${v.likes}</div></div>
+<div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.openComments()"><div class="btn">💬</div><div class="cnt">${v.comments?v.comments.length:v.com}</div></div>
+<div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.share()"><div class="btn">↗</div><div class="cnt">${v.share}</div></div>
 <div class="act" onclick="WORK.follow()">${followBtn}<div class="cnt" style="margin-top:10px">${v.follow?'Seguindo':'Seguir'}</div></div>
 </div>
-<div class="meta"><div class="user">${prof.avatar&&!v.isDefault?`<img src="${prof.avatar}" style="width:34px;height:34px;border-radius:50%;border:2px solid #D4AF37;object-fit:cover">`:''} ${prof.nick&&!v.isDefault?'@'+prof.nick:v.user}</div><div style="font-size:13px;margin-top:6px">${prof.bio&&!v.isDefault?prof.bio:v.desc}</div></div>
+<div class="meta"><div class="user">${prof.avatar?`<img src="${prof.avatar}" style="width:34px;height:34px;border-radius:50%;border:2px solid #D4AF37;object-fit:cover">`:''} ${prof.nick?'@'+prof.nick:v.user}</div><div style="font-size:13px;margin-top:6px">${prof.bio||v.desc}</div></div>
 `;
 },
 like(){let v=this.videos[this.cur];v.liked=!v.liked;v.likes+=v.liked?1:-1;this.render()},
 follow(){let v=this.videos[this.cur];v.follow=!v.follow;this.render()},
-share(){let v=this.videos[this.cur];v.share++;this.render();this.toast('🔗 Link copiado!')},
-my(){document.getElementById('listM').classList.add('on');document.getElementById('listM').style.display='flex'},
+share(){let v=this.videos[this.cur];v.share++;this.render();this.toast('🔗 Copiado!')},
+my(){let m=document.getElementById('listM');m.classList.add('on');m.style.display='flex'},
 openCam(){document.getElementById('cam').classList.add('on');navigator.mediaDevices.getUserMedia({video:true,audio:true}).then(s=>{document.getElementById('camEl').srcObject=s}).catch(()=>alert('Permita câmera'))},
 closeCam(){document.getElementById('cam').classList.remove('on');let s=document.getElementById('camEl').srcObject;if(s) s.getTracks().forEach(t=>t.stop())}
 };
@@ -241,8 +197,7 @@ document.getElementById('avatarBox').innerHTML=`<img src="${b64}">`;
 document.getElementById('icoEu').innerHTML=`<img src="${b64}" style="width:28px;height:28px;border-radius:50%;border:1.5px solid #FFD700;object-fit:cover">`;
 document.getElementById('commentMyAvatar').innerHTML=`<img src="${b64}" style="width:100%;height:100%;object-fit:cover">`;
 localStorage.setItem('work_profile',JSON.stringify(WORK.profile));
-WORK.toast('📸 Foto no SEGUIR e nos COMENTÁRIOS!');
-WORK.render();
+WORK.toast('📸 Foto no botão SEGUIR!');WORK.render();
 };r.readAsDataURL(f);
 });
 document.getElementById('commentInput').addEventListener('keypress',e=>{if(e.key==='Enter') WORK.sendComment()});
