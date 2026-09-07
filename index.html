@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK INFLUENCER - BARRA DOURADA FINAL</title>
+<title>WORK - FOTO NO BOTAO SEGUIR</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;overflow:hidden}
@@ -12,150 +12,171 @@ body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;ov
 .media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center;border-radius:0 0 28px 28px}
 .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.96) 0%,transparent 58%);border-radius:0 0 28px 28px}
-.prog{position:absolute;top:0;left:0;height:4px;background:linear-gradient(90deg,#8a6d3b,#D4AF37,#FFD700);box-shadow:0 0 14px #D4AF37;z-index:20;transition:width.1s linear;border-radius:0 2px 2px 0}
+.prog{position:absolute;top:0;left:0;height:4px;background:linear-gradient(90deg,#8a6d3b,#D4AF37,#FFD700);z-index:20;transition:width.1s linear}
 .top{position:absolute;top:10px;left:0;right:0;height:58px;display:flex;justify-content:center;align-items:center;gap:12px;z-index:10;padding:0 14px}
-.pill{padding:10px 18px;border-radius:28px;font-size:12px;font-weight:900;background:rgba(0,0,0,.38);backdrop-filter:blur(20px);border:1.5px solid rgba(212,175,55,.28);box-shadow:inset 0 1px 1px rgba(255,255,255,.1), 0 6px 18px rgba(0,0,0,.4)}
-.pill.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700;box-shadow:0 8px 24px rgba(212,175,55,.55)}
-.del{position:absolute;top:16px;right:16px;background:linear-gradient(145deg,#1a1a1a,#0f0f0f);color:#D4AF37;padding:10px 16px;border-radius:28px;font-size:11px;font-weight:900;z-index:10;display:none;border:1.5px solid rgba(212,175,55,.35)}.del.on{display:block}
+.pill{padding:10px 18px;border-radius:28px;font-size:12px;font-weight:900;background:rgba(0,0,0,.38);backdrop-filter:blur(20px);border:1.5px solid rgba(212,175,55,.28)}.pill.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700}
+.del{position:absolute;top:16px;right:16px;background:#111;color:#D4AF37;padding:10px 16px;border-radius:28px;font-size:11px;font-weight:900;z-index:10;display:none;border:1.5px solid rgba(212,175,55,.35)}.del.on{display:block}
 .actions{position:absolute;right:12px;bottom:102px;display:flex;flex-direction:column;gap:20px;z-index:10;align-items:center}
 .act{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
-.btn{width:64px;height:64px;border-radius:24px;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.26),rgba(0,0,0,.35)),linear-gradient(145deg,#1e1e1e,#0a0a0a);border:1.5px solid rgba(212,175,55,.38);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:inset 0 1.5px 1.5px rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.65);position:relative;transition:all.22s cubic-bezier(.34,1.56,.64,1)}
+.btn{width:64px;height:64px;border-radius:24px;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.26),rgba(0,0,0,.35)),linear-gradient(145deg,#1e1e1e,#0a0a0a);border:1.5px solid rgba(212,175,55,.38);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:inset 0 1.5px 1.5px rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.65);transition:all.22s}
 .btn.mexendo{animation:mexe9s 9s ease-in-out}
-@keyframes mexe9s{0%{transform:translate(0,0) rotate(0) scale(1)}10%{transform:translate(-4px,-6px) rotate(-8deg) scale(1.3)}20%{transform:translate(5px,4px) rotate(8deg) scale(1.4)}30%{transform:translate(-6px,3px) rotate(-6deg) scale(1.35)}40%{transform:translate(4px,-5px) rotate(6deg) scale(1.3)}50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.42)}60%{transform:translate(6px,-3px) rotate(10deg) scale(1.35)}70%{transform:translate(-5px,-4px) rotate(-8deg) scale(1.3)}80%{transform:translate(3px,5px) rotate(8deg) scale(1.25)}90%{transform:translate(-2px,-2px) rotate(-4deg) scale(1.1)}100%{transform:translate(0,0) rotate(0) scale(1)}}
-.btn.liked{background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);border-color:rgba(255,90,122,.6);color:#fff}
-.btn.live{background:linear-gradient(145deg,#ff4d6d,#ff0a42,#900)}
+@keyframes mexe9s{0%{transform:translate(0,0) rotate(0) scale(1)}10%{transform:translate(-4px,-6px) rotate(-8deg) scale(1.3)}50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.42)}100%{transform:translate(0,0) rotate(0) scale(1)}}
+.btn.liked{background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);color:#fff}
 .btn.followed{background:linear-gradient(145deg,#FFE55C,#D4AF37,#B8960C);color:#000;border-color:#FFD700}
-.cnt{font-size:10px;font-weight:900;background:rgba(0,0,0,.35);padding:3px 8px;border-radius:20px;border:1px solid rgba(212,175,55,.18);backdrop-filter:blur(8px)}
-.meta{position:absolute;left:16px;bottom:18px;right:84px;z-index:10;background:rgba(0,0,0,.32);backdrop-filter:blur(24px);padding:14px 16px;border-radius:22px;border:1.5px solid rgba(212,175,55,.18);box-shadow:0 10px 32px rgba(0,0,0,.55)}
+.cnt{font-size:10px;font-weight:900;background:rgba(0,0,0,.35);padding:3px 8px;border-radius:20px;border:1px solid rgba(212,175,55,.18)}
+.meta{position:absolute;left:16px;bottom:18px;right:84px;z-index:10;background:rgba(0,0,0,.32);backdrop-filter:blur(24px);padding:14px 16px;border-radius:22px;border:1.5px solid rgba(212,175,55,.18)}
 .user{font-weight:900;font-size:15px;display:flex;gap:8px;align-items:center}
 .own{background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900}
-.desc{font-size:13px;margin-top:6px;line-height:1.4}
-
-/* BARRA DOURADA - AGORA COM!IMPORTANT PRA FORÇAR */
-.nav{
-height:96px!important;
-background: linear-gradient(180deg, #FFE55C 0%, #FFD700 15%, #D4AF37 40%, #B8960C 75%, #8a6d3b 100%)!important;
-background-color:#D4AF37!important;
-display:flex!important;
-justify-content:space-around!important;
-align-items:center!important;
-padding:12px 8px 18px 8px!important;
-border-radius:32px 32px 0 0!important;
-margin-top:-20px!important;
-box-shadow: 0 -14px 40px rgba(0,0,0,.9), inset 0 3px 4px rgba(255,255,255,.85), inset 0 -2px 4px rgba(0,0,0,.3)!important;
-border-top: 3px solid #FFD700!important;
-position:relative!important;
-z-index:50!important;
-}
-.nav::before{content:'';position:absolute;top:1px;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);border-radius:2px}
-.tab{color:#3d2e00!important;font-size:10px;text-align:center;padding:10px 14px;border-radius:22px;transition:all.24s cubic-bezier(.34,1.56,.64,1);min-width:64px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;border:1.5px solid rgba(0,0,0,.18)!important;background:linear-gradient(145deg,rgba(0,0,0,.1),rgba(0,0,0,.2))!important;box-shadow:inset 0 1px 1px rgba(255,255,255,.3), 0 4px 12px rgba(0,0,0,.2)!important;font-weight:800}
-.tab.on{background:#000!important;color:#FFD700!important;border-color:#000!important;box-shadow:inset 0 1px 1px rgba(255,255,255,.15), 0 8px 20px rgba(0,0,0,.6)!important;font-weight:900}
+.desc{font-size:13px;margin-top:6px}
+.nav{height:96px!important;background: linear-gradient(180deg, #FFE55C 0%, #FFD700 15%, #D4AF37 40%, #B8960C 75%, #8a6d3b 100%)!important;display:flex!important;justify-content:space-around!important;align-items:center!important;padding:12px 8px 18px 8px!important;border-radius:32px 32px 0 0!important;margin-top:-20px!important;border-top:3px solid #FFD700!important;z-index:50!important;position:relative!important}
+.tab{color:#3d2e00!important;font-size:10px;text-align:center;padding:10px 14px;border-radius:22px;min-width:64px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;border:1.5px solid rgba(0,0,0,.18)!important;background:rgba(0,0,0,.12)!important;font-weight:800}
+.tab.on{background:#000!important;color:#FFD700!important;font-weight:900}
 .tab.mexendo{animation:mexeGoldBar 9s ease-in-out!important}
-@keyframes mexeGoldBar{0%{transform:translate(0,0) rotate(0) scale(1)}10%{transform:translate(-4px,-6px) rotate(-8deg) scale(1.18)}20%{transform:translate(5px,4px) rotate(8deg) scale(1.22)}30%{transform:translate(-6px,3px) rotate(-6deg) scale(1.18)}40%{transform:translate(4px,-5px) rotate(6deg) scale(1.16)}50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.24); background:#000!important; color:#FFD700!important}60%{transform:translate(6px,-3px) rotate(10deg) scale(1.18)}70%{transform:translate(-5px,-4px) rotate(-8deg) scale(1.16)}80%{transform:translate(3px,5px) rotate(8deg) scale(1.14)}90%{transform:translate(-2px,-2px) rotate(-4deg) scale(1.08)}100%{transform:translate(0,0) rotate(0) scale(1)}}
+@keyframes mexeGoldBar{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-3px,6px) rotate(-10deg) scale(1.24)}100%{transform:translate(0,0) scale(1)}}
 .ico{font-size:28px;display:block}
-.create{width:78px;height:54px;border-radius:24px;background:#000!important;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1.5px 2px rgba(255,255,255,.2), 0 10px 28px rgba(0,0,0,.6), 0 0 0 2px #FFD700!important;border:2px solid #FFD700!important;transition:all.24s}
-.create span{background:linear-gradient(145deg,#FFD700,#D4AF37)!important;color:#000!important;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:20px;font-size:36px;font-weight:900;box-shadow:inset 0 1px 2px rgba(255,255,255,.9)!important}
+.create{width:78px;height:54px;border-radius:24px;background:#000!important;display:flex;align-items:center;justify-content:center;border:2px solid #FFD700!important}
+.create span{background:linear-gradient(145deg,#FFD700,#D4AF37)!important;color:#000!important;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:20px;font-size:36px;font-weight:900}
+.profile-sheet{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1f1f1f,#0f0f0f);border-radius:32px 32px 0 0;max-height:88dvh;display:flex;flex-direction:column;padding:0;border-top:2px solid #D4AF37;overflow:hidden;animation:up.35s}
+.profile-head{padding:22px 20px 14px;text-align:center;background:linear-gradient(180deg,rgba(212,175,55,.12),transparent);border-bottom:1px solid rgba(212,175,55,.15)}
+.avatar-wrap{width:110px;height:110px;margin:0 auto 14px;position:relative;cursor:pointer}
+.avatar{width:100%;height:100%;border-radius:28px;background:linear-gradient(145deg,#2a2a2a,#111);border:3px solid #D4AF37;display:flex;align-items:center;justify-content:center;font-size:42px;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:25px}
+.avatar-edit{position:absolute;bottom:-6px;right:-6px;width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#FFD700,#D4AF37);border:2px solid #000;display:flex;align-items:center;justify-content:center}
+.profile-body{padding:18px 20px 22px;overflow:auto}
+.input-group{margin-bottom:14px}
+.input-label{font-size:10px;font-weight:900;color:#D4AF37;margin-bottom:6px;display:block;text-transform:uppercase}
+.input{width:100%;background:rgba(0,0,0,.45);border:1.5px solid rgba(212,175,55,.22);border-radius:18px;padding:13px 16px;color:#fff;font-size:14px;font-weight:600;outline:none}
+.textarea{resize:none;min-height:84px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.save-btn{width:100%;background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;border:none;padding:16px;border-radius:22px;font-weight:900;font-size:15px;margin-top:8px}
+.stats{display:flex;justify-content:space-around;margin:16px 0 18px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.15);border-radius:20px;padding:14px}
+.stat{text-align:center}.stat b{font-size:18px;color:#FFD700;display:block}.stat span{font-size:10px;color:#8a6d3b;font-weight:800}
 #cam{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column}#cam.on{display:flex}
 #camEl{width:100%;height:100%;object-fit:cover}
 .camT{position:absolute;top:0;left:0;right:0;height:68px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.85),transparent)}
 .camB{position:absolute;bottom:0;left:0;right:0;height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(0deg,rgba(0,0,0,.96),transparent);z-index:2;border-radius:28px 28px 0 0}
 .mode{display:flex;gap:12px}.mode i{padding:10px 20px;border-radius:26px;background:rgba(255,255,255,.08);font-size:12px;font-weight:900;color:#888;font-style:normal;border:1.5px solid rgba(255,255,255,.08)}.mode i.on{background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border-color:#FFD700}
-.ctrls{display:flex;align-items:center;gap:32px}.ctrl{width:54px;height:54px;border-radius:20px;background:linear-gradient(145deg,#1e1e1e,#0f0f0f);display:flex;align-items:center;justify-content:center;font-size:22px;border:1.5px solid rgba(212,175,55,.22)}.ctrl.mexendo{animation:mexe9s 9s ease-in-out}
-.rec{width:86px;height:86px;border-radius:28px;border:2.5px solid #D4AF37;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(212,175,55,.12), 0 10px 28px rgba(0,0,0,.6)}.rec div{width:68px;height:68px;background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);border-radius:20px;transition:.22s}.rec.on div{width:30px;height:30px;border-radius:8px}
+.ctrls{display:flex;align-items:center;gap:32px}.ctrl{width:54px;height:54px;border-radius:20px;background:linear-gradient(145deg,#1e1e1e,#0f0f0f);display:flex;align-items:center;justify-content:center;font-size:22px;border:1.5px solid rgba(212,175,55,.22)}
+.rec{width:86px;height:86px;border-radius:28px;border:2.5px solid #D4AF37;display:flex;align-items:center;justify-content:center}.rec div{width:68px;height:68px;background:linear-gradient(145deg,#ff4d6d,#ff2c55,#a00);border-radius:20px;transition:.22s}.rec.on div{width:30px;height:30px;border-radius:8px}
 .timer{display:none;background:linear-gradient(145deg,#ff2c55,#a00);padding:7px 16px;border-radius:24px;font-size:12px;font-weight:900}.timer.on{display:block}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex}
-.sheet{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1d1d1d,#0f0f0f);border-radius:28px 28px 0 0;max-height:82dvh;display:flex;flex-direction:column;padding:18px;border-top:1.5px solid rgba(212,175,55,.28);animation:up.35s cubic-bezier(.34,1.56,.64,1)}
+.sheet{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#1d1d1d,#0f0f0f);border-radius:28px 28px 0 0;max-height:82dvh;display:flex;flex-direction:column;padding:18px;border-top:1.5px solid rgba(212,175,55,.28);animation:up.35s}
 @keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
-#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(145deg,#1d1d1d,#0f0f0f);padding:14px 24px;border-radius:24px;z-index:2000;display:none;text-align:center;border:1.5px solid rgba(212,175,55,.3);font-size:12px;font-weight:800}#toast.on{display:block}
+#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1d1d1d;padding:14px 24px;border-radius:24px;z-index:2000;display:none;text-align:center;border:1.5px solid rgba(212,175,55,.3);font-size:12px;font-weight:800}#toast.on{display:block}
 </style>
 </head>
 <body>
 <div id="toast"></div>
-<div class="app">
-<div class="stage" id="stage"></div>
+<div class="app"><div class="stage" id="stage"></div>
 <div class="nav">
 <div class="tab on" onclick="WORK.mexe(this)"><span class="ico">⌂</span><span>Início</span></div>
 <div class="tab" onclick="WORK.mexe(this);WORK.my()"><span class="ico">◧</span><span>Meus</span></div>
 <div class="tab" onclick="WORK.mexe(this.querySelector('.create'));WORK.openCam('video')"><div class="create"><span>+</span></div></div>
 <div class="tab" onclick="WORK.mexe(this);WORK.openCam('live')"><span class="ico">●</span><span>LIVE</span></div>
-<div class="tab" onclick="WORK.mexe(this);WORK.my()"><span class="ico">👤</span><span>Eu</span></div>
+<div class="tab" id="tabEu" onclick="WORK.mexe(this);WORK.openProfile()"><span class="ico" id="icoEu">👤</span><span>Eu</span></div>
+</div></div>
+<div class="modal" id="profileM"><div style="flex:1" onclick="WORK.closeM()"></div>
+<div class="profile-sheet">
+<div class="profile-head">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><span style="color:#D4AF37;font-weight:900;font-size:14px">👤 MEU PERFIL • FOTO NO SEGUIR</span><span onclick="WORK.closeM()" style="font-size:24px;color:#D4AF37;background:rgba(212,175,55,.12);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center">×</span></div>
+<div class="avatar-wrap" onclick="WORK.pickAvatar()"><div class="avatar" id="avatarBox">👤</div><div class="avatar-edit">📷</div></div>
+<h3 id="pNameView" style="font-size:18px;font-weight:900">Seu Nome</h3><p id="pNickView" style="font-size:13px;color:#D4AF37;font-weight:700;margin-top:2px">@seu.apelido • 0 anos</p>
+<div class="stats"><div class="stat"><b id="statV">0</b><span>VÍDEOS</span></div><div class="stat"><b id="statL">0</b><span>LIKES</span></div><div class="stat"><b id="statS">0</b><span>SEGUIDORES</span></div></div>
 </div>
-</div>
-<div id="cam">
-<video id="camEl" autoplay playsinline muted></video>
-<div class="camT"><button onclick="WORK.closeCam()" style="background:rgba(0,0,0,.45);color:#D4AF37;border:1.5px solid rgba(212,175,55,.3);padding:9px 16px;border-radius:24px;font-weight:800">✕ Fechar</button><div class="timer" id="timer">00:00 / 01:30</div><button onclick="WORK.flip()" style="background:rgba(0,0,0,.45);color:#D4AF37;border:1.5px solid rgba(212,175,55,.3);padding:9px 16px;border-radius:24px">🔄</button></div>
-<div class="camB">
-<div class="mode"><i class="on" id="mV" onclick="WORK.setMode('video')">VÍDEO 90s</i><i id="mL" onclick="WORK.setMode('live')">LIVE 30min</i></div>
-<div class="ctrls"><div class="ctrl" onclick="WORK.mexe(this);WORK.pick()">🖼️</div><div class="rec" id="rec" onclick="WORK.press()"><div></div></div><div class="ctrl" onclick="WORK.mexe(this)">⚡</div></div>
-<p style="font-size:10px;color:#8a6d3b;font-weight:800;background:rgba(212,175,55,.1);padding:6px 14px;border-radius:20px;border:1px solid rgba(212,175,55,.18)">BARRA DOURADA FINAL • 9S MEXENDO 👑</p>
-</div>
-</div>
-<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div class="sheet"><div style="display:flex;justify-content:space-between;font-weight:900"><span style="color:#D4AF37">✨ Meus vídeos • <span id="cMy">0</span> • Barra Dourada</span><span onclick="WORK.closeM()" style="font-size:26px;color:#D4AF37;background:rgba(212,175,55,.12);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(212,175,55,.25)">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;overflow:auto;max-height:55vh"></div><button onclick="WORK.pick()" style="margin-top:16px;width:100%;background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border:none;padding:16px;border-radius:22px;font-weight:900">🖼️ GALERIA ATÉ 1:30</button></div></div>
-<input type="file" id="file" accept="video/*" style="display:none">
+<div class="profile-body">
+<div class="input-group"><span class="input-label">Foto de Perfil - Vai aparecer no botão SEGUIR</span><button onclick="WORK.pickAvatar()" style="width:100%;background:rgba(212,175,55,.12);border:1.5px dashed rgba(212,175,55,.35);border-radius:18px;padding:12px;color:#D4AF37;font-weight:800">📸 Escolher Foto da Galeria</button></div>
+<div class="input-group"><span class="input-label">Nome Completo</span><input id="inName" class="input" placeholder="Ex: Jonathan Carlos" maxlength="30"></div>
+<div class="row"><div class="input-group"><span class="input-label">Apelido / @</span><input id="inNick" class="input" placeholder="Ex: jonathan.gold" maxlength="20"></div><div class="input-group"><span class="input-label">Idade</span><input id="inAge" class="input" type="number" placeholder="Ex: 25"></div></div>
+<div class="input-group"><span class="input-label">Sobre Você</span><textarea id="inBio" class="input textarea" placeholder="Fala sobre você..." maxlength="120"></textarea></div>
+<button class="save-btn" onclick="WORK.saveProfile()">💾 SALVAR - FOTO VAI PRO BOTÃO SEGUIR 👑</button>
+<p style="font-size:10px;color:#666;text-align:center;margin-top:12px">Sua foto vai aparecer no botão + da lateral</p>
+</div></div></div>
+<div id="cam"><video id="camEl" autoplay playsinline muted></video><div class="camT"><button onclick="WORK.closeCam()" style="background:rgba(0,0,0,.45);color:#D4AF37;border:1.5px solid rgba(212,175,55,.3);padding:9px 16px;border-radius:24px;font-weight:800">✕ Fechar</button><div class="timer" id="timer">00:00 / 01:30</div><button onclick="WORK.flip()" style="background:rgba(0,0,0,.45);color:#D4AF37;border:1.5px solid rgba(212,175,55,.3);padding:9px 16px;border-radius:24px">🔄</button></div><div class="camB"><div class="mode"><i class="on" id="mV" onclick="WORK.setMode('video')">VÍDEO 90s</i><i id="mL" onclick="WORK.setMode('live')">LIVE 30min</i></div><div class="ctrls"><div class="ctrl" onclick="WORK.pick()">🖼️</div><div class="rec" id="rec" onclick="WORK.press()"><div></div></div><div class="ctrl">⚡</div></div></div></div>
+<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div class="sheet"><div style="display:flex;justify-content:space-between;font-weight:900"><span style="color:#D4AF37">✨ Meus vídeos • <span id="cMy">0</span></span><span onclick="WORK.closeM()" style="font-size:26px;color:#D4AF37;background:rgba(212,175,55,.12);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;overflow:auto;max-height:55vh"></div><button onclick="WORK.pick()" style="margin-top:16px;width:100%;background:linear-gradient(145deg,#D4AF37,#FFD700);color:#000;border:none;padding:16px;border-radius:22px;font-weight:900">🖼️ GALERIA</button></div></div>
+<input type="file" id="file" accept="video/*" style="display:none"><input type="file" id="fileAvatar" accept="image/*" style="display:none">
 <script>
 const WORK={
-db:null,
-videos:[
-{id:'w1',user:"@work.influencer",desc:"Barra inferior toda dourada - ouro maciço 👑✨",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:34,share:89,follow:false,type:"img",isDefault:true,sound:"BARRA DOURADA • premium"},
-{id:'w2',user:"@barra.gold",desc:"Fundo dourado + botões pretos contrastando ✨",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:1823,liked:false,com:21,share:45,follow:false,type:"img",isDefault:true,sound:"WORK • BARRA GOLD"}
-],
+db:null,profile:{name:'',nick:'',age:'',bio:'',avatar:''},
+videos:[{id:'w1',user:"@work.influencer",desc:"Sua foto do perfil vai aparecer no botão SEGUIR da lateral 👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:2451,liked:false,com:34,share:89,follow:false,type:"img",isDefault:true,sound:"FOTO NO SEGUIR"},{id:'w2',user:"@foto.seguir",desc:"Coloca foto em EU que ela aparece no botão + ✨",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:1823,liked:false,com:21,share:45,follow:false,type:"img",isDefault:true,sound:"PERFIL GOLD"}],
 cur:0,stream:null,facing:'user',mode:'video',recorder:null,chunks:[],sec:0,inter:null,rec:false,
-toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2000)},
-initDB(){return new Promise(r=>{let req=indexedDB.open('WorkBarraGold',1);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{this.db=e.target.result;r()}})},
+toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2200)},
+initDB(){return new Promise(r=>{let req=indexedDB.open('WorkFotoSeguir',1);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{this.db=e.target.result;r()}})},
 async save(v){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').put(v);return new Promise(r=>tx.oncomplete=()=>r())},
 async loadAll(){await this.initDB();return new Promise(r=>{let tx=this.db.transaction('videos','readonly');let req=tx.objectStore('videos').getAll();req.onsuccess=()=>r(req.result)})},
 async del(id){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').delete(id);return new Promise(r=>tx.oncomplete=()=>r())},
 async loadSaved(){let s=await this.loadAll();if(s.length){s.forEach(v=>{if(v.blob){try{v.img=URL.createObjectURL(v.blob);v.blobUrl=v.img}catch{}}});this.videos=s.concat(this.videos.filter(v=>v.isDefault))}this.render()},
 fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':n||0},
-mexe(el){if(!el) return;el.classList.remove('mexendo');void el.offsetWidth;el.classList.add('mexendo');if(navigator.vibrate) navigator.vibrate([30,50,30,50,30]);setTimeout(()=>el.classList.remove('mexendo'),9000)},
+mexe(el){if(!el) return;el.classList.remove('mexendo');void el.offsetWidth;el.classList.add('mexendo');setTimeout(()=>el.classList.remove('mexendo'),9000)},
+loadProfile(){try{let p=JSON.parse(localStorage.getItem('work_profile')||'null');if(p){this.profile=p;document.getElementById('inName').value=p.name||'';document.getElementById('inNick').value=p.nick||'';document.getElementById('inAge').value=p.age||'';document.getElementById('inBio').value=p.bio||'';this.updateProfileView();if(p.avatar){document.getElementById('avatarBox').innerHTML=`<img src="${p.avatar}">`;document.getElementById('icoEu').innerHTML=`<img src="${p.avatar}" style="width:28px;height:28px;border-radius:50%;border:1.5px solid #FFD700;object-fit:cover">`}}}catch{}},
+updateProfileView(){let p=this.profile;document.getElementById('pNameView').innerText=p.name||'Seu Nome';document.getElementById('pNickView').innerText=`@${p.nick||'seu.apelido'}${p.age?' • '+p.age+' anos':''}`;document.getElementById('statV').innerText=(this.videos.filter(v=>!v.isDefault).length);document.getElementById('statL').innerText=this.fmt(this.videos.reduce((a,v)=>a+(v.likes||0),0));document.getElementById('statS').innerText=this.fmt( Math.floor(Math.random()*900+100) );},
+saveProfile(){let name=document.getElementById('inName').value.trim();let nick=document.getElementById('inNick').value.trim().replace('@','');let age=document.getElementById('inAge').value.trim();let bio=document.getElementById('inBio').value.trim();this.profile={name,nick,age,bio,avatar:this.profile.avatar||''};localStorage.setItem('work_profile',JSON.stringify(this.profile));this.updateProfileView();this.toast('👑 Foto agora no botão SEGUIR!');this.closeM();this.render()},
+pickAvatar(){document.getElementById('fileAvatar').click()},
+openProfile(){this.loadProfile();document.getElementById('profileM').classList.add('on')},
 render(){
-let v=this.videos[this.cur];
+let v=this.videos[this.cur];let prof=this.profile;
 let media=v.type==='video'?`<video class="media" id="vid" src="${v.img}" autoplay loop muted playsinline></video><div class="prog" id="prog" style="width:0%"></div>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
+
+// BOTAO SEGUIR COM FOTO DO PERFIL - AQUI ESTA A MAGICA
+let followBtnHtml='';
+if(prof.avatar &&!v.isDefault){
+followBtnHtml=`
+<div style="position:relative;width:68px;height:68px;border-radius:26px;border:3px solid #FFD700;overflow:visible;box-shadow:0 10px 28px rgba(0,0,0,.7), 0 0 0 1px rgba(212,175,55,.4)">
+<img src="${prof.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:23px;display:block">
+<div style="position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;background:${v.follow?'#000':'linear-gradient(145deg,#FFD700,#D4AF37)'};border:2.5px solid #000;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:${v.follow?'#FFD700':'#000'};box-shadow:0 2px 8px rgba(0,0,0,.5)">${v.follow?'✓':'＋'}</div>
+</div>`;
+}else if(prof.avatar && v.isDefault){
+// Mesmo nos videos de exemplo mostra sua foto se tiver
+followBtnHtml=`
+<div style="position:relative;width:68px;height:68px;border-radius:26px;border:3px solid #FFD700;overflow:visible;box-shadow:0 10px 28px rgba(0,0,0,.7)">
+<img src="${prof.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:23px;display:block">
+<div style="position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;background:${v.follow?'#000':'linear-gradient(145deg,#FFD700,#D4AF37)'};border:2.5px solid #000;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:${v.follow?'#FFD700':'#000'}">${v.follow?'✓':'＋'}</div>
+</div>`;
+}else{
+followBtnHtml=`<div class="btn ${v.follow?'followed':''}">${v.follow?'✓':'＋'}</div>`;
+}
+
+let avatarMini = prof.avatar &&!v.isDefault? `<img src="${prof.avatar}" style="width:34px;height:34px;border-radius:50%;border:2px solid #D4AF37;object-fit:cover">` : '';
 document.getElementById('stage').innerHTML=`
 ${media}<div class="grad"></div>
-<div class="top"><div class="pill">Seguindo</div><div class="pill on">BARRA GOLD ✨</div><div class="pill">🔍</div></div>
+<div class="top"><div class="pill">Seguindo</div><div class="pill on">FOTO NO SEGUIR ✨</div><div class="pill">🔍</div></div>
 <div class="del ${!v.isDefault?'on':''}" onclick="WORK.delCur()">🗑️ Apagar</div>
 <div class="actions">
 <div class="act" onclick="WORK.like(this)"><div class="btn ${v.liked?'liked':''}">${v.liked?'❤️':'♡'}</div><div class="cnt">${this.fmt(v.likes)}</div></div>
 <div class="act" onclick="WORK.comment(this)"><div class="btn">💬</div><div class="cnt">${this.fmt(v.com)}</div></div>
 <div class="act" onclick="WORK.share(this)"><div class="btn">↗</div><div class="cnt">${this.fmt(v.share)}</div></div>
-<div class="act" onclick="WORK.follow(this)"><div class="btn ${v.follow?'followed':''}">${v.follow?'✓':'＋'}</div><div class="cnt">${v.follow?'Seguindo':'Seguir'}</div></div>
-<div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.openCam('live')"><div class="btn live">●</div><div class="cnt">LIVE</div></div>
+<div class="act" onclick="WORK.follow(this)">${followBtnHtml}<div class="cnt" style="margin-top:10px">${v.follow?'Seguindo':'Seguir'}</div></div>
+<div class="act" onclick="WORK.mexe(this.querySelector('.btn'));WORK.openCam('live')"><div class="btn" style="background:linear-gradient(145deg,#ff4d6d,#ff0a42,#900)">●</div><div class="cnt">LIVE</div></div>
 </div>
-<div class="meta"><div class="user">${v.user} ${!v.isDefault?'<span class="own">BARRA GOLD</span>':''}</div><div class="desc">${v.desc}</div><div class="sound">♫ ${v.sound}</div></div>
+<div class="meta">
+<div class="user">${avatarMini} ${!v.isDefault && prof.nick? '@'+prof.nick : v.user} ${!v.isDefault?'<span class="own">EU</span>':''} ${prof.age&&!v.isDefault?'<span style="background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.25);padding:3px 8px;border-radius:20px;font-size:10px;color:#D4AF37">'+prof.age+' anos</span>':''}</div>
+<div class="desc">${!v.isDefault && prof.bio? prof.bio : v.desc}</div>
+<div class="sound">♫ ${v.sound} ${prof.name&&!v.isDefault?' • '+prof.name:''}</div>
+</div>
 `;
 let vd=document.getElementById('vid');if(vd){vd.addEventListener('timeupdate',()=>{let p=document.getElementById('prog');if(p&&vd.duration) p.style.width=(vd.currentTime/vd.duration*100)+'%'});vd.play().catch(()=>{})}
 },
-like(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];v.liked=!v.liked;v.likes=v.liked?v.likes+1:v.likes-1;this.render();this.toast(v.liked?'❤️ BARRA GOLD!':'💔')},
-comment(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];let c=prompt(`💬 Comentários (${v.com}):`);if(c){v.com++;this.render();this.toast('💬 GOLD!')}},
-share(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];if(navigator.share) navigator.share({title:'WORK BARRA GOLD',text:v.desc,url:location.href});else navigator.clipboard.writeText(location.href).then(()=>this.toast('🔗 BARRA GOLD!'));v.share++;this.render()},
-follow(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];v.follow=!v.follow;this.render();this.toast(v.follow?'👑 BARRA GOLD!':'❌')},
-delCur(){let v=this.videos[this.cur];if(v.isDefault) return this.toast('Exemplo');if(!confirm('Apagar?'))return;this.del(v.id).then(()=>{this.videos.splice(this.cur,1);if(this.cur>=this.videos.length) this.cur=this.videos.length-1;if(this.cur<0) this.cur=0;this.render()})},
+like(el){let b=el.querySelector('.btn');this.mexe(b);let v=this.videos[this.cur];v.liked=!v.liked;v.likes=v.liked?v.likes+1:v.likes-1;this.render()},
+comment(el){let v=this.videos[this.cur];let c=prompt(`💬 Comentários (${v.com}):`);if(c){v.com++;this.render()}},
+share(el){let v=this.videos[this.cur];if(navigator.share) navigator.share({title:'WORK',text:v.desc,url:location.href});else navigator.clipboard.writeText(location.href).then(()=>this.toast('🔗 Copiado!'));v.share++;this.render()},
+follow(el){this.mexe(el);let v=this.videos[this.cur];v.follow=!v.follow;this.render();this.toast(v.follow?'👑 Seguindo sua foto!':'❌')},
+delCur(){let v=this.videos[this.cur];if(v.isDefault) return;if(!confirm('Apagar?'))return;this.del(v.id).then(()=>{this.videos.splice(this.cur,1);if(this.cur>=this.videos.length) this.cur=this.videos.length-1;if(this.cur<0) this.cur=0;this.render()})},
 openCam(m){this.mode=m;this.setMode(m);document.getElementById('cam').classList.add('on');navigator.mediaDevices.getUserMedia({video:{facingMode:this.facing,width:{ideal:720},height:{ideal:1280}},audio:true}).then(s=>{this.stream=s;document.getElementById('camEl').srcObject=s;document.getElementById('camEl').play()}).catch(()=>alert('Permita câmera'))},
 closeCam(){if(this.rec) this.stop();if(this.stream){this.stream.getTracks().forEach(t=>t.stop());this.stream=null}document.getElementById('cam').classList.remove('on')},
 setMode(m){this.mode=m;document.getElementById('mV').classList.toggle('on',m==='video');document.getElementById('mL').classList.toggle('on',m==='live')},
 flip(){this.facing=this.facing==='user'?'environment':'user';if(this.stream) this.stream.getTracks().forEach(t=>t.stop());navigator.mediaDevices.getUserMedia({video:{facingMode:this.facing},audio:true}).then(s=>{this.stream=s;document.getElementById('camEl').srcObject=s})},
-press(){if(this.mode==='live'){this.toast('🔴 LIVE BARRA GOLD 30min!');return}if(!this.rec) this.start(); else this.stop()},
-start(){
-if(!this.stream) return;
-this.chunks=[];let mime='';if(MediaRecorder.isTypeSupported('video/mp4')) mime='video/mp4';let o=mime?{mimeType:mime}:{};try{this.recorder=new MediaRecorder(this.stream,o)}catch{this.recorder=new MediaRecorder(this.stream)}
+press(){if(this.mode==='live'){this.toast('🔴 LIVE!');return}if(!this.rec) this.start(); else this.stop()},
+start(){if(!this.stream) return;this.chunks=[];let mime='';if(MediaRecorder.isTypeSupported('video/mp4')) mime='video/mp4';let o=mime?{mimeType:mime}:{};try{this.recorder=new MediaRecorder(this.stream,o)}catch{this.recorder=new MediaRecorder(this.stream)}
 this.recorder.ondataavailable=e=>{if(e.data.size>0) this.chunks.push(e.data)};
-this.recorder.onstop=async ()=>{let blob=new Blob(this.chunks,{type:this.recorder.mimeType||'video/webm'});let url=URL.createObjectURL(blob);let obj={id:Date.now(),user:"@voce.barragold",desc:"Vídeo BARRA DOURADA WORK 👑",img:url,blob:blob,blobUrl:url,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:this.sec,isDefault:false,sound:"BARRA GOLD"};await this.save(obj);this.videos.unshift(obj);this.cur=0;this.closeCam();this.render();this.toast(`👑 BARRA GOLD ${this.sec}s salvo!`)};
-this.recorder.start(100);this.rec=true;this.sec=0;
-document.getElementById('rec').classList.add('on');document.getElementById('timer').classList.add('on');
-this.inter=setInterval(()=>{this.sec++;let mm=String(Math.floor(this.sec/60)).padStart(2,'0'), ss=String(this.sec%60).padStart(2,'0');document.getElementById('timer').innerText=`${mm}:${ss} / 01:30`;if(this.sec>=90) this.stop()},1000);
-},
+this.recorder.onstop=async ()=>{let blob=new Blob(this.chunks,{type:this.recorder.mimeType||'video/webm'});let url=URL.createObjectURL(blob);let obj={id:Date.now(),user:"@voce",desc:this.profile.bio||"Vídeo com foto no SEGUIR 👑",img:url,blob:blob,blobUrl:url,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:this.sec,isDefault:false,sound:this.profile.name||"EU"};await this.save(obj);this.videos.unshift(obj);this.cur=0;this.closeCam();this.render();this.toast(`👑 ${this.sec}s com sua foto no SEGUIR!`)};
+this.recorder.start(100);this.rec=true;this.sec=0;document.getElementById('rec').classList.add('on');document.getElementById('timer').classList.add('on');this.inter=setInterval(()=>{this.sec++;let mm=String(Math.floor(this.sec/60)).padStart(2,'0'), ss=String(this.sec%60).padStart(2,'0');document.getElementById('timer').innerText=`${mm}:${ss} / 01:30`;if(this.sec>=90) this.stop()},1000);},
 stop(){if(!this.rec) return;clearInterval(this.inter);this.rec=false;document.getElementById('rec').classList.remove('on');if(this.recorder) this.recorder.stop()},
 pick(){document.getElementById('file').click()},
-my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length;document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:22px;overflow:hidden;border:1.5px solid rgba(212,175,55,.22)"><video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted></video><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);padding:10px"><p style="font-size:9px;font-weight:900;color:#D4AF37">${v.duration||''}s • BARRA GOLD</p></div></div>`).join('')||'<p style="color:#666;text-align:center">Nenhum vídeo</p>';document.getElementById('listM').classList.add('on')})},
+my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length;document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:22px;overflow:hidden;border:1.5px solid rgba(212,175,55,.22)"><video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted></video></div>`).join('')||'<p style="color:#666;text-align:center">Nenhum</p>';document.getElementById('listM').classList.add('on')})},
 closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
 };
-document.getElementById('file').addEventListener('change',e=>{
-let f=e.target.files[0];if(!f||!f.type.startsWith('video/')) return;
-let u=URL.createObjectURL(f);let tv=document.createElement('video');tv.preload='metadata';tv.src=u;
-tv.onloadedmetadata=async ()=>{let d=Math.round(tv.duration||0);if(d>90){WORK.toast(`Muito longo ${d}s`);return}let o={id:Date.now(),user:"@voce.barragold",desc:"Vídeo BARRA GOLD da galeria 👑",img:u,blob:f,blobUrl:u,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:d,isDefault:false,sound:"BARRA GOLD"};await WORK.save(o);WORK.videos.unshift(o);WORK.cur=0;WORK.closeM();WORK.closeCam();WORK.render();WORK.toast(`👑 BARRA GOLD ${d}s salvo!`)};
-});
-WORK.loadSaved();
+document.getElementById('file').addEventListener('change',e=>{let f=e.target.files[0];if(!f||!f.type.startsWith('video/')) return;let u=URL.createObjectURL(f);let tv=document.createElement('video');tv.preload='metadata';tv.src=u;tv.onloadedmetadata=async ()=>{let d=Math.round(tv.duration||0);if(d>90){WORK.toast(`Longo ${d}s`);return}let o={id:Date.now(),user:"@voce",desc:WORK.profile.bio||"Vídeo PERFIL",img:u,blob:f,blobUrl:u,likes:0,liked:false,com:0,share:0,follow:false,type:"video",duration:d,isDefault:false,sound:WORK.profile.name||"EU"};await WORK.save(o);WORK.videos.unshift(o);WORK.cur=0;WORK.closeM();WORK.closeCam();WORK.render()};});
+document.getElementById('fileAvatar').addEventListener('change',e=>{let f=e.target.files[0];if(!f||!f.type.startsWith('image/')) return;let r=new FileReader();r.onload=ev=>{let b64=ev.target.result;WORK.profile.avatar=b64;document.getElementById('avatarBox').innerHTML=`<img src="${b64}">`;document.getElementById('icoEu').innerHTML=`<img src="${b64}" style="width:28px;height:28px;border-radius:50%;border:1.5px solid #FFD700;object-fit:cover">`;localStorage.setItem('work_profile',JSON.stringify(WORK.profile));WORK.toast('📸 Foto no botão SEGUIR!');WORK.render()};r.readAsDataURL(f);});
+WORK.loadSaved();WORK.loadProfile();
 let sy=0;document.addEventListener('touchstart',e=>sy=e.touches[0].clientY,{passive:true});
 document.addEventListener('touchend',e=>{if(document.getElementById('cam').classList.contains('on'))return;if(document.querySelector('.modal.on'))return;let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0&&WORK.cur<WORK.videos.length-1) WORK.cur++;if(d<0&&WORK.cur>0) WORK.cur--;WORK.render()}},{passive:true});
 </script>
