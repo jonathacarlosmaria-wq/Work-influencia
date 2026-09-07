@@ -2,113 +2,153 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>WORK INFLUÊNCIA</title>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;height:100dvh;overflow:hidden}
-#splash{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 130%,#2a1200 0%,#0f0600 30%,#000 70%);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.wrap{position:relative;text-align:center}
-.t{font-family:'Anton',sans-serif;font-size:62px;line-height:.88}
-.w{animation:w8 8s forwards}.i{margin-top:8px;animation:i8 8s forwards}
-@keyframes w8{0%{color:#FF0000;text-shadow:0 2px 0 #8B0000,0 0 20px red,0 0 80px red;transform:scale(.45);opacity:0}12%{opacity:1;transform:scale(1.05)}28%{transform:scale(1.2)}100%{background:linear-gradient(100deg,#B8941F,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transform:scale(1.35);background-position:400% center;filter:drop-shadow(0 0 30px gold)}}
-@keyframes i8{0%{color:#3a0000;opacity:0;transform:scale(.45)}22%{opacity:1}100%{background:linear-gradient(105deg,#D4AF37,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transform:scale(1.4);background-position:400% center}}
-.fire{position:absolute;bottom:-35px;left:-25px;right:-25px;height:90px;background:linear-gradient(to top,#8B0000,#FF0000 20%,#FF4500 40%,#FF8C00 60%,#FFD700 80%,transparent);filter:blur(11px);mix-blend-mode:screen;opacity:0;animation:fire8 8s forwards}
-@keyframes fire8{0%,22%{opacity:0}32%{opacity:1;transform:scaleY(1.4)}100%{opacity:.3}}
-.embers{position:absolute;inset:0;pointer-events:none}.emb{position:absolute;width:4px;height:4px;background:radial-gradient(circle,#FFD700,#FF4500);border-radius:50%;animation:up 1.3s linear infinite}
-@keyframes up{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-240px) translateX(var(--x)) scale(0);opacity:0}}
-.sub{margin-top:30px;font-family:Montserrat;color:#D4AF37;letter-spacing:12px;font-size:11px;font-weight:900;opacity:0;animation:sub8 8s forwards}
-@keyframes sub8{0%,86%{opacity:0}100%{opacity:1}}
-.app{height:100dvh;display:flex;flex-direction:column;opacity:0;background:#000}
-.topbar{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #151515;color:#fff}
-.logo{font-weight:900;font-size:18px;font-family:Montserrat}.logo span{color:#D4AF37}
-.saldo{border:1px solid #D4AF37;color:#D4AF37;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700}
-.feed{flex:1;position:relative;overflow:hidden;background:#0a0a0a}
-.video-bg-img{position:absolute;inset:0;background-size:cover;background-position:center}
-.overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,transparent 60%)}
-.right-actions{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:18px;z-index:2;color:#fff}
-.action{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:12px;font-weight:700;font-family:Montserrat;cursor:pointer}
-.icon{width:52px;height:52px;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid rgba(212,175,55,.2);transition:.2s}
-.icon.liked{background:#ff1744;color:#fff;border-color:#ff1744;box-shadow:0 0 20px #ff1744}
-.bottom-info{position:absolute;left:16px;right:84px;bottom:16px;z-index:2;color:#fff;font-family:Montserrat}
-.u{font-size:17px;font-weight:900}.d{font-size:13px;margin:4px 0}.h{color:#D4AF37;font-size:12px}
-.bottom-nav{height:60px;background:#000;border-top:1px solid #151515;display:flex;justify-content:space-around;align-items:center}
-.nav{color:#555;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;font-family:Montserrat;font-weight:700;cursor:pointer;padding:6px 14px;border-radius:12px}
-.nav.active{color:#D4AF37;background:rgba(212,175,55,.1)}.nav b{font-size:20px}
-.add{width:38px;height:26px;background:#D4AF37;border-radius:8px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;flex-direction:column}
-.modal.active{display:flex}
-.mhead{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #222;color:#fff;font-family:Montserrat;font-weight:900}
-.mbody{flex:1;overflow:auto;padding:18px}
-.card{background:#111;border:1px solid #222;border-radius:16px;padding:16px;margin-bottom:14px;color:#fff;font-family:Montserrat}
-input,textarea{background:#000;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;width:100%;margin-bottom:10px;font-family:Montserrat}
-button.main{background:linear-gradient(90deg,#D4AF37,#B8941F);border:none;padding:14px;border-radius:12px;font-weight:900;width:100%;color:#000;font-family:Montserrat;cursor:pointer}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#000;height:100dvh;overflow:hidden;font-family:Montserrat,sans-serif}
+#splash{position:fixed;inset:0;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.t{font-family:Anton,sans-serif;font-size:62px;line-height:.9}
+.w{animation:w8 8s forwards}.i{animation:i8 8s forwards;margin-top:8px}
+@keyframes w8{0%{color:red;transform:scale(.4);opacity:0}20%{opacity:1;transform:scale(1.1)}50%{color:orange}100%{background:linear-gradient(100deg,#D4AF37,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;transform:scale(1.3);background-position:400% 0}}
+@keyframes i8{0%{color:#400;opacity:0}30%{opacity:1;color:gold}100%{background:linear-gradient(100deg,#D4AF37,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;transform:scale(1.3);background-position:400% 0}}
+.fire{position:absolute;bottom:-30px;left:0;right:0;height:80px;background:linear-gradient(to top,red,orange,gold,transparent);filter:blur(10px);opacity:0;animation:f8 8s forwards}
+@keyframes f8{30%{opacity:1;transform:scaleY(1.4)}100%{opacity:0}}
+.sub{margin-top:30px;color:#D4AF37;letter-spacing:10px;font-size:11px;font-weight:900;opacity:0;animation:s8 8s forwards}
+@keyframes s8{85%{opacity:0}100%{opacity:1}}
+.app{height:100dvh;display:flex;flex-direction:column;opacity:0}
+.topbar{height:52px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;border-bottom:1px solid #222;color:#fff;background:#000;z-index:10}
+.logo{font-weight:900}.logo span{color:#D4AF37}
+.saldo{border:1px solid #D4AF37;color:#D4AF37;padding:6px 14px;border-radius:20px;font-size:13px}
+.feed{flex:1;position:relative;background:#111;overflow:hidden}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;pointer-events:none}
+.ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 60%);pointer-events:none}
+.right{position:absolute;right:12px;bottom:110px;display:flex;flex-direction:column;gap:16px;z-index:20}
+.btn{width:52px;height:52px;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid rgba(212,175,55,.3);cursor:pointer}
+.btn:active{transform:scale(.9)}
+.count{font-size:11px;font-weight:900;text-align:center;color:#fff;margin-top:4px}
+.info{position:absolute;left:16px;right:85px;bottom:16px;z-index:20;color:#fff;pointer-events:none}
+.info.u{font-weight:900;font-size:16px}.info.d{font-size:13px;margin:4px 0}.info.h{color:#D4AF37;font-size:12px}
+.bottom{height:62px;background:#000;border-top:1px solid #222;display:flex;justify-content:space-around;align-items:center;z-index:30}
+.tab{color:#666;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:8px 16px;border-radius:10px}
+.tab.active{color:#D4AF37;background:rgba(212,175,55,.12)}.tab b{font-size:20px}
+.add{width:40px;height:28px;background:#D4AF37;border-radius:8px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:100;display:none;flex-direction:column}
+.modal.on{display:flex}
+.mh{height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;border-bottom:1px solid #222;color:#fff;font-weight:900}
+.mb{flex:1;overflow:auto;padding:16px}
+.card{background:#151515;border:1px solid #222;border-radius:14px;padding:14px;margin-bottom:12px;color:#fff}
+input,textarea{width:100%;background:#000;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;margin-bottom:10px;font-family:Montserrat}
+button.main{width:100%;background:linear-gradient(90deg,#D4AF37,#B8941F);border:none;padding:14px;border-radius:12px;font-weight:900;color:#000}
 button.sec{background:#222;color:#fff}
-.comment{border-bottom:1px solid #1a1a1a;padding:10px 0;display:flex;gap:10px}
-.cav{width:32px;height:32px;background:#D4AF37;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px}
-.explore-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ex-card{aspect-ratio:3/4;background-size:cover;background-position:center;border-radius:14px;position:relative;overflow:hidden;cursor:pointer;border:1px solid #222}
-.ex-card span{position:absolute;bottom:8px;left:8px;font-size:11px;font-weight:900;background:rgba(0,0,0,.6);padding:4px 8px;border-radius:20px}
+.comment{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #222}
+.ava{width:32px;height:32px;background:#D4AF37;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px;flex-shrink:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gcard{aspect-ratio:3/4;background-size:cover;background-position:center;border-radius:12px;border:1px solid #222;position:relative}
+.gcard span{position:absolute;bottom:6px;left:6px;background:rgba(0,0,0,.7);padding:4px 8px;border-radius:20px;font-size:10px;font-weight:900}
 </style>
 </head>
 <body>
-<div id="splash"><div class="wrap"><div class="t w">WORK</div><div class="fire"></div><div class="t i">INFLUÊNCIA</div><div class="embers" id="embers"></div></div><div class="sub">PREMIUM</div></div>
+<div id="splash"><div style="position:relative;text-align:center"><div class="t w">WORK</div><div class="fire"></div><div class="t i" style="color:gold">INFLUÊNCIA</div></div><div class="sub">PREMIUM</div></div>
+
 <div class="app" id="app">
-<div class="topbar"><div class="logo">★ WORK <span>INFLUÊNCIA</span></div><div class="saldo" id="saldoTop">R$ 40,80</div></div>
+<div class="topbar"><div class="logo">★ WORK <span>INFLUÊNCIA</span></div><div class="saldo">R$ 40,80</div></div>
 <div class="feed" id="feed"></div>
-<div class="bottom-nav">
-<div class="nav active" onclick="goTab('inicio')"><b>⌂</b>Início</div>
-<div class="nav" onclick="goTab('explorar')"><b>◎</b>Explorar</div>
-<div class="nav" onclick="openCreate()"><div class="add">+</div></div>
-<div class="nav" onclick="openWallet()"><b>◧</b>Carteira</div>
-<div class="nav" onclick="openPerfil()"><b>◉</b>Perfil</div>
+<div class="bottom">
+<div class="tab active" id="tInicio" onclick="tabInicio()"><b>⌂</b>Início</div>
+<div class="tab" id="tExp" onclick="tabExplorar()"><b>◎</b>Explorar</div>
+<div class="tab" onclick="tabCriar()"><div class="add">+</div></div>
+<div class="tab" onclick="tabCarteira()"><b>◧</b>Carteira</div>
+<div class="tab" onclick="tabPerfil()"><b>◉</b>Perfil</div>
 </div>
 </div>
 
-<div class="modal" id="perfilModal"><div class="mhead"><span>PERFIL</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="card" style="text-align:center"><div style="width:86px;height:86px;background:#D4AF37;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:38px;color:#000;font-weight:900">U</div><p style="font-weight:900">@usuario.teste</p><p style="color:#D4AF37;margin:10px 0;font-size:22px;font-weight:900">R$ 40,80</p><br><input id="pass" type="password" placeholder="admin123"><button class="main" onclick="checkAdmin()">ADMIN</button><br><br><button class="main sec" onclick="closeAll()">VOLTAR</button></div></div></div>
-<div class="modal" id="adminModal"><div class="mhead"><span>ADMIN</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="card"><input id="vU" placeholder="@usuario"><input id="vD" placeholder="Descrição"><input id="vH" placeholder="#hashtag"><input id="vI" placeholder="Link imagem"><button class="main" onclick="addVideo()">PUBLICAR</button></div><div class="card"><input id="nS" placeholder="Novo saldo ex: 40,80"><button class="main" onclick="updateSaldo()">ATUALIZAR SALDO</button></div><button class="main sec" onclick="closeAll()">FECHAR</button></div></div>
-<div class="modal" id="commentModal"><div class="mhead"><span>COMENTÁRIOS</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div id="commentList"></div><div class="card"><input id="cInput" placeholder="Escreva um comentário..."><button class="main" onclick="sendComment()">ENVIAR</button></div></div></div>
-<div class="modal" id="walletModal"><div class="mhead"><span>CARTEIRA</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="card" style="text-align:center"><p style="color:#888;font-size:12px">SALDO</p><p id="walletSaldo" style="font-size:36px;font-weight:900;color:#D4AF37;margin:10px 0">R$ 40,80</p><button class="main sec" onclick="closeAll()">VOLTAR</button></div></div></div>
-<div class="modal" id="exploreModal"><div class="mhead"><span>EXPLORAR</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="explore-grid" id="exploreGrid"></div></div></div>
-<div class="modal" id="createModal"><div class="mhead"><span>NOVO VÍDEO</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="card"><input id="crU" placeholder="@seu usuário"><textarea id="crD" placeholder="Descrição" rows="3"></textarea><input id="crH" placeholder="#hashtag"><input id="crI" placeholder="Link imagem"><button class="main" onclick="createVideo()">POSTAR</button></div></div></div>
+<div class="modal" id="mComment"><div class="mh"><span>COMENTÁRIOS</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div id="listC"></div><div class="card"><input id="inC" placeholder="Escreva..."><button class="main" onclick="enviarC()">ENVIAR</button></div></div></div>
+<div class="modal" id="mPerfil"><div class="mh"><span>PERFIL</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div class="card" style="text-align:center"><div style="width:80px;height:80px;background:#D4AF37;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:32px;color:#000;font-weight:900">U</div><b>@usuario.teste</b><p style="color:#D4AF37;margin:8px 0">R$ 40,80</p><input id="senha" type="password" placeholder="admin123"><button class="main" onclick="entrarAdmin()">ADMIN</button><br><br><button class="main sec" onclick="closeM()">VOLTAR</button></div></div></div>
+<div class="modal" id="mAdmin"><div class="mh"><span>ADMIN</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div class="card"><input id="aU" placeholder="@usuario"><input id="aD" placeholder="Descrição"><input id="aH" placeholder="#hashtag"><input id="aI" placeholder="Link imagem"><button class="main" onclick="publicar()">PUBLICAR VÍDEO</button></div><div class="card"><input id="aS" placeholder="Novo saldo"><button class="main" onclick="mudarSaldo()">ATUALIZAR SALDO</button></div><button class="main sec" onclick="closeM()">FECHAR</button></div></div>
+<div class="modal" id="mWallet"><div class="mh"><span>CARTEIRA</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div class="card" style="text-align:center"><p>SALDO</p><p style="font-size:32px;color:#D4AF37;font-weight:900" id="sWallet">R$ 40,80</p></div></div></div>
+<div class="modal" id="mExplore"><div class="mh"><span>EXPLORAR</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div class="grid" id="gridE"></div></div></div>
+<div class="modal" id="mCreate"><div class="mh"><span>CRIAR</span><span onclick="closeM()" style="font-size:28px">×</span></div><div class="mb"><div class="card"><input id="cU" placeholder="@seu usuario"><textarea id="cD" placeholder="Descrição" rows="3"></textarea><input id="cH" placeholder="#hashtag"><input id="cI" placeholder="Link imagem"><button class="main" onclick="criarV()">POSTAR</button></div></div></div>
 
 <script>
 let videos=[
-{user:"@mariana.influ",desc:"Dica de ouro para ganhar pontos hoje!",hash:"#workinfluencia",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:1243,com:89,gift:12,share:34,liked:false,comments:[{u:"@joao",t:"Top!"}]},
-{user:"@joao.influ",desc:"Como consegui crescer no app",hash:"#work",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:890,com:45,gift:8,share:22,liked:false,comments:[]}
+{user:"@mariana.influ",desc:"Dica de ouro para ganhar pontos",hash:"#workinfluencia",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:1243,liked:false,com:2,gift:12,share:34,comments:[{u:"@joao",t:"Top!"},{u:"@ana",t:"Como faz?"}]},
+{user:"@joao.influ",desc:"Como crescer rápido aqui",hash:"#dicas",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:890,liked:false,com:1,gift:8,share:22,comments:[{u:"@maria",t:"Ensina"}]}
 ];
 let cur=0;
-function fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':n}
+let saldo="40,80";
+
 function render(){
 let v=videos[cur];
-document.getElementById('feed').innerHTML=`<div class="video-bg-img" style="background-image:url('${v.img}')"></div><div class="overlay"></div>
-<div class="right-actions">
-<div class="action" onclick="like()"><div class="icon ${v.liked?'liked':''}">${v.liked?'♥':'♡'}</div><span>${fmt(v.likes)}</span></div>
-<div class="action" onclick="openComments()"><div class="icon">💬</div>${fmt(v.com)}</div>
-<div class="action" onclick="gift()"><div class="icon">🎁</div>${fmt(v.gift)}</div>
-<div class="action" onclick="shareVideo()"><div class="icon">↗</div>${fmt(v.share)}</div>
+document.getElementById('feed').innerHTML=`
+<div class="bg" style="background-image:url('${v.img}')"></div>
+<div class="ov"></div>
+<div class="right">
+<div onclick="curtir()"><div class="btn" id="btnLike" style="${v.liked?'background:#ff1744;color:#fff':''}">${v.liked?'♥':'♡'}</div><div class="count">${v.likes}</div></div>
+<div onclick="abrirComent()"><div class="btn">💬</div><div class="count">${v.com}</div></div>
+<div onclick="presente()"><div class="btn">🎁</div><div class="count">${v.gift}</div></div>
+<div onclick="compartilhar()"><div class="btn">↗</div><div class="count">${v.share}</div></div>
 </div>
-<div class="bottom-info"><div class="u">${v.user}</div><div class="d">${v.desc}</div><div class="h">${v.hash}</div></div>`;
+<div class="info"><div class="u">${v.user}</div><div class="d">${v.desc}</div><div class="h">${v.hash}</div></div>
+`;
 }
-setTimeout(()=>{document.getElementById('splash').style.transition='opacity 1.2s';document.getElementById('splash').style.opacity='0';setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('app').style.opacity='1';document.getElementById('app').style.transition='opacity.8s';render()},1200)},8000);
+setTimeout(()=>{let s=document.getElementById('splash');s.style.transition='opacity 1s';s.style.opacity='0';setTimeout(()=>{s.style.display='none';document.getElementById('app').style.opacity='1';document.getElementById('app').style.transition='opacity.6s';render()},1000)},8000);
 
-function like(){let v=videos[cur];if(!v.liked){v.likes++;v.liked=true}else{v.likes--;v.liked=false}render()}
-function openComments(){let v=videos[cur];document.getElementById('commentList').innerHTML=v.comments.map(c=>`<div class="comment"><div class="cav">${c.u[1].toUpperCase()}</div><div><b style="font-size:13px">${c.u}</b><p style="font-size:13px;color:#ccc">${c.t}</p></div></div>`).join('')||'<p style="color:#666;text-align:center;padding:20px">Seja o primeiro!</p>';document.getElementById('commentModal').classList.add('active')}
-function sendComment(){let i=document.getElementById('cInput');if(!i.value.trim())return;videos[cur].comments.push({u:"@usuario.teste",t:i.value});videos[cur].com++;i.value='';openComments();render()}
-function gift(){videos[cur].gift++;alert('🎁 Presente enviado para '+videos[cur].user);render()}
-function shareVideo(){videos[cur].share++;if(navigator.share){navigator.share({title:'WORK',text:videos[cur].desc,url:location.href}).catch(()=>{})}else{alert('Link copiado: '+location.href)}render()}
-function goTab(t){if(t==='inicio'){closeAll();render()}if(t==='explorar'){document.getElementById('exploreGrid').innerHTML=videos.map((v,i)=>`<div class="ex-card" style="background-image:url('${v.img}')" onclick="cur=${i};closeAll();render()"><span>${v.user}</span></div>`).join('');document.getElementById('exploreModal').classList.add('active')}}
-function openCreate(){document.getElementById('createModal').classList.add('active')}
-function createVideo(){let u=document.getElementById('crU').value||'@usuario.teste';let d=document.getElementById('crD').value||'Novo vídeo!';let h=document.getElementById('crH').value||'#work';let im=document.getElementById('crI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,com:0,gift:0,share:0,liked:false,comments:[]});cur=0;closeAll();render()}
-function openWallet(){document.getElementById('walletModal').classList.add('active')}
-function openPerfil(){document.getElementById('perfilModal').classList.add('active')}
-function checkAdmin(){if(document.getElementById('pass').value==='admin123'){closeAll();document.getElementById('adminModal').classList.add('active')}else alert('Senha: admin123')}
-function addVideo(){let u=document.getElementById('vU').value||'@novo';let d=document.getElementById('vD').value||'Novo';let h=document.getElementById('vH').value||'#work';let im=document.getElementById('vI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,com:0,gift:0,share:0,liked:false,comments:[]});cur=0;closeAll();render()}
-function updateSaldo(){let ns=document.getElementById('nS').value;if(ns){document.getElementById('saldoTop').innerText='R$ '+ns;closeAll()}}
-function closeAll(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('active'))}
-let sy=0;document.addEventListener('touchstart',e=>sy=e.touches[0].clientY);document.addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>70 &&!document.querySelector('.modal.active')){if(d>0&&cur<videos.length-1)cur++;if(d<0&&cur>0)cur--;render()}});
-let em=document.getElementById('embers');for(let i=0;i<35;i++){let s=document.createElement('div');s.className='emb';s.style.left=Math.random()*100+'%';s.style.bottom=Math.random()*35+'%';s.style.animationDelay=Math.random()*3+'s';s.style.animationDuration=(0.9+Math.random()*1.2)+'s';s.style.setProperty('--x',(Math.random()*100-60)+'px');em.appendChild(s)}
+function curtir(){
+let v=videos[cur];
+if(!v.liked){v.likes++;v.liked=true}else{v.likes--;v.liked=false}
+render();
+}
+function abrirComent(){
+let v=videos[cur];
+document.getElementById('listC').innerHTML=v.comments.map(c=>`<div class="comment"><div class="ava">${c.u[1].toUpperCase()}</div><div><b style="font-size:13px">${c.u}</b><p style="font-size:13px;color:#ccc">${c.t}</p></div></div>`).join('')||'<p style="color:#666;text-align:center">Nenhum comentário</p>';
+document.getElementById('mComment').classList.add('on');
+}
+function enviarC(){
+let i=document.getElementById('inC');if(!i.value.trim())return;
+videos[cur].comments.push({u:"@usuario.teste",t:i.value});videos[cur].com++;i.value='';abrirComent();render();
+}
+function presente(){
+videos[cur].gift++;
+alert('🎁 Presente enviado para '+videos[cur].user);
+render();
+}
+function compartilhar(){
+videos[cur].share++;
+alert('Link copiado: '+location.href+'\nCompartilhe com seus amigos!');
+render();
+}
+function tabInicio(){closeM();render();setActive('tInicio')}
+function tabExplorar(){
+let g=document.getElementById('gridE');
+g.innerHTML=videos.map((v,i)=>`<div class="gcard" style="background-image:url('${v.img}')" onclick="cur=${i};closeM();render();setActive('tInicio')"><span>${v.user}</span></div>`).join('');
+document.getElementById('mExplore').classList.add('on');setActive('tExp');
+}
+function tabCriar(){document.getElementById('mCreate').classList.add('on')}
+function tabCarteira(){document.getElementById('sWallet').innerText='R$ '+saldo;document.getElementById('mWallet').classList.add('on')}
+function tabPerfil(){document.getElementById('mPerfil').classList.add('on')}
+function entrarAdmin(){if(document.getElementById('senha').value==='admin123'){closeM();document.getElementById('mAdmin').classList.add('on')}else alert('Senha: admin123')}
+function publicar(){
+let u=document.getElementById('aU').value||'@novo';let d=document.getElementById('aD').value||'Novo vídeo';let h=document.getElementById('aH').value||'#work';let im=document.getElementById('aI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';
+videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,liked:false,com:0,gift:0,share:0,comments:[]});cur=0;closeM();render();
+}
+function criarV(){
+let u=document.getElementById('cU').value||'@usuario.teste';let d=document.getElementById('cD').value||'Meu vídeo novo';let h=document.getElementById('cH').value||'#work';let im=document.getElementById('cI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';
+videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,liked:false,com:0,gift:0,share:0,comments:[]});cur=0;closeM();render();
+}
+function mudarSaldo(){let ns=document.getElementById('aS').value;if(ns){saldo=ns;document.querySelectorAll('.saldo').forEach(e=>e.innerText='R$ '+saldo);closeM()}}
+function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
+function setActive(id){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active')}
+
+// swipe
+let sy=0;
+document.addEventListener('touchstart',e=>sy=e.touches[0].clientY);
+document.addEventListener('touchend',e=>{
+if(document.querySelector('.modal.on'))return;
+let d=sy-e.changedTouches[0].clientY;
+if(Math.abs(d)>60){if(d>0&&cur<videos.length-1)cur++;if(d<0&&cur>0)cur--;render()}
+});
 </script>
 </body>
 </html>
