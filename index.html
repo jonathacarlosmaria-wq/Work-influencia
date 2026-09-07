@@ -3,72 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WORK - LIBERDADE TOTAL</title>
+<title>WORK - GALERIA FIX</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#000;height:100dvh;overflow:hidden;font-family:Arial;color:#fff}
 .app{height:100dvh;display:flex;flex-direction:column}
-.feed{flex:1;position:relative;background:#111}
+.feed{flex:1;position:relative;background:#111;overflow:hidden}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
-.vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
 .ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 60%);pointer-events:none}
-.top-live{position:absolute;top:12px;left:12px;background:red;color:#fff;padding:6px 14px;border-radius:20px;font-weight:900;z-index:10;font-size:12px;display:flex;align-items:center;gap:6px}
-.top-del{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.7);color:#fff;padding:6px 12px;border-radius:20px;font-weight:700;z-index:10;font-size:11px;border:1px solid #555;cursor:pointer;display:none}
+.top-live{position:absolute;top:12px;left:12px;background:red;color:#fff;padding:6px 14px;border-radius:20px;font-weight:900;z-index:10;font-size:12px}
+.top-del{position:absolute;top:12px;right:12px;background:rgba(255,0,0,.9);color:#fff;padding:7px 12px;border-radius:20px;font-weight:700;z-index:10;font-size:11px;display:none}
 .top-del.show{display:block}
-.right{position:absolute;right:8px;bottom:80px;display:flex;flex-direction:column;gap:16px;z-index:10;align-items:center}
-.act{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
-.btn{width:50px;height:50px;background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);transition:transform.15s}
-.btn:active{transform:scale(.68)}
-.btn.live{background:linear-gradient(145deg,#ff0050,#ff2c55);border-color:#ff5a7a;box-shadow:0 6px 20px rgba(255,0,80,.5);animation:pulse 1.2s infinite}
+.right{position:absolute;right:8px;bottom:80px;display:flex;flex-direction:column;gap:12px;z-index:10;align-items:center}
+.act{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}
+.btn{width:48px;height:48px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;backdrop-filter:blur(12px)}
+.btn.live{background:linear-gradient(145deg,#ff0050,#ff2c55);box-shadow:0 6px 20px rgba(255,0,80,.5);animation:pulse 1.2s infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-.count{font-size:11px;font-weight:700;text-shadow:0 1px 6px #000}
+.count{font-size:10px;font-weight:700}
 .info{position:absolute;left:12px;bottom:12px;right:70px;z-index:10}
-.u{font-weight:900;font-size:14px;display:flex;align-items:center;gap:8px}
-.badge-own{background:#D4AF37;color:#000;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:900}
-.d{font-size:13px;margin-top:4px;line-height:1.3}
 .bottom{height:56px;background:#000;border-top:1px solid #222;display:flex;justify-content:space-around;align-items:center}
-.tab{color:#666;font-size:10px;text-align:center;cursor:pointer}.tab.active{color:#fff}
+.tab{color:#666;font-size:10px;text-align:center}.tab.active{color:#fff}
 .plus{width:44px;height:28px;background:#fff;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;position:relative}
 .plus::before{content:'';position:absolute;inset:0;transform:translateX(-3px);background:#25f4ee;border-radius:8px;z-index:-1}
 .plus::after{content:'';position:absolute;inset:0;transform:translateX(3px);background:#fe2c55;border-radius:8px;z-index:-2}
 .plus span{background:#000;color:#fff;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:6px}
-
 #camScreen{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column}
 #camScreen.on{display:flex}
-#camera{width:100%;height:100%;object-fit:cover}
-.cam-top{position:absolute;top:0;left:0;right:0;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 14px;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)}
+#camera{width:100%;height:100%;object-fit:cover;background:#000}
+.cam-top{position:absolute;top:0;left:0;right:0;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 14px;z-index:2}
 .cam-top button{background:rgba(0,0,0,.6);color:#fff;border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:20px;font-weight:700}
-.cam-bottom{position:absolute;bottom:0;left:0;right:0;height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:2;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent)}
+.cam-bottom{position:absolute;bottom:0;left:0;right:0;height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:2;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent)}
 .types{display:flex;gap:10px}.type{padding:8px 16px;border-radius:20px;background:rgba(255,255,255,.15);font-size:12px;font-weight:700;color:#aaa}.type.active{background:#fff;color:#000}
-.controls{display:flex;align-items:center;gap:28px}.ctrl{width:44px;height:44px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.controls{display:flex;align-items:center;gap:28px}.ctrl{width:44px;height:44px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
 .record{width:76px;height:76px;border-radius:50%;border:4px solid #fff;display:flex;align-items:center;justify-content:center}.record div{width:60px;height:60px;background:red;border-radius:50%}.record.rec div{width:28px;height:28px;border-radius:4px}
 .timer{font-size:12px;font-weight:900;background:rgba(255,0,0,.85);padding:5px 12px;border-radius:20px;display:none}.timer.on{display:block}
-
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex}
+.modal{position:fixed;inset:0;background:#000;z-index:1000;display:none;flex-direction:column}.modal.on{display:flex}
 .mh{height:56px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;border-bottom:1px solid #222;font-weight:900}
 .mb{flex:1;overflow:auto;padding:12px}
-.card{background:#151515;border:1px solid #222;border-radius:14px;padding:12px;margin-bottom:10px}
-input,textarea{width:100%;background:#000;border:1px solid #333;color:#fff;padding:10px;border-radius:8px;margin-bottom:8px}
-button.main{width:100%;background:#fff;border:none;padding:12px;border-radius:10px;font-weight:900;color:#000}
+.gal-item{position:relative;aspect-ratio:9/16;background:#111;border-radius:12px;overflow:hidden}
+.gal-item video{width:100%;height:100%;object-fit:cover}
+#status{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.9);padding:16px 24px;border-radius:12px;z-index:2000;display:none;text-align:center;border:1px solid #333}
+#status.on{display:block}
 </style>
 </head>
 <body>
+<div id="status"><p id="statusTxt">Carregando...</p></div>
 <div class="app">
 <div class="feed" id="feed"></div>
 <div class="bottom">
 <div class="tab active">⌂<br>Início</div>
-<div class="tab" onclick="openMyVideos()">◧<br>Meus vídeos</div>
+<div class="tab" onclick="openMy()">◧<br>Meus vídeos</div>
 <div class="tab" onclick="openCam('video')"><div class="plus"><span>+</span></div></div>
-<div class="tab" onclick="openCam('live')" style="color:#888">◉<br>Eu</div>
-<div class="tab" onclick="openMyVideos()">👤<br>Perfil</div>
+<div class="tab" onclick="openCam('live')" style="color:red">●<br>LIVE</div>
+<div class="tab" onclick="openMy()">👤<br>Eu</div>
 </div>
 </div>
 
 <div id="camScreen">
 <video id="camera" autoplay playsinline muted></video>
 <div class="cam-top">
-<button onclick="closeCam()">✕ Fechar</button>
+<button onclick="closeCam()">✕</button>
 <div class="timer" id="camTimer">00:00 / 01:30</div>
-<button onclick="flipCam()">🔄 Virar</button>
+<button onclick="flipCam()">🔄</button>
 </div>
 <div class="cam-bottom">
 <div class="types">
@@ -76,55 +72,63 @@ button.main{width:100%;background:#fff;border:none;padding:12px;border-radius:10
 <div class="type" id="tLive" onclick="setMode('live')">LIVE 30min</div>
 </div>
 <div class="controls">
-<div class="ctrl" onclick="document.getElementById('fileIn').click()">🖼️</div>
+<div class="ctrl" onclick="pickGallery()">🖼️</div>
 <div class="record" id="recBtn" onclick="pressRec()"><div></div></div>
 <div class="ctrl">⚡</div>
 </div>
-<p id="camInfo" style="font-size:10px;color:#aaa">Seus vídeos ficam salvos até você apagar</p>
+<p style="font-size:10px;color:#aaa">Toque 🖼️ pra escolher vídeo da galeria (até 1:30)</p>
 </div>
 </div>
 
-<div class="modal" id="mList"><div class="mh"><span>Meus vídeos - Liberdade total</span><span onclick="closeM()" style="font-size:26px">×</span></div><div class="mb"><div id="myGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px"></div><div class="card" style="margin-top:12px"><p style="font-size:12px;color:#aaa;text-align:center">Você pode postar quantos vídeos quiser (máx 1:30 cada) e apagar quando quiser.<br>Live: 30 min por dia.</p></div></div></div>
-<div class="modal" id="mShare"><div class="mh"><span>Compartilhar</span><span onclick="closeM()" style="font-size:26px">×</span></div><div class="mb"><div class="card"><p style="font-weight:900" id="shareUser">@user</p><p style="font-size:12px;color:#888;margin:6px 0" id="shareDesc"></p><button class="main" onclick="copyLink()">📋 COPIAR LINK</button><button class="main" style="margin-top:8px;background:#25F4EE" onclick="shareWhats()">💬 WHATSAPP</button><button class="main" style="margin-top:8px;background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div></div>
+<div class="modal" id="mList"><div class="mh"><span>Meus vídeos (<span id="countMy">0</span>)</span><span onclick="closeM()" style="font-size:26px">×</span></div><div class="mb"><div id="myGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px"></div><div style="margin-top:16px;text-align:center"><button onclick="pickGallery()" style="background:#fff;color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:900;width:100%">🖼️ ESCOLHER VÍDEO DA GALERIA</button><p style="font-size:10px;color:#666;margin-top:8px">Você tem liberdade total pra postar e apagar</p></div></div></div>
 
-<input type="file" id="fileIn" accept="video/*" style="display:none">
+<input type="file" id="fileIn" accept="video/*,video/mp4,video/quicktime,video/webm" style="display:none">
 
 <script>
+function showStatus(t){document.getElementById('statusTxt').innerText=t;document.getElementById('status').classList.add('on')}
+function hideStatus(){document.getElementById('status').classList.remove('on')}
+
 let db;
-function openDB(){return new Promise((res,rej)=>{let req=indexedDB.open('WorkDB2',1);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{db=e.target.result;res(db)};req.onerror=e=>rej(e)})}
-async function saveDB(o){let d=await openDB();let tx=d.transaction('videos','readwrite');tx.objectStore('videos').put(o)}
+function openDB(){return new Promise((res,rej)=>{let req=indexedDB.open('WorkFinal',1);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{db=e.target.result;res(db)};req.onerror=e=>rej(e)})}
+async function saveDB(o){let d=await openDB();let tx=d.transaction('videos','readwrite');tx.objectStore('videos').put(o);return new Promise(r=>tx.oncomplete=()=>r())}
 async function getAll(){let d=await openDB();return new Promise(r=>{let tx=d.transaction('videos','readonly');let req=tx.objectStore('videos').getAll();req.onsuccess=()=>r(req.result)})}
-async function delDB(id){let d=await openDB();let tx=d.transaction('videos','readwrite');tx.objectStore('videos').delete(id)}
+async function delDB(id){let d=await openDB();let tx=d.transaction('videos','readwrite');tx.objectStore('videos').delete(id);return new Promise(r=>tx.oncomplete=()=>r())}
 
 let videos=[
-{ id:'ex1', user:"@mariana",desc:"Dica de ouro para viralizar 🔥",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:1234,com:12,share:30,follow:false,type:"img", isDefault:true},
-{ id:'ex2', user:"@joao",desc:"Como crescer rápido aqui",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:890,com:5,share:22,follow:false,type:"img", isDefault:true}
+{ id:'ex1', user:"@mariana",desc:"Dica de ouro 🔥",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:1234,com:12,share:30,type:"img", isDefault:true},
+{ id:'ex2', user:"@joao",desc:"Como crescer rápido",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:890,com:5,share:22,type:"img", isDefault:true}
 ];
 let cur=0;
 let stream=null, facing='user', mode='video', recorder=null, chunks=[], recSec=0, recInterval=null, isRec=false;
 
 async function loadSaved(){
+try{
 let saved=await getAll();
 if(saved.length>0){
-saved.forEach(v=>{if(v.blob){let url=URL.createObjectURL(v.blob);v.img=url;v.blobUrl=url}});
+saved.forEach(v=>{
+if(v.blob){
+try{v.img=URL.createObjectURL(v.blob);v.blobUrl=v.img}catch(e){}
+}
+});
 videos=saved.concat(videos.filter(v=>v.isDefault));
 }
+}catch(e){console.log(e)}
 render();
 }
 loadSaved();
 
 function render(){
 if(videos.length===0){
-document.getElementById('feed').innerHTML=`<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center"><p style="font-size:50px">📹</p><b>Nenhum vídeo</b><p style="color:#888;font-size:13px;margin-top:8px">Poste quantos quiser (1:30 cada)<br>Apague quando quiser</p><button onclick="openCam('video')" style="margin-top:16px;background:#fff;color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:900">GRAVAR AGORA</button></div>`;
+document.getElementById('feed').innerHTML=`<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center"><p style="font-size:50px">📹</p><b>Nenhum vídeo</b><br><button onclick="openCam('video')" style="margin-top:16px;background:#fff;color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:900">GRAVAR OU ESCOLHER DA GALERIA</button></div>`;
 return
 }
 let v=videos[cur];
 let isMine=!v.isDefault;
-let media=v.type==='video'?`<video class="vid" src="${v.img}" autoplay loop muted playsinline></video>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
+let media=v.type==='video'?`<video class="vid" id="mainVid" src="${v.img}" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
 document.getElementById('feed').innerHTML=`
 ${media}<div class="ov"></div>
 <div class="top-live">🔴 LIVE</div>
-<div class="top-del ${isMine?'show':''}" onclick="delCurrent()">🗑️ Apagar meu vídeo</div>
+<div class="top-del ${isMine?'show':''}" onclick="delCurrent()">🗑️ Apagar</div>
 <div class="right">
 <div class="act" onclick="likeAct()"><div class="btn">♡</div><div class="count">${v.likes||0}</div></div>
 <div class="act" onclick="commentAct()"><div class="btn">💬</div><div class="count">${v.com||0}</div></div>
@@ -132,107 +136,143 @@ ${media}<div class="ov"></div>
 <div class="act" onclick="followAct()"><div class="btn">${v.follow?'✓':'＋'}</div><div class="count">${v.follow?'Seguindo':'Seguir'}</div></div>
 <div class="act" onclick="openCam('live')"><div class="btn live">●</div><div class="count">LIVE</div></div>
 </div>
-<div class="info"><div class="u">${v.user} ${isMine?'<span class="badge-own">MEU VÍDEO</span>':''}</div><div class="d">${v.desc}</div><div style="font-size:10px;color:#aaa;margin-top:4px">${isMine?`Seu vídeo • ${v.duration||''}s • Você pode apagar quando quiser`:`#work #viral`}</div></div>
+<div class="info"><div class="u" style="font-weight:900;font-size:14px">${v.user} ${isMine?'<span style="background:#D4AF37;color:#000;padding:2px 8px;border-radius:10px;font-size:9px">MEU VÍDEO</span>':''}</div><div class="d" style="font-size:13px;margin-top:4px">${v.desc}</div></div>
 `;
+setTimeout(()=>{let vd=document.getElementById('mainVid');if(vd){vd.play().catch(()=>{})}},100);
 }
 
 function likeAct(){videos[cur].likes=(videos[cur].likes||0)+1;render()}
 function commentAct(){let c=prompt('Comente:');if(c){videos[cur].com=(videos[cur].com||0)+1;render()}}
-function shareAct(){
-let v=videos[cur];
-document.getElementById('shareUser').innerText=v.user;
-document.getElementById('shareDesc').innerText=v.desc;
-document.getElementById('mShare').classList.add('on');
-}
-function copyLink(){navigator.clipboard.writeText(location.href).then(()=>alert('✅ Link copiado!'));videos[cur].share=(videos[cur].share||0)+1;render()}
-function shareWhats(){
-let v=videos[cur];
-let txt=`Olha esse vídeo no WORK INFLUÊNCIA: ${v.desc} - ${location.href}`;
-window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`,'_blank');
-videos[cur].share=(videos[cur].share||0)+1;render();
-}
+function shareAct(){if(navigator.share){navigator.share({title:'WORK',text:videos[cur].desc,url:location.href})}else{navigator.clipboard.writeText(location.href).then(()=>alert('✅ Link copiado!'))}videos[cur].share=(videos[cur].share||0)+1;render()}
 function followAct(){videos[cur].follow=!videos[cur].follow;render()}
+async function delCurrent(){let v=videos[cur];if(v.isDefault){alert('Exemplo não apaga');return}if(!confirm('Apagar seu vídeo?'))return;await delDB(v.id);videos.splice(cur,1);if(cur>=videos.length) cur=videos.length-1;if(cur<0) cur=0;render()}
 
-async function delCurrent(){
-let v=videos[cur];
-if(v.isDefault){alert('Vídeo de exemplo não apaga');return}
-if(!confirm(`Apagar seu vídeo "${v.desc}"?\n\nEle será removido para sempre do app. Você tem liberdade total.`))return;
-await delDB(v.id);
-videos.splice(cur,1);
-if(cur>=videos.length) cur=videos.length-1;
-if(cur<0) cur=0;
-render();alert('🗑️ Vídeo apagado! Você pode postar outro quando quiser.');
-}
-
-async function openCam(m){
-mode=m;setMode(m);
-document.getElementById('camScreen').classList.add('on');
-try{
-if(stream) stream.getTracks().forEach(t=>t.stop());
-stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:true});
-document.getElementById('camera').srcObject=stream;
-await document.getElementById('camera').play();
-}catch(e){
-try{
-stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing}});
-document.getElementById('camera').srcObject=stream;
-await document.getElementById('camera').play();
-}catch(err){alert('Permita a câmera! '+err.message)}
-}
-}
+// CAMERA
+async function openCam(m){mode=m;setMode(m);document.getElementById('camScreen').classList.add('on');try{if(stream) stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:720},height:{ideal:1280}},audio:true});document.getElementById('camera').srcObject=stream;await document.getElementById('camera').play()}catch(e){try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing}});document.getElementById('camera').srcObject=stream;await document.getElementById('camera').play()}catch(err){alert('Permita câmera: '+err.message)}}}
 function closeCam(){if(isRec) stopRec();if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}document.getElementById('camScreen').classList.remove('on')}
-function setMode(m){mode=m;document.getElementById('tVideo').classList.toggle('active',m==='video');document.getElementById('tLive').classList.toggle('active',m==='live');document.getElementById('camInfo').innerText=m==='live'?'LIVE 30min/dia - toque para iniciar':'VÍDEO até 1:30 - fica salvo até você apagar'}
+function setMode(m){mode=m;document.getElementById('tVideo').classList.toggle('active',m==='video');document.getElementById('tLive').classList.toggle('active',m==='live')}
 async function flipCam(){facing=facing==='user'?'environment':'user';if(stream) stream.getTracks().forEach(t=>t.stop());try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:true});document.getElementById('camera').srcObject=stream;await document.getElementById('camera').play()}catch(e){}}
-function pressRec(){if(mode==='live'){alert('🔴 LIVE iniciada! 30 min por dia.\nEm app real entraria ao vivo.');return}if(!isRec) startRec(); else stopRec()}
+function pressRec(){if(mode==='live'){alert('🔴 LIVE 30min iniciada!');return}if(!isRec) startRec(); else stopRec()}
 function startRec(){
 if(!stream){alert('Câmera não iniciou');return}
-chunks=[];recorder=new MediaRecorder(stream);recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
+chunks=[];
+let mime='';
+if(MediaRecorder.isTypeSupported('video/mp4')) mime='video/mp4';
+else if(MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) mime='video/webm;codecs=vp9';
+let opts=mime?{mimeType:mime}:{};
+try{recorder=new MediaRecorder(stream,opts)}catch(e){recorder=new MediaRecorder(stream)}
+recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
 recorder.onstop=async ()=>{
-let blob=new Blob(chunks,{type:'video/webm'});
+showStatus('Salvando vídeo...');
+let blob=new Blob(chunks,{type:recorder.mimeType||'video/webm'});
 let url=URL.createObjectURL(blob);
 let id=Date.now();
-let obj={id:id, user:"@voce", desc:"Meu vídeo - posso apagar quando quiser! #work", img:url, blob:blob, blobUrl:url, likes:0,com:0,share:0,follow:false,type:"video", duration:recSec, isDefault:false};
+let obj={id:id, user:"@voce", desc:"Meu vídeo - salvo até eu apagar!", img:url, blob:blob, blobUrl:url, likes:0,com:0,share:0,follow:false,type:"video", duration:recSec, isDefault:false};
 await saveDB(obj);
-videos.unshift(obj);
-cur=0;closeCam();render();alert(`✅ VÍDEO DE ${recSec}s SALVO!\nFica no app até VOCÊ quiser apagar. Liberdade total!`);
+videos.unshift(obj);cur=0;closeCam();render();hideStatus();alert(`✅ VÍDEO ${recSec}s SALVO!`);
 };
-recorder.start();isRec=true;recSec=0;
+recorder.start(100);isRec=true;recSec=0;
 document.getElementById('recBtn').classList.add('rec');
 document.getElementById('camTimer').classList.add('on');
 recInterval=setInterval(()=>{recSec++;let mm=String(Math.floor(recSec/60)).padStart(2,'0'), ss=String(recSec%60).padStart(2,'0');document.getElementById('camTimer').innerText=`${mm}:${ss} / 01:30`;if(recSec>=90) stopRec()},1000);
 }
 function stopRec(){if(!isRec)return;clearInterval(recInterval);isRec=false;document.getElementById('recBtn').classList.remove('rec');if(recorder) recorder.stop()}
 
-document.getElementById('fileIn').addEventListener('change',e=>{
-let file=e.target.files[0];if(!file)return;
-let url=URL.createObjectURL(file);
-let v=document.createElement('video');v.src=url;
-v.onloadedmetadata=async ()=>{
-if(v.duration>90){alert('Muito longo! Máx 1:30, seu tem '+Math.round(v.duration)+'s');return}
-let id=Date.now();
-let obj={id:id, user:"@voce", desc:"Vídeo da galeria - meu, posso apagar!", img:url, blob:file, blobUrl:url, likes:0,com:0,share:0,follow:false,type:"video", duration:Math.round(v.duration), isDefault:false};
-await saveDB(obj);
-videos.unshift(obj);cur=0;closeCam();render();alert('✅ Vídeo da galeria SALVO! Liberdade total para apagar quando quiser.');
+// GALERIA - TOTALMENTE REFEITA
+function pickGallery(){
+document.getElementById('fileIn').click();
 }
+document.getElementById('fileIn').addEventListener('change', async (e)=>{
+let file=e.target.files[0];
+if(!file){return}
+console.log('Arquivo escolhido:',file.name,file.type,file.size);
+
+if(!file.type.startsWith('video/')){
+alert('Escolha um VÍDEO, não foto!');
+e.target.value='';
+return
+}
+
+showStatus('Lendo vídeo da galeria...\n'+file.name);
+
+let url=URL.createObjectURL(file);
+let tempVideo=document.createElement('video');
+tempVideo.preload='metadata';
+tempVideo.muted=true;
+tempVideo.playsInline=true;
+tempVideo.src=url;
+
+let timeout=setTimeout(()=>{
+hideStatus();
+alert('Não consegui ler esse vídeo. Tente outro vídeo mais curto (até 1:30)');
+URL.revokeObjectURL(url);
+},8000);
+
+tempVideo.onloadedmetadata=async ()=>{
+clearTimeout(timeout);
+let dur=Math.round(tempVideo.duration||0);
+console.log('Duração:',dur);
+
+if(dur>90){
+hideStatus();
+alert(`Vídeo muito longo! ${dur}s - Máximo é 90s (1:30).\nEscolha um menor ou corte antes.`);
+URL.revokeObjectURL(url);
+e.target.value='';
+return
+}
+
+if(dur===0 || isNaN(dur)){
+dur=0;
+}
+
+showStatus('Salvando vídeo da galeria...');
+
+try{
+let id=Date.now();
+let obj={
+id:id,
+user:"@voce",
+desc:"Vídeo da galeria - meu! #work",
+img:url,
+blob:file,
+blobUrl:url,
+likes:0,com:0,share:0,follow:false,
+type:"video",
+duration:dur||15,
+isDefault:false
+};
+await saveDB(obj);
+videos.unshift(obj);
+cur=0;
+closeM();
+closeCam();
+render();
+hideStatus();
+alert(`✅ VÍDEO DA GALERIA SALVO!\n${dur}s - Fica até você apagar!`);
+}catch(err){
+hideStatus();
+alert('Erro ao salvar: '+err.message);
+console.log(err);
+}
+e.target.value='';
+};
+
+tempVideo.onerror=()=>{
+clearTimeout(timeout);
+hideStatus();
+alert('Erro ao carregar vídeo da galeria. Tente outro formato (MP4 é melhor)');
+URL.revokeObjectURL(url);
+e.target.value='';
+};
 });
 
-async function openMyVideos(){
+async function openMy(){
 let all=await getAll();
-document.getElementById('myGrid').innerHTML=all.map(v=>`
-<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:12px;overflow:hidden">
-<video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted></video>
-<div style="position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer" onclick="delFromList(${v.id})">✕</div>
-<div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent);padding:6px"><p style="font-size:9px;font-weight:900">${v.duration||''}s • MEU VÍDEO</p><p style="font-size:8px;color:#aaa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${v.desc}</p></div>
-</div>`).join('')||'<p style="grid-column:1/2;color:#666;text-align:center;padding:20px">Você ainda não postou<br>Clique no + para postar quantos quiser</p>';
+document.getElementById('countMy').innerText=all.length;
+document.getElementById('myGrid').innerHTML=all.map(v=>`<div class="gal-item"><video src="${v.blobUrl||v.img}" muted playsinline></video><div style="position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px" onclick="delList(${v.id})">✕</div><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent);padding:6px"><p style="font-size:9px;font-weight:900">${v.duration||''}s • GALERIA</p></div></div>`).join('')||'<p style="color:#666;grid-column:1/2;text-align:center">Nenhum vídeo salvo ainda<br>Clique em escolher vídeo da galeria</p>';
 document.getElementById('mList').classList.add('on');
 }
-async function delFromList(id){
-if(!confirm('Apagar esse seu vídeo? Liberdade total, você pode apagar quando quiser.'))return;
-await delDB(id);
-videos=videos.filter(v=>v.id!==id);
-if(cur>=videos.length) cur=videos.length-1;
-render();openMyVideos();
-}
+async function delList(id){if(!confirm('Apagar seu vídeo?'))return;await delDB(id);videos=videos.filter(v=>v.id!==id);if(cur>=videos.length) cur=videos.length-1;render();openMy()}
 function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
 
 let sy=0;
