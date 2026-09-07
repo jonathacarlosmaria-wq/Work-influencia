@@ -4,75 +4,111 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>WORK INFLUÊNCIA</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;height:100dvh;overflow:hidden}
-#splash{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 120%,#2a1200 0%,#0f0600 30%,#000 70%);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+#splash{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 130%,#2a1200 0%,#0f0600 30%,#000 70%);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
 .wrap{position:relative;text-align:center}
-.t{font-family:'Anton',sans-serif;font-size:62px;line-height:.9;letter-spacing:2px}
-.w{animation:w8 8s ease forwards}
-.i{margin-top:10px;animation:i8 8s ease forwards}
-@keyframes w8{
-0%{color:#FF0000;text-shadow:0 1px 0 #8B0000,0 2px 0 #8B0000,0 3px 0 #600,0 4px 0 #400,0 5px 0 #200,0 10px 20px #000,0 0 20px red,0 0 60px #FF4500,0 0 120px red;transform:scale(.5) rotateX(25deg);opacity:0;filter:brightness(.8)}
-10%{opacity:1;transform:scale(1.05) rotateX(0)}
-25%{color:#FF1a00;text-shadow:0 1px 0 #8B0000,0 2px 0 #8B0000,0 3px 0 #600,0 4px 0 #400,0 10px 20px #000,0 0 30px red,0 0 80px #FF4500;transform:scale(1.2)}
-50%{color:#FF4500;text-shadow:0 1px 0 #8B4513,0 2px 0 #8B4513,0 3px 0 #654321,0 10px 20px #000,0 0 40px orange,0 0 80px red}
-70%{color:#FF8C00;text-shadow:0 1px 0 #B8860B,0 2px 0 #8B6914,0 3px 0 #5a4500,0 10px 20px #000,0 0 30px gold,0 0 60px orange}
-100%{background:linear-gradient(100deg,#B8941F 0%,#D4AF37 15%,#FFD700 30%,#FFF8DC 45%,#FFD700 60%,#FFFFFF 70%,#FFD700 85%,#D4AF37 100%);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 1px 0 #B8941F,0 2px 0 #8B6914,0 3px 0 #5a4500,0 15px 30px #000,0 0 25px gold,0 0 60px #D4AF37;transform:scale(1.35);background-position:400% center;filter:brightness(1.4) drop-shadow(0 0 30px gold)}
-}
-@keyframes i8{
-0%{color:#3a0000;opacity:0;transform:scale(.5);text-shadow:0 5px 15px #000}
-20%{opacity:1;transform:scale(1)}
-35%{color:#FFD700;text-shadow:0 1px 0 #B8941F,0 2px 0 #8B6914,0 3px 0 #5a4500,0 10px 20px #000,0 0 30px gold}
-100%{background:linear-gradient(105deg,#B8941F 0%,#D4AF37 20%,#FFD700 35%,#FFF 50%,#FFD700 65%,#D4AF37 80%,#FFD700 100%);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 1px 0 #B8941F,0 2px 0 #8B6914,0 3px 0 #5a4500,0 15px 30px #000,0 0 40px gold;transform:scale(1.4);background-position:400% center;filter:brightness(1.4)}
-}
-.fire{position:absolute;bottom:-30px;left:-20px;right:-20px;height:90px;background:linear-gradient(to top,#8B0000 0%,#FF0000 20%,#FF4500 40%,#FF8C00 60%,#FFD700 80%,transparent 100%);filter:blur(10px) brightness(1.6);mix-blend-mode:screen;opacity:0;animation:fire8 8s ease forwards}
-@keyframes fire8{0%,20%{opacity:0;transform:scaleY(.3)}30%{opacity:1;transform:scaleY(1.3)}60%{opacity:.9;transform:scaleY(1.1) scaleX(1.05)}85%{opacity:.6}100%{opacity:.4;transform:scaleY(.7)}}
-.embers{position:absolute;inset:0;pointer-events:none}
-.emb{position:absolute;width:4px;height:4px;background:radial-gradient(circle,#FFD700,#FF4500);border-radius:50%;box-shadow:0 0 6px #FF4500;animation:up 1.2s linear infinite}
-@keyframes up{0%{transform:translateY(0) translateX(0) scale(1);opacity:1}100%{transform:translateY(-220px) translateX(var(--x)) scale(0);opacity:0}}
-.sub{margin-top:32px;font-family:Montserrat,sans-serif;color:#D4AF37;letter-spacing:14px;font-size:11px;font-weight:900;opacity:0;animation:sub8 8s forwards}
-@keyframes sub8{0%,85%{opacity:0}100%{opacity:1;text-shadow:0 0 20px gold}}
+.t{font-family:'Anton',sans-serif;font-size:62px;line-height:.88}
+.w{animation:w8 8s forwards}.i{margin-top:8px;animation:i8 8s forwards}
+@keyframes w8{0%{color:#FF0000;text-shadow:0 2px 0 #8B0000,0 0 20px red,0 0 80px red;transform:scale(.45);opacity:0}12%{opacity:1;transform:scale(1.05)}28%{transform:scale(1.2)}100%{background:linear-gradient(100deg,#B8941F,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transform:scale(1.35);background-position:400% center;filter:drop-shadow(0 0 30px gold)}}
+@keyframes i8{0%{color:#3a0000;opacity:0;transform:scale(.45)}22%{opacity:1}100%{background:linear-gradient(105deg,#D4AF37,#FFD700,#FFF,#FFD700);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transform:scale(1.4);background-position:400% center}}
+.fire{position:absolute;bottom:-35px;left:-25px;right:-25px;height:90px;background:linear-gradient(to top,#8B0000,#FF0000 20%,#FF4500 40%,#FF8C00 60%,#FFD700 80%,transparent);filter:blur(11px);mix-blend-mode:screen;opacity:0;animation:fire8 8s forwards}
+@keyframes fire8{0%,22%{opacity:0}32%{opacity:1;transform:scaleY(1.4)}100%{opacity:.3}}
+.embers{position:absolute;inset:0;pointer-events:none}.emb{position:absolute;width:4px;height:4px;background:radial-gradient(circle,#FFD700,#FF4500);border-radius:50%;animation:up 1.3s linear infinite}
+@keyframes up{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-240px) translateX(var(--x)) scale(0);opacity:0}}
+.sub{margin-top:30px;font-family:Montserrat;color:#D4AF37;letter-spacing:12px;font-size:11px;font-weight:900;opacity:0;animation:sub8 8s forwards}
+@keyframes sub8{0%,86%{opacity:0}100%{opacity:1}}
 .app{height:100dvh;display:flex;flex-direction:column;opacity:0;background:#000}
 .topbar{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #151515;color:#fff}
-.logo{font-weight:900;font-size:18px;font-family:Montserrat,sans-serif}.logo span{color:#D4AF37}
+.logo{font-weight:900;font-size:18px;font-family:Montserrat}.logo span{color:#D4AF37}
 .saldo{border:1px solid #D4AF37;color:#D4AF37;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700}
 .feed{flex:1;position:relative;overflow:hidden;background:#0a0a0a}
 .video-bg-img{position:absolute;inset:0;background-size:cover;background-position:center}
-.overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 55%,rgba(0,0,0,.2) 100%)}
-.right-actions{position:absolute;right:12px;bottom:105px;display:flex;flex-direction:column;gap:16px;z-index:2;color:#fff}
-.icon{width:48px;height:48px;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px}
-.action{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:700}
-.bottom-info{position:absolute;left:16px;right:80px;bottom:18px;z-index:2;color:#fff}
-.u{font-size:18px;font-weight:900}.d{font-size:14px;color:#e0e0e0;margin:3px 0}.h{color:#D4AF37;font-size:13px}
-.bottom-nav{height:58px;background:#000;border-top:1px solid #151515;display:flex;justify-content:space-around;align-items:center}
-.nav{color:#555;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px;font-family:Montserrat,sans-serif}.nav.active{color:#D4AF37}.nav b{font-size:18px}
-.add{width:36px;height:24px;background:#D4AF37;border-radius:6px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900}
-#adminPanel,#perfilModal{position:fixed;inset:0;background:#000;z-index:100;display:none;padding:20px;overflow:auto;color:#fff;font-family:Montserrat,sans-serif}
-.card{background:#111;border:1px solid #222;border-radius:16px;padding:16px;margin-bottom:14px}
-input{background:#000;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;width:100%;margin-bottom:10px}
-button.main{background:linear-gradient(90deg,#D4AF37,#B8941F);border:none;padding:14px;border-radius:12px;font-weight:900;width:100%;color:#000}
+.overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,transparent 60%)}
+.right-actions{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:18px;z-index:2;color:#fff}
+.action{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:12px;font-weight:700;font-family:Montserrat;cursor:pointer}
+.icon{width:52px;height:52px;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid rgba(212,175,55,.2);transition:.2s}
+.icon.liked{background:#ff1744;color:#fff;border-color:#ff1744;box-shadow:0 0 20px #ff1744}
+.bottom-info{position:absolute;left:16px;right:84px;bottom:16px;z-index:2;color:#fff;font-family:Montserrat}
+.u{font-size:17px;font-weight:900}.d{font-size:13px;margin:4px 0}.h{color:#D4AF37;font-size:12px}
+.bottom-nav{height:60px;background:#000;border-top:1px solid #151515;display:flex;justify-content:space-around;align-items:center}
+.nav{color:#555;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;font-family:Montserrat;font-weight:700;cursor:pointer;padding:6px 14px;border-radius:12px}
+.nav.active{color:#D4AF37;background:rgba(212,175,55,.1)}.nav b{font-size:20px}
+.add{width:38px;height:26px;background:#D4AF37;border-radius:8px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;flex-direction:column}
+.modal.active{display:flex}
+.mhead{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #222;color:#fff;font-family:Montserrat;font-weight:900}
+.mbody{flex:1;overflow:auto;padding:18px}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:16px;margin-bottom:14px;color:#fff;font-family:Montserrat}
+input,textarea{background:#000;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;width:100%;margin-bottom:10px;font-family:Montserrat}
+button.main{background:linear-gradient(90deg,#D4AF37,#B8941F);border:none;padding:14px;border-radius:12px;font-weight:900;width:100%;color:#000;font-family:Montserrat;cursor:pointer}
+button.sec{background:#222;color:#fff}
+.comment{border-bottom:1px solid #1a1a1a;padding:10px 0;display:flex;gap:10px}
+.cav{width:32px;height:32px;background:#D4AF37;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px}
+.explore-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ex-card{aspect-ratio:3/4;background-size:cover;background-position:center;border-radius:14px;position:relative;overflow:hidden;cursor:pointer;border:1px solid #222}
+.ex-card span{position:absolute;bottom:8px;left:8px;font-size:11px;font-weight:900;background:rgba(0,0,0,.6);padding:4px 8px;border-radius:20px}
 </style>
 </head>
 <body>
 <div id="splash"><div class="wrap"><div class="t w">WORK</div><div class="fire"></div><div class="t i">INFLUÊNCIA</div><div class="embers" id="embers"></div></div><div class="sub">PREMIUM</div></div>
-<div class="app" id="app"><div class="topbar"><div class="logo">★ WORK <span>INFLUÊNCIA</span></div><div class="saldo" id="saldoTop">R$ 40,80</div></div><div class="feed" id="feed"></div><div class="bottom-nav"><div class="nav active"><b>⌂</b>Início</div><div class="nav"><b>◎</b>Explorar</div><div class="nav"><div class="add">+</div></div><div class="nav" onclick="alert('Carteira: R$ '+saldo)"><b>◧</b>Carteira</div><div class="nav" onclick="openPerfil()"><b>◉</b>Perfil</div></div></div>
-<div id="perfilModal"><h2>Perfil</h2><br><div class="card" style="text-align:center"><div style="width:80px;height:80px;background:#D4AF37;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:36px;color:#000;font-weight:900">U</div><p style="font-weight:900">@usuario.teste</p><p id="saldoPerfil" style="color:#D4AF37;margin:10px 0"></p><input id="pass" type="password" placeholder="admin123"><button class="main" onclick="check()">ADMIN</button><br><br><button class="main" style="background:#222;color:#fff" onclick="closeP()">VOLTAR</button></div></div>
-<div id="adminPanel"><h2 style="color:#D4AF37">Painel</h2><br><div class="card"><input id="vU" placeholder="@usuario"><input id="vD" placeholder="Descrição"><input id="vH" placeholder="#hashtag"><input id="vI" placeholder="Link imagem"><button class="main" onclick="add()">PUBLICAR</button></div><div class="card"><input id="nS" placeholder="Novo saldo"><button class="main" onclick="upS()">ATUALIZAR</button></div><button class="main" style="background:#222;color:#fff" onclick="closeA()">FECHAR</button></div>
+<div class="app" id="app">
+<div class="topbar"><div class="logo">★ WORK <span>INFLUÊNCIA</span></div><div class="saldo" id="saldoTop">R$ 40,80</div></div>
+<div class="feed" id="feed"></div>
+<div class="bottom-nav">
+<div class="nav active" onclick="goTab('inicio')"><b>⌂</b>Início</div>
+<div class="nav" onclick="goTab('explorar')"><b>◎</b>Explorar</div>
+<div class="nav" onclick="openCreate()"><div class="add">+</div></div>
+<div class="nav" onclick="openWallet()"><b>◧</b>Carteira</div>
+<div class="nav" onclick="openPerfil()"><b>◉</b>Perfil</div>
+</div>
+</div>
+
+<div class="modal" id="perfilModal"><div class="mhead"><span>PERFIL</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="card" style="text-align:center"><div style="width:86px;height:86px;background:#D4AF37;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:38px;color:#000;font-weight:900">U</div><p style="font-weight:900">@usuario.teste</p><p style="color:#D4AF37;margin:10px 0;font-size:22px;font-weight:900">R$ 40,80</p><br><input id="pass" type="password" placeholder="admin123"><button class="main" onclick="checkAdmin()">ADMIN</button><br><br><button class="main sec" onclick="closeAll()">VOLTAR</button></div></div></div>
+<div class="modal" id="adminModal"><div class="mhead"><span>ADMIN</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="card"><input id="vU" placeholder="@usuario"><input id="vD" placeholder="Descrição"><input id="vH" placeholder="#hashtag"><input id="vI" placeholder="Link imagem"><button class="main" onclick="addVideo()">PUBLICAR</button></div><div class="card"><input id="nS" placeholder="Novo saldo ex: 40,80"><button class="main" onclick="updateSaldo()">ATUALIZAR SALDO</button></div><button class="main sec" onclick="closeAll()">FECHAR</button></div></div>
+<div class="modal" id="commentModal"><div class="mhead"><span>COMENTÁRIOS</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div id="commentList"></div><div class="card"><input id="cInput" placeholder="Escreva um comentário..."><button class="main" onclick="sendComment()">ENVIAR</button></div></div></div>
+<div class="modal" id="walletModal"><div class="mhead"><span>CARTEIRA</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="card" style="text-align:center"><p style="color:#888;font-size:12px">SALDO</p><p id="walletSaldo" style="font-size:36px;font-weight:900;color:#D4AF37;margin:10px 0">R$ 40,80</p><button class="main sec" onclick="closeAll()">VOLTAR</button></div></div></div>
+<div class="modal" id="exploreModal"><div class="mhead"><span>EXPLORAR</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="explore-grid" id="exploreGrid"></div></div></div>
+<div class="modal" id="createModal"><div class="mhead"><span>NOVO VÍDEO</span><span onclick="closeAll()" style="font-size:24px;cursor:pointer">×</span></div><div class="mbody"><div class="card"><input id="crU" placeholder="@seu usuário"><textarea id="crD" placeholder="Descrição" rows="3"></textarea><input id="crH" placeholder="#hashtag"><input id="crI" placeholder="Link imagem"><button class="main" onclick="createVideo()">POSTAR</button></div></div></div>
+
 <script>
-let videos=[{user:"@mariana.influ",desc:"Dica de ouro para ganhar pontos",hash:"#workinfluencia",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:"1.2k",com:"89",gift:"12",share:"34"}];
-let saldo="40,80";let cur=0;
-function render(){let f=document.getElementById('feed');let v=videos[cur];f.innerHTML=`<div class="video-bg-img" style="background-image:url('${v.img}')"></div><div class="overlay"></div><div class="right-actions"><div class="action"><div class="icon">♥</div>${v.likes}</div><div class="action"><div class="icon">💬</div>${v.com}</div><div class="action"><div class="icon">🎁</div>${v.gift}</div><div class="action"><div class="icon">↗</div>${v.share}</div></div><div class="bottom-info"><div class="u">${v.user}</div><div class="d">${v.desc}</div><div class="h">${v.hash}</div></div>`}
+let videos=[
+{user:"@mariana.influ",desc:"Dica de ouro para ganhar pontos hoje!",hash:"#workinfluencia",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:1243,com:89,gift:12,share:34,liked:false,comments:[{u:"@joao",t:"Top!"}]},
+{user:"@joao.influ",desc:"Como consegui crescer no app",hash:"#work",img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",likes:890,com:45,gift:8,share:22,liked:false,comments:[]}
+];
+let cur=0;
+function fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':n}
+function render(){
+let v=videos[cur];
+document.getElementById('feed').innerHTML=`<div class="video-bg-img" style="background-image:url('${v.img}')"></div><div class="overlay"></div>
+<div class="right-actions">
+<div class="action" onclick="like()"><div class="icon ${v.liked?'liked':''}">${v.liked?'♥':'♡'}</div><span>${fmt(v.likes)}</span></div>
+<div class="action" onclick="openComments()"><div class="icon">💬</div>${fmt(v.com)}</div>
+<div class="action" onclick="gift()"><div class="icon">🎁</div>${fmt(v.gift)}</div>
+<div class="action" onclick="shareVideo()"><div class="icon">↗</div>${fmt(v.share)}</div>
+</div>
+<div class="bottom-info"><div class="u">${v.user}</div><div class="d">${v.desc}</div><div class="h">${v.hash}</div></div>`;
+}
 setTimeout(()=>{document.getElementById('splash').style.transition='opacity 1.2s';document.getElementById('splash').style.opacity='0';setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('app').style.opacity='1';document.getElementById('app').style.transition='opacity.8s';render()},1200)},8000);
-function openPerfil(){document.getElementById('perfilModal').style.display='block';document.getElementById('saldoPerfil').innerText='R$ '+saldo}
-function closeP(){document.getElementById('perfilModal').style.display='none'}
-function check(){if(document.getElementById('pass').value==='admin123'){closeP();document.getElementById('adminPanel').style.display='block'}else alert('Senha: admin123')}
-function closeA(){document.getElementById('adminPanel').style.display='none';render()}
-function add(){let u=document.getElementById('vU').value||'@novo.influ';let d=document.getElementById('vD').value||'Novo';let h=document.getElementById('vH').value||'#work';let im=document.getElementById('vI').value||'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:'0',com:'0',gift:'0',share:'0'});cur=0;closeA()}
-function upS(){let ns=document.getElementById('nS').value;if(ns){saldo=ns;document.getElementById('saldoTop').innerText='R$ '+saldo}}
-let sy=0;document.addEventListener('touchstart',e=>sy=e.touches[0].clientY);document.addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>50){if(d>0&&cur<videos.length-1)cur++;if(d<0&&cur>0)cur--;render()}});
-let em=document.getElementById('embers');for(let i=0;i<40;i++){let s=document.createElement('div');s.className='emb';s.style.left=Math.random()*100+'%';s.style.bottom=Math.random()*30+'%';s.style.animationDelay=Math.random()*3+'s';s.style.animationDuration=(0.8+Math.random()*1.2)+'s';s.style.setProperty('--x',(Math.random()*100-50)+'px');em.appendChild(s)}
+
+function like(){let v=videos[cur];if(!v.liked){v.likes++;v.liked=true}else{v.likes--;v.liked=false}render()}
+function openComments(){let v=videos[cur];document.getElementById('commentList').innerHTML=v.comments.map(c=>`<div class="comment"><div class="cav">${c.u[1].toUpperCase()}</div><div><b style="font-size:13px">${c.u}</b><p style="font-size:13px;color:#ccc">${c.t}</p></div></div>`).join('')||'<p style="color:#666;text-align:center;padding:20px">Seja o primeiro!</p>';document.getElementById('commentModal').classList.add('active')}
+function sendComment(){let i=document.getElementById('cInput');if(!i.value.trim())return;videos[cur].comments.push({u:"@usuario.teste",t:i.value});videos[cur].com++;i.value='';openComments();render()}
+function gift(){videos[cur].gift++;alert('🎁 Presente enviado para '+videos[cur].user);render()}
+function shareVideo(){videos[cur].share++;if(navigator.share){navigator.share({title:'WORK',text:videos[cur].desc,url:location.href}).catch(()=>{})}else{alert('Link copiado: '+location.href)}render()}
+function goTab(t){if(t==='inicio'){closeAll();render()}if(t==='explorar'){document.getElementById('exploreGrid').innerHTML=videos.map((v,i)=>`<div class="ex-card" style="background-image:url('${v.img}')" onclick="cur=${i};closeAll();render()"><span>${v.user}</span></div>`).join('');document.getElementById('exploreModal').classList.add('active')}}
+function openCreate(){document.getElementById('createModal').classList.add('active')}
+function createVideo(){let u=document.getElementById('crU').value||'@usuario.teste';let d=document.getElementById('crD').value||'Novo vídeo!';let h=document.getElementById('crH').value||'#work';let im=document.getElementById('crI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,com:0,gift:0,share:0,liked:false,comments:[]});cur=0;closeAll();render()}
+function openWallet(){document.getElementById('walletModal').classList.add('active')}
+function openPerfil(){document.getElementById('perfilModal').classList.add('active')}
+function checkAdmin(){if(document.getElementById('pass').value==='admin123'){closeAll();document.getElementById('adminModal').classList.add('active')}else alert('Senha: admin123')}
+function addVideo(){let u=document.getElementById('vU').value||'@novo';let d=document.getElementById('vD').value||'Novo';let h=document.getElementById('vH').value||'#work';let im=document.getElementById('vI').value||'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000';videos.unshift({user:u,desc:d,hash:h,img:im,likes:0,com:0,gift:0,share:0,liked:false,comments:[]});cur=0;closeAll();render()}
+function updateSaldo(){let ns=document.getElementById('nS').value;if(ns){document.getElementById('saldoTop').innerText='R$ '+ns;closeAll()}}
+function closeAll(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('active'))}
+let sy=0;document.addEventListener('touchstart',e=>sy=e.touches[0].clientY);document.addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>70 &&!document.querySelector('.modal.active')){if(d>0&&cur<videos.length-1)cur++;if(d<0&&cur>0)cur--;render()}});
+let em=document.getElementById('embers');for(let i=0;i<35;i++){let s=document.createElement('div');s.className='emb';s.style.left=Math.random()*100+'%';s.style.bottom=Math.random()*35+'%';s.style.animationDelay=Math.random()*3+'s';s.style.animationDuration=(0.9+Math.random()*1.2)+'s';s.style.setProperty('--x',(Math.random()*100-60)+'px');em.appendChild(s)}
 </script>
 </body>
 </html>
