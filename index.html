@@ -1,225 +1,160 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Work Influencia - FINAL</title>
+<title>WORK - VOLTOU O BOM</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui}
-body{background:#000;color:#fff;overflow:hidden;height:100dvh}
-#feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory}
-.item{height:100dvh;scroll-snap-align:start;position:relative;background:#111;display:flex;align-items:center;justify-content:center}
-video{width:100%;height:100%;object-fit:cover}
-.info{position:absolute;bottom:80px;left:12px;right:70px}
-.nick{font-weight:900;font-size:16px;text-shadow:0 2px 10px #000}
-.desc{font-size:13px;margin-top:4px;opacity:.9}
-.actions{position:absolute;right:12px;bottom:100px;display:flex;flex-direction:column;gap:18px}
-.act{width:48px;height:48px;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px}
-#tab{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(0,0,0,.9);backdrop-filter:blur(20px);display:flex;justify-content:space-around;align-items:center;border-top:1px solid #222;z-index:99}
-#tab button{background:none;border:none;color:#666;font-size:10px;font-weight:800}
-#tab button.active{color:#fff}
-#postBtn{width:48px;height:32px;background:#fff;border-radius:8px;color:#000;font-weight:900;font-size:20px}
-#cam{position:fixed;inset:0;background:#000;z-index:200;display:none;flex-direction:column}
-#views{position:fixed;inset:0;background:#000;z-index:50;display:none;overflow-y:auto;padding-bottom:70px}
-.top{padding:14px;font-weight:900;font-size:18px;border-bottom:1px solid #222;display:flex;justify-content:space-between}
-.adBox{height:100dvh;scroll-snap-align:start;background:linear-gradient(135deg,#FFD700,#ff8c00);display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;text-align:center}
-.card{background:rgba(255,255,255,.06);border:1px solid #222;border-radius:16px;padding:12px;text-align:center}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;overflow:hidden}
+.app{height:100dvh;display:flex;flex-direction:column}
+.stage{flex:1;position:relative;background:#000;overflow:hidden;touch-action:none}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.96) 0%,transparent 58%)}
+.top{position:absolute;top:12px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:10}
+.pill{padding:8px 14px;border-radius:20px;font-size:11px;font-weight:900;background:rgba(0,0,0,.6);border:1px solid #333}
+.pill.on{background:#FFD700;color:#000;border-color:#FFD700}
+.actions{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:14px;z-index:20}
+.act{display:flex;flex-direction:column;align-items:center;gap:4px}
+.btn{width:56px;height:56px;border-radius:18px;background:#1e1e1e;border:1.5px solid rgba(212,175,55,.4);display:flex;align-items:center;justify-content:center;font-size:22px}
+.cnt{font-size:10px;font-weight:900;background:rgba(0,0,0,.6);padding:2px 7px;border-radius:12px;min-width:32px;text-align:center}
+.meta{position:absolute;left:12px;bottom:14px;right:84px;z-index:10;background:rgba(0,0,0,.55);backdrop-filter:blur(20px);padding:12px 14px;border-radius:18px;border:1px solid rgba(255,255,255,.15)}
+.nav{height:90px;background:linear-gradient(180deg,#FFE55C,#FFD700,#D4AF37);display:flex;justify-content:space-around;align-items:center;padding:10px 8px 14px;border-radius:28px 28px 0 0;margin-top:-18px;z-index:50}
+.tab{color:#3d2e00;font-size:9px;text-align:center;padding:8px 10px;border-radius:18px;min-width:56px;font-weight:800}
+.tab.on{background:#000;color:#FFD700}
+.create{width:70px;height:50px;border-radius:20px;background:#000;display:flex;align-items:center;justify-content:center;border:2px solid #FFD700}
+.create span{background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:16px;font-size:32px;font-weight:900}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex!important}
+#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1d1d1d;padding:12px 20px;border-radius:20px;z-index:6000;display:none;text-align:center;border:1.5px solid #D4AF37;font-size:11px}#toast.on{display:block!important}
+.card{border-radius:18px;padding:12px;text-align:center;background:#1a1a1a;border:1px solid #222}
 </style>
 </head>
 <body>
+<div id="toast"></div>
 
-<div id="feed"></div>
+<div class="app"><div class="stage" id="stage"></div><div class="nav"><div class="tab on">⌂<br>Início</div><div class="tab" onclick="WORK.my()">◧<br>Meus</div><div class="tab" onclick="WORK.openCam('video')"><div class="create"><span>+</span></div></div><div class="tab" onclick="WORK.openCam('live')">●<br>LIVE</div><div class="tab" onclick="WORK.openProfile()">👤<br>Eu</div></div></div>
 
-<div id="views">
-<div id="vProfile">
-<div class="top"><span>PERFIL</span><span onclick="VIEWS.close()" style="font-size:24px">✕</span></div>
-<div style="padding:16px">
-<div id="adminBtnArea" style="display:none;margin-bottom:12px">
-<button onclick="ADMIN.open()" style="width:100%;background:linear-gradient(145deg,#00FF88,#00CC6A);color:#000;border:none;padding:16px;border-radius:20px;font-weight:900;box-shadow:0 0 20px rgba(0,255,136,.4)">🔧 PAINEL ADMINISTRADOR<br><span style="font-size:10px">VOCÊ É O DONO - CLICA AQUI</span></button>
-</div>
-<div style="text-align:center;margin:20px 0">
-<img id="pPhoto" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #fff">
-<div id="pNick" style="font-weight:900;margin-top:10px;font-size:18px">@user</div>
-<div id="pCount" style="color:#888;font-size:12px;margin-top:4px">0 vídeos • Ilimitado</div>
-<input type="file" id="photoInp" accept="image/*" hidden onchange="WORK.changePhoto(event)">
-<button onclick="document.getElementById('photoInp').click()" style="margin-top:10px;background:#222;color:#fff;border:1px solid #333;padding:8px 16px;border-radius:20px;font-size:12px">Mudar foto</button>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px">
-<div class="card"><div id="cMy" style="font-size:22px;font-weight:900">0</div><div style="font-size:9px;color:#888">MEUS VÍDEOS</div></div>
-<div class="card"><div style="font-size:22px;font-weight:900">∞</div><div style="font-size:9px;color:#888">ILIMITADO</div></div>
-</div>
-<div id="grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:16px"></div>
-<button onclick="WORK.logout()" style="width:100%;margin-top:20px;background:rgba(255,68,68,.15);border:1px solid #ff4444;color:#ff4444;padding:14px;border-radius:14px;font-weight:800">Sair</button>
-</div>
-</div>
+<div class="modal" id="profileM"><div style="flex:1" onclick="WORK.closeM()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1f1f1f;border-radius:28px 28px 0 0;padding:18px;border-top:3px solid #FFD700;max-height:88vh;overflow:auto">
+<div style="display:flex;justify-content:space-between"><span style="color:#D4AF37;font-weight:900">👤 PERFIL</span><span onclick="WORK.closeM()" style="font-size:24px">×</span></div>
+<div id="adminBtnArea" style="display:none;margin:12px 0"><button onclick="ADMIN.open()" style="width:100%;background:linear-gradient(145deg,#00FF88,#00CC6A);color:#000;border:none;padding:14px;border-radius:18px;font-weight:900">🔧 PAINEL ADMIN<br><span style="font-size:10px">VOCÊ É O DONO</span></button></div>
+<div id="pInfo" style="text-align:center;margin-top:10px"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px"><div class="card"><div id="cMy" style="font-size:22px;font-weight:900">0</div><div style="font-size:9px">MEUS VÍDEOS • ILIMITADO</div></div><div class="card"><div style="font-size:22px;font-weight:900;color:#00FF88">∞</div><div style="font-size:9px">GRAVADO NO APP</div></div></div>
+</div></div>
 
-<div id="vAdmin" style="display:none">
-<div class="top"><span>ADMIN - DONO</span><span onclick="VIEWS.close()" style="font-size:24px">✕</span></div>
-<div style="padding:16px">
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
-<div class="card"><div id="totalUsersAdmin" style="font-size:18px;font-weight:900">0</div><div style="font-size:8px">USUÁRIOS</div></div>
-<div class="card"><div id="totalVideosAdmin" style="font-size:18px;font-weight:900">0</div><div style="font-size:8px">VÍDEOS</div></div>
-<div class="card" style="border-color:#ff4444"><div id="livesHoje" style="font-size:18px;font-weight:900;color:#ff4444">0</div><div style="font-size:8px">LIVES HOJE</div></div>
-</div>
-<div id="listaLivesHoje" style="margin:10px 0"></div>
-<button onclick="ADMIN.resetLives()" style="width:100%;background:rgba(255,68,68,.15);border:1px solid #ff4444;color:#ff4444;padding:10px;border-radius:12px;font-weight:900;font-size:11px;margin:10px 0">🔄 RESETAR LIVES DE HOJE (LIBERAR TODOS)</button>
-<div id="listaUsersAdmin" style="margin-top:10px"></div>
-</div>
-</div>
-</div>
+<div class="modal" id="adminM" style="z-index:3000"><div style="flex:1" onclick="WORK.closeM()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#0f0f0f;border-radius:28px 28px 0 0;padding:18px;border-top:3px solid #00FF88;max-height:94vh;overflow:auto">
+<div style="display:flex;justify-content:space-between"><span style="color:#00FF88;font-weight:900">🔧 ADMIN</span><span onclick="WORK.closeM()" style="font-size:26px;color:#00FF88">×</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0"><div class="card"><div id="totalUsers" style="font-size:18px;font-weight:900">0</div><div style="font-size:8px">USUÁRIOS</div></div><div class="card"><div id="totalVideosAdmin" style="font-size:18px;font-weight:900">0</div><div style="font-size:8px">VÍDEOS</div></div><div class="card" style="border-color:#ff4444"><div id="livesHoje" style="font-size:18px;font-weight:900;color:#ff4444">0</div><div style="font-size:8px">LIVES HOJE</div></div></div>
+<div id="listaLivesHoje"></div>
+<button onclick="ADMIN.resetLives()" style="width:100%;background:rgba(255,68,68,.15);border:1px solid #ff4444;color:#ff4444;padding:10px;border-radius:12px;font-weight:900;font-size:11px;margin:10px 0">🔄 RESETAR LIVES DE HOJE</button>
+<div id="usersListAdmin"></div>
+</div></div>
 
-<div id="cam">
-<div style="padding:12px;display:flex;justify-content:space-between"><span onclick="WORK.closeCam()" style="font-size:24px">✕</span><span id="camType" style="background:red;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:900">🔴 REC</span></div>
-<video id="camEl" autoplay muted playsinline style="flex:1"></video>
-<input id="descInp" placeholder="Escreva legenda..." style="margin:12px;padding:14px;border-radius:12px;background:#222;border:1px solid #333;color:#fff">
-<button onclick="WORK.post()" style="margin:12px;padding:16px;background:#fff;color:#000;border:none;border-radius:14px;font-weight:900">POSTAR - FICA GRAVADO PRA SEMPRE</button>
-</div>
+<div id="cam" style="position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column"><video id="camEl" autoplay playsinline muted style="width:100%;height:100%;object-fit:cover"></video><div style="position:absolute;top:0;left:0;right:0;height:60px;display:flex;justify-content:space-between;padding:0 14px;align-items:center"><button onclick="WORK.closeCam()" style="background:rgba(0,0,0,.6);color:#FFD700;padding:8px 14px;border-radius:20px;border:none">✕</button><span id="camType" style="background:red;padding:6px 12px;border-radius:20px;font-size:10px;font-weight:900">● GRAVANDO</span><button onclick="WORK.press()" id="rec" style="background:#fff;color:#000;padding:10px 18px;border-radius:20px;font-weight:900;border:none">POSTAR</button></div><input id="descInp" placeholder="Legenda..." style="position:absolute;bottom:20px;left:12px;right:12px;padding:14px;border-radius:14px;background:rgba(0,0,0,.6);border:1px solid #333;color:#fff"></div>
 
-<div id="tab">
-<button id="tHome" class="active" onclick="VIEWS.home()">🏠<br>INÍCIO</button>
-<button onclick="WORK.openCam('video')" id="postBtn">+</button>
-<button onclick="WORK.openCam('live')">🔴<br>LIVE</button>
-<button onclick="VIEWS.profile()">👤<br>EU</button>
-</div>
+<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1d1d1d;border-radius:24px 24px 0 0;padding:16px;border-top:2px solid #FFD700"><div style="display:flex;justify-content:space-between"><span style="color:#D4AF37">✨ Meus • <span id="cMy2">0</span> • Ilimitado</span><span onclick="WORK.closeM()" style="font-size:24px">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;max-height:60vh;overflow:auto"></div></div></div>
 
 <script>
 const ADMIN={
 isAdmin(){
 let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
 if(!c) return false;
-let email=(c.email||'').toLowerCase();
-let nick=(c.nick||'').toLowerCase();
-return email.includes('jonatha')||nick.includes('jonatha')||email.includes('admin');
+let e=(c.email||'').toLowerCase(); let n=(c.nick||'').toLowerCase();
+return e.includes('jonatha')||n.includes('jonatha')||e.includes('admin');
 },
-open(){
-if(!this.isAdmin()) return;
-document.getElementById('views').style.display='block';
-document.getElementById('vProfile').style.display='none';
-document.getElementById('vAdmin').style.display='block';
-this.refresh();
-},
-refresh(){
+open(){if(!this.isAdmin()) return; document.getElementById('adminM').classList.add('on'); document.getElementById('adminM').style.display='flex'; this.refresh();},
+async refresh(){
 let users=JSON.parse(localStorage.getItem('work_users')||'[]');
-WORK.loadAll().then(vids=>{
-document.getElementById('totalUsersAdmin').innerText=users.length;
+let vids=await WORK.loadAll();
+document.getElementById('totalUsers').innerText=users.length;
 document.getElementById('totalVideosAdmin').innerText=vids.length;
-let today=new Date().toDateString();
-let lives=0; let html='';
-users.forEach(u=>{
-let d=JSON.parse(localStorage.getItem('work_live_'+u.id)||'null');
-if(d && d.date===today){lives+=d.count; html+=`<div style="font-size:11px;padding:6px;background:#111;border-radius:8px;margin-top:4px">🔴 @${u.nick} - ${d.count}/1 hoje às ${d.lastTime||''}</div>`}
-});
+let today=new Date().toDateString(); let lives=0; let html='';
+users.forEach(u=>{let d=JSON.parse(localStorage.getItem('work_live_'+u.id)||'null'); if(d&&d.date===today){lives+=d.count; html+=`<div style="font-size:11px;padding:6px;background:#111;border-radius:8px;margin-top:4px">🔴 @${u.nick} - ${d.count}/1 hoje às ${d.lastTime||''}</div>`}});
 document.getElementById('livesHoje').innerText=lives;
 document.getElementById('listaLivesHoje').innerHTML=html||'<div style="font-size:11px;color:#666">Nenhuma live hoje</div>';
-document.getElementById('listaUsersAdmin').innerHTML=users.map(u=>`<div style="display:flex;justify-content:space-between;padding:10px;background:#111;border-radius:10px;margin-top:6px"><span>@${u.nick} - ${u.email}</span><span style="font-size:10px;color:#888">${(JSON.parse(localStorage.getItem('work_live_'+u.id)||'{}').count||0)}/1</span></div>`).join('');
-});
+document.getElementById('usersListAdmin').innerHTML=users.map(u=>`<div style="display:flex;justify-content:space-between;padding:8px;background:#111;border-radius:8px;margin-top:6px"><span style="font-size:11px">@${u.nick}</span><span style="font-size:10px;color:#888">${(JSON.parse(localStorage.getItem('work_live_'+u.id)||'{}').count||0)}/1 hoje</span></div>`).join('');
 },
-resetLives(){
-if(!confirm('Resetar lives de hoje pra todos?')) return;
-let users=JSON.parse(localStorage.getItem('work_users')||'[]');
-users.forEach(u=>localStorage.removeItem('work_live_'+u.id));
-alert('✅ Resetado! Todos podem fazer live de novo');
-this.refresh();
-}
-};
-
-const VIEWS={
-home(){document.getElementById('views').style.display='none';document.getElementById('vProfile').style.display='block';document.getElementById('vAdmin').style.display='none'},
-profile(){
-let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
-if(!c){let e=prompt('Email:'); if(!e) return; let n=e.split('@')[0]; let users=JSON.parse(localStorage.getItem('work_users')||'[]'); let u=users.find(x=>x.email===e); if(!u){u={id:Date.now(),email:e,nick:n,photo:'https://i.pravatar.cc/200?u='+e}; users.push(u); localStorage.setItem('work_users',JSON.stringify(users));} localStorage.setItem('work_current_user',JSON.stringify(u)); c=u;}
-document.getElementById('views').style.display='block';
-document.getElementById('vProfile').style.display='block';
-document.getElementById('vAdmin').style.display='none';
-document.getElementById('pNick').innerText='@'+c.nick;
-document.getElementById('pPhoto').src=c.photo;
-document.getElementById('adminBtnArea').style.display=ADMIN.isAdmin()?'block':'none';
-WORK.my();
-},
-close(){document.getElementById('views').style.display='none';}
+resetLives(){if(!confirm('Resetar lives de hoje?')) return; let users=JSON.parse(localStorage.getItem('work_users')||'[]'); users.forEach(u=>localStorage.removeItem('work_live_'+u.id)); WORK.toast('✅ Liberado todos'); this.refresh();}
 };
 
 const WORK={
-db:null,stream:null,rec:null,chunks:[],
-initDB(){return new Promise(r=>{let req=indexedDB.open('WorkDB_FINAL',1); req.onupgradeneeded=e=>{e.target.result.createObjectStore('videos',{keyPath:'id'})}; req.onsuccess=e=>{this.db=e.target.result; r()}})},
+db:null,stream:null,rec:null,chunks:[],cur:0,
+allVideos:[
+{id:'v1',user:"@work",desc:"Video 1 - Arraste pra cima 👆",img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1000",likes:0,share:10,type:"img",comments:[]},
+{id:'v2',user:"@maria",desc:"Video 2 - Meu look de hoje 🔥",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:0,share:20,type:"img",comments:[]},
+{id:'v3',user:"@joao",desc:"Video 3 - Treino pesado",img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000",likes:0,share:30,type:"img",comments:[]}
+],
+initDB(){return new Promise(r=>{let req=indexedDB.open('WorkDB_BOM',1); req.onupgradeneeded=e=>{e.target.result.createObjectStore('videos',{keyPath:'id'})}; req.onsuccess=e=>{this.db=e.target.result; r()}})},
 loadAll(){return new Promise(r=>{if(!this.db) return r([]); let tx=this.db.transaction('videos','readonly'); let req=tx.objectStore('videos').getAll(); req.onsuccess=()=>r(req.result.reverse())})},
 canDoLive(){
-let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
-if(!c) return false;
+let c=JSON.parse(localStorage.getItem('work_current_user')||'null'); if(!c) return false;
 if(ADMIN.isAdmin()) return true;
 let key='work_live_'+c.id; let today=new Date().toDateString();
 let data=JSON.parse(localStorage.getItem(key)||'{"date":"","count":0}');
 if(data.date!==today){data={date:today,count:0}; localStorage.setItem(key,JSON.stringify(data))}
-if(data.count>=1){this.toast('🔴 Você já fez sua LIVE hoje! 1 por dia. Volta amanhã'); return false}
+if(data.count>=1){this.toast('🔴 Você já fez sua LIVE hoje! Volta amanhã - 1 por dia'); return false}
 return true;
 },
-registerLive(){
-let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
-let key='work_live_'+c.id; let today=new Date().toDateString();
-let data=JSON.parse(localStorage.getItem(key)||'{"date":"","count":0}');
-if(data.date!==today) data={date:today,count:0};
-data.count++; data.lastTime=new Date().toLocaleTimeString();
-localStorage.setItem(key,JSON.stringify(data));
+registerLive(){let c=JSON.parse(localStorage.getItem('work_current_user')||'null'); let key='work_live_'+c.id; let today=new Date().toDateString(); let data=JSON.parse(localStorage.getItem(key)||'{"date":"","count":0}'); if(data.date!==today) data={date:today,count:0}; data.count++; data.lastTime=new Date().toLocaleTimeString(); localStorage.setItem(key,JSON.stringify(data));},
+toast(t){let e=document.getElementById('toast'); e.innerText=t; e.classList.add('on'); setTimeout(()=>e.classList.remove('on'),2500)},
+requireAuth(cb){let c=JSON.parse(localStorage.getItem('work_current_user')||'null'); if(!c){let email=prompt('Seu email pra entrar:'); if(!email) return; let nick=email.split('@')[0]; let users=JSON.parse(localStorage.getItem('work_users')||'[]'); let u=users.find(x=>x.email===email); if(!u){u={id:Date.now(),email:email,nick:nick}; users.push(u); localStorage.setItem('work_users',JSON.stringify(users));} localStorage.setItem('work_current_user',JSON.stringify(u)); c=u;} cb();},
+getFeed(){return this.allVideos},
+next(){let f=this.getFeed(); this.cur=(this.cur+1)%f.length; this.render();},
+prev(){let f=this.getFeed(); this.cur=(this.cur-1+f.length)%f.length; this.render();},
+openProfile(){this.requireAuth(()=>{let c=JSON.parse(localStorage.getItem('work_current_user')||'null'); document.getElementById('pInfo').innerHTML=`<div style="font-size:18px;font-weight:900">@${c.nick}</div><div style="font-size:11px;color:#888">${c.email}</div>`; document.getElementById('adminBtnArea').style.display=ADMIN.isAdmin()?'block':'none'; document.getElementById('profileM').classList.add('on'); document.getElementById('profileM').style.display='flex'; this.my();});},
+closeM(){document.querySelectorAll('.modal').forEach(m=>{m.classList.remove('on'); m.style.display='none'})},
+render(){
+let f=this.getFeed(); if(!f.length) return; let v=f[this.cur];
+let media=v.data?`<video class="media" src="${v.data}" autoplay loop muted playsinline></video>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
+document.getElementById('stage').innerHTML=`${media}<div class="grad"></div>
+<div class="top"><div class="pill">${this.cur+1}/${f.length}</div><div class="pill on">SÓ ARRASTA 👆</div></div>
+<div class="actions">
+<div class="act" onclick="WORK.like()"><div class="btn">❤️</div><div class="cnt" id="likeCnt">${v.likes||0}</div></div>
+<div class="act"><div class="btn">💬</div><div class="cnt">0</div></div>
+<div class="act" onclick="WORK.share()"><div class="btn">🔗</div><div class="cnt">${v.share||0}</div></div>
+</div>
+<div class="meta"><div style="font-size:13px;font-weight:600">${v.desc}</div><div style="font-size:10px;color:#FFD700;margin-top:4px">${this.cur+1}/${f.length} • Arraste pra próximo • ${v.data?'♾️ Gravado no app':''} • ADS ON</div></div>`;
 },
+like(){let f=this.getFeed(); let v=f[this.cur]; v.likes=(v.likes||0)+1; document.getElementById('likeCnt').innerText=v.likes; this.toast('❤️ Curtiu!');},
+share(){navigator.clipboard.writeText(location.href); this.toast('🔗 Link copiado');},
+my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length; if(document.getElementById('cMy2')) document.getElementById('cMy2').innerText=all.length; document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:14px;overflow:hidden"><video src="${v.data}" style="width:100%;height:100%;object-fit:cover" muted></video></div>`).join('')||'<div style="color:#666;text-align:center;padding:20px">Nenhum vídeo ainda<br>Seus vídeos ficam gravados aqui</div>';});},
 openCam(type='video'){
-let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
-if(!c){VIEWS.profile(); return}
+this.requireAuth(()=>{
 if(type==='live'){if(!this.canDoLive()) return; if(!confirm('🔴 LIVE 1 por dia - Iniciar?')) return; this.registerLive();}
 document.getElementById('camType').innerText=type==='live'?'🔴 AO VIVO - 1/1 HOJE':'● GRAVANDO - ILIMITADO';
 document.getElementById('cam').style.display='flex';
 navigator.mediaDevices.getUserMedia({video:true,audio:true}).then(s=>{
-this.stream=s; document.getElementById('camEl').srcObject=s;
-this.chunks=[]; this.rec=new MediaRecorder(s); this.rec.ondataavailable=e=>this.chunks.push(e.data); this.rec.start();
+this.stream=s; document.getElementById('camEl').srcObject=s; this.chunks=[]; this.rec=new MediaRecorder(s); this.rec.ondataavailable=e=>this.chunks.push(e.data); this.rec.start();
+});
 });
 },
 closeCam(){if(this.rec) this.rec.stop(); if(this.stream) this.stream.getTracks().forEach(t=>t.stop()); document.getElementById('cam').style.display='none';},
-async post(){
-if(!this.rec) return;
-this.rec.stop();
+press(){
+if(!this.rec) return; this.rec.stop();
 let blob=new Blob(this.chunks,{type:'video/webm'});
 let reader=new FileReader();
 reader.onload=async e=>{
 await this.initDB();
 let c=JSON.parse(localStorage.getItem('work_current_user'));
-let vid={id:Date.now(),user:c.nick,photo:c.photo,data:e.target.result,desc:document.getElementById('descInp').value||'Meu vídeo 🔥',likes:0};
+let vid={id:Date.now(),user:c.nick,data:e.target.result,desc:document.getElementById('descInp').value||'Meu vídeo 🔥',likes:0,share:0};
 let tx=this.db.transaction('videos','readwrite'); tx.objectStore('videos').add(vid);
-tx.oncomplete=()=>{this.closeCam(); document.getElementById('descInp').value=''; this.toast('✅ Vídeo salvo! Fica pra sempre no app • Ilimitado'); this.feed();};
+tx.oncomplete=()=>{this.allVideos.unshift({id:vid.id,user:'@'+c.nick,desc:vid.desc,data:vid.data,likes:0,share:0}); this.closeCam(); document.getElementById('descInp').value=''; this.toast('✅ Vídeo salvo! Fica pra sempre - Ilimitado'); this.render(); this.my();};
 };
 reader.readAsDataURL(blob);
-},
-async feed(){
-await this.initDB();
-let vids=await this.loadAll();
-let feed=document.getElementById('feed');
-let html='';
-vids.forEach((v,i)=>{
-if(i>0 && i%5===0){html+=`<div class="adBox"><div>💰 ANÚNCIO ADSENSE<br><span style="font-size:12px">Seu ca-pub- aqui</span><br><br>Anúncio a cada 5 vídeos</div></div>`}
-html+=`<div class="item"><video src="${v.data}" loop playsinline onclick="this.paused?this.play():this.pause()"></video><div class="info"><div class="nick">@${v.user}</div><div class="desc">${v.desc}</div><div style="font-size:10px;color:#00FF88;margin-top:4px">♾️ Gravado no app • Ilimitado</div></div><div class="actions"><div class="act">❤️<br><span style="font-size:10px">${v.likes}</span></div><div class="act">💬</div><div class="act">↗️</div></div></div>`;
-});
-if(vids.length===0) html=`<div class="item" style="flex-direction:column"><div style="font-size:50px">🎬</div><div style="margin-top:10px;font-weight:900">Nenhum vídeo ainda</div><div style="font-size:12px;color:#888;margin-top:6px">Seus vídeos ficam gravados aqui pra sempre</div><button onclick="WORK.openCam('video')" style="margin-top:16px;background:#fff;color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:900">Postar primeiro vídeo</button></div>`;
-feed.innerHTML=html;
-},
-async my(){
-let vids=await this.loadAll();
-let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
-if(!c) return;
-let mine=vids.filter(v=>v.user===c.nick);
-document.getElementById('cMy').innerText=mine.length;
-document.getElementById('grid').innerHTML=mine.map(v=>`<video src="${v.data}" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px"></video>`).join('')||'<div style="grid-column:1/4;color:#666;font-size:12px;text-align:center;padding:20px">Nenhum vídeo ainda<br>Seus vídeos ficam salvos aqui pra sempre</div>';
-},
-changePhoto(e){
-let file=e.target.files[0]; if(!file) return;
-let r=new FileReader(); r.onload=ev=>{
-let c=JSON.parse(localStorage.getItem('work_current_user')); c.photo=ev.target.result;
-localStorage.setItem('work_current_user',JSON.stringify(c));
-let users=JSON.parse(localStorage.getItem('work_users')||'[]'); let idx=users.findIndex(u=>u.id===c.id); if(idx>-1){users[idx].photo=ev.target.result; localStorage.setItem('work_users',JSON.stringify(users));}
-document.getElementById('pPhoto').src=ev.target.result; this.toast('✅ Foto atualizada');
-}; r.readAsDataURL(file);
-},
-toast(m){let d=document.createElement('div'); d.innerText=m; d.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:10px 20px;border-radius:20px;font-weight:800;z-index:9999;font-size:12px'; document.body.appendChild(d); setTimeout(()=>d.remove(),3000);},
-logout(){localStorage.removeItem('work_current_user'); location.reload();}
+}
 };
-WORK.initDB().then(()=>WORK.feed());
+let startY=0; const stage=document.getElementById('stage');
+stage.addEventListener('touchstart',e=>{startY=e.touches[0].clientY},{passive:true});
+stage.addEventListener('touchend',e=>{let d=startY-e.changedTouches[0].clientY; if(Math.abs(d)>60){if(d>0) WORK.next(); else WORK.prev();}},{passive:true});
+WORK.initDB().then(async()=>{
+let saved=await WORK.loadAll();
+saved.forEach(v=>{WORK.allVideos.unshift({id:v.id,user:'@'+v.user,desc:v.desc,data:v.data,likes:v.likes||0,share:v.share||0})});
+WORK.render();
+if(!localStorage.getItem('work_current_user')){
+let users=JSON.parse(localStorage.getItem('work_users')||'[]');
+if(users.length===0){let u={id:1,email:'jonathacarlosmaria@gmail.com',nick:'jonatha'}; users.push(u); localStorage.setItem('work_users',JSON.stringify(users)); localStorage.setItem('work_current_user',JSON.stringify(u));}
+}
+});
 </script>
 </body>
 </html>
