@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK - ADM COM SENHA + ADS</title>
+<title>WORK - FOTO NO SEGUIR CORRIGIDO</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -12,17 +12,18 @@ body{background:#000;color:#fff;font-family:Arial;height:100dvh;overflow:hidden}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
 .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.92) 0%,transparent 60%)}
 .top{position:absolute;top:6px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:10;padding:0 8px}
-.pill{padding:5px 9px;border-radius:18px;font-size:8px;font-weight:900;background:rgba(0,0,0,.75);border:1px solid #333}.pill.on{background:#FFD700;color:#000}
-.actions{position:absolute;right:5px;top:74px;bottom:108px;display:flex;flex-direction:column;gap:7px;z-index:30;width:54px;align-items:center}
+.pill{padding:5px 9px;border-radius:18px;font-size:8px;font-weight:900;background:rgba(0,0,0,.75);border:1px solid #333;max-width:48%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pill.on{background:#FFD700;color:#000}
+.actions{position:absolute;right:5px;top:74px;bottom:108px;display:flex;flex-direction:column;gap:8px;z-index:30;width:60px;align-items:center}
 .action-item{display:flex;flex-direction:column;align-items:center;width:100%;cursor:pointer}
-.abtn{width:46px;height:46px;border-radius:13px;background:rgba(28,28,28,.94);border:2px solid #FFD700;display:flex;align-items:center;justify-content:center;font-size:18px}
-.abtn.gold{background:linear-gradient(145deg,#FFE55C,#FFD700)!important;color:#000!important;border:2px solid #000!important}
+.abtn{width:52px;height:52px;border-radius:50%;background:rgba(28,28,28,.94);border:2.5px solid #FFD700;display:flex;align-items:center;justify-content:center;font-size:20px;position:relative;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.6)}
+.abtn img{width:100%;height:100%;object-fit:cover}
+.abtn.gold{background:linear-gradient(145deg,#FFE55C,#FFD700)!important;color:#000!important;border:2.5px solid #000!important}
 .bounce{animation:bounce.6s cubic-bezier(.34,1.56,.64,1)!important}
 @keyframes bounce{0%{transform:scale(1)}30%{transform:scale(1.5)}60%{transform:scale(.8)}100%{transform:scale(1)}}
-.cnt{font-size:6.5px;font-weight:900;margin-top:2px;background:rgba(0,0,0,.85);padding:2px 5px;border-radius:8px;min-width:30px;text-align:center}
+.cnt{font-size:7px;font-weight:900;margin-top:3px;background:rgba(0,0,0,.85);padding:3px 6px;border-radius:10px;min-width:36px;text-align:center;border:1px solid rgba(255,215,0,.3)}
 .flyHeart{position:absolute;right:12px;bottom:200px;font-size:30px;pointer-events:none;z-index:100;animation:flyUp 1s forwards}
 @keyframes flyUp{0%{transform:translateY(0) scale(.5);opacity:1}100%{transform:translateY(-160px) scale(1.8);opacity:0}}
-.meta{position:absolute;left:8px;bottom:8px;right:65px;z-index:10;background:rgba(0,0,0,.6);padding:8px 10px;border-radius:13px;border:1px solid #333}
+.meta{position:absolute;left:8px;bottom:8px;right:70px;z-index:10;background:rgba(0,0,0,.7);padding:10px 12px;border-radius:14px;border:1px solid #333}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex!important}
 #toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#FFD700;color:#000;padding:10px 16px;border-radius:16px;z-index:8000;display:none;font-weight:900;font-size:11px;max-width:85%;text-align:center}#toast.on{display:block!important}
 .nav{height:96px!important;background:linear-gradient(180deg,#FFE55C,#FFD700,#D4AF37)!important;display:flex;justify-content:space-around;align-items:stretch;border-radius:20px 20px 0 0;margin-top:-10px;z-index:50;border-top:3px solid #FFD700;padding:4px 2px 5px 2px}
@@ -32,10 +33,12 @@ body{background:#000;color:#fff;font-family:Arial;height:100dvh;overflow:hidden}
 .input{width:100%;background:#111;border:1px solid #333;padding:10px;border-radius:10px;color:#fff;margin-top:6px;font-size:12px}
 #cam{position:fixed;inset:0;background:#000;z-index:9999;display:none;flex-direction:column}#camEl{flex:1;width:100%;height:100%;object-fit:cover;background:#111}.cam-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:10px;z-index:10;background:linear-gradient(180deg,rgba(0,0,0,.8),transparent)}.cam-modes{position:absolute;bottom:92px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:10}.cam-modes button{padding:7px 10px;border-radius:16px;font-weight:900;font-size:9px;border:1.5px solid #fff}.cam-bottom{position:absolute;bottom:0;left:0;right:0;padding:10px 8px 16px;display:flex;gap:8px;align-items:center;z-index:10;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent)}.progress{position:absolute;bottom:0;left:0;height:4px;background:#FFD700;z-index:20}
 .soundBig{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.5);width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;border:3px solid #FFD700;z-index:20}
-.ad-overlay{position:absolute;inset:0;background:rgba(0,0,0,.94);z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
-.ad-overlay.on{display:flex!important}
-@keyframes pulseRed{0%,100%{transform:scale(1);box-shadow:0 0 8px rgba(255,0,0,.6)}50%{transform:scale(1.08);box-shadow:0 0 18px rgba(255,0,0,1)}}
+.ad-overlay{position:absolute;inset:0;background:rgba(0,0,0,.94);z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}.ad-overlay.on{display:flex!important}
+@keyframes pulseRed{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 .pulseRed{animation:pulseRed 1.2s infinite}
+.follow-plus{position:absolute;bottom:-2px;right:-2px;background:#00E676;color:#fff;width:20px;height:20px;border-radius:50%;border:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
+.follow-check{position:absolute;bottom:-2px;right:-2px;background:#000;color:#00E676;width:20px;height:20px;border-radius:50%;border:2px solid #00E676;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900}
+.profile-pic{width:80px;height:80px;border-radius:50%;border:3px solid #FFD700;object-fit:cover;background:#111}
 </style>
 </head>
 <body>
@@ -46,74 +49,43 @@ body{background:#000;color:#fff;font-family:Arial;height:100dvh;overflow:hidden}
 <div class="tab" onclick="goMy()"><div>◧</div>Meus</div>
 <div onclick="goCam()"><div class="create"><span>+</span></div></div>
 <div class="tab" onclick="goCam(true)"><div>🔴</div>LIVE</div>
-<div class="tab" onclick="goProfile()"><div>👤</div>Eu</div>
+<div class="tab" onclick="goProfile()"><div id="navProfilePic" style="font-size:22px">👤</div>Eu</div>
 </div></div>
 
 <div id="adminBar" style="position:absolute;top:50px;left:8px;z-index:999;display:flex;flex-direction:column;gap:6px">
-<button id="adminBtn" onclick="openAdmin()" class="pulseRed" style="padding:10px 16px;border-radius:22px;background:linear-gradient(145deg,#ff2222,#B00000);color:#fff;font-weight:900;border:2px solid #fff;font-size:11px;box-shadow:0 4px 15px rgba(255,0,0,.9)">👑 ADM - <span id="onlineCount">0</span> ONLINE</button>
-<div style="background:rgba(0,0,0,.9);padding:6px 10px;border-radius:12px;font-size:9px;color:#FFD700;border:1.5px solid #FFD700;font-weight:900">👤 <span id="currentNick">@jonathacarlosmaria</span> • 💰 <span id="adCount">0</span> ads</div>
+<button onclick="openAdmin()" class="pulseRed" style="padding:10px 16px;border-radius:22px;background:linear-gradient(145deg,#ff2222,#B00000);color:#fff;font-weight:900;border:2px solid #fff;font-size:11px;box-shadow:0 4px 15px rgba(255,0,0,.9)">👑 ADM - <span id="onlineCount">0</span> ONLINE</button>
+<div style="background:rgba(0,0,0,.9);padding:6px 10px;border-radius:12px;font-size:9px;color:#FFD700;border:1.5px solid #FFD700;font-weight:900">👤 <span id="currentNick">@jonatha</span> • 👥 <span id="followCount">0</span></div>
 </div>
 
-<div id="adOverlay" class="ad-overlay">
-<div style="background:#111;border:2px solid #FFD700;border-radius:16px;padding:16px;width:92%;max-width:330px;text-align:center">
-<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:#FFD700;font-size:11px">📢 PUBLICIDADE - WORK</b><span id="adTimer" style="background:#ff0000;color:#fff;padding:3px 8px;border-radius:10px;font-size:9px;font-weight:900">5s</span></div>
-<div style="margin:12px 0;background:#000;border-radius:10px;padding:8px;min-height:200px;display:flex;align-items:center;justify-content:center;border:1px solid #333">
-<ins class="adsbygoogle" style="display:block;width:100%;height:200px" data-ad-client="ca-pub-XXXXXXXXXXXXXX" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
-</div>
-<div style="font-size:9px;color:#aaa;margin:6px 0">Ajude o WORK a continuar gratuito 💛</div>
-<button id="skipAdBtn" onclick="closeAd()" style="width:100%;padding:10px;border-radius:10px;background:#333;color:#888;font-weight:900;border:1px solid #555;font-size:11px" disabled>⏳ Aguarde 5s...</button>
-<button onclick="clickAd()" style="width:100%;padding:10px;border-radius:10px;background:linear-gradient(145deg,#FFE55C,#FFD700);color:#000;font-weight:900;border:2px solid #000;font-size:11px;margin-top:6px">👉 VER OFERTA</button>
-</div>
-</div>
+<div id="adOverlay" class="ad-overlay"><div style="background:#111;border:2px solid #FFD700;border-radius:16px;padding:16px;width:92%;max-width:330px;text-align:center"><div style="display:flex;justify-content:space-between"><b style="color:#FFD700;font-size:11px">📢 PUBLICIDADE WORK</b><span id="adTimer" style="background:#ff0000;color:#fff;padding:3px 8px;border-radius:10px;font-size:9px">5s</span></div><div style="margin:12px 0;background:#000;border-radius:10px;padding:20px;border:1px solid #333;text-align:center"><div style="font-size:30px">💰</div><div style="font-size:11px;color:#FFD700;font-weight:900;margin-top:6px">SEU ANÚNCIO AQUI</div><div style="font-size:8px;color:#888;margin-top:4px">AdMob + AdSense</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXX" data-ad-slot="YYYYYYYYYY" data-ad-format="auto"></ins></div><button id="skipAdBtn" onclick="closeAd()" style="width:100%;padding:10px;border-radius:10px;background:#333;color:#888;font-weight:900;border:1px solid #555;font-size:11px" disabled>⏳ Aguarde 5s...</button></div></div>
 
 <div id="cam"><video id="camEl" autoplay muted playsinline></video><canvas id="photoCanvas" style="display:none"></canvas><div class="progress" id="camProgress" style="width:0%"></div><div class="cam-top"><button onclick="closeCam()" style="width:34px;height:34px;background:rgba(0,0,0,.7);border:2px solid #fff;border-radius:50%;color:#fff">✕</button><div style="display:flex;flex-direction:column;align-items:center;gap:3px"><span id="camModeLabel" style="background:#FFD700;color:#000;padding:4px 9px;border-radius:10px;font-size:9px;font-weight:900">📸 FOTO</span><span id="camTimer" style="background:#ff0000;padding:4px 9px;border-radius:16px;font-size:9px;display:none">● 00:00</span></div><button onclick="postCurrent()" style="background:#00ff00;color:#000;border:none;padding:8px 13px;border-radius:16px;font-weight:900;font-size:10px">💾 SALVAR</button></div><div class="cam-modes"><button id="btnFoto" onclick="setCamMode('foto')" style="background:#FFD700;color:#000">📸 FOTO</button><button id="btnVideo" onclick="setCamMode('video')" style="background:rgba(0,0,0,.6);color:#fff">📹 1:30</button><button id="btnLive" onclick="setCamMode('live')" style="background:rgba(0,0,0,.6);color:#fff">🔴 LIVE</button></div><div class="cam-bottom"><div style="flex:1"></div><input id="descInp" placeholder="Legenda..." style="flex:1;max-width:58%;padding:10px 12px;border-radius:18px;background:rgba(0,0,0,.6);border:1.5px solid #FFD700;color:#fff;font-size:11px"><button id="shutterBtn" onclick="captureAction()" style="width:58px;height:58px;background:#fff;border-radius:50%;border:3px solid #000;font-size:20px">📸</button><div style="flex:1"></div></div></div>
 
-<div class="modal" id="adminPassM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#000;border-radius:22px 22px 0 0;padding:18px;border-top:3px solid #ff0000"><div style="text-align:center"><div style="font-size:32px">🔐</div><b style="color:#ff4444;font-size:14px">PAINEL ADM - SENHA</b><p style="font-size:9px;color:#888;margin-top:4px">Só o dono @jonathacarlosmaria</p><input id="adminPassInput" type="password" class="input" placeholder="Digite a senha ADM" style="margin-top:12px;text-align:center;font-size:14px;letter-spacing:3px;border:2px solid #ff0000"><button onclick="checkAdminPass()" style="width:100%;padding:12px;border-radius:12px;margin-top:10px;background:linear-gradient(145deg,#ff2222,#B00000);color:#fff;font-weight:900;border:2px solid #fff;font-size:12px">🔓 ENTRAR COMO ADM</button><p style="font-size:8px;color:#555;margin-top:8px">Padrão: work2024ADM</p><button onclick="closeAll()" style="width:100%;padding:8px;border-radius:8px;margin-top:6px;background:#111;color:#888;border:1px solid #333;font-size:9px">Cancelar</button></div></div></div>
+<div class="modal" id="adminPassM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#000;border-radius:22px 22px 0 0;padding:18px;border-top:3px solid #ff0000"><div style="text-align:center"><div style="font-size:32px">🔐</div><b style="color:#ff4444;font-size:14px">PAINEL ADM - SENHA</b><input id="adminPassInput" type="password" class="input" placeholder="Senha ADM" style="margin-top:12px;text-align:center;letter-spacing:3px;border:2px solid #ff0000"><button onclick="checkAdminPass()" style="width:100%;padding:12px;border-radius:12px;margin-top:10px;background:linear-gradient(145deg,#ff2222,#B00000);color:#fff;font-weight:900;border:2px solid #fff;font-size:12px">🔓 ENTRAR</button><p style="font-size:8px;color:#555;margin-top:8px">Padrão: work2024ADM</p></div></div></div>
 
-<div class="modal" id="profileM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1e1e1e;border-radius:22px 22px 0 0;padding:12px;border-top:3px solid #FFD700"><b style="color:#FFD700">👤 PERFIL</b><span onclick="closeAll()" style="float:right;font-size:20px;color:#FFD700">×</span><h3 id="profileName" style="font-size:14px;margin-top:6px"></h3><p id="profileNick" style="color:#FFD700;font-size:10px"></p><button onclick="openGalleryAuto()" style="width:100%;margin-top:8px;padding:11px;border-radius:10px;background:linear-gradient(145deg,#FFE55C,#FFD700);color:#000;font-weight:900;border:2px solid #000;font-size:12px">🖼️ IMPORTAR GALERIA</button><input id="inName" class="input" placeholder="Nome"><input id="inNick" class="input" placeholder="@nick"><button onclick="saveProfile()" style="width:100%;padding:10px;border-radius:10px;margin-top:6px;background:#FFD700;color:#000;font-weight:900;font-size:12px">💾 SALVAR</button><input type="file" id="galleryInput" accept="video/*,image/*" multiple style="display:none"></div></div>
-
-<div class="modal" id="adminM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#0a0000;border-radius:22px 22px 0 0;padding:14px;border-top:3px solid #ff0000;max-height:90vh;overflow:auto"><div style="display:flex;justify-content:space-between"><b style="color:#ff4444;font-size:13px">👑 PAINEL ADM SECRETO 🔐</b><span onclick="closeAll()" style="font-size:22px;color:#ff4444">×</span></div>
-
-<div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
-<div style="background:#111;padding:8px;border-radius:10px;border-left:3px solid #0f0;text-align:center"><div style="font-size:8px;color:#888">ONLINE AGORA</div><div id="adminOnlineBig" style="font-size:20px;font-weight:900;color:#0f0">0</div><div style="font-size:7px;color:#0f0">● ao vivo</div></div>
-<div style="background:#111;padding:8px;border-radius:10px;border-left:3px solid #FFD700;text-align:center"><div style="font-size:8px;color:#888">USUÁRIOS</div><div id="adminUsersBig" style="font-size:20px;font-weight:900;color:#FFD700">0</div><div style="font-size:7px;color:#FFD700">cadastrados</div></div>
-<div style="background:#111;padding:8px;border-radius:10px;border-left:3px solid #ff4444;text-align:center"><div style="font-size:8px;color:#888">ADS</div><div id="adminAdsBig" style="font-size:20px;font-weight:900;color:#ff4444">0</div><div style="font-size:7px;color:#ff4444">R$ <span id="adminMoney">0,00</span></div></div>
+<div class="modal" id="profileM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1e1e1e;border-radius:22px 22px 0 0;padding:14px;border-top:3px solid #FFD700;max-height:90vh;overflow:auto"><div style="display:flex;justify-content:space-between"><b style="color:#FFD700">👤 MEU PERFIL</b><span onclick="closeAll()" style="font-size:20px;color:#FFD700">×</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;margin-top:10px">
+<div style="position:relative">
+<img id="profilePicPreview" class="profile-pic" src="" style="display:none">
+<div id="profilePicPlaceholder" style="width:80px;height:80px;border-radius:50%;border:3px solid #FFD700;background:linear-gradient(145deg,#FFE55C,#FFD700);display:flex;align-items:center;justify-content:center;font-size:36px;color:#000;font-weight:900">?</div>
+<button onclick="document.getElementById('profilePicInput').click()" style="position:absolute;bottom:-4px;right:-4px;width:30px;height:30px;border-radius:50%;background:#FFD700;border:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:16px">📸</button>
 </div>
-
-<div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px">
-<button onclick="adminDeleteAll()" style="padding:9px;border-radius:10px;background:#ff0000;color:#fff;font-weight:900;border:1px solid #fff;font-size:9px">🗑️ APAGAR TUDO</button>
-<button onclick="showAd(true)" style="padding:9px;border-radius:10px;background:#FFD700;color:#000;font-weight:900;border:1px solid #000;font-size:9px">📢 TESTAR AD</button>
-<button onclick="adminListUsers()" style="padding:9px;border-radius:10px;background:#111;color:#FFD700;border:1.5px solid #FFD700;font-weight:900;font-size:9px">👥 USUÁRIOS</button>
-<button onclick="adminResetApp()" style="padding:9px;border-radius:10px;background:#000;color:#ff4444;border:1.5px solid #ff0000;font-weight:900;font-size:9px">⚠️ RESET</button>
+<input type="file" id="profilePicInput" accept="image/*" style="display:none">
+<h3 id="profileName" style="font-size:15px;margin-top:10px"></h3>
+<p id="profileNick" style="color:#FFD700;font-size:11px"></p>
+<button onclick="document.getElementById('profilePicInput').click()" style="margin-top:8px;padding:7px 16px;border-radius:16px;background:#111;color:#FFD700;border:1.5px solid #FFD700;font-weight:900;font-size:10px">📸 TROCAR FOTO DE PERFIL</button>
 </div>
-
-<div style="margin-top:10px;background:#000;border-radius:10px;padding:8px;border:1px solid #333">
-<div style="display:flex;justify-content:space-between"><b style="color:#0f0;font-size:10px">🟢 ONLINE AGORA (5min)</b><span onclick="cleanOffline()" style="font-size:8px;color:#888;text-decoration:underline">limpar</span></div>
-<div id="adminOnlineList" style="margin-top:6px;max-height:18vh;overflow:auto"></div>
-</div>
-
-<div id="adminUsersList" style="margin-top:10px;background:#000;border-radius:10px;padding:8px;max-height:22vh;overflow:auto;border:1px solid #333"></div>
-
-<div style="margin-top:10px;background:#000;border-radius:10px;padding:10px;border:1.5px solid #ff0000">
-<b style="color:#ff4444;font-size:10px">🔐 TROCAR SENHA ADM</b>
-<div style="display:flex;gap:6px;margin-top:6px">
-<input id="newAdminPass" type="password" class="input" style="flex:1;margin:0;padding:8px;font-size:10px" placeholder="Nova senha ex: Jonatha123">
-<button onclick="changeAdminPass()" style="padding:8px 12px;border-radius:8px;background:#ff0000;color:#fff;font-weight:900;font-size:9px;border:1px solid #fff">TROCAR</button>
-</div>
-<p style="font-size:7px;color:#888;margin-top:4px">Atual: <span id="currentPassShow" style="color:#ff4444;font-weight:900"></span> • Padrão: work2024ADM</p>
-</div>
-
-<div style="margin-top:10px;background:rgba(255,215,0,.1);padding:8px;border-radius:8px;border:1px solid #FFD700">
-<b style="color:#FFD700;font-size:10px">💰 CONFIG ADS</b>
-<div style="margin-top:6px;display:flex;gap:6px">
-<div style="flex:1"><label style="font-size:8px">A cada X vídeos</label><input id="adInterval" type="number" class="input" style="padding:6px" value="5"></div>
-<div style="flex:1"><label style="font-size:8px">Seg p/ pular</label><input id="adSkip" type="number" class="input" style="padding:6px" value="5"></div>
-</div>
-<button onclick="saveAdConfig()" style="width:100%;margin-top:6px;padding:8px;border-radius:8px;background:#0a0;color:#fff;font-weight:900;font-size:9px">💾 SALVAR ADS</button>
-<div id="adminStats" style="font-size:8px;color:#fff;margin-top:6px"></div>
-</div>
-
+<div style="display:flex;gap:6px;margin-top:12px"><div style="flex:1;background:#111;padding:8px;border-radius:10px;text-align:center;border:1px solid #333"><div style="font-size:9px;color:#888">Seguidores</div><div id="profileFollowers" style="font-size:16px;font-weight:900;color:#00E676">0</div></div><div style="flex:1;background:#111;padding:8px;border-radius:10px;text-align:center;border:1px solid #333"><div style="font-size:9px;color:#888">Seguindo</div><div id="profileFollowing" style="font-size:16px;font-weight:900;color:#FFD700">0</div></div><div style="flex:1;background:#111;padding:8px;border-radius:10px;text-align:center;border:1px solid #333"><div style="font-size:9px;color:#888">Vídeos</div><div id="profileVideos" style="font-size:16px;font-weight:900;color:#fff">0</div></div></div>
+<button onclick="openGalleryAuto()" style="width:100%;margin-top:10px;padding:11px;border-radius:10px;background:linear-gradient(145deg,#FFE55C,#FFD700);color:#000;font-weight:900;border:2px solid #000;font-size:12px">🖼️ IMPORTAR GALERIA</button>
+<input id="inName" class="input" placeholder="Seu nome"><input id="inNick" class="input" placeholder="@seu nick">
+<button onclick="saveProfile()" style="width:100%;padding:10px;border-radius:10px;margin-top:6px;background:#FFD700;color:#000;font-weight:900;font-size:12px">💾 SALVAR PERFIL COM FOTO</button>
+<input type="file" id="galleryInput" accept="video/*,image/*" multiple style="display:none">
+<button onclick="openFollowers()" style="width:100%;padding:10px;border-radius:10px;margin-top:8px;background:#111;color:#00E676;border:1.5px solid #00E676;font-weight:900;font-size:11px">👥 VER SEGUIDORES E SEGUINDO</button>
 </div></div>
+
+<div class="modal" id="followersM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1d1d1d;border-radius:22px 22px 0 0;padding:12px;border-top:3px solid #00E676;max-height:70vh;overflow:auto"><div style="display:flex;justify-content:space-between"><b style="color:#00E676;font-size:13px">👥 SEGUIDORES COM FOTO</b><span onclick="closeAll()" style="font-size:20px;color:#00E676">×</span></div><div style="display:flex;gap:6px;margin-top:8px"><button id="tabFollowers" onclick="showFollowersTab('followers')" style="flex:1;padding:8px;border-radius:8px;background:#00E676;color:#000;font-weight:900;font-size:10px">Seguidores (<span id="tabFollowersCount">0</span>)</button><button id="tabFollowing" onclick="showFollowersTab('following')" style="flex:1;padding:8px;border-radius:8px;background:#111;color:#00E676;border:1px solid #00E676;font-weight:900;font-size:10px">Seguindo (<span id="tabFollowingCount">0</span>)</button></div><div id="followersList" style="margin-top:10px"></div></div></div>
+
+<div class="modal" id="adminM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#0a0000;border-radius:22px 22px 0 0;padding:14px;border-top:3px solid #ff0000;max-height:90vh;overflow:auto"><div style="display:flex;justify-content:space-between"><b style="color:#ff4444;font-size:13px">👑 ADM COM FOTOS 🔐</b><span onclick="closeAll()" style="font-size:22px;color:#ff4444">×</span></div><div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:5px"><div style="background:#111;padding:6px;border-radius:8px;border-left:3px solid #0f0;text-align:center"><div style="font-size:7px;color:#888">ONLINE</div><div id="adminOnlineBig" style="font-size:16px;font-weight:900;color:#0f0">0</div></div><div style="background:#111;padding:6px;border-radius:8px;border-left:3px solid #FFD700;text-align:center"><div style="font-size:7px;color:#888">USUÁRIOS</div><div id="adminUsersBig" style="font-size:16px;font-weight:900;color:#FFD700">0</div></div><div style="background:#111;padding:6px;border-radius:8px;border-left:3px solid #00E676;text-align:center"><div style="font-size:7px;color:#888">FOLLOWS</div><div id="adminFollowsBig" style="font-size:16px;font-weight:900;color:#00E676">0</div></div><div style="background:#111;padding:6px;border-radius:8px;border-left:3px solid #ff4444;text-align:center"><div style="font-size:7px;color:#888">ADS</div><div id="adminAdsBig" style="font-size:16px;font-weight:900;color:#ff4444">0</div></div></div><div style="margin-top:10px;background:#000;border-radius:10px;padding:8px;border:1px solid #333"><b style="color:#0f0;font-size:10px">🟢 ONLINE AGORA COM FOTO</b><div id="adminOnlineList" style="margin-top:6px;max-height:15vh;overflow:auto"></div></div><div id="adminUsersList" style="margin-top:10px;background:#000;border-radius:10px;padding:8px;max-height:20vh;overflow:auto;border:1px solid #333"></div><div style="margin-top:10px;background:#000;border-radius:10px;padding:10px;border:1.5px solid #ff0000"><b style="color:#ff4444;font-size:10px">🔐 TROCAR SENHA ADM</b><div style="display:flex;gap:6px;margin-top:6px"><input id="newAdminPass" type="password" class="input" style="flex:1;margin:0;padding:8px;font-size:10px" placeholder="Nova senha"><button onclick="changeAdminPass()" style="padding:8px 12px;border-radius:8px;background:#ff0000;color:#fff;font-weight:900;font-size:9px">TROCAR</button></div><p style="font-size:7px;color:#888;margin-top:4px">Atual: <span id="currentPassShow" style="color:#ff4444"></span> • Padrão: work2024ADM</p></div></div></div>
 
 <div class="modal" id="galleryAutoM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1d1d1d;border-radius:22px 22px 0 0;padding:12px;border-top:3px solid #FFD700;max-height:82vh;overflow:auto"><div style="display:flex;justify-content:space-between"><b style="color:#FFD700;font-size:13px">📱 GALERIA</b><span onclick="closeAll()" style="font-size:20px;color:#FFD700">×</span></div><div style="margin-top:8px;display:flex;justify-content:space-between"><span id="galleryCount" style="color:#FFD700;font-weight:900;font-size:10px">0 itens</span><button onclick="importAllGallery()" id="importAllBtn" style="padding:6px 12px;border-radius:14px;background:#0a0;color:#fff;font-weight:900;display:none;font-size:10px">✅ IMPORTAR</button></div><div id="galleryAutoGrid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:8px;max-height:44vh;overflow:auto"></div></div></div>
 <div class="modal" id="commentsM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1e1e1e;border-radius:22px 22px 0 0;padding:12px;border-top:3px solid #FFD700;max-height:68vh;overflow:auto"><div style="display:flex;justify-content:space-between"><b style="color:#FFD700;font-size:13px">💬 Comentários</b><span onclick="closeAll()" style="font-size:20px;color:#FFD700">×</span></div><div id="commentsList" style="margin-top:8px"></div><div style="display:flex;gap:5px;margin-top:8px"><input id="commentInput" class="input" style="flex:1;margin:0" placeholder="Escreve..."><button onclick="sendComment()" style="padding:8px 11px;border-radius:8px;background:#FFD700;color:#000;font-weight:900;font-size:11px">Enviar</button></div></div></div>
@@ -128,24 +100,99 @@ let db=null,stream=null,rec=null,chunks=[],cur=0,camMode='foto',photoData=null,c
 let adConfig = JSON.parse(localStorage.getItem('work_ad_config')||'{"interval":5,"skip":5}');
 function toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2500)}
 function closeAll(){document.querySelectorAll('.modal').forEach(m=>{m.classList.remove('on');m.style.display='none'})}
-function getCurrentUser(){try{return JSON.parse(localStorage.getItem('work_current_user')||'{"nick":"'+APP_OWNER_NICK+'","name":"Jonatha"}')}catch{return {nick:APP_OWNER_NICK,name:"Jonatha"}}}
-function trackOnline(){let user=getCurrentUser();let online=JSON.parse(localStorage.getItem('work_online_users')||'{}');online[user.nick]={name:user.name,nick:user.nick,last:Date.now()};localStorage.setItem('work_online_users',JSON.stringify(online));updateOnlineUI();}
-function getOnlineUsers(){let online=JSON.parse(localStorage.getItem('work_online_users')||'{}');let now=Date.now();let list=[];for(let k in online){if(now-online[k].last<5*60*1000)list.push(online[k]);}return list;}
-function updateOnlineUI(){let online=getOnlineUsers();let el=document.getElementById('onlineCount');let big=document.getElementById('adminOnlineBig');if(el)el.innerText=online.length;if(big)big.innerText=online.length;let list=document.getElementById('adminOnlineList');if(list){if(online.length===0)list.innerHTML='<div style="text-align:center;color:#555;font-size:9px;padding:8px">Ninguém online</div>';else list.innerHTML=online.map(u=>`<div style="display:flex;justify-content:space-between;padding:5px;background:#111;margin-bottom:3px;border-radius:6px;border-left:2px solid #0f0"><div><div style="font-size:9px;color:#fff">${u.name}</div><div style="font-size:7px;color:#0f0">@${u.nick} • agora</div></div><div style="font-size:12px">🟢</div></div>`).join('');}}
-function cleanOffline(){localStorage.removeItem('work_online_users');updateOnlineUI();toast('🧹 Limpo');}
-function checkAd(){videoCount++;let interval=parseInt(adConfig.interval)||5;if(videoCount%interval===0){showAd();}}
-function showAd(isTest=false){
-let overlay=document.getElementById('adOverlay');let timerEl=document.getElementById('adTimer');let skipBtn=document.getElementById('skipAdBtn');
-overlay.classList.add('on');let sec=parseInt(adConfig.skip)||5;timerEl.innerText=sec+'s';skipBtn.disabled=true;skipBtn.innerText='⏳ Aguarde '+sec+'s...';skipBtn.style.background='#333';skipBtn.style.color='#888';
-let int=setInterval(()=>{sec--;timerEl.innerText=sec+'s';skipBtn.innerText='⏳ Aguarde '+sec+'s...';if(sec<=0){clearInterval(int);timerEl.innerText='✓';skipBtn.disabled=false;skipBtn.innerText='❌ FECHAR ANÚNCIO';skipBtn.style.background='#FFD700';skipBtn.style.color='#000';try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch{}}},1000);
-adsShown++;localStorage.setItem('work_ads_shown',adsShown);document.getElementById('adCount').innerText=adsShown;let big=document.getElementById('adminAdsBig');if(big)big.innerText=adsShown;let money=document.getElementById('adminMoney');if(money)money.innerText=(adsShown*0.15).toFixed(2);
+function getCurrentUser(){try{return JSON.parse(localStorage.getItem('work_current_user')||'{"nick":"'+APP_OWNER_NICK+'","name":"Jonatha","pic":""}')}catch{return {nick:APP_OWNER_NICK,name:"Jonatha",pic:""}}
+function getUserPic(nick){
+  let cur=getCurrentUser();
+  if(nick===cur.nick) return cur.pic||"";
+  let users=JSON.parse(localStorage.getItem('work_all_users')||'[]');
+  let u=users.find(x=>x.nick===nick);
+  if(u && u.pic) return u.pic;
+  if(nick===APP_OWNER_NICK){
+    let op=localStorage.getItem('work_owner_pic');
+    if(op) return op;
+  }
+  return "";
 }
+function trackOnline(){let user=getCurrentUser();let online=JSON.parse(localStorage.getItem('work_online_users')||'{}');online[user.nick]={name:user.name,nick:user.nick,last:Date.now(),pic:user.pic||""};localStorage.setItem('work_online_users',JSON.stringify(online));updateOnlineUI();}
+function getOnlineUsers(){let online=JSON.parse(localStorage.getItem('work_online_users')||'{}');let now=Date.now();let list=[];for(let k in online){if(now-online[k].last<5*60*1000)list.push(online[k]);}return list;}
+function updateOnlineUI(){
+  let online=getOnlineUsers();
+  let el=document.getElementById('onlineCount');
+  let big=document.getElementById('adminOnlineBig');
+  if(el)el.innerText=online.length;
+  if(big)big.innerText=online.length;
+  let list=document.getElementById('adminOnlineList');
+  if(list){
+    if(online.length===0) list.innerHTML='<div style="text-align:center;color:#555;font-size:9px;padding:8px">Ninguém online</div>';
+    else list.innerHTML=online.map(u=>{
+      let pic=getUserPic(u.nick)||u.pic;
+      let avatar=pic?`<img src="${pic}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid #0f0">`:`<div style="width:28px;height:28px;border-radius:50%;background:#FFD700;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px">${u.nick[0].toUpperCase()}</div>`;
+      return `<div style="display:flex;justify-content:space-between;align-items:center;padding:5px;background:#111;margin-bottom:3px;border-radius:6px;border-left:2px solid #0f0"><div style="display:flex;align-items:center;gap:6px">${avatar}<div><div style="font-size:9px;color:#fff">${u.name}</div><div style="font-size:7px;color:#0f0">@${u.nick} • agora</div></div></div><div style="font-size:12px">🟢</div></div>`;
+    }).join('');
+  }
+}
+function checkAd(){videoCount++;let interval=parseInt(adConfig.interval)||5;if(videoCount%interval===0){showAd();}}
+function showAd(){let overlay=document.getElementById('adOverlay');let timerEl=document.getElementById('adTimer');let skipBtn=document.getElementById('skipAdBtn');overlay.classList.add('on');let sec=parseInt(adConfig.skip)||5;timerEl.innerText=sec+'s';skipBtn.disabled=true;skipBtn.innerText='⏳ '+sec+'s...';skipBtn.style.background='#333';let int=setInterval(()=>{sec--;timerEl.innerText=sec+'s';skipBtn.innerText='⏳ '+sec+'s...';if(sec<=0){clearInterval(int);timerEl.innerText='✓';skipBtn.disabled=false;skipBtn.innerText='❌ FECHAR';skipBtn.style.background='#FFD700';skipBtn.style.color='#000';}},1000);adsShown++;localStorage.setItem('work_ads_shown',adsShown);document.getElementById('adCount').innerText=adsShown;}
 function closeAd(){document.getElementById('adOverlay').classList.remove('on');toast('✅ Continuando...');}
-function clickAd(){toast('👉 Obrigado! 💰');closeAd();}
 function goHome(){closeAll();render()}
 function goMy(){let myNick=getCurrentUser().nick;let myVideos=allVideos.filter(v=>v.owner===myNick);document.getElementById('myGrid').innerHTML=myVideos.map(v=>{let media=v.type==='foto'||(v.data&&v.data.startsWith('data:image'))?`<img src="${v.data||v.img}" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px">`:`<video src="${v.data}" controls playsinline style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px"></video>`;return `<div style="position:relative;border:1px solid #0a0;border-radius:8px;overflow:hidden">${media}<button onclick="askDelete(${v.id})" style="position:absolute;bottom:3px;right:3px;background:#ff0000;color:#fff;border:1px solid #fff;border-radius:10px;padding:1px 5px;font-size:8px">🗑️</button></div>`}).join('')||'<div style="text-align:center;padding:12px;color:#888;font-size:11px">Nenhum</div>';document.getElementById('myM').classList.add('on');document.getElementById('myM').style.display='flex';}
-function goProfile(){let c=getCurrentUser();document.getElementById('inName').value=c.name;document.getElementById('inNick').value=c.nick;document.getElementById('profileName').innerText=c.name;document.getElementById('profileNick').innerText='@'+c.nick;document.getElementById('profileM').classList.add('on');document.getElementById('profileM').style.display='flex';}
-function saveProfile(){let c=getCurrentUser();c.name=document.getElementById('inName').value.trim()||c.name;c.nick=document.getElementById('inNick').value.trim().replace('@','')||c.nick;localStorage.setItem('work_current_user',JSON.stringify(c));trackOnline();toast('✅ @'+c.nick);render();}
+function goProfile(){
+  let c=getCurrentUser();
+  document.getElementById('inName').value=c.name;
+  document.getElementById('inNick').value=c.nick;
+  document.getElementById('profileName').innerText=c.name;
+  document.getElementById('profileNick').innerText='@'+c.nick;
+  document.getElementById('profileFollowers').innerText=getFollowers(c.nick).length;
+  document.getElementById('profileFollowing').innerText=getFollowing(c.nick).length;
+  document.getElementById('profileVideos').innerText=allVideos.filter(v=>v.owner===c.nick).length;
+  let preview=document.getElementById('profilePicPreview');
+  let placeholder=document.getElementById('profilePicPlaceholder');
+  if(c.pic){
+    preview.src=c.pic;preview.style.display='block';placeholder.style.display='none';
+  }else{
+    preview.style.display='none';placeholder.style.display='flex';placeholder.innerText=c.nick[0].toUpperCase();
+  }
+  updateNavPic();
+  document.getElementById('profileM').classList.add('on');document.getElementById('profileM').style.display='flex';
+}
+function saveProfile(){
+  let c=getCurrentUser();
+  c.name=document.getElementById('inName').value.trim()||c.name;
+  c.nick=document.getElementById('inNick').value.trim().replace('@','')||c.nick;
+  localStorage.setItem('work_current_user',JSON.stringify(c));
+  let users=JSON.parse(localStorage.getItem('work_all_users')||'[]');
+  let idx=users.findIndex(u=>u.nick===c.nick);
+  if(idx>=0){users[idx].name=c.name;users[idx].pic=c.pic||"";}else{users.push({nick:c.nick,name:c.name,pic:c.pic||"",created:Date.now()});}
+  localStorage.setItem('work_all_users',JSON.stringify(users));
+  if(c.nick===APP_OWNER_NICK && c.pic) localStorage.setItem('work_owner_pic',c.pic);
+  trackOnline();updateNavPic();toast('✅ Perfil com foto salvo!');render();
+}
+function updateNavPic(){
+  let c=getCurrentUser();
+  let nav=document.getElementById('navProfilePic');
+  if(c.pic){nav.innerHTML=`<img src="${c.pic}" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:2px solid #000">`;}
+  else{nav.innerText='👤';}
+  document.getElementById('currentNick').innerText='@'+c.nick;
+}
+document.getElementById('profilePicInput').addEventListener('change',e=>{
+  let file=e.target.files[0];if(!file)return;
+  let rd=new FileReader();
+  rd.onload=ev=>{
+    let c=getCurrentUser();c.pic=ev.target.result;
+    localStorage.setItem('work_current_user',JSON.stringify(c));
+    if(c.nick===APP_OWNER_NICK) localStorage.setItem('work_owner_pic',c.pic);
+    document.getElementById('profilePicPreview').src=c.pic;
+    document.getElementById('profilePicPreview').style.display='block';
+    document.getElementById('profilePicPlaceholder').style.display='none';
+    updateNavPic();
+    let users=JSON.parse(localStorage.getItem('work_all_users')||'[]');
+    let idx=users.findIndex(u=>u.nick===c.nick);
+    if(idx>=0) users[idx].pic=c.pic;
+    localStorage.setItem('work_all_users',JSON.stringify(users));
+    toast('📸 Foto salva!');trackOnline();render();
+  };
+  rd.readAsDataURL(file);
+});
 function saveToBackup(){try{let b=allVideos.filter(v=>v.id!==1).slice(0,60).map(v=>({id:v.id,desc:v.desc,data:v.data,type:v.type,owner:v.owner,likes:v.likes||0,comments:v.commentsList||[] }));localStorage.setItem('work_backup_videos',JSON.stringify(b));}catch{}}
 function loadFromBackup(){try{let b=JSON.parse(localStorage.getItem('work_backup_videos')||'[]');if(b.length>0)return b;}catch{}return [];}
 function openGalleryAuto(){document.getElementById('galleryInput').click();}
@@ -154,24 +201,54 @@ function importAllGallery(){let checks=document.querySelectorAll('.gCheck:checke
 document.getElementById('galleryInput').addEventListener('change',e=>{ if(e.target.files.length) handleGalleryFiles(e.target.files); });
 function askDelete(id){deleteId=id;let v=allVideos.find(x=>x.id===id);document.getElementById('deletePreview').innerText=`@${v.owner} - ${v.desc}`;document.getElementById('deleteM').classList.add('on');document.getElementById('deleteM').style.display='flex';}
 function confirmDelete(){let id=deleteId;allVideos=allVideos.filter(x=>x.id!==id);saveToBackup();try{let tx=db.transaction('videos','readwrite');tx.objectStore('videos').delete(id);}catch{}if(cur>=allVideos.length)cur=0;closeAll();render();toast('🗑️ Apagado');}
+function getFollowers(nick){let all=JSON.parse(localStorage.getItem('work_follows')||'{}');let followers=[];for(let user in all){if(all[user].includes(nick))followers.push(user);}return followers;}
+function getFollowing(nick){let all=JSON.parse(localStorage.getItem('work_follows')||'{}');return all[nick]||[];}
+function isFollowing(targetNick){let me=getCurrentUser().nick;if(me===targetNick)return false;return getFollowing(me).includes(targetNick);}
+function toggleFollow(targetNick){let me=getCurrentUser().nick;if(me===targetNick){toast('❌ Não pode seguir a si mesmo');return;}let all=JSON.parse(localStorage.getItem('work_follows')||'{}');if(!all[me])all[me]=[];let idx=all[me].indexOf(targetNick);if(idx>=0){all[me].splice(idx,1);toast('👋 Deixou de seguir @'+targetNick);}else{all[me].push(targetNick);toast('✅ Seguindo @'+targetNick+' 👥');}localStorage.setItem('work_follows',JSON.stringify(all));render();updateFollowCount();}
+function updateFollowCount(){let me=getCurrentUser().nick;document.getElementById('followCount').innerText=getFollowers(me).length;}
+function openFollowers(){closeAll();document.getElementById('followersM').classList.add('on');document.getElementById('followersM').style.display='flex';showFollowersTab('followers');}
+function showFollowersTab(tab){
+  let me=getCurrentUser().nick;
+  let followers=getFollowers(me);
+  let following=getFollowing(me);
+  document.getElementById('tabFollowersCount').innerText=followers.length;
+  document.getElementById('tabFollowingCount').innerText=following.length;
+  document.getElementById('tabFollowers').style.background=tab==='followers'?'#00E676':'#111';
+  document.getElementById('tabFollowing').style.background=tab==='following'?'#00E676':'#111';
+  let list=document.getElementById('followersList');
+  let data=tab==='followers'?followers:following;
+  if(data.length===0){list.innerHTML=`<div style="text-align:center;color:#666;padding:20px;font-size:11px">Ninguém ainda 👥</div>`;}
+  else{
+    list.innerHTML=data.map(nick=>{
+      let pic=getUserPic(nick);
+      let avatar=pic?`<img src="${pic}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid #00E676">`:`<div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(145deg,#FFE55C,#FFD700);display:flex;align-items:center;justify-content:center;color:#000;font-weight:900">${nick[0].toUpperCase()}</div>`;
+      let vids=allVideos.filter(v=>v.owner===nick).length;
+      return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#111;margin-bottom:5px;border-radius:10px;border-left:2px solid #00E676"><div style="display:flex;align-items:center;gap:8px">${avatar}<div><div style="font-size:11px;font-weight:900;color:#fff">@${nick}</div><div style="font-size:8px;color:#888">${vids} vídeos • ${getFollowers(nick).length} seguidores</div></div></div><button onclick="toggleFollow('${nick}')" style="padding:5px 10px;border-radius:12px;background:${tab==='followers'&&!isFollowing(nick)?'#00E676':'#111'};color:${tab==='followers'&&!isFollowing(nick)?'#000':'#00E676'};border:1px solid #00E676;font-weight:900;font-size:9px">${tab==='followers'?(isFollowing(nick)?'Seguindo':'Seguir'):'Seguindo'}</button></div>`;
+    }).join('');
+  }
+}
 function render(){
 if(allVideos.length===0)allVideos=[{id:1,desc:"WORK - lateral completa",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",type:'foto',owner:APP_OWNER_NICK,likes:10,commentsList:["Top! 👑"]}];
 let v=allVideos[cur];
+let following=isFollowing(v.owner);
+let followersCount=getFollowers(v.owner).length;
+let ownerPic=getUserPic(v.owner);
+let followBtnInner = ownerPic? `<img src="${ownerPic}"><div class="${following?'follow-check':'follow-plus'}">${following?'✓':'＋'}</div>` : `<div style="font-size:22px;font-weight:900">${following?'✓':'＋'}</div><div class="${following?'follow-check':'follow-plus'}">${following?'✓':'＋'}</div>`;
+let metaPic = ownerPic? `<img src="${ownerPic}" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #00E676">` : `<div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#FFE55C,#FFD700);display:flex;align-items:center;justify-content:center;font-weight:900;color:#000">${v.owner[0].toUpperCase()}</div>`;
 let media=v.type==='foto'||(v.data&&v.data.startsWith('data:image'))?`<div class="bg" style="background-image:url('${v.data||v.img}')"></div>`:`<video id="mainVideo" src="${v.data}" autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video><div id="soundBtn" class="soundBig" onclick="toggleSound()" style="display:${currentMuted?'flex':'none'}">${currentMuted?'🔇':'🔊'}</div>`;
 document.getElementById('stage').innerHTML=`${media}<div class="grad"></div>
-<div class="top"><div class="pill">${cur+1}/${allVideos.length}</div><div class="pill on">✅ @${v.owner}</div></div>
+<div class="top"><div class="pill">${cur+1}/${allVideos.length}</div><div class="pill on">👥 ${followersCount} seguidores • @${v.owner}</div></div>
 <div class="actions">
 <div class="action-item" onclick="like(this)"><div class="abtn" style="border-color:#ff2d55">❤️</div><div class="cnt">${v.likes||10}</div></div>
-<div class="action-item" onclick="openComments(this)"><div class="abtn" style="border-color:#00d4ff">💬</div><div class="cnt">${(v.commentsList||[]).length}</div></div>
-<div class="action-item" onclick="openGalleryAuto()"><div class="abtn gold">🖼️</div><div class="cnt" style="background:linear-gradient(145deg,#FFE55C,#FFD700);color:#000">Galeria</div></div>
+<div class="action-item" onclick="toggleFollow('${v.owner}')"><div class="abtn" style="border-color:${following?'#00E676':'#00E676'};border-width:3px">${followBtnInner}</div><div class="cnt" style="${following?'background:#111;color:#00E676;border:1.5px solid #00E676':'background:#00E676;color:#fff'}">${following?'Seguindo':'Seguir'}</div></div>
+<div class="action-item" onclick="openComments()"><div class="abtn" style="border-color:#00d4ff">💬</div><div class="cnt">${(v.commentsList||[]).length}</div></div>
+<div class="action-item" onclick="openGalleryAuto()"><div class="abtn gold">🖼️</div><div class="cnt" style="background:#FFD700;color:#000">Galeria</div></div>
 <div class="action-item" onclick="openShare()"><div class="abtn" style="border-color:#4da3ff">↗️</div><div class="cnt">Share</div></div>
-<div class="action-item" onclick="toggleSound()"><div class="abtn" style="border-color:${currentMuted?'#ff5050':'#00e676'}">${currentMuted?'🔇':'🔊'}</div><div class="cnt">${currentMuted?'Mudo':'Som'}</div></div>
-<div class="action-item" onclick="askDelete(${v.id})"><div class="abtn" style="background:#ff1a1a!important;border-color:#fff!important">🗑️</div><div class="cnt" style="color:#ff6666">Apagar</div></div>
 </div>
-<div class="meta"><div style="font-weight:700;font-size:11px">${v.desc}</div><div style="font-size:8px;color:#FFD700;margin-top:2px">Vídeo ${cur+1} • AD em ${adConfig.interval - (videoCount % adConfig.interval)} vídeos • @${v.owner}</div></div>`;
+<div class="meta"><div style="display:flex;align-items:center;gap:8px">${metaPic}<div><div style="font-weight:900;font-size:11px">@${v.owner} ${following?'• Seguindo ✓':''}</div><div style="font-size:8px;color:#00E676">${followersCount} seguidores • ${allVideos.filter(x=>x.owner===v.owner).length} vídeos</div></div><button onclick="toggleFollow('${v.owner}')" style="margin-left:auto;padding:7px 14px;border-radius:16px;background:${following?'#111':'#00E676'};color:${following?'#00E676':'#fff'};border:1.5px solid #00E676;font-weight:900;font-size:10px">${following?'Seguindo':'＋ Seguir'}</button></div><div style="font-size:10px;margin-top:6px">${v.desc}</div></div>`;
 let vid=document.getElementById('mainVideo');if(vid){vid.muted=currentMuted}
 }
-function like(item){let btn=item.querySelector('.abtn');if(btn){btn.classList.add('bounce');setTimeout(()=>btn.classList.remove('bounce'),600);}let h=document.createElement('div');h.className='flyHeart';h.innerText='❤️';document.getElementById('stage').appendChild(h);setTimeout(()=>h.remove(),1000);let v=allVideos[cur];v.likes=(v.likes||0)+1;saveToBackup();render();}
+function like(item){let btn=item?item.querySelector('.abtn'):null;if(btn){btn.classList.add('bounce');setTimeout(()=>btn.classList.remove('bounce'),600);}let h=document.createElement('div');h.className='flyHeart';h.innerText='❤️';document.getElementById('stage').appendChild(h);setTimeout(()=>h.remove(),1000);let v=allVideos[cur];v.likes=(v.likes||0)+1;saveToBackup();render();}
 function openComments(){let v=allVideos[cur];document.getElementById('commentsList').innerHTML=(v.commentsList||[]).map(c=>`<div style="background:rgba(255,255,255,.08);padding:7px;border-radius:8px;margin-bottom:4px;border-left:2px solid #00d4ff;font-size:10px">💬 ${c}</div>`).join('')||'<div style="text-align:center;color:#888;padding:12px;font-size:10px">Seja o primeiro!</div>';document.getElementById('commentsM').classList.add('on');document.getElementById('commentsM').style.display='flex';}
 function openShare(){document.getElementById('shareM').classList.add('on');document.getElementById('shareM').style.display='flex';}
 function toggleSound(){let vid=document.getElementById('mainVideo');if(!vid){currentMuted=!currentMuted;render();return}currentMuted=!currentMuted;vid.muted=currentMuted;render();}
@@ -184,66 +261,18 @@ function goCam(isLive=false){document.getElementById('cam').style.display='flex'
 function startRec(isLive){chunks=[];if(stream){try{rec=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9,opus'});}catch{rec=new MediaRecorder(stream);}rec.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};rec.start(100);camStartTime=Date.now();camTimerInt=setInterval(()=>{let elapsed=Date.now()-camStartTime;let limit=isLive?LIVE_MAX:VIDEO_MAX;document.getElementById('camTimer').innerText=`${isLive?'🔴':'●'} ${Math.floor(elapsed/1000)}s`;document.getElementById('camProgress').style.width=`${Math.min(100,(elapsed/limit)*100)}%`;if(elapsed>=limit)postCurrent();},100);}}
 function closeCam(){if(camTimerInt){clearInterval(camTimerInt);camTimerInt=null}if(rec){try{rec.stop()}catch{}rec=null}if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}document.getElementById('cam').style.display='none';document.getElementById('camProgress').style.width='0%';photoData=null}
 function postCurrent(){let curUser=getCurrentUser();if(camMode==='foto'){if(!photoData){toast('Tire foto');return}let id=Date.now();let obj={id:id,data:photoData,desc:document.getElementById('descInp').value||'Foto @'+curUser.nick,type:'foto',likes:0,owner:curUser.nick,commentsList:[]};allVideos.unshift(obj);saveToBackup();try{let tx=db.transaction('videos','readwrite');tx.objectStore('videos').add(obj);}catch{}closeCam();document.getElementById('descInp').value='';toast('✅ FOTO SALVA!');render();}else{if(!rec||chunks.length===0){toast('Grave');return}if(camTimerInt){clearInterval(camTimerInt);camTimerInt=null}rec.stop();let blob=new Blob(chunks,{type:rec.mimeType||'video/webm'});let r=new FileReader();r.onload=e=>{let id=Date.now()+Math.random();let obj={id:id,data:e.target.result,desc:document.getElementById('descInp').value||'Vídeo 🔊 @'+curUser.nick,type:'video',likes:0,owner:curUser.nick,commentsList:[]};allVideos.unshift(obj);saveToBackup();try{let tx=db.transaction('videos','readwrite');tx.objectStore('videos').add(obj);}catch{}closeCam();document.getElementById('descInp').value='';chunks=[];currentMuted=false;toast('✅ COM SOM!');render();};r.readAsDataURL(blob);}}
-
-// === ADM COM SENHA ===
-function openAdmin(){
-  let user=getCurrentUser();
-  if(user.nick!==ADMIN_NICK){toast('❌ Só dono @jonathacarlosmaria');return;}
-  document.getElementById('adminPassM').classList.add('on');
-  document.getElementById('adminPassM').style.display='flex';
-  document.getElementById('adminPassInput').value='';
-  setTimeout(()=>document.getElementById('adminPassInput').focus(),200);
-}
-function checkAdminPass(){
-  let digitada=document.getElementById('adminPassInput').value.trim();
-  let correta=localStorage.getItem('work_admin_pass')||'work2024ADM';
-  if(digitada===correta){
-    closeAll();
-    setTimeout(()=>openAdminPanel(),300);
-    toast('✅ ADM liberado 👑');
-  }else{
-    toast('❌ Senha errada! Padrão: work2024ADM');
-    document.getElementById('adminPassInput').value='';
-    document.getElementById('adminPassInput').style.border='2px solid #ff0000';
-    setTimeout(()=>document.getElementById('adminPassInput').style.border='1px solid #333',1000);
-  }
-}
-function openAdminPanel(){
-  document.getElementById('adminM').classList.add('on');document.getElementById('adminM').style.display='flex';
-  let users=JSON.parse(localStorage.getItem('work_all_users')||'[]');
-  let online=getOnlineUsers();
-  document.getElementById('adminUsersBig').innerText=users.length+1;
-  document.getElementById('adminOnlineBig').innerText=online.length;
-  document.getElementById('adminAdsBig').innerText=adsShown;
-  document.getElementById('adminMoney').innerText=(adsShown*0.15).toFixed(2);
-  document.getElementById('currentPassShow').innerText=localStorage.getItem('work_admin_pass')||'work2024ADM';
-  document.getElementById('adInterval').value=adConfig.interval;
-  document.getElementById('adSkip').value=adConfig.skip;
-  document.getElementById('adminStats').innerHTML=`Vídeos: ${allVideos.length}<br>Senha: ${localStorage.getItem('work_admin_pass')||'work2024ADM'}<br>AD a cada ${adConfig.interval} vídeos`;
-  adminListUsers();updateOnlineUI();
-}
-function changeAdminPass(){
-  let nova=document.getElementById('newAdminPass').value.trim();
-  if(nova.length<4){toast('❌ Mínimo 4 letras');return;}
-  localStorage.setItem('work_admin_pass',nova);
-  document.getElementById('currentPassShow').innerText=nova;
-  toast('✅ Nova senha: '+nova+' 🔐');
-  document.getElementById('newAdminPass').value='';
-}
-function adminListUsers(){
-  let users=JSON.parse(localStorage.getItem('work_all_users')||'[]');
-  let div=document.getElementById('adminUsersList');
-  if(users.length===0){div.innerHTML='<div style="text-align:center;color:#888;font-size:10px;padding:10px">Nenhum usuário ainda</div>';return;}
-  div.innerHTML='<b style="color:#FFD700;font-size:10px">👥 USUÁRIOS CADASTRADOS:</b><br><br>'+users.map(u=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:6px;background:#111;margin-bottom:4px;border-radius:6px;border-left:2px solid #FFD700"><div><div style="font-size:10px;font-weight:900;color:#fff">${u.name}</div><div style="font-size:8px;color:#FFD700">@${u.nick}</div><div style="font-size:7px;color:#888">${allVideos.filter(v=>v.owner===u.nick).length} vídeos</div></div><button onclick="adminDeleteUser('${u.nick}')" style="padding:3px 6px;border-radius:8px;background:#ff0000;color:#fff;font-size:8px;border:none">🗑️ BAN</button></div>`).join('');
-}
-function saveAdConfig(){adConfig.interval=parseInt(document.getElementById('adInterval').value)||5;adConfig.skip=parseInt(document.getElementById('adSkip').value)||5;localStorage.setItem('work_ad_config',JSON.stringify(adConfig));toast('💾 ADS a cada '+adConfig.interval+' vídeos');}
-function adminDeleteUser(nick){if(!confirm('BANIR @'+nick+'?'))return;let users=JSON.parse(localStorage.getItem('work_all_users')||'[]');users=users.filter(u=>u.nick!==nick);localStorage.setItem('work_all_users',JSON.stringify(users));allVideos=allVideos.filter(v=>v.owner!==nick);saveToBackup();adminListUsers();render();toast('🗑️ Banido @'+nick);}
-function adminDeleteAll(){if(!confirm('APAGAR TODOS OS VÍDEOS?'))return;allVideos=[allVideos[0]];saveToBackup();try{let tx=db.transaction('videos','readwrite');tx.objectStore('videos').clear();}catch{}render();toast('🗑️ Apagado');closeAll();}
-function adminResetApp(){if(!confirm('RESETAR APP TODO?'))return;localStorage.clear();indexedDB.deleteDatabase('WorkDB_ADM_SENHA');location.reload();}
-function initDB(){return new Promise(r=>{let q=indexedDB.open('WorkDB_ADM_SENHA',28);q.onupgradeneeded=e=>{if(!e.target.result.objectStoreNames.contains('videos'))e.target.result.createObjectStore('videos',{keyPath:'id'})};q.onsuccess=e=>{db=e.target.result;r()};q.onerror=()=>{db=null;r();};});}
+function openAdmin(){let user=getCurrentUser();if(user.nick!==ADMIN_NICK){toast('❌ Só dono');return;}document.getElementById('adminPassM').classList.add('on');document.getElementById('adminPassM').style.display='flex';document.getElementById('adminPassInput').value='';}
+function checkAdminPass(){let digitada=document.getElementById('adminPassInput').value.trim();let correta=localStorage.getItem('work_admin_pass')||'work2024ADM';if(digitada===correta){closeAll();setTimeout(()=>openAdminPanel(),300);toast('✅ ADM liberado 👑');}else{toast('❌ Senha errada! Padrão: work2024ADM');}}
+function openAdminPanel(){document.getElementById('adminM').classList.add('on');document.getElementById('adminM').style.display='flex';let users=JSON.parse(localStorage.getItem('work_all_users')||'[]');let online=getOnlineUsers();document.getElementById('adminUsersBig').innerText=users.length+1;document.getElementById('adminOnlineBig').innerText=online.length;let allF=JSON.parse(localStorage.getItem('work_follows')||'{}');let total=0;for(let k in allF)total+=allF[k].length;document.getElementById('adminFollowsBig').innerText=total;document.getElementById('adminAdsBig').innerText=adsShown;document.getElementById('currentPassShow').innerText=localStorage.getItem('work_admin_pass')||'work2024ADM';adminListUsers();updateOnlineUI();}
+function changeAdminPass(){let nova=document.getElementById('newAdminPass').value.trim();if(nova.length<4){toast('❌ Mínimo 4');return;}localStorage.setItem('work_admin_pass',nova);document.getElementById('currentPassShow').innerText=nova;toast('✅ Nova senha: '+nova);document.getElementById('newAdminPass').value='';}
+function adminListUsers(){let users=JSON.parse(localStorage.getItem('work_all_users')||'[]');let div=document.getElementById('adminUsersList');if(users.length===0){div.innerHTML='<div style="text-align:center;color:#888;font-size:10px;padding:10px">Nenhum usuário</div>';return;}div.innerHTML='<b style="color:#FFD700;font-size:10px">👥 USUÁRIOS COM FOTO:</b><br><br>'+users.map(u=>{let f=getFollowers(u.nick).length;let pic=u.pic?`<img src="${u.pic}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid #FFD700">`:`<div style="width:28px;height:28px;border-radius:50%;background:#FFD700;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:12px">${u.nick[0].toUpperCase()}</div>`;return `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px;background:#111;margin-bottom:4px;border-radius:6px;border-left:2px solid #FFD700"><div style="display:flex;align-items:center;gap:6px">${pic}<div><div style="font-size:10px;font-weight:900;color:#fff">${u.name}</div><div style="font-size:8px;color:#FFD700">@${u.nick} • ${f} seguidores</div></div></div><button onclick="adminDeleteUser('${u.nick}')" style="padding:3px 6px;border-radius:8px;background:#ff0000;color:#fff;font-size:8px;border:none">🗑️</button></div>`}).join('');}
+function adminDeleteUser(nick){if(!confirm('BANIR @'+nick+'?'))return;let users=JSON.parse(localStorage.getItem('work_all_users')||'[]');users=users.filter(u=>u.nick!==nick);localStorage.setItem('work_all_users',JSON.stringify(users));allVideos=allVideos.filter(v=>v.owner!==nick);saveToBackup();adminListUsers();render();toast('🗑️ Banido');}
+function adminDeleteAll(){if(!confirm('APAGAR TUDO?'))return;allVideos=[allVideos[0]];saveToBackup();try{let tx=db.transaction('videos','readwrite');tx.objectStore('videos').clear();}catch{}render();toast('🗑️ Apagado');closeAll();}
+function adminResetApp(){if(!confirm('RESETAR?'))return;localStorage.clear();indexedDB.deleteDatabase('WorkDB_FOTO_FIX');location.reload();}
+function initDB(){return new Promise(r=>{let q=indexedDB.open('WorkDB_FOTO_FIX',31);q.onupgradeneeded=e=>{if(!e.target.result.objectStoreNames.contains('videos'))e.target.result.createObjectStore('videos',{keyPath:'id'})};q.onsuccess=e=>{db=e.target.result;r()};q.onerror=()=>{db=null;r();};});}
 function loadAll(){return new Promise(r=>{if(!db){r(loadFromBackup());return;}try{let tx=db.transaction('videos','readonly');let req=tx.objectStore('videos').getAll();req.onsuccess=()=>{let res=req.result;if(res.length===0)res=loadFromBackup();r(res);};req.onerror=()=>{r(loadFromBackup());};}catch{r(loadFromBackup());}});}
 let sy=0;const st=document.getElementById('stage');st.addEventListener('touchstart',e=>{sy=e.touches[0].clientY},{passive:true});st.addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0){cur++;if(cur>=allVideos.length)cur=0}else{cur--;if(cur<0)cur=allVideos.length-1}currentMuted=true;render();checkAd();}},{passive:true});
-initDB().then(async()=>{let saved=await loadAll();saved.reverse().forEach(v=>{allVideos.unshift({id:v.id,desc:v.desc,data:v.data,type:v.type||'video',likes:v.likes||0,owner:v.owner||APP_OWNER_NICK,commentsList:v.commentsList||v.comments||[]})});render();if(!localStorage.getItem('work_current_user')){let u={id:1,nick:APP_OWNER_NICK,name:'Jonatha'};localStorage.setItem('work_current_user',JSON.stringify(u));}adsShown=parseInt(localStorage.getItem('work_ads_shown')||'0');document.getElementById('adCount').innerText=adsShown;trackOnline();setInterval(trackOnline,30000);document.getElementById('currentNick').innerText='@'+getCurrentUser().nick;toast('✅ SENHA ADM: work2024ADM • ADS a cada 5 vídeos');});
+initDB().then(async()=>{let saved=await loadAll();saved.reverse().forEach(v=>{allVideos.unshift({id:v.id,desc:v.desc,data:v.data,type:v.type||'video',likes:v.likes||0,owner:v.owner||APP_OWNER_NICK,commentsList:v.commentsList||v.comments||[]})});render();if(!localStorage.getItem('work_current_user')){let u={id:1,nick:APP_OWNER_NICK,name:'Jonatha',pic:localStorage.getItem('work_owner_pic')||""};localStorage.setItem('work_current_user',JSON.stringify(u));}adsShown=parseInt(localStorage.getItem('work_ads_shown')||'0');document.getElementById('adCount').innerText=adsShown;trackOnline();setInterval(trackOnline,30000);updateNavPic();updateFollowCount();toast('✅ CORRIGIDO - Foto aparece no botão SEGUIR! 📸 Senha: work2024ADM');});
 </script>
 </body>
 </html>
