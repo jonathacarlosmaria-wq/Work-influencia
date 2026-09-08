@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK - FINAL COM MOVIMENTO</title>
+<title>WORK - FINAL COM MOVIMENTO FORTE</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#000;color:#fff;font-family:Arial;height:100dvh;overflow:hidden}
@@ -12,25 +12,30 @@ body{background:#000;color:#fff;font-family:Arial;height:100dvh;overflow:hidden}
 .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.92) 0%,transparent 60%)}
 .top{position:absolute;top:6px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:10;padding:0 8px}
 .pill{padding:5px 9px;border-radius:18px;font-size:8px;font-weight:900;background:rgba(0,0,0,.75);border:1px solid #333;white-space:nowrap;max-width:46%;overflow:hidden;text-overflow:ellipsis}.pill.on{background:#FFD700;color:#000}
+
+/* BOTÕES DENTRO DA TELA */
 .actions{position:absolute;right:5px;top:74px;bottom:108px;display:flex;flex-direction:column;gap:7px;z-index:30;width:54px;align-items:center}
 .action-item{display:flex;flex-direction:column;align-items:center;width:100%;cursor:pointer}
-.abtn{width:46px;height:46px;border-radius:13px;background:rgba(28,28,28,.94);border:2px solid #FFD700;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 3px 10px rgba(0,0,0,.7);transition:all.15s cubic-bezier(.34,1.56,.64,1)}
+.abtn{width:46px;height:46px;border-radius:13px;background:rgba(28,28,28,.94);border:2px solid #FFD700;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 3px 10px rgba(0,0,0,.7)}
 .abtn.gold{background:linear-gradient(145deg,#FFE55C,#FFD700,#D4AF37)!important;color:#000!important;border:2px solid #000!important;box-shadow:0 0 12px rgba(255,215,0,.7)!important}
-.bounce{animation:bounceClick.5s cubic-bezier(.34,1.56,.64,1)!important}
-@keyframes bounceClick{0%{transform:scale(1)}30%{transform:scale(1.35) rotate(-8deg)}60%{transform:scale(.85) rotate(5deg)}100%{transform:scale(1)}}
-.shake{animation:shakeClick.45s!important}
-@keyframes shakeClick{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px) rotate(-5deg)}40%{transform:translateX(4px) rotate(5deg)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
-.spin{animation:spinClick.6s!important}
-@keyframes spinClick{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.3)}100%{transform:rotate(360deg) scale(1)}}
-.fly{animation:flyClick.55s!important}
-@keyframes flyClick{0%{transform:translateX(0)}40%{transform:translateX(12px) translateY(-8px) scale(1.25) rotate(12deg)}100%{transform:translateX(0)}}
-.pulse{animation:pulseClick.5s!important}
-@keyframes pulseClick{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
-.trashAnim{animation:trashClick.5s!important}
-@keyframes trashClick{0%{transform:rotate(0)}20%{transform:rotate(-12deg) scale(1.15)}40%{transform:rotate(12deg) scale(1.15)}100%{transform:rotate(0)}}
+
+/* MOVIMENTOS FORTES NO CLIQUE */
+.bounce{animation:bounce.6s cubic-bezier(.34,1.56,.64,1)!important}
+@keyframes bounce{0%{transform:scale(1)}30%{transform:scale(1.5) rotate(-10deg)}60%{transform:scale(.8) rotate(8deg)}100%{transform:scale(1)}}
+.shake{animation:shake.5s!important}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px) rotate(-8deg)}75%{transform:translateX(8px) rotate(8deg)}}
+.spin{animation:spin.7s!important}
+@keyframes spin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.4)}100%{transform:rotate(360deg) scale(1)}}
+.fly{animation:fly.6s!important}
+@keyframes fly{0%{transform:translateX(0)}40%{transform:translateX(18px) translateY(-12px) scale(1.3) rotate(15deg)}100%{transform:translateX(0)}}
+.pulse{animation:pulse.5s!important}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.6)}100%{transform:scale(1)}}
+.trashAnim{animation:trash.6s!important}
+@keyframes trash{0%{transform:rotate(0)}20%{transform:rotate(-20deg) scale(1.2)}40%{transform:rotate(20deg) scale(1.2)}100%{transform:rotate(0)}}
+
 .cnt{font-size:6.5px;font-weight:900;margin-top:2px;background:rgba(0,0,0,.85);padding:2px 5px;border-radius:8px;min-width:30px;text-align:center;color:#fff;border:1px solid rgba(255,255,255,.12)}
-.flyHeart{position:absolute;right:12px;bottom:200px;font-size:26px;pointer-events:none;z-index:100;animation:flyUp 1s forwards}
-@keyframes flyUp{0%{transform:translateY(0) scale(.5);opacity:1}100%{transform:translateY(-150px) scale(1.5);opacity:0}}
+.flyHeart{position:absolute;right:12px;bottom:200px;font-size:30px;pointer-events:none;z-index:100;animation:flyUp 1s forwards}
+@keyframes flyUp{0%{transform:translateY(0) scale(.5);opacity:1}100%{transform:translateY(-160px) scale(1.8);opacity:0}}
 .meta{position:absolute;left:8px;bottom:8px;right:65px;z-index:10;background:rgba(0,0,0,.6);padding:8px 10px;border-radius:13px;border:1px solid #333}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex!important}
 #toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#FFD700;color:#000;padding:10px 16px;border-radius:16px;z-index:8000;display:none;font-weight:900;font-size:11px;max-width:80%;text-align:center}#toast.on{display:block!important}
@@ -81,7 +86,7 @@ function importAllGallery(){let checks=document.querySelectorAll('.gCheck:checke
 document.getElementById('galleryInput').addEventListener('change',e=>{ if(e.target.files.length) handleGalleryFiles(e.target.files); });
 function askDelete(id){deleteId=id;let v=allVideos.find(x=>x.id===id);document.getElementById('deletePreview').innerText=`@${v.owner} - ${v.desc}`;document.getElementById('deleteM').classList.add('on');document.getElementById('deleteM').style.display='flex';}
 function confirmDelete(){let id=deleteId;allVideos=allVideos.filter(x=>x.id!==id);saveToBackup();try{let tx=db.transaction('videos','readwrite');tx.objectStore('videos').delete(id);}catch{}if(cur>=allVideos.length)cur=0;closeAll();render();toast('🗑️ Apagado');}
-function animateBtn(el, cls){el.classList.remove('bounce','shake','spin','fly','pulse','trashAnim');void el.offsetWidth;el.classList.add(cls);setTimeout(()=>el.classList.remove(cls),600);}
+function animateBtn(el, cls){el.classList.remove('bounce','shake','spin','fly','pulse','trashAnim');void el.offsetWidth;el.classList.add(cls);setTimeout(()=>el.classList.remove(cls),700);}
 function render(){
 if(allVideos.length===0)allVideos=[{id:1,desc:"WORK - lateral completa",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",type:'foto',owner:APP_OWNER_NICK,likes:10,commentsList:["Top! 👑"]}];
 let v=allVideos[cur];
@@ -116,10 +121,10 @@ function goCam(isLive=false){document.getElementById('cam').style.display='flex'
 function startRec(isLive){chunks=[];if(stream){try{rec=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9,opus'});}catch{rec=new MediaRecorder(stream);}rec.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};rec.start(100);camStartTime=Date.now();camTimerInt=setInterval(()=>{let elapsed=Date.now()-camStartTime;let limit=isLive?LIVE_MAX:VIDEO_MAX;document.getElementById('camTimer').innerText=`${isLive?'🔴':'●'} ${Math.floor(elapsed/1000)}s`;document.getElementById('camProgress').style.width=`${Math.min(100,(elapsed/limit)*100)}%`;if(elapsed>=limit)postCurrent();},100);}}
 function closeCam(){if(camTimerInt){clearInterval(camTimerInt);camTimerInt=null}if(rec){try{rec.stop()}catch{}rec=null}if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}document.getElementById('cam').style.display='none';document.getElementById('camProgress').style.width='0%';photoData=null}
 function postCurrent(){let curUser=getCurrentUser();if(camMode==='foto'){if(!photoData){toast('Tire foto');return}let id=Date.now();let obj={id:id,data:photoData,desc:document.getElementById('descInp').value||'Foto @'+curUser.nick,type:'foto',likes:0,owner:curUser.nick,commentsList:[]};allVideos.unshift(obj);saveToBackup();try{let tx=db.transaction('videos','readwrite');tx.objectStore('videos').add(obj);}catch{}closeCam();document.getElementById('descInp').value='';toast('✅ FOTO SALVA!');render();}else{if(!rec||chunks.length===0){toast('Grave');return}if(camTimerInt){clearInterval(camTimerInt);camTimerInt=null}rec.stop();let blob=new Blob(chunks,{type:rec.mimeType||'video/webm'});let r=new FileReader();r.onload=e=>{let id=Date.now()+Math.random();let obj={id:id,data:e.target.result,desc:document.getElementById('descInp').value||'Vídeo 🔊 @'+curUser.nick,type:'video',likes:0,owner:curUser.nick,commentsList:[]};allVideos.unshift(obj);saveToBackup();try{let tx=db.transaction('videos','readwrite');tx.objectStore('videos').add(obj);}catch{}closeCam();document.getElementById('descInp').value='';chunks=[];currentMuted=false;toast('✅ COM SOM!');render();};r.readAsDataURL(blob);}}
-function initDB(){return new Promise(r=>{let q=indexedDB.open('WorkDB_MOVIMENTO_FINAL',23);q.onupgradeneeded=e=>{if(!e.target.result.objectStoreNames.contains('videos'))e.target.result.createObjectStore('videos',{keyPath:'id'})};q.onsuccess=e=>{db=e.target.result;r()};q.onerror=()=>{db=null;r();};});}
+function initDB(){return new Promise(r=>{let q=indexedDB.open('WorkDB_FINAL_MOV',24);q.onupgradeneeded=e=>{if(!e.target.result.objectStoreNames.contains('videos'))e.target.result.createObjectStore('videos',{keyPath:'id'})};q.onsuccess=e=>{db=e.target.result;r()};q.onerror=()=>{db=null;r();};});}
 function loadAll(){return new Promise(r=>{if(!db){r(loadFromBackup());return;}try{let tx=db.transaction('videos','readonly');let req=tx.objectStore('videos').getAll();req.onsuccess=()=>{let res=req.result;if(res.length===0)res=loadFromBackup();r(res);};req.onerror=()=>{r(loadFromBackup());};}catch{r(loadFromBackup());}});}
 let sy=0;const st=document.getElementById('stage');st.addEventListener('touchstart',e=>{sy=e.touches[0].clientY},{passive:true});st.addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0){cur++;if(cur>=allVideos.length)cur=0}else{cur--;if(cur<0)cur=allVideos.length-1}currentMuted=true;render();}},{passive:true});
-initDB().then(async()=>{let saved=await loadAll();saved.reverse().forEach(v=>{allVideos.unshift({id:v.id,desc:v.desc,data:v.data,type:v.type||'video',likes:v.likes||0,owner:v.owner||APP_OWNER_NICK,commentsList:v.commentsList||v.comments||[]})});render();if(!localStorage.getItem('work_current_user')){let u={id:1,nick:APP_OWNER_NICK,name:'Jonatha'};localStorage.setItem('work_current_user',JSON.stringify(u));}toast('✅ Com movimento no clique!');});
+initDB().then(async()=>{let saved=await loadAll();saved.reverse().forEach(v=>{allVideos.unshift({id:v.id,desc:v.desc,data:v.data,type:v.type||'video',likes:v.likes||0,owner:v.owner||APP_OWNER_NICK,commentsList:v.commentsList||v.comments||[]})});render();if(!localStorage.getItem('work_current_user')){let u={id:1,nick:APP_OWNER_NICK,name:'Jonatha'};localStorage.setItem('work_current_user',JSON.stringify(u));}toast('✅ Com movimento forte!');});
 </script>
 </body>
 </html>
