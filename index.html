@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK - GALERIA CELULAR + COMENTARIOS</title>
+<title>WORK - ADMIN PODER TOTAL</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#000;color:#fff;font-family:Arial;height:100dvh;overflow:hidden}
@@ -13,7 +13,7 @@ body{background:#000;color:#fff;font-family:Arial;height:100dvh;overflow:hidden}
 .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,transparent 60%)}
 .top{position:absolute;top:10px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:10}
 .pill{padding:7px 12px;border-radius:20px;font-size:10px;font-weight:900;background:rgba(0,0,0,.7);border:1px solid #333}.pill.on{background:#FFD700;color:#000}
-.actions{position:absolute;right:8px;bottom:125px;display:flex;flex-direction:column;gap:12px;z-index:20;width:70px;align-items:center}
+.actions{position:absolute;right:8px;bottom:125px;display:flex;flex-direction:column;gap:11px;z-index:20;width:70px;align-items:center}
 .cnt{font-size:9px;font-weight:900;margin-top:3px;background:rgba(0,0,0,.6);padding:2px 6px;border-radius:10px}
 .meta{position:absolute;left:10px;bottom:12px;right:84px;z-index:10;background:rgba(0,0,0,.55);padding:10px;border-radius:16px;border:1px solid #333}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex!important}
@@ -55,135 +55,143 @@ body{background:#000;color:#fff;font-family:Arial;height:100dvh;overflow:hidden}
 <button onclick="closeCam()" style="width:42px;height:42px;background:rgba(0,0,0,.7);border:2px solid #fff;border-radius:50%;color:#fff;font-size:20px">✕</button>
 <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
 <span id="camModeLabel" style="background:#FFD700;color:#000;padding:5px 12px;border-radius:12px;font-size:11px;font-weight:900">📸 FOTO</span>
-<span id="camTimer" style="background:#ff0000;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:900;display:none">● 00:00 / 01:30</span>
+<span id="camTimer" style="background:#ff0000;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:900;display:none">● 00:00</span>
 </div>
 <button onclick="postCurrent()" style="background:#fff;color:#000;border:none;padding:10px 18px;border-radius:22px;font-weight:900;font-size:12px">POSTAR</button>
 </div>
 <div class="cam-modes">
-<button id="btnFoto" onclick="setCamMode('foto')" style="background:#FFD700;color:#000;border-color:#000">📸 FOTO</button>
-<button id="btnVideo" onclick="setCamMode('video')" style="background:rgba(0,0,0,.6);color:#fff">📹 VÍDEO 1:30</button>
-<button id="btnLive" onclick="setCamMode('live')" style="background:rgba(0,0,0,.6);color:#fff">🔴 LIVE 1x/DIA</button>
+<button id="btnFoto" onclick="setCamMode('foto')" style="background:#FFD700;color:#000">📸 FOTO</button>
+<button id="btnVideo" onclick="setCamMode('video')" style="background:rgba(0,0,0,.6);color:#fff">📹 1:30</button>
+<button id="btnLive" onclick="setCamMode('live')" style="background:rgba(0,0,0,.6);color:#fff">🔴 LIVE 1x</button>
 </div>
 <div class="cam-bottom">
-<button onclick="flipCam()" style="width:48px;height:48px;border-radius:50%;border:2px solid #FFD700;background:rgba(255,255,255,.2);color:#fff;font-size:20px">🔄</button>
-<button onclick="document.getElementById('galleryInput').click()" style="display:flex;flex-direction:column;align-items:center;gap:1px;width:62px;padding:6px 0;border-radius:14px;border:2px solid #FFD700;background:rgba(255,215,0,.25);color:#FFD700;font-weight:900;box-shadow:0 0 12px rgba(255,215,0,.5)"><span style="font-size:22px">🖼️</span><span style="font-size:7px">GALERIA</span><span style="font-size:6px">CELULAR 1:30</span></button>
-<input id="descInp" placeholder="Legenda..." style="flex:1;padding:13px 14px;border-radius:24px;background:rgba(0,0,0,.6);border:1.5px solid #FFD700;color:#fff;outline:none;font-size:13px">
-<button id="shutterBtn" onclick="captureAction()" style="width:72px;height:72px;background:#fff;border-radius:50%;border:4px solid #000;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 0 20px rgba(255,215,0,.8)">📸</button>
+<button onclick="flipCam()" style="width:48px;height:48px;border-radius:50%;border:2px solid #FFD700;background:rgba(255,255,255,.2);color:#fff">🔄</button>
+<button onclick="document.getElementById('galleryInput').click()" style="display:flex;flex-direction:column;align-items:center;width:62px;padding:6px 0;border-radius:14px;border:2px solid #FFD700;background:rgba(255,215,0,.25);color:#FFD700;font-weight:900"><span style="font-size:22px">🖼️</span><span style="font-size:7px">GALERIA CEL</span></button>
+<input id="descInp" placeholder="Legenda..." style="flex:1;padding:13px 14px;border-radius:24px;background:rgba(0,0,0,.6);border:1.5px solid #FFD700;color:#fff;outline:none">
+<button id="shutterBtn" onclick="captureAction()" style="width:72px;height:72px;background:#fff;border-radius:50%;border:4px solid #000;font-size:28px">📸</button>
 </div>
 </div>
 
 <div class="modal" id="profileM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1e1e1e;border-radius:28px 28px 0 0;padding:16px;border-top:3px solid #FFD700;max-height:94vh;overflow:auto">
-<div style="display:flex;justify-content:space-between"><b style="color:#FFD700">👤 PERFIL</b><span onclick="closeAll()" style="font-size:26px;color:#FFD700">×</span></div>
-<div style="text-align:center;padding:12px;background:rgba(0,0,0,.3);border-radius:20px;margin:10px 0">
+<div style="display:flex;justify-content:space-between"><b style="color:#FFD700">👤 JONATHA - DONO</b><span onclick="closeAll()" style="font-size:26px;color:#FFD700">×</span></div>
+<div style="display:flex;gap:6px;margin:10px 0">
+<button onclick="showTab('perfil')" id="tabPerfil" style="flex:1;padding:11px;border-radius:12px;background:#FFD700;color:#000;font-weight:900;border:2px solid #000">👤 PERFIL</button>
+<button onclick="showTab('admin')" id="tabAdmin" style="flex:1;padding:11px;border-radius:12px;background:#ff0000;color:#fff;font-weight:900;border:2px solid #fff">⚙️ ADMIN PODER TOTAL</button>
+</div>
+
+<div id="perfilTab">
+<div style="text-align:center;padding:12px;background:rgba(0,0,0,.3);border-radius:20px">
 <div id="avatarBox" style="width:110px;height:110px;margin:0 auto;border-radius:28px;background:#111;border:3px solid #FFD700;display:flex;align-items:center;justify-content:center;overflow:hidden">👤</div>
 <h3 id="profileName">Jonatha</h3><p id="profileNick" style="color:#FFD700;font-size:12px">@jonathacarlosmaria</p>
-<div style="margin-top:10px;background:rgba(255,215,0,.1);border:1px solid #FFD700;border-radius:12px;padding:10px;text-align:left">
-<div style="font-size:11px">📸 Foto câmera/galeria: <span style="color:#FFD700">livre</span></div>
-<div style="font-size:11px">📹 Vídeo celular/galeria: <span style="color:#FFD700">1:30 max corta auto</span></div>
-<div style="font-size:11px">🔴 LIVE: <span style="color:#FFD700" id="liveUsedLabel">0/1 hoje</span></div>
-<div style="font-size:11px">💬 Comentários: <span style="color:#FFD700">ativado</span></div>
+<div id="ownerBadge" style="margin-top:6px;background:#ff0000;color:#fff;padding:4px 10px;border-radius:10px;font-size:10px;font-weight:900;display:inline-block">👑 DONO - PODER TOTAL</div>
+</div>
+<button onclick="document.getElementById('galleryInput').click()" style="width:100%;margin-top:10px;padding:14px;border-radius:14px;background:linear-gradient(145deg,#FFE55C,#FFD700);color:#000;font-weight:900;border:2px solid #000">🖼️ GALERIA CELULAR FOTO/VIDEO 1:30</button>
+<input id="inName" class="input" placeholder="Nome"><input id="inNick" class="input" placeholder="Nick"><button onclick="saveProfile()" class="btn-gold" style="width:100%;padding:12px;border-radius:16px;margin-top:10px">💾 SALVAR PERFIL</button>
+</div>
+
+<div id="adminTab" style="display:none">
+<div style="background:rgba(255,0,0,.12);border:2px solid #ff0000;border-radius:14px;padding:12px">
+<b style="color:#ff4444">⚙️ PAINEL DONO - JONATHA - PODER TOTAL</b>
+<div style="margin-top:10px;background:#000;padding:10px;border-radius:10px;border:1px solid #333">
+<div style="font-size:11px;color:#FFD700">🔐 Status: <span id="adminStatus" style="color:#0f0">DONO AUTENTICADO</span></div>
+<div style="font-size:11px;margin-top:4px">📦 Versão: <span id="appVersion" style="color:#fff">v2026-poder-total</span></div>
+<div style="font-size:11px">🔒 App: <span id="lockStatus" style="color:#FFD700">Liberado</span></div>
+</div>
+<div style="display:grid;gap:8px;margin-top:10px">
+<div style="display:flex;justify-content:space-between;background:rgba(0,0,0,.5);padding:10px;border-radius:10px"><span>👥 Usuários</span><b id="adminUsers" style="color:#FFD700">1</b></div>
+<div style="display:flex;justify-content:space-between;background:rgba(0,0,0,.5);padding:10px;border-radius:10px"><span>📹 Vídeos total</span><b id="adminVideos" style="color:#FFD700">0</b></div>
+<div style="display:flex;justify-content:space-between;background:rgba(0,0,0,.5);padding:10px;border-radius:10px"><span>🔴 Lives hoje</span><b id="adminLives" style="color:#FFD700">0/1</b></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+<button onclick="lockApp()" style="padding:12px;border-radius:12px;background:#ff0000;color:#fff;border:2px solid #fff;font-weight:900;font-size:11px">🔒 TRAVAR APP TODO</button>
+<button onclick="unlockApp()" style="padding:12px;border-radius:12px;background:#00aa00;color:#fff;border:2px solid #fff;font-weight:900;font-size:11px">🔓 LIBERAR APP</button>
+<button onclick="clearAllVideos()" style="padding:10px;border-radius:10px;background:rgba(255,0,0,.2);color:#ff6b6b;border:1px solid #ff0000;font-size:11px">🗑️ Apagar tudo</button>
+<button onclick="resetLiveForTest()" style="padding:10px;border-radius:10px;background:rgba(255,215,0,.2);color:#FFD700;border:1px solid #FFD700;font-size:11px">🔄 Reset LIVE</button>
+<button onclick="banUser()" style="padding:10px;border-radius:10px;background:#000;color:#fff;border:1px solid #555;font-size:11px">🚫 Banir usuário</button>
+<button onclick="sendGlobalMsg()" style="padding:10px;border-radius:10px;background:#FFD700;color:#000;border:1px solid #000;font-weight:900;font-size:11px">📢 Aviso global</button>
+</div>
+<div style="margin-top:12px;padding:10px;background:#000;border-radius:10px;border:1px solid #FFD700">
+<div style="font-size:11px;color:#FFD700;font-weight:900">🔧 MUDAR LIMITES - SÓ DONO MUDA</div>
+<label style="display:flex;justify-content:space-between;margin-top:8px;font-size:12px">Vídeo max <input id="cfgVideoLimit" type="number" value="90" style="width:70px;background:#111;color:#FFD700;border:1px solid #333;border-radius:6px;padding:5px"></label>
+<label style="display:flex;justify-content:space-between;margin-top:6px;font-size:12px">LIVE max <input id="cfgLiveLimit" type="number" value="30" style="width:70px;background:#111;color:#FFD700;border:1px solid #333;border-radius:6px;padding:5px"> min</label>
+<label style="display:flex;justify-content:space-between;margin-top:6px;font-size:12px">LIVE/dia <input id="cfgLiveQtd" type="number" value="1" style="width:70px;background:#111;color:#FFD700;border:1px solid #333;border-radius:6px;padding:5px"> x</label>
+<button onclick="saveConfigs()" style="width:100%;margin-top:10px;padding:10px;border-radius:10px;background:#FFD700;color:#000;font-weight:900">💾 SALVAR CONFIGS DONO</button>
+</div>
+<div style="margin-top:10px;padding:10px;background:rgba(255,215,0,.08);border-radius:10px;border:1px dashed #FFD700">
+<div style="font-size:10px;color:#FFD700">⚠️ SÓ DONO PODE ATUALIZAR O GITHUB. Link publicação:</div>
+<div style="font-size:9px;color:#fff;word-break:break-all;margin-top:4px">https://github.com/jonathacarlosmaria-wq/Work-influencia</div>
 </div>
 </div>
-<button onclick="document.getElementById('galleryInput').click()" style="width:100%;padding:14px;border-radius:14px;background:linear-gradient(145deg,#FFE55C,#FFD700);color:#000;font-weight:900;border:2px solid #000">🖼️ GALERIA DO CELULAR - FOTO OU VÍDEO (1:30)</button>
-<input id="inName" class="input" placeholder="Nome"><input id="inNick" class="input" placeholder="Nick"><button onclick="saveProfile()" class="btn-gold" style="width:100%;padding:12px;border-radius:16px;margin-top:10px">💾 SALVAR</button>
+</div>
 <input type="file" id="galleryInput" accept="image/*,video/*" style="display:none">
 </div></div>
 
-<div class="modal" id="myM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1d1d1d;border-radius:28px 28px 0 0;padding:16px;border-top:2px solid #FFD700;max-height:80vh;overflow:auto"><b style="color:#FFD700">✨ Meus - Fotos/Videos/Live</b><span style="float:right" onclick="closeAll()">×</span><div id="myGrid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:12px"></div></div></div>
-
-<div class="modal" id="commentsM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1e1e1e;border-radius:28px 28px 0 0;padding:16px;border-top:3px solid #FFD700;max-height:75vh;overflow:auto">
-<div style="display:flex;justify-content:space-between"><b style="color:#FFD700">💬 Comentários</b><span onclick="closeAll()" style="font-size:26px;color:#FFD700">×</span></div>
-<div id="commentsList" style="margin-top:12px"></div>
-<div style="display:flex;gap:8px;margin-top:12px"><input id="commentInput" class="input" style="flex:1;margin:0" placeholder="Escreva um comentário..."><button onclick="sendComment()" class="btn-gold" style="padding:10px 16px;border-radius:12px">Enviar</button></div>
-</div></div>
-
+<div class="modal" id="myM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1d1d1d;border-radius:28px 28px 0 0;padding:16px;border-top:2px solid #FFD700;max-height:80vh;overflow:auto"><b style="color:#FFD700">✨ Meus</b><span style="float:right" onclick="closeAll()">×</span><div id="myGrid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:12px"></div></div></div>
+<div class="modal" id="commentsM"><div style="flex:1" onclick="closeAll()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1e1e1e;border-radius:28px 28px 0 0;padding:16px;border-top:3px solid #FFD700;max-height:75vh;overflow:auto"><div style="display:flex;justify-content:space-between"><b style="color:#FFD700">💬 Comentários</b><span onclick="closeAll()" style="font-size:26px;color:#FFD700">×</span></div><div id="commentsList" style="margin-top:12px"></div><div style="display:flex;gap:8px;margin-top:12px"><input id="commentInput" class="input" style="flex:1;margin:0" placeholder="Comentário..."><button onclick="sendComment()" class="btn-gold" style="padding:10px 16px;border-radius:12px">Enviar</button></div></div></div>
 <input type="file" id="fileAvatar" accept="image/*" style="display:none">
 
 <script>
+// ===== PODER TOTAL - SÓ DONO =====
+const APP_OWNER_NICK = "jonathacarlosmaria";
+const ADMIN_PASSWORD = "WORK2026@";
+let APP_CONFIG = JSON.parse(localStorage.getItem('work_app_config')||'{"videoLimit":90,"liveLimit":30,"liveQtd":1}');
+function isOwner(){let c=JSON.parse(localStorage.getItem('work_current_user')||'{}');return c.nick===APP_OWNER_NICK}
+function checkLock(){if(localStorage.getItem('app_locked')==='true' &&!isOwner()){document.body.innerHTML=`<div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000;color:#FFD700;padding:24px;text-align:center"><div style="font-size:80px">🔒</div><h2 style="margin-top:12px">WORK em atualização</h2><p style="color:#fff;margin-top:8px">O dono Jonatha está atualizando o app com poder total. Volta já!</p><p style="margin-top:20px;font-size:11px;color:#666">Dono: @${APP_OWNER_NICK}</p></div>`;return true}return false}
+if(checkLock()){throw new Error("LOCKED");}
+
 let db=null,stream=null,rec=null,chunks=[],cur=0,facing='user',isFollowing=false,camMode='foto',photoData=null,camTimerInt=null,camStartTime=0,isLiveMode=false;
-const VIDEO_MAX=90*1000, LIVE_MAX=30*60*1000;
-let allVideos=[{id:1,desc:"Foto + Video 1:30 galeria celular + Comentarios 💬",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:230,share:20,comments:12,type:'foto',commentsList:["Top! 🔥","Muito bom 👏","Foto braba 📸"]}];
+let VIDEO_MAX=APP_CONFIG.videoLimit*1000, LIVE_MAX=APP_CONFIG.liveLimit*60*1000, LIVE_QTD=APP_CONFIG.liveQtd;
+let allVideos=[{id:1,desc:"WORK ADMIN PODER TOTAL - Jonatha Dono 👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:230,share:20,comments:12,type:'foto',commentsList:["Top!","Poder total 👑"]}];
 function toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),3200)}
 function closeAll(){document.querySelectorAll('.modal').forEach(m=>{m.classList.remove('on');m.style.display='none'})}
 function goHome(){closeAll();render()}
 function goMy(){loadAll().then(vs=>{document.getElementById('myGrid').innerHTML=vs.map(v=>{if(v.type==='foto'||(v.data&&v.data.startsWith('data:image')))return `<img src="${v.data}" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px">`;return `<video src="${v.data}" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px"></video>`}).join('')||'<div style="color:#888">Nenhum</div>';document.getElementById('myM').classList.add('on');document.getElementById('myM').style.display='flex';});}
-function goProfile(){let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(!c){c={id:1,nick:'jonathacarlosmaria',name:'Jonatha'};localStorage.setItem('work_current_user',JSON.stringify(c));}document.getElementById('inName').value=c.name;document.getElementById('inNick').value=c.nick;document.getElementById('profileName').innerText=c.name;document.getElementById('profileNick').innerText='@'+c.nick;if(c.avatar)document.getElementById('avatarBox').innerHTML=`<img src="${c.avatar}" style="width:100%;height:100%;object-fit:cover">`;updateLiveLabel();document.getElementById('profileM').classList.add('on');document.getElementById('profileM').style.display='flex';}
-function saveProfile(){let c=JSON.parse(localStorage.getItem('work_current_user'));c.name=document.getElementById('inName').value;c.nick=document.getElementById('inNick').value;localStorage.setItem('work_current_user',JSON.stringify(c));toast('✅ Salvo');render();}
-function render(){
- let v=allVideos[cur];let c=JSON.parse(localStorage.getItem('work_current_user')||'null');let avatar=c&&c.avatar?c.avatar:v.img||v.data;
- let media=v.type==='foto'||(v.data&&v.data.startsWith('data:image'))?`<div class="bg" style="background-image:url('${v.data||v.img}')"></div>`:(v.data?`<video src="${v.data}" autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`);
- document.getElementById('stage').innerHTML=`
- ${media}<div class="grad"></div>
- <div class="top"><div class="pill">${cur+1}/${allVideos.length}</div><div class="pill on">${v.type==='foto'?'📸 FOTO':(v.isLive?'🔴 LIVE 1x':'📹 1:30')}</div></div>
- <div class="actions">
- <div style="position:relative;width:58px;height:58px;margin-bottom:6px" onclick="toggleFollow()"><div style="width:56px;height:56px;border-radius:50%;border:3px solid #FFD700;overflow:hidden"><img src="${avatar}" style="width:100%;height:100%;object-fit:cover"></div><div style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:24px;height:24px;background:${isFollowing?'#000':'#FF3B30'};border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px">${isFollowing?'✓':'+'}</div></div>
- <div onclick="like()"><div class="abtn">❤️</div><div class="cnt">${v.likes||0}</div></div>
- <div onclick="openComments()"><div class="abtn">💬</div><div class="cnt">${v.comments||0}</div></div>
- <div onclick="share()"><div class="abtn">🔗</div><div class="cnt">${v.share||0}</div></div>
- <div onclick="document.getElementById('galleryInput').click()"><div class="abtn" style="background:rgba(255,215,0,.25);border-color:#FFD700">🖼️</div><div class="cnt" style="color:#FFD700">Galeria</div></div>
- </div>
- <div class="meta"><div style="font-weight:700">${v.desc}</div><div style="font-size:10px;color:#FFD700">📸 Foto livre | 📹 Vídeo galeria 1:30 | 🔴 LIVE 1x 30min | 💬</div></div>`;
+function goProfile(){let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(!c){c={id:1,nick:APP_OWNER_NICK,name:'Jonatha Dono'};localStorage.setItem('work_current_user',JSON.stringify(c));}document.getElementById('inName').value=c.name;document.getElementById('inNick').value=c.nick;document.getElementById('profileName').innerText=c.name;document.getElementById('profileNick').innerText='@'+c.nick;if(c.avatar)document.getElementById('avatarBox').innerHTML=`<img src="${c.avatar}" style="width:100%;height:100%;object-fit:cover">`;document.getElementById('ownerBadge').style.display=isOwner()?'inline-block':'none';updateLiveLabel();document.getElementById('profileM').classList.add('on');document.getElementById('profileM').style.display='flex';showTab('perfil');}
+function saveProfile(){let c=JSON.parse(localStorage.getItem('work_current_user'));c.name=document.getElementById('inName').value;c.nick=document.getElementById('inNick').value;if(c.nick!==APP_OWNER_NICK &&!confirm('Sair do modo DONO? Só @'+APP_OWNER_NICK+' tem poder total')){return}localStorage.setItem('work_current_user',JSON.stringify(c));toast('✅ Salvo');render();}
+function showTab(t){
+ if(t==='admin'){
+  if(!isOwner()){toast('🚫 Só @'+APP_OWNER_NICK+' é dono');return}
+  let s=prompt('🔐 Senha ADMIN PODER TOTAL:'); if(s!==ADMIN_PASSWORD){toast('❌ Senha errada');return}
+  document.getElementById('adminUsers').innerText='1';
+  document.getElementById('adminVideos').innerText=allVideos.length;
+  let li=getLiveInfo(); document.getElementById('adminLives').innerText=li.count+'/'+LIVE_QTD;
+  document.getElementById('lockStatus').innerText=localStorage.getItem('app_locked')==='true'?'🔒 TRAVADO':'🔓 Liberado';
+  document.getElementById('lockStatus').style.color=localStorage.getItem('app_locked')==='true'?'#ff0000':'#0f0';
+ }
+ document.getElementById('perfilTab').style.display=t==='perfil'?'block':'none';
+ document.getElementById('adminTab').style.display=t==='admin'?'block':'none';
+ document.getElementById('tabPerfil').style.background=t==='perfil'?'#FFD700':'rgba(255,215,0,.15)';
+ document.getElementById('tabAdmin').style.background=t==='admin'?'#ff0000':'rgba(255,215,0,.15)';
 }
-function like(){allVideos[cur].likes=(allVideos[cur].likes||0)+1;render();toast('❤️ Curtiu!')}
-function share(){allVideos[cur].share=(allVideos[cur].share||0)+1;render();toast('🔗 Link copiado!')}
-function toggleFollow(){isFollowing=!isFollowing;render();toast(isFollowing?'✅ Seguindo':'❌ Deixou de seguir')}
-function openComments(){
- let v=allVideos[cur];
- document.getElementById('commentsList').innerHTML=(v.commentsList||[]).map(c=>`<div style="background:rgba(255,255,255,.08);padding:10px;border-radius:12px;margin-bottom:8px"><b style="color:#FFD700;font-size:12px">@usuario</b><div style="font-size:13px;margin-top:2px">${c}</div></div>`).join('') || '<div style="color:#888;text-align:center;padding:20px">Seja o primeiro a comentar 💬</div>';
- document.getElementById('commentsM').classList.add('on');document.getElementById('commentsM').style.display='flex';
-}
-function sendComment(){
- let txt=document.getElementById('commentInput').value.trim(); if(!txt)return;
- let v=allVideos[cur]; if(!v.commentsList)v.commentsList=[]; v.commentsList.push(txt); v.comments=(v.comments||0)+1;
- document.getElementById('commentInput').value=''; openComments(); render(); toast('💬 Comentário enviado!');
-}
+function lockApp(){if(!isOwner())return;localStorage.setItem('app_locked','true');document.getElementById('lockStatus').innerText='🔒 TRAVADO';document.getElementById('lockStatus').style.color='#ff0000';toast('🔒 APP TRAVADO! Só você entra. Atualiza o GitHub agora!')}
+function unlockApp(){localStorage.setItem('app_locked','false');document.getElementById('lockStatus').innerText='🔓 Liberado';document.getElementById('lockStatus').style.color='#0f0';toast('🔓 APP LIBERADO PRA TODO MUNDO!')}
+function clearAllVideos(){if(!isOwner())return;if(confirm('⚠️ DONO: Apagar TODOS vídeos do app?')){let tx=db.transaction('videos','readwrite');tx.objectStore('videos').clear();tx.oncomplete=()=>{allVideos=[allVideos[0]];render();toast('🗑️ Tudo apagado - Poder total')}}}
+function banUser(){let u=prompt('Nick banir:');if(u)toast(`🚫 @${u} banido - só dono pode`)}
+function sendGlobalMsg(){let m=prompt('Aviso global pra todos:');if(m)toast(`📢 Enviado: ${m}`)}
+function saveConfigs(){if(!isOwner())return;APP_CONFIG={videoLimit:parseInt(document.getElementById('cfgVideoLimit').value),liveLimit:parseInt(document.getElementById('cfgLiveLimit').value),liveQtd:parseInt(document.getElementById('cfgLiveQtd').value)};localStorage.setItem('work_app_config',JSON.stringify(APP_CONFIG));VIDEO_MAX=APP_CONFIG.videoLimit*1000;LIVE_MAX=APP_CONFIG.liveLimit*60*1000;LIVE_QTD=APP_CONFIG.liveQtd;toast(`✅ Salvo! Video ${APP_CONFIG.videoLimit}s LIVE ${APP_CONFIG.liveLimit}min ${APP_CONFIG.liveQtd}x/dia`)}
+function render(){let v=allVideos[cur];let c=JSON.parse(localStorage.getItem('work_current_user')||'null');let avatar=c&&c.avatar?c.avatar:v.img||v.data;let media=v.type==='foto'||(v.data&&v.data.startsWith('data:image'))?`<div class="bg" style="background-image:url('${v.data||v.img}')"></div>`:(v.data?`<video src="${v.data}" autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`);document.getElementById('stage').innerHTML=`${media}<div class="grad"></div><div class="top"><div class="pill">${cur+1}/${allVideos.length}</div><div class="pill on">${v.type==='foto'?'📸 FOTO':(v.isLive?'🔴 LIVE':'📹 1:30')} ${isOwner()?'👑':''}</div></div><div class="actions"><div style="position:relative;width:58px;height:58px;margin-bottom:6px" onclick="toggleFollow()"><div style="width:56px;height:56px;border-radius:50%;border:3px solid #FFD700;overflow:hidden"><img src="${avatar}" style="width:100%;height:100%;object-fit:cover"></div></div><div onclick="like()"><div class="abtn">❤️</div><div class="cnt">${v.likes||0}</div></div><div onclick="openComments()"><div class="abtn">💬</div><div class="cnt">${v.comments||0}</div></div><div onclick="share()"><div class="abtn">🔗</div><div class="cnt">${v.share||0}</div></div><div onclick="document.getElementById('galleryInput').click()"><div class="abtn" style="background:rgba(255,215,0,.25);border-color:#FFD700">🖼️</div><div class="cnt" style="color:#FFD700">Galeria</div></div></div><div class="meta"><div style="font-weight:700">${v.desc}</div><div style="font-size:10px;color:#FFD700">DONO @${APP_OWNER_NICK} | ${isOwner()?'👑 PODER TOTAL':''}</div></div>`;}
+function like(){allVideos[cur].likes=(allVideos[cur].likes||0)+1;render();toast('❤️')}function share(){allVideos[cur].share=(allVideos[cur].share||0)+1;render();toast('🔗 Copiado')}function toggleFollow(){isFollowing=!isFollowing;render();toast(isFollowing?'✅':'❌')}
+function openComments(){let v=allVideos[cur];document.getElementById('commentsList').innerHTML=(v.commentsList||[]).map(c=>`<div style="background:rgba(255,255,255,.08);padding:10px;border-radius:12px;margin-bottom:8px"><b style="color:#FFD700;font-size:12px">@user</b><div style="font-size:13px">${c}</div></div>`).join('')||'<div style="color:#888;text-align:center;padding:20px">Sem comentários 💬</div>';document.getElementById('commentsM').classList.add('on');document.getElementById('commentsM').style.display='flex';}
+function sendComment(){let txt=document.getElementById('commentInput').value.trim();if(!txt)return;let v=allVideos[cur];if(!v.commentsList)v.commentsList=[];v.commentsList.push(txt);v.comments=(v.comments||0)+1;document.getElementById('commentInput').value='';openComments();render();toast('💬 Enviado')}
 function getLiveInfo(){let today=new Date().toDateString();let d=localStorage.getItem('work_live_date');let c=parseInt(localStorage.getItem('work_live_count')||'0');let u=parseInt(localStorage.getItem('work_live_used')||'0');if(d!==today){localStorage.setItem('work_live_date',today);localStorage.setItem('work_live_count','0');localStorage.setItem('work_live_used','0');return{count:0,used:0}}return{count:c,used:u}}
-function canDoLive(){let i=getLiveInfo();if(i.count>=1)return{ok:false,msg:'🚫 Você já fez sua LIVE hoje! Só 1 por dia 🔴'};return{ok:true,remaining:LIVE_MAX-i.used}}
+function canDoLive(){let i=getLiveInfo();if(i.count>=LIVE_QTD)return{ok:false,msg:`🚫 Limite ${LIVE_QTD}x LIVE/dia atingido`};return{ok:true}}
 function registerLive(){localStorage.setItem('work_live_date',new Date().toDateString());let c=parseInt(localStorage.getItem('work_live_count')||'0')+1;localStorage.setItem('work_live_count',c.toString());updateLiveLabel()}
-function addLiveTime(ms){let u=parseInt(localStorage.getItem('work_live_used')||'0')+ms;localStorage.setItem('work_live_used',u.toString());updateLiveLabel()}
-function updateLiveLabel(){let i=getLiveInfo();let m=Math.floor(i.used/60000);let s=Math.floor((i.used%60000)/1000);let el=document.getElementById('liveUsedLabel');if(el)el.innerText=`${i.count}/1 hoje - ${m}:${String(s).padStart(2,'0')}/30:00`;}
+function addLiveTime(ms){let u=parseInt(localStorage.getItem('work_live_used')||'0')+ms;localStorage.setItem('work_live_used',u.toString());}
+function updateLiveLabel(){let i=getLiveInfo();let m=Math.floor(i.used/60000);let el=document.getElementById('liveUsedLabel');if(el)el.innerText=`${i.count}/${LIVE_QTD} hoje`;}
+function resetLiveForTest(){if(!isOwner())return;localStorage.setItem('work_live_count','0');localStorage.setItem('work_live_used','0');updateLiveLabel();toast('🔄 LIVE reset dono')}
 function formatTime(ms){let t=Math.floor(ms/1000);let m=Math.floor(t/60);let s=t%60;return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
-function setCamMode(mode){
- camMode=mode; photoData=null;
- document.getElementById('btnFoto').style.background=mode==='foto'?'#FFD700':'rgba(0,0,0,.6)';
- document.getElementById('btnVideo').style.background=mode==='video'?'#FFD700':'rgba(0,0,0,.6)';
- document.getElementById('btnLive').style.background=mode==='live'?'#ff0000':'rgba(0,0,0,.6)';
- document.getElementById('btnFoto').style.color=mode==='foto'?'#000':'#fff';
- document.getElementById('btnVideo').style.color=mode==='video'?'#000':'#fff';
- let label=document.getElementById('camModeLabel'),timer=document.getElementById('camTimer'),shutter=document.getElementById('shutterBtn'),progress=document.getElementById('camProgress');
- if(camTimerInt){clearInterval(camTimerInt);camTimerInt=null} progress.style.width='0%';
- if(mode==='foto'){label.innerText='📸 FOTO';timer.style.display='none';shutter.innerText='📸';progress.style.background='#FFD700';if(rec){try{rec.stop()}catch{}}}
- if(mode==='video'){label.innerText='📹 VIDEO 1:30';timer.style.display='block';shutter.innerText='⏺️';progress.style.background='#FFD700';startRec(false)}
- if(mode==='live'){let chk=canDoLive();if(!chk.ok){toast(chk.msg);setCamMode('foto');return} label.innerText='🔴 LIVE 1x 30min';timer.style.display='block';shutter.innerText='🔴';progress.style.background='#ff0000';startRec(true)}
-}
-function captureAction(){if(camMode==='foto'){let v=document.getElementById('camEl');let c=document.getElementById('photoCanvas');c.width=v.videoWidth||720;c.height=v.videoHeight||1280;c.getContext('2d').drawImage(v,0,0,c.width,c.height);photoData=c.toDataURL('image/jpeg',0.85);toast('📸 Foto capturada! POSTAR');document.getElementById('shutterBtn').innerText='✅';if(navigator.vibrate)navigator.vibrate(60);}else{toast(camMode==='live'?'🔴 LIVE gravando... POSTAR encerra':'📹 Gravando 1:30... POSTAR finaliza');}}
+function setCamMode(mode){camMode=mode;photoData=null;document.getElementById('btnFoto').style.background=mode==='foto'?'#FFD700':'rgba(0,0,0,.6)';document.getElementById('btnVideo').style.background=mode==='video'?'#FFD700':'rgba(0,0,0,.6)';document.getElementById('btnLive').style.background=mode==='live'?'#ff0000':'rgba(0,0,0,.6)';let label=document.getElementById('camModeLabel'),timer=document.getElementById('camTimer'),shutter=document.getElementById('shutterBtn'),progress=document.getElementById('camProgress');if(camTimerInt){clearInterval(camTimerInt);camTimerInt=null}progress.style.width='0%';if(mode==='foto'){label.innerText='📸 FOTO';timer.style.display='none';shutter.innerText='📸'}if(mode==='video'){label.innerText=`📹 VIDEO ${APP_CONFIG.videoLimit}s`;timer.style.display='block';shutter.innerText='⏺️';startRec(false)}if(mode==='live'){let chk=canDoLive();if(!chk.ok){toast(chk.msg);setCamMode('foto');return}label.innerText=`🔴 LIVE ${LIVE_QTD}x ${APP_CONFIG.liveLimit}min`;timer.style.display='block';shutter.innerText='🔴';startRec(true)}}
+function captureAction(){if(camMode==='foto'){let v=document.getElementById('camEl');let c=document.getElementById('photoCanvas');c.width=v.videoWidth||720;c.height=v.videoHeight||1280;c.getContext('2d').drawImage(v,0,0,c.width,c.height);photoData=c.toDataURL('image/jpeg',0.85);toast('📸 Foto capturada!');document.getElementById('shutterBtn').innerText='✅';}else{toast('Gravando... POSTAR finaliza');}}
 function goCam(isLive=false){document.getElementById('cam').style.display='flex';navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:true}).then(s=>{stream=s;document.getElementById('camEl').srcObject=s;setCamMode(isLive?'live':'foto');}).catch(()=>toast('❌ Permita câmera'));}
-function startRec(isLive){isLiveMode=isLive; chunks=[]; if(stream){rec=new MediaRecorder(stream,{mimeType:'video/webm'});rec.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};rec.start(200);camStartTime=Date.now();if(isLive)registerLive();camTimerInt=setInterval(()=>{let elapsed=Date.now()-camStartTime;let limit=isLive?LIVE_MAX:VIDEO_MAX;document.getElementById('camTimer').innerText=isLive?`🔴 ${formatTime(elapsed)} / 30:00`:`● ${formatTime(elapsed)} / 01:30`;document.getElementById('camProgress').style.width=`${Math.min(100,(elapsed/limit)*100)}%`;if(!isLive&&elapsed>=VIDEO_MAX){toast('⏱️ 1:30!');postCurrent();return}if(isLive&&elapsed>=limit){toast('⏱️ LIVE 30min fim!');postCurrent();return}},200);}}
+function startRec(isLive){isLiveMode=isLive;chunks=[];if(stream){rec=new MediaRecorder(stream,{mimeType:'video/webm'});rec.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};rec.start(200);camStartTime=Date.now();if(isLive)registerLive();camTimerInt=setInterval(()=>{let elapsed=Date.now()-camStartTime;let limit=isLive?LIVE_MAX:VIDEO_MAX;document.getElementById('camTimer').innerText=isLive?`🔴 ${formatTime(elapsed)} / ${formatTime(limit)}`:`● ${formatTime(elapsed)} / ${formatTime(limit)}`;document.getElementById('camProgress').style.width=`${Math.min(100,(elapsed/limit)*100)}%`;if(!isLive&&elapsed>=VIDEO_MAX){toast('⏱️ Limite!');postCurrent();return}if(isLive&&elapsed>=limit){toast('⏱️ LIVE fim!');postCurrent();return}},200);}}
 function closeCam(){if(camTimerInt){clearInterval(camTimerInt);camTimerInt=null}if(isLiveMode&&camStartTime){let el=Date.now()-camStartTime;if(el>1000)addLiveTime(el)}if(rec){try{rec.stop()}catch{}rec=null}if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}document.getElementById('cam').style.display='none';document.getElementById('camProgress').style.width='0%';photoData=null}
 function flipCam(){facing=facing==='user'?'environment':'user';if(stream)stream.getTracks().forEach(t=>t.stop());navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:true}).then(s=>{stream=s;document.getElementById('camEl').srcObject=s;});}
-function postCurrent(){
- if(camMode==='foto'){if(!photoData){toast('📸 Tire foto!');return}let tx=db.transaction('videos','readwrite');let vid={id:Date.now(),data:photoData,desc:document.getElementById('descInp').value||'Foto câmera 📸',type:'foto',likes:0,share:0,comments:0,commentsList:[]};tx.objectStore('videos').add(vid);tx.oncomplete=()=>{allVideos.unshift({id:vid.id,desc:vid.desc,data:vid.data,type:'foto',likes:0,share:0,comments:0,commentsList:[]});closeCam();document.getElementById('descInp').value='';toast('✅ Foto postada!');render()}}
- else{if(!rec||chunks.length===0){toast('❌ Grave');return}if(camTimerInt){clearInterval(camTimerInt);camTimerInt=null}let elapsed=Date.now()-camStartTime;if(isLiveMode)addLiveTime(elapsed);rec.stop();let blob=new Blob(chunks,{type:'video/webm'});let r=new FileReader();r.onload=e=>{let tx=db.transaction('videos','readwrite');let vid={id:Date.now(),data:e.target.result,desc:document.getElementById('descInp').value||(isLiveMode?'LIVE 30min 🔴':'Vídeo 1:30 📹'),type:isLiveMode?'live':'video',isLive:isLiveMode,duration:elapsed,likes:0,share:0,comments:0,commentsList:[]};tx.objectStore('videos').add(vid);tx.oncomplete=()=>{allVideos.unshift({id:vid.id,desc:vid.desc,data:vid.data,type:vid.type,isLive:vid.isLive,likes:0,share:0,comments:0,commentsList:[]});closeCam();document.getElementById('descInp').value='';chunks=[];toast(isLiveMode?'✅ LIVE salva!':'✅ Vídeo 1:30 postado!');render()}};r.readAsDataURL(blob);}
-}
-function initDB(){return new Promise(r=>{let q=indexedDB.open('WorkDB_FINAL_GALERIA_COMENT',1);q.onupgradeneeded=e=>e.target.result.createObjectStore('videos',{keyPath:'id'});q.onsuccess=e=>{db=e.target.result;r()}})}
+function postCurrent(){if(camMode==='foto'){if(!photoData){toast('Tire foto');return}let tx=db.transaction('videos','readwrite');let vid={id:Date.now(),data:photoData,desc:document.getElementById('descInp').value||'Foto',type:'foto',likes:0,share:0,comments:0,commentsList:[]};tx.objectStore('videos').add(vid);tx.oncomplete=()=>{allVideos.unshift({id:vid.id,desc:vid.desc,data:vid.data,type:'foto',likes:0,share:0,comments:0,commentsList:[]});closeCam();document.getElementById('descInp').value='';toast('✅ Foto!');render()}}else{if(!rec||chunks.length===0){toast('Grave');return}if(camTimerInt){clearInterval(camTimerInt);camTimerInt=null}let elapsed=Date.now()-camStartTime;if(isLiveMode)addLiveTime(elapsed);rec.stop();let blob=new Blob(chunks,{type:'video/webm'});let r=new FileReader();r.onload=e=>{let tx=db.transaction('videos','readwrite');let vid={id:Date.now(),data:e.target.result,desc:document.getElementById('descInp').value||(isLiveMode?'LIVE 🔴':'Video 1:30'),type:isLiveMode?'live':'video',isLive:isLiveMode,likes:0,share:0,comments:0,commentsList:[]};tx.objectStore('videos').add(vid);tx.oncomplete=()=>{allVideos.unshift({id:vid.id,desc:vid.desc,data:vid.data,type:vid.type,isLive:vid.isLive,likes:0,share:0,comments:0,commentsList:[]});closeCam();document.getElementById('descInp').value='';chunks=[];toast('✅ Postado!');render()}};r.readAsDataURL(blob);}}
+function initDB(){return new Promise(r=>{let q=indexedDB.open('WorkDB_ADMIN_PODER',1);q.onupgradeneeded=e=>e.target.result.createObjectStore('videos',{keyPath:'id'});q.onsuccess=e=>{db=e.target.result;r()}})}
 function loadAll(){return new Promise(r=>{if(!db)return r([]);let tx=db.transaction('videos','readonly');let req=tx.objectStore('videos').getAll();req.onsuccess=()=>r(req.result)})}
-function pickAvatar(){document.getElementById('fileAvatar').click()}
-document.getElementById('fileAvatar').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=ev=>{let b64=ev.target.result;let c=JSON.parse(localStorage.getItem('work_current_user')||'{}');c.avatar=b64;localStorage.setItem('work_current_user',JSON.stringify(c));document.getElementById('avatarBox').innerHTML=`<img src="${b64}" style="width:100%;height:100%;object-fit:cover">`;render();};rd.readAsDataURL(f);});
-document.getElementById('galleryInput').addEventListener('change',e=>{
- let f=e.target.files[0];if(!f)return;
- if(f.type.startsWith('video/')){
-  let vid=document.createElement('video');vid.preload='metadata';vid.onloadedmetadata=()=>{
-   URL.revokeObjectURL(vid.src);
-   if(vid.duration>90)toast(`✂️ Vídeo ${Math.floor(vid.duration)}s limitado a 1:30`);
-   let rd=new FileReader();rd.onload=ev=>{
-    let tx=db.transaction('videos','readwrite');let obj={id:Date.now(),data:ev.target.result,desc:'Vídeo galeria celular (1:30 max) 📹🖼️',type:'video',likes:0,share:0,comments:0,commentsList:[],duration:Math.min(vid.duration,90)*1000};tx.objectStore('videos').add(obj);tx.oncomplete=()=>{allVideos.unshift({id:obj.id,desc:obj.desc,data:obj.data,type:'video',likes:0,share:0,comments:0,commentsList:[]});toast('✅ Vídeo da galeria do celular postado! 1:30');render();closeAll();}};rd.readAsDataURL(f);
-  };vid.src=URL.createObjectURL(f);
- }else{
-  let rd=new FileReader();rd.onload=ev=>{let tx=db.transaction('videos','readwrite');let obj={id:Date.now(),data:ev.target.result,desc:'Foto galeria celular 📸🖼️',type:'foto',likes:0,share:0,comments:0,commentsList:[]};tx.objectStore('videos').add(obj);tx.oncomplete=()=>{allVideos.unshift({id:obj.id,desc:obj.desc,data:obj.data,type:'foto',likes:0,share:0,comments:0,commentsList:[]});toast('✅ Foto da galeria postada!');render();closeAll();}};rd.readAsDataURL(f);
- }
-});
+document.getElementById('galleryInput').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;if(f.type.startsWith('video/')){let vid=document.createElement('video');vid.preload='metadata';vid.onloadedmetadata=()=>{URL.revokeObjectURL(vid.src);if(vid.duration>APP_CONFIG.videoLimit)toast(`✂️ ${Math.floor(vid.duration)}s limitado a ${APP_CONFIG.videoLimit}s`);let rd=new FileReader();rd.onload=ev=>{let tx=db.transaction('videos','readwrite');let obj={id:Date.now(),data:ev.target.result,desc:'Video galeria cel 📹',type:'video',likes:0,share:0,comments:0,commentsList:[]};tx.objectStore('videos').add(obj);tx.oncomplete=()=>{allVideos.unshift({id:obj.id,desc:obj.desc,data:obj.data,type:'video',likes:0,share:0,comments:0,commentsList:[]});toast('✅ Video galeria!');render();closeAll();}};rd.readAsDataURL(f);};vid.src=URL.createObjectURL(f);}else{let rd=new FileReader();rd.onload=ev=>{let tx=db.transaction('videos','readwrite');let obj={id:Date.now(),data:ev.target.result,desc:'Foto galeria 📸',type:'foto',likes:0,share:0,comments:0,commentsList:[]};tx.objectStore('videos').add(obj);tx.oncomplete=()=>{allVideos.unshift({id:obj.id,desc:obj.desc,data:obj.data,type:'foto',likes:0,share:0,comments:0,commentsList:[]});toast('✅ Foto galeria!');render();closeAll();}};rd.readAsDataURL(f);}});
 let sy=0;const st=document.getElementById('stage');st.addEventListener('touchstart',e=>{sy=e.touches[0].clientY},{passive:true});st.addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0)cur=(cur+1)%allVideos.length;else cur=(cur-1+allVideos.length)%allVideos.length;render();}},{passive:true});
-initDB().then(async()=>{let saved=await loadAll();saved.reverse().forEach(v=>{allVideos.unshift({id:v.id,desc:v.desc,data:v.data,type:v.type||'video',isLive:v.isLive,likes:0,share:0,comments:v.comments||0,commentsList:v.commentsList||[]})});render();if(!localStorage.getItem('work_current_user')){let u={id:1,nick:'jonathacarlosmaria',name:'Jonatha'};localStorage.setItem('work_current_user',JSON.stringify(u));}updateLiveLabel();});
+initDB().then(async()=>{let saved=await loadAll();saved.reverse().forEach(v=>{allVideos.unshift({id:v.id,desc:v.desc,data:v.data,type:v.type||'video',isLive:v.isLive,likes:0,share:0,comments:v.comments||0,commentsList:v.commentsList||[]})});render();if(!localStorage.getItem('work_current_user')){let u={id:1,nick:APP_OWNER_NICK,name:'Jonatha Dono'};localStorage.setItem('work_current_user',JSON.stringify(u));}document.getElementById('cfgVideoLimit').value=APP_CONFIG.videoLimit;document.getElementById('cfgLiveLimit').value=APP_CONFIG.liveLimit;document.getElementById('cfgLiveQtd').value=APP_CONFIG.liveQtd;});
 </script>
 </body>
 </html>
