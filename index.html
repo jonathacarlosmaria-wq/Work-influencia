@@ -1,204 +1,225 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK - PAINEL ADMIN FINAL</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+<title>Work Influencia - FINAL</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{background:#000;color:#fff;font-family:-apple-system,Arial;height:100dvh;overflow:hidden}
-.app{height:100dvh;display:flex;flex-direction:column}
-.stage{flex:1;position:relative;background:#000;overflow:hidden;touch-action:none;transition:transform.25s ease}
-.bg{position:absolute;inset:0;background-size:cover;background-position:center}
-.media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
-.grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.96) 0%,transparent 58%);pointer-events:none}
-.top{position:absolute;top:10px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:10;pointer-events:none}
-.pill{padding:8px 14px;border-radius:20px;font-size:10px;font-weight:900;background:rgba(0,0,0,.5);border:1.5px solid rgba(212,175,55,.3)}.pill.on{background:#FFD700;color:#000}
-.actions{position:absolute;right:10px;bottom:102px;display:flex;flex-direction:column;gap:14px;z-index:20;width:70px}
-.act{display:flex;flex-direction:column;align-items:center;gap:4px}
-.btn{width:58px;height:58px;border-radius:20px;background:#1e1e1e;border:1.5px solid rgba(212,175,55,.35);display:flex;align-items:center;justify-content:center;font-size:22px}
-.cnt{font-size:9px;font-weight:900;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:12px;min-width:32px;text-align:center}
-.meta{position:absolute;left:12px;bottom:14px;right:80px;z-index:10;background:rgba(0,0,0,.45);backdrop-filter:blur(20px);padding:10px 12px;border-radius:18px;border:1px solid rgba(212,175,55,.2);pointer-events:none}
-.nav{height:90px;background:linear-gradient(180deg,#FFE55C,#FFD700,#D4AF37);display:flex;justify-content:space-around;align-items:center;padding:10px 8px 14px;border-radius:28px 28px 0 0;margin-top:-18px;border-top:3px solid #FFD700;z-index:50}
-.tab{color:#3d2e00;font-size:9px;text-align:center;padding:8px 10px;border-radius:18px;min-width:56px;font-weight:800}
-.tab.on{background:#000;color:#FFD700}
-.create{width:70px;height:50px;border-radius:20px;background:#000;display:flex;align-items:center;justify-content:center;border:2px solid #FFD700}
-.create span{background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:16px;font-size:32px;font-weight:900}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex!important}
-@keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
-#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1d1d1d;padding:12px 20px;border-radius:20px;z-index:6000;display:none;text-align:center;border:1.5px solid #D4AF37;font-size:11px;font-weight:800}#toast.on{display:block!important}
-.card{border-radius:18px;padding:14px;text-align:center;background:#1a1a1a;border:1.5px solid rgba(255,255,255,.08)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui}
+body{background:#000;color:#fff;overflow:hidden;height:100dvh}
+#feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory}
+.item{height:100dvh;scroll-snap-align:start;position:relative;background:#111;display:flex;align-items:center;justify-content:center}
+video{width:100%;height:100%;object-fit:cover}
+.info{position:absolute;bottom:80px;left:12px;right:70px}
+.nick{font-weight:900;font-size:16px;text-shadow:0 2px 10px #000}
+.desc{font-size:13px;margin-top:4px;opacity:.9}
+.actions{position:absolute;right:12px;bottom:100px;display:flex;flex-direction:column;gap:18px}
+.act{width:48px;height:48px;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px}
+#tab{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(0,0,0,.9);backdrop-filter:blur(20px);display:flex;justify-content:space-around;align-items:center;border-top:1px solid #222;z-index:99}
+#tab button{background:none;border:none;color:#666;font-size:10px;font-weight:800}
+#tab button.active{color:#fff}
+#postBtn{width:48px;height:32px;background:#fff;border-radius:8px;color:#000;font-weight:900;font-size:20px}
+#cam{position:fixed;inset:0;background:#000;z-index:200;display:none;flex-direction:column}
+#views{position:fixed;inset:0;background:#000;z-index:50;display:none;overflow-y:auto;padding-bottom:70px}
+.top{padding:14px;font-weight:900;font-size:18px;border-bottom:1px solid #222;display:flex;justify-content:space-between}
+.adBox{height:100dvh;scroll-snap-align:start;background:linear-gradient(135deg,#FFD700,#ff8c00);display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;text-align:center}
+.card{background:rgba(255,255,255,.06);border:1px solid #222;border-radius:16px;padding:12px;text-align:center}
 </style>
 </head>
 <body>
-<div id="toast"></div>
 
-<div id="authScreen" style="position:fixed;inset:0;background:#000;z-index:5000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px">
-<h1 style="font-size:44px;font-weight:900;background:linear-gradient(145deg,#FFE55C,#FFD700,#D4AF37);-webkit-background-clip:text;-webkit-text-fill-color:transparent">WORK</h1>
-<div style="width:100%;max-width:340px;background:rgba(255,255,255,.05);border:1.5px solid rgba(212,175,55,.28);border-radius:28px;padding:20px;margin-top:16px">
-<div id="loginForm"><input id="authEmail" type="email" placeholder="Seu email" style="width:100%;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:13px;color:#fff;margin-bottom:10px;outline:none"><input id="authPass" type="password" placeholder="Senha" style="width:100%;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:13px;color:#fff;margin-bottom:16px;outline:none"><button onclick="AUTH.login()" style="width:100%;background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;border:none;padding:14px;border-radius:18px;font-weight:900">ENTRAR</button><p style="text-align:center;margin-top:14px;color:#888;font-size:12px">Não tem? <span onclick="AUTH.showRegister()" style="color:#FFD700">Cadastre-se</span></p></div>
-<div id="registerForm" style="display:none"><input id="regName" placeholder="Nome" style="width:100%;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:13px;color:#fff;margin-bottom:10px;outline:none"><input id="regEmail" type="email" placeholder="Email" style="width:100%;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:13px;color:#fff;margin-bottom:10px;outline:none"><input id="regPass" type="password" placeholder="Senha 6 dígitos" style="width:100%;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:13px;color:#fff;margin-bottom:16px;outline:none"><button onclick="AUTH.register()" style="width:100%;background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;border:none;padding:14px;border-radius:18px;font-weight:900">CRIAR</button><p style="text-align:center;margin-top:14px;color:#888;font-size:12px">Já tem? <span onclick="AUTH.showLogin()" style="color:#FFD700">Login</span></p></div>
-</div></div>
+<div id="feed"></div>
 
-<div class="app"><div class="stage" id="stage"></div><div class="nav"><div class="tab on">⌂<br>Início</div><div class="tab" onclick="WORK.my()">◧<br>Meus</div><div class="tab" onclick="WORK.requireAuth(()=>WORK.openCam())"><div class="create"><span>+</span></div></div><div class="tab" onclick="WORK.requireAuth(()=>WORK.openCam())">●<br>LIVE</div><div class="tab" onclick="WORK.openProfile()"><span id="icoEu">👤</span><br><span id="txtEu">Eu</span></div></div></div>
-
-<!-- PERFIL -->
-<div class="modal" id="profileM"><div style="flex:1" onclick="WORK.closeM()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1f1f1f;border-radius:28px 28px 0 0;padding:18px;border-top:3px solid #FFD700;max-height:88vh;overflow:auto;animation:up.3s">
-<div style="display:flex;justify-content:space-between"><span style="color:#D4AF37;font-weight:900">👤 PERFIL</span><span onclick="WORK.closeM()" style="font-size:24px;color:#D4AF37">×</span></div>
-<div id="adminBtnArea" style="display:none;margin:12px 0"><button onclick="ADMIN.open()" style="width:100%;background:linear-gradient(145deg,#00FF88,#00CC6A);color:#000;border:none;padding:14px;border-radius:18px;font-weight:900">🔧 PAINEL ADMIN<br><span style="font-size:10px">USUÁRIOS • ADS • CONTROLE TOTAL</span></button></div>
-<div style="text-align:center;margin-top:10px"><div id="avatarBox" style="width:90px;height:90px;margin:0 auto 10px;border-radius:20px;background:#111;border:2px solid #D4AF37;display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden">👤</div><button onclick="WORK.pickAvatar()" style="background:rgba(212,175,55,.12);border:1px dashed rgba(212,175,55,.3);border-radius:14px;padding:8px 14px;color:#D4AF37;font-size:12px">📸 Foto</button></div>
-<div style="margin-top:14px"><input id="inName" placeholder="Nome" style="width:100%;background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:12px;color:#fff;margin-bottom:8px"><input id="inNick" placeholder="Apelido" style="width:100%;background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:12px;color:#fff;margin-bottom:8px"><textarea id="inBio" placeholder="Bio" style="width:100%;background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:12px;color:#fff;min-height:60px;margin-bottom:10px"></textarea><button onclick="WORK.saveProfile()" style="width:100%;background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;border:none;padding:13px;border-radius:16px;font-weight:900">💾 SALVAR</button>
-<p id="accountInfo" style="color:#888;font-size:11px;text-align:center;margin:12px 0"></p><button onclick="AUTH.logout()" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.2);color:#fff;padding:12px;border-radius:14px;font-weight:800;margin-bottom:8px">🚪 SAIR</button><button onclick="AUTH.deleteAccount()" style="width:100%;background:rgba(255,59,48,.1);border:1px solid rgba(255,59,48,.3);color:#FF453A;padding:12px;border-radius:14px;font-weight:900">⚠️ CANCELAR CONTA</button></div>
-</div></div>
-
-<!-- ADMIN FINAL ORGANIZADO -->
-<div class="modal" id="adminM" style="z-index:3000"><div style="flex:1" onclick="WORK.closeM()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#0f0f0f;border-radius:28px 28px 0 0;padding:18px;border-top:3px solid #00FF88;max-height:94vh;overflow:auto;animation:up.3s">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><span style="color:#00FF88;font-weight:900;font-size:14px">🔧 PAINEL ADMIN - VOCÊ MANDA</span><span onclick="WORK.closeM()" style="font-size:26px;color:#00FF88">×</span></div>
-
-<!-- ESTATISTICAS -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
-<div class="card" style="border-color:rgba(0,255,136,.3)"><div style="font-size:24px;font-weight:900;color:#00FF88" id="totalUsers">0</div><div style="font-size:9px;color:#888">USUÁRIOS</div></div>
-<div class="card" style="border-color:rgba(255,215,0,.3)"><div style="font-size:24px;font-weight:900;color:#FFD700" id="onlineUsers">0</div><div style="font-size:9px;color:#888">ONLINE</div></div>
-<div class="card"><div style="font-size:24px;font-weight:900;color:#FF4D6D" id="totalVideosAdmin">0</div><div style="font-size:9px;color:#888">VÍDEOS</div></div>
-<div class="card"><div style="font-size:18px;font-weight:900;color:#D4AF37" id="revenueEst">R$ 0</div><div style="font-size:9px;color:#888">GANHO EST.</div></div>
+<div id="views">
+<div id="vProfile">
+<div class="top"><span>PERFIL</span><span onclick="VIEWS.close()" style="font-size:24px">✕</span></div>
+<div style="padding:16px">
+<div id="adminBtnArea" style="display:none;margin-bottom:12px">
+<button onclick="ADMIN.open()" style="width:100%;background:linear-gradient(145deg,#00FF88,#00CC6A);color:#000;border:none;padding:16px;border-radius:20px;font-weight:900;box-shadow:0 0 20px rgba(0,255,136,.4)">🔧 PAINEL ADMINISTRADOR<br><span style="font-size:10px">VOCÊ É O DONO - CLICA AQUI</span></button>
+</div>
+<div style="text-align:center;margin:20px 0">
+<img id="pPhoto" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #fff">
+<div id="pNick" style="font-weight:900;margin-top:10px;font-size:18px">@user</div>
+<div id="pCount" style="color:#888;font-size:12px;margin-top:4px">0 vídeos • Ilimitado</div>
+<input type="file" id="photoInp" accept="image/*" hidden onchange="WORK.changePhoto(event)">
+<button onclick="document.getElementById('photoInp').click()" style="margin-top:10px;background:#222;color:#fff;border:1px solid #333;padding:8px 16px;border-radius:20px;font-size:12px">Mudar foto</button>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px">
+<div class="card"><div id="cMy" style="font-size:22px;font-weight:900">0</div><div style="font-size:9px;color:#888">MEUS VÍDEOS</div></div>
+<div class="card"><div style="font-size:22px;font-weight:900">∞</div><div style="font-size:9px;color:#888">ILIMITADO</div></div>
+</div>
+<div id="grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:16px"></div>
+<button onclick="WORK.logout()" style="width:100%;margin-top:20px;background:rgba(255,68,68,.15);border:1px solid #ff4444;color:#ff4444;padding:14px;border-radius:14px;font-weight:800">Sair</button>
+</div>
 </div>
 
-<!-- CONTROLE ADS - SO ADMIN -->
-<div style="background:rgba(0,255,136,.08);border:1.5px solid rgba(0,255,136,.25);border-radius:18px;padding:14px;margin-bottom:14px">
-<div style="color:#00FF88;font-weight:900;font-size:12px;margin-bottom:10px">💰 CONTROLE DE PROPAGANDAS (SÓ VOCÊ)</div>
-<div style="display:flex;gap:8px;margin-bottom:10px">
-<button id="btnOn" onclick="ADMIN.setAds(true)" style="flex:1;background:#00FF88;color:#000;border:none;padding:10px;border-radius:12px;font-weight:900;font-size:11px">✅ ADS LIGADO</button>
-<button id="btnOff" onclick="ADMIN.setAds(false)" style="flex:1;background:#333;color:#fff;border:1px solid #555;padding:10px;border-radius:12px;font-weight:900;font-size:11px">❌ DESLIGADO</button>
+<div id="vAdmin" style="display:none">
+<div class="top"><span>ADMIN - DONO</span><span onclick="VIEWS.close()" style="font-size:24px">✕</span></div>
+<div style="padding:16px">
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+<div class="card"><div id="totalUsersAdmin" style="font-size:18px;font-weight:900">0</div><div style="font-size:8px">USUÁRIOS</div></div>
+<div class="card"><div id="totalVideosAdmin" style="font-size:18px;font-weight:900">0</div><div style="font-size:8px">VÍDEOS</div></div>
+<div class="card" style="border-color:#ff4444"><div id="livesHoje" style="font-size:18px;font-weight:900;color:#ff4444">0</div><div style="font-size:8px">LIVES HOJE</div></div>
 </div>
-<div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.4);border-radius:12px;padding:10px">
-<span style="color:#888;font-size:11px">A cada</span><input id="adFreq" type="number" value="5" min="1" max="20" style="width:50px;background:#000;border:1px solid #00FF88;border-radius:8px;padding:6px;color:#00FF88;text-align:center;font-weight:900"><span style="color:#888;font-size:11px">vídeos = 1 anúncio</span><button onclick="ADMIN.saveFreq()" style="background:#FFD700;color:#000;border:none;padding:6px 12px;border-radius:8px;font-weight:900;font-size:11px;margin-left:auto">SALVAR</button>
+<div id="listaLivesHoje" style="margin:10px 0"></div>
+<button onclick="ADMIN.resetLives()" style="width:100%;background:rgba(255,68,68,.15);border:1px solid #ff4444;color:#ff4444;padding:10px;border-radius:12px;font-weight:900;font-size:11px;margin:10px 0">🔄 RESETAR LIVES DE HOJE (LIBERAR TODOS)</button>
+<div id="listaUsersAdmin" style="margin-top:10px"></div>
 </div>
-<div style="margin-top:8px;color:#00FF88;font-size:9px">Ex: 5 = usuário vê 5 vídeos, no 6º aparece propaganda 💰</div>
 </div>
-
-<!-- IDs ADS -->
-<div style="background:rgba(212,175,55,.08);border:1px dashed rgba(212,175,55,.3);border-radius:16px;padding:12px;margin-bottom:14px">
-<div style="color:#FFD700;font-weight:900;font-size:11px;margin-bottom:8px">🔑 SEUS IDs:</div>
-<input id="admobId" placeholder="AdMob: ca-app-pub-..." style="width:100%;background:#000;border:1px solid rgba(212,175,55,.2);border-radius:10px;padding:9px;color:#fff;font-size:10px;margin-bottom:6px">
-<input id="adsenseId" placeholder="AdSense: ca-pub-..." style="width:100%;background:#000;border:1px solid rgba(212,175,55,.2);border-radius:10px;padding:9px;color:#fff;font-size:10px;margin-bottom:8px">
-<button onclick="ADMIN.saveAds()" style="width:100%;background:#FFD700;color:#000;border:none;padding:9px;border-radius:10px;font-weight:900;font-size:11px">💾 SALVAR IDs</button>
 </div>
 
-<div style="color:#fff;font-weight:900;font-size:12px;margin-bottom:8px">👥 USUÁRIOS CADASTRADOS:</div>
-<div id="usersListAdmin" style="display:flex;flex-direction:column;gap:8px;max-height:28vh;overflow:auto;margin-bottom:12px"></div>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-<button onclick="ADMIN.exportUsers()" style="background:rgba(212,175,55,.15);border:1px solid #D4AF37;color:#FFD700;padding:10px;border-radius:12px;font-weight:900;font-size:11px">📤 EXPORTAR CSV</button>
-<button onclick="ADMIN.clearAll()" style="background:rgba(255,59,48,.1);border:1px solid rgba(255,59,48,.3);color:#ff453a;padding:10px;border-radius:12px;font-weight:900;font-size:11px">🗑️ LIMPAR TUDO</button>
+<div id="cam">
+<div style="padding:12px;display:flex;justify-content:space-between"><span onclick="WORK.closeCam()" style="font-size:24px">✕</span><span id="camType" style="background:red;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:900">🔴 REC</span></div>
+<video id="camEl" autoplay muted playsinline style="flex:1"></video>
+<input id="descInp" placeholder="Escreva legenda..." style="margin:12px;padding:14px;border-radius:12px;background:#222;border:1px solid #333;color:#fff">
+<button onclick="WORK.post()" style="margin:12px;padding:16px;background:#fff;color:#000;border:none;border-radius:14px;font-weight:900">POSTAR - FICA GRAVADO PRA SEMPRE</button>
 </div>
-</div></div>
 
-<div class="modal" id="commentsM" style="z-index:2000"><div style="flex:1" onclick="WORK.closeM()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1f1f1f;border-radius:28px 28px 0 0;max-height:80vh;display:flex;flex-direction:column;border-top:3px solid #FFD700"><div style="padding:14px 18px;display:flex;justify-content:space-between"><span style="color:#D4AF37;font-weight:900">💬 <span id="commentCount">0</span></span><span onclick="WORK.closeM()" style="font-size:24px;color:#D4AF37">×</span></div><div id="commentsList" style="flex:1;overflow:auto;padding:10px 14px;display:flex;flex-direction:column;gap:8px;max-height:45vh"></div><div style="padding:12px 14px;display:flex;gap:8px"><input id="commentInput" placeholder="Comente..." style="flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.2);border-radius:20px;padding:10px 14px;color:#fff;outline:none"><button onclick="WORK.sendComment()" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(145deg,#FFD700,#D4AF37);border:none;font-weight:900">➤</button></div></div></div>
-<div id="cam" style="position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column"><video id="camEl" autoplay playsinline muted style="width:100%;height:100%;object-fit:cover"></video><div style="position:absolute;top:0;left:0;right:0;height:60px;display:flex;justify-content:space-between;padding:0 14px;align-items:center"><button onclick="WORK.closeCam()" style="background:rgba(0,0,0,.6);color:#FFD700;padding:8px 14px;border-radius:20px">✕</button><button onclick="WORK.press()" id="rec" style="background:#a00;color:#fff;padding:10px 18px;border-radius:20px;font-weight:900">● REC 90s</button></div></div>
-<div class="modal" id="listM"><div style="flex:1" onclick="WORK.closeM()"></div><div style="position:absolute;bottom:0;left:0;right:0;background:#1d1d1d;border-radius:24px 24px 0 0;padding:16px;border-top:2px solid #FFD700"><div style="display:flex;justify-content:space-between"><span style="color:#D4AF37">✨ Meus • <span id="cMy">0</span></span><span onclick="WORK.closeM()" style="font-size:24px;color:#D4AF37">×</span></div><div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;max-height:60vh;overflow:auto"></div></div></div>
-<input type="file" id="file" accept="video/*" style="display:none"><input type="file" id="fileAvatar" accept="image/*" style="display:none">
+<div id="tab">
+<button id="tHome" class="active" onclick="VIEWS.home()">🏠<br>INÍCIO</button>
+<button onclick="WORK.openCam('video')" id="postBtn">+</button>
+<button onclick="WORK.openCam('live')">🔴<br>LIVE</button>
+<button onclick="VIEWS.profile()">👤<br>EU</button>
+</div>
 
 <script>
-const WORK={
-db:null,
-allVideos:[
-{id:'v1',user:"@work",desc:"Vídeo 1 - Arraste pra cima 👆",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",likes:120,share:10,type:"img",userId:"system",comments:[]},
-{id:'v2',user:"@work",desc:"Vídeo 2 - Continua",img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1000",likes:230,share:20,type:"img",userId:"system",comments:[]},
-{id:'v3',user:"@work",desc:"Vídeo 3 - Top",img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1000",likes:340,share:30,type:"img",userId:"system",comments:[]},
-{id:'v4',user:"@work",desc:"Vídeo 4 - Quase lá",img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000",likes:180,share:15,type:"img",userId:"system",comments:[]},
-{id:'v5',user:"@work",desc:"Vídeo 5 - Próximo é anúncio 💰",img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000",likes:290,share:25,type:"img",userId:"system",comments:[]},
-{id:'v6',user:"@work",desc:"Vídeo 6 - Depois do anúncio",img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000",likes:210,share:18,type:"img",userId:"system",comments:[]}
-],
-cur:0,stream:null,
-initDB(){return new Promise(r=>{let req=indexedDB.open('WorkPainelFinal',7);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('videos')) d.createObjectStore('videos',{keyPath:'id'})};req.onsuccess=e=>{this.db=e.target.result;r()}})},
-async save(v){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').put(v);return new Promise(r=>tx.oncomplete=()=>r())},
-async loadAll(){await this.initDB();return new Promise(r=>{let tx=this.db.transaction('videos','readonly');let req=tx.objectStore('videos').getAll();req.onsuccess=()=>r(req.result)})},
-async del(id){await this.initDB();let tx=this.db.transaction('videos','readwrite');tx.objectStore('videos').delete(id);return new Promise(r=>tx.oncomplete=()=>r())},
-async loadSaved(){let saved=await this.loadAll();saved.forEach(v=>{try{if(v.blob) v.blobUrl=URL.createObjectURL(v.blob)}catch{}});if(saved.length) this.allVideos=saved.concat(this.allVideos);this.render()},
-toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2000)},
-fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':n||0},
-requireAuth(cb){let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(!c){document.getElementById('authScreen').style.display='flex';return}cb()},
-getFeed(){
-  let freq=parseInt(localStorage.getItem('work_ad_freq')||'5');
-  let enabled=localStorage.getItem('work_ads_enabled')!=='false';
-  if(!enabled) return this.allVideos;
-  let feed=[],ad=1;
-  this.allVideos.forEach((v,i)=>{
-    feed.push(v);
-    if((i+1)%freq===0){
-      feed.push({id:'ad_'+ad,type:'ad',isAd:true,adNumber:ad});
-      ad++;
-    }
-  });
-  return feed;
-},
-next(){let f=this.getFeed();this.cur=(this.cur+1)%f.length;this.render()},
-prev(){let f=this.getFeed();this.cur=(this.cur-1+f.length)%f.length;this.render()},
-openProfile(){let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(c){document.getElementById('inName').value=c.name||'';document.getElementById('inNick').value=c.nick||'';document.getElementById('inBio').value=c.bio||'';document.getElementById('accountInfo').innerHTML=c.email;document.getElementById('txtEu').innerText=c.name.split(' ')[0]||'Eu';if(c.avatar){document.getElementById('avatarBox').innerHTML=`<img src="${c.avatar}" style="width:100%;height:100%;object-fit:cover">`;document.getElementById('icoEu').innerHTML=`<img src="${c.avatar}" style="width:24px;height:24px;border-radius:50%">`}if(ADMIN.isAdmin()) document.getElementById('adminBtnArea').style.display='block';else document.getElementById('adminBtnArea').style.display='none';}document.getElementById('profileM').classList.add('on');document.getElementById('profileM').style.display='flex'},
-share(){navigator.clipboard.writeText(location.href);WORK.toast('🔗 Copiado')},
-openComments(){let f=this.getFeed();let v=f[this.cur];if(v.isAd){this.toast('Não comenta em anúncio');return}try{let s=JSON.parse(localStorage.getItem('work_comments_'+v.id)||'null');if(s) v.comments=s}catch{}document.getElementById('commentCount').innerText=v.comments?v.comments.length:0;document.getElementById('commentsList').innerHTML=(v.comments||[]).map(c=>`<div style="display:flex;gap:8px;background:rgba(0,0,0,.3);border-radius:14px;padding:10px"><div style="width:32px;height:32px;border-radius:50%;background:#222;display:flex;align-items:center;justify-content:center">${c.user.charAt(1).toUpperCase()}</div><div><div style="font-size:11px;color:#FFD700;font-weight:900">${c.user}</div><div style="font-size:12px;color:#ddd">${c.text}</div></div></div>`).join('')||'Sem comentários';document.getElementById('commentsM').classList.add('on');document.getElementById('commentsM').style.display='flex'},
-sendComment(){let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(!c){this.toast('Login');return}let i=document.getElementById('commentInput');let t=i.value.trim();if(!t) return;let f=this.getFeed();let v=f[this.cur];if(!v.comments) v.comments=[];v.comments.push({user:'@'+(c.nick||c.email.split('@')[0]),text:t});i.value='';this.openComments();this.render();localStorage.setItem('work_comments_'+v.id,JSON.stringify(v.comments))},
-async postVideo(b){let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(!c)return;let url=URL.createObjectURL(b);let n={id:Date.now(),userId:c.id,user:'@'+(c.nick||c.email.split('@')[0]),desc:c.bio||"Meu vídeo",img:url,blob:b,blobUrl:url,likes:0,share:0,type:"video",comments:[]};await this.save(n);this.allVideos.unshift(n);this.cur=0;this.render();this.closeCam();this.toast('✅ Postado')},
-delVideo(id){if(!confirm('Apagar?')) return;this.del(id).then(()=>{this.allVideos=this.allVideos.filter(v=>v.id!==id);this.my();this.render()})},
-closeM(){document.querySelectorAll('.modal').forEach(m=>{m.classList.remove('on');m.style.display='none'})},
-saveProfile(){let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(!c) return;c.name=document.getElementById('inName').value||c.name;c.nick=document.getElementById('inNick').value||c.nick;c.bio=document.getElementById('inBio').value;localStorage.setItem('work_current_user',JSON.stringify(c));let u=AUTH.getUsers();let idx=u.findIndex(x=>x.id===c.id);if(idx>=0){u[idx]=c;AUTH.saveUsers(u)}this.toast('Salvo');this.closeM();this.render()},
-pickAvatar(){document.getElementById('fileAvatar').click()},pick(){document.getElementById('file').click()},
-render(){
- let feed=this.getFeed(); if(!feed.length) return;
- let v=feed[this.cur];
- if(v.isAd){
-   let admob=localStorage.getItem('work_admob')||'ca-app-pub-TESTE';
-   let adsense=localStorage.getItem('work_adsense')||'ca-pub-TESTE';
-   let freq=localStorage.getItem('work_ad_freq')||'5';
-   document.getElementById('stage').innerHTML=`
-   <div style="position:absolute;inset:0;background:linear-gradient(145deg,#0a0a0a,#1a1a1a);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px">
-     <div style="background:#00FF88;color:#000;padding:6px 14px;border-radius:20px;font-size:10px;font-weight:900;margin-bottom:16px">💰 ANÚNCIO PATROCINADO • ${this.cur+1}/${feed.length}</div>
-     <div style="width:100%;max-width:300px;background:#1e1e1e;border:1.5px solid #FFD700;border-radius:20px;padding:18px;text-align:center">
-       <div style="font-size:28px">💰</div><div style="color:#fff;font-weight:900;margin:8px 0">Anúncio #${v.adNumber}</div>
-       <div style="background:#000;border-radius:14px;padding:14px;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
-         <div style="color:#00FF88;font-size:10px">AdSense: ${adsense.substring(0,18)}...</div>
-         <div style="color:#FFD700;font-size:10px">AdMob: ${admob.substring(0,18)}...</div>
-         <div style="margin-top:8px"><ins class="adsbygoogle" style="display:block" data-ad-client="${adsense}" data-ad-slot="123" data-ad-format="auto"></ins></div>
-       </div>
-       <button onclick="WORK.next()" style="width:100%;margin-top:14px;background:linear-gradient(145deg,#FFD700,#D4AF37);color:#000;border:none;padding:12px;border-radius:14px;font-weight:900">⏭️ PULAR • PRÓXIMO VÍDEO</button>
-       <div style="color:#666;font-size:9px;margin-top:8px">Arraste pra cima também funciona • Você ganha por view</div>
-     </div>
-   </div><div class="top"><div class="pill">${this.cur+1}/${feed.length}</div><div class="pill on" style="background:#00FF88;color:#000">ADS ${freq} em ${freq}</div></div>`;
-   return;
- }
- let media=v.type==='video'?`<video class="media" src="${v.blobUrl||v.img}" autoplay loop muted playsinline></video>`:`<div class="bg" style="background-image:url('${v.img}')"></div>`;
- let freq=localStorage.getItem('work_ad_freq')||'5';
- document.getElementById('stage').innerHTML=`${media}<div class="grad"></div><div class="top"><div class="pill">${this.cur+1}/${feed.length}</div><div class="pill on">SÓ ARRASTA 👆</div></div><div class="actions"><div class="act" onclick="event.stopPropagation();WORK.openComments()"><div class="btn">💬</div><div class="cnt">${v.comments?v.comments.length:0}</div></div><div class="act" onclick="event.stopPropagation();WORK.share()"><div class="btn">🔗</div><div class="cnt">${WORK.fmt(v.share||0)}</div></div></div><div class="meta"><div style="font-size:12px">${v.desc}</div><div style="font-size:9px;color:#D4AF37;margin-top:4px">${this.cur+1}/${feed.length} • ${(this.cur+1)%freq===0?'PRÓXIMO É ANÚNCIO 💰':'Arraste pra próximo'} • ${localStorage.getItem('work_ads_enabled')!=='false'?'💰 ADS ON':'🚫 ADS OFF'}</div></div>`;
-},
-my(){this.loadAll().then(all=>{document.getElementById('cMy').innerText=all.length;document.getElementById('grid').innerHTML=all.map(v=>`<div style="position:relative;aspect-ratio:9/16;background:#111;border-radius:14px;overflow:hidden"><video src="${v.blobUrl||v.img}" style="width:100%;height:100%;object-fit:cover" muted></video><button onclick="WORK.delVideo(${v.id})" style="position:absolute;bottom:4px;left:4px;right:4px;background:#f33;border:none;color:#fff;padding:6px;border-radius:10px;font-size:9px;font-weight:900">APAGAR</button></div>`).join('')||'Nenhum';document.getElementById('listM').classList.add('on');document.getElementById('listM').style.display='flex'})},
-openCam(){this.requireAuth(()=>{document.getElementById('cam').style.display='flex';navigator.mediaDevices.getUserMedia({video:true,audio:true}).then(s=>{this.stream=s;document.getElementById('camEl').srcObject=s})})},
-closeCam(){if(this.stream){this.stream.getTracks().forEach(t=>t.stop());this.stream=null}document.getElementById('cam').style.display='none'},
-press(){if(!this.stream) return;let rec=new MediaRecorder(this.stream);let ch=[];rec.ondataavailable=e=>ch.push(e.data);rec.onstop=async()=>{let b=new Blob(ch,{type:'video/webm'});await WORK.postVideo(b)};rec.start();WORK.toast('🎥 Gravando 90s...');setTimeout(()=>rec.stop(),90000)}
-};
-const AUTH={getUsers(){try{return JSON.parse(localStorage.getItem('work_users')||'[]')}catch{return []}},saveUsers(u){localStorage.setItem('work_users',JSON.stringify(u))},showRegister(){document.getElementById('loginForm').style.display='none';document.getElementById('registerForm').style.display='block'},showLogin(){document.getElementById('registerForm').style.display='none';document.getElementById('loginForm').style.display='block'},register(){let n=document.getElementById('regName').value.trim(),e=document.getElementById('regEmail').value.trim().toLowerCase(),p=document.getElementById('regPass').value.trim();if(!n||!e||!p||p.length<6){WORK.toast('Preencha 6 dígitos');return}let u=this.getUsers();if(u.find(x=>x.email===e)){WORK.toast('Já existe');return}let nu={id:'u_'+Date.now(),name:n,nick:e.split('@')[0],email:e,pass:btoa(p),avatar:'',bio:'',createdAt:new Date().toISOString(),lastSeen:Date.now()};u.push(nu);this.saveUsers(u);localStorage.setItem('work_current_user',JSON.stringify(nu));document.getElementById('authScreen').style.display='none';WORK.render()},login(){let e=document.getElementById('authEmail').value.trim().toLowerCase(),p=document.getElementById('authPass').value.trim();let u=this.getUsers();let user=u.find(x=>x.email===e&&atob(x.pass)===p);if(!user){WORK.toast('Erro');return}user.lastSeen=Date.now();localStorage.setItem('work_current_user',JSON.stringify(user));let idx=u.findIndex(x=>x.id===user.id);if(idx>=0){u[idx].lastSeen=Date.now();this.saveUsers(u)}document.getElementById('authScreen').style.display='none';WORK.render()},logout(){localStorage.removeItem('work_current_user');location.reload()},deleteAccount(){if(!confirm('Cancelar?')) return;let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(!c) return;let u=this.getUsers().filter(x=>x.id!==c.id);this.saveUsers(u);WORK.loadAll().then(a=>{a.filter(v=>v.userId===c.id).forEach(v=>WORK.del(v.id))});localStorage.removeItem('work_current_user');location.reload()},check(){let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(c) document.getElementById('authScreen').style.display='none';else document.getElementById('authScreen').style.display='flex'}};
-
 const ADMIN={
-isAdmin(){let c=JSON.parse(localStorage.getItem('work_current_user')||'null');return c&&(c.email==='jonathacarlosmaria@gmail.com'||c.email.includes('admin')||c.email==='admin@work.com')},
-open(){if(!this.isAdmin()){WORK.toast('Só admin');return}document.getElementById('adminM').classList.add('on');document.getElementById('adminM').style.display='flex';this.refresh()},
-async refresh(){let users=JSON.parse(localStorage.getItem('work_users')||'[]');document.getElementById('totalUsers').innerText=users.length;let now=Date.now(),on=0;users.forEach(u=>{if(u.lastSeen&&(now-u.lastSeen)<300000) on++});document.getElementById('onlineUsers').innerText=on;let vids=await WORK.loadAll();document.getElementById('totalVideosAdmin').innerText=vids.length;document.getElementById('revenueEst').innerText='R$ '+(vids.length*0.25+users.length*0.12).toFixed(2);document.getElementById('adFreq').value=localStorage.getItem('work_ad_freq')||'5';document.getElementById('admobId').value=localStorage.getItem('work_admob')||'';document.getElementById('adsenseId').value=localStorage.getItem('work_adsense')||'';let enabled=localStorage.getItem('work_ads_enabled')!=='false';document.getElementById('btnOn').style.background=enabled?'#00FF88':'#333';document.getElementById('btnOff').style.background=!enabled?'#ff453a':'#333';document.getElementById('usersListAdmin').innerHTML=users.map(u=>`<div style="background:rgba(255,255,255,.05);border:1px solid rgba(212,175,55,.15);border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:#222;display:flex;align-items:center;justify-content:center;overflow:hidden">${u.avatar?`<img src="${u.avatar}" style="width:100%;height:100%">`:u.name.charAt(0)}</div><div><div style="font-size:11px;font-weight:900;color:#fff">${u.name} <span style="color:${(now-u.lastSeen)<300000?'#00FF88':'#666'}">●</span></div><div style="font-size:9px;color:#888">${u.email} • ${new Date(u.lastSeen||u.createdAt).toLocaleTimeString()}</div></div></div><button onclick="ADMIN.deleteUser('${u.id}')" style="background:rgba(255,59,48,.2);border:1px solid #ff453a;color:#ff453a;padding:5px 8px;border-radius:8px;font-size:10px">X</button></div>`).join('')||'<div style="color:#666;text-align:center;padding:12px">Nenhum usuário</div>'},
-setAds(on){localStorage.setItem('work_ads_enabled',on?'true':'false');this.refresh();WORK.render();WORK.toast(on?'✅ ADS LIGADO a cada '+ (localStorage.getItem('work_ad_freq')||5) +' vídeos':'❌ ADS DESLIGADO')},
-saveFreq(){let v=document.getElementById('adFreq').value;localStorage.setItem('work_ad_freq',v);this.refresh();WORK.render();WORK.toast('Salvo: 1 anúncio a cada '+v+' vídeos')},
-deleteUser(id){if(!confirm('Apagar usuário?')) return;let users=JSON.parse(localStorage.getItem('work_users')||'[]').filter(u=>u.id!==id);localStorage.setItem('work_users',JSON.stringify(users));this.refresh()},
-saveAds(){localStorage.setItem('work_admob',document.getElementById('admobId').value);localStorage.setItem('work_adsense',document.getElementById('adsenseId').value);WORK.toast('✅ IDs salvos')},
-exportUsers(){let users=JSON.parse(localStorage.getItem('work_users')||'[]');let csv='nome,email,nick,criado\n'+users.map(u=>`${u.name},${u.email},${u.nick},${u.createdAt}`).join('\n');let blob=new Blob([csv],{type:'text/csv'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download='usuarios.csv';a.click()},
-clearAll(){if(!confirm('APAGAR TUDO?')) return;if(!confirm('CONFIRMA MESMO?')) return;localStorage.clear();indexedDB.deleteDatabase('WorkPainelFinal');location.reload()}
+isAdmin(){
+let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
+if(!c) return false;
+let email=(c.email||'').toLowerCase();
+let nick=(c.nick||'').toLowerCase();
+return email.includes('jonatha')||nick.includes('jonatha')||email.includes('admin');
+},
+open(){
+if(!this.isAdmin()) return;
+document.getElementById('views').style.display='block';
+document.getElementById('vProfile').style.display='none';
+document.getElementById('vAdmin').style.display='block';
+this.refresh();
+},
+refresh(){
+let users=JSON.parse(localStorage.getItem('work_users')||'[]');
+WORK.loadAll().then(vids=>{
+document.getElementById('totalUsersAdmin').innerText=users.length;
+document.getElementById('totalVideosAdmin').innerText=vids.length;
+let today=new Date().toDateString();
+let lives=0; let html='';
+users.forEach(u=>{
+let d=JSON.parse(localStorage.getItem('work_live_'+u.id)||'null');
+if(d && d.date===today){lives+=d.count; html+=`<div style="font-size:11px;padding:6px;background:#111;border-radius:8px;margin-top:4px">🔴 @${u.nick} - ${d.count}/1 hoje às ${d.lastTime||''}</div>`}
+});
+document.getElementById('livesHoje').innerText=lives;
+document.getElementById('listaLivesHoje').innerHTML=html||'<div style="font-size:11px;color:#666">Nenhuma live hoje</div>';
+document.getElementById('listaUsersAdmin').innerHTML=users.map(u=>`<div style="display:flex;justify-content:space-between;padding:10px;background:#111;border-radius:10px;margin-top:6px"><span>@${u.nick} - ${u.email}</span><span style="font-size:10px;color:#888">${(JSON.parse(localStorage.getItem('work_live_'+u.id)||'{}').count||0)}/1</span></div>`).join('');
+});
+},
+resetLives(){
+if(!confirm('Resetar lives de hoje pra todos?')) return;
+let users=JSON.parse(localStorage.getItem('work_users')||'[]');
+users.forEach(u=>localStorage.removeItem('work_live_'+u.id));
+alert('✅ Resetado! Todos podem fazer live de novo');
+this.refresh();
+}
 };
 
-document.getElementById('file').addEventListener('change',async e=>{let f=e.target.files[0];if(!f) return;WORK.requireAuth(async()=>{await WORK.postVideo(f)})});
-document.getElementById('fileAvatar').addEventListener('change',e=>{let f=e.target.files[0];if(!f) return;let r=new FileReader();r.onload=ev=>{let b64=ev.target.result;let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(!c) return;c.avatar=b64;localStorage.setItem('work_current_user',JSON.stringify(c));let u=AUTH.getUsers();let i=u.findIndex(x=>x.id===c.id);if(i>=0){u[i].avatar=b64;AUTH.saveUsers(u)}document.getElementById('avatarBox').innerHTML=`<img src="${b64}" style="width:100%;height:100%;object-fit:cover">`;};r.readAsDataURL(f)});
-document.getElementById('commentInput').addEventListener('keypress',e=>{if(e.key==='Enter') WORK.sendComment()});
-let startY=0,isDrag=false;const stage=document.getElementById('stage');
-stage.addEventListener('touchstart',e=>{startY=e.touches[0].clientY;isDrag=true;stage.style.transition='none'},{passive:true});
-stage.addEventListener('touchmove',e=>{if(!isDrag) return;let d=e.touches[0].clientY-startY;stage.style.transform=`translateY(${d*0.5}px)`},{passive:true});
-stage.addEventListener('touchend',e=>{if(!isDrag) return;let d=startY-e.changedTouches[0].clientY;stage.style.transition='transform.25s ease';stage.style.transform='';isDrag=false;if(Math.abs(d)>70){if(d>0) WORK.next();else WORK.prev()}},{passive:true});
-setInterval(()=>{let c=JSON.parse(localStorage.getItem('work_current_user')||'null');if(c){c.lastSeen=Date.now();localStorage.setItem('work_current_user',JSON.stringify(c));let users=AUTH.getUsers();let idx=users.findIndex(u=>u.id===c.id);if(idx>=0){users[idx].lastSeen=Date.now();AUTH.saveUsers(users)}}},30000);
-WORK.loadSaved(); AUTH.check();
+const VIEWS={
+home(){document.getElementById('views').style.display='none';document.getElementById('vProfile').style.display='block';document.getElementById('vAdmin').style.display='none'},
+profile(){
+let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
+if(!c){let e=prompt('Email:'); if(!e) return; let n=e.split('@')[0]; let users=JSON.parse(localStorage.getItem('work_users')||'[]'); let u=users.find(x=>x.email===e); if(!u){u={id:Date.now(),email:e,nick:n,photo:'https://i.pravatar.cc/200?u='+e}; users.push(u); localStorage.setItem('work_users',JSON.stringify(users));} localStorage.setItem('work_current_user',JSON.stringify(u)); c=u;}
+document.getElementById('views').style.display='block';
+document.getElementById('vProfile').style.display='block';
+document.getElementById('vAdmin').style.display='none';
+document.getElementById('pNick').innerText='@'+c.nick;
+document.getElementById('pPhoto').src=c.photo;
+document.getElementById('adminBtnArea').style.display=ADMIN.isAdmin()?'block':'none';
+WORK.my();
+},
+close(){document.getElementById('views').style.display='none';}
+};
+
+const WORK={
+db:null,stream:null,rec:null,chunks:[],
+initDB(){return new Promise(r=>{let req=indexedDB.open('WorkDB_FINAL',1); req.onupgradeneeded=e=>{e.target.result.createObjectStore('videos',{keyPath:'id'})}; req.onsuccess=e=>{this.db=e.target.result; r()}})},
+loadAll(){return new Promise(r=>{if(!this.db) return r([]); let tx=this.db.transaction('videos','readonly'); let req=tx.objectStore('videos').getAll(); req.onsuccess=()=>r(req.result.reverse())})},
+canDoLive(){
+let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
+if(!c) return false;
+if(ADMIN.isAdmin()) return true;
+let key='work_live_'+c.id; let today=new Date().toDateString();
+let data=JSON.parse(localStorage.getItem(key)||'{"date":"","count":0}');
+if(data.date!==today){data={date:today,count:0}; localStorage.setItem(key,JSON.stringify(data))}
+if(data.count>=1){this.toast('🔴 Você já fez sua LIVE hoje! 1 por dia. Volta amanhã'); return false}
+return true;
+},
+registerLive(){
+let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
+let key='work_live_'+c.id; let today=new Date().toDateString();
+let data=JSON.parse(localStorage.getItem(key)||'{"date":"","count":0}');
+if(data.date!==today) data={date:today,count:0};
+data.count++; data.lastTime=new Date().toLocaleTimeString();
+localStorage.setItem(key,JSON.stringify(data));
+},
+openCam(type='video'){
+let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
+if(!c){VIEWS.profile(); return}
+if(type==='live'){if(!this.canDoLive()) return; if(!confirm('🔴 LIVE 1 por dia - Iniciar?')) return; this.registerLive();}
+document.getElementById('camType').innerText=type==='live'?'🔴 AO VIVO - 1/1 HOJE':'● GRAVANDO - ILIMITADO';
+document.getElementById('cam').style.display='flex';
+navigator.mediaDevices.getUserMedia({video:true,audio:true}).then(s=>{
+this.stream=s; document.getElementById('camEl').srcObject=s;
+this.chunks=[]; this.rec=new MediaRecorder(s); this.rec.ondataavailable=e=>this.chunks.push(e.data); this.rec.start();
+});
+},
+closeCam(){if(this.rec) this.rec.stop(); if(this.stream) this.stream.getTracks().forEach(t=>t.stop()); document.getElementById('cam').style.display='none';},
+async post(){
+if(!this.rec) return;
+this.rec.stop();
+let blob=new Blob(this.chunks,{type:'video/webm'});
+let reader=new FileReader();
+reader.onload=async e=>{
+await this.initDB();
+let c=JSON.parse(localStorage.getItem('work_current_user'));
+let vid={id:Date.now(),user:c.nick,photo:c.photo,data:e.target.result,desc:document.getElementById('descInp').value||'Meu vídeo 🔥',likes:0};
+let tx=this.db.transaction('videos','readwrite'); tx.objectStore('videos').add(vid);
+tx.oncomplete=()=>{this.closeCam(); document.getElementById('descInp').value=''; this.toast('✅ Vídeo salvo! Fica pra sempre no app • Ilimitado'); this.feed();};
+};
+reader.readAsDataURL(blob);
+},
+async feed(){
+await this.initDB();
+let vids=await this.loadAll();
+let feed=document.getElementById('feed');
+let html='';
+vids.forEach((v,i)=>{
+if(i>0 && i%5===0){html+=`<div class="adBox"><div>💰 ANÚNCIO ADSENSE<br><span style="font-size:12px">Seu ca-pub- aqui</span><br><br>Anúncio a cada 5 vídeos</div></div>`}
+html+=`<div class="item"><video src="${v.data}" loop playsinline onclick="this.paused?this.play():this.pause()"></video><div class="info"><div class="nick">@${v.user}</div><div class="desc">${v.desc}</div><div style="font-size:10px;color:#00FF88;margin-top:4px">♾️ Gravado no app • Ilimitado</div></div><div class="actions"><div class="act">❤️<br><span style="font-size:10px">${v.likes}</span></div><div class="act">💬</div><div class="act">↗️</div></div></div>`;
+});
+if(vids.length===0) html=`<div class="item" style="flex-direction:column"><div style="font-size:50px">🎬</div><div style="margin-top:10px;font-weight:900">Nenhum vídeo ainda</div><div style="font-size:12px;color:#888;margin-top:6px">Seus vídeos ficam gravados aqui pra sempre</div><button onclick="WORK.openCam('video')" style="margin-top:16px;background:#fff;color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:900">Postar primeiro vídeo</button></div>`;
+feed.innerHTML=html;
+},
+async my(){
+let vids=await this.loadAll();
+let c=JSON.parse(localStorage.getItem('work_current_user')||'null');
+if(!c) return;
+let mine=vids.filter(v=>v.user===c.nick);
+document.getElementById('cMy').innerText=mine.length;
+document.getElementById('grid').innerHTML=mine.map(v=>`<video src="${v.data}" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px"></video>`).join('')||'<div style="grid-column:1/4;color:#666;font-size:12px;text-align:center;padding:20px">Nenhum vídeo ainda<br>Seus vídeos ficam salvos aqui pra sempre</div>';
+},
+changePhoto(e){
+let file=e.target.files[0]; if(!file) return;
+let r=new FileReader(); r.onload=ev=>{
+let c=JSON.parse(localStorage.getItem('work_current_user')); c.photo=ev.target.result;
+localStorage.setItem('work_current_user',JSON.stringify(c));
+let users=JSON.parse(localStorage.getItem('work_users')||'[]'); let idx=users.findIndex(u=>u.id===c.id); if(idx>-1){users[idx].photo=ev.target.result; localStorage.setItem('work_users',JSON.stringify(users));}
+document.getElementById('pPhoto').src=ev.target.result; this.toast('✅ Foto atualizada');
+}; r.readAsDataURL(file);
+},
+toast(m){let d=document.createElement('div'); d.innerText=m; d.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:10px 20px;border-radius:20px;font-weight:800;z-index:9999;font-size:12px'; document.body.appendChild(d); setTimeout(()=>d.remove(),3000);},
+logout(){localStorage.removeItem('work_current_user'); location.reload();}
+};
+WORK.initDB().then(()=>WORK.feed());
 </script>
 </body>
 </html>
