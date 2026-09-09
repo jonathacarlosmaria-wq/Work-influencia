@@ -3,157 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>APP V35.2 - LIVE 30MIN</title>
+<title>LIVE 30MIN - V35.2</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
-body{background:#000;color:#fff;overflow:hidden;overscroll-behavior:none}
-#app{width:100vw;height:100vh;position:relative;background:#000}
-.video-wrap{width:100%;height:100%;position:relative}
-.video-wrap video{width:100%;height:100%;object-fit:cover}
-.bottom-info{position:absolute;bottom:20px;left:12px;right:80px;z-index:2}
-.bottom-info b{font-size:16px;text-shadow:0 1px 3px #000}
-.bottom-info p{font-size:13px;opacity:.9;margin-top:4px;text-shadow:0 1px 3px #000}
-.side{position:absolute;right:8px;bottom:90px;display:flex;flex-direction:column;gap:24px;align-items:center;z-index:3}
-.item{width:56px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer}
-.item.avatar{width:52px;height:52px;border-radius:50%;border:2px solid #fff;position:relative}
-.item.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
-.follow{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;border:2px solid #fff;font-size:14px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;color:#fff;overflow:hidden}
+#app{width:100vw;height:100vh;position:relative}
+video{width:100%;height:100%;object-fit:cover}
+.side{position:absolute;right:10px;bottom:100px;display:flex;flex-direction:column;gap:22px;align-items:center;z-index:5}
+.item{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer}
+.avatar{width:52px;height:52px;border-radius:50%;border:2px solid #fff;position:relative}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.follow{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-weight:bold}
 .follow.plus{background:#fe2c55;color:#fff}
-.follow.seguindo{background:#fff;color:#000;width:56px;border-radius:12px;font-size:9px;gap:2px}
-.follow.seguindo img{width:16px;height:16px;border-radius:50%}
-.icon-circle{width:48px;height:48px;background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;backdrop-filter:blur(10px)}
-.item span{font-size:12px;font-weight:600;text-shadow:0 1px 3px #000}
-
-/* LIVE */
+.follow.seguindo{background:#fff;color:#000;width:58px;border-radius:12px;font-size:9px}
+.follow.seguindo img{width:16px;height:16px;border-radius:50%;margin-right:2px}
+.icon{width:48px;height:48px;background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;backdrop-filter:blur(8px)}
 #liveM{display:none;position:fixed;inset:0;background:#000;z-index:9999;flex-direction:column}
-.live-top{position:absolute;top:0;left:0;right:0;padding:14px;display:flex;justify-content:space-between;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent)}
-.badge-live{background:#fe2c55;padding:5px 10px;border-radius:4px;color:#fff;font-weight:900;font-size:12px;display:flex;gap:5px;align-items:center}
-.timer{display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:20px;font-weight:bold;font-size:13px}
+.top{position:absolute;top:0;left:0;right:0;padding:14px;display:flex;justify-content:space-between;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent)}
+.badge{background:#fe2c55;padding:5px 10px;border-radius:4px;font-weight:bold;font-size:12px;display:flex;gap:5px;align-items:center}
+.timer{display:flex;gap:6px;align-items:center;background:rgba(0,0,0,.6);padding:6px 12px;border-radius:20px;font-weight:bold;font-size:13px;border:1px solid rgba(255,255,255,.2)}
 .dot{width:10px;height:10px;background:red;border-radius:50%;animation:blink 1s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.viewers{position:absolute;top:68px;left:12px;background:rgba(0,0,0,.6);padding:5px 10px;border-radius:14px;font-size:12px;z-index:5}
-.rec-btn{position:absolute;bottom:165px;left:50%;transform:translateX(-50%);width:72px;height:72px;border-radius:50%;background:#fe2c55;border:4px solid #fff;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff;z-index:10;box-shadow:0 0 25px rgba(254,44,85,.6)}
-.rec-btn.on{background:#fff;color:#fe2c55;animation:pulse 1s infinite}
-@keyframes pulse{0%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.08)}100%{transform:translateX(-50%) scale(1)}}
-#recStatus{position:absolute;bottom:245px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);padding:6px 14px;border-radius:20px;font-size:12px;display:none;z-index:10;border:1px solid rgba(255,255,255,.2)}
-#liveChat{position:absolute;bottom:115px;left:10px;right:10px;max-height:180px;overflow-y:auto;display:flex;flex-direction:column;gap:7px;z-index:5}
-.msg{background:rgba(0,0,0,.55);backdrop-filter:blur(6px);padding:7px 11px;border-radius:16px;font-size:13px;color:#fff;width:fit-content;max-width:85%}
+.viewers{position:absolute;top:70px;left:12px;background:rgba(0,0,0,.6);padding:5px 10px;border-radius:14px;font-size:12px;z-index:5}
+.rec{position:absolute;bottom:165px;left:50%;transform:translateX(-50%);width:72px;height:72px;border-radius:50%;background:#fe2c55;border:4px solid #fff;display:flex;align-items:center;justify-content:center;font-size:28px;z-index:10}
+.rec.on{background:#fff;color:#fe2c55;animation:pulse 1s infinite}
+@keyframes pulse{0%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.1)}100%{transform:translateX(-50%) scale(1)}}
+#recStatus{position:absolute;bottom:250px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);padding:6px 14px;border-radius:20px;font-size:12px;display:none;z-index:10}
+#liveChat{position:absolute;bottom:115px;left:10px;right:10px;max-height:180px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;z-index:5}
+.msg{background:rgba(0,0,0,.6);padding:7px 11px;border-radius:16px;font-size:13px;width:fit-content;max-width:85%}
 .msg b{color:#fe2c55}
-#liveInputBox{position:absolute;bottom:18px;left:10px;right:10px;display:flex;gap:8px;z-index:10}
-#liveInput{flex:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:24px;padding:13px 16px;color:#fff;outline:none;font-size:14px}
-#liveInput::placeholder{color:rgba(255,255,255,.7)}
 </style>
 </head>
 <body>
-<div id="app"><div class="video-wrap" id="feed"></div></div>
+<div id="app"><div id="feed" style="width:100%;height:100%;position:relative"></div></div>
 
 <div id="liveM">
-  <div class="live-top">
-    <div style="display:flex;gap:10px;align-items:center">
-      <div class="badge-live"><div class="dot"></div> AO VIVO</div>
-      <div class="timer"><div class="dot"></div><span id="liveTimer">00:00</span></div>
-    </div>
-    <button onclick="closeLive()" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:18px">✕</button>
-  </div>
-  <div class="viewers" id="liveViewers">1.342 espectadores</div>
-  <video id="liveVideo" style="width:100%;height:100%;object-fit:cover" playsinline></video>
-  <div id="recStatus"></div>
-  <button id="recBtn" class="rec-btn" onclick="toggleRec()">●</button>
-  <div id="liveChat"></div>
-  <div id="liveInputBox">
-    <input id="liveInput" placeholder="Comente algo na live..." onkeypress="if(event.key==='Enter') enviarComentario()">
-    <button onclick="enviarComentario()" style="background:#fe2c55;border:none;color:#fff;padding:13px 20px;border-radius:24px;font-weight:bold">Enviar</button>
-  </div>
+<div class="top"><div style="display:flex;gap:10px"><div class="badge"><div class="dot"></div>AO VIVO</div><div class="timer"><div class="dot"></div><span id="liveTimer">00:00</span></div></div><button onclick="closeLive()" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:18px">✕</button></div>
+<div class="viewers" id="liveViewers">1.342 espectadores</div>
+<video id="liveVideo" style="width:100%;height:100%;object-fit:cover" playsinline></video>
+<div id="recStatus"></div>
+<button id="recBtn" class="rec" onclick="toggleRec()">●</button>
+<div id="liveChat"></div>
+<div style="position:absolute;bottom:18px;left:10px;right:10px;display:flex;gap:8px;z-index:10"><input id="liveInput" placeholder="Comente na live..." style="flex:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:24px;padding:13px 16px;color:#fff;outline:none" onkeypress="if(event.key==='Enter') enviar()"><button onclick="enviar()" style="background:#fe2c55;border:none;color:#fff;padding:13px 20px;border-radius:24px;font-weight:bold">Enviar</button></div>
 </div>
 
 <script>
-let videos=[
-  {id:1,url:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",user:"jonatha_ofc",avatar:"https://i.pravatar.cc/150?img=11",likes:"12.5K",follow:false},
-  {id:2,url:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",user:"ana_linda",avatar:"https://i.pravatar.cc/150?img=5",likes:"8.9K",follow:true},
-  {id:3,url:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",user:"carlos_show",avatar:"https://i.pravatar.cc/150?img=8",likes:"23K",follow:false}
-];
-let cur=0;
-const LIMITE=30*60;
-let liveSec=0, timerInt=null, rec=false;
-
+let videos=[{id:1,url:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",user:"jonatha_ofc",avatar:"https://i.pravatar.cc/150?img=11",likes:"12.5K",follow:false},{id:2,url:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",user:"ana",avatar:"https://i.pravatar.cc/150?img=5",likes:"8K",follow:true}];
+let cur=0,LIMITE=1800,liveSec=0,tInt=null,rec=false;
 function getUso(){let d=JSON.parse(localStorage.getItem('liveUso')||'{}');if(d.data!==new Date().toDateString())return 0;return d.seg||0;}
 function saveUso(s){localStorage.setItem('liveUso',JSON.stringify({data:new Date().toDateString(),seg:s}));}
 function resta(){return LIMITE-getUso();}
-
 function render(){
-  let v=videos[cur];
-  document.getElementById('feed').innerHTML=`
-    <video src="${v.url}" autoplay loop muted playsinline id="mainV" onclick="openLive(${v.id})"></video>
-    <div class="side">
-      <div class="item" onclick="toggleFollow(${v.id})">
-        <div class="avatar">
-          <img src="${v.avatar}">
-          <div class="follow ${v.follow?'seguindo':'plus'}" id="f${v.id}">${v.follow?`<img src='${v.avatar}'> Seguindo`:'+'}</div>
-        </div>
-        <span>${v.user}</span>
-      </div>
-      <div class="item"><div class="icon-circle">❤️</div><span>${v.likes}</span></div>
-      <div class="item" onclick="openLive(${v.id})"><div class="icon-circle">🔴</div><span>LIVE</span></div>
-      <div class="item"><div class="icon-circle">💬</div><span>342</span></div>
-    </div>
-    <div class="bottom-info"><b>@${v.user}</b><p>Clique no vídeo para entrar na LIVE! Cada usuário 30min por dia 🔥</p></div>
-  `;
+let v=videos[cur];
+document.getElementById('feed').innerHTML=`<video src="${v.url}" autoplay loop muted playsinline onclick="openLive(${v.id})"></video><div class="side"><div class="item" onclick="toggleF(${v.id})"><div class="avatar"><img src="${v.avatar}"><div class="follow ${v.follow?'seguindo':'plus'}" id="f${v.id}">${v.follow?`<img src='${v.avatar}'> Seguindo`:'+'}</div></div><span>${v.user}</span></div><div class="item"><div class="icon">❤️</div><span>${v.likes}</span></div><div class="item" onclick="openLive(${v.id})"><div class="icon">🔴</div><span>LIVE</span></div></div><div style="position:absolute;bottom:20px;left:12px"><b>@${v.user}</b><p style="font-size:12px;margin-top:4px">Toque para LIVE - 30min por dia</p></div>`;
 }
-function toggleFollow(id){
-  let v=videos.find(x=>x.id===id);v.follow=!v.follow;
-  let el=document.getElementById('f'+id);
-  if(v.follow){el.className='follow seguindo';el.innerHTML=`<img src='${v.avatar}'> Seguindo`;}else{el.className='follow plus';el.innerHTML='+';}
-}
+function toggleF(id){let v=videos.find(x=>x.id===id);v.follow=!v.follow;let el=document.getElementById('f'+id);if(v.follow){el.className='follow seguindo';el.innerHTML=`<img src='${v.avatar}'> Seguindo`;}else{el.className='follow plus';el.innerHTML='+';}}
 function openLive(id){
-  let r=resta();
-  if(r<=0){alert('⏰ Você já usou seus 30 minutos de LIVE hoje!\nVolta amanhã às 00:00');return;}
-  alert(`🔴 LIVE liberada!\nVocê tem ${Math.floor(r/60)} minutos hoje.`);
-  let m=document.getElementById('liveM'), vid=document.getElementById('liveVideo');
-  vid.src=videos.find(x=>x.id===id)?.url||videos[0].url;
-  m.style.display='flex'; vid.play();
-  liveSec=0; document.getElementById('liveChat').innerHTML='';
-  addMsg('Sistema',`Bem-vindo! Tempo restante hoje: ${Math.floor(r/60)} min`);
-  timerInt=setInterval(()=>{
-    liveSec++; let total=getUso()+liveSec; saveUso(total);
-    let falta=LIMITE-total;
-    document.getElementById('liveTimer').innerText=`${String(Math.floor(liveSec/60)).padStart(2,'0')}:${String(liveSec%60).padStart(2,'0')}`;
-    document.getElementById('recStatus').style.display='block';
-    document.getElementById('recStatus').innerText=`⏱️ Resta hoje: ${Math.floor(falta/60)}:${String(falta%60).padStart(2,'0')} / 30:00`;
-    if(falta<=0){clearInterval(timerInt);alert('⏰ Acabaram seus 30 minutos de hoje!');closeLive();}
-    else if(falta==300){addMsg('Sistema','⚠️ Só 5 minutos restantes!');}
-  },1000);
-  let vw=1342; setInterval(()=>{vw+=Math.floor(Math.random()*4); document.getElementById('liveViewers').innerText=vw+' espectadores';},2500);
+let r=resta();if(r<=0){alert('⏰ 30min de hoje acabaram! Volta amanhã');return;}
+alert(`Você tem ${Math.floor(r/60)} min hoje`);
+let m=document.getElementById('liveM'),vid=document.getElementById('liveVideo');
+vid.src=videos.find(x=>x.id===id)?.url||videos[0].url;
+m.style.display='flex';vid.play();liveSec=0;document.getElementById('liveChat').innerHTML='';add('Sistema',`Resta ${Math.floor(r/60)} min hoje`);
+tInt=setInterval(()=>{liveSec++;let total=getUso()+liveSec;saveUso(total);let falta=LIMITE-total;document.getElementById('liveTimer').innerText=`${String(Math.floor(liveSec/60)).padStart(2,'0')}:${String(liveSec%60).padStart(2,'0')}`;document.getElementById('recStatus').style.display='block';document.getElementById('recStatus').innerText=`Resta hoje: ${Math.floor(falta/60)}:${String(falta%60).padStart(2,'0')} / 30:00`;if(falta<=0){clearInterval(tInt);alert('Acabou!');closeLive();}},1000);
 }
-function toggleRec(){
-  let b=document.getElementById('recBtn');
-  if(!rec){rec=true;b.classList.add('on');b.innerText='■';document.getElementById('recStatus').style.display='block';}
-  else{rec=false;b.classList.remove('on');b.innerText='●';alert('✅ Live gravada: '+document.getElementById('liveTimer').innerText);}
-}
-function addMsg(n,t){
-  let c=document.getElementById('liveChat'), d=document.createElement('div');
-  d.className='msg'; d.innerHTML=`<b>${n}:</b> ${t}`; c.appendChild(d); c.scrollTop=c.scrollHeight;
-}
-function enviarComentario(){
-  let i=document.getElementById('liveInput');
-  if(!i.value.trim())return;
-  addMsg('Você',i.value); i.value='';
-  // resposta fake
-  setTimeout(()=>{let nomes=['Ana','Leo','Bia']; addMsg(nomes[Math.floor(Math.random()*3)],'🔥🔥 top!');},1200);
-}
-function closeLive(){
-  document.getElementById('liveM').style.display='none';
-  clearInterval(timerInt);
-  document.getElementById('liveVideo').pause();
-  rec=false; document.getElementById('recBtn').classList.remove('on'); document.getElementById('recBtn').innerText='●';
-}
+function toggleRec(){let b=document.getElementById('recBtn');if(!rec){rec=true;b.classList.add('on');b.innerText='■';}else{rec=false;b.classList.remove('on');b.innerText='●';alert('Gravado: '+document.getElementById('liveTimer').innerText);}}
+function add(n,t){let c=document.getElementById('liveChat'),d=document.createElement('div');d.className='msg';d.innerHTML=`<b>${n}:</b> ${t}`;c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function enviar(){let i=document.getElementById('liveInput');if(!i.value.trim())return;add('Você',i.value);i.value='';}
+function closeLive(){document.getElementById('liveM').style.display='none';clearInterval(tInt);document.getElementById('liveVideo').pause();rec=false;}
 render();
-// swipe pra trocar video
-let startY=0;
-document.addEventListener('touchstart',e=>startY=e.touches[0].clientY);
-document.addEventListener('touchend',e=>{
-  let diff=startY-e.changedTouches[0].clientY;
-  if(Math.abs(diff)>50){if(diff>0){cur=(cur+1)%videos.length;}else{cur=(cur-1+videos.length)%videos.length;}render();}
-});
 </script>
 </body>
 </html>
