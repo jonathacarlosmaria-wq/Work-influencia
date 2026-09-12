@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FINAL - TIKTOK GOLD PERFEITO</title>
+<title>WORK DOURADO - BOTÕES LIVE OK</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;background:#000;overflow:hidden;display:flex;justify-content:center;font-family:system-ui}
 .app{width:100%;max-width:440px;height:100dvh;background:#000;position:relative;display:flex;flex-direction:column;overflow:hidden}
-.stage{flex:1;position:relative;overflow:hidden;background:#000;touch-action:pan-y}
+.stage{flex:1;position:relative;overflow:hidden;background:#000}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
 .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),transparent 30%,transparent 60%,rgba(0,0,0,.92))}
 .top{position:absolute;top:0;left:0;right:0;height:46px;display:flex;align-items:center;justify-content:center;gap:20px;z-index:20}
@@ -17,20 +17,14 @@ html,body{width:100%;height:100%;background:#000;overflow:hidden;display:flex;ju
 .right{position:absolute;right:8px;bottom:90px;z-index:20;display:flex;flex-direction:column;gap:18px;align-items:center;width:62px}
 .ab{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.13);border:1.5px solid rgba(255,215,0,.3);display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden;position:relative}
 .ab img{width:100%;height:100%;object-fit:cover}
-.ab.f{border:3px solid #FFD700;box-shadow:0 0 15px rgba(255,215,0,.4)}
+.ab.f{border:3px solid #FFD700}
 .bd{position:absolute;bottom:-3px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;border:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900}
-.bd.p{background:#FFD700;color:#000}.bd.o{background:#00e676;color:#fff}
+.bd.p{background:#FFD700;color:#000}
 .bot{position:absolute;left:12px;right:80px;bottom:14px;z-index:20;color:#fff}
-.ur{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.up{width:40px;height:40px;border-radius:50%;border:2px solid #FFD700;object-fit:cover;background:#222;display:block}
-.un{font-weight:800;font-size:14px;color:#FFD700}
-.fm{margin-left:8px;padding:4px 10px;border-radius:14px;font-size:10px;font-weight:900;border:1px solid #FFD700;background:transparent;color:#FFD700}
-.fm.ok{background:#FFD700;color:#000}
-.de{font-size:12px;line-height:1.3;opacity:.9;word-break:break-word}
 .nav{height:66px;min-height:66px;background:#000;border-top:1px solid rgba(255,215,0,.2);display:flex;align-items:center;justify-content:space-around;flex-shrink:0}
 .nt{flex:1;display:flex;flex-direction:column;align-items:center;color:#555;font-size:9px;font-weight:700}
 .nt.on{color:#FFD700}
-.np{width:44px;height:28px;background:#FFD700;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:18px;box-shadow:0 0 12px rgba(255,215,0,.5)}
+.np{width:44px;height:28px;background:#FFD700;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:18px}
 #toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#FFD700;color:#000;padding:10px 18px;border-radius:20px;font-weight:800;font-size:11px;z-index:9999;display:none}#toast.on{display:block}
 #cam,#liveM{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column;max-width:440px;left:50%;transform:translateX(-50%)}
 #camEl,#liveV{width:100%;height:100%;object-fit:cover}
@@ -39,34 +33,27 @@ html,body{width:100%;height:100%;background:#000;overflow:hidden;display:flex;ju
 </head>
 <body>
 <div id="toast"></div>
-<div class="app">
-<div class="stage" id="stage"></div>
-<div class="nav">
-<div class="nt on"><div>🏠</div>Início</div>
-<div class="nt"><div>🔍</div>Descobrir</div>
-<div onclick="goCam()"><div class="np">+</div></div>
-<div class="nt"><div>📩</div>Inbox</div>
-<div class="nt" onclick="goProfile()"><div id="npic">👤</div>Perfil</div>
-</div>
-</div>
+<div class="app"><div class="stage" id="stage"></div><div class="nav"><div class="nt on"><div>🏠</div>Início</div><div class="nt"><div>🔍</div>Descobrir</div><div onclick="goCam()"><div class="np">+</div></div><div class="nt"><div>📩</div>Inbox</div><div class="nt"><div>👤</div>Perfil</div></div></div>
 
 <div id="cam">
 <video id="camEl" autoplay muted playsinline></video>
 <canvas id="pc" style="display:none"></canvas>
 <div style="position:absolute;top:0;left:0;right:0;padding:10px;display:flex;justify-content:space-between;z-index:10;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)">
-<button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid #FFD700;color:#FFD700">✕</button>
+<button onclick="closeAll()" style="width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid #FFD700;color:#FFD700">✕</button>
+<div id="camLabel" style="background:#FFD700;color:#000;padding:6px 14px;border-radius:16px;font-size:11px;font-weight:900">VÍDEO 60s</div>
 <button onclick="postNow()" style="background:#FFD700;color:#000;border:none;padding:6px 14px;border-radius:16px;font-weight:900;font-size:11px">Postar</button>
 </div>
 <div style="position:absolute;bottom:88px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:10">
-<button id="bF" onclick="setM('foto')" style="padding:6px 12px;border-radius:16px;background:#FFD700;color:#000;font-weight:800;border:none;font-size:10px">FOTO</button>
-<button id="bV" onclick="setM('video')" style="padding:6px 12px;border-radius:16px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid rgba(255,215,0,.3);font-size:10px">VÍDEO 60s</button>
-<button id="bL" onclick="openLive()" style="padding:6px 12px;border-radius:16px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid rgba(255,215,0,.3);font-size:10px">LIVE 30MIN</button>
+<button id="bF" onclick="switchMode('foto')" style="padding:6px 12px;border-radius:16px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid rgba(255,215,0,.3);font-size:10px">FOTO</button>
+<button id="bV" onclick="switchMode('video')" style="padding:6px 12px;border-radius:16px;background:#FFD700;color:#000;font-weight:800;border:none;font-size:10px">VÍDEO 60s</button>
+<button id="bL" onclick="openLiveDirect()" style="padding:6px 12px;border-radius:16px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid rgba(255,215,0,.3);font-size:10px">LIVE 30MIN</button>
 </div>
 <div style="position:absolute;bottom:0;left:0;right:0;padding:12px;display:flex;align-items:center;gap:10px;background:linear-gradient(0deg,#000,transparent)">
-<input id="descInp" placeholder="Legenda dourada 👑 #work..." style="flex:1;padding:10px 12px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,215,0,.3);color:#fff;font-size:11px">
-<button id="shut" onclick="cap()" style="width:64px;height:64px;border-radius:50%;background:#FFD700;border:4px solid rgba(255,215,0,.3);font-size:20px">📸</button>
+<input id="descInp" placeholder="Legenda dourada #work 👑..." style="flex:1;padding:10px 12px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,215,0,.3);color:#fff;font-size:11px">
+<button id="shut" onclick="handleShutter()" style="width:68px;height:68px;border-radius:50%;background:#FFD700;border:4px solid rgba(255,255,255,.3);font-size:24px;display:flex;align-items:center;justify-content:center;transition:all.2s">●</button>
 <button style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,215,0,.3);color:#FFD700">🖼️</button>
 </div>
+<div id="recBar" style="position:absolute;bottom:0;left:0;height:4px;background:#FFD700;width:0%"></div>
 </div>
 
 <div id="liveM">
@@ -83,48 +70,127 @@ html,body{width:100%;height:100%;background:#000;overflow:hidden;display:flex;ju
 <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.2)"><div id="liveBar" style="height:100%;width:0%;background:#FFD700;transition:width 1s linear"></div></div>
 </div>
 
-<div id="profileM" style="position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1000;display:none;flex-direction:column"><div style="flex:1" onclick="closeAll()"></div><div style="background:#111;border-radius:18px 18px 0 0;padding:14px;border-top:2px solid #FFD700"><div style="text-align:center"><img id="pp" style="width:80px;height:80px;border-radius:50%;border:3px solid #FFD700;object-fit:cover;display:none"><div id="ph" style="width:80px;height:80px;border-radius:50%;background:#222;border:3px solid #FFD700;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto">👑</div><input type="file" id="pi" accept="image/*" style="display:none"><br><button onclick="document.getElementById('pi').click()" style="margin-top:8px;padding:6px 12px;border-radius:14px;background:#FFD700;color:#000;border:none;font-weight:800;font-size:10px">📸 Foto</button><div id="pn" style="font-weight:800;margin-top:8px;color:#FFD700"></div><div id="pnn" style="color:#777;font-size:11px"></div></div><button onclick="closeAll()" style="width:100%;margin-top:12px;padding:10px;border-radius:10px;background:#FFD700;color:#000;font-weight:800;border:none">Fechar</button></div></div>
-
 <script>
 const ADMIN="jonathacarlosmaria";
-let db=null,stream=null,cur=0,mode='foto',photoData=null,allVideos=[],liveTmr=null,liveS=0;
+let stream=null,cur=0,mode='video',photoData=null,allVideos=[],liveTmr=null,liveS=0,recorder=null,chunks=[],recTimer=null,recSec=0;
 const LIM=1800;
 function toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2200)}
-function closeAll(){document.getElementById('cam').style.display='none';document.getElementById('liveM').style.display='none';document.getElementById('profileM').style.display='none';if(stream){try{stream.getTracks().forEach(x=>x.stop())}catch{} stream=null}clearInterval(liveTmr);liveS=0;let b=document.getElementById('liveBar');if(b)b.style.width='0%'}
-function getU(){try{let u=JSON.parse(localStorage.getItem('work_current_user')||'{}');if(!u.nick)u={nick:ADMIN,name:"Jonatha 👑",pic:localStorage.getItem('work_owner_pic')||""};return u}catch{return {nick:ADMIN,name:"Jonatha 👑"}}}
-function getPic(n){let me=getU();if(me.nick===n&&me.pic)return me.pic;return ""}
+function closeAll(){
+document.getElementById('cam').style.display='none';
+document.getElementById('liveM').style.display='none';
+if(stream){try{stream.getTracks().forEach(x=>x.stop())}catch{} stream=null}
+clearInterval(liveTmr);clearInterval(recTimer);
+if(recorder&&recorder.state==='recording'){try{recorder.stop()}catch{}}
+liveS=0;recSec=0;
+document.getElementById('liveBar').style.width='0%';
+document.getElementById('recBar').style.width='0%';
+document.getElementById('shut').style.background='#FFD700';
+document.getElementById('shut').innerText='●';
+}
 function getUso(){let d=JSON.parse(localStorage.getItem('liveUso')||'{}');if(d.data!==new Date().toDateString())return 0;return d.seg||0}
 function saveUso(s){localStorage.setItem('liveUso',JSON.stringify({data:new Date().toDateString(),seg:s}))}
-function saveB(){try{let b=allVideos.filter(v=>v.id!==1).slice(0,100).map(v=>({id:v.id,desc:v.desc,data:v.data,type:v.type,owner:v.owner,likes:v.likes}));localStorage.setItem('work_backup_videos',JSON.stringify(b))}catch{}}
-function loadB(){try{return JSON.parse(localStorage.getItem('work_backup_videos')||'[]')}catch{return[]}}
 function render(){
-let backup=loadB();
-if(allVideos.length===0){
-allVideos=[{id:1,desc:"WORK FINAL DOURADO 👑 TikTok Gold sem erros - Todas funções ok! #work",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",type:'foto',owner:ADMIN,likes:42000},...backup];
-}
+if(allVideos.length===0) allVideos=[{id:1,desc:"WORK DOURADO - BOTÕES CORRIGIDOS 👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",owner:ADMIN}];
 let v=allVideos[cur];
-let pic=getPic(v.owner);
-let inner=pic?`<img src="${pic}">`:`${v.owner[0].toUpperCase()}`;
-let upic=pic?`<img src="${pic}" class="up">`:`<div class="up" style="display:flex;align-items:center;justify-content:center;background:#222;font-weight:900;color:#FFD700">${v.owner[0].toUpperCase()}</div>`;
-let badge=`<div class="bd p">+</div>`;
-document.getElementById('stage').innerHTML=`<div class="bg" style="background-image:url('${v.data||v.img}')"></div><div class="grad"></div><div class="top"><div class="tt">Seguindo</div><div class="tt on">Para você</div></div><div class="right"><div class="ab f">${inner}${badge}</div><div class="ab" onclick="like()">❤️</div><div class="ab">💬</div><div class="ab">↗️</div></div><div class="bot"><div class="ur">${upic}<div class="un">@${v.owner}</div><div class="fm">Seguir</div></div><div class="de">${v.desc}</div></div>`;
+document.getElementById('stage').innerHTML=`<div class="bg" style="background-image:url('${v.data||v.img}')"></div><div class="grad"></div><div class="top"><div class="tt">Seguindo</div><div class="tt on">Para você</div></div><div class="right"><div class="ab f">${v.owner[0].toUpperCase()}<div class="bd p">+</div></div><div class="ab">❤️</div><div class="ab">💬</div><div class="ab">↗️</div></div><div class="bot"><div style="font-weight:800;font-size:13px;color:#FFD700">@${v.owner}</div><div style="font-size:12px">${v.desc}</div></div>`;
 }
-function like(){let v=allVideos[cur];if(v){v.likes=(v.likes||0)+1;toast('💛 Curtiu!');render()}}
-function goCam(){document.getElementById('cam').style.display='flex';navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{stream=s;document.getElementById('camEl').srcObject=s;setM('foto')}).catch(()=>toast('Permita câmera'))}
-function setM(m){mode=m;document.getElementById('bF').style.background=m==='foto'?'#FFD700':'rgba(255,255,255,.15)';document.getElementById('bF').style.color=m==='foto'?'#000':'#fff';document.getElementById('bL').style.background=m==='live'?'#FFD700':'rgba(255,255,255,.15)';document.getElementById('bL').style.color=m==='live'?'#000':'#fff';document.getElementById('shut').innerText=m==='foto'?'📸':'●';if(m==='live'){closeAll();openLive()}}
-function cap(){if(mode==='foto'){let v=document.getElementById('camEl');let c=document.getElementById('pc');c.width=v.videoWidth||1080;c.height=v.videoHeight||1920;c.getContext('2d').drawImage(v,0,0,c.width,c.height);photoData=c.toDataURL('image/jpeg',0.9);toast('✅ Foto! Clique Postar')}else if(mode==='live'){openLive()}}
-function postNow(){if(!photoData){toast('Tire foto');return}let me=getU();allVideos.unshift({id:Date.now(),data:photoData,desc:document.getElementById('descInp').value||'Foto dourada #work 👑',type:'foto',likes:0,owner:me.nick});saveB();closeAll();photoData=null;document.getElementById('descInp').value='';toast('👑 Postado!');render()}
-function openLive(){
-let resta=LIM-getUso();
-if(resta<=0){toast('⏰ 30min acabaram hoje!');return}
-document.getElementById('liveM').style.display='flex';
+function goCam(){
+document.getElementById('cam').style.display='flex';
 navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{
 stream=s;
-document.getElementById('liveV').srcObject=s;
+document.getElementById('camEl').srcObject=s;
+switchMode('video');
+}).catch(()=>toast('Permita câmera e microfone'))
+}
+function switchMode(m){
+mode=m;
+document.getElementById('bF').style.background=m==='foto'?'#FFD700':'rgba(255,255,255,.15)';
+document.getElementById('bF').style.color=m==='foto'?'#000':'#fff';
+document.getElementById('bV').style.background=m==='video'?'#FFD700':'rgba(255,255,255,.15)';
+document.getElementById('bV').style.color=m==='video'?'#000':'#fff';
+document.getElementById('bL').style.background=m==='live'?'#FFD700':'rgba(255,255,255,.15)';
+document.getElementById('bL').style.color=m==='live'?'#000':'#fff';
+document.getElementById('camLabel').innerText=m==='foto'?'FOTO HD':m==='video'?'VÍDEO 60s':'LIVE 30MIN DOURADA';
+document.getElementById('shut').innerText=m==='foto'?'📸':'●';
+document.getElementById('shut').style.background='#FFD700';
+if(m==='live'){openLiveDirect()}
+}
+
+function handleShutter(){
+if(mode==='foto'){
+let v=document.getElementById('camEl');
+let c=document.getElementById('pc');
+c.width=v.videoWidth||1080;c.height=v.videoHeight||1920;
+c.getContext('2d').drawImage(v,0,0,c.width,c.height);
+photoData=c.toDataURL('image/jpeg',0.9);
+toast('✅ Foto tirada! Clique Postar');
+}else if(mode==='video'){
+if(recorder&&recorder.state==='recording'){
+recorder.stop();
+}else{
+startVideoRec();
+}
+}else if(mode==='live'){
+openLiveDirect();
+}
+}
+
+function startVideoRec(){
+chunks=[];recSec=0;
+try{
+recorder=new MediaRecorder(stream,{mimeType:'video/webm'});
+}catch{
+recorder=new MediaRecorder(stream);
+}
+recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
+recorder.onstop=()=>{
+let blob=new Blob(chunks,{type:'video/webm'});
+let url=URL.createObjectURL(blob);
+photoData=url;
+toast('✅ Vídeo gravado! Clique Postar');
+document.getElementById('shut').style.background='#FFD700';
+document.getElementById('shut').innerText='●';
+clearInterval(recTimer);
+document.getElementById('recBar').style.width='0%';
+};
+recorder.start();
+document.getElementById('shut').style.background='#fe2c55';
+document.getElementById('shut').innerText='■';
+toast('🔴 Gravando vídeo...');
+recTimer=setInterval(()=>{
+recSec++;
+document.getElementById('camLabel').innerText=`🔴 ${String(Math.floor(recSec/60)).padStart(2,'0')}:${String(recSec%60).padStart(2,'0')} / 01:00`;
+document.getElementById('recBar').style.width=(recSec/60*100)+'%';
+if(recSec>=60){recorder.stop()}
+},1000);
+}
+
+function postNow(){
+if(!photoData){toast('Grave ou tire foto primeiro');return}
+allVideos.unshift({id:Date.now(),data:photoData,desc:document.getElementById('descInp').value||'Post dourado 👑',owner:ADMIN});
+closeAll();photoData=null;document.getElementById('descInp').value='';toast('👑 Postado!');render();
+}
+
+function openLiveDirect(){
+let resta=LIM-getUso();
+if(resta<=0){toast('⏰ 30min acabaram hoje!');return}
+document.getElementById('cam').style.display='none';
+document.getElementById('liveM').style.display='flex';
+if(!stream){
+navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{
+stream=s;document.getElementById('liveV').srcObject=s;startLiveTimer(resta);
+}).catch(()=>toast('Permita câmera'));
+}else{
+document.getElementById('liveV').srcObject=stream;
+startLiveTimer(resta);
+}
+}
+function startLiveTimer(resta){
 liveS=0;
 document.getElementById('liveT').innerText='00:00';
 document.getElementById('liveBar').style.width='0%';
 document.getElementById('liveI').innerText=`👑 Resta hoje: ${Math.floor(resta/60)}:${String(resta%60).padStart(2,'0')}`;
+clearInterval(liveTmr);
 liveTmr=setInterval(()=>{
 liveS++;
 let total=getUso()+liveS;
@@ -137,16 +203,10 @@ document.getElementById('liveI').innerText=`👑 ${m}:${sec} gravando | Resta: $
 document.getElementById('liveBar').style.width=(liveS/1800*100)+'%';
 if(falta<=0){clearInterval(liveTmr);toast('⏰ 30min!');closeAll()}
 },1000);
-toast('👑 LIVE DOURADA - Tempo igual TikTok!');
-}).catch(()=>toast('Permita câmera'));
+toast('👑 LIVE - Tempo contando igual TikTok!');
 }
-function goProfile(){let c=getU();document.getElementById('pn').innerText=c.name;document.getElementById('pnn').innerText='@'+c.nick;let pp=document.getElementById('pp');let ph=document.getElementById('ph');if(c.pic){pp.src=c.pic;pp.style.display='block';ph.style.display='none';document.getElementById('npic').innerHTML=`<img src="${c.pic}" style="width:20px;height:20px;border-radius:50%;object-fit:cover;border:1px solid #FFD700">`}else{pp.style.display='none';ph.style.display='flex'}document.getElementById('profileM').style.display='flex'}
-document.getElementById('pi').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{let c=getU();c.pic=ev.target.result;localStorage.setItem('work_current_user',JSON.stringify(c));localStorage.setItem('work_owner_pic',c.pic);goProfile();render();toast('📸 Foto no seguir!')};r.readAsDataURL(f)});
-let sy=0;
-document.getElementById('stage').addEventListener('touchstart',e=>{sy=e.touches[0].clientY},{passive:true});
-document.getElementById('stage').addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0){cur++;if(cur>=allVideos.length)cur=0}else{cur--;if(cur<0)cur=allVideos.length-1}render()}},{passive:true});
+function openLive(){openLiveDirect()}
 render();
-toast('👑 WORK FINAL - TUDO FUNCIONANDO!');
 </script>
 </body>
 </html>
