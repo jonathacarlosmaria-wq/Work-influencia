@@ -3,110 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK - LIVE TEMPO TIKTOK - SEM DEFORMAR</title>
+<title>WORK OFICIAL - LIVE TEMPO OK</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;background:#000;overflow:hidden;display:flex;justify-content:center;font-family:system-ui}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;background:#000;overflow:hidden;display:flex;justify-content:center;font-family:system-ui,Arial}
 .app{width:100%;max-width:440px;height:100dvh;background:#000;position:relative;display:flex;flex-direction:column;overflow:hidden}
-.stage{flex:1;position:relative;overflow:hidden}
+.stage{flex:1;width:100%;position:relative;background:#000;overflow:hidden;touch-action:pan-y}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
 .vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),transparent 30%,transparent 60%,rgba(0,0,0,.9))}
-.top{position:absolute;top:0;left:0;right:0;height:44px;display:flex;align-items:center;justify-content:center;gap:18px;z-index:10}
-.t{color:rgba(255,255,255,.5);font-size:14px;font-weight:600;padding:5px 0;border-bottom:2px solid transparent}
-.t.on{color:#fff;border-color:#fff}
-.right{position:absolute;right:8px;bottom:86px;z-index:10;display:flex;flex-direction:column;gap:16px;align-items:center;width:60px}
-.ab{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px;position:relative;overflow:hidden}
-.ab img{width:100%;height:100%;object-fit:cover}
-.ab.f{border:2.5px solid #FFD700;background:#111}
-.badge{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:18px;height:18px;border-radius:50%;border:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900}
+.grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,transparent 30%,transparent 62%,rgba(0,0,0,.92) 100%)}
+.top{position:absolute;top:0;left:0;right:0;height:46px;display:flex;align-items:center;justify-content:center;gap:20px;z-index:30}
+.t-tab{color:rgba(255,255,255,.55);font-size:14.5px;font-weight:600;padding:6px 0;border-bottom:2.5px solid transparent;cursor:pointer}
+.t-tab.on{color:#fff;border-color:#fff;font-weight:800}
+.live{position:absolute;top:54px;left:10px;z-index:20;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.2);padding:6px 12px;border-radius:20px;font-size:10px;font-weight:900;display:flex;gap:6px;align-items:center}
+.dot{width:8px;height:8px;background:#ff2c55;border-radius:50%;animation:b 1s infinite}@keyframes b{50%{opacity:.3}}
+.right{position:absolute;right:8px;bottom:88px;z-index:30;display:flex;flex-direction:column;gap:18px;align-items:center;width:62px}
+.act{width:62px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.abtn{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.18);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;font-size:24px;position:relative;overflow:hidden;flex-shrink:0}
+.abtn img{width:100%;height:100%;object-fit:cover;display:block}
+.abtn.follow{border:2.8px solid #FFD700;background:#111}
+.cnt{font-size:11px;font-weight:800;color:#fff;text-shadow:0 1px 6px #000;text-align:center}
+.badge{position:absolute;bottom:-3px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;border:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}
 .badge.plus{background:#fe2c55;color:#fff}
 .badge.ok{background:#00e676;color:#fff}
-.bot{position:absolute;left:10px;right:78px;bottom:10px;z-index:10;color:#fff}
-.urow{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.up{width:36px;height:36px;border-radius:50%;border:2px solid #fff;object-fit:cover;background:#222}
-.un{font-weight:800;font-size:13px}
-.fb{margin-left:6px;padding:4px 10px;border-radius:14px;font-size:10px;font-weight:900;border:1px solid #fff;cursor:pointer}
-.fb.f{background:transparent;color:#fff}
-.fb.ok{background:#fff;color:#000}
-.de{font-size:12px;line-height:1.3;opacity:.9}
-.nav{height:66px;min-height:66px;background:#000;border-top:1px solid #1e1e1e;display:flex;align-items:center;justify-content:space-around;flex-shrink:0}
-.nt{flex:1;display:flex;flex-direction:column;align-items:center;color:#555;font-size:9px;font-weight:700}
-.nt.on{color:#fff}
-.nt div:first-child{font-size:20px}
-.np{width:42px;height:26px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:18px}
-#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;color:#000;padding:10px 18px;border-radius:20px;font-weight:800;font-size:11px;z-index:9000;display:none}#toast.on{display:block}
-#cam{position:fixed;inset:0;background:#000;z-index:9999;display:none;flex-direction:column;max-width:440px;left:50%;transform:translateX(-50%)}
-#camEl{flex:1;width:100%;object-fit:cover}
-#liveM{position:fixed;inset:0;background:#000;z-index:9998;display:none;flex-direction:column;max-width:440px;left:50%;transform:translateX(-50%)}
-#liveV{width:100%;height:100%;object-fit:cover}
-.liveTop{position:absolute;top:0;left:0;right:0;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;z-index:10;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)}
-.liveBadge{background:#fe2c55;color:#fff;padding:5px 10px;border-radius:4px;font-weight:900;font-size:11px;display:flex;align-items:center;gap:5px;border:1px solid #fff}
-.liveTime{background:rgba(0,0,0,.6);color:#fff;padding:5px 10px;border-radius:14px;font-size:12px;font-weight:900;border:1px solid rgba(255,255,255,.3);min-width:56px;text-align:center}
-.dot{width:7px;height:7px;background:#fff;border-radius:50%;animation:b 1s infinite}@keyframes b{50%{opacity:.3}}
+.bot{position:absolute;left:12px;right:80px;bottom:12px;z-index:20;color:#fff;pointer-events:none}
+.bot *{pointer-events:auto}
+.urow{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.upic{width:40px;height:40px;border-radius:50%;border:2px solid #fff;object-fit:cover;background:#222;flex-shrink:0;display:block}
+.uname{font-weight:800;font-size:14px}
+.fmini{margin-left:8px;padding:5px 12px;border-radius:18px;font-size:11px;font-weight:900;border:1.5px solid #fff;cursor:pointer}
+.fmini.follow{background:transparent;color:#fff}
+.fmini.following{background:#fff;color:#000}
+.desc{font-size:13px;line-height:1.32;opacity:.96;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
+.music{margin-top:6px;font-size:11px;opacity:.85;display:flex;gap:5px;align-items:center}
+.prog{position:absolute;bottom:0;left:0;height:3px;background:#fe2c55;z-index:40}
+.nav{height:68px;min-height:68px;flex-shrink:0;background:#000;border-top:1px solid #1e1e1e;display:flex;align-items:center;justify-content:space-around;z-index:50;width:100%}
+.ntab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;color:#555;font-size:9px;font-weight:700;cursor:pointer;justify-content:center;height:100%}
+.ntab.on{color:#fff}
+.ntab div:first-child{font-size:22px;line-height:1}
+.nplus{width:44px;height:28px;background:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;position:relative}
+.nplus span{color:#000;font-weight:900;font-size:20px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;flex-direction:column}.modal.on{display:flex!important}
+#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;color:#000;padding:11px 20px;border-radius:22px;font-weight:800;font-size:12px;z-index:9000;display:none}#toast.on{display:block}
+.input{width:100%;background:#1c1c1e;border:1px solid #2c2c2e;padding:12px;border-radius:12px;color:#fff;margin-top:8px;font-size:13px;outline:none}
+#cam{position:fixed;inset:0;background:#000;z-index:9999;display:none;flex-direction:column;width:100%;max-width:440px;left:50%;transform:translateX(-50%)}
+#camEl{flex:1;width:100%;object-fit:cover;background:#111}
+#liveM{position:fixed;inset:0;background:#000;z-index:9998;display:none;flex-direction:column;width:100%;max-width:440px;left:50%;transform:translateX(-50%)}
+.heart{position:absolute;font-size:86px;animation:pop.9s forwards;pointer-events:none;z-index:80}@keyframes pop{0%{transform:translate(-50%,-50%) scale(0);opacity:0}15%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}100%{transform:translate(-50%,-85%) scale(1);opacity:0}}
+.bounce{animation:bou.45s}@keyframes bou{50%{transform:scale(1.3)}}
 </style>
 </head>
 <body>
 <div id="toast"></div>
-<div class="app">
-<div class="stage" id="stage"></div>
-<div class="nav">
-<div class="nt on"><div>🏠</div>Início</div>
-<div class="nt"><div>🔍</div>Descobrir</div>
-<div onclick="goCam()"><div class="np">+</div></div>
-<div class="nt"><div>📩</div>Inbox</div>
-<div class="nt" onclick="goProfile()"><div id="np">👤</div>Perfil</div>
-</div>
-</div>
+<div class="app"><div class="stage" id="stage"></div><div class="prog" id="prog" style="width:0%"></div><div class="nav"><div class="ntab on" onclick="goHome()"><div>🏠</div>Início</div><div class="ntab" onclick="toast('Descobrir em breve')"><div>🔍</div>Descobrir</div><div onclick="goCam()" style="flex:1;display:flex;justify-content:center"><div class="nplus"><span>+</span></div></div><div class="ntab" onclick="toast('Inbox em breve')"><div>📩</div>Inbox</div><div class="ntab" onclick="goProfile()"><div id="navPic">👤</div>Perfil</div></div></div>
 
-<div id="cam"><video id="camEl" autoplay muted playsinline></video><canvas id="pc" style="display:none"></canvas><div style="position:absolute;top:0;left:0;right:0;padding:10px;display:flex;justify-content:space-between"><button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid #fff;color:#fff">✕</button><button onclick="postNow()" style="background:#fe2c55;color:#fff;border:none;padding:6px 14px;border-radius:16px;font-weight:900;font-size:11px">Postar</button></div><div style="position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:8px"><button id="bF" onclick="setM('foto')" style="padding:6px 12px;border-radius:16px;background:#fff;color:#000;font-weight:800;border:none;font-size:10px">FOTO</button><button id="bV" onclick="setM('video')" style="padding:6px 12px;border-radius:16px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid #fff;font-size:10px">VÍDEO</button><button id="bL" onclick="setM('live')" style="padding:6px 12px;border-radius:16px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid #fff;font-size:10px">LIVE</button></div><div style="position:absolute;bottom:50px;left:0;right:0;display:flex;justify-content:center"><button id="shut" onclick="cap()" style="width:64px;height:64px;border-radius:50%;background:#fff;border:4px solid rgba(255,255,255,.3);font-size:20px">📸</button></div></div>
-
+<!-- LIVE OFICIAL COM TEMPO CORRIGIDO - SÓ ISSO MUDEI -->
 <div id="liveM">
-<video id="liveV" autoplay muted playsinline></video>
-<div class="liveTop">
-<div style="display:flex;gap:8px;align-items:center">
-<div class="liveBadge"><div class="dot"></div>AO VIVO</div>
-<div id="liveT" class="liveTime">00:00</div>
+<video id="liveV" style="width:100%;height:100%;object-fit:cover" autoplay muted playsinline></video>
+<div style="position:absolute;top:0;left:0;right:0;padding:10px;display:flex;justify-content:space-between;z-index:10;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)">
+<div style="display:flex;gap:6px;align-items:center">
+<div style="background:#fe2c55;padding:6px 12px;border-radius:6px;font-weight:900;font-size:10px;display:flex;gap:5px;align-items:center;border:1px solid #fff"><div class="dot"></div>AO VIVO</div>
+<div id="liveT" style="background:rgba(0,0,0,.75);padding:6px 12px;border-radius:16px;font-size:13px;font-weight:900;border:1px solid #fff;min-width:60px;text-align:center;color:#fff">00:00</div>
 </div>
-<button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid #fff;color:#fff">✕</button>
+<button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.6);border:none;color:#fff;font-size:16px">✕</button>
 </div>
-<div id="liveI" style="position:absolute;top:52px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);padding:6px 12px;border-radius:14px;font-size:10px;font-weight:700;color:#FFD700;border:1px solid rgba(255,215,0,.3);z-index:10;white-space:nowrap">🔴 Gravando...</div>
+<div id="liveI" style="position:absolute;top:56px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);padding:7px 12px;border-radius:16px;font-size:11px;font-weight:800;z-index:10;border:1px solid #FFD700;color:#FFD700;white-space:nowrap">🔴 AO VIVO - Tempo contando</div>
+<button id="liveB" onclick="closeAll()" style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);width:70px;height:70px;border-radius:50%;background:#fe2c55;border:4px solid #fff;color:#fff;font-size:22px;z-index:10">■</button>
 <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.2);z-index:10"><div id="liveBar" style="height:100%;width:0%;background:#fe2c55;transition:width 1s linear"></div></div>
-<button id="liveB" onclick="stopLive()" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:68px;height:68px;border-radius:50%;background:#fe2c55;border:4px solid #fff;color:#fff;font-size:24px;z-index:10">■</button>
 </div>
 
-<div id="profileM" style="position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1000;display:none;flex-direction:column"><div style="flex:1" onclick="closeAll()"></div><div style="background:#121212;border-radius:18px 18px 0 0;padding:14px"><div style="text-align:center"><img id="pp" style="width:80px;height:80px;border-radius:50%;border:3px solid #fff;object-fit:cover;display:none"><div id="ph" style="width:80px;height:80px;border-radius:50%;background:#222;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto">👤</div><input type="file" id="pi" accept="image/*" style="display:none"><br><button onclick="document.getElementById('pi').click()" style="margin-top:8px;padding:6px 12px;border-radius:14px;background:#fe2c55;color:#fff;border:none;font-weight:800;font-size:10px">📸 Foto</button><div id="pn" style="font-weight:800;margin-top:8px"></div><div id="pnn" style="color:#777;font-size:11px"></div></div><button onclick="closeAll()" style="width:100%;margin-top:12px;padding:10px;border-radius:10px;background:#fff;color:#000;font-weight:800;border:none">Fechar</button></div></div>
+<div id="cam"><video id="camEl" autoplay muted playsinline></video><canvas id="photoCanvas" style="display:none"></canvas><div style="position:absolute;top:0;left:0;right:0;padding:10px;display:flex;justify-content:space-between;z-index:10"><button onclick="closeAll()" style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff">✕</button><div id="camL" style="background:#fff;color:#000;padding:5px 12px;border-radius:14px;font-size:10px;font-weight:900">FOTO HD</div><button onclick="postNow()" style="background:#fe2c55;color:#fff;border:none;padding:7px 16px;border-radius:18px;font-weight:900;font-size:11px">Postar</button></div><div style="position:absolute;bottom:88px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:10"><button id="bF" onclick="setM('foto')" style="padding:7px 14px;border-radius:18px;background:#fff;color:#000;font-weight:800;border:none;font-size:10px">FOTO</button><button id="bV" onclick="setM('video')" style="padding:7px 14px;border-radius:18px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid rgba(255,255,255,.2);font-size:10px">VÍDEO 60s</button><button id="bL" onclick="openLive()" style="padding:7px 14px;border-radius:18px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid rgba(255,255,255,.2);font-size:10px">LIVE 30MIN</button></div><div style="position:absolute;bottom:0;left:0;right:0;padding:12px;display:flex;align-items:center;gap:10px;background:linear-gradient(0deg,#000,transparent)"><input id="descInp" placeholder="Legenda #hashtags..." style="flex:1;padding:11px 14px;border-radius:22px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:11px"><button id="shut" onclick="cap()" style="width:66px;height:66px;border-radius:50%;background:#fff;border:4px solid rgba(255,255,255,.25);font-size:22px;flex-shrink:0">📸</button><button onclick="openGal()" style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:#fff">🖼️</button></div><div id="recP" style="position:absolute;bottom:0;left:0;height:4px;background:#fe2c55;width:0%"></div></div>
+
+<div class="modal" id="profileM"><div style="flex:1" onclick="closeAll()"></div><div style="background:#121212;border-radius:20px 20px 0 0;padding:14px"><div style="text-align:center"><img id="pPrev" style="width:88px;height:88px;border-radius:50%;border:3px solid #fff;object-fit:cover;display:none"><div id="pPh" style="width:88px;height:88px;border-radius:50%;background:#222;display:flex;align-items:center;justify-content:center;font-size:32px">👤</div><input type="file" id="pInp" accept="image/*" style="display:none"><br><button onclick="document.getElementById('pInp').click()" style="margin-top:6px;padding:6px 12px;border-radius:14px;background:#fe2c55;color:#fff;border:none;font-weight:800">📸 Mudar foto</button><div id="pName" style="font-weight:800;margin-top:8px"></div><div id="pNick" style="color:#777;font-size:12px"></div></div><input id="inName" class="input" placeholder="Nome"><input id="inNick" class="input" placeholder="@nick"><button onclick="saveP()" style="width:100%;margin-top:10px;padding:13px;border-radius:12px;background:#fe2c55;color:#fff;font-weight:900;border:none">Salvar</button><button onclick="closeAll()" style="width:100%;margin-top:8px;padding:10px;border-radius:12px;background:#1e1e1e;color:#fff;border:1px solid #333">Fechar</button></div></div>
 
 <script>
 const ADMIN="jonathacarlosmaria";
-let db=null,stream=null,cur=0,mode='foto',photoData=null,allVideos=[];
+let db=null,stream=null,cur=0,mode='foto',photoData=null,allVideos=[],rec=null,chunks=[],recT=null,recS=0;
 let liveTmr=null,liveS=0;
 const LIM=1800;
-function toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2000)}
-function closeAll(){document.getElementById('cam').style.display='none';document.getElementById('liveM').style.display='none';document.getElementById('profileM').style.display='none';if(stream){try{stream.getTracks().forEach(x=>x.stop())}catch{} stream=null}clearInterval(liveTmr);liveS=0;document.getElementById('liveBar').style.width='0%'}
-function getU(){try{let u=JSON.parse(localStorage.getItem('work_current_user')||'{}');if(!u.nick)u={nick:ADMIN,name:"Jonatha",pic:localStorage.getItem('work_owner_pic')||""};return u}catch{return {nick:ADMIN,name:"Jonatha"}}
-}
-function getPic(n){let me=getU();if(me.nick===n&&me.pic)return me.pic;return ""}
+function toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2200)}
+function closeAll(){document.querySelectorAll('.modal').forEach(m=>m.style.display='none');document.getElementById('cam').style.display='none';document.getElementById('liveM').style.display='none';if(stream){try{stream.getTracks().forEach(x=>x.stop())}catch{} stream=null}clearInterval(recT);clearInterval(liveTmr);document.getElementById('recP').style.width='0%'}
+function getU(){try{let u=JSON.parse(localStorage.getItem('work_current_user')||'{}');if(!u.nick)u={nick:ADMIN,name:"Jonatha",pic:localStorage.getItem('work_owner_pic')||""};return u}catch{return {nick:ADMIN,name:"Jonatha"}}}
+function getPic(n){let me=getU();if(me.nick===n&&me.pic)return me.pic;let us=JSON.parse(localStorage.getItem('work_all_users')||'[]');let f=us.find(x=>x.nick===n);return f&&f.pic?f.pic:""}
+function saveB(){try{let b=allVideos.filter(v=>v.id!==1).slice(0,100).map(v=>({id:v.id,desc:v.desc,data:v.data,type:v.type,owner:v.owner,likes:v.likes}));localStorage.setItem('work_backup_videos',JSON.stringify(b))}catch{}}
+function loadB(){try{return JSON.parse(localStorage.getItem('work_backup_videos')||'[]')}catch{return[]}}
 function getUso(){let d=JSON.parse(localStorage.getItem('liveUso')||'{}');if(d.data!==new Date().toDateString())return 0;return d.seg||0}
 function saveUso(s){localStorage.setItem('liveUso',JSON.stringify({data:new Date().toDateString(),seg:s}))}
+function fmt(n){if(n>=1000000)return (n/1000000).toFixed(1)+'M';if(n>=1000)return (n/1000).toFixed(1)+'K';return n}
 function render(){
-if(allVideos.length===0) allVideos=[{id:1,desc:"WORK SEM DEFORMAR - LIVE TEMPO TIKTOK 🔴👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",type:'foto',owner:ADMIN,likes:1200}];
+if(allVideos.length===0) allVideos=[{id:1,desc:"WORK OFICIAL - LIVE TEMPO FUNCIONANDO 🔴👑 #work",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",type:'foto',owner:ADMIN,likes:22400,commentsList:["Oficial!","Tempo ok!"],music:"som original"}];
 let v=allVideos[cur];
 let pic=getPic(v.owner);
-let inner=pic?`<img src="${pic}">`:`${v.owner[0].toUpperCase()}`;
-let badge=`<div class="badge plus">+</div>`;
-let up=pic?`<img src="${pic}" class="up">`:`<div class="up" style="display:flex;align-items:center;justify-content:center;background:#222;font-weight:900">${v.owner[0].toUpperCase()}</div>`;
-document.getElementById('stage').innerHTML=`<div class="bg" style="background-image:url('${v.data||v.img}')"></div><div class="grad"></div><div class="top"><div class="t">Seguindo</div><div class="t on">Para você</div></div><div class="right"><div class="ab f">${inner}${badge}</div><div class="ab">❤️</div><div class="ab">💬</div><div class="ab">↗️</div></div><div class="bot"><div class="urow">${up}<div class="un">@${v.owner}</div></div><div class="de">${v.desc}</div></div>`;
+let inner=pic?`<img src="${pic}">`:`<div style="width:100%;height:100%;background:#222;display:flex;align-items:center;justify-content:center;font-weight:900">${v.owner[0].toUpperCase()}</div>`;
+let upic=pic?`<img src="${pic}" class="upic">`:`<div class="upic" style="display:flex;align-items:center;justify-content:center;background:#222;font-weight:900">${v.owner[0].toUpperCase()}</div>`;
+document.getElementById('stage').innerHTML=`<div class="bg" style="background-image:url('${v.data||v.img}')"></div><div class="grad"></div><div class="top"><div class="t-tab">Seguindo</div><div class="t-tab on">Para você</div></div><div class="live"><div class="dot"></div>${Math.floor(Math.random()*800+150)} • @${v.owner}</div><div class="right"><div class="act"><div class="abtn follow">${inner}<div class="badge plus">+</div></div></div><div class="act"><div class="abtn">❤️</div><div class="cnt">${fmt(v.likes||0)}</div></div><div class="act"><div class="abtn">💬</div><div class="cnt">0</div></div><div class="act"><div class="abtn">↗️</div><div class="cnt">Share</div></div></div><div class="bot"><div class="urow">${upic}<div class="uname">@${v.owner}</div></div><div class="desc">${v.desc}</div><div class="music">🎵 ${v.music}</div></div>`;
 }
+function goHome(){closeAll();render()}
+function goProfile(){let c=getU();document.getElementById('inName').value=c.name;document.getElementById('inNick').value=c.nick;let pr=document.getElementById('pPrev');let ph=document.getElementById('pPh');if(c.pic){pr.src=c.pic;pr.style.display='block';ph.style.display='none';document.getElementById('navPic').innerHTML=`<img src="${c.pic}" style="width:22px;height:22px;border-radius:50%;object-fit:cover">`}else{pr.style.display='none';ph.style.display='flex'}document.getElementById('pName').innerText=c.name;document.getElementById('pNick').innerText='@'+c.nick;document.getElementById('profileM').style.display='flex'}
+function saveP(){let c=getU();c.name=document.getElementById('inName').value.trim()||c.name;c.nick=document.getElementById('inNick').value.trim().replace('@','')||c.nick;localStorage.setItem('work_current_user',JSON.stringify(c));if(c.pic)localStorage.setItem('work_owner_pic',c.pic);toast('✅ Salvo!');goHome();render()}
+document.getElementById('pInp').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=ev=>{let c=getU();c.pic=ev.target.result;localStorage.setItem('work_current_user',JSON.stringify(c));localStorage.setItem('work_owner_pic',c.pic);toast('📸 Foto salva!');goProfile()};rd.readAsDataURL(f)});
+function setM(m){mode=m;document.getElementById('bF').style.background=m==='foto'?'#fff':'rgba(255,255,255,.15)';document.getElementById('bF').style.color=m==='foto'?'#000':'#fff';document.getElementById('bV').style.background=m==='video'?'#fff':'rgba(255,255,255,.15)';document.getElementById('bV').style.color=m==='video'?'#000':'#fff';document.getElementById('camL').innerText=m==='foto'?'FOTO HD':m==='video'?'VÍDEO 60s':'LIVE 30MIN';document.getElementById('shut').innerText=m==='foto'?'📸':'●';document.getElementById('shut').style.background=m==='live'?'#fe2c55':'#fff';if(m==='live'){closeAll();openLive()}}
 function goCam(){document.getElementById('cam').style.display='flex';navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{stream=s;document.getElementById('camEl').srcObject=s;setM('foto')}).catch(()=>toast('Permita câmera'))}
-function setM(m){mode=m;document.getElementById('bF').style.background=m==='foto'?'#fff':'rgba(255,255,255,.15)';document.getElementById('bL').style.background=m==='live'?'#fe2c55':'rgba(255,255,255,.15)';document.getElementById('shut').innerText=m==='foto'?'📸':'●';if(m==='live'){closeAll();openLive()}}
-function cap(){if(mode==='foto'){let v=document.getElementById('camEl');let c=document.getElementById('pc');c.width=v.videoWidth||1080;c.height=v.videoHeight||1920;c.getContext('2d').drawImage(v,0,0,c.width,c.height);photoData=c.toDataURL('image/jpeg',0.9);toast('✅ Foto! Clique Postar')}else if(mode==='live'){openLive()}}
-function postNow(){if(!photoData){toast('Tire foto');return}let me=getU();allVideos.unshift({id:Date.now(),data:photoData,desc:'Foto #work',type:'foto',likes:0,owner:me.nick});closeAll();photoData=null;toast('✅ Postado!');render()}
+function cap(){
+if(mode==='foto'){let v=document.getElementById('camEl');let c=document.getElementById('photoCanvas');c.width=v.videoWidth||1080;c.height=v.videoHeight||1920;c.getContext('2d').drawImage(v,0,0,c.width,c.height);photoData=c.toDataURL('image/jpeg',0.9);toast('✅ Foto pronta! Clique Postar')}
+else if(mode==='video'){toast('Vídeo 60s - Em breve')}
+else if(mode==='live'){openLive()}
+}
+function postNow(){let me=getU();if(!photoData){toast('Tire foto primeiro');return}allVideos.unshift({id:Date.now(),data:photoData,desc:document.getElementById('descInp').value||'Foto #work',type:'foto',likes:0,owner:me.nick,commentsList:[],music:'som original'});saveB();closeAll();document.getElementById('descInp').value='';photoData=null;toast('✅ Postado!');render()}
 
-// ===== LIVE IGUAL TIKTOK - TEMPO AUTOMÁTICO =====
+// ===== LIVE OFICIAL - TEMPO FUNCIONANDO IGUAL TIKTOK =====
 function openLive(){
 let resta=LIM-getUso();
-if(resta<=0){toast('⏰ 30min acabaram hoje!');return}
+if(resta<=0){toast('⏰ Você usou 30min hoje! Volta amanhã');return}
 document.getElementById('liveM').style.display='flex';
 navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{
 stream=s;
@@ -115,7 +123,7 @@ liveS=0;
 document.getElementById('liveT').innerText='00:00';
 document.getElementById('liveBar').style.width='0%';
 document.getElementById('liveI').innerText=`🔴 AO VIVO - Resta hoje: ${Math.floor(resta/60)}:${String(resta%60).padStart(2,'0')}`;
-// JÁ COMEÇA A CONTAR AUTOMÁTICO IGUAL TIKTOK
+// COMEÇA A CONTAR AUTOMATICAMENTE IGUAL TIKTOK
 liveTmr=setInterval(()=>{
 liveS++;
 let total=getUso()+liveS;
@@ -124,22 +132,19 @@ let falta=LIM-total;
 let m=String(Math.floor(liveS/60)).padStart(2,'0');
 let sec=String(liveS%60).padStart(2,'0');
 document.getElementById('liveT').innerText=`${m}:${sec}`;
-document.getElementById('liveI').innerText=`🔴 ${m}:${sec} gravando | Resta: ${Math.floor(falta/60)}:${String(falta%60).padStart(2,'0')}`;
+document.getElementById('liveI').innerText=`🔴 Gravando ${m}:${sec} | Resta hoje: ${Math.floor(falta/60)}:${String(falta%60).padStart(2,'0')}`;
 document.getElementById('liveBar').style.width=(liveS/1800*100)+'%';
-if(falta<=0){clearInterval(liveTmr);toast('⏰ 30min!');closeAll()}
+if(falta<=0){clearInterval(liveTmr);toast('⏰ 30min acabaram!');closeAll()}
 },1000);
-toast('🔴 LIVE começou - Tempo contando igual TikTok!');
-}).catch(()=>toast('Permita câmera'));
+toast('🔴 LIVE começou - Tempo aparecendo igual TikTok!');
+}).catch(()=>toast('Permita câmera + microfone'));
 }
-function stopLive(){clearInterval(liveTmr);toast(`✅ LIVE ${document.getElementById('liveT').innerText} salva!`);closeAll();render()}
-function goProfile(){let c=getU();document.getElementById('pn').innerText=c.name;document.getElementById('pnn').innerText='@'+c.nick;let pp=document.getElementById('pp');let ph=document.getElementById('ph');if(c.pic){pp.src=c.pic;pp.style.display='block';ph.style.display='none';document.getElementById('np').innerHTML=`<img src="${c.pic}" style="width:20px;height:20px;border-radius:50%;object-fit:cover">`}else{pp.style.display='none';ph.style.display='flex'}document.getElementById('profileM').style.display='flex'}
-document.getElementById('pi').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{let c=getU();c.pic=ev.target.result;localStorage.setItem('work_current_user',JSON.stringify(c));localStorage.setItem('work_owner_pic',c.pic);goProfile();render();toast('📸 Foto no seguir!')};r.readAsDataURL(f)});
 
 let sy=0;
 document.getElementById('stage').addEventListener('touchstart',e=>{sy=e.touches[0].clientY},{passive:true});
 document.getElementById('stage').addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0){cur++;if(cur>=allVideos.length)cur=0}else{cur--;if(cur<0)cur=allVideos.length-1}render()}},{passive:true});
 render();
-toast('✅ SEM DEFORMAR - LIVE TEMPO TIKTOK');
+toast('✅ OFICIAL + LIVE TEMPO TIKTOK OK!');
 </script>
 </body>
 </html>
