@@ -3,210 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK DOURADO - BOTÕES LIVE OK</title>
+<title>WORK DOURADO - LIVE FIX</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;background:#000;overflow:hidden;display:flex;justify-content:center;font-family:system-ui}
 .app{width:100%;max-width:440px;height:100dvh;background:#000;position:relative;display:flex;flex-direction:column;overflow:hidden}
 .stage{flex:1;position:relative;overflow:hidden;background:#000}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
-.grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),transparent 30%,transparent 60%,rgba(0,0,0,.92))}
-.top{position:absolute;top:0;left:0;right:0;height:46px;display:flex;align-items:center;justify-content:center;gap:20px;z-index:20}
-.tt{color:rgba(255,255,255,.5);font-size:15px;font-weight:600;padding:5px 0;border-bottom:2.5px solid transparent}
+.grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),transparent 35%,transparent 62%,rgba(0,0,0,.9))}
+.top{position:absolute;top:0;left:0;right:0;height:46px;display:flex;align-items:center;justify-content:center;gap:18px;z-index:5}
+.tt{color:rgba(255,255,255,.5);font-size:14px;font-weight:600;padding:5px 0;border-bottom:2px solid transparent}
 .tt.on{color:#FFD700;border-color:#FFD700;font-weight:800}
-.right{position:absolute;right:8px;bottom:90px;z-index:20;display:flex;flex-direction:column;gap:18px;align-items:center;width:62px}
-.ab{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.13);border:1.5px solid rgba(255,215,0,.3);display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden;position:relative}
-.ab img{width:100%;height:100%;object-fit:cover}
+.right{position:absolute;right:8px;bottom:90px;z-index:5;display:flex;flex-direction:column;gap:16px;align-items:center}
+.ab{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.13);border:1.5px solid rgba(255,215,0,.3);display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden;position:relative}
 .ab.f{border:3px solid #FFD700}
-.bd{position:absolute;bottom:-3px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;border:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900}
-.bd.p{background:#FFD700;color:#000}
-.bot{position:absolute;left:12px;right:80px;bottom:14px;z-index:20;color:#fff}
-.nav{height:66px;min-height:66px;background:#000;border-top:1px solid rgba(255,215,0,.2);display:flex;align-items:center;justify-content:space-around;flex-shrink:0}
+.bd{position:absolute;bottom:-3px;left:50%;transform:translateX(-50%);width:18px;height:18px;border-radius:50%;border:2px solid #000;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;background:#FFD700;color:#000}
+.bot{position:absolute;left:10px;right:80px;bottom:12px;z-index:5;color:#fff}
+.nav{height:66px;background:#000;border-top:1px solid rgba(255,215,0,.2);display:flex;align-items:center;justify-content:space-around;flex-shrink:0}
 .nt{flex:1;display:flex;flex-direction:column;align-items:center;color:#555;font-size:9px;font-weight:700}
 .nt.on{color:#FFD700}
 .np{width:44px;height:28px;background:#FFD700;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:18px}
 #toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#FFD700;color:#000;padding:10px 18px;border-radius:20px;font-weight:800;font-size:11px;z-index:9999;display:none}#toast.on{display:block}
-#cam,#liveM{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column;max-width:440px;left:50%;transform:translateX(-50%)}
+#cam{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column;max-width:440px;left:50%;transform:translateX(-50%)}
+#liveM{position:fixed;inset:0;background:#000;z-index:1000;display:none;flex-direction:column;max-width:440px;left:50%;transform:translateX(-50%)}
 #camEl,#liveV{width:100%;height:100%;object-fit:cover}
-.dot{width:7px;height:7px;background:#000;border-radius:50%;animation:b 1s infinite}@keyframes b{50%{opacity:.3}}
 </style>
 </head>
 <body>
 <div id="toast"></div>
-<div class="app"><div class="stage" id="stage"></div><div class="nav"><div class="nt on"><div>🏠</div>Início</div><div class="nt"><div>🔍</div>Descobrir</div><div onclick="goCam()"><div class="np">+</div></div><div class="nt"><div>📩</div>Inbox</div><div class="nt"><div>👤</div>Perfil</div></div></div>
+<div class="app"><div class="stage" id="stage"></div><div class="nav"><div class="nt on"><div>🏠</div>Início</div><div class="nt"><div>🔍</div>Descobrir</div><div onclick="abrirCamera()"><div class="np">+</div></div><div class="nt"><div>📩</div>Inbox</div><div class="nt"><div>👤</div>Perfil</div></div></div>
 
+<!-- CÂMERA COM 3 BOTÕES SEMPRE VISÍVEIS -->
 <div id="cam">
 <video id="camEl" autoplay muted playsinline></video>
 <canvas id="pc" style="display:none"></canvas>
-<div style="position:absolute;top:0;left:0;right:0;padding:10px;display:flex;justify-content:space-between;z-index:10;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)">
-<button onclick="closeAll()" style="width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid #FFD700;color:#FFD700">✕</button>
-<div id="camLabel" style="background:#FFD700;color:#000;padding:6px 14px;border-radius:16px;font-size:11px;font-weight:900">VÍDEO 60s</div>
-<button onclick="postNow()" style="background:#FFD700;color:#000;border:none;padding:6px 14px;border-radius:16px;font-weight:900;font-size:11px">Postar</button>
+<div style="position:absolute;top:0;left:0;right:0;padding:12px;display:flex;justify-content:space-between;z-index:10;background:linear-gradient(180deg,rgba(0,0,0,.8),transparent)">
+<button onclick="fecharTudo()" style="width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.6);border:1px solid #FFD700;color:#FFD700;font-size:18px">✕</button>
+<div id="camLabel" style="background:#FFD700;color:#000;padding:6px 14px;border-radius:16px;font-size:11px;font-weight:900">FOTO</div>
+<button onclick="postar()" style="background:#FFD700;color:#000;border:none;padding:7px 16px;border-radius:18px;font-weight:900;font-size:11px">Postar</button>
 </div>
-<div style="position:absolute;bottom:88px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:10">
-<button id="bF" onclick="switchMode('foto')" style="padding:6px 12px;border-radius:16px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid rgba(255,215,0,.3);font-size:10px">FOTO</button>
-<button id="bV" onclick="switchMode('video')" style="padding:6px 12px;border-radius:16px;background:#FFD700;color:#000;font-weight:800;border:none;font-size:10px">VÍDEO 60s</button>
-<button id="bL" onclick="openLiveDirect()" style="padding:6px 12px;border-radius:16px;background:rgba(255,255,255,.15);color:#fff;font-weight:800;border:1px solid rgba(255,215,0,.3);font-size:10px">LIVE 30MIN</button>
+
+<!-- BOTÕES FIXOS - LIVE SEMPRE VISÍVEL -->
+<div style="position:absolute;bottom:90px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:20">
+<button id="btnFoto" onclick="mudarModo('foto')" style="padding:8px 14px;border-radius:20px;background:#FFD700;color:#000;font-weight:900;border:none;font-size:11px">FOTO</button>
+<button id="btnVideo" onclick="mudarModo('video')" style="padding:8px 14px;border-radius:20px;background:rgba(255,255,255,.2);color:#fff;font-weight:800;border:1px solid rgba(255,215,0,.4);font-size:11px">VÍDEO 60s</button>
+<button id="btnLive" onclick="iniciarLive()" style="padding:8px 14px;border-radius:20px;background:rgba(255,255,255,.2);color:#fff;font-weight:800;border:1px solid #FFD700;font-size:11px;box-shadow:0 0 10px rgba(255,215,0,.3)">🔴 LIVE 30MIN</button>
 </div>
+
 <div style="position:absolute;bottom:0;left:0;right:0;padding:12px;display:flex;align-items:center;gap:10px;background:linear-gradient(0deg,#000,transparent)">
-<input id="descInp" placeholder="Legenda dourada #work 👑..." style="flex:1;padding:10px 12px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,215,0,.3);color:#fff;font-size:11px">
-<button id="shut" onclick="handleShutter()" style="width:68px;height:68px;border-radius:50%;background:#FFD700;border:4px solid rgba(255,255,255,.3);font-size:24px;display:flex;align-items:center;justify-content:center;transition:all.2s">●</button>
-<button style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,215,0,.3);color:#FFD700">🖼️</button>
+<input id="descInp" placeholder="Legenda 👑..." style="flex:1;padding:11px 14px;border-radius:22px;background:rgba(255,255,255,.12);border:1px solid rgba(255,215,0,.3);color:#fff;font-size:11px">
+<button id="btnShutter" onclick="acaoBotao()" style="width:70px;height:70px;border-radius:50%;background:#FFD700;border:4px solid rgba(255,255,255,.3);font-size:22px;flex-shrink:0">📸</button>
+<button style="width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,215,0,.3);color:#FFD700">🖼️</button>
 </div>
 <div id="recBar" style="position:absolute;bottom:0;left:0;height:4px;background:#FFD700;width:0%"></div>
 </div>
 
+<!-- LIVE COM TEMPO IGUAL TIKTOK -->
 <div id="liveM">
 <video id="liveV" autoplay muted playsinline></video>
-<div style="position:absolute;top:0;left:0;right:0;padding:10px;display:flex;justify-content:space-between;z-index:10;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)">
-<div style="display:flex;gap:6px;align-items:center">
-<div style="background:#FFD700;padding:5px 10px;border-radius:6px;font-weight:900;font-size:10px;display:flex;gap:5px;align-items:center;color:#000"><div class="dot"></div>AO VIVO</div>
-<div id="liveT" style="background:rgba(0,0,0,.7);padding:5px 10px;border-radius:14px;font-size:12px;font-weight:900;border:1px solid #FFD700;min-width:56px;text-align:center;color:#FFD700">00:00</div>
+<div style="position:absolute;top:0;left:0;right:0;padding:12px;display:flex;justify-content:space-between;z-index:10;background:linear-gradient(180deg,rgba(0,0,0,.8),transparent)">
+<div style="display:flex;gap:8px;align-items:center">
+<div style="background:#FFD700;color:#000;padding:6px 12px;border-radius:8px;font-weight:900;font-size:11px;display:flex;gap:6px;align-items:center"><div style="width:8px;height:8px;background:#000;border-radius:50%;animation:pisca 1s infinite"></div>AO VIVO</div>
+<div id="liveTimer" style="background:rgba(0,0,0,.8);color:#FFD700;padding:6px 12px;border-radius:20px;font-weight:900;font-size:13px;border:2px solid #FFD700;min-width:65px;text-align:center">00:00</div>
 </div>
-<button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid #FFD700;color:#FFD700">✕</button>
+<button onclick="fecharTudo()" style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.6);border:1px solid #FFD700;color:#FFD700;font-size:18px">✕</button>
 </div>
-<div id="liveI" style="position:absolute;top:52px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);padding:6px 12px;border-radius:14px;font-size:10px;font-weight:800;color:#FFD700;border:1px solid #FFD700;z-index:10;white-space:nowrap">👑 LIVE DOURADA</div>
-<button onclick="closeAll()" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:68px;height:68px;border-radius:50%;background:#FFD700;border:4px solid #fff;color:#000;font-size:24px;z-index:10">■</button>
-<div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.2)"><div id="liveBar" style="height:100%;width:0%;background:#FFD700;transition:width 1s linear"></div></div>
+<div id="liveInfo" style="position:absolute;top:58px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);color:#FFD700;padding:7px 14px;border-radius:16px;font-size:11px;font-weight:800;border:1px solid #FFD700;z-index:10;white-space:nowrap">👑 LIVE DOURADA - Tempo TikTok</div>
+<button onclick="fecharTudo()" style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:72px;height:72px;border-radius:50%;background:#FFD700;border:4px solid #fff;color:#000;font-size:26px;z-index:10;box-shadow:0 0 20px rgba(255,215,0,.6)">■</button>
+<div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:rgba(255,255,255,.2)"><div id="liveBar" style="height:100%;width:0%;background:#FFD700;transition:width 1s linear"></div></div>
 </div>
 
 <script>
-const ADMIN="jonathacarlosmaria";
-let stream=null,cur=0,mode='video',photoData=null,allVideos=[],liveTmr=null,liveS=0,recorder=null,chunks=[],recTimer=null,recSec=0;
-const LIM=1800;
-function toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2200)}
-function closeAll(){
+let stream=null,cur=0,modo='foto',fotoData=null,videos=[],liveTimerInt=null,liveSeg=0,rec=null,recChunks=[],recInt=null,recSeg=0;
+const LIMITE=1800;
+function toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2000)}
+function fecharTudo(){
 document.getElementById('cam').style.display='none';
 document.getElementById('liveM').style.display='none';
-if(stream){try{stream.getTracks().forEach(x=>x.stop())}catch{} stream=null}
-clearInterval(liveTmr);clearInterval(recTimer);
-if(recorder&&recorder.state==='recording'){try{recorder.stop()}catch{}}
-liveS=0;recSec=0;
-document.getElementById('liveBar').style.width='0%';
-document.getElementById('recBar').style.width='0%';
-document.getElementById('shut').style.background='#FFD700';
-document.getElementById('shut').innerText='●';
+if(stream){try{stream.getTracks().forEach(s=>s.stop())}catch{} stream=null}
+clearInterval(liveTimerInt);clearInterval(recInt);
+if(rec&&rec.state==='recording'){try{rec.stop()}catch{}}
+liveSeg=0;recSeg=0;
+let lb=document.getElementById('liveBar');if(lb)lb.style.width='0%';
+let rb=document.getElementById('recBar');if(rb)rb.style.width='0%';
 }
 function getUso(){let d=JSON.parse(localStorage.getItem('liveUso')||'{}');if(d.data!==new Date().toDateString())return 0;return d.seg||0}
 function saveUso(s){localStorage.setItem('liveUso',JSON.stringify({data:new Date().toDateString(),seg:s}))}
 function render(){
-if(allVideos.length===0) allVideos=[{id:1,desc:"WORK DOURADO - BOTÕES CORRIGIDOS 👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",owner:ADMIN}];
-let v=allVideos[cur];
-document.getElementById('stage').innerHTML=`<div class="bg" style="background-image:url('${v.data||v.img}')"></div><div class="grad"></div><div class="top"><div class="tt">Seguindo</div><div class="tt on">Para você</div></div><div class="right"><div class="ab f">${v.owner[0].toUpperCase()}<div class="bd p">+</div></div><div class="ab">❤️</div><div class="ab">💬</div><div class="ab">↗️</div></div><div class="bot"><div style="font-weight:800;font-size:13px;color:#FFD700">@${v.owner}</div><div style="font-size:12px">${v.desc}</div></div>`;
+if(videos.length===0)videos=[{id:1,desc:"WORK DOURADO - LIVE BOTÃO FIXO 👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",owner:"jonathacarlosmaria"}];
+let v=videos[cur];
+document.getElementById('stage').innerHTML=`<div class="bg" style="background-image:url('${v.data||v.img}')"></div><div class="grad"></div><div class="top"><div class="tt">Seguindo</div><div class="tt on">Para você</div></div><div class="right"><div class="ab f">${v.owner[0].toUpperCase()}<div class="bd">+</div></div><div class="ab">❤️</div><div class="ab">💬</div><div class="ab">↗️</div></div><div class="bot"><div style="font-weight:800;color:#FFD700">@${v.owner}</div><div style="font-size:12px">${v.desc}</div></div>`;
 }
-function goCam(){
+function abrirCamera(){
 document.getElementById('cam').style.display='flex';
 navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{
-stream=s;
-document.getElementById('camEl').srcObject=s;
-switchMode('video');
+stream=s;document.getElementById('camEl').srcObject=s;mudarModo('foto');
 }).catch(()=>toast('Permita câmera e microfone'))
 }
-function switchMode(m){
-mode=m;
-document.getElementById('bF').style.background=m==='foto'?'#FFD700':'rgba(255,255,255,.15)';
-document.getElementById('bF').style.color=m==='foto'?'#000':'#fff';
-document.getElementById('bV').style.background=m==='video'?'#FFD700':'rgba(255,255,255,.15)';
-document.getElementById('bV').style.color=m==='video'?'#000':'#fff';
-document.getElementById('bL').style.background=m==='live'?'#FFD700':'rgba(255,255,255,.15)';
-document.getElementById('bL').style.color=m==='live'?'#000':'#fff';
-document.getElementById('camLabel').innerText=m==='foto'?'FOTO HD':m==='video'?'VÍDEO 60s':'LIVE 30MIN DOURADA';
-document.getElementById('shut').innerText=m==='foto'?'📸':'●';
-document.getElementById('shut').style.background='#FFD700';
-if(m==='live'){openLiveDirect()}
+function mudarModo(m){
+modo=m;
+document.getElementById('btnFoto').style.background=m==='foto'?'#FFD700':'rgba(255,255,255,.2)';
+document.getElementById('btnFoto').style.color=m==='foto'?'#000':'#fff';
+document.getElementById('btnVideo').style.background=m==='video'?'#FFD700':'rgba(255,255,255,.2)';
+document.getElementById('btnVideo').style.color=m==='video'?'#000':'#fff';
+document.getElementById('btnLive').style.background=m==='live'?'#FFD700':'rgba(255,255,255,.2)';
+document.getElementById('btnLive').style.color=m==='live'?'#000':'#fff';
+document.getElementById('camLabel').innerText=m==='foto'?'FOTO':m==='video'?'VÍDEO 60s':'LIVE 30MIN';
+document.getElementById('btnShutter').innerText=m==='foto'?'📸':'●';
+if(m==='live')iniciarLive();
 }
-
-function handleShutter(){
-if(mode==='foto'){
-let v=document.getElementById('camEl');
-let c=document.getElementById('pc');
+function acaoBotao(){
+if(modo==='foto'){
+let v=document.getElementById('camEl');let c=document.getElementById('pc');
 c.width=v.videoWidth||1080;c.height=v.videoHeight||1920;
 c.getContext('2d').drawImage(v,0,0,c.width,c.height);
-photoData=c.toDataURL('image/jpeg',0.9);
-toast('✅ Foto tirada! Clique Postar');
-}else if(mode==='video'){
-if(recorder&&recorder.state==='recording'){
-recorder.stop();
-}else{
-startVideoRec();
+fotoData=c.toDataURL('image/jpeg',0.9);
+toast('✅ Foto! Clique Postar');
+}else if(modo==='video'){
+if(rec&&rec.state==='recording'){rec.stop()}else{gravarVideo()}
+}else if(modo==='live'){iniciarLive()}
 }
-}else if(mode==='live'){
-openLiveDirect();
-}
-}
-
-function startVideoRec(){
-chunks=[];recSec=0;
-try{
-recorder=new MediaRecorder(stream,{mimeType:'video/webm'});
-}catch{
-recorder=new MediaRecorder(stream);
-}
-recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
-recorder.onstop=()=>{
-let blob=new Blob(chunks,{type:'video/webm'});
-let url=URL.createObjectURL(blob);
-photoData=url;
-toast('✅ Vídeo gravado! Clique Postar');
-document.getElementById('shut').style.background='#FFD700';
-document.getElementById('shut').innerText='●';
-clearInterval(recTimer);
-document.getElementById('recBar').style.width='0%';
+function gravarVideo(){
+recChunks=[];recSeg=0;
+try{rec=new MediaRecorder(stream,{mimeType:'video/webm'})}catch{rec=new MediaRecorder(stream)}
+rec.ondataavailable=e=>{if(e.data.size>0)recChunks.push(e.data)};
+rec.onstop=()=>{
+let blob=new Blob(recChunks,{type:'video/webm'});
+fotoData=URL.createObjectURL(blob);
+toast('✅ Vídeo! Clique Postar');
+document.getElementById('btnShutter').style.background='#FFD700';
+clearInterval(recInt);document.getElementById('recBar').style.width='0%';
+document.getElementById('camLabel').innerText='VÍDEO 60s OK';
 };
-recorder.start();
-document.getElementById('shut').style.background='#fe2c55';
-document.getElementById('shut').innerText='■';
-toast('🔴 Gravando vídeo...');
-recTimer=setInterval(()=>{
-recSec++;
-document.getElementById('camLabel').innerText=`🔴 ${String(Math.floor(recSec/60)).padStart(2,'0')}:${String(recSec%60).padStart(2,'0')} / 01:00`;
-document.getElementById('recBar').style.width=(recSec/60*100)+'%';
-if(recSec>=60){recorder.stop()}
+rec.start();
+document.getElementById('btnShutter').style.background='#fe2c55';
+toast('🔴 Gravando...');
+recInt=setInterval(()=>{
+recSeg++;document.getElementById('camLabel').innerText=`🔴 ${String(Math.floor(recSeg/60)).padStart(2,'0')}:${String(recSeg%60).padStart(2,'0')} / 01:00`;
+document.getElementById('recBar').style.width=(recSeg/60*100)+'%';
+if(recSeg>=60)rec.stop();
 },1000);
 }
-
-function postNow(){
-if(!photoData){toast('Grave ou tire foto primeiro');return}
-allVideos.unshift({id:Date.now(),data:photoData,desc:document.getElementById('descInp').value||'Post dourado 👑',owner:ADMIN});
-closeAll();photoData=null;document.getElementById('descInp').value='';toast('👑 Postado!');render();
+function postar(){
+if(!fotoData){toast('Tire foto ou grave vídeo');return}
+videos.unshift({id:Date.now(),data:fotoData,desc:document.getElementById('descInp').value||'Post dourado 👑',owner:"jonathacarlosmaria"});
+fecharTudo();fotoData=null;document.getElementById('descInp').value='';toast('👑 Postado!');render();
 }
-
-function openLiveDirect(){
-let resta=LIM-getUso();
-if(resta<=0){toast('⏰ 30min acabaram hoje!');return}
+function iniciarLive(){
+let resta=LIMITE-getUso();
+if(resta<=0){toast('⏰ 30min acabaram hoje');return}
 document.getElementById('cam').style.display='none';
 document.getElementById('liveM').style.display='flex';
 if(!stream){
 navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{
-stream=s;document.getElementById('liveV').srcObject=s;startLiveTimer(resta);
+stream=s;document.getElementById('liveV').srcObject=s;comecarTimerLive(resta);
 }).catch(()=>toast('Permita câmera'));
 }else{
 document.getElementById('liveV').srcObject=stream;
-startLiveTimer(resta);
+comecarTimerLive(resta);
 }
 }
-function startLiveTimer(resta){
-liveS=0;
-document.getElementById('liveT').innerText='00:00';
+function comecarTimerLive(resta){
+liveSeg=0;
+document.getElementById('liveTimer').innerText='00:00';
 document.getElementById('liveBar').style.width='0%';
-document.getElementById('liveI').innerText=`👑 Resta hoje: ${Math.floor(resta/60)}:${String(resta%60).padStart(2,'0')}`;
-clearInterval(liveTmr);
-liveTmr=setInterval(()=>{
-liveS++;
-let total=getUso()+liveS;
-saveUso(total);
-let falta=LIM-total;
-let m=String(Math.floor(liveS/60)).padStart(2,'0');
-let sec=String(liveS%60).padStart(2,'0');
-document.getElementById('liveT').innerText=`${m}:${sec}`;
-document.getElementById('liveI').innerText=`👑 ${m}:${sec} gravando | Resta: ${Math.floor(falta/60)}:${String(falta%60).padStart(2,'0')}`;
-document.getElementById('liveBar').style.width=(liveS/1800*100)+'%';
-if(falta<=0){clearInterval(liveTmr);toast('⏰ 30min!');closeAll()}
+document.getElementById('liveInfo').innerText=`👑 Resta hoje: ${Math.floor(resta/60)}:${String(resta%60).padStart(2,'0')}`;
+clearInterval(liveTimerInt);
+liveTimerInt=setInterval(()=>{
+liveSeg++;
+let total=getUso()+liveSeg;saveUso(total);
+let falta=LIMITE-total;
+let m=String(Math.floor(liveSeg/60)).padStart(2,'0');
+let s=String(liveSeg%60).padStart(2,'0');
+document.getElementById('liveTimer').innerText=`${m}:${s}`;
+document.getElementById('liveInfo').innerText=`👑 Gravando ${m}:${s} | Resta: ${Math.floor(falta/60)}:${String(falta%60).padStart(2,'0')}`;
+document.getElementById('liveBar').style.width=(liveSeg/1800*100)+'%';
+if(falta<=0){clearInterval(liveTimerInt);toast('⏰ Acabou 30min');fecharTudo()}
 },1000);
-toast('👑 LIVE - Tempo contando igual TikTok!');
+toast('🔴 LIVE com tempo igual TikTok!');
 }
-function openLive(){openLiveDirect()}
 render();
 </script>
+<style>@keyframes pisca{50%{opacity:.3}}</style>
 </body>
 </html>
