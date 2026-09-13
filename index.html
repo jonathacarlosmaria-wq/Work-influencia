@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - PROPAGANDA ADSENSE ADMOB VOLTOU</title>
+<title>WORK FIRE - ADMIN CONTROLE TOTAL</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-SEU-ID-AQUI" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
@@ -35,7 +34,7 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 .page.show{display:flex}
 .card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
 .input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px;font-size:13px}
-.btn{width:100%;padding:12px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px;font-size:12px}
+.btn{width:100%;padding:12px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px;font-size:12px;cursor:pointer}
 .avatar{width:88px;height:88px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;cursor:pointer}
 .avatar img{width:100%;height:100%;object-fit:cover}
 .cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.78);color:#ffcc00;font-size:7px;font-weight:900;text-align:center;padding:4px}
@@ -69,6 +68,8 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 .liveTag{position:absolute;top:10px;left:10px;background:#ff0000;color:#fff;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:900;z-index:5}
 .liveTimer{position:absolute;top:46px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);border:1.5px solid #ff0000;color:#fff;padding:6px 16px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}
 .progressLive{position:absolute;bottom:0;left:0;height:4px;background:linear-gradient(90deg,#ff0000,#ff8c00);z-index:8;transition:width 1s linear}
+.userRow{display:flex;justify-content:space-between;align-items:center;padding:8px;background:rgba(255,255,255,.05);border-radius:8px;margin-top:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:#00ff88;box-shadow:0 0 6px #00ff88;display:inline-block;margin-right:4px}
 </style>
 </head>
 <body>
@@ -81,31 +82,56 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 
 <div id="pEu" class="page">
 <div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><div style="display:flex;gap:8px"><button onclick="abrirAdmin()" style="background:#ffcc00;border:none;padding:8px 14px;border-radius:20px;font-weight:900;font-size:11px;color:#000">ADMIN</button><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div></div>
-<div class="card" style="border:1.5px solid #ff8c00;text-align:center"><div style="color:#ff8c00;font-weight:900;font-size:13px">👤 MEU CADASTRO</div><input id="fotoPerfil" type="file" accept="image/*" hidden onchange="trocarFoto(this)"><div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 FOTO</div></div><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00"><input id="apelidoUser" class="input" placeholder="Apelido" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button><button class="btnDel" onclick="apagarCadastro()">🗑️ APAGAR</button><div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:900"></div><div style="color:#333;font-size:8px;margin-top:4px">ID: <span id="uidShow"></span></div></div>
+<div class="card" style="border:1.5px solid #ff8c00;text-align:center"><div style="color:#ff8c00;font-weight:900;font-size:13px">👤 MEU CADASTRO</div><input id="fotoPerfil" type="file" accept="image/*" hidden onchange="trocarFoto(this)"><div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 FOTO</div></div><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00"><input id="apelidoUser" class="input" placeholder="Apelido" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button><button class="btnDel" onclick="apagarCadastro()">🗑️ APAGAR MEU CADASTRO</button><div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:900"></div><div style="color:#333;font-size:8px;margin-top:4px">ID: <span id="uidShow"></span></div></div>
 
-<!-- BOTÃO ADMINISTRADOR COM PROPAGANDA ADSENSE E ADMOB DE VOLTA -->
 <div id="adminBox" style="display:none">
-<div class="card" style="border:2px solid #ffcc00">
-<h4 style="color:#ffcc00">💰 PROPAGANDA - LUGAR PARA ADSENSE</h4>
-<input id="adSenseId" class="input" placeholder="Adsense ID: ca-pub-XXXXXXXXXXXXXXXX">
-<input id="adSenseSlot" class="input" placeholder="Adsense Slot: 1234567890">
-<input id="adTxt" class="input" placeholder="Texto propaganda (aparece se Adsense não carregar)">
-<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;align-items:center">
-<input id="adFreq" type="number" value="3" class="input" style="margin:0;width:50px;text-align:center">
-<label style="color:#fff;font-size:9px"><input type="checkbox" id="adOn"> Ativar Propaganda</label>
-<label style="color:#ffcc00;font-size:9px"><input type="checkbox" id="adSenseOn"> Adsense ON</label>
+
+<div class="card" style="border:2px solid #00ff88">
+<h4 style="color:#00ff88"><i class="fa-solid fa-users"></i> CONTROLE ONLINE</h4>
+<div style="display:flex;gap:8px;margin-top:10px">
+<div style="flex:1;background:#000;border:1px solid #00ff88;border-radius:10px;padding:10px;text-align:center"><div style="color:#00ff88;font-size:22px;font-weight:900" id="onlineCount">0</div><div style="color:#888;font-size:8px">ONLINE AGORA</div></div>
+<div style="flex:1;background:#000;border:1px solid #ff8c00;border-radius:10px;padding:10px;text-align:center"><div style="color:#ff8c00;font-size:22px;font-weight:900" id="totalUsers">0</div><div style="color:#888;font-size:8px">TOTAL USUÁRIOS</div></div>
+<div style="flex:1;background:#000;border:1px solid #ff4444;border-radius:10px;padding:10px;text-align:center"><div style="color:#ff4444;font-size:22px;font-weight:900" id="totalPosts">0</div><div style="color:#888;font-size:8px">VÍDEOS</div></div>
 </div>
-<button class="btn" style="background:#ffcc00;color:#000" onclick="salvarAd()">💾 SALVAR PROPAGANDA ADSENSE</button>
+<div id="listaOnline" style="margin-top:10px;max-height:160px;overflow-y:auto"></div>
+<button class="btn" style="background:#00ff88;color:#000" onclick="atualizarOnline()">🔄 ATUALIZAR ONLINE</button>
+</div>
+
+<div class="card" style="border:2px solid #ff4444">
+<h4 style="color:#ff4444"><i class="fa-solid fa-user-xmark"></i> EXCLUIR QUALQUER USUÁRIO</h4>
+<div style="color:#888;font-size:9px;margin-top:4px">Clique no X para apagar usuário e todos os vídeos dele</div>
+<div id="listaUsuarios" style="margin-top:10px;max-height:220px;overflow-y:auto"></div>
+</div>
+
+<div class="card" style="border:2px solid #ffcc00">
+<h4 style="color:#ffcc00">💰 PROPAGANDA ADSENSE + ADMOB</h4>
+<input id="adSenseId" class="input" placeholder="Adsense ID: ca-pub-...">
+<input id="adSenseSlot" class="input" placeholder="Adsense Slot: 1234567890">
+<input id="adTxt" class="input" placeholder="Texto propaganda">
+<div style="display:flex;gap:6px;margin-top:10px;align-items:center;flex-wrap:wrap;background:rgba(0,0,0,.6);padding:8px;border-radius:8px;border:1px dashed #ffcc00">
+<div style="color:#ffcc00;font-size:9px;font-weight:900;width:100%">⏱️ CONTROLE: QUANTOS VÍDEOS ATÉ APARECER PROPAGANDA?</div>
+<input id="adFreq" type="number" min="1" max="20" value="3" class="input" style="margin:0;width:70px;text-align:center;font-weight:900;font-size:16px;border:2px solid #ffcc00">
+<div style="color:#fff;font-size:10px">vídeos = 1 propaganda<br><span style="color:#888;font-size:8px">Ex: 3 = a cada 3 vídeos aparece 1 ad</span></div>
+<label style="color:#fff;font-size:9px;margin-left:auto"><input type="checkbox" id="adOn"> ATIVAR</label>
+</div>
+<label style="color:#ffcc00;font-size:9px;margin-top:6px;display:block"><input type="checkbox" id="adSenseOn"> Adsense ON</label>
+<button class="btn" style="background:#ffcc00;color:#000" onclick="salvarAd()">💾 SALVAR PROPAGANDA</button>
 
 <div style="height:1px;background:rgba(255,69,0,.3);margin:12px 0"></div>
 
-<h4 style="color:#00ff88">📱 LUGAR PARA ADMOB</h4>
-<input id="adMobId" class="input" placeholder="AdMob App ID: ca-app-pub-...">
-<input id="adMobBanner" class="input" placeholder="AdMob Banner ID: ca-app-pub-.../...">
-<input id="adMobInter" class="input" placeholder="AdMob Interstitial ID: ca-app-pub-.../...">
-<label style="color:#fff;font-size:9px;margin-top:6px;display:block"><input type="checkbox" id="adMobOn"> Ativar AdMob</label>
+<h4 style="color:#00ff88">📱 ADMOB</h4>
+<input id="adMobId" class="input" placeholder="AdMob App ID">
+<input id="adMobBanner" class="input" placeholder="AdMob Banner ID">
+<input id="adMobInter" class="input" placeholder="AdMob Interstitial ID">
+<div style="display:flex;gap:6px;margin-top:8px;align-items:center;background:rgba(0,0,0,.6);padding:8px;border-radius:8px;border:1px dashed #00ff88">
+<div style="color:#00ff88;font-size:9px;font-weight:900">⏱️ VÍDEOS ATÉ ADMOB:</div>
+<input id="adMobFreq" type="number" min="1" max="20" value="5" class="input" style="margin:0;width:60px;text-align:center;font-weight:900;border:2px solid #00ff88">
+<div style="color:#fff;font-size:9px">vídeos</div>
+<label style="color:#fff;font-size:9px;margin-left:auto"><input type="checkbox" id="adMobOn"> Ativar AdMob</label>
+</div>
 <button class="btn" style="background:#00ff88;color:#000" onclick="salvarAdMob()">💾 SALVAR ADMOB</button>
 </div>
+
 <div class="card"><h4 style="color:#ff8c00">⚙️ Pix Live</h4><input id="pixChave" class="input" placeholder="Chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button></div>
 </div>
 
@@ -118,10 +144,45 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 <script>
 let uid=localStorage.getItem("uid")||"u_"+Math.random().toString(36).slice(2,7);localStorage.setItem("uid",uid);
 let userFoto=localStorage.getItem("userFoto")||"",userNome=localStorage.getItem("userNome")||"",userApelido=localStorage.getItem("userApelido")||"";
-let posts=JSON.parse(localStorage.getItem("posts_PROP_VOLTOU")||"null")||[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Propaganda Adsense + AdMob voltou no Admin! 💰🔥",firedBy:[],likedBy:[],com:[{u:"ana",t:"Voltou!",time:Date.now()}],saveBy:[],sharedBy:[],share:1,isTop:true,type:"img"}];
-let temp="",tempType="img",cfg=JSON.parse(localStorage.getItem("cfg_PROP_VOLTOU")||"null")||{pixK:"Configure no Admin",adT:"🔥 Oferta Especial! Clique!",adF:3,adOn:true,adSenseId:"",adSenseSlot:"",adSenseOn:false,adMobId:"",adMobBanner:"",adMobInter:"",adMobOn:false};
+let posts=JSON.parse(localStorage.getItem("posts_ADMIN_TOTAL")||"null")||[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Admin controle total online! 🔥",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true,type:"img"}];
+let temp="",tempType="img",cfg=JSON.parse(localStorage.getItem("cfg_ADMIN_TOTAL")||"null")||{pixK:"Configure no Admin",adT:"🔥 Oferta Especial! Clique!",adF:3,adMobF:5,adOn:true,adSenseId:"",adSenseSlot:"",adSenseOn:false,adMobId:"",adMobBanner:"",adMobInter:"",adMobOn:false};
 let comIdx=null,stream=null,recorder=null,chunks=[],recording=false,timerInt=null,sec=0,facing="user",liveStream=null,liveFacing="user",liveTimerInt=null,liveSec=0;const LIVE_DURATION=30*60;
-async function startCam(mode){facing=mode||facing;try{if(stream)stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:true});let v=document.getElementById("camVideo");v.srcObject=stream;if(facing==="user")v.classList.add("mirror");else v.classList.remove("mirror");document.getElementById("camBox").style.display="block";document.getElementById("camOff").style.display="none";}catch(e){alert("Erro câmera: "+e.message);}}
+
+function heartbeat(){
+let all=JSON.parse(localStorage.getItem("online_users")||"{}");
+all[uid]={nome:userNome||uid,time:Date.now()};
+let now=Date.now();
+Object.keys(all).forEach(k=>{if(now-all[k].time>30000)delete all[k]});
+localStorage.setItem("online_users",JSON.stringify(all));
+}
+setInterval(heartbeat,5000); heartbeat();
+
+function atualizarOnline(){
+let all=JSON.parse(localStorage.getItem("online_users")||"{}");
+let now=Date.now();
+let online=Object.values(all).filter(u=>now-u.time<30000);
+document.getElementById("onlineCount").innerText=online.length;
+let users=[...new Set(posts.map(p=>p.owner))];
+document.getElementById("totalUsers").innerText=users.length;
+document.getElementById("totalPosts").innerText=posts.length;
+document.getElementById("listaOnline").innerHTML=online.map(u=>`<div class="userRow"><div style="color:#fff;font-size:11px"><span class="dot"></span>@${u.nome||'anon'} <span style="color:#888;font-size:9px">${uid===Object.keys(all).find(k=>all[k].nome===u.nome)?'(você)':''}</span></div><div style="color:#00ff88;font-size:9px">ONLINE</div></div>`).join("")||"<div style='color:#555;font-size:10px'>Ninguém online</div>";
+renderUsuarios();
+}
+function renderUsuarios(){
+let users=[...new Set(posts.map(p=>p.owner))];
+document.getElementById("listaUsuarios").innerHTML=users.map(u=>{
+let count=posts.filter(p=>p.owner===u).length;
+return `<div class="userRow"><div style="color:#fff;font-size:11px">@${u} <span style="color:#888">(${count} vídeos)</span></div><button onclick="excluirUser('${u}')" style="background:#ff0000;border:none;color:#fff;padding:4px 10px;border-radius:12px;font-size:9px;font-weight:900">X EXCLUIR</button></div>`;
+}).join("")||"<div style='color:#555;font-size:10px'>Nenhum usuário</div>";
+}
+function excluirUser(user){
+if(!confirm(`EXCLUIR @${user} e TODOS os ${posts.filter(p=>p.owner===user).length} vídeos dele?`))return;
+posts=posts.filter(p=>p.owner!==user);
+if(user===userNome){userNome="";userApelido="";localStorage.removeItem("userNome");localStorage.removeItem("userApelido");}
+save(); atualizarOnline(); alert(`@ ${user} excluído!`);
+}
+
+async function startCam(mode){facing=mode||facing;try{if(stream)stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:true});let v=document.getElementById("camVideo");v.srcObject=stream;if(facing==="user")v.classList.add("mirror");else v.classList.remove("mirror");document.getElementById("camBox").style.display="block";document.getElementById("camOff").style.display="none";}catch(e){alert("Erro: "+e.message);}}
 function stopCam(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;document.getElementById("camBox").style.display="none";document.getElementById("camOff").style.display="block";stopTimer();if(recording)stopRec();}
 function switchCam(){startCam(facing==="user"?"environment":"user");}
 function toggleRec(){if(!recording)startRec();else stopRec();}
@@ -133,20 +194,25 @@ async function startLiveCam(mode){liveFacing=mode||liveFacing;try{if(liveStream)
 function switchLiveCam(){startLiveCam(liveFacing==="user"?"environment":"user");}
 function startLive(){if(!userNome){alert("Cadastro em Eu!");go(4);return;}if(localStorage.getItem("liveFeita_"+uid+"_"+new Date().toDateString())){alert("Já fez live hoje!");return;}startLiveCam(liveFacing);document.getElementById("liveStartBox").style.display="none";document.getElementById("liveStageBox").style.display="block";liveSec=0;liveTimerInt=setInterval(()=>{liveSec++;let rest=LIVE_DURATION-liveSec;if(rest<0)rest=0;let m=String(Math.floor(rest/60)).padStart(2,'0');let s=String(rest%60).padStart(2,'0');document.getElementById("liveTimeLeft").innerText=`${m}:${s}`;document.getElementById("progressLive").style.width=((LIVE_DURATION-liveSec)/LIVE_DURATION*100)+"%";if(liveSec>=LIVE_DURATION){stopLive(true);alert("Live 30min acabou!");}},1000);}
 function stopLive(auto=false){if(liveStream)liveStream.getTracks().forEach(t=>t.stop());liveStream=null;if(liveTimerInt){clearInterval(liveTimerInt);liveTimerInt=null;}if(!auto){document.getElementById("liveStartBox").style.display="block";document.getElementById("liveStageBox").style.display="none";}if(liveSec>10)localStorage.setItem("liveFeita_"+uid+"_"+new Date().toDateString(),"1");liveSec=0;checkLive();}
-function save(){localStorage.setItem("posts_PROP_VOLTOU",JSON.stringify(posts));render();}
-function saveCfg(){localStorage.setItem("cfg_PROP_VOLTOU",JSON.stringify(cfg));render();}
-function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase();let a=document.getElementById("apelidoUser").value.trim();if(!n){alert("Digite nome");return;}userNome=n;userApelido=a;localStorage.setItem("userNome",n);localStorage.setItem("userApelido",a);render();alert("✅ Salvo @"+n);}
-function apagarCadastro(){if(!confirm("Apagar?"))return;userFoto="";userNome="";userApelido="";localStorage.removeItem("userFoto");localStorage.removeItem("userNome");localStorage.removeItem("userApelido");document.getElementById("avatarBox").innerHTML="🔥";document.getElementById("nomeUser").value="";document.getElementById("apelidoUser").value="";render();}
+function save(){localStorage.setItem("posts_ADMIN_TOTAL",JSON.stringify(posts));render();}
+function saveCfg(){localStorage.setItem("cfg_ADMIN_TOTAL",JSON.stringify(cfg));render();}
+function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase();let a=document.getElementById("apelidoUser").value.trim();if(!n){alert("Digite nome");return;}userNome=n;userApelido=a;localStorage.setItem("userNome",n);localStorage.setItem("userApelido",a);render();heartbeat();alert("✅ Salvo @"+n);}
+function apagarCadastro(){if(!confirm("Apagar seu cadastro?"))return;userFoto="";userNome="";userApelido="";localStorage.removeItem("userFoto");localStorage.removeItem("userNome");localStorage.removeItem("userApelido");document.getElementById("avatarBox").innerHTML="🔥";document.getElementById("nomeUser").value="";document.getElementById("apelidoUser").value="";render();}
 function trocarFoto(inp){let f=inp.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{userFoto=e.target.result;localStorage.setItem("userFoto",userFoto);document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;render();};r.readAsDataURL(f);}
 function openCom(idx){comIdx=idx;document.getElementById("comCount").innerText=posts[idx].com.length+" comentários";renderComList();document.getElementById("comDrawer").classList.add("show");}
 function closeCom(){document.getElementById("comDrawer").classList.remove("show");comIdx=null;}
 function renderComList(){let el=document.getElementById("comList");if(comIdx===null)return;let p=posts[comIdx];if(p.com.length===0){el.innerHTML=`<div style="text-align:center;padding:40px 20px;color:#666">Nenhum comentário<br>Seja o primeiro! 💬</div>`;return;}el.innerHTML=p.com.slice().reverse().map(c=>`<div class="comItem"><div class="comAva">${c.u.charAt(0).toUpperCase()}</div><div class="comBody"><div class="comUser">@${c.u}</div><div class="comText">${c.t.replace(/</g,"&lt;")}</div></div></div>`).join("");}
 function sendCom(){let inp=document.getElementById("comInput");let txt=inp.value.trim();if(!txt||comIdx===null)return;if(!userNome){alert("Cadastro em Eu!");go(4);closeCom();return;}posts[comIdx].com.push({u:userNome,t:txt,time:Date.now()});inp.value="";save();renderComList();}
 function render(){
-let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0));let feed=[];list.forEach((p,i)=>{feed.push(p);if(cfg.adOn&&(i+1)%cfg.adF===0)feed.push({ad:true});});
+let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0));let feed=[];list.forEach((p,i)=>{
+feed.push(p);
+if(cfg.adOn&&(i+1)%cfg.adF===0)feed.push({ad:true,type:'adsense'});
+if(cfg.adMobOn&&(i+1)%cfg.adMobF===0)feed.push({ad:true,type:'admob'});
+});
 document.getElementById("feed").innerHTML=feed.map(p=>{
 if(p.ad){
-return `<div class="post" style="background:linear-gradient(135deg,#1e1800,#332200);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><span style="background:#ffcc00;color:#000;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:900">ANÚNCIO ${cfg.adSenseOn?'ADSENSE':''} ${cfg.adMobOn?'ADMOB':''}</span><b style="color:#ffcc00;font-size:16px;text-align:center;padding:0 20px">${cfg.adT}</b><div style="color:#888;font-size:8px">ID Adsense: ${cfg.adSenseId||'não configurado'}</div><div style="color:#888;font-size:8px">AdMob: ${cfg.adMobBanner||'não configurado'}</div></div>`;
+if(p.type==='adsense') return `<div class="post" style="background:linear-gradient(135deg,#1e1800,#332200);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span style="background:#ffcc00;color:#000;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:900">ADSENSE • A CADA ${cfg.adF} VÍDEOS</span><b style="color:#ffcc00;font-size:15px;text-align:center;padding:0 20px">${cfg.adT}</b><div style="color:#888;font-size:8px">${cfg.adSenseId||'sem ID'}</div></div>`;
+else return `<div class="post" style="background:linear-gradient(135deg,#001a10,#002a18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span style="background:#00ff88;color:#000;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:900">ADMOB • A CADA ${cfg.adMobF} VÍDEOS</span><b style="color:#00ff88;font-size:15px;text-align:center;padding:0 20px">${cfg.adT}</b><div style="color:#888;font-size:8px">${cfg.adMobBanner||'sem ID'}</div></div>`;
 }
 let idx=posts.indexOf(p);let fired=p.firedBy.includes(uid),liked=p.likedBy.includes(uid),saved=p.saveBy.includes(uid);
 let media=p.type==="video"?`<video src="${p.img}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video>`:`<div style="width:100%;height:100%;background:url('${p.img}') center/cover no-repeat"></div>`;
@@ -155,25 +221,25 @@ return `<div class="post">${media}<div class="rightBar"><button class="btnTik" o
 document.getElementById("listaSalvos").innerHTML=posts.filter(p=>p.saveBy.includes(uid)).map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><img src="${p.img}" style="width:42px;height:42px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Nenhum</div>";
 let meus=posts.filter(p=>p.owner===(userNome||"")&&p.owner!=="fire.influencer");document.getElementById("meusVideos").innerHTML=meus.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><img src="${p.img}" style="width:42px;height:42px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Nenhum</div>";
 document.getElementById("pixKey").innerText=cfg.pixK;document.getElementById("pixChave").value=cfg.pixK!=="Configure no Admin"?cfg.pixK:"";
-document.getElementById("adTxt").value=cfg.adT;document.getElementById("adFreq").value=cfg.adF;document.getElementById("adOn").checked=cfg.adOn;document.getElementById("adSenseId").value=cfg.adSenseId;document.getElementById("adSenseSlot").value=cfg.adSenseSlot;document.getElementById("adSenseOn").checked=cfg.adSenseOn;document.getElementById("adMobId").value=cfg.adMobId;document.getElementById("adMobBanner").value=cfg.adMobBanner;document.getElementById("adMobInter").value=cfg.adMobInter;document.getElementById("adMobOn").checked=cfg.adMobOn;
+document.getElementById("adTxt").value=cfg.adT;document.getElementById("adFreq").value=cfg.adF;document.getElementById("adMobFreq").value=cfg.adMobF||5;document.getElementById("adOn").checked=cfg.adOn;document.getElementById("adSenseId").value=cfg.adSenseId;document.getElementById("adSenseSlot").value=cfg.adSenseSlot;document.getElementById("adSenseOn").checked=cfg.adSenseOn;document.getElementById("adMobId").value=cfg.adMobId;document.getElementById("adMobBanner").value=cfg.adMobBanner;document.getElementById("adMobInter").value=cfg.adMobInter;document.getElementById("adMobOn").checked=cfg.adMobOn;
 document.getElementById("uidShow").innerText=uid;document.getElementById("nomeUser").value=userNome;document.getElementById("apelidoUser").value=userApelido;document.getElementById("nomeShow").innerText=userNome?"@"+userNome:"@fire.user";if(userFoto)document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;else document.getElementById("avatarBox").innerHTML="🔥";checkLive();
 }
 function fire(i){let p=posts[i];if(p.firedBy.includes(uid))p.firedBy=p.firedBy.filter(x=>x!==uid);else p.firedBy.push(uid);save();}
 function like(i){let p=posts[i];if(p.likedBy.includes(uid))p.likedBy=p.likedBy.filter(x=>x!==uid);else p.likedBy.push(uid);save();}
 function saveP(i){let p=posts[i];if(p.saveBy.includes(uid))p.saveBy=p.saveBy.filter(x=>x!==uid);else p.saveBy.push(uid);save();}
 function shareP(i){if(!posts[i].sharedBy.includes(uid)){posts[i].sharedBy.push(uid);save();}window.open("https://wa.me/?text="+encodeURIComponent(location.href),"_blank");}
-function go(n){if(n!==2)stopCam();if(n!==3)stopLive();closeCom();document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b"+n).classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n==1)document.getElementById("pBusca").classList.add("show");if(n==2)document.getElementById("pCriar").classList.add("show");if(n==3)document.getElementById("pLive").classList.add("show");if(n==4)document.getElementById("pEu").classList.add("show");}
+function go(n){if(n!==2)stopCam();if(n!==3)stopLive();closeCom();document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b"+n).classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n==1)document.getElementById("pBusca").classList.add("show");if(n==2)document.getElementById("pCriar").classList.add("show");if(n==3)document.getElementById("pLive").classList.add("show");if(n==4)document.getElementById("pEu").classList.add("show");if(n==4)setTimeout(atualizarOnline,300);}
 function closeAll(){stopCam();stopLive();closeCom();document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b0").classList.add("on");}
-function abrirAdmin(){let s=prompt("Senha Admin:");if(s==="fire123")document.getElementById("adminBox").style.display="block";else if(s)alert("Senha: fire123");}
+function abrirAdmin(){let s=prompt("Senha Admin:");if(s==="fire123"){document.getElementById("adminBox").style.display="block";atualizarOnline();}else if(s)alert("Senha: fire123");}
 function salvarPix(){let k=document.getElementById("pixChave").value.trim();if(!k)return alert("Digite Pix");cfg.pixK=k;saveCfg();alert("Pix salvo!");}
-function salvarAd(){cfg.adT=document.getElementById("adTxt").value.trim();cfg.adF=parseInt(document.getElementById("adFreq").value)||3;cfg.adOn=document.getElementById("adOn").checked;cfg.adSenseId=document.getElementById("adSenseId").value.trim();cfg.adSenseSlot=document.getElementById("adSenseSlot").value.trim();cfg.adSenseOn=document.getElementById("adSenseOn").checked;saveCfg();alert("✅ Propaganda + Adsense salvo!");}
-function salvarAdMob(){cfg.adMobId=document.getElementById("adMobId").value.trim();cfg.adMobBanner=document.getElementById("adMobBanner").value.trim();cfg.adMobInter=document.getElementById("adMobInter").value.trim();cfg.adMobOn=document.getElementById("adMobOn").checked;saveCfg();alert("✅ AdMob salvo!");}
+function salvarAd(){cfg.adT=document.getElementById("adTxt").value.trim();cfg.adF=parseInt(document.getElementById("adFreq").value)||3;cfg.adOn=document.getElementById("adOn").checked;cfg.adSenseId=document.getElementById("adSenseId").value.trim();cfg.adSenseSlot=document.getElementById("adSenseSlot").value.trim();cfg.adSenseOn=document.getElementById("adSenseOn").checked;saveCfg();alert(`✅ Propaganda salva! Aparece a cada ${cfg.adF} vídeos`);}
+function salvarAdMob(){cfg.adMobId=document.getElementById("adMobId").value.trim();cfg.adMobBanner=document.getElementById("adMobBanner").value.trim();cfg.adMobInter=document.getElementById("adMobInter").value.trim();cfg.adMobFreq=parseInt(document.getElementById("adMobFreq").value)||5;cfg.adMobOn=document.getElementById("adMobOn").checked;saveCfg();alert(`✅ AdMob salvo! Aparece a cada ${cfg.adMobFreq} vídeos`);}
 function checkLive(){let pago=localStorage.getItem("livePago")==new Date().toDateString();let fez=localStorage.getItem("liveFeita_"+uid+"_"+new Date().toDateString());document.getElementById("liveBloq").style.display=!pago?"block":"none";document.getElementById("liveOk").style.display=pago&&!fez?"flex":"none";document.getElementById("liveUsada").style.display=pago&&fez?"block":"none";if(fez){let amanha=new Date();amanha.setDate(amanha.getDate()+1);amanha.setHours(0,0,0,0);let diff=amanha-Date.now();let h=Math.floor(diff/3600000);let m=Math.floor((diff%3600000)/60000);document.getElementById("proximaLive").innerText=`Próxima em ${h}h ${m}min`;}}
 function pagarPix(){localStorage.setItem("livePago",new Date().toDateString());checkLive();}
 function busca(){let q=document.getElementById("qBusca").value.toLowerCase();let r=posts.filter(p=>p.desc.toLowerCase().includes(q));document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:8px"><img src="${p.img}" style="width:40px;height:40px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555'>Nada</div>";}
 document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{if(f.type.startsWith("video")){temp=ev.target.result;tempType="video";document.getElementById("previewVideo").src=temp;document.getElementById("previewVideo").style.display="block";document.getElementById("prev").style.display="none";}else{temp=ev.target.result;tempType="img";document.getElementById("prev").src=temp;document.getElementById("prev").style.display="block";document.getElementById("previewVideo").style.display="none";}};r.readAsDataURL(f);});
 function postar(){let d=document.getElementById("desc").value.trim()||"Meu vídeo 1:30 🔥";if(!temp){alert("Grave vídeo ou escolha da galeria!");return;}if(!userNome){alert("Faça cadastro em Eu!");go(4);return;}posts.unshift({owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:tempType});temp="";document.getElementById("prev").style.display="none";document.getElementById("previewVideo").style.display="none";document.getElementById("desc").value="";save();closeAll();stopCam();}
-render();
+render(); atualizarOnline();
 </script>
 </body>
 </html>
