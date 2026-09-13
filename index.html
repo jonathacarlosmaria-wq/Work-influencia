@@ -3,42 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - TIKTOK FIX</title>
+<title>WORK FIRE - ADSENSE ADMOB</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- ADSENSE - SEU CÓDIGO SERÁ INJETADO AQUI -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
 #app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
-#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory}
 #feed::-webkit-scrollbar{display:none}
 .post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0}
-.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 15%,rgba(0,0,0,.15) 50%,rgba(0,0,0,.9) 100%);pointer-events:none;z-index:1}
-/* CORREÇÃO - TODOS BOTÕES LADO DIREITO IGUAL TIKTOK */
-.rightBar{position:absolute;right:6px;bottom:95px;z-index:10;display:flex;flex-direction:column;gap:14px;align-items:center;width:68px}
-.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%;-webkit-tap-highlight-color:transparent}
-.iconTik{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;background:rgba(35,35,35,.75);border:1.5px solid rgba(255,255,255,.18);backdrop-filter:blur(12px);transition:.18s}
-.iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00 0%,#ff4500 55%,#8b0000 100%);border-color:#ff8c00;box-shadow:0 3px 14px rgba(255,69,0,.4)}
-.iconTik.fire.on{box-shadow:0 0 20px #ff4500,0 0 40px rgba(255,0,0,.3);transform:scale(1.12)}
-.iconTik.heart.on{background:#ff1844;border-color:#ff4d6d;box-shadow:0 0 16px rgba(255,0,64,.5);transform:scale(1.12)}
-.iconTik.save.on{background:#ffcc00;color:#000;border-color:#ffcc00;transform:scale(1.12)}
-.txtTik{color:#fff;font-size:9px;font-weight:800;margin-top:4px;text-shadow:0 1px 8px #000,0 0 2px #000;text-align:center;line-height:10px;letter-spacing:.2px}
+.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 15%,rgba(0,0,0,.15) 50%,rgba(0,0,0,.92) 100%);pointer-events:none;z-index:1}
+.rightBar{position:absolute;right:6px;bottom:95px;z-index:10;display:flex;flex-direction:column;gap:14px;width:68px}
+.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%}
+.iconTik{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;background:rgba(35,35,35,.75);border:1.5px solid rgba(255,255,255,.18);backdrop-filter:blur(12px)}
+.iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00,#ff4500 55%,#8b0000);border-color:#ff8c00}
+.iconTik.fire.on{box-shadow:0 0 20px #ff4500;transform:scale(1.12)}
+.iconTik.heart.on{background:#ff1844;transform:scale(1.12)}
+.iconTik.save.on{background:#ffcc00;color:#000}
+.txtTik{color:#fff;font-size:9px;font-weight:800;margin-top:4px;text-shadow:0 1px 8px #000;text-align:center;line-height:10px}
 .info{position:absolute;left:10px;right:80px;bottom:84px;z-index:10;background:rgba(0,0,0,.48);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:10px 11px;backdrop-filter:blur(12px)}
 .info b{color:#fff;font-size:12px}
-.info div{color:#ddd;font-size:12px;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.nav{height:66px;min-height:66px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30;flex-shrink:0}
-.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:9px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.info div{color:#ddd;font-size:12px;margin-top:3px}
+.nav{height:66px;min-height:66px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30}
+.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:9px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:3px}
 .nav button.on{color:#ff8c00}
 .nav button i{font-size:18px}
-.plus{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;margin-top:-22px;box-shadow:0 0 0 4px #000,0 6px 14px rgba(255,69,0,.5)}
+.plus{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;margin-top:-22px;box-shadow:0 0 0 4px #000}
 .page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto}
 .page.show{display:flex}
 .card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
-.input{width:100%;padding:12px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:8px;font-size:14px}
-.btn{width:100%;padding:12px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px}
+.input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px;font-size:13px}
+.btn{width:100%;padding:12px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px;font-size:12px}
 .avatar{width:88px;height:88px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;cursor:pointer}
 .avatar img{width:100%;height:100%;object-fit:cover}
 .cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.78);color:#ffcc00;font-size:7px;font-weight:900;text-align:center;padding:4px}
 .btnDel{background:rgba(255,0,0,.12);border:1px solid rgba(255,0,0,.35);color:#ff4444;width:100%;padding:11px;border-radius:10px;font-weight:900;margin-top:8px;font-size:11px}
+.adBox{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a0a0a,#1a1200);padding:20px;text-align:center}
+.labelAd{background:#ffcc00;color:#000;padding:3px 10px;border-radius:12px;font-size:9px;font-weight:900;margin-bottom:10px}
 </style>
 </head>
 <body>
@@ -47,7 +50,7 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 
 <div id="pBusca" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Busca</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card"><input id="qBusca" class="input" placeholder="Buscar..." oninput="busca()"><div id="rBusca" style="margin-top:10px"></div></div></div>
 <div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Criar</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card"><input id="file" type="file" accept="image/*" style="color:#fff;width:100%"><img id="prev" style="width:100%;margin-top:10px;border-radius:12px;display:none"><input id="desc" class="input" placeholder="Legenda..."><button class="btn" onclick="postar()">POSTAR</button></div></div>
-<div id="pLive" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Live</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div id="liveBloq" class="card" style="text-align:center;border-color:#ffcc00"><b style="color:#ffcc00">Live R$5/dia</b><div id="pixKey" style="background:#000;padding:10px;border-radius:8px;margin:10px 0;font-size:11px;color:#fff;word-break:break-all">Configure no Admin</div><button class="btn" style="background:#ffcc00;color:#000" onclick="pagarPix()">JÁ PAGUEI</button></div><div id="liveOk" class="card" style="display:none;border-color:#00ff88;text-align:center"><b style="color:#00ff88">✅ Liberada</b></div></div>
+<div id="pLive" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Live</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div id="liveBloq" class="card" style="text-align:center;border-color:#ffcc00"><b style="color:#ffcc00">Live R$5/dia</b><div id="pixKey" style="background:#000;padding:10px;border-radius:8px;margin:10px 0;font-size:11px;color:#fff;word-break:break-all">Configure</div><button class="btn" style="background:#ffcc00;color:#000" onclick="pagarPix()">JÁ PAGUEI</button></div><div id="liveOk" class="card" style="display:none;border-color:#00ff88;text-align:center"><b style="color:#00ff88">✅ Liberada</b></div></div>
 
 <div id="pEu" class="page">
 <div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><div style="display:flex;gap:8px"><button onclick="abrirAdmin()" style="background:#ffcc00;border:none;padding:8px 14px;border-radius:20px;font-weight:900;font-size:11px;color:#000">ADMIN</button><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div></div>
@@ -59,12 +62,64 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 <input id="apelidoUser" class="input" placeholder="Apelido (opcional)" style="text-align:center">
 <button class="btn" onclick="salvarTudo()">💾 SALVAR</button>
 <button class="btnDel" onclick="apagarCadastro()">🗑️ APAGAR CADASTRO</button>
-<div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:900">@fire.user</div>
+<div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:900"></div>
 <div id="apelidoShow" style="color:#aaa;font-size:11px"></div>
-<div id="infoLive" style="color:#666;font-size:10px;margin-top:4px"></div>
 <div style="color:#333;font-size:8px;margin-top:4px">ID: <span id="uidShow"></span></div>
 </div>
-<div id="adminBox" style="display:none" class="card"><h4 style="color:#ffcc00">⚙️ Admin + Propaganda</h4><input id="pixChave" class="input" placeholder="Chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button><div style="height:1px;background:rgba(255,69,0,.2);margin:14px 0"></div><label style="color:#ffcc00;font-size:10px;font-weight:900">PROPAGANDA</label><input id="adTxt" class="input" placeholder="Texto propaganda"><div style="display:flex;gap:8px;align-items:center;margin-top:8px"><input id="adFreq" type="number" value="3" class="input" style="margin:0;width:70px"><label style="color:#fff;font-size:11px"><input type="checkbox" id="adOn"> Ativar</label></div><button class="btn" style="background:#ffcc00;color:#000" onclick="salvarAd()">SALVAR PROPAGANDA</button></div>
+
+<div id="adminBox" style="display:none">
+<div class="card" style="border-color:#ffcc00">
+<h4 style="color:#ffcc00">💰 PROPAGANDA - ADSENSE + ADMOB</h4>
+
+<div style="margin-top:10px">
+<label style="color:#ffcc00;font-size:10px;font-weight:900">🔵 GOOGLE ADSENSE - CÓDIGO</label>
+<input id="adsenseCode" class="input" placeholder="ca-pub-XXXXXXXXXX">
+<textarea id="adsenseSlot" class="input" placeholder="Cole o código do bloco Adsense aqui (ex: <ins class=adsbygoogle...)" style="height:70px;font-size:11px"></textarea>
+</div>
+
+<div style="margin-top:10px">
+<label style="color:#00ff88;font-size:10px;font-weight:900">🟢 ADMOB - ID DO ANÚNCIO</label>
+<input id="admobId" class="input" placeholder="ca-app-pub-XXXXXXXXXX/YYYYYYYYYY">
+</div>
+
+<div style="margin-top:10px">
+<label style="color:#fff;font-size:10px;font-weight:900">📝 TEXTO PROPAGANDA (se não tiver Adsense)</label>
+<input id="adTxt" class="input" placeholder="Ex: Promoção Imperdível!">
+</div>
+
+<div style="display:flex;gap:8px;margin-top:12px;align-items:center;background:rgba(0,0,0,.4);padding:8px;border-radius:8px">
+<div style="flex:1">
+<label style="color:#ff8c00;font-size:9px;font-weight:900">A CADA QUANTOS VÍDEOS?</label>
+<div style="display:flex;gap:6px;margin-top:4px;align-items:center">
+<input id="adFreq" type="number" value="3" min="1" max="10" class="input" style="margin:0;width:60px;text-align:center">
+<span style="color:#fff;font-size:11px">vídeos</span>
+</div>
+</div>
+<div style="flex:1">
+<label style="color:#ff8c00;font-size:9px;font-weight:900">TIPO</label>
+<select id="adTipo" class="input" style="margin-top:4px;padding:8px">
+<option value="mix">Mix Adsense+Texto</option>
+<option value="adsense">Só Adsense</option>
+<option value="admob">Só AdMob</option>
+<option value="texto">Só Texto</option>
+</select>
+</div>
+</div>
+
+<div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+<label style="color:#fff;font-size:12px;display:flex;align-items:center;gap:6px"><input type="checkbox" id="adOn"> <b style="color:#00ff88">ATIVAR PROPAGANDA</b></label>
+</div>
+
+<button class="btn" style="background:#ffcc00;color:#000" onclick="salvarAds()">💾 SALVAR PROPAGANDA</button>
+<div style="color:#888;font-size:9px;margin-top:6px">💡 Adsense aparece no feed. AdMob para app. Controle: a cada X vídeos aparece 1 propaganda.</div>
+</div>
+
+<div class="card">
+<h4 style="color:#ff8c00">⚙️ Live Pix</h4>
+<input id="pixChave" class="input" placeholder="Chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button>
+</div>
+</div>
+
 <div class="card"><b style="color:#ff8c00">🔖 Salvos</b><div id="listaSalvos"></div></div>
 <div class="card"><b style="color:#ff8c00">🎬 Meus vídeos</b><div id="meusVideos"></div></div>
 </div>
@@ -81,36 +136,46 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 <script>
 let uid=localStorage.getItem("uid")||"u_"+Math.random().toString(36).slice(2,7);localStorage.setItem("uid",uid);
 let userFoto=localStorage.getItem("userFoto")||"",userNome=localStorage.getItem("userNome")||"",userApelido=localStorage.getItem("userApelido")||"";
-let posts=JSON.parse(localStorage.getItem("posts_fixTik")||"null")||[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Botões TikTok - todos na direita corrigido ✅",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true}];
-let temp="",cfg=JSON.parse(localStorage.getItem("cfg_fixTik")||"null")||{pixK:"Configure no Admin",adT:"",adF:3,adOn:false};
-function save(){localStorage.setItem("posts_fixTik",JSON.stringify(posts));render();}
-function saveCfg(){localStorage.setItem("cfg_fixTik",JSON.stringify(cfg));render();}
-function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase();let a=document.getElementById("apelidoUser").value.trim();if(!n){alert("Digite seu nome");return;}userNome=n;userApelido=a;localStorage.setItem("userNome",n);localStorage.setItem("userApelido",a);render();alert("✅ Salvo: @"+n);}
-function apagarCadastro(){if(!confirm("Apagar seu cadastro?"))return;userFoto="";userNome="";userApelido="";localStorage.removeItem("userFoto");localStorage.removeItem("userNome");localStorage.removeItem("userApelido");document.getElementById("avatarBox").innerHTML="🔥";document.getElementById("nomeUser").value="";document.getElementById("apelidoUser").value="";render();alert("🗑️ Apagado!");}
+let posts=JSON.parse(localStorage.getItem("posts_ads")||"null")||[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Agora com Adsense + AdMob configurável 🔥",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true}];
+let temp="",cfg=JSON.parse(localStorage.getItem("cfg_ads")||"null")||{pixK:"Configure",adT:"🔥 Promoção Imperdível! Clique aqui!",adF:3,adOn:false,adsense:"",slot:"",admob:"",tipo:"mix"};
+function save(){localStorage.setItem("posts_ads",JSON.stringify(posts));render();}
+function saveCfg(){localStorage.setItem("cfg_ads",JSON.stringify(cfg));render();}
+function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase();let a=document.getElementById("apelidoUser").value.trim();if(!n){alert("Digite seu nome");return;}userNome=n;userApelido=a;localStorage.setItem("userNome",n);localStorage.setItem("userApelido",a);render();alert("✅ Salvo @"+n);}
+function apagarCadastro(){if(!confirm("Apagar cadastro?"))return;userFoto="";userNome="";userApelido="";localStorage.removeItem("userFoto");localStorage.removeItem("userNome");localStorage.removeItem("userApelido");document.getElementById("avatarBox").innerHTML="🔥";document.getElementById("nomeUser").value="";document.getElementById("apelidoUser").value="";render();alert("🗑️ Apagado");}
 function trocarFoto(inp){let f=inp.files[0];if(!f)return;if(f.size>2000000){alert("Máx 2MB");return;}let r=new FileReader();r.onload=e=>{userFoto=e.target.result;localStorage.setItem("userFoto",userFoto);document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;render();};r.readAsDataURL(f);}
+function salvarAds(){
+cfg.adsense=document.getElementById("adsenseCode").value.trim();
+cfg.slot=document.getElementById("adsenseSlot").value.trim();
+cfg.admob=document.getElementById("admobId").value.trim();
+cfg.adT=document.getElementById("adTxt").value.trim()||"🔥 Promoção!";
+cfg.adF=parseInt(document.getElementById("adFreq").value)||3;
+cfg.tipo=document.getElementById("adTipo").value;
+cfg.adOn=document.getElementById("adOn").checked;
+saveCfg();
+alert(`✅ Propaganda salva!\n\nTipo: ${cfg.tipo}\nA cada: ${cfg.adF} vídeos\nStatus: ${cfg.adOn?'ATIVA':'DESATIVADA'}\n\nAdsense: ${cfg.adsense?'OK':''}\nAdMob: ${cfg.admob?'OK':''}`);
+}
 function render(){
-let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0));let feed=[];list.forEach((p,i)=>{feed.push(p);if(cfg.adOn&&cfg.adT&&(i+1)%cfg.adF===0)feed.push({ad:true});});
+let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0));let feed=[];list.forEach((p,i)=>{feed.push(p);if(cfg.adOn&&(i+1)%cfg.adF===0)feed.push({ad:true,adNum:i});});
 document.getElementById("feed").innerHTML=feed.map(p=>{
-if(p.ad) return `<div class="post" style="background:linear-gradient(135deg,#1e1800,#332200);border:2px solid #ffcc00;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><span style="background:#ffcc00;color:#000;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:900">ANÚNCIO</span><b style="color:#ffcc00;font-size:15px;text-align:center;padding:0 20px">${cfg.adT}</b></div>`;
+if(p.ad){
+let adContent="";
+if(cfg.tipo==="adsense"||cfg.tipo==="mix"){
+if(cfg.slot) adContent=`<div class="adBox"><span class="labelAd">PUBLICIDADE - ADSENSE</span><div style="width:100%;max-width:300px">${cfg.slot}</div><div style="color:#ffcc00;font-size:12px;margin-top:10px">${cfg.adT}</div></div>`;
+else adContent=`<div class="adBox"><span class="labelAd">ADSENSE</span><ins class="adsbygoogle" style="display:block" data-ad-client="${cfg.adsense||'ca-pub-0000000000000000'}" data-ad-slot="1234567890" data-ad-format="auto"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});<\/script><div style="color:#ffcc00;font-size:14px;font-weight:900;margin-top:12px">${cfg.adT}</div><button class="btn" style="background:#ffcc00;color:#000;padding:8px 20px;margin-top:10px;width:auto">VER OFERTA</button></div>`;
+} else if(cfg.tipo==="admob"){
+adContent=`<div class="adBox"><span class="labelAd" style="background:#00ff88">ADMOB - ${cfg.admob}</span><div style="color:#fff;font-size:13px;margin-top:10px">Anúncio AdMob carregado</div><div style="color:#ffcc00;font-size:14px;font-weight:900;margin-top:10px">${cfg.adT}</div></div>`;
+} else {
+adContent=`<div class="adBox"><span class="labelAd">ANÚNCIO</span><b style="color:#ffcc00;font-size:18px;text-align:center">${cfg.adT}</b><button class="btn" style="background:#ffcc00;color:#000;padding:10px 24px;margin-top:14px;width:auto">👉 CLIQUE AQUI</button></div>`;
+}
+return `<div class="post">${adContent}</div>`;
+}
 let idx=posts.indexOf(p);let fired=p.firedBy.includes(uid),liked=p.likedBy.includes(uid),saved=p.saveBy.includes(uid);
-return `<div class="post" style="background-image:url('${p.img}')">
-<div class="rightBar">
-<button class="btnTik" onclick="fire(${idx})"><div class="iconTik fire ${fired?'on':''}"><i class="fa-solid fa-fire"></i></div><div class="txtTik">${p.firedBy.length}<br>Chamas</div></button>
-<button class="btnTik" onclick="like(${idx})"><div class="iconTik heart ${liked?'on':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="txtTik">${p.likedBy.length}<br>Curtir</div></button>
-<button class="btnTik" onclick="openC(${idx})"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">${p.com.length}<br>Comen</div></button>
-<button class="btnTik" onclick="shareP(${idx})"><div class="iconTik"><i class="fa-solid fa-share"></i></div><div class="txtTik">${p.sharedBy.length||p.share||0}<br>Compar</div></button>
-<button class="btnTik" onclick="saveP(${idx})"><div class="iconTik save ${saved?'on':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="txtTik">Salvar</div></button>
-</div>
-<div class="info"><b>@${p.owner}</b><div>${p.desc}</div></div></div>`;
+return `<div class="post" style="background-image:url('${p.img}')"><div class="rightBar"><button class="btnTik" onclick="fire(${idx})"><div class="iconTik fire ${fired?'on':''}"><i class="fa-solid fa-fire"></i></div><div class="txtTik">${p.firedBy.length}<br>Chamas</div></button><button class="btnTik" onclick="like(${idx})"><div class="iconTik heart ${liked?'on':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="txtTik">${p.likedBy.length}<br>Curtir</div></button><button class="btnTik" onclick="openC(${idx})"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">${p.com.length}<br>Comen</div></button><button class="btnTik" onclick="shareP(${idx})"><div class="iconTik"><i class="fa-solid fa-share"></i></div><div class="txtTik">${p.sharedBy.length||p.share||0}<br>Compar</div></button><button class="btnTik" onclick="saveP(${idx})"><div class="iconTik save ${saved?'on':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="txtTik">Salvar</div></button></div><div class="info"><b>@${p.owner}</b><div>${p.desc}</div></div></div>`;
 }).join("");
-document.getElementById("listaSalvos").innerHTML=posts.filter(p=>p.saveBy.includes(uid)).map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><img src="${p.img}" style="width:42px;height:42px;border-radius:8px;object-fit:cover"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Nenhum</div>";
+document.getElementById("listaSalvos").innerHTML=posts.filter(p=>p.saveBy.includes(uid)).map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><img src="${p.img}" style="width:42px;height:42px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Nenhum</div>";
 let meus=posts.filter(p=>p.owner===(userNome||"")&&p.owner!=="fire.influencer");document.getElementById("meusVideos").innerHTML=meus.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><img src="${p.img}" style="width:42px;height:42px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Nenhum vídeo</div>";
-document.getElementById("pixKey").innerText=cfg.pixK;document.getElementById("pixChave").value=cfg.pixK!=="Configure no Admin"?cfg.pixK:"";document.getElementById("adTxt").value=cfg.adT;document.getElementById("adFreq").value=cfg.adF;document.getElementById("adOn").checked=cfg.adOn;
-document.getElementById("uidShow").innerText=uid;document.getElementById("nomeUser").value=userNome;document.getElementById("apelidoUser").value=userApelido;
-document.getElementById("nomeShow").innerText=userNome?"@"+userNome:"@fire.user (sem cadastro)";
-document.getElementById("apelidoShow").innerText=userApelido?`(${userApelido})`:"";
-if(userFoto)document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;else document.getElementById("avatarBox").innerHTML="🔥";
-checkLive();
+document.getElementById("pixKey").innerText=cfg.pixK;document.getElementById("pixChave").value=cfg.pixK!=="Configure"?cfg.pixK:"";document.getElementById("adsenseCode").value=cfg.adsense;document.getElementById("adsenseSlot").value=cfg.slot;document.getElementById("admobId").value=cfg.admob;document.getElementById("adTxt").value=cfg.adT;document.getElementById("adFreq").value=cfg.adF;document.getElementById("adTipo").value=cfg.tipo;document.getElementById("adOn").checked=cfg.adOn;
+document.getElementById("uidShow").innerText=uid;document.getElementById("nomeUser").value=userNome;document.getElementById("apelidoUser").value=userApelido;document.getElementById("nomeShow").innerText=userNome?"@"+userNome:"";document.getElementById("apelidoShow").innerText=userApelido?`(${userApelido})`:"";if(userFoto)document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
 }
 function fire(i){let p=posts[i];if(p.firedBy.includes(uid))p.firedBy=p.firedBy.filter(x=>x!==uid);else p.firedBy.push(uid);save();}
 function like(i){let p=posts[i];if(p.likedBy.includes(uid))p.likedBy=p.likedBy.filter(x=>x!==uid);else p.likedBy.push(uid);save();}
@@ -121,12 +186,10 @@ function go(n){document.querySelectorAll(".nav button").forEach(b=>b.classList.r
 function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b0").classList.add("on");}
 function abrirAdmin(){let s=prompt("Senha Admin:");if(s==="fire123")document.getElementById("adminBox").style.display="block";else if(s)alert("Senha: fire123");}
 function salvarPix(){let k=document.getElementById("pixChave").value.trim();if(!k)return alert("Digite Pix");cfg.pixK=k;saveCfg();alert("Pix salvo!");}
-function salvarAd(){cfg.adT=document.getElementById("adTxt").value.trim();cfg.adF=parseInt(document.getElementById("adFreq").value)||3;cfg.adOn=document.getElementById("adOn").checked;saveCfg();alert(cfg.adOn?"✅ Ativada":"❌ Desativada");}
-function checkLive(){let pago=localStorage.getItem("livePago")===new Date().toDateString();document.getElementById("liveBloq").style.display=pago?"none":"block";document.getElementById("liveOk").style.display=pago?"block":"none";document.getElementById("infoLive").innerText=pago?"✅ Live liberada":"🔒 Bloqueada";}
-function pagarPix(){localStorage.setItem("livePago",new Date().toDateString());checkLive();alert("✅ Liberada!");}
+function pagarPix(){localStorage.setItem("livePago",new Date().toDateString());render();alert("✅ Liberada!");}
 function busca(){let q=document.getElementById("qBusca").value.toLowerCase();let r=posts.filter(p=>p.desc.toLowerCase().includes(q));document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:8px"><img src="${p.img}" style="width:40px;height:40px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555'>Nada</div>";}
 document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{temp=ev.target.result;document.getElementById("prev").src=temp;document.getElementById("prev").style.display="block";};r.readAsDataURL(f);});
-function postar(){let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";if(!temp)return alert("Escolha foto");if(!userNome){alert("Faça cadastro em Eu primeiro!");go(4);return;}posts.unshift({owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false});temp="";document.getElementById("prev").style.display="none";document.getElementById("desc").value="";save();closeAll();}
+function postar(){let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";if(!temp)return alert("Escolha foto");if(!userNome){alert("Faça cadastro em Eu!");go(4);return;}posts.unshift({owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false});temp="";document.getElementById("prev").style.display="none";document.getElementById("desc").value="";save();closeAll();}
 render();
 </script>
 </body>
