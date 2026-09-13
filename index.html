@@ -3,126 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - TITULAR CORRIGIDO</title>
+<title>WORK FIRE - LADO DIREITO + NAV CORRIGIDO</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+html,body{height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
 #app{width:100%;max-width:420px;height:100dvh;margin:0 auto;display:flex;flex-direction:column;background:#000;position:relative}
 #feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
 #feed::-webkit-scrollbar{display:none}
 .post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#0a0a0a center/cover no-repeat;flex-shrink:0}
-.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.4) 70%,rgba(0,0,0,.85) 100%);pointer-events:none}
-.sideL{position:absolute;left:10px;bottom:112px;display:flex;flex-direction:column;gap:16px;z-index:15;width:66px}
-.sideR{position:absolute;right:10px;bottom:112px;display:flex;flex-direction:column;gap:16px;z-index:15;width:66px}
+.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.5) 70%,rgba(0,0,0,.9) 100%);pointer-events:none}
+/* TUDO NA DIREITA COMO NO SEU PRINT */
+.sideR{position:absolute;right:12px;bottom:140px;display:flex;flex-direction:column;gap:14px;z-index:15;width:62px}
 .b{border:none;background:none;display:flex;flex-direction:column;align-items:center;width:100%;cursor:pointer}
-.i{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;position:relative;transition:all.25s cubic-bezier(.34,1.56,.64,1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.i.fire{background:radial-gradient(120% 120% at 30% 20%,#ff8a00 0%,#ff4500 40%,#8b0000 100%);border:1.5px solid rgba(255,140,0,.6);box-shadow:0 4px 16px rgba(255,69,0,.4),inset 0 1px 2px rgba(255,255,255,.3)}
-.i.fire.active{background:radial-gradient(120% 120% at 30% 20%,#ff2a2a 0%,#ff0000 50%,#8b0000 100%);border-color:#ff0000;box-shadow:0 0 24px rgba(255,0,0,.7);transform:scale(1.05)}
-.i.heart,.i.chat,.i.share,.i.save{background:rgba(20,20,20,.65);border:1.5px solid rgba(255,255,255,.15);box-shadow:0 4px 16px rgba(0,0,0,.4);color:#fff}
-.i.heart.liked{background:radial-gradient(120% 120% at 30% 20%,#ff5a8a 0%,#ff0040 60%,#cc0033 100%);border-color:#ff2a6d;box-shadow:0 0 24px rgba(255,42,109,.6);transform:scale(1.05)}
-.i.save.active{background:radial-gradient(120% 120% at 30% 20%,#ffdd44 0%,#ffaa00 60%,#ff8c00 100%);border-color:#ffcc00;color:#000}
-@keyframes dance{0%{transform:scale(1) rotate(0)}15%{transform:scale(1.35,.65) rotate(-5deg)}30%{transform:scale(.7,1.35) rotate(5deg)}50%{transform:scale(1.15,.85) rotate(-3deg)}70%{transform:scale(.95,1.05) rotate(3deg)}100%{transform:scale(1.05) rotate(0)}}
-.i.anim{animation:dance.65s cubic-bezier(.34,1.56,.64,1)}
-.c{color:#fff;font-size:10px;font-weight:700;margin-top:6px;text-align:center;line-height:1.2;text-shadow:0 1px 8px rgba(0,0,0,.9)}
-.c b{font-size:11px;font-weight:900}
-.dot{width:6px;height:6px;background:#ff0000;border-radius:50%;position:absolute;top:2px;right:2px;box-shadow:0 0 8px #ff0000}
-.info{position:absolute;left:82px;right:82px;bottom:86px;background:linear-gradient(180deg,rgba(20,10,0,.9),rgba(0,0,0,.9));border:1px solid rgba(255,69,0,.3);border-radius:14px;padding:10px 12px;z-index:10;backdrop-filter:blur(20px)}
-.info b{color:#ff8c00;font-size:12px}
-.meta{color:rgba(255,255,255,.6)!important;font-size:10px!important;display:flex;gap:8px;margin-top:6px!important}
-.nav{height:70px;background:linear-gradient(180deg,#0f0a00,#080300);border-top:1px solid rgba(255,69,0,.25);display:flex;align-items:center;z-index:20}
-.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.4);font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px}
-.nav button.on{color:#ff8c00}.plus{width:58px;height:58px;border-radius:50%;background:radial-gradient(120% 120% at 30% 20%,#ff8c00,#ff4500 50%,#cc2200);border:2.5px solid #fff;color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin-top:-28px;box-shadow:0 6px 20px rgba(255,69,0,.5),0 0 0 4px rgba(0,0,0,.8)}
-.sheet{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:99;display:none;align-items:flex-end}
-.sheet.show{display:flex}.sheetBox{background:linear-gradient(180deg,#1e1400,#140a00);border-top:1px solid rgba(255,69,0,.3);width:100%;border-radius:20px 20px 0 0;max-height:78dvh;display:flex;flex-direction:column}
-.page{position:absolute;inset:0;background:#000;z-index:30;display:none;flex-direction:column;overflow:auto}.page.show{display:flex}
+.i{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;backdrop-filter:blur(10px);transition:.25s}
+.i.fire{background:radial-gradient(circle at 30% 20%,#ff8a00,#ff4500 50%,#8b0000);border:1.5px solid rgba(255,140,0,.5);color:#fff;box-shadow:0 4px 12px rgba(255,69,0,.4)}
+.i.heart,.i.chat,.i.share,.i.save{background:rgba(30,30,30,.65);border:1px solid rgba(255,255,255,.15);color:#fff}
+.i.heart.liked{background:radial-gradient(circle,#ff5a8a,#ff0040);color:#fff;transform:scale(1.05)}
+.i.save.active{background:#ffcc00;color:#000}
+.c{color:#fff;font-size:9px;font-weight:700;margin-top:5px;text-align:center;text-shadow:0 1px 6px #000}
+.info{position:absolute;left:12px;right:84px;bottom:90px;background:rgba(0,0,0,.6);border-radius:12px;padding:10px 12px;z-index:10;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1)}
+.info b{color:#fff;font-size:12px}
+.info div{color:#eee;font-size:12px;margin-top:2px}
+/* NAV CORRIGIDO - 5 BOTÕES */
+.nav{height:68px;background:#0f0a00;border-top:1px solid rgba(255,69,0,.25);display:flex;align-items:center;z-index:20;position:relative}
+.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.4);font-size:9px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px}
+.nav button.on{color:#ff8c00}
+.nav button i{font-size:18px}
+.plus{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 30% 20%,#ff8c00,#ff4500);border:2px solid #fff;color:#fff;font-size:24px;display:flex;align-items:center;justify-content:center;margin-top:-26px;box-shadow:0 4px 16px rgba(255,69,0,.5),0 0 0 4px #000}
+.page{position:absolute;inset:0;background:#000;z-index:30;display:none;flex-direction:column;overflow:auto}
+.page.show{display:flex}
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:99;display:none;align-items:flex-end}.sheet.show{display:flex}
+.sheetBox{background:#1a0f00;width:100%;border-radius:18px 18px 0 0;max-height:78dvh;display:flex;flex-direction:column;border-top:1px solid rgba(255,69,0,.3)}
 .input{width:100%;padding:12px;background:rgba(30,15,0,.8);border:1px solid rgba(255,69,0,.3);border-radius:10px;color:#fff;margin-top:8px}
-.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px}
-.card{background:linear-gradient(180deg,rgba(30,15,0,.9),rgba(20,8,0,.9));border:1px solid rgba(255,69,0,.2);border-radius:12px;padding:12px;margin:10px}
+.btn{width:100%;padding:12px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px}
+.card{background:rgba(30,15,0,.8);border:1px solid rgba(255,69,0,.2);border-radius:12px;padding:12px;margin:10px}
+@keyframes dance{0%{transform:scale(1)}25%{transform:scale(1.3,.7)}50%{transform:scale(.8,1.3)}75%{transform:scale(1.1,.9)}100%{transform:scale(1)}}
+.i.anim{animation:dance.6s}
 </style>
 </head>
 <body>
 <div id="app">
 <div id="feed"></div>
 
-<div id="sheetC" class="sheet" onclick="if(event.target==this)this.classList.remove('show')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,69,0,.15)"><b style="color:#ff8c00"><i class="fa-solid fa-comment-dots"></i> <span id="ct">0</span> comentários</b><button onclick="document.getElementById('sheetC').classList.remove('show')" style="background:none;border:none;color:#fff;font-size:18px"><i class="fa-solid fa-xmark"></i></button></div><div id="listC" style="flex:1;overflow:auto;padding:12px"></div><div style="padding:12px;display:flex;gap:8px;border-top:1px solid rgba(255,69,0,.15)"><input id="txtC" class="input" style="flex:1;margin:0" placeholder="Adicione um comentário..."><button onclick="sendC()" style="background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;padding:0 18px;border-radius:10px;font-weight:900;color:#000"><i class="fa-solid fa-paper-plane"></i></button></div></div></div>
-<div id="sheetS" class="sheet" onclick="if(event.target==this)this.classList.remove('show')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between"><b style="color:#ff8c00"><i class="fa-solid fa-rocket"></i> Compartilhar</b><button onclick="document.getElementById('sheetS').classList.remove('show')" style="background:none;border:none;color:#fff;font-size:18px"><i class="fa-solid fa-xmark"></i></button></div><div style="padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px"><button onclick="shareW()" class="card" style="margin:0;text-align:center"><i class="fa-brands fa-whatsapp" style="font-size:22px;color:#25D366"></i><br><span style="font-size:11px">WhatsApp</span></button><button onclick="shareCopy()" class="card" style="margin:0;text-align:center"><i class="fa-solid fa-link" style="font-size:20px"></i><br><span style="font-size:11px">Copiar Link</span></button></div></div></div>
+<div id="sheetC" class="sheet" onclick="if(event.target==this)this.classList.remove('show')"><div class="sheetBox"><div style="padding:12px;display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,69,0,.2)"><b style="color:#ff8c00"><span id="ct">0</span> comentários</b><button onclick="document.getElementById('sheetC').classList.remove('show')" style="background:none;border:none;color:#fff"><i class="fa-solid fa-xmark"></i></button></div><div id="listC" style="flex:1;overflow:auto;padding:12px"></div><div style="padding:12px;display:flex;gap:8px"><input id="txtC" class="input" style="flex:1;margin:0" placeholder="Comentar..."><button onclick="sendC()" style="background:#ff8c00;border:none;padding:0 16px;border-radius:10px"><i class="fa-solid fa-paper-plane"></i></button></div></div></div>
 
-<div id="pBusca" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔍 Busca</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px"><i class="fa-solid fa-xmark"></i></button></div><div class="card"><input id="qBusca" class="input" placeholder="Buscar..." oninput="busca()"><div id="rBusca" style="margin-top:10px"></div></div></div>
-<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔥 Criar</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px"><i class="fa-solid fa-xmark"></i></button></div><div class="card"><input id="file" type="file" accept="image/*,video/*" style="color:#fff;width:100%"><img id="prev" style="width:100%;margin-top:10px;border-radius:12px;display:none"><input id="desc" class="input" placeholder="Legenda..."><button class="btn" onclick="postar()">POSTAR</button></div></div>
-<div id="pLive" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔴 Live Pix R$5/dia</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px"><i class="fa-solid fa-xmark"></i></button></div><div id="liveBloq" class="card" style="border-color:#ffcc00;text-align:center"><div style="font-size:38px">🔒</div><b style="color:#ffcc00">Live bloqueada</b><div id="pixKey" style="background:#000;padding:10px;border-radius:10px;color:#fff;margin-top:10px;font-size:12px;font-family:monospace">Configure no Admin</div><button class="btn" style="background:linear-gradient(90deg,#ffcc00,#ff8c00)" onclick="pagarPix()">JÁ PAGUEI R$5</button></div><div id="liveOk" class="card" style="display:none;border-color:#00ff88;text-align:center"><b style="color:#00ff88">✅ LIVE LIBERADA</b><button class="btn" style="background:#00ff88;color:#000" onclick="alert('Ao vivo!')">AO VIVO</button></div></div>
+<div id="pBusca" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Busca</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px"><i class="fa-solid fa-xmark"></i></button></div><div class="card"><input id="qBusca" class="input" placeholder="Buscar..." oninput="busca()"><div id="rBusca"></div></div></div>
+<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Criar</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px"><i class="fa-solid fa-xmark"></i></button></div><div class="card"><input id="file" type="file" accept="image/*,video/*" style="color:#fff;width:100%"><img id="prev" style="width:100%;margin-top:10px;border-radius:12px;display:none"><input id="desc" class="input" placeholder="Legenda..."><button class="btn" onclick="postar()">POSTAR</button></div></div>
+<div id="pLive" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Live Pix</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px"><i class="fa-solid fa-xmark"></i></button></div><div id="liveBloq" class="card" style="text-align:center"><div style="font-size:32px">🔒</div><b style="color:#ffcc00">Live bloqueada - R$5/dia</b><div id="pixKey" style="background:#000;padding:10px;border-radius:10px;margin-top:8px;font-size:11px">Configure no Admin</div><button class="btn" onclick="pagarPix()">JÁ PAGUEI</button></div><div id="liveOk" class="card" style="display:none;text-align:center"><b style="color:#00ff88">✅ Live liberada</b><button class="btn" style="background:#00ff88" onclick="alert('Ao vivo!')">ENTRAR</button></div></div>
 
 <div id="pEu" class="page">
-<div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><div style="display:flex;gap:8px"><button onclick="abrirAdmin()" style="background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:8px 14px;border-radius:20px;font-size:11px;font-weight:900;color:#000"><i class="fa-solid fa-crown"></i> ADMIN</button><button onclick="closeAll()" style="background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;border-radius:50%"><i class="fa-solid fa-xmark"></i></button></div></div>
-<div style="text-align:center;padding:12px"><div style="width:88px;height:88px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ff6a00,#8b0000);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:34px;border:3px solid #ff8c00">🔥</div><div style="color:#ff8c00;font-size:13px;margin-top:8px">@fire.user</div><div id="infoLive" style="color:#666;font-size:11px"></div><div style="color:#444;font-size:9px">ID: <span id="uidShow"></span></div></div>
-<div id="adminBox" style="display:none" class="card"><h4 style="color:#ffcc00"><i class="fa-solid fa-gear"></i> Painel Admin - CORRIGIDO</h4><input id="pixChave" class="input" placeholder="Sua chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button><input id="adTxt" class="input" placeholder="Texto propaganda"><div style="display:flex;gap:8px;margin-top:8px;align-items:center"><input id="adFreq" type="number" value="3" class="input" style="margin:0;width:70px"><label style="color:#fff;font-size:11px"><input type="checkbox" id="adOn"> Ads</label></div><button class="btn" style="background:linear-gradient(90deg,#ffcc00,#ff8c00)" onclick="salvarAd()">SALVAR ADS</button></div>
+<div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Meu Perfil</b><div style="display:flex;gap:8px"><button onclick="abrirAdmin()" style="background:#ffcc00;border:none;padding:7px 12px;border-radius:20px;font-size:10px;font-weight:900;color:#000"><i class="fa-solid fa-crown"></i> ADMIN</button><button onclick="closeAll()" style="background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%"><i class="fa-solid fa-xmark"></i></button></div></div>
+<div style="text-align:center;padding:10px"><div style="width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ff6a00,#8b0000);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;border:3px solid #ff8c00">🔥</div><div style="color:#ff8c00;margin-top:6px;font-size:12px">@fire.user</div><div id="infoLive" style="color:#666;font-size:10px"></div><div style="color:#444;font-size:8px">ID: <span id="uidShow"></span></div></div>
+<div id="adminBox" style="display:none" class="card"><h4 style="color:#ffcc00"><i class="fa-solid fa-gear"></i> Painel Admin</h4><input id="pixChave" class="input" placeholder="Sua chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button><input id="adTxt" class="input" placeholder="Texto propaganda"><div style="display:flex;gap:6px;margin-top:8px"><input id="adFreq" type="number" value="3" class="input" style="margin:0;width:60px"><label style="color:#fff;font-size:11px;display:flex;align-items:center;gap:4px"><input type="checkbox" id="adOn"> Ads</label></div><button class="btn" style="background:#ffcc00;color:#000" onclick="salvarAd()">SALVAR ADS</button></div>
 <div class="card"><b style="color:#ff8c00"><i class="fa-solid fa-bookmark"></i> Salvos</b><div id="listaSalvos"></div></div>
 </div>
 
-<!-- NAV CORRIGIDO - TODOS FUNCIONANDO -->
+<!-- NAV COM 5 BOTÕES CORRIGIDO -->
 <div class="nav">
-<button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house" style="font-size:18px"></i><span>Inicio</span></button>
-<button id="b1" onclick="go(1)"><i class="fa-solid fa-magnifying-glass" style="font-size:18px"></i><span>Busca</span></button>
+<button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button>
+<button id="b1" onclick="go(1)"><i class="fa-solid fa-magnifying-glass"></i><span>Busca</span></button>
 <button id="b2" onclick="go(2)"><div class="plus"><i class="fa-solid fa-plus"></i></div></button>
-<button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast" style="font-size:18px"></i><span>Live</span></button>
-<button id="b4" onclick="go(4)"><i class="fa-solid fa-user" style="font-size:18px"></i><span>Eu</span></button>
+<button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast"></i><span>Live</span></button>
+<button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button>
 </div>
 </div>
 
 <script>
-let uid=localStorage.getItem("uid")||"u_"+Math.random().toString(36).slice(2,8); localStorage.setItem("uid",uid);
-let posts=JSON.parse(localStorage.getItem("posts_pro")||"null")||[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Titular corrigido! Botões de baixo funcionando! 🔥",fire:7793,firedBy:[],likedBy:[],com:[{u:"ana",t:"Agora entra no admin!"}],saveBy:[],share:8,sharedBy:[],isTop:true}];
+let uid=localStorage.getItem("uid")||"u_"+Math.random().toString(36).slice(2,6);localStorage.setItem("uid",uid);
+let posts=JSON.parse(localStorage.getItem("posts_dir")||"null")||[{owner:"fire.work",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"App no lado certo! Tudo na direita 🔥",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true}];
 let cur=0,temp="",cfg=JSON.parse(localStorage.getItem("cfg")||"null")||{pixK:"Configure no Admin",adT:"",adF:3,adOn:false};
-function save(){localStorage.setItem("posts_pro",JSON.stringify(posts)); render();}
-function saveCfg(){localStorage.setItem("cfg",JSON.stringify(cfg)); render();}
+function save(){localStorage.setItem("posts_dir",JSON.stringify(posts));render();}
+function saveCfg(){localStorage.setItem("cfg",JSON.stringify(cfg));render();}
 function render(){
 let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0));
-let feed=[]; list.forEach((p,i)=>{feed.push(p); if(cfg.adOn && (i+1)%cfg.adF===0) feed.push({ad:true});});
+let feed=[];list.forEach((p,i)=>{feed.push(p);if(cfg.adOn&&(i+1)%cfg.adF===0)feed.push({ad:true});});
 document.getElementById("feed").innerHTML=feed.map(p=>{
-if(p.ad) return `<div class="post" style="background:linear-gradient(135deg,#1a1a00,#332200);border:2px solid #ffcc00;display:flex;align-items:center;justify-content:center"><b style="color:#ffcc00">${cfg.adT||"PROPAGANDA"}</b></div>`;
-let idx=posts.indexOf(p); let fired=p.firedBy.includes(uid); let liked=p.likedBy.includes(uid); let saved=p.saveBy.includes(uid);
-return `<div class="post" style="background-image:url('${p.img}')"><div class="sideL"><button class="b" onclick="fire(${idx},this)"><div class="i fire ${fired?'active':''}"><i class="fa-solid fa-fire"></i></div><div class="c"><b>${(p.firedBy.length||p.fire).toLocaleString('pt-BR')}</b><br><span>${fired?'Feito':'Chamas'}</span></div></button><button class="b" onclick="like(${idx},this)"><div class="i heart ${liked?'liked':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="c"><b>Curtir</b><br><span>${p.likedBy.length}</span></div></button><button class="b" onclick="openC(${idx})"><div class="i chat"><i class="fa-regular fa-comment-dots"></i></div><div class="c"><b>${p.com.length}</b><br><span>comen</span></div></button></div><div class="sideR"><button class="b" onclick="openS(${idx})"><div class="i share"><i class="fa-solid fa-rocket"></i></div><div class="c"><b>${p.sharedBy.length||p.share}</b><br><span>compar</span></div></button><button class="b" onclick="savePost(${idx},this)"><div class="i save ${saved?'active':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="c"><b>${saved?'Salvo':'Salvar'}</b></div></button></div><div class="info"><b>@${p.owner}</b><div>${p.desc}</div><div class="meta"><span>🔥 ${p.firedBy.length}</span><span>💖 ${p.likedBy.length}</span></div></div></div>`;
+if(p.ad) return `<div class="post" style="background:linear-gradient(135deg,#1a1a00,#332200);display:flex;align-items:center;justify-content:center;border:2px solid #ffcc00"><b style="color:#ffcc00">${cfg.adT||"ANÚNCIO"}</b></div>`;
+let idx=posts.indexOf(p);let fired=p.firedBy.includes(uid);let liked=p.likedBy.includes(uid);let saved=p.saveBy.includes(uid);
+return `<div class="post" style="background-image:url('${p.img}')"><div class="sideR">
+<button class="b" onclick="fire(${idx},this)"><div class="i fire ${fired?'active':''}"><i class="fa-solid fa-fire"></i></div><div class="c">${p.firedBy.length}<br>Chamas</div></button>
+<button class="b" onclick="like(${idx},this)"><div class="i heart ${liked?'liked':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="c">${p.likedBy.length}<br>Curtir</div></button>
+<button class="b" onclick="openC(${idx})"><div class="i chat"><i class="fa-regular fa-comment-dots"></i></div><div class="c">${p.com.length}<br>Comen</div></button>
+<button class="b" onclick="shareW(${idx})"><div class="i share"><i class="fa-solid fa-share"></i></div><div class="c">${p.sharedBy.length||p.share}<br>Compar</div></button>
+<button class="b" onclick="savePost(${idx},this)"><div class="i save ${saved?'active':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="c">Salvar</div></button>
+</div><div class="info"><b>@${p.owner}</b><div>${p.desc}</div></div></div>`;
 }).join("");
-document.getElementById("listaSalvos").innerHTML=posts.filter(p=>p.saveBy.includes(uid)).map(p=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${p.img}" style="width:44px;height:44px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555'>Nenhum</div>";
-document.getElementById("pixKey").innerText=cfg.pixK; document.getElementById("pixChave").value=cfg.pixK!="Configure no Admin"?cfg.pixK:""; document.getElementById("adTxt").value=cfg.adT; document.getElementById("adFreq").value=cfg.adF; document.getElementById("adOn").checked=cfg.adOn; document.getElementById("uidShow").innerText=uid; checkLive();
+document.getElementById("listaSalvos").innerHTML=posts.filter(p=>p.saveBy.includes(uid)).map(p=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${p.img}" style="width:40px;height:40px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555'>Nenhum</div>";
+document.getElementById("pixKey").innerText=cfg.pixK;document.getElementById("pixChave").value=cfg.pixK!="Configure no Admin"?cfg.pixK:"";document.getElementById("adTxt").value=cfg.adT;document.getElementById("adFreq").value=cfg.adF;document.getElementById("adOn").checked=cfg.adOn;document.getElementById("uidShow").innerText=uid;checkLive();
 }
-function anim(el){let i=el.querySelector('.i')||el; i.classList.remove('anim'); void i.offsetWidth; i.classList.add('anim'); setTimeout(()=>i.classList.remove('anim'),700);}
-function fire(i,btn){anim(btn); let p=posts[i]; if(p.firedBy.includes(uid))p.firedBy=p.firedBy.filter(x=>x!==uid);else p.firedBy.push(uid); save();}
-function like(i,btn){anim(btn); let p=posts[i]; if(p.likedBy.includes(uid))p.likedBy=p.likedBy.filter(x=>x!==uid);else p.likedBy.push(uid); save();}
-function savePost(i,btn){anim(btn); let p=posts[i]; if(p.saveBy.includes(uid))p.saveBy=p.saveBy.filter(x=>x!==uid);else p.saveBy.push(uid); save();}
-function openC(i){cur=i; document.getElementById("ct").innerText=posts[i].com.length; document.getElementById("listC").innerHTML=posts[i].com.map(c=>`<div style="padding:10px 0;border-bottom:1px solid rgba(255,69,0,.1)"><b style="color:#ff8c00">@${c.u}</b> ${c.t}</div>`).join(""); document.getElementById("sheetC").classList.add("show");}
-function sendC(){let t=document.getElementById("txtC").value.trim(); if(!t) return; posts[cur].com.push({u:"voce",t:t}); document.getElementById("txtC").value=""; save(); openC(cur);}
-function openS(i){cur=i; document.getElementById("sheetS").classList.add("show");}
-function shareW(){window.open("https://wa.me/?text="+encodeURIComponent(location.href),"_blank"); if(!posts[cur].sharedBy.includes(uid)){posts[cur].sharedBy.push(uid); save();} document.getElementById("sheetS").classList.remove("show");}
-function shareCopy(){navigator.clipboard.writeText(location.href); alert("Link copiado!"); if(!posts[cur].sharedBy.includes(uid)){posts[cur].sharedBy.push(uid); save();} document.getElementById("sheetS").classList.remove("show");}
-
-// CORREÇÃO BOTÕES DE BAIXO + ADMIN
-function go(n){
-document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));
-let el=document.getElementById("b"+n); if(el) el.classList.add("on");
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));
-if(n==0){ /* feed */ }
-if(n==1) document.getElementById("pBusca").classList.add("show");
-if(n==2) document.getElementById("pCriar").classList.add("show");
-if(n==3) document.getElementById("pLive").classList.add("show");
-if(n==4) document.getElementById("pEu").classList.add("show");
-}
-function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b0").classList.add("on");}
-function abrirAdmin(){
-let s=prompt("🔑 Senha Admin:");
-if(s==="fire123"){
-document.getElementById("adminBox").style.display="block";
-document.getElementById("adminBox").scrollIntoView({behavior:"smooth"});
-}else if(s){alert("Senha incorreta! Dica: fire123");}
-}
-function busca(){let q=document.getElementById("qBusca").value.toLowerCase(); let r=posts.filter(p=>p.desc.toLowerCase().includes(q)); document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${p.img}" style="width:40px;height:40px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555'>Nada</div>";}
-function salvarPix(){let k=document.getElementById("pixChave").value.trim(); if(!k) return alert("Coloque Pix"); cfg.pixK=k; saveCfg(); alert("✅ Pix salvo!");}
-function salvarAd(){cfg.adT=document.getElementById("adTxt").value.trim(); cfg.adF=parseInt(document.getElementById("adFreq").value)||3; cfg.adOn=document.getElementById("adOn").checked; saveCfg(); alert("✅ Ads salvo!");}
-function checkLive(){let pago=localStorage.getItem("livePago")===new Date().toDateString(); document.getElementById("liveBloq").style.display=pago?"none":"block"; document.getElementById("liveOk").style.display=pago?"block":"none"; document.getElementById("infoLive").innerText=pago?"✅ Live liberada":"🔒 Live bloqueada";}
-function pagarPix(){localStorage.setItem("livePago",new Date().toDateString()); checkLive(); alert("Live liberada!");}
-document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=ev=>{temp=ev.target.result; document.getElementById("prev").src=temp; document.getElementById("prev").style.display="block";}; r.readAsDataURL(f);});
-function postar(){let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥"; if(!temp) return alert("Escolha foto/vídeo"); posts.unshift({owner:"voce",img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false}); temp=""; document.getElementById("prev").style.display="none"; save(); closeAll();}
+function anim(el){let i=el.querySelector('.i');i.classList.remove('anim');void i.offsetWidth;i.classList.add('anim');setTimeout(()=>i.classList.remove('anim'),600);}
+function fire(i,btn){anim(btn);let p=posts[i];if(p.firedBy.includes(uid))p.firedBy=p.firedBy.filter(x=>x!==uid);else p.firedBy.push(uid);save();}
+function like(i,btn){anim(btn);let p=posts[i];if(p.likedBy.includes(uid))p.likedBy=p.likedBy.filter(x=>x!==uid);else p.likedBy.push(uid);save();}
+function savePost(i,btn){anim(btn);let p=posts[i];if(p.saveBy.includes(uid))p.saveBy=p.saveBy.filter(x=>x!==uid);else p.saveBy.push(uid);save();}
+function openC(i){cur=i;document.getElementById("ct").innerText=posts[i].com.length;document.getElementById("listC").innerHTML=posts[i].com.map(c=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,69,0,.1)"><b style="color:#ff8c00">@${c.u}</b> ${c.t}</div>`).join("");document.getElementById("sheetC").classList.add("show");}
+function sendC(){let t=document.getElementById("txtC").value.trim();if(!t)return;posts[cur].com.push({u:"voce",t:t});document.getElementById("txtC").value="";save();openC(cur);}
+function shareW(i){cur=i;let p=posts[i];if(!p.sharedBy.includes(uid)){p.sharedBy.push(uid);save();}window.open("https://wa.me/?text="+encodeURIComponent(location.href),"_blank");}
+function go(n){document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));let el=document.getElementById("b"+n);if(el)el.classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n==1)document.getElementById("pBusca").classList.add("show");if(n==2)document.getElementById("pCriar").classList.add("show");if(n==3)document.getElementById("pLive").classList.add("show");if(n==4)document.getElementById("pEu").classList.add("show");}
+function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b0").classList.add("on");}
+function abrirAdmin(){let s=prompt("Senha Admin:");if(s==="fire123"){document.getElementById("adminBox").style.display="block";document.getElementById("adminBox").scrollIntoView({behavior:"smooth"})}else if(s)alert("Senha: fire123");}
+function busca(){let q=document.getElementById("qBusca").value.toLowerCase();let r=posts.filter(p=>p.desc.toLowerCase().includes(q));document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${p.img}" style="width:40px;height:40px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555'>Nada</div>";}
+function salvarPix(){let k=document.getElementById("pixChave").value.trim();if(!k)return alert("Coloque Pix");cfg.pixK=k;saveCfg();alert("Pix salvo!");}
+function salvarAd(){cfg.adT=document.getElementById("adTxt").value.trim();cfg.adF=parseInt(document.getElementById("adFreq").value)||3;cfg.adOn=document.getElementById("adOn").checked;saveCfg();alert("Ads salvo!");}
+function checkLive(){let pago=localStorage.getItem("livePago")===new Date().toDateString();document.getElementById("liveBloq").style.display=pago?"none":"block";document.getElementById("liveOk").style.display=pago?"block":"none";document.getElementById("infoLive").innerText=pago?"✅ Live liberada":"🔒 Bloqueada";}
+function pagarPix(){localStorage.setItem("livePago",new Date().toDateString());checkLive();}
+document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{temp=ev.target.result;document.getElementById("prev").src=temp;document.getElementById("prev").style.display="block";};r.readAsDataURL(f);});
+function postar(){let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";if(!temp)return alert("Escolha foto");posts.unshift({owner:"voce",img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false});temp="";document.getElementById("prev").style.display="none";save();closeAll();}
 render();
 </script>
 </body>
-</html> 
+</html>
