@@ -3,215 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>WORK GOLD - TUDO FUNCIONANDO</title>
+<title>WORK GOLD - DIFERENCIADO</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100dvh;background:#000;overflow:hidden}
+html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:system-ui}
 .app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;position:relative;display:flex;flex-direction:column}
-.stage{flex:1;position:relative;background:#000;overflow:hidden}
+.stage{flex:1;position:relative;overflow:hidden}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#111}
-.shadow{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,transparent 55%,rgba(0,0,0,.25) 100%)}
-.top{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:5;background:rgba(30,30,30,.9);border:1.5px solid #FFD700;border-radius:100px;padding:4px;display:flex}
-.pill{padding:7px 14px;border-radius:100px;font-size:12px;font-weight:900;color:#888}.pill.on{background:#FFD700;color:#000}
-.live{position:absolute;top:12px;right:10px;z-index:5;background:#1a1a1a;border:1.5px solid #FFD700;color:#FFD700;padding:5px 10px;border-radius:100px;font-size:10px;font-weight:900}
-.right{position:absolute;right:10px;bottom:95px;z-index:5;display:flex;flex-direction:column;gap:16px;align-items:center}
-.btn{width:54px;height:54px;border-radius:50%;background:#1f1f1f;border:2.5px solid #FFD700;display:flex;align-items:center;justify-content:center;font-size:22px;color:#FFD700;transition:.2s}
-.btn.on{background:#FFD700;color:#000;border-color:#000;transform:scale(1.1)}
-.num{font-size:11px;font-weight:900;color:#fff;margin-top:4px;text-align:center}
-.bottom{position:absolute;left:10px;right:78px;bottom:12px;z-index:5}
-.card{background:rgba(15,15,15,.9);border:1.5px solid rgba(255,215,0,.5);border-radius:14px;padding:10px}
-.nav{height:62px;min-height:62px;background:#0c0c0c;border-top:2.5px solid #FFD700;display:flex;justify-content:space-around;align-items:center;flex-shrink:0;z-index:20}
-.ntab{flex:1;color:#666;font-size:9px;font-weight:900;text-align:center}.ntab.on{color:#FFD700}
-
-/* MODAIS - SEM CORTE NO MEIO */
-.modal{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;background:rgba(0,0,0,.75);z-index:100;display:none;flex-direction:column;justify-content:flex-end}
-.modal.on{display:flex}
-.box{width:100%!important;transform:none!important;margin:0!important;background:#161616;border-top:3px solid #FFD700;border-radius:22px 22px 0 0;display:flex;flex-direction:column;max-height:80dvh}
-.list{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch}
-.input-bar{flex-shrink:0;padding:12px;background:#0f0f0f;border-top:2px solid #FFD700;display:flex;gap:8px;padding-bottom:18px}
-.inp{flex:1;background:#222;border:2px solid #FFD700;border-radius:100px;padding:13px 16px;color:#fff;font-size:16px;outline:none}
-.inp:focus{border-color:#fff}
-.send{padding:13px 20px;border-radius:100px;background:#FFD700;color:#000;font-weight:900;border:none}
+.gold{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,215,0,.18) 0%,transparent 40%,rgba(0,0,0,.92) 100%)}
+.top{position:absolute;top:12px;left:12px;right:12px;z-index:5;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;color:#FFD700;font-size:15px;letter-spacing:.5px}
+.pill{padding:5px 10px;border-radius:100px;font-size:10px;font-weight:900;display:flex;align-items:center;gap:4px}
+.right{position:absolute;right:10px;bottom:125px;z-index:5;display:flex;flex-direction:column;gap:14px;align-items:center}
+.btn{width:52px;height:52px;border-radius:14px;background:rgba(15,15,15,.92);border:1.8px solid #FFD700;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#FFD700;font-size:20px;backdrop-filter:blur(6px)}
+.btn.on{background:#FFD700;color:#000}
+.num{font-size:10px;font-weight:800;color:#fff;margin-top:4px;text-align:center;line-height:1.1}
+.bottom{position:absolute;left:10px;right:82px;bottom:12px;z-index:5}
+.card{background:rgba(12,12,12,.96);border:1.5px solid #FFD700;border-radius:18px;padding:12px;backdrop-filter:blur(12px);box-shadow:0 0 20px rgba(255,215,0,.25)}
+.nav{height:66px;min-height:66px;background:#090909;border-top:2.5px solid #FFD700;display:flex;justify-content:space-around;align-items:center;flex-shrink:0;z-index:20}
+.ntab{color:#666;font-size:9px;font-weight:900;text-align:center;flex:1}.ntab.on{color:#FFD700}
+.modal{position:absolute;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,.78);z-index:100;display:none;flex-direction:column;justify-content:flex-end}.modal.on{display:flex}
+.box{width:100%;background:#161616;border-top:3px solid #FFD700;border-radius:22px 22px 0 0;display:flex;flex-direction:column;max-height:82dvh}
 .toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#FFD700;color:#000;padding:11px 20px;border-radius:100px;font-weight:900;display:none;z-index:300;font-size:13px}.toast.on{display:block}
-#cam{position:absolute;inset:0;background:#000;z-index:200;display:none;flex-direction:column}#camEl{flex:1;width:100%;object-fit:cover;background:#111}
+#cam{position:absolute;inset:0;background:#000;z-index:200;display:none;flex-direction:column}#camEl{flex:1;width:100%;object-fit:cover}
 </style>
 </head>
 <body>
 <div class="app">
 <div class="stage" id="stage">
-<div class="bg" id="bg"></div><div class="shadow"></div>
-<div class="top"><div class="pill">Seguindo</div><div class="pill on">Para você</div></div>
-<div class="live" id="liveT" onclick="startLive()">🔴 LIVE 30min</div>
+<div class="bg" id="bg"></div><div class="gold"></div>
+<div class="top">
+<div class="logo">👑 WORK GOLD</div>
+<div style="display:flex;gap:6px">
+<div class="pill" style="background:rgba(20,20,20,.9);border:1.5px solid #FFD700;color:#FFD700">R$ <span id="earn">0,42</span> 💰</div>
+<div class="pill" style="background:#ff1a1a;color:#fff" onclick="startLive()" id="liveT">● LIVE</div>
+</div>
+</div>
 
 <div class="right">
-<div onclick="doFollow()" style="text-align:center">
-<div class="btn" id="bF" style="position:relative;overflow:visible;width:56px;height:56px"><span id="fL" style="font-weight:900">L</span><div id="fB" style="position:absolute;bottom:-3px;right:-3px;width:18px;height:18px;background:#FFD700;color:#000;border-radius:50%;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:900;border:2px solid #000">+</div></div>
-</div>
-<div onclick="doLike()" style="text-align:center"><div class="btn" id="bL">🤍</div><div class="num" id="nL">120.3K</div></div>
-<div onclick="openC()" style="text-align:center"><div class="btn" style="background:#FFD700;color:#000;border-color:#000">💬</div><div class="num" id="nC">3</div></div>
-<div onclick="doSave()" style="text-align:center"><div class="btn" id="bS">🔖</div><div class="num" id="nS">Salvar</div></div>
+<div onclick="doFollow()" style="text-align:center"><div class="btn" id="bF"><span id="fL" style="font-weight:900">L</span></div><div class="num" id="fT">Seguir</div></div>
+<div onclick="doLike()" style="text-align:center"><div class="btn" id="bL">🤍</div><div class="num" id="nL">2.1k<br><span style="color:#FFD700;font-size:9px">+R$0,05</span></div></div>
+<div onclick="openC()" style="text-align:center"><div class="btn">💬</div><div class="num" id="nC">87</div></div>
+<div onclick="doSave()" style="text-align:center"><div class="btn" id="bS">🔖</div><div class="num">34</div></div>
 <div onclick="doShare()" style="text-align:center"><div class="btn">↗</div><div class="num">Share</div></div>
+<div onclick="openHire()" style="text-align:center"><div class="btn" style="background:linear-gradient(90deg,#FFD700,#ffb300);color:#000;border-color:#000;width:auto;padding:0 14px;height:44px;border-radius:100px;font-size:12px;font-weight:900;flex-direction:row">CONTRATAR</div></div>
 </div>
 
 <div class="bottom">
 <div class="card">
-<div style="display:flex;gap:8px;align-items:center;margin-bottom:5px">
-<div id="uP" style="width:34px;height:34px;border-radius:50%;background:#222;border:2px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-weight:900;font-size:14px">L</div>
-<div id="uN" style="color:#FFD700;font-weight:900;font-size:13px">@lux.studio</div>
-<div style="margin-left:auto;background:#FFD700;color:#000;padding:3px 8px;border-radius:100px;font-size:10px;font-weight:900" id="uF">Seguir</div>
-<div style="margin-left:6px;color:#FFD700;font-size:14px" onclick="openAdmin()">⚙️</div>
+<div style="display:flex;gap:9px;align-items:center">
+<div id="uP" style="width:42px;height:42px;border-radius:50%;background:#222;border:2px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-weight:900;overflow:hidden">L</div>
+<div style="flex:1"><div style="display:flex;align-items:center;gap:6px"><div id="uN" style="color:#fff;font-weight:900;font-size:13px">@lux.studio</div><div style="background:#FFD700;color:#000;font-size:8px;padding:2px 6px;border-radius:100px;font-weight:900">✓ GOLD</div></div><div style="font-size:11px;color:#FFD700;margin-top:2px;display:flex;gap:8px"><span>⭐ 4.9</span><span>•</span><span id="jobs">127 trabalhos</span></div></div>
 </div>
-<div id="uD" style="font-size:12px;color:#fff;line-height:1.3">Golden city views at sunset ✨ #gold #luxury #work</div>
+<div id="uD" style="font-size:12px;color:#ddd;line-height:1.35;margin-top:10px">Edição criativa de vídeos em 4K • Color grading, cortes dinâmicos, motion graphics • Entrega em 24h</div>
+<div style="display:flex;gap:8px;margin-top:12px">
+<button onclick="openHire()" style="flex:1;background:linear-gradient(90deg,#FFD700,#ffb300);color:#000;border:none;padding:11px;border-radius:100px;font-weight:900;font-size:12px">CONTRATAR AGORA</button>
+<button onclick="doShare()" style="background:#1e1e1e;border:1.5px solid #FFD700;color:#FFD700;padding:11px 14px;border-radius:100px;font-weight:900;font-size:12px">↗ Share</button>
+</div>
 </div>
 </div>
 
 <div id="toast" class="toast"></div>
 
-<!-- COMENTÁRIOS 100% FUNCIONAL - SEM CORTE -->
-<div class="modal" id="mC">
-<div style="flex:1" onclick="closeAll()"></div>
-<div class="box">
-<div style="padding:13px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1.5px solid #2a2a2a;flex-shrink:0">
-<div><b style="color:#FFD700;font-size:14px" id="cT">💬 3 comentários</b><div style="font-size:10px;color:#888" id="cUser">@lux.studio</div></div>
-<button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:#222;border:1.5px solid #FFD700;color:#FFD700;font-size:16px">×</button>
-</div>
-<div class="list" id="cL"></div>
-<div class="input-bar">
-<input id="cI" class="inp" placeholder="Escreva um comentário..." autocomplete="off">
-<button class="send" onclick="sendC()">Enviar</button>
-</div>
-</div>
-</div>
-
-<!-- PERFIL 100% FUNCIONAL -->
-<div class="modal" id="mP">
-<div style="flex:1" onclick="closeAll()"></div>
-<div class="box" style="max-height:88dvh"><div style="padding:16px">
-<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:#FFD700;font-size:16px">👑 Meu Perfil</b><button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:#222;border:1.5px solid #FFD700;color:#FFD700">×</button></div>
-<div style="text-align:center;margin-top:16px">
-<img id="pImg" style="width:80px;height:80px;border-radius:50%;border:3px solid #FFD700;display:none;object-fit:cover;margin:0 auto">
-<div id="pEm" style="width:80px;height:80px;border-radius:50%;background:#222;border:3px solid #FFD700;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto">👑</div>
-<input type="file" id="pFile" accept="image/*" style="display:none">
-<button onclick="document.getElementById('pFile').click()" style="margin-top:10px;padding:6px 14px;border-radius:100px;background:#222;border:1.5px solid #FFD700;color:#FFD700;font-weight:900;font-size:11px">📸 Trocar foto</button>
-<div style="margin-top:10px;color:#FFD700;font-weight:900" id="pName">Jonatha Carlos Maria 👑</div>
-<div style="color:#888;font-size:12px" id="pNick">@jonathacarlosmaria</div>
-</div>
-<input id="iN" class="inp" placeholder="Seu nome completo" style="margin-top:16px;width:100%">
-<input id="iH" class="inp" placeholder="Seu @nick sem @" style="margin-top:8px;width:100%">
-<button onclick="saveProfile()" style="width:100%;margin-top:12px;padding:14px;border-radius:100px;background:#FFD700;color:#000;font-weight:900;border:none;font-size:14px">💾 SALVAR PERFIL</button>
-<button onclick="myPosts()" style="width:100%;margin-top:8px;padding:12px;border-radius:100px;background:#222;border:1.5px solid #FFD700;color:#FFD700;font-weight:900">📱 Meus Posts</button>
-</div></div>
-</div>
-
-<!-- ADMIN FUNCIONAL -->
-<div class="modal" id="mA">
+<div class="modal" id="mHire">
 <div style="flex:1" onclick="closeAll()"></div>
 <div class="box"><div style="padding:16px">
-<div style="display:flex;justify-content:space-between"><b style="color:#FFD700">⚙️ Admin Gold</b><button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:#222;border:1.5px solid #FFD700;color:#FFD700">×</button></div>
-<div style="margin-top:14px;background:#222;border-radius:12px;padding:10px"><div style="font-size:11px;color:#888">Total posts</div><div style="font-size:20px;font-weight:900;color:#FFD700" id="aTotal">2</div></div>
-<button onclick="clearPosts()" style="width:100%;margin-top:12px;padding:12px;border-radius:100px;background:#222;border:1.5px solid #ff4444;color:#ff4444;font-weight:900">🗑️ Limpar Todos Posts</button>
-<button onclick="resetApp()" style="width:100%;margin-top:8px;padding:12px;border-radius:100px;background:#FFD700;color:#000;font-weight:900;border:none">🔄 Resetar App Completo</button>
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:#FFD700">💼 Contratar - DIFERENCIAL</b><button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:#222;border:1.5px solid #FFD700;color:#FFD700">×</button></div>
+<div style="margin-top:12px;background:#222;border:1.5px solid #FFD700;border-radius:12px;padding:12px"><div style="color:#FFD700;font-weight:900" id="hireName">@lux.studio ✓ GOLD VERIFICADO</div><div style="font-size:11px;color:#aaa;margin-top:4px">⭐ 4.9 • 127 jobs concluídos • Responde em 5min • Online agora 🟢</div></div>
+<input id="hireMsg" placeholder="Olá! Quero contratar seu serviço Gold..." style="width:100%;margin-top:12px;background:#222;border:2px solid #FFD700;border-radius:12px;padding:12px;color:#fff;outline:none">
+<button onclick="confirmHire()" style="width:100%;margin-top:10px;background:#FFD700;color:#000;border:none;padding:13px;border-radius:100px;font-weight:900">💰 CONTRATAR POR R$50 - DIFERENCIADO</button>
 </div></div>
 </div>
 
-<!-- CAMERA FUNCIONAL -->
+<div class="modal" id="mC"><div style="flex:1" onclick="closeAll()"></div><div class="box"><div style="padding:12px;display:flex;justify-content:space-between;border-bottom:1px solid #333"><b style="color:#FFD700" id="cT">💬 Comentários</b><button onclick="closeAll()" style="width:28px;height:28px;border-radius:50%;background:#222;border:1px solid #FFD700;color:#FFD700">×</button></div><div id="cL" style="padding:12px;display:flex;flex-direction:column;gap:10px;max-height:50vh;overflow:auto"></div><div style="padding:12px;display:flex;gap:8px;border-top:2px solid #FFD700"><input id="cI" placeholder="Comentar..." style="flex:1;background:#222;border:2px solid #FFD700;border-radius:100px;padding:12px;color:#fff"><button onclick="sendC()" style="background:#FFD700;color:#000;padding:12px 18px;border-radius:100px;font-weight:900;border:none">Enviar</button></div></div></div>
+
 <div id="cam">
 <video id="camEl" autoplay muted playsinline></video>
-<div style="position:absolute;top:0;left:0;right:0;padding:12px;display:flex;justify-content:space-between;align-items:center;z-index:5;background:linear-gradient(180deg,rgba(0,0,0,.6),transparent)">
-<button onclick="closeCam()" style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.7);border:1.5px solid #FFD700;color:#FFD700;font-size:18px">✕</button>
-<div style="color:#FFD700;font-weight:900;font-size:12px" id="camStatus">📷 Pronto</div>
-<button onclick="doPost()" id="postBtn" style="background:#FFD700;color:#000;padding:8px 16px;border-radius:100px;font-weight:900;border:none;display:none">Postar ✨</button>
-</div>
-<div style="position:absolute;bottom:0;left:0;right:0;padding:14px;display:flex;gap:10px;align-items:center;z-index:5;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent)">
-<input id="dI" class="inp" placeholder="Legenda do post... #gold" style="flex:1">
-<button onclick="cap()" style="width:64px;height:64px;border-radius:50%;background:#FFD700;border:4px solid #000;font-size:26px;flex-shrink:0">📸</button>
-</div>
+<div style="position:absolute;top:0;left:0;right:0;padding:12px;display:flex;justify-content:space-between;z-index:5;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)"><button onclick="closeCam()" style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.7);border:1.5px solid #FFD700;color:#FFD700">✕</button><div style="color:#FFD700;font-weight:900;font-size:12px" id="camStatus">📷</div><button onclick="doPost()" id="postBtn" style="background:#FFD700;color:#000;padding:8px 16px;border-radius:100px;font-weight:900;border:none;display:none">Postar ✨</button></div>
+<div style="position:absolute;bottom:0;left:0;right:0;padding:14px;display:flex;gap:10px;z-index:5;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent)"><input id="dI" placeholder="Descreva seu serviço Gold..." style="flex:1;background:#222;border:2px solid #FFD700;border-radius:100px;padding:12px;color:#fff"><button onclick="cap()" style="width:60px;height:60px;border-radius:50%;background:#FFD700;border:3px solid #000;font-size:24px">📸</button></div>
 </div>
 
 </div>
-
 <div class="nav">
-<div class="ntab on" onclick="goHome()">⌂<br>Início</div>
-<div class="ntab" onclick="openSearch()">⌕<br>Buscar</div>
-<div class="ntab" onclick="openCam()"><div style="width:48px;height:48px;border-radius:50%;background:#000;border:2.5px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-size:26px;margin:0 auto">+</div></div>
-<div class="ntab" onclick="startLive()">◎<br>LIVE</div>
-<div class="ntab" onclick="openProfile()">👑<br>Eu</div>
+<div class="ntab on">💼<br>Work</div>
+<div class="ntab" onclick="toast('🔍 Jobs em breve')">🔍<br>Jobs</div>
+<div class="ntab" onclick="openCam()"><div style="width:50px;height:50px;border-radius:50%;background:#000;border:2.5px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-size:26px;margin:0 auto">+</div></div>
+<div class="ntab">💰<br>Ganhos</div>
+<div class="ntab">👑<br>Eu</div>
 </div>
 </div>
 
 <script>
-let cur=0,photo=null,stream=null,liveTimer=null,liveSec=0;
-let posts=JSON.parse(localStorage.getItem('work_final')||'null') || [
-{img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1000",desc:"Golden city views at sunset ✨ #gold #luxury #work",owner:"lux.studio",likes:120300,liked:false,follow:false,saved:false,coms:["Lindo demais! 😍","Gold vibes ✨","Top demais 👑"]},
-{img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1000",desc:"WORK GOLD - Tudo funcionando 👑 Tela sem corte!",owner:"jonathacarlosmaria",likes:89200,liked:false,follow:false,saved:false,coms:["Agora 100% funcional! 🔥"]},
-{img:"https://images.unsplash.com/photo-1496483353456-90997957cf99?q=80&w=1000",desc:"Viajando com estilo gold ✈️ #travel #gold",owner:"gold.travel",likes:54300,liked:false,follow:false,saved:false,coms:["Incrível!"]},
+let cur=0,earn=0.42,photo=null,stream=null,liveTimer=null,liveSec=0;
+let posts=[
+{img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1000",desc:"Edição criativa de vídeos em 4K • Color grading, cortes dinâmicos, motion graphics • Entrega em 24h",owner:"lux.studio",likes:2100,liked:false,follow:false,saved:false,coms:["Quanto cobra? Quero contratar! 💼","Top demais!"]},
+{img:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000",desc:"Sites que vendem 💻 Landing page Gold em 24h - A partir de R$150 - 127 trabalhos entregues",owner:"dev.gold",likes:89300,liked:false,follow:false,saved:false,coms:["Faz loja virtual? Quero!"]},
 ];
 const $=id=>document.getElementById(id);
-function toast(t){let el=$('toast');el.innerText=t;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),2500)}
+function toast(t){let e=$('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2300)}
 function closeAll(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
-function closeCam(){$('cam').style.display='none';$('postBtn').style.display='none';$('camStatus').innerText='📷 Pronto';photo=null;if(stream){try{stream.getTracks().forEach(s=>s.stop())}catch{};stream=null}}
-function fmt(n){return n>=1000?(n/1000).toFixed(1).replace('.0','')+'K':n}
-function saveLS(){localStorage.setItem('work_final',JSON.stringify(posts));$('aTotal').innerText=posts.length}
+function closeCam(){$('cam').style.display='none';$('postBtn').style.display='none';photo=null;if(stream){try{stream.getTracks().forEach(s=>s.stop())}catch{}stream=null}}
+function fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':n}
 function load(){
-saveLS();
-let p=posts[cur];
-$('bg').style.backgroundImage=`url('${p.data||p.img}')`;
-$('uN').innerText='@'+p.owner;$('uD').innerText=p.desc;
-$('uP').innerText=p.owner[0].toUpperCase();$('fL').innerText=p.owner[0].toUpperCase();
-$('nL').innerText=fmt(p.likes);$('nC').innerText=p.coms.length;
-$('bL').innerText=p.liked?'💛':'🤍';$('bL').className=p.liked?'btn on':'btn';
-$('bS').innerText=p.saved?'⭐':'🔖';$('bS').className=p.saved?'btn on':'btn';$('nS').innerText=p.saved?'Salvo':'Salvar';
-$('fB').innerText=p.follow?'✓':'+';$('fB').style.background=p.follow?'#00e676':'#FFD700';$('uF').innerText=p.follow?'Seguindo':'Seguir';$('uF').style.background=p.follow?'#222':'#FFD700';$('uF').style.color=p.follow?'#FFD700':'#000';
-$('cT').innerText=`💬 ${p.coms.length} comentários`;$('cUser').innerText='@'+p.owner;
-$('cL').innerHTML=p.coms.map((c,i)=>`<div style="display:flex;gap:8px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:#FFD700;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;flex-shrink:0">${i+1}</div><div style="flex:1;background:#222;border-radius:12px;padding:9px 11px"><div style="display:flex;justify-content:space-between"><b style="color:#FFD700;font-size:11px">@gold_${i+1}</b><span onclick="delCom(${i})" style="color:#666;font-size:12px">🗑️</span></div><div style="font-size:13px;margin-top:2px;color:#fff;word-break:break-word">${c}</div></div></div>`).join('') || '<div style="text-align:center;color:#666;padding:30px 10px">Seja o primeiro a comentar ✨</div>';
-let user=JSON.parse(localStorage.getItem('work_user')||'null');if(user){$('pName').innerText=user.name;$('pNick').innerText='@'+user.nick}
+let p=posts[cur];$('bg').style.backgroundImage=`url('${p.img}')`;$('uN').innerText='@'+p.owner;$('uD').innerText=p.desc;$('uP').innerText=p.owner[0].toUpperCase();$('fL').innerText=p.owner[0].toUpperCase();$('nL').innerHTML=`${fmt(p.likes)}<br><span style="color:#FFD700;font-size:9px">+R$0,05</span>`;$('nC').innerText=p.coms.length;$('bL').innerText=p.liked?'💛':'🤍';$('bL').className=p.liked?'btn on':'btn';$('bF').className=p.follow?'btn on':'btn';$('fT').innerText=p.follow?'Seguindo':'Seguir';$('hireName').innerText='@'+p.owner+' ✓ GOLD VERIFICADO';$('cT').innerText=`💬 ${p.coms.length} comentários`;$('cL').innerHTML=p.coms.map(c=>`<div style="display:flex;gap:8px"><div style="width:26px;height:26px;border-radius:50%;background:#FFD700;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:10px">G</div><div style="flex:1;background:#222;border-radius:10px;padding:8px 10px"><div style="color:#fff;font-size:12px">${c}</div></div></div>`).join('');$('earn').innerText=earn.toFixed(2);
 }
-function doFollow(){let p=posts[cur];p.follow=!p.follow;load();toast(p.follow?'✅ Seguindo @'+p.owner:'❌ Deixou de seguir')}
-function doLike(){let p=posts[cur];p.liked=!p.liked;p.likes+=p.liked?1:-1;if(p.likes<0)p.likes=0;load();if(p.liked)toast('💛 Curtiu!')}
-function doSave(){let p=posts[cur];p.saved=!p.saved;load();toast(p.saved?'⭐ Salvo nos favoritos!':'🗑️ Removido dos salvos')}
-function doShare(){let p=posts[cur];if(navigator.share){navigator.share({title:'WORK GOLD',text:p.desc,url:location.href}).catch(()=>{})}else{navigator.clipboard.writeText(location.href).then(()=>toast('🔗 Link copiado!'))}}
-function openC(){load();$('mC').classList.add('on');setTimeout(()=>$('cI').focus(),120)}
-function sendC(){let i=$('cI');let t=i.value.trim();if(!t)return toast('Escreva algo!');posts[cur].coms.push(t);i.value='';load();toast('💬 Enviado ✨')}
-function delCom(i){if(!confirm('Apagar comentário?'))return;posts[cur].coms.splice(i,1);load();toast('Comentário apagado')}
-function goHome(){closeAll();closeCam();cur=0;load()}
-function openSearch(){toast('🔍 Buscar - em breve com filtros gold!')}
-function openProfile(){
-let u=JSON.parse(localStorage.getItem('work_user')||'{"name":"Jonatha Carlos Maria 👑","nick":"jonathacarlosmaria"}');
-$('iN').value=u.name;$('iH').value=u.nick;$('pName').innerText=u.name;$('pNick').innerText='@'+u.nick;
-let pic=localStorage.getItem('work_pic');if(pic){$('pImg').src=pic;$('pImg').style.display='block';$('pEm').style.display='none'}else{$('pImg').style.display='none';$('pEm').style.display='flex'}
-$('mP').classList.add('on')
-}
-function saveProfile(){let n=$('iN').value.trim()||'Jonatha Carlos Maria 👑';let h=$('iH').value.trim().replace('@','')||'jonathacarlosmaria';localStorage.setItem('work_user',JSON.stringify({name:n,nick:h}));closeAll();load();toast('✅ Perfil salvo!')}
-function myPosts(){let u=JSON.parse(localStorage.getItem('work_user')||'{"nick":"jonathacarlosmaria"}');let mine=posts.filter(p=>p.owner===u.nick);if(!mine.length)return toast('Você ainda não tem posts, clique em + para criar!');toast(`📱 Você tem ${mine.length} posts`);closeAll();let idx=posts.findIndex(p=>p.owner===u.nick);if(idx>-1){cur=idx;load()}}
-function openAdmin(){$('aTotal').innerText=posts.length;$('mA').classList.add('on')}
-function clearPosts(){if(!confirm('Apagar TODOS os posts? Isso não pode ser desfeito!'))return;posts=posts.slice(0,0);if(!posts.length){posts=[{img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1000",desc:"Novo começo gold ✨",owner:"lux.studio",likes:0,liked:false,follow:false,saved:false,coms:[]}]};cur=0;load();closeAll();toast('🗑️ Posts limpos!')}
-function resetApp(){if(!confirm('Resetar TODO o app? Vai apagar perfil, foto e posts!'))return;localStorage.clear();location.reload()}
-function openCam(){
-$('cam').style.display='flex';$('camStatus').innerText='📷 Iniciando câmera...';
-navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false}).then(s=>{stream=s;$('camEl').srcObject=s;$('camStatus').innerText='📷 Câmera pronta'}).catch(()=>{$('camStatus').innerText='❌ Permita a câmera';toast('❌ Permita acesso à câmera')})
-}
-function cap(){
-let v=$('camEl');if(!v.videoWidth)return toast('Aguarde câmera iniciar');
-let c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0,c.width,c.height);
-photo=c.toDataURL('image/jpeg',0.85);$('camStatus').innerText='✅ Foto capturada!';$('postBtn').style.display='block';toast('✅ Foto pronta! Escreva legenda e clique Postar')
-}
-function doPost(){
-if(!photo)return toast('📸 Tire uma foto primeiro!');
-let user=JSON.parse(localStorage.getItem('work_user')||'{"nick":"jonathacarlosmaria"}');
-posts.unshift({img:photo,desc:$('dI').value.trim()||'Post Gold ✨ #workgold',owner:user.nick,likes:0,liked:false,follow:false,saved:false,coms:[],data:photo});
-$('dI').value='';photo=null;closeCam();cur=0;load();toast('✨ Postado com sucesso!')
-}
-function startLive(){
-if(liveTimer){clearInterval(liveTimer);liveTimer=null;liveSec=0;$('liveT').innerText='🔴 LIVE 30min';return toast('🔴 LIVE encerrada')}
-toast('🔴 LIVE iniciada! 30min/dia');liveSec=0;
-liveTimer=setInterval(()=>{liveSec++;let m=Math.floor(liveSec/60);let s=liveSec%60;$('liveT').innerText=`🔴 ${m}:${s.toString().padStart(2,'0')}`;if(liveSec>=30){clearInterval(liveTimer);liveTimer=null;$('liveT').innerText='🔴 LIVE 30min';toast('✅ Meta de 30min batida!')}},1000)
-}
-$('pFile').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{localStorage.setItem('work_pic',ev.target.result);$('pImg').src=ev.target.result;$('pImg').style.display='block';$('pEm').style.display='none';toast('📸 Foto salva!')};r.readAsDataURL(f)});
-$('cI').addEventListener('keydown',e=>{if(e.key==='Enter')sendC()});
-$('dI').addEventListener('keydown',e=>{if(e.key==='Enter')doPost()});
+function doFollow(){let p=posts[cur];p.follow=!p.follow;load();toast(p.follow?'✅ Seguindo @'+p.owner:'Deixou de seguir')}
+function doLike(){let p=posts[cur];p.liked=!p.liked;p.likes+=p.liked?1:-1;if(p.liked){earn+=0.05;toast('💛 +R$0,05 ganho!')}load()}
+function doSave(){posts[cur].saved=!posts[cur].saved;load();toast(posts[cur].saved?'⭐ Salvo':'Removido')}
+function doShare(){navigator.clipboard.writeText(location.href).then(()=>toast('🔗 Link copiado!'))}
+function openHire(){$('mHire').classList.add('on')}
+function confirmHire(){closeAll();toast('💼 Pedido enviado! Profissional responde em 5min 🟢')}
+function openC(){$('mC').classList.add('on')}
+function sendC(){let i=$('cI');if(!i.value.trim())return;posts[cur].coms.push(i.value.trim());i.value='';load();toast('Enviado ✨')}
+function openCam(){$('cam').style.display='flex';navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}}).then(s=>{stream=s;$('camEl').srcObject=s;$('camStatus').innerText='Pronto'}).catch(()=>toast('❌ Permita a câmera'))}
+function cap(){let v=$('camEl');let c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);photo=c.toDataURL('image/jpeg',0.85);$('postBtn').style.display='block';toast('✅ Foto pronta!')}
+function doPost(){if(!photo)return toast('Tire foto!');posts.unshift({img:photo,desc:$('dI').value||'Serviço Gold ✨',owner:'dev.gold',likes:0,liked:false,follow:false,saved:false,coms:[]});$('dI').value='';closeCam();cur=0;load();toast('✨ Serviço postado!')}
+function startLive(){if(liveTimer){clearInterval(liveTimer);liveTimer=null;$('liveT').innerText='● LIVE';return toast('LIVE encerrada')}liveSec=0;liveTimer=setInterval(()=>{liveSec++;$('liveT').innerText=`● ${Math.floor(liveSec/60)}:${(liveSec%60).toString().padStart(2,'0')}`},1000);toast('🔴 LIVE iniciada!')}
 let sy=0;$('stage').addEventListener('touchstart',e=>sy=e.touches[0].clientY,{passive:true});
-$('stage').addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>55){if(d>0){cur++;if(cur>=posts.length)cur=0}else{cur--;if(cur<0)cur=posts.length-1}load()}},{passive:true});
-load();toast('👑 WORK GOLD 100% FUNCIONAL!');
+$('stage').addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0){cur++;if(cur>=posts.length)cur=0}else{cur--;if(cur<0)cur=posts.length-1}load()}},{passive:true});
+load();
 </script>
 </body>
 </html>
