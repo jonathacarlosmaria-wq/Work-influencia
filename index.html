@@ -2,319 +2,272 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>WORK FIRE - INTELIGENTE DANÇA</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>WORK FIRE - PERFIL EDITÁVEL</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:system-ui}
-.app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;position:relative;display:flex;flex-direction:column}
-.stage{flex:1;position:relative;overflow:hidden}
-.bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#111;transition:.4s cubic-bezier(.34,1.56,.64,1)}
-.fire-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at bottom,rgba(255,69,0,.2) 0%,transparent 65%),linear-gradient(180deg,rgba(255,100,0,.08) 0%,transparent 35%,rgba(0,0,0,.88) 100%);pointer-events:none}
-
-.btn-smart{
-width:58px;height:58px;border-radius:18px;
-background:rgba(20,10,0,.94);border:2.2px solid #ff4500;
-display:flex;flex-direction:column;align-items:center;justify-content:center;
-color:#ff8c00;font-size:23px;cursor:pointer;position:relative;
-box-shadow:0 0 18px rgba(255,69,0,.5);
-animation:idleSmart 2.2s ease-in-out infinite;
-will-change:transform;transition:filter.2s
-}
-.btn-smart.on{background:linear-gradient(135deg,#ff4500,#ff8c00);color:#000;box-shadow:0 0 30px #ff4500}
-.btn-smart::before{content:'';position:absolute;inset:-2.5px;background:linear-gradient(45deg,#ff0000,#ff8c00,#ffff00,#ff4500);background-size:300% 300%;border-radius:18px;z-index:-1;animation:gradientFire 1s linear infinite;opacity:.75}
-.btn-smart.dance-love{animation:danceLove 0.9s cubic-bezier(.34,1.56,.64,1)!important}
-.btn-smart.dance-talk{animation:danceTalk 0.9s cubic-bezier(.34,1.56,.64,1)!important}
-.btn-smart.dance-save{animation:danceSave 0.9s cubic-bezier(.34,1.56,.64,1)!important}
-.btn-smart.dance-share{animation:danceShare 0.9s cubic-bezier(.34,1.56,.64,1)!important}
-.btn-smart.dance-follow{animation:danceFollow 0.9s cubic-bezier(.34,1.56,.64,1)!important}
-.btn-smart.dance-live{animation:danceLive 0.9s cubic-bezier(.34,1.56,.64,1)!important}
-
-@keyframes idleSmart{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-2px) scale(1.02)}}
-@keyframes gradientFire{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-
-/* DANÇAS INTELIGENTES DIFERENTES */
-@keyframes danceLove{
-0%{transform:scale(1) rotate(0deg)}
-15%{transform:scale(1.3) rotate(-15deg)} /* coração pulando */
-30%{transform:scale(0.85) rotate(15deg)}
-45%{transform:scale(1.25) rotate(-10deg) translateY(-12px)}
-60%{transform:scale(0.9) rotate(10deg)}
-75%{transform:scale(1.15) rotate(-5deg) translateY(-5px)}
-100%{transform:scale(1) rotate(0deg)}
-}
-@keyframes danceTalk{
-0%{transform:translateX(0) scale(1)}
-20%{transform:translateX(-6px) rotate(-8deg) scale(1.1)} /* fofocando */
-40%{transform:translateX(6px) rotate(8deg) scale(1.1)}
-60%{transform:translateX(-4px) rotate(-5deg) scale(1.15) translateY(-6px)}
-80%{transform:translateX(4px) rotate(5deg) scale(1.05)}
-100%{transform:translateX(0) scale(1)}
-}
-@keyframes danceSave{
-0%{transform:translateY(0) scale(1)}
-25%{transform:translateY(-10px) scale(1.1) rotate(5deg)} /* guardando no bolso */
-50%{transform:translateY(2px) scale(0.92) rotate(-3deg)}
-75%{transform:translateY(-6px) scale(1.12) rotate(3deg)}
-100%{transform:translateY(0) scale(1)}
-}
-@keyframes danceShare{
-0%{transform:scale(1) rotate(0deg)}
-20%{transform:scale(1.2) rotate(180deg) translateX(5px)} /* girando espalhando */
-40%{transform:scale(0.9) rotate(360deg) translateX(-5px)}
-60%{transform:scale(1.15) rotate(540deg) translateY(-8px)}
-80%{transform:scale(1.05) rotate(700deg)}
-100%{transform:scale(1) rotate(720deg)}
-}
-@keyframes danceFollow{
-0%{transform:translateX(0) scale(1)}
-30%{transform:translateX(-8px) scale(1.1) rotate(-8deg)} /* coladinho indo */
-60%{transform:translateX(8px) scale(1.1) rotate(8deg)}
-85%{transform:translateX(-2px) scale(1.15) translateY(-5px)}
-100%{transform:translateX(0) scale(1)}
-}
-@keyframes danceLive{
-0%{transform:scale(1)}
-15%{transform:scale(1.25) translateY(-8px)}
-30%{transform:scale(0.9)}
-45%{transform:scale(1.3) translateY(-10px)}
-60%{transform:scale(0.9)}
-75%{transform:scale(1.2) translateY(-6px)}
-100%{transform:scale(1)}
-}
-
-.top{position:absolute;top:12px;left:12px;right:12px;z-index:5;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:900;color:#ff4500;font-size:16px;text-shadow:0 0 14px #ff4500;animation:idleSmart 1.5s infinite}
-.right{position:absolute;right:12px;bottom:100px;z-index:5;display:flex;flex-direction:column;gap:16px;align-items:center}
-.num{font-size:10px;font-weight:800;color:#fff;margin-top:5px;text-align:center;text-shadow:0 0 6px #ff4500}
-.bottom{position:absolute;left:10px;right:80px;bottom:12px;z-index:5}
-.card{background:rgba(15,8,0,.94);border:1.6px solid #ff4500;border-radius:20px;padding:13px;box-shadow:0 0 22px rgba(255,69,0,.4);animation:idleSmart 2.5s infinite}
-.nav{height:62px;background:linear-gradient(0deg,#1a0a00,#000);border-top:2.8px solid #ff4500;display:flex;justify-content:space-around;align-items:center;flex-shrink:0}
-.ntab{color:#664400;font-size:9px;font-weight:900;text-align:center;flex:1;cursor:pointer;transition:.2s}.ntab.on{color:#ff8c00;text-shadow:0 0 10px #ff4500}.ntab.dance-live{animation:danceLive 0.7s}
-.modal{position:absolute;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,.82);z-index:100;display:none;flex-direction:column;justify-content:flex-end}.modal.on{display:flex}
-.box{width:100%;background:linear-gradient(180deg,#1a0a00,#151515);border-top:3px solid #ff4500;border-radius:24px 24px 0 0;display:flex;flex-direction:column;max-height:80dvh;box-shadow:0 -12px 40px rgba(255,69,0,.4)}
-.toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(90deg,#ff4500,#ff8c00);color:#000;padding:12px 22px;border-radius:100px;font-weight:900;display:none;z-index:300;font-size:13px;box-shadow:0 0 24px #ff4500}.toast.on{display:block;animation:danceLove.5s}
-#cam{position:absolute;inset:0;background:#000;z-index:200;display:none;flex-direction:column}#camEl{flex:1;width:100%;object-fit:cover;background:#000}
-.mode{padding:9px 14px;border-radius:100px;border:1.6px solid #ff4500;background:#221000;color:#ff8c00;font-weight:900;font-size:11px;cursor:pointer;transition:.2s}.mode.on{background:linear-gradient(90deg,#ff4500,#ff8c00);color:#000;box-shadow:0 0 18px #ff4500;transform:scale(1.08)}.mode.dance-talk{animation:danceTalk 0.6s}
-.fire-cap{width:70px;height:70px;border-radius:50%;background:conic-gradient(from 0deg,#ff0000,#ff8c00,#ffff00,#ff4500);border:3px solid #000;font-size:27px;display:flex;align-items:center;justify-content:center;cursor:pointer;animation:idleSmart 1s infinite;box-shadow:0 0 28px #ff4500}.fire-cap.dance-share{animation:danceShare 0.7s}
-.particle{position:absolute;pointer-events:none;font-size:14px;animation:particleUp 0.8s ease-out forwards}
-@keyframes particleUp{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-80px) translateX(var(--x)) scale(0);opacity:0}}
+body{background:#000;color:#fff;font-family:system-ui;height:100dvh;overflow:hidden}
+.app{max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
+.feed{flex:1;position:relative;background:#111 url('https://images.unsplash.com/photo-1514565131-fce0801e5785?w=600') center/cover}
+.ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent 60%)}
+.side{position:absolute;right:10px;bottom:90px;display:flex;flex-direction:column;gap:10px;z-index:2}
+.sbtn{width:52px;height:52px;border-radius:14px;background:#1a0a00;border:2px solid #ff4500;color:#ff8c00;display:flex;align-items:center;justify-content:center;font-size:22px;flex-direction:column}
+.sbtn small{font-size:10px;color:#fff;margin-top:2px;font-weight:900}
+.info{position:absolute;left:10px;right:75px;bottom:10px;z-index:2;background:rgba(15,8,0,.92);border:1.8px solid #ff4500;border-radius:16px;padding:12px}
+.nav{height:70px;background:#0f0800;border-top:3px solid #ff4500;display:flex;flex-shrink:0;z-index:100}
+.nav button{flex:1;background:none;border:0;color:#555;font-weight:900;font-size:10px;cursor:pointer}
+.nav button.active{color:#ff8c00}
+.nav button b{font-size:22px;display:block}
+.plus{width:54px;height:54px;border-radius:50%;background:conic-gradient(from 0deg,#ff0000,#ff8c00,#ffff00,#ff4500);border:3px solid #000;color:#000;font-size:30px;display:flex;align-items:center;justify-content:center;margin:auto;font-weight:900}
+.page{position:absolute;inset:0;background:#000;z-index:200;display:none;flex-direction:column}
+.page.show{display:flex}
+#video{flex:1;width:100%;object-fit:cover;background:#000}
+#video.front{transform:scaleX(-1)}
+.input{width:100%;padding:14px;border-radius:100px;background:#1a0a00;border:1.8px solid #ff4500;color:#fff;outline:none;margin-top:8px}
 </style>
 </head>
 <body>
 <div class="app">
-<div class="stage" id="stage">
-<div class="bg" id="bg"></div><div class="fire-overlay"></div>
-<div class="top">
-<div class="logo">🔥 WORK FIRE 🧠💃</div>
-<div class="btn-smart" style="width:auto;height:36px;padding:0 14px;border-radius:100px;font-size:11px;font-weight:900" onclick="smartLive(this)" id="liveT">● LIVE</div>
+
+<div class="feed" id="feed" onclick="nextPost()">
+<div class="ov"></div>
+<div class="side">
+<button class="sbtn" onclick="event.stopPropagation(); like()">🤍<small id="likeCount">2.1k</small></button>
+<button class="sbtn" onclick="event.stopPropagation(); openC()">💬<small id="comCount">2</small></button>
+<button class="sbtn" onclick="event.stopPropagation(); save()">💾<small>Salvar</small></button>
+<button class="sbtn" onclick="event.stopPropagation(); share()">↗<small>Share</small></button>
 </div>
-<div class="right">
-<div style="text-align:center"><div class="btn-smart" id="bL" onclick="smartLike(this)">🤍</div><div class="num" id="nL">0</div></div>
-<div style="text-align:center"><div class="btn-smart" onclick="smartComment(this)">💬</div><div class="num" id="nC">0</div></div>
-<div style="text-align:center"><div class="btn-smart" id="bS" onclick="smartSave(this)">⭐</div><div class="num" id="nS">Salvar</div></div>
-<div style="text-align:center"><div class="btn-smart" onclick="smartShare(this)">↗</div><div class="num">Share</div></div>
-</div>
-<div class="bottom">
-<div class="card">
-<div style="display:flex;gap:11px;align-items:center">
-<div id="uP" style="width:44px;height:44px;border-radius:50%;background:conic-gradient(from 0deg,#ff4500,#ff8c00,#ffff00,#ff4500);border:2.2px solid #ff8c00;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:18px;animation:idleSmart 1.8s infinite">🧠</div>
+<div class="info">
+<div style="display:flex;gap:10px;align-items:center">
+<div id="avatarFeed" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ff4500,#ff8c00);display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;overflow:hidden"><img id="imgFeed" style="width:100%;height:100%;object-fit:cover;display:none"></div>
 <div style="flex:1">
-<div style="display:flex;gap:6px;align-items:center"><div id="uN" style="color:#ff8c00;font-weight:900;font-size:13px">@fire.smart</div><div style="background:linear-gradient(90deg,#ff4500,#ff8c00);color:#000;font-size:8px;padding:3px 8px;border-radius:100px;font-weight:900">🧠 INTELIGENTE</div></div>
-<div style="font-size:10px;color:#ff8c00" id="typeTag">🧠💃 Dança inteligente</div>
+<div style="color:#ff8c00;font-weight:900;font-size:13px;display:flex;gap:6px;align-items:center"><span id="nameFeed">@smart.fire</span><span style="background:linear-gradient(90deg,#ff4500,#ff8c00);color:#000;font-size:8px;padding:2px 6px;border-radius:100px">INTELIGENTE</span></div>
+<div style="font-size:11px;color:#aaa" id="bioFeed">Dança inteligente ao clicar</div>
 </div>
-<div id="followBtn" onclick="smartFollow(this)" style="background:rgba(255,69,0,.22);border:1.8px solid #ff4500;color:#ff8c00;padding:8px 13px;border-radius:100px;font-size:11px;font-weight:900;cursor:pointer">Seguir</div>
+<button id="followBtn" onclick="event.stopPropagation(); follow()" style="border:1.8px solid #ff4500;background:rgba(255,69,0,.2);color:#ff8c00;padding:8px 14px;border-radius:100px;font-size:11px;font-weight:900">Seguir</button>
 </div>
-<div id="uD" style="font-size:12px;color:#ffcc99;margin-top:9px;line-height:1.4">🧠 Cada botão dança de um jeito inteligente!</div>
-</div>
-</div>
-<div id="toast" class="toast"></div>
-<div class="modal" id="mC"><div style="flex:1" onclick="closeAll()"></div><div class="box"><div style="padding:16px;display:flex;justify-content:space-between;border-bottom:1px solid #331100"><b style="color:#ff8c00;font-size:14px" id="cT">💬 Comentários inteligentes</b><button onclick="closeAll()" class="btn-smart" style="width:32px;height:32px;font-size:14px">×</button></div><div id="cL" style="padding:16px;display:flex;flex-direction:column;gap:12px;max-height:50vh;overflow:auto"></div><div style="padding:16px;display:flex;gap:10px;border-top:2.8px solid #ff4500"><input id="cI" placeholder="Comentar inteligente..." style="flex:1;background:#221000;border:1.8px solid #ff4500;border-radius:100px;padding:14px;color:#fff;font-size:14px;outline:none" onkeypress="if(event.key==='Enter')sendSmart()"><button onclick="sendSmart()" class="btn-smart" style="width:auto;padding:0 20px;height:48px;border-radius:100px;font-size:13px;font-weight:900">🧠 Enviar</button></div></div></div>
-<div id="cam">
-<video id="camEl" autoplay muted playsinline></video>
-<canvas id="previewCanvas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;z-index:2"></canvas>
-<div id="recTimer" style="position:absolute;top:60px;left:50%;transform:translateX(-50%);background:rgba(20,10,0,.94);border:2.2px solid #ff0000;color:#ff4444;padding:8px 18px;border-radius:100px;font-size:12px;font-weight:900;display:none;z-index:5;box-shadow:0 0 18px #ff0000">● REC <span id="recTime">00:00</span> / 01:30 🧠</div>
-<div style="position:absolute;top:0;left:0;right:0;padding:12px;display:flex;justify-content:space-between;z-index:6;background:linear-gradient(180deg,rgba(20,10,0,.82),transparent)">
-<button onclick="closeCam()" class="btn-smart" style="width:38px;height:38px;font-size:15px">✕</button>
-<div id="camStatus" style="color:#ff8c00;font-weight:900;font-size:11px;background:rgba(20,10,0,.75);padding:8px 14px;border-radius:100px;border:1.8px solid #ff4500">🧠 Inteligente</div>
-<button onclick="postSmart()" id="postBtn" class="btn-smart" style="width:auto;padding:0 20px;height:40px;border-radius:100px;font-size:12px;font-weight:900;display:none">🧠 Postar</button>
-</div>
-<div style="position:absolute;bottom:88px;left:0;right:0;display:flex;justify-content:center;gap:10px;z-index:6">
-<button class="mode on" id="modeFoto" onclick="setModeSmart('foto')">📸 FOTO</button>
-<button class="mode" id="modeVideo" onclick="setModeSmart('video')">🎬 1:30</button>
-<button class="mode" id="modeLive" onclick="setModeSmart('live')">🔴 30min</button>
-</div>
-<div style="position:absolute;bottom:0;left:0;right:0;padding:16px;display:flex;gap:12px;align-items:center;z-index:6;background:linear-gradient(0deg,rgba(20,10,0,.94),transparent)">
-<input id="dI" placeholder="Legenda inteligente..." style="flex:1;background:#221000;border:1.8px solid #ff4500;border-radius:100px;padding:14px;color:#fff;font-size:14px;outline:none">
-<button id="capBtn" onclick="actionSmart()" class="fire-cap">📸</button>
+<div style="font-size:12px;color:#ffcc99;margin-top:8px" id="descFeed">🧠 Botões inteligentes! Cada um dança diferente!</div>
 </div>
 </div>
+
+<!-- PÁGINA EU - PERFIL EDITÁVEL COM FOTO -->
+<div class="page" id="pProfile" style="overflow:auto">
+<div style="padding:14px">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<b style="color:#ff8c00;font-size:16px">👑 Meu Perfil</b>
+<button onclick="closeAll()" style="padding:7px 14px;border-radius:100px;background:#222;border:1px solid #ff4500;color:#ff8c00;font-weight:900">✕ Fechar</button>
 </div>
-<div class="nav">
-<div class="ntab on" onclick="smartTab(this,'work')">🔥<br>Work</div>
-<div class="ntab" onclick="smartTab(this,'search')">🔍<br>Buscar</div>
-<div class="ntab" onclick="openCamSmart()"><div class="fire-cap" style="width:52px;height:52px;font-size:24px;margin:0 auto">+</div></div>
-<div class="ntab" onclick="smartTab(this,'live')">🔴<br>LIVE</div>
-<div class="ntab" onclick="smartTab(this,'profile')">👑<br>Eu</div>
+
+<div style="background:linear-gradient(135deg,#1a0a00,#221000);border:2px solid #ff4500;border-radius:20px;padding:18px;text-align:center;margin:14px 0">
+
+<!-- FOTO EDITÁVEL -->
+<div style="position:relative;width:96px;height:96px;margin:0 auto">
+<div id="profilePhoto" style="width:96px;height:96px;border-radius:50%;background:conic-gradient(from 0deg,#ff4500,#ff8c00,#ffff00,#ff4500);border:3px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:40px;overflow:hidden">
+<span id="photoEmoji">👑</span>
+<img id="photoImg" style="width:100%;height:100%;object-fit:cover;display:none">
+</div>
+<button onclick="changePhoto()" style="position:absolute;bottom:0;right:0;width:32px;height:32px;border-radius:50%;background:#ff4500;border:2px solid #000;color:#000;font-size:16px;display:flex;align-items:center;justify-content:center;font-weight:900">📸</button>
+</div>
+
+<div style="color:#ff8c00;font-weight:900;font-size:18px;margin-top:10px" id="pNameDisplay">@você.fire</div>
+<div style="color:#aaa;font-size:12px" id="pBioDisplay">Toque em Editar pra colocar suas infos</div>
+
+<div style="display:flex;justify-content:space-around;margin-top:14px">
+<div><div style="color:#ff8c00;font-weight:900;font-size:20px" id="countPosts">0</div><div style="color:#666;font-size:10px">POSTS</div></div>
+<div><div style="color:#ff8c00;font-weight:900;font-size:20px" id="countLikes">0</div><div style="color:#666;font-size:10px">LIKES</div></div>
+<div><div style="color:#ff8c00;font-weight:900;font-size:20px" id="countSaved">0</div><div style="color:#666;font-size:10px">SALVOS</div></div>
+</div>
+</div>
+
+<!-- FORM EDITAR -->
+<div style="background:#111;border:1.5px solid #331100;border-radius:16px;padding:14px">
+<div style="color:#ff8c00;font-weight:900;font-size:13px;margin-bottom:8px">✏️ Editar suas informações</div>
+
+<label style="font-size:11px;color:#aaa">Seu @nome (sem @)</label>
+<input id="inputName" class="input" placeholder="Ex: joao.fire" maxlength="20">
+
+<label style="font-size:11px;color:#aaa;margin-top:10px;display:block">Seu nome de exibição</label>
+<input id="inputDisplay" class="input" placeholder="Ex: João Silva" maxlength="25">
+
+<label style="font-size:11px;color:#aaa;margin-top:10px;display:block">Sua bio</label>
+<input id="inputBio" class="input" placeholder="Ex: Editor de vídeos 🔥" maxlength="60">
+
+<label style="font-size:11px;color:#aaa;margin-top:10px;display:block">Seu trabalho / profissão</label>
+<input id="inputWork" class="input" placeholder="Ex: Design 4K, Edição" maxlength="40">
+
+<div style="display:flex;gap:8px;margin-top:14px">
+<button onclick="saveProfile()" style="flex:1;padding:14px;border-radius:100px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;color:#000;font-weight:900;font-size:13px">💾 Salvar perfil</button>
+<button onclick="changePhoto()" style="padding:14px 18px;border-radius:100px;background:#222;border:1.5px solid #ff4500;color:#ff8c00;font-weight:900">📸 Foto</button>
+</div>
+</div>
+
+<div style="display:flex;gap:8px;margin:12px 0">
+<button id="tabMy" onclick="tabProfile('my')" style="flex:1;padding:10px;border-radius:100px;background:#ff4500;color:#000;font-weight:900;border:none;font-size:12px">📸 Meus posts</button>
+<button id="tabSaved" onclick="tabProfile('saved')" style="flex:1;padding:10px;border-radius:100px;background:#222;border:1px solid #ff4500;color:#ff8c00;font-weight:900;font-size:12px">⭐ Salvos</button>
+</div>
+
+<div id="pList" style="display:flex;flex-direction:column;gap:8px;padding-bottom:20px"></div>
+</div>
+<input type="file" id="filePhoto" accept="image/*" style="display:none" onchange="handlePhoto(event)">
+</div>
+
+<!-- Outras páginas -->
+<div class="page" id="pCam">
+<video id="video" autoplay muted playsinline class="front"></video>
+<div style="position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;z-index:2">
+<button onclick="closeAll()" style="width:36px;height:36px;border-radius:50%;background:#000;border:1px solid #ff4500;color:#ff8c00">✕</button>
+<button onclick="switchCam()" style="padding:8px 14px;border-radius:100px;background:#ff4500;border:none;color:#000;font-weight:900" id="camLabel">🔄 FRENTE</button>
+</div>
+<div style="position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:20px;z-index:2">
+<button onclick="openGal()" style="width:44px;height:44px;border-radius:10px;background:#222;border:1px solid #ff4500;color:#ff8c00">🖼️</button>
+<button onclick="take()" style="width:74px;height:74px;border-radius:50%;background:conic-gradient(from 0deg,#ff0000,#ff8c00,#ffff00,#ff4500);border:4px solid #000;font-size:28px">📸</button>
+<button onclick="switchCam()" style="width:44px;height:44px;border-radius:10px;background:#222;border:1px solid #ff4500;color:#ff8c00">🔄</button>
+</div>
+<input type="file" id="fileGal" accept="image/*" style="display:none" onchange="handleGal(event)">
+</div>
+
+<div class="page" id="pSearch" style="padding:14px"><div style="display:flex;justify-content:space-between"><b style="color:#ff8c00">🔍 Buscar</b><button onclick="closeAll()" style="padding:6px 14px;border-radius:100px;background:#222;border:1px solid #ff4500;color:#ff8c00">X</button></div><div id="sList" style="margin-top:10px"></div></div>
+<div class="page" id="pLive" style="padding:14px;justify-content:center;align-items:center"><div style="text-align:center"><div style="font-size:50px">🔴</div><h2 style="color:red">LIVE 30min</h2><button onclick="closeAll()" style="margin-top:15px;padding:10px 20px;border-radius:100px;background:red;border:none;color:#fff">Sair</button></div></div>
+<div class="page" id="pCom" style="padding:14px"><div style="display:flex;justify-content:space-between"><b style="color:#ff8c00" id="comTitle">💬 Comentários</b><button onclick="closeAll()" style="padding:6px 14px;border-radius:100px;background:#222;border:1px solid #ff4500;color:#ff8c00">X</button></div><div id="comList" style="flex:1;margin:10px 0;overflow:auto"></div><div style="display:flex;gap:8px"><input id="comInput" placeholder="Comentar..." style="flex:1;padding:12px;border-radius:100px;background:#222;border:1px solid #ff4500;color:#fff"><button onclick="sendCom()" style="padding:12px 18px;border-radius:100px;background:#ff4500;border:none;font-weight:900">Enviar</button></div></div>
+
+<div id="nav">
+<button id="b0" class="active" onclick="go(0)"><b>🔥</b>Work</button>
+<button id="b1" onclick="go(1)"><b>🔍</b>Buscar</button>
+<button id="b2" onclick="go(2)"><div class="plus">+</div></button>
+<button id="b3" onclick="go(3)"><b>🔴</b>LIVE</button>
+<button id="b4" onclick="go(4)"><b>👑</b>Eu</button>
 </div>
 </div>
 
 <script>
-let cur=0,photo=null,stream=null,recorder=null,chunks=[],recTimer=null,recSec=0,mode='foto',liveTimer=null,liveSec=0,videoBlob=null,isPosting=false,canSwipe=true;
-let posts=JSON.parse(localStorage.getItem('work_smart_dance')||'null')||[
-{type:'foto',img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=600",desc:"🧠💃 Botões inteligentes! Cada um dança diferente! Like=amor, Comment=fofoca, Save=guardar, Share=girar! 🔥",owner:"smart.fire",likes:2143,liked:false,follow:false,saved:false,coms:["🧠 Que inteligente!","💃 Cada dança diferente!"]},
-{type:'video',img:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600",desc:"🎬🧠 Vídeo 1:30 inteligente dançante",owner:"dev.smart",likes:3421,liked:false,follow:false,saved:false,coms:["Muito inteligente! 🧠"]},
+let posts=JSON.parse(localStorage.getItem('work_eu_final')||'null')||[
+{owner:"smart.fire",display:"Smart Fire",bio:"Dança inteligente ao clicar",work:"Botões inteligentes!",img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?w=600",likes:2100,liked:false,saved:false,follow:false,coms:["Top!","Funciona!"]},
 ];
-const $=id=>document.getElementById(id);
-function toast(t){let e=$('toast');e.innerText=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2400)}
-function closeAll(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
-function save(){try{localStorage.setItem('work_smart_dance',JSON.stringify(posts.slice(0,25)))}catch{posts=posts.slice(0,15);localStorage.setItem('work_smart_dance',JSON.stringify(posts))}}
-function spawnParticles(el,emoji,count=6){
-for(let i=0;i<count;i++){
-let p=document.createElement('div');p.className='particle';p.innerText=emoji;
-p.style.left=(el.getBoundingClientRect().left+el.offsetWidth/2)+'px';
-p.style.top=(el.getBoundingClientRect().top)+'px';
-p.style.setProperty('--x',(Math.random()*100-50)+'px');
-document.body.appendChild(p);
-setTimeout(()=>p.remove(),800);
-}
-}
-function smartDance(el,type){
-if(!el)return;
-el.classList.remove('dance-love','dance-talk','dance-save','dance-share','dance-follow','dance-live');
-void el.offsetWidth;
-el.classList.add(type);
-setTimeout(()=>el.classList.remove(type),900);
-if(navigator.vibrate){
-if(type==='dance-love')navigator.vibrate([40,30,80]);
-else if(type==='dance-talk')navigator.vibrate([20,20,20,20]);
-else if(type==='dance-save')navigator.vibrate([60]);
-else if(type==='dance-share')navigator.vibrate([30,50,30,50]);
-else navigator.vibrate([30,40,60]);
-}
-}
-function load(){
-save();
-if(cur>=posts.length)cur=0;if(cur<0)cur=posts.length-1;
+let cur=0, stream=null, lado="user", fotoTemp=null, tab="my";
+let profile=JSON.parse(localStorage.getItem('my_profile_v2')||'{"name":"você.fire","display":"Você Fire","bio":"Toque em Editar pra colocar suas infos","work":"Criador","photo":null}');
+
+function save(){localStorage.setItem('work_eu_final', JSON.stringify(posts.slice(0,50))); localStorage.setItem('my_profile_v2', JSON.stringify(profile))}
+
+function render(){
 let p=posts[cur];
-$('bg').style.backgroundImage=`url('${p.data||p.img}')`;
-$('uN').innerText='@'+p.owner;$('uD').innerText=p.desc;$('uP').innerText='🧠';
-$('nL').innerText=p.likes>=1000?(p.likes/1000).toFixed(1)+'k':p.likes;
-$('nC').innerText=p.coms.length;
-$('bL').innerText=p.liked?'❤️‍🔥':'🤍';
-$('bL').className=p.liked?'btn-smart on':'btn-smart';
-$('bS').innerText=p.saved?'💾':'⭐';
-$('bS').className=p.saved?'btn-smart on':'btn-smart';
-$('typeTag').innerText='🧠 Dança inteligente ao clicar';
-$('cT').innerText=`🧠 ${p.coms.length} comentários inteligentes`;
-$('cL').innerHTML=p.coms.length?p.coms.map(c=>`<div style="display:flex;gap:10px"><div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#ff4500,#ff8c00);color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px">🧠</div><div style="flex:1;background:#221000;border:1px solid #331100;border-radius:14px;padding:10px 14px"><div style="color:#ffcc99;font-size:13px">${c}</div></div></div>`).join(''):`<div style="text-align:center;padding:28px;color:#665544">🧠 Nenhum comentário inteligente ainda<br>Seja o primeiro!</div>`;
-$('followBtn').innerText=p.follow?'Inteligentes juntos ✓':'Seguir 🧠';
-$('followBtn').style.background=p.follow?'linear-gradient(90deg,#ff4500,#ff8c00)':'rgba(255,69,0,.22)';
-$('followBtn').style.color=p.follow?'#000':'#ff8c00';
-}
-function smartLike(el){
-smartDance(el,'dance-love');spawnParticles(el,'❤️‍🔥',8);
-let p=posts[cur];p.liked=!p.liked;p.likes+=p.liked?1:-1;if(p.likes<0)p.likes=0;load();
-toast(p.liked?'❤️‍🔥 Curtiu com amor inteligente!':'💔 Descurtiu');
-}
-function smartFollow(el){
-smartDance(el,'dance-follow');spawnParticles(el,'👯',6);
-posts[cur].follow=!posts[cur].follow;load();
-toast(posts[cur].follow?'👯 Seguindo e dançando coladinho!':'🚶 Parou de seguir');
-}
-function smartSave(el){
-smartDance(el,'dance-save');spawnParticles(el,'💾',5);
-posts[cur].saved=!posts[cur].saved;load();
-toast(posts[cur].saved?'💾 Salvou guardando inteligente!':'🗑️ Removeu');
-}
-function smartShare(el){
-smartDance(el,'dance-share');spawnParticles(el,'🌪️',7);
-navigator.clipboard.writeText(location.href).then(()=>toast('🌪️ Compartilhou girando inteligente!'));
-if(navigator.share)navigator.share({title:'WORK FIRE INTELIGENTE',text:`🧠 Olha: @${posts[cur].owner}`,url:location.href}).catch(()=>{});
-}
-function smartComment(el){
-smartDance(el,'dance-talk');spawnParticles(el,'💬',6);
-setTimeout(()=>{$('mC').classList.add('on')},250);
-}
-function smartLive(el){
-smartDance(el,'dance-live');spawnParticles(el,'🔴',6);
-setTimeout(()=>{if(!checkLiveLimit()){toast('❌ Só 1 LIVE/dia!');return}openCam();setModeSmart('live')},250);
-}
-function sendSmart(){
-let i=$('cI');if(!i.value.trim())return;
-let el=i.nextElementSibling;smartDance(el,'dance-talk');spawnParticles(el,'🧠',5);
-setTimeout(()=>{posts[cur].coms.push(i.value.trim());if(posts[cur].coms.length>50)posts[cur].coms.shift();i.value='';load();toast('🧠💬 Comentário inteligente dançante!');},200);
-}
-function setModeSmart(m){
-mode=m;document.querySelectorAll('.mode').forEach(b=>b.classList.remove('on'));
-let target=m==='foto'?$('modeFoto'):m==='video'?$('modeVideo'):$('modeLive');
-target.classList.add('on');smartDance(target,m==='foto'?'dance-save':m==='video'?'dance-share':'dance-live');
-if(m==='foto'){$('capBtn').innerText='📸';$('camStatus').innerText='🧠 Foto inteligente';$('recTimer').style.display='none'}
-if(m==='video'){$('capBtn').innerText='●';$('camStatus').innerText='🧠 Vídeo 1:30 inteligente'}
-if(m==='live'){$('capBtn').innerText='🔴';$('camStatus').innerText='🧠 LIVE 30min inteligente';checkLiveLimit()}
-}
-function checkLiveLimit(){let today=new Date().toDateString();let last=localStorage.getItem('work_fire_date');let used=localStorage.getItem('work_fire_used');if(last===today&&used==='1'){ $('camStatus').innerText='❌ 1 LIVE/dia feita';$('capBtn').style.opacity='.4';return false}else{$('capBtn').style.opacity='1';return true}}
-async function openCamSmart(){let el=document.querySelector('.nav.fire-cap');smartDance(el,'dance-share');setTimeout(()=>openCam(),200);}
-async function openCam(){
-$('cam').style.display='flex';setModeSmart('foto');$('postBtn').style.display='none';photo=null;videoBlob=null;
-try{stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:720},height:{ideal:1280},facingMode:'user'},audio:true});$('camEl').srcObject=stream;}catch(e){toast('❌ Permita câmera')}
-}
-function closeCam(){
-$('cam').style.display='none';$('postBtn').style.display='none';$('recTimer').style.display='none';photo=null;videoBlob=null;chunks=[];
-if(recorder&&recorder.state!=='inactive'){try{recorder.stop()}catch{}}recorder=null;
-if(recTimer){clearInterval(recTimer);recTimer=null}recSec=0;if(liveTimer){clearInterval(liveTimer);liveTimer=null}
-if(stream){try{stream.getTracks().forEach(s=>s.stop())}catch{}stream=null}
-$('capBtn').innerText='📸';isPosting=false;$('previewCanvas').style.display='none';$('camEl').style.display='block';
-}
-function actionSmart(){let el=$('capBtn');smartDance(el,'dance-share');spawnParticles(el,'📸',6);setTimeout(()=>{if(mode==='foto')capFoto();if(mode==='video'){if(recorder&&recorder.state==='recording')stopVideo();else startVideo()}if(mode==='live'){if(liveTimer)stopLive();else startLiveRec()}},180);}
-function capFoto(){
-let v=$('camEl');if(!v.videoWidth)return toast('⏳ Aguarde');
-let c=document.createElement('canvas');let maxW=720;let scale=maxW/v.videoWidth;c.width=maxW;c.height=v.videoHeight*scale;c.getContext('2d').drawImage(v,0,0,c.width,c.height);
-photo=c.toDataURL('image/jpeg',0.65);
-let pc=$('previewCanvas');pc.width=c.width;pc.height=c.height;pc.getContext('2d').drawImage(c,0,0);pc.style.display='block';$('camEl').style.display='none';
-$('postBtn').style.display='block';$('camStatus').innerText='🧠 Foto inteligente pronta!';toast('🧠📸 Foto inteligente!');
-}
-function startVideo(){
-chunks=[];try{recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp8',videoBitsPerSecond:700000})}catch{recorder=new MediaRecorder(stream)}
-recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
-recorder.onstop=()=>{videoBlob=new Blob(chunks,{type:'video/webm'});photo=URL.createObjectURL(videoBlob);$('postBtn').style.display='block';$('camStatus').innerText='🧠 Vídeo pronto inteligente!';toast('🧠🎬 Vídeo 1:30 inteligente!')};
-recorder.start(200);recSec=0;$('recTimer').style.display='block';$('capBtn').innerText='■';recTimer=setInterval(()=>{recSec++;let m=Math.floor(recSec/60).toString().padStart(2,'0');let s=(recSec%60).toString().padStart(2,'0');$('recTime').innerText=`${m}:${s}`;if(recSec>=90)stopVideo()},1000);
-}
-function stopVideo(){if(recorder&&recorder.state==='recording')recorder.stop();if(recTimer)clearInterval(recTimer);$('capBtn').innerText='●';}
-function startLiveRec(){if(!checkLiveLimit())return;toast('🧠🔴 LIVE inteligente!');liveSec=0;$('recTimer').style.display='block';$('capBtn').innerText='■ LIVE';liveTimer=setInterval(()=>{liveSec++;let m=Math.floor(liveSec/60).toString().padStart(2,'0');let s=(liveSec%60).toString().padStart(2,'0');$('recTime').innerText=`${m}:${s}`;$('liveT').innerText=`● ${m}:${s} 🧠`;if(liveSec>=1800)stopLive()},1000);}
-function stopLive(){if(liveTimer)clearInterval(liveTimer);liveTimer=null;localStorage.setItem('work_fire_used','1');localStorage.setItem('work_fire_date',new Date().toDateString());$('recTimer').style.display='none';$('liveT').innerText='● Feita 🧠';$('capBtn').innerText='🔴';toast('🧠 LIVE inteligente encerrada!');}
-function postSmart(){let el=$('postBtn');smartDance(el,'dance-share');spawnParticles(el,'🚀',7);setTimeout(()=>doPost(),250);}
-async function doPost(){
-if(isPosting)return;if(!photo){toast('❌ Tire foto!');return}isPosting=true;$('postBtn').innerText='...';
-let desc=$('dI').value.trim()||'🧠 Post inteligente dançante!';
-if(mode==='video'&&videoBlob){
-let r=new FileReader();r.onload=e=>{
-if(e.target.result.length>3000000){toast('❌ Vídeo grande!');isPosting=false;$('postBtn').innerText='🧠 Postar';return}
-posts.unshift({type:'video',img:e.target.result,desc:desc,owner:'você.smart',likes:0,liked:false,follow:false,saved:false,coms:[],data:e.target.result});
-$('dI').value='';closeCam();cur=0;load();toast('🧠🎬 Vídeo inteligente postado!');isPosting=false;
-};r.readAsDataURL(videoBlob);
+document.getElementById('feed').style.backgroundImage=`url('${p.img}')`;
+document.getElementById('nameFeed').innerText='@'+(p.owner||'smart.fire');
+document.getElementById('bioFeed').innerText=p.bio||p.work||'';
+document.getElementById('descFeed').innerText=p.desc||p.work||'';
+document.getElementById('likeCount').innerText=p.likes>=1000?(p.likes/1000).toFixed(1)+'k':p.likes;
+document.getElementById('comCount').innerText=p.coms.length;
+document.getElementById('followBtn').innerText=p.follow?'Seguindo ✓':'Seguir';
+document.getElementById('comTitle').innerText=`💬 ${p.coms.length} comentários`;
+document.getElementById('comList').innerHTML=p.coms.map(c=>`<div style="background:#222;padding:10px;border-radius:10px;margin:5px 0">${c}</div>`).join('');
+document.getElementById('sList').innerHTML=posts.map((x,i)=>`<div onclick="cur=${i};closeAll();render();go(0)" style="background:#222;padding:12px;border-radius:12px;margin:6px 0;display:flex;gap:10px"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ff4500,#ff8c00);display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;overflow:hidden">${x.photo?`<img src="${x.photo}" style="width:100%;height:100%;object-fit:cover">`:x.owner[0].toUpperCase()}</div><div><div style="color:#ff8c00;font-weight:900">@${x.owner}</div><div style="font-size:11px;color:#aaa">${(x.bio||x.desc||'').slice(0,40)}</div></div></div>`).join('');
+
+// Perfil
+document.getElementById('pNameDisplay').innerText='@'+profile.name;
+document.getElementById('pBioDisplay').innerText=profile.bio+' • '+profile.work;
+document.getElementById('inputName').value=profile.name;
+document.getElementById('inputDisplay').value=profile.display;
+document.getElementById('inputBio').value=profile.bio;
+document.getElementById('inputWork').value=profile.work;
+if(profile.photo){
+document.getElementById('photoImg').src=profile.photo;
+document.getElementById('photoImg').style.display='block';
+document.getElementById('photoEmoji').style.display='none';
+document.getElementById('imgFeed').src=profile.photo;
+document.getElementById('imgFeed').style.display='block';
 }else{
-posts.unshift({type:mode,img:photo,desc:desc,owner:'você.smart',likes:0,liked:false,saved:false,coms:[],data:photo});
-$('dI').value='';closeCam();cur=0;load();toast('🧠📸 Foto inteligente postada!');isPosting=false;
+document.getElementById('photoImg').style.display='none';
+document.getElementById('photoEmoji').style.display='block';
+document.getElementById('imgFeed').style.display='none';
 }
+let meus=posts.filter(x=>x.owner===profile.name);
+let salvos=posts.filter(x=>x.saved);
+document.getElementById('countPosts').innerText=meus.length;
+document.getElementById('countLikes').innerText=posts.reduce((s,x)=>s+x.likes,0);
+document.getElementById('countSaved').innerText=salvos.length;
+let list=tab==='my'?meus:salvos;
+document.getElementById('pList').innerHTML=list.map(x=>{
+let idx=posts.indexOf(x);
+return `<div style="background:#222;border:1px solid #331100;border-radius:12px;padding:10px;display:flex;gap:10px"><div style="width:60px;height:60px;border-radius:10px;background:url('${x.img}') center/cover"></div><div style="flex:1"><div style="color:#ff8c00;font-weight:900;font-size:12px">@${x.owner}</div><div style="font-size:11px;color:#fff">${(x.desc||x.bio||'').slice(0,50)}</div></div><button onclick="cur=${idx};closeAll();render();go(0)" style="padding:6px 12px;border-radius:100px;background:#ff4500;border:none;color:#000;font-weight:900;font-size:11px">Ver</button></div>`;
+}).join('')||`<div style="text-align:center;color:#666;padding:30px">${tab==='my'?'Nenhum post ainda<br>Clique em + pra criar com sua foto!':'Nenhum salvo'}</div>`;
 }
-function smartTab(el,tab){
-smartDance(el,tab==='work'?'dance-follow':tab==='search'?'dance-talk':tab==='live'?'dance-live':'dance-save');
-setTimeout(()=>{
-document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('on'));
-el.classList.add('on');
-if(tab==='work')load();
-if(tab==='search')toast('🔍 Buscar 🧠 inteligente em breve');
-if(tab==='live'){if(!checkLiveLimit()){toast('❌ 1 LIVE/dia');return}openCam();setModeSmart('live')}
-if(tab==='profile')toast('👑 @você.smart 🧠 • '+posts.filter(p=>p.owner==='você.smart').length+' posts inteligentes');
-},200);
+
+function tabProfile(t){
+tab=t;
+document.getElementById('tabMy').style.background=t==='my'?'#ff4500':'#222';
+document.getElementById('tabMy').style.color=t==='my'?'#000':'#ff8c00';
+document.getElementById('tabSaved').style.background=t==='saved'?'#ff4500':'#222';
+document.getElementById('tabSaved').style.color=t==='saved'?'#000':'#ff8c00';
+render();
 }
-let sy=0;
-$('stage').addEventListener('touchstart',e=>{sy=e.touches[0].clientY},{passive:true});
-$('stage').addEventListener('touchend',e=>{
-if(!canSwipe)return;let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){canSwipe=false;if(d>0){cur++;if(cur>=posts.length)cur=0}else{cur--;if(cur<0)cur=posts.length-1}load();setTimeout(()=>canSwipe=true,250)}
-},{passive:true});
-load();toast('🧠💃 Todos botões inteligentes dançantes!');
+
+function go(n){
+document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
+document.getElementById('b'+n).classList.add('active');
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
+if(n===2)openCam();
+if(n===1)document.getElementById('pSearch').classList.add('show');
+if(n===3)document.getElementById('pLive').classList.add('show');
+if(n===4){document.getElementById('pProfile').classList.add('show'); render();}
+}
+function closeAll(){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
+if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}
+go(0);
+}
+function openC(){document.getElementById('pCom').classList.add('show')}
+function nextPost(){cur++; if(cur>=posts.length)cur=0; render()}
+function like(){posts[cur].liked=!posts[cur].liked; posts[cur].likes+=posts[cur].liked?1:-1; save(); render()}
+function save(){posts[cur].saved=!posts[cur].saved; save(); render(); alert(posts[cur].saved?'⭐ Salvo no seu perfil Eu!':'Removido')}
+function follow(){posts[cur].follow=!posts[cur].follow; render()}
+function share(){navigator.clipboard.writeText('@'+posts[cur].owner).then(()=>alert('Copiado!'))}
+function sendCom(){let v=document.getElementById('comInput').value; if(!v)return; posts[cur].coms.push(v); document.getElementById('comInput').value=''; save(); render()}
+
+function saveProfile(){
+profile.name=document.getElementById('inputName').value.trim().replace('@','')||profile.name;
+profile.display=document.getElementById('inputDisplay').value.trim()||profile.display;
+profile.bio=document.getElementById('inputBio').value.trim()||profile.bio;
+profile.work=document.getElementById('inputWork').value.trim()||profile.work;
+save(); render();
+alert('✅ Perfil salvo!\n@'+profile.name+'\n'+profile.display+'\n'+profile.bio);
+}
+function changePhoto(){document.getElementById('filePhoto').click()}
+function handlePhoto(e){
+let f=e.target.files[0]; if(!f)return;
+let r=new FileReader(); r.onload=ev=>{profile.photo=ev.target.result; save(); render(); alert('✅ Foto de perfil atualizada!')}; r.readAsDataURL(f);
+}
+
+// Câmera 2 lados
+async function openCam(){document.getElementById('pCam').classList.add('show'); await startCam(lado)}
+async function startCam(face){
+lado=face;
+if(stream){stream.getTracks().forEach(t=>t.stop())}
+try{
+stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:face,width:{ideal:1280}}});
+let v=document.getElementById('video'); v.srcObject=stream; v.className=face==='user'?'front':'';
+document.getElementById('camLabel').innerText=face==='user'?'🔄 FRENTE':'🔄 TRÁS';
+}catch(err){alert('Permita câmera'); closeAll()}
+}
+async function switchCam(){lado=lado==='user'?'environment':'user'; await startCam(lado)}
+function take(){
+let v=document.getElementById('video'); let c=document.createElement('canvas'); c.width=v.videoWidth; c.height=v.videoHeight;
+let ctx=c.getContext('2d'); if(lado==='user'){ctx.translate(c.width,0);ctx.scale(-1,1)} ctx.drawImage(v,0,0);
+let data=c.toDataURL('image/jpeg',0.8);
+let desc=prompt('Legenda do post:','Meu trabalho com câmera '+(lado==='user'?'frontal':'traseira')+' 🔥')||'Meu post';
+posts.unshift({owner:profile.name,display:profile.display,bio:profile.bio,work:profile.work,photo:profile.photo,img:data,desc:desc,likes:0,liked:false,saved:false,follow:false,coms:[]});
+save(); closeAll(); cur=0; render();
+}
+function openGal(){document.getElementById('fileGal').click()}
+function handleGal(e){
+let f=e.target.files[0]; if(!f)return;
+let r=new FileReader(); r.onload=ev=>{
+let data=ev.target.result;
+let desc=prompt('Legenda:','Foto da galeria 🔥')||'Post';
+posts.unshift({owner:profile.name,display:profile.display,bio:profile.bio,photo:profile.photo,img:data,desc:desc,likes:0,liked:false,saved:false,follow:false,coms:[]});
+save(); closeAll(); cur=0; render();
+}; r.readAsDataURL(f);
+}
+
+render();
 </script>
 </body>
 </html>
