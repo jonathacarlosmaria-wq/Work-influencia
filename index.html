@@ -3,95 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - OFICIAL</title>
+<title>WORK FIRE - COMPLETO</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box!important}
-html,body{height:100dvh!important;background:#000!important;overflow:hidden!important;font-family:system-ui,sans-serif!important}
-#app{width:100%!important;max-width:420px!important;height:100dvh!important;margin:0 auto!important;display:flex!important;flex-direction:column!important;background:#000!important;position:relative!important}
-#feed{flex:1!important;overflow-y:scroll!important;scroll-snap-type:y mandatory!important;background:#000!important}
-#feed::-webkit-scrollbar{display:none!important}
-.post{height:100dvh!important;width:100%!important;position:relative!important;scroll-snap-align:start!important;background:#111 center/cover no-repeat!important;flex-shrink:0!important}
-.top{position:absolute!important;top:14px!important;left:12px!important;right:12px!important;display:flex!important;justify-content:space-between!important;z-index:10!important}
-.logo{color:#ff4500!important;font-weight:900!important;font-size:18px!important;letter-spacing:1px!important;text-shadow:0 0 8px rgba(255,69,0,.8)!important}
-.badge{background:linear-gradient(90deg,#ff4500,#ff8c00)!important;color:#fff!important;padding:6px 14px!important;border-radius:20px!important;font-weight:900!important;font-size:11px!important}
-.side{position:absolute!important;right:8px!important;bottom:100px!important;display:flex!important;flex-direction:column!important;gap:14px!important;z-index:20!important;width:58px!important;align-items:center!important}
-.sbtn{display:flex!important;flex-direction:column!important;align-items:center!important;background:none!important;border:none!important;width:100%!important;cursor:pointer!important}
-.ibtn{width:50px!important;height:50px!important;border-radius:50%!important;background:radial-gradient(circle,#ff4500,#8b0000)!important;border:2px solid #ff8c00!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:22px!important;box-shadow:0 0 12px rgba(255,69,0,.6)!important;animation:vivo 2s infinite!important;transition:.15s!important}
-.ibtn:active{transform:scale(0.85)!important}
-@keyframes vivo{0%,100%{transform:scale(1);box-shadow:0 0 12px rgba(255,69,0,.6)}50%{transform:scale(1.07);box-shadow:0 0 18px rgba(255,140,0,.9)}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sans-serif}
+#app{width:100%;max-width:420px;height:100dvh;margin:0 auto;display:flex;flex-direction:column;background:#000;position:relative}
+#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
+#feed::-webkit-scrollbar{display:none}
+.post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0}
+.top{position:absolute;top:14px;left:12px;right:12px;display:flex;justify-content:space-between;z-index:10}
+.logo{color:#ff4500;font-weight:900;font-size:18px}
+.badge{background:linear-gradient(90deg,#ff4500,#ff8c00);color:#fff;padding:6px 14px;border-radius:20px;font-weight:900;font-size:11px}
+.side{position:absolute;right:8px;bottom:100px;display:flex;flex-direction:column;gap:14px;z-index:20;width:58px;align-items:center}
+.sbtn{display:flex;flex-direction:column;align-items:center;background:none;border:none;width:100%;cursor:pointer}
+.ibtn{width:50px;height:50px;border-radius:50%;background:radial-gradient(circle,#ff4500,#8b0000);border:2px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:22px;animation:vivo 2s infinite}
+.ibtn.liked{background:radial-gradient(circle,#ff1493,#8b0000)!important}
+.ibtn.saved{background:radial-gradient(circle,#ffcc00,#8b0000)!important}
+@keyframes vivo{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
-.count{color:#fff!important;font-size:11px!important;font-weight:600!important;margin-top:4px!important;text-shadow:0 1px 3px #000!important}
-.info{position:absolute!important;left:12px!important;right:74px!important;bottom:82px!important;background:rgba(10,0,0,.88)!important;border:2px solid #ff3300!important;border-radius:14px!important;padding:10px 12px!important;z-index:5!important}
-.nav{height:70px!important;min-height:70px!important;background:#080300!important;border-top:2px solid #ff4500!important;display:flex!important;align-items:center!important;z-index:30!important;flex-shrink:0!important}
-.nav button{flex:1!important;background:none!important;border:none!important;color:#6b3a10!important;font-size:10px!important;font-weight:800!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:2px!important}
-.nav button.on{color:#ff8c00!important}
-.plus{width:62px!important;height:62px!important;border-radius:50%!important;background:radial-gradient(circle,#ff6a00,#ff0000)!important;border:3px solid #fff!important;color:#fff!important;font-size:30px!important;display:flex!important;align-items:center!important;justify-content:center!important;margin-top:-26px!important;box-shadow:0 0 20px #ff4500!important}
-.sheet{position:fixed!important;inset:0!important;background:rgba(0,0,0,.7)!important;z-index:100!important;display:none!important;align-items:flex-end!important}
-.sheet.show{display:flex!important}
-.sheetBox{background:#140800!important;border-top:3px solid #ff4500!important;width:100%!important;border-radius:18px 18px 0 0!important;max-height:75dvh!important;display:flex!important;flex-direction:column!important}
-.page{position:absolute!important;inset:0!important;background:#000!important;z-index:40!important;display:none!important;flex-direction:column!important;overflow:auto!important}
-.page.show{display:flex!important}
-.input{width:100%!important;padding:12px!important;background:#1a0a00!important;border:1.5px solid #ff4500!important;border-radius:10px!important;color:#fff!important;margin-top:8px!important;outline:none!important}
-.btn{width:100%!important;padding:14px!important;background:linear-gradient(90deg,#ff4500,#ff8c00)!important;border:none!important;border-radius:10px!important;color:#000!important;font-weight:900!important;margin-top:10px!important;cursor:pointer!important}
-.card{background:#140800!important;border:2px solid #ff4500!important;border-radius:12px!important;padding:14px!important;margin:10px!important}
+@keyframes heartFloat{0%{transform:translateY(0) scale(0);opacity:0}15%{opacity:1;transform:scale(1.2)}100%{transform:translateY(-300px) scale(1);opacity:0}}
+.count{color:#fff;font-size:11px;font-weight:600;margin-top:4px;text-shadow:0 1px 3px #000}
+.info{position:absolute;left:12px;right:74px;bottom:82px;background:rgba(10,0,0,.9);border:2px solid #ff3300;border-radius:14px;padding:10px 12px;z-index:5}
+.nav{height:70px;min-height:70px;background:#080300;border-top:2px solid #ff4500;display:flex;align-items:center;z-index:30;flex-shrink:0}
+.nav button{flex:1;background:none;border:none;color:#6b3a10;font-size:10px;font-weight:800;display:flex;flex-direction:column;align-items:center}
+.nav button.on{color:#ff8c00}
+.plus{width:62px;height:62px;border-radius:50%;background:radial-gradient(circle,#ff4500,#ff0000);border:3px solid #fff;color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin-top:-26px}
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;display:none;align-items:flex-end}
+.sheet.show{display:flex}
+.sheetBox{background:#140800;border-top:3px solid #ff4500;width:100%;border-radius:18px 18px 0 0;max-height:75dvh;display:flex;flex-direction:column}
+.page{position:absolute;inset:0;background:#000;z-index:40;display:none;flex-direction:column;overflow:auto}
+.page.show{display:flex}
+.input{width:100%;padding:12px;background:#1a0a00;border:1.5px solid #ff4500;border-radius:10px;color:#fff;margin-top:8px}
+.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px}
+.card{background:#140800;border:2px solid #ff4500;border-radius:12px;padding:14px;margin:10px}
+.heart{position:absolute;font-size:80px;pointer-events:none;z-index:50;animation:heartFloat 1s forwards}
+#videoLive{width:100%;height:100%;object-fit:cover;background:#111}
+.liveBadge{background:#ff0000;color:#fff;padding:6px 12px;border-radius:20px;font-weight:900;font-size:11px;display:flex;gap:6px}
 </style>
 </head>
 <body>
 <div id="app">
 <div id="feed"></div>
 
-<div id="sheetC" class="sheet" onclick="if(event.target==this)closeS('sheetC')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid #331100"><b style="color:#ff8c00">💬 <span id="ct">0</span> comentários</b><button onclick="closeS('sheetC')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div id="listC" style="flex:1;overflow:auto;padding:0 14px"></div><div style="padding:12px;display:flex;gap:8px"><input id="txtC" class="input" style="flex:1;margin:0" placeholder="Comente..."><button onclick="sendC()" style="background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;padding:0 18px;border-radius:10px;font-weight:900">Enviar</button></div></div></div>
-<div id="sheetS" class="sheet" onclick="if(event.target==this)closeS('sheetS')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid #331100"><b style="color:#ff8c00">🚀 Compartilhar</b><button onclick="closeS('sheetS')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div style="padding:14px"><button onclick="doZap()" class="card" style="width:100%;cursor:pointer">💬 Enviar no WhatsApp</button><button onclick="doCopy()" class="card" style="width:100%;cursor:pointer">🔗 Copiar Link</button></div></div></div>
+<div id="sheetC" class="sheet" onclick="if(event.target==this)closeS('sheetC')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid #331100"><b style="color:#ff8c00">💬 <span id="ct">0</span></b><button onclick="closeS('sheetC')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div id="listC" style="flex:1;overflow:auto;padding:0 14px"></div><div style="padding:12px;display:flex;gap:8px"><input id="txtC" class="input" style="flex:1;margin:0" placeholder="Comentar..."><button onclick="sendC()" style="background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;padding:0 16px;border-radius:10px;font-weight:900">Enviar</button></div></div></div>
+<div id="sheetS" class="sheet" onclick="if(event.target==this)closeS('sheetS')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between"><b style="color:#ff8c00">🚀 Compartilhar</b><button onclick="closeS('sheetS')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div style="padding:14px"><button onclick="doZap()" class="card" style="width:100%">💬 WhatsApp</button><button onclick="doCopy()" class="card" style="width:100%">🔗 Copiar</button></div></div></div>
 
-<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔥 Criar Fire</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div class="card"><input id="imgLink" class="input" placeholder="Link da imagem"><input id="file" type="file" accept="image/*" style="margin-top:10px;color:#fff;width:100%"><img id="prev" style="width:100%;margin-top:10px;border-radius:10px;display:none"><input id="desc" class="input" placeholder="Descrição do Fire"><button class="btn" onclick="addPost()">POSTAR FIRE 🔥</button></div></div>
+<div id="pBusca" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔍 Busca</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div class="card"><input id="buscaInput" class="input" placeholder="Buscar fires..." oninput="doBusca()"><div id="buscaRes" style="margin-top:10px"></div></div></div>
+
+<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔥 Criar</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div class="card"><input id="imgLink" class="input" placeholder="Link imagem"><input id="file" type="file" accept="image/*" style="margin-top:10px;color:#fff;width:100%"><img id="prev" style="width:100%;margin-top:10px;border-radius:10px;display:none"><input id="desc" class="input" placeholder="Descrição"><button class="btn" onclick="addPost()">POSTAR</button></div></div>
+
+<div id="pLive" class="page" style="background:#000;overflow:hidden"><video id="videoLive" autoplay muted playsinline></video><div id="liveOff" style="position:absolute;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;z-index:2"><div style="width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#ff4500,#8b0000);border:3px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:40px">🔴</div><h2 style="color:#fff;margin-top:14px">Entrar ao Vivo?</h2><button class="btn" style="background:#ff0000;color:#fff;margin-top:16px" onclick="startLive()">🔴 COMEÇAR LIVE</button><button style="background:none;border:none;color:#666;margin-top:10px" onclick="closeAll()">Cancelar</button></div><div style="position:absolute;top:14px;left:12px;right:12px;display:flex;justify-content:space-between;z-index:3"><div style="display:flex;gap:8px"><div class="liveBadge">🔴 AO VIVO</div><div style="background:rgba(0,0,0,.7);color:#fff;padding:6px 12px;border-radius:20px;font-size:11px">👁️ <span id="viewers">1</span></div></div><button onclick="stopLive()" style="background:rgba(0,0,0,.6);border:none;color:#fff;width:36px;height:36px;border-radius:50%">✕</button></div><div id="liveComments" style="position:absolute;left:12px;right:80px;bottom:80px;max-height:180px;overflow:hidden;display:flex;flex-direction:column;gap:6px;z-index:3"></div><div style="position:absolute;right:10px;bottom:90px;display:flex;flex-direction:column;gap:12px;z-index:3"><button onclick="liveHeart()" style="width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.5);border:2px solid rgba(255,255,255,.3);font-size:20px">💖</button><button onclick="stopLive()" style="width:46px;height:46px;border-radius:50%;background:#ff0000;border:none;color:#fff">⬛</button></div><div style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;gap:8px;z-index:3"><input id="liveInput" class="input" style="flex:1;margin:0;background:rgba(0,0,0,.6)" placeholder="Comentar na live..."><button onclick="sendLiveComment()" style="background:#ff4500;border:none;padding:0 14px;border-radius:10px;color:#fff;font-weight:900">➤</button></div></div>
 
 <div id="pEu" class="page">
 <div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#ff4500">🔥 Meu Perfil</b><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div>
-<div style="text-align:center;padding:15px">
-<div id="fotoPerfil" style="width:96px;height:96px;border-radius:50%;margin:0 auto;background:radial-gradient(circle,#ff4500,#8b0000);border:3px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:40px;overflow:hidden;background-size:cover;background-position:center">🔥</div>
-<h3 id="nomePerfil" style="color:#fff;margin-top:12px">FIRE USER</h3>
+<div style="text-align:center;padding:10px">
+<div id="fotoPerfil" style="width:90px;height:90px;border-radius:50%;margin:0 auto;background:radial-gradient(circle,#ff4500,#8b0000);border:3px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden;background-size:cover;background-position:center">🔥</div>
+<h3 id="nomePerfil" style="color:#fff;margin-top:10px">FIRE USER</h3>
 <div id="userPerfil" style="color:#ff8c00;font-size:13px">@fire.user</div>
-<div id="bioPerfil" style="color:#aaa;font-size:12px;margin-top:6px">🔥 Work Fire Influencer</div>
+<div id="bioPerfil" style="color:#aaa;font-size:12px;margin-top:4px">Work Fire</div>
 </div>
-<div class="card"><b style="color:#ff8c00">📸 Foto de Perfil</b><input id="linkFoto" class="input" placeholder="Cole link da foto aqui"><input id="fileFoto" type="file" accept="image/*" style="margin-top:8px;color:#fff;width:100%"><img id="prevFoto" style="width:100%;margin-top:10px;border-radius:12px;display:none;max-height:200px;object-fit:cover"></div>
-<div class="card"><b style="color:#ff8c00">👤 Cadastro</b><input id="cadNome" class="input" placeholder="Seu nome"><input id="cadUser" class="input" placeholder="@seu usuario"><input id="cadBio" class="input" placeholder="Sua bio"><button class="btn" onclick="salvarPerfil()">SALVAR PERFIL</button></div>
-<div class="card"><b style="color:#ff8c00">🔖 Meus Salvos</b><div id="salvos" style="margin-top:8px"></div></div>
+<div class="card"><b style="color:#ff8c00">📸 Foto</b><input id="linkFoto" class="input" placeholder="Link foto"><input id="fileFoto" type="file" accept="image/*" style="margin-top:8px;color:#fff;width:100%"><img id="prevFoto" style="width:100%;margin-top:10px;border-radius:12px;display:none;max-height:200px;object-fit:cover"></div>
+<div class="card"><b style="color:#ff8c00">👤 Cadastro</b><input id="cadNome" class="input" placeholder="Seu nome"><input id="cadUser" class="input" placeholder="@usuario"><input id="cadBio" class="input" placeholder="Bio"><button class="btn" onclick="salvarPerfil()">SALVAR PERFIL</button></div>
+<div class="card"><b style="color:#ff8c00">🔖 Salvos</b><div id="salvos"></div></div>
 </div>
 
 <div class="nav">
 <button id="n0" class="on" onclick="go(0)"><span style="font-size:20px">🏠</span><span>Inicio</span></button>
-<button onclick="go(1)"><span style="font-size:20px">🔍</span><span>Busca</span></button>
+<button id="n1" onclick="go(1)"><span style="font-size:20px">🔍</span><span>Busca</span></button>
 <button onclick="go(2)"><div class="plus">+</div></button>
-<button onclick="go(3)"><span style="font-size:20px">🔴</span><span>Live</span></button>
+<button id="n3" onclick="go(3)"><span style="font-size:20px">🔴</span><span>Live</span></button>
 <button id="n4" onclick="go(4)"><span style="font-size:20px">🔥</span><span>Eu</span></button>
 </div>
 </div>
+
 <script>
-let posts=[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800",desc:"AGORA COM 4 BOTÕES LATERAIS!",likes:7791,liked:false,comments:[{u:"ana",t:"🔥 brabo!"}],saves:0,saved:false,shares:8}];
-let temp="";let cur=0;let perfilUser={nome:"FIRE USER",user:"@fire.user",bio:"🔥 Work Fire Influencer",foto:""};
-try{let p=localStorage.getItem("WORK_FIRE_GUARDADO"); if(p) posts=JSON.parse(p);}catch(e){}
+let posts=[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800",desc:"AGORA COM TUDO QUE VOCÊ PEDIU!",likes:7791,liked:false,comments:[{u:"ana",t:"🔥"}],saves:0,saved:false,shares:8}];
+let temp="",cur=0,lastTap=0,stream=null,viewerInterval=null;
+let perfilUser={nome:"FIRE USER",user:"@fire.user",bio:"🔥 Work Fire",foto:""};
+try{let s=localStorage.getItem("WORK_FIRE_GUARDADO"); if(s) posts=JSON.parse(s);}catch(e){}
 try{let p=localStorage.getItem("PERFIL_FIRE_USER"); if(p) perfilUser=JSON.parse(p);}catch(e){}
 function render(){
-document.getElementById("feed").innerHTML=posts.map((p,i)=>`<div class="post" style="background-image:url('${p.img}')"><div class="top"><div class="logo">🔥 WORK FIRE</div><div class="badge">🔥 1 FIRE ONLINE</div></div><div class="side"><button class="sbtn" onclick="doFire(${i},this)"><div class="ibtn">🔥</div><div class="count">${p.likes}</div></button><button class="sbtn" onclick="doLike(${i},this)"><div class="ibtn" style="${p.liked?'background:radial-gradient(circle,#ff1493,#8b0000)!important':''}">${p.liked?'💖':'🤍'}</div><div class="count">Curtir</div></button><button class="sbtn" onclick="openC(${i},this)"><div class="ibtn">💬</div><div class="count">${p.comments.length}</div></button><button class="sbtn" onclick="openS(${i},this)"><div class="ibtn">🚀</div><div class="count">${p.shares}</div></button><button class="sbtn" onclick="doSave(${i},this)"><div class="ibtn" style="${p.saved?'background:radial-gradient(circle,#ffcc00,#8b0000)!important':''}">🔖</div><div class="count">Salvar</div></button></div><div class="info"><b style="color:#ff8c00">@${p.owner}</b><div style="font-size:13px;margin-top:4px;color:#fff">🔥 ${p.desc}</div></div></div>`).join("");
-document.getElementById("salvos").innerHTML=posts.filter(x=>x.saved).map(x=>`<div style="display:flex;gap:8px;margin-top:10px;align-items:center"><img src="${x.img}" style="width:50px;height:50px;border-radius:8px;object-fit:cover"><div style="color:#fff;font-size:12px">${x.desc}</div></div>`).join("")||"<div style='color:#666;margin-top:8px'>Nenhum salvo ainda</div>";
+document.getElementById("feed").innerHTML=posts.map((p,i)=>`<div class="post" style="background-image:url('${p.img}')" ondblclick="handleDouble(${i},event)" onclick="handleTap(${i},event)"><div class="top"><div class="logo">🔥 WORK FIRE</div><div class="badge">🔥 1 FIRE ONLINE</div></div><div class="side"><button class="sbtn" onclick="event.stopPropagation();doFire(${i},this)"><div class="ibtn">🔥</div><div class="count">${p.likes}</div></button><button class="sbtn" onclick="event.stopPropagation();doLike(${i},this)"><div class="ibtn ${p.liked?'liked':''}">${p.liked?'💖':'🤍'}</div><div class="count">Curtir</div></button><button class="sbtn" onclick="event.stopPropagation();openC(${i},this)"><div class="ibtn">💬</div><div class="count">${p.comments.length}</div></button><button class="sbtn" onclick="event.stopPropagation();openS(${i},this)"><div class="ibtn">🚀</div><div class="count">${p.shares}</div></button><button class="sbtn" onclick="event.stopPropagation();doSave(${i},this)"><div class="ibtn ${p.saved?'saved':''}">🔖</div><div class="count">Salvar</div></button></div><div class="info"><b style="color:#ff8c00">@${p.owner}</b><div style="font-size:13px;margin-top:4px;color:#fff">🔥 ${p.desc}</div></div></div>`).join("");
+document.getElementById("salvos").innerHTML=posts.filter(x=>x.saved).map(x=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${x.img}" style="width:50px;height:50px;border-radius:8px;object-fit:cover"><div style="color:#fff;font-size:12px">${x.desc}</div></div>`).join("")||"<div style='color:#666'>Nenhum</div>";
 atualizarPerfilTela();
 }
 function save(){localStorage.setItem("WORK_FIRE_GUARDADO",JSON.stringify(posts));}
-function anim(b){let ib=b.querySelector('.ibtn'); ib.style.animation='none'; ib.offsetHeight; ib.style.animation='pop.35s ease, vivo 2s infinite.35s'; if(navigator.vibrate) navigator.vibrate(30);}
-function doLike(i,b){anim(b); posts[i].liked=!posts[i].liked; save(); render();}
+function anim(b){let ib=b.querySelector('.ibtn'); ib.style.animation='none'; ib.offsetHeight; ib.style.animation='pop.35s ease, vivo 2s infinite.35s';}
+function showHeart(x,y,el){let h=document.createElement("div"); h.className="heart"; h.innerText="💖"; h.style.left=(x-40)+"px"; h.style.top=(y-40)+"px"; el.appendChild(h); setTimeout(()=>h.remove(),1000);}
+function handleDouble(i,e){e.preventDefault(); let el=e.currentTarget; showHeart(e.clientX,e.clientY,el); if(!posts[i].liked){posts[i].liked=true; posts[i].likes++; save(); render();}}
+function handleTap(i,e){let now=Date.now(); if(now-lastTap<300) handleDouble(i,e); lastTap=now;}
+function doLike(i,b){anim(b); posts[i].liked=!posts[i].liked; posts[i].likes+=posts[i].liked?1:-1; save(); render();}
 function doSave(i,b){anim(b); posts[i].saved=!posts[i].saved; save(); render();}
-function doFire(i,b){anim(b); posts[i].likes++; save(); render();}
-function openC(i,b){anim(b); cur=i; document.getElementById("ct").innerText=posts[i].comments.length; document.getElementById("listC").innerHTML=posts[i].comments.map(c=>`<div style="padding:10px 0;border-bottom:1px solid #331100"><b style="color:#ff8c00">@${c.u}</b> <span style="color:#fff">${c.t}</span></div>`).join("")||"<div style='color:#666;padding:20px;text-align:center'>Seja o primeiro a comentar</div>"; document.getElementById("sheetC").classList.add("show");}
-function sendC(){let t=document.getElementById("txtC").value.trim(); if(!t)return; posts[cur].comments.push({u:perfilUser.user.replace('@','')||"fire",t:t}); document.getElementById("txtC").value=""; save(); openC(cur); render();}
+function doFire(i,b){anim(b); posts[i].likes++; posts[i].liked=true; save(); render();}
+function openC(i,b){anim(b); cur=i; document.getElementById("ct").innerText=posts[i].comments.length; document.getElementById("listC").innerHTML=posts[i].comments.map(c=>`<div style="padding:10px 0;border-bottom:1px solid #331100"><b style="color:#ff8c00">@${c.u}</b> <span style="color:#fff">${c.t}</span></div>`).join(""); document.getElementById("sheetC").classList.add("show");}
+function sendC(){let t=document.getElementById("txtC").value.trim(); if(!t)return; posts[cur].comments.push({u:"fire",t:t}); document.getElementById("txtC").value=""; save(); openC(cur); render();}
 function openS(i,b){anim(b); cur=i; document.getElementById("sheetS").classList.add("show");}
-function doZap(){window.open(`https://wa.me/?text=${encodeURIComponent(posts[cur].desc+" - "+location.href)}`,"_blank"); posts[cur].shares++; save(); render(); closeS('sheetS');}
-function doCopy(){navigator.clipboard.writeText(location.href); posts[cur].shares++; save(); render(); closeS('sheetS'); alert("🔗 Link copiado!");}
+function doZap(){window.open(`https://wa.me/?text=${encodeURIComponent(posts[cur].desc+" "+location.href)}`); posts[cur].shares++; save(); render(); closeS('sheetS');}
+function doCopy(){navigator.clipboard.writeText(location.href); posts[cur].shares++; save(); render(); closeS('sheetS');}
 function closeS(id){document.getElementById(id).classList.remove("show");}
-function addPost(){let l=document.getElementById("imgLink").value.trim()||temp; let d=document.getElementById("desc").value.trim()||"🔥 Fire"; if(!l){alert("Coloca uma imagem!");return;} posts.unshift({owner:perfilUser.user.replace('@','')||"fire.influencer",img:l,desc:d,likes:0,liked:false,comments:[],saves:0,saved:false,shares:0}); save(); render(); closeAll(); go(0);}
-function go(n){document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); if(document.getElementById("n"+n))document.getElementById("n"+n).classList.add("on"); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show");}
-function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));}
-function atualizarPerfilTela(){if(!document.getElementById("nomePerfil"))return; document.getElementById("nomePerfil").innerText=perfilUser.nome; document.getElementById("userPerfil").innerText=perfilUser.user; document.getElementById("bioPerfil").innerText=perfilUser.bio; let fp=document.getElementById("fotoPerfil"); if(perfilUser.foto){fp.style.backgroundImage=`url('${perfilUser.foto}')`; fp.innerText="";}else{fp.style.backgroundImage="none"; fp.innerText="🔥";}}
-function salvarPerfil(){perfilUser.nome=document.getElementById("cadNome").value.trim()||perfilUser.nome; perfilUser.user=document.getElementById("cadUser").value.trim()||perfilUser.user; perfilUser.bio=document.getElementById("cadBio").value.trim()||perfilUser.bio; let link=document.getElementById("linkFoto").value.trim(); if(link) perfilUser.foto=link; if(window.tempFotoPerfil) perfilUser.foto=window.tempFotoPerfil; localStorage.setItem("PERFIL_FIRE_USER",JSON.stringify(perfilUser)); atualizarPerfilTela(); alert("✅ Perfil salvo!");}
+function addPost(){let l=document.getElementById("imgLink").value.trim()||temp; let d=document.getElementById("desc").value.trim()||"Fire"; if(!l)return alert("Imagem"); posts.unshift({owner:"fire.influencer",img:l,desc:d,likes:0,liked:false,comments:[],saves:0,saved:false,shares:0}); save(); render(); closeAll(); go(0);}
+function go(n){document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); if(document.getElementById("n"+n))document.getElementById("n"+n).classList.add("on"); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); if(n==1)document.getElementById("pBusca").classList.add("show"); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==3)document.getElementById("pLive").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show");}
+function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); go(0);}
+function doBusca(){let q=document.getElementById("buscaInput").value.toLowerCase(); let r=posts.filter(p=>p.desc.toLowerCase().includes(q)||p.owner.toLowerCase().includes(q)); document.getElementById("buscaRes").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${p.img}" style="width:50px;height:50px;border-radius:8px;object-fit:cover"><div style="color:#fff;font-size:12px">@${p.owner}<br>${p.desc}</div></div>`).join("")||"<div style='color:#666'>Nada encontrado</div>";}
+async function startLive(){try{stream=await navigator.mediaDevices.getUserMedia({video:true,audio:true}); document.getElementById("videoLive").srcObject=stream; document.getElementById("liveOff").style.display="none"; let v=1; viewerInterval=setInterval(()=>{v+=Math.floor(Math.random()*2); document.getElementById("viewers").innerText=v;},2000);}catch(e){alert("Permita câmera!");}}
+function stopLive(){if(stream){stream.getTracks().forEach(t=>t.stop()); stream=null;} document.getElementById("videoLive").srcObject=null; document.getElementById("liveOff").style.display="flex"; if(viewerInterval) clearInterval(viewerInterval); closeAll();}
+function liveHeart(){let pl=document.getElementById("pLive"); let h=document.createElement("div"); h.className="heart"; h.innerText="💖"; h.style.left="50%"; h.style.bottom="120px"; pl.appendChild(h); setTimeout(()=>h.remove(),1000);}
+function sendLiveComment(){let inp=document.getElementById("liveInput"); let t=inp.value.trim(); if(!t)return; let div=document.createElement("div"); div.style.cssText="background:rgba(0,0,0,.6);padding:6px 10px;border-radius:12px;color:#fff;font-size:12px;margin-top:6px"; div.innerHTML=`<b style="color:#ff8c00">@voce</b> ${t}`; document.getElementById("liveComments").appendChild(div); inp.value="";}
+function atualizarPerfilTela(){document.getElementById("nomePerfil").innerText=perfilUser.nome; document.getElementById("userPerfil").innerText=perfilUser.user; document.getElementById("bioPerfil").innerText=perfilUser.bio; let fp=document.getElementById("fotoPerfil"); if(perfilUser.foto){fp.style.backgroundImage=`url('${perfilUser.foto}')`; fp.innerText="";}else{fp.style.backgroundImage="none"; fp.innerText="🔥";}}
+function salvarPerfil(){perfilUser.nome=document.getElementById("cadNome").value.trim()||perfilUser.nome; perfilUser.user=document.getElementById("cadUser").value.trim()||perfilUser.user; perfilUser.bio=document.getElementById("cadBio").value.trim()||perfilUser.bio; let link=document.getElementById("linkFoto").value.trim(); if(link) perfilUser.foto=link; if(window.tempFotoPerfil) perfilUser.foto=window.tempFotoPerfil; localStorage.setItem("PERFIL_FIRE_USER",JSON.stringify(perfilUser)); atualizarPerfilTela(); alert("✅ Salvo!");}
 document.getElementById("file").addEventListener("change",function(e){let r=new FileReader();r.onload=function(ev){temp=ev.target.result;let p=document.getElementById("prev");p.src=temp;p.style.display="block";};if(e.target.files[0])r.readAsDataURL(e.target.files[0]);});
 document.getElementById("fileFoto").addEventListener("change",function(e){let r=new FileReader();r.onload=function(ev){window.tempFotoPerfil=ev.target.result;let pv=document.getElementById("prevFoto");pv.src=ev.target.result;pv.style.display="block";let fp=document.getElementById("fotoPerfil");fp.style.backgroundImage=`url('${ev.target.result}')`;fp.innerText="";};if(e.target.files[0])r.readAsDataURL(e.target.files[0]);});
 render();
