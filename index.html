@@ -3,30 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>WORK GOLD - SEM GANHOS</title>
+<title>WORK GOLD - SEM TRAVAR</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:system-ui}
-.app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;position:relative;display:flex;flex-direction:column}
-.stage{flex:1;position:relative;overflow:hidden}
-.bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#111}
-.gold{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,215,0,.12) 0%,transparent 40%,rgba(0,0,0,.9) 100%)}
+.app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;position:relative;display:flex;flex-direction:column;will-change:transform}
+.stage{flex:1;position:relative;overflow:hidden;transform:translateZ(0)}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#111;will-change:transform;transform:translateZ(0)}
+.gold{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,215,0,.1) 0%,transparent 40%,rgba(0,0,0,.85) 100%);pointer-events:none}
 .top{position:absolute;top:12px;left:12px;right:12px;z-index:5;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:900;color:#FFD700;font-size:15px}
-.right{position:absolute;right:10px;bottom:115px;z-index:5;display:flex;flex-direction:column;gap:14px;align-items:center}
-.btn{width:52px;height:52px;border-radius:14px;background:rgba(15,15,15,.92);border:1.8px solid #FFD700;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#FFD700;font-size:20px}
-.btn.on{background:#FFD700;color:#000}
-.num{font-size:10px;font-weight:800;color:#fff;margin-top:4px;text-align:center}
-.bottom{position:absolute;left:10px;right:82px;bottom:12px;z-index:5}
-.card{background:rgba(12,12,12,.96);border:1.5px solid #FFD700;border-radius:18px;padding:12px}
-.nav{height:66px;background:#090909;border-top:2.5px solid #FFD700;display:flex;justify-content:space-around;align-items:center;flex-shrink:0}
+.logo{font-weight:900;color:#FFD700;font-size:14px}
+.right{position:absolute;right:8px;bottom:110px;z-index:5;display:flex;flex-direction:column;gap:12px;align-items:center}
+.btn{width:48px;height:48px;border-radius:12px;background:rgba(18,18,18,.9);border:1.6px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-size:18px;transition:transform.1s}
+.btn:active{transform:scale(.92)}
+.num{font-size:9px;font-weight:800;color:#fff;margin-top:3px;text-align:center}
+.bottom{position:absolute;left:8px;right:70px;bottom:8px;z-index:5}
+.card{background:rgba(14,14,14,.92);border:1px solid #FFD700;border-radius:16px;padding:10px;backdrop-filter:blur(8px)}
+.nav{height:60px;min-height:60px;background:#080808;border-top:2px solid #FFD700;display:flex;justify-content:space-around;align-items:center;flex-shrink:0}
 .ntab{color:#666;font-size:9px;font-weight:900;text-align:center;flex:1}.ntab.on{color:#FFD700}
-.modal{position:absolute;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,.8);z-index:100;display:none;flex-direction:column;justify-content:flex-end}.modal.on{display:flex}
-.box{width:100%;background:#161616;border-top:3px solid #FFD700;border-radius:22px 22px 0 0;display:flex;flex-direction:column;max-height:85dvh}
-.toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#FFD700;color:#000;padding:11px 20px;border-radius:100px;font-weight:900;display:none;z-index:300;font-size:13px}.toast.on{display:block}
-#cam{position:absolute;inset:0;background:#000;z-index:200;display:none;flex-direction:column}#camEl{flex:1;width:100%;object-fit:cover}
-.mode{padding:8px 14px;border-radius:100px;border:1.5px solid #FFD700;background:#222;color:#FFD700;font-weight:900;font-size:11px}.mode.on{background:#FFD700;color:#000}
-.recDot{width:12px;height:12px;background:#ff1a1a;border-radius:50%;animation:blink 1s infinite;display:inline-block}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.modal{position:absolute;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,.75);z-index:100;display:none;flex-direction:column;justify-content:flex-end}.modal.on{display:flex}
+.box{width:100%;background:#161616;border-top:2px solid #FFD700;border-radius:20px 20px 0 0;display:flex;flex-direction:column;max-height:75dvh}
+.toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#FFD700;color:#000;padding:10px 18px;border-radius:100px;font-weight:900;display:none;z-index:300;font-size:12px}.toast.on{display:block}
+#cam{position:absolute;inset:0;background:#000;z-index:200;display:none;flex-direction:column}#camEl{flex:1;width:100%;object-fit:cover;background:#000}
+.mode{padding:7px 12px;border-radius:100px;border:1px solid #FFD700;background:#222;color:#FFD700;font-weight:900;font-size:10px}.mode.on{background:#FFD700;color:#000}
 </style>
 </head>
 <body>
@@ -35,53 +34,41 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:s
 <div class="bg" id="bg"></div><div class="gold"></div>
 <div class="top">
 <div class="logo">👑 WORK GOLD</div>
-<div style="display:flex;gap:6px">
-<div class="pill" style="background:#222;border:1.5px solid #FFD700;color:#FFD700;padding:5px 10px;border-radius:100px;font-size:10px;font-weight:900">WORK • GOLD</div>
-<div class="pill" style="background:#ff1a1a;color:#fff;padding:5px 10px;border-radius:100px;font-size:10px;font-weight:900;cursor:pointer" onclick="startLive()" id="liveT">● LIVE</div>
+<div style="background:#ff1a1a;color:#fff;padding:4px 9px;border-radius:100px;font-size:9px;font-weight:900;cursor:pointer" onclick="startLive()" id="liveT">● LIVE</div>
 </div>
-</div>
-
 <div class="right">
-<div onclick="doFollow()" style="text-align:center"><div class="btn" id="bF"><span id="fL" style="font-weight:900">L</span></div><div class="num" id="fT">Seguir</div></div>
 <div onclick="doLike()" style="text-align:center"><div class="btn" id="bL">🤍</div><div class="num" id="nL">2.1k</div></div>
-<div onclick="openC()" style="text-align:center"><div class="btn">💬</div><div class="num" id="nC">87</div></div>
+<div onclick="openC()" style="text-align:center"><div class="btn">💬</div><div class="num" id="nC">3</div></div>
 <div onclick="doSave()" style="text-align:center"><div class="btn" id="bS">🔖</div><div class="num">Salvar</div></div>
 <div onclick="doShare()" style="text-align:center"><div class="btn">↗</div><div class="num">Share</div></div>
-<div onclick="openHire()" style="text-align:center"><div class="btn" style="background:#FFD700;color:#000;width:auto;padding:0 14px;height:42px;border-radius:100px;font-size:11px;font-weight:900;flex-direction:row">💼 CONTRATAR</div></div>
+<div onclick="openHire()" style="text-align:center"><div class="btn" style="background:#FFD700;color:#000;width:auto;padding:0 12px;height:38px;border-radius:100px;font-size:10px;font-weight:900">💼 CONTRATAR</div></div>
 </div>
-
 <div class="bottom">
 <div class="card">
-<div style="display:flex;gap:9px;align-items:center">
-<div id="uP" style="width:40px;height:40px;border-radius:50%;background:#222;border:2px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-weight:900">L</div>
-<div style="flex:1"><div style="display:flex;gap:6px;align-items:center"><div id="uN" style="color:#FFD700;font-weight:900;font-size:13px">@lux.studio</div><div style="background:#FFD700;color:#000;font-size:8px;padding:2px 6px;border-radius:100px;font-weight:900">✓ GOLD</div></div><div style="font-size:10px;color:#aaa;display:flex;gap:6px"><span id="typeTag">📸 Foto</span><span>•</span><span>127 trabalhos</span></div></div>
-</div>
-<div id="uD" style="font-size:12px;color:#fff;margin-top:8px;line-height:1.3">Edição Gold em 4K ✨ Entrega 24h</div>
-<button onclick="openHire()" style="width:100%;margin-top:10px;background:#FFD700;color:#000;border:none;padding:10px;border-radius:100px;font-weight:900;font-size:11px">💼 CONTRATAR AGORA</button>
+<div style="display:flex;gap:8px;align-items:center"><div id="uP" style="width:34px;height:34px;border-radius:50%;background:#222;border:1.5px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-weight:900;font-size:12px">L</div><div><div style="display:flex;gap:5px;align-items:center"><div id="uN" style="color:#FFD700;font-weight:900;font-size:12px">@lux.studio</div><div style="background:#FFD700;color:#000;font-size:7px;padding:2px 5px;border-radius:100px;font-weight:900">GOLD</div></div><div style="font-size:9px;color:#aaa" id="typeTag">📸 Foto</div></div></div>
+<div id="uD" style="font-size:11px;color:#fff;margin-top:6px;line-height:1.3">Edição Gold 4K ✨</div>
 </div>
 </div>
-
 <div id="toast" class="toast"></div>
-
-<div class="modal" id="mHire"><div style="flex:1" onclick="closeAll()"></div><div class="box"><div style="padding:16px"><div style="display:flex;justify-content:space-between"><b style="color:#FFD700">💼 Contratar</b><button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:#222;border:1px solid #FFD700;color:#FFD700">×</button></div><div style="margin-top:12px;background:#222;border:1.5px solid #FFD700;border-radius:12px;padding:12px"><div style="color:#FFD700;font-weight:900" id="hireName">@lux.studio</div><div style="font-size:11px;color:#aaa">Online agora 🟢</div></div><button onclick="confirmHire()" style="width:100%;margin-top:12px;background:#FFD700;color:#000;border:none;padding:13px;border-radius:100px;font-weight:900">💼 ENVIAR PEDIDO</button></div></div></div>
-<div class="modal" id="mC"><div style="flex:1" onclick="closeAll()"></div><div class="box"><div style="padding:12px;display:flex;justify-content:space-between;border-bottom:1px solid #333"><b style="color:#FFD700" id="cT">💬 Comentários</b><button onclick="closeAll()" style="width:28px;height:28px;border-radius:50%;background:#222;border:1px solid #FFD700;color:#FFD700">×</button></div><div id="cL" style="padding:12px;display:flex;flex-direction:column;gap:10px;max-height:50vh;overflow:auto"></div><div style="padding:12px;display:flex;gap:8px;border-top:2px solid #FFD700"><input id="cI" placeholder="Comentar..." style="flex:1;background:#222;border:2px solid #FFD700;border-radius:100px;padding:12px;color:#fff"><button onclick="sendC()" style="background:#FFD700;color:#000;padding:12px 18px;border-radius:100px;font-weight:900;border:none">Enviar</button></div></div></div>
+<div class="modal" id="mHire"><div style="flex:1" onclick="closeAll()"></div><div class="box"><div style="padding:14px"><div style="display:flex;justify-content:space-between"><b style="color:#FFD700;font-size:13px">💼 Contratar</b><button onclick="closeAll()" style="width:28px;height:28px;border-radius:50%;background:#222;border:1px solid #FFD700;color:#FFD700">×</button></div><div style="margin-top:10px;background:#222;border:1px solid #FFD700;border-radius:10px;padding:10px"><div style="color:#FFD700;font-weight:900;font-size:12px" id="hireName">@lux.studio</div><div style="font-size:10px;color:#aaa">Online 🟢</div></div><button onclick="confirmHire()" style="width:100%;margin-top:10px;background:#FFD700;color:#000;border:none;padding:12px;border-radius:100px;font-weight:900;font-size:12px">💼 ENVIAR PEDIDO</button></div></div></div>
+<div class="modal" id="mC"><div style="flex:1" onclick="closeAll()"></div><div class="box"><div style="padding:10px;display:flex;justify-content:space-between;border-bottom:1px solid #333"><b style="color:#FFD700;font-size:12px" id="cT">💬</b><button onclick="closeAll()" style="width:26px;height:26px;border-radius:50%;background:#222;border:1px solid #FFD700;color:#FFD700">×</button></div><div id="cL" style="padding:10px;display:flex;flex-direction:column;gap:8px;max-height:45vh;overflow:auto"></div><div style="padding:10px;display:flex;gap:6px;border-top:1.5px solid #FFD700"><input id="cI" placeholder="Comentar..." style="flex:1;background:#222;border:1.5px solid #FFD700;border-radius:100px;padding:10px;color:#fff;font-size:14px"><button onclick="sendC()" style="background:#FFD700;color:#000;padding:10px 14px;border-radius:100px;font-weight:900;border:none;font-size:12px">Enviar</button></div></div></div>
 
 <div id="cam">
 <video id="camEl" autoplay muted playsinline></video>
-<div id="recTimer" style="position:absolute;top:60px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);border:1.5px solid #ff1a1a;color:#fff;padding:6px 14px;border-radius:100px;font-size:12px;font-weight:900;display:none;z-index:5"><span class="recDot"></span> <span id="recTime">00:00</span> / 01:30</div>
-<div style="position:absolute;top:0;left:0;right:0;padding:12px;display:flex;justify-content:space-between;z-index:5;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)">
-<button onclick="closeCam()" style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.7);border:1.5px solid #FFD700;color:#FFD700">✕</button>
-<div id="camStatus" style="color:#FFD700;font-weight:900;font-size:11px;background:rgba(0,0,0,.6);padding:6px 12px;border-radius:100px">Modo Foto</div>
-<button onclick="doPost()" id="postBtn" style="background:#FFD700;color:#000;padding:8px 16px;border-radius:100px;font-weight:900;border:none;display:none">Postar ✨</button>
+<div id="recTimer" style="position:absolute;top:55px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);border:1px solid #ff1a1a;color:#fff;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:900;display:none;z-index:5"><span style="width:8px;height:8px;background:#ff1a1a;border-radius:50%;display:inline-block"></span> <span id="recTime">00:00</span> / 01:30</div>
+<div style="position:absolute;top:0;left:0;right:0;padding:10px;display:flex;justify-content:space-between;z-index:5;background:linear-gradient(180deg,rgba(0,0,0,.6),transparent)">
+<button onclick="closeCam()" style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.7);border:1px solid #FFD700;color:#FFD700">✕</button>
+<div id="camStatus" style="color:#FFD700;font-weight:900;font-size:10px;background:rgba(0,0,0,.6);padding:5px 10px;border-radius:100px">Foto</div>
+<button onclick="doPost()" id="postBtn" style="background:#FFD700;color:#000;padding:6px 12px;border-radius:100px;font-weight:900;border:none;display:none;font-size:11px">Postar</button>
 </div>
-<div style="position:absolute;bottom:90px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:5">
+<div style="position:absolute;bottom:80px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:5">
 <button class="mode on" id="modeFoto" onclick="setMode('foto')">📸 FOTO</button>
-<button class="mode" id="modeVideo" onclick="setMode('video')">🎬 VÍDEO 1:30</button>
-<button class="mode" id="modeLive" onclick="setMode('live')">🔴 LIVE 30min</button>
+<button class="mode" id="modeVideo" onclick="setMode('video')">🎬 1:30</button>
+<button class="mode" id="modeLive" onclick="setMode('live')">🔴 30min</button>
 </div>
-<div style="position:absolute;bottom:0;left:0;right:0;padding:14px;display:flex;gap:10px;align-items:center;z-index:5;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent)">
-<input id="dI" placeholder="Descreva seu trabalho..." style="flex:1;background:#222;border:2px solid #FFD700;border-radius:100px;padding:12px;color:#fff;outline:none">
-<button id="capBtn" onclick="actionBtn()" style="width:70px;height:70px;border-radius:50%;background:#FFD700;border:4px solid #000;font-size:28px;flex-shrink:0">📸</button>
+<div style="position:absolute;bottom:0;left:0;right:0;padding:10px;display:flex;gap:8px;align-items:center;z-index:5;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent)">
+<input id="dI" placeholder="Legenda..." style="flex:1;background:#222;border:1.5px solid #FFD700;border-radius:100px;padding:10px;color:#fff;font-size:14px;outline:none">
+<button id="capBtn" onclick="actionBtn()" style="width:62px;height:62px;border-radius:50%;background:#FFD700;border:3px solid #000;font-size:22px;flex-shrink:0">📸</button>
 </div>
 </div>
 
@@ -89,58 +76,99 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:s
 <div class="nav">
 <div class="ntab on">💼<br>Work</div>
 <div class="ntab">🔍<br>Buscar</div>
-<div class="ntab" onclick="openCam()"><div style="width:50px;height:50px;border-radius:50%;background:#000;border:2.5px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-size:26px;margin:0 auto">+</div></div>
+<div class="ntab" onclick="openCam()"><div style="width:46px;height:46px;border-radius:50%;background:#000;border:2px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-size:22px;margin:0 auto">+</div></div>
 <div class="ntab" onclick="startLive()">🔴<br>LIVE</div>
 <div class="ntab">👑<br>Eu</div>
 </div>
 </div>
 
 <script>
-let cur=0,photo=null,stream=null,recorder=null,chunks=[],recTimer=null,recSec=0,mode='foto',liveTimer=null,liveSec=0,videoBlob=null;
-let posts=JSON.parse(localStorage.getItem('work_nogain')||'null')||[
-{type:'foto',img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1000",desc:"Edição Gold em 4K ✨ Entrega 24h",owner:"lux.studio",likes:2100,liked:false,follow:false,saved:false,coms:["Quanto cobra?"]},
-{type:'video',img:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000",desc:"🎬 Vídeo 1:30 - Sites que vendem em 24h",owner:"dev.gold",likes:3400,liked:false,follow:false,saved:false,coms:["Top!"]},
+let cur=0,photo=null,stream=null,recorder=null,chunks=[],recTimer=null,recSec=0,mode='foto',liveTimer=null,liveSec=0,videoBlob=null,isPosting=false;
+let posts=[
+{type:'foto',img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=600",desc:"Edição Gold em 4K ✨ Entrega 24h",owner:"lux.studio",likes:2100,liked:false,saved:false,coms:["Quanto cobra?"]},
+{type:'video',img:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600",desc:"🎬 Vídeo 1:30 - Sites que vendem",owner:"dev.gold",likes:3400,liked:false,saved:false,coms:["Top!"]},
 ];
 const $=id=>document.getElementById(id);
-function toast(t){let e=$('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2500)}
+function toast(t){let e=$('toast');e.innerText=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2000)}
 function closeAll(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('on'))}
-function closeCam(){$('cam').style.display='none';$('postBtn').style.display='none';$('recTimer').style.display='none';photo=null;videoBlob=null;if(recorder&&recorder.state==='recording')recorder.stop();if(recTimer)clearInterval(recTimer);recTimer=null;recSec=0;if(stream){try{stream.getTracks().forEach(s=>s.stop())}catch{}stream=null}$('capBtn').innerText='📸';$('capBtn').style.background='#FFD700';}
-function save(){localStorage.setItem('work_nogain',JSON.stringify(posts))}
-function load(){
-save();
-let p=posts[cur];$('bg').style.backgroundImage=`url('${p.data||p.img}')`;$('uN').innerText='@'+p.owner;$('uD').innerText=p.desc;$('uP').innerText=p.owner[0].toUpperCase();$('nL').innerText=p.likes>=1000?(p.likes/1000).toFixed(1)+'k':p.likes;$('nC').innerText=p.coms.length;$('bL').innerText=p.liked?'💛':'🤍';$('bL').className=p.liked?'btn on':'btn';let t=p.type==='foto'?'📸 Foto':p.type==='video'?'🎬 Vídeo 1:30':'🔴 LIVE 30min';$('typeTag').innerText=t;$('cT').innerText=`💬 ${p.coms.length} comentários`;$('cL').innerHTML=p.coms.map(c=>`<div style="display:flex;gap:8px"><div style="width:26px;height:26px;border-radius:50%;background:#FFD700;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:10px">W</div><div style="flex:1;background:#222;border-radius:10px;padding:8px 10px"><div style="color:#fff;font-size:12px">${c}</div></div></div>`).join('');$('hireName').innerText='@'+p.owner;
+function closeCam(){
+$('cam').style.display='none';$('postBtn').style.display='none';$('recTimer').style.display='none';
+photo=null;videoBlob=null;chunks=[];
+if(recorder&&recorder.state!=='inactive'){try{recorder.stop()}catch{}}recorder=null;
+if(recTimer){clearInterval(recTimer);recTimer=null}recSec=0;
+if(stream){try{stream.getTracks().forEach(s=>s.stop())}catch{}stream=null}
+$('capBtn').innerText='📸';$('capBtn').style.background='#FFD700';
+isPosting=false;
 }
-function doFollow(){posts[cur].follow=!posts[cur].follow;load();toast(posts[cur].follow?'✅ Seguindo':'Deixou de seguir')}
+function load(){
+let p=posts[cur];$('bg').style.backgroundImage=`url('${p.data||p.img}')`;$('uN').innerText='@'+p.owner;$('uD').innerText=p.desc;$('uP').innerText=p.owner[0].toUpperCase();$('nL').innerText=p.likes>=1000?(p.likes/1000).toFixed(1)+'k':p.likes;$('nC').innerText=p.coms.length;$('bL').innerText=p.liked?'💛':'🤍';$('bL').className=p.liked?'btn on':'btn';$('typeTag').innerText=p.type==='foto'?'📸 Foto':p.type==='video'?'🎬 1:30':'🔴 LIVE';$('cT').innerText=`💬 ${p.coms.length}`;$('cL').innerHTML=p.coms.map(c=>`<div style="display:flex;gap:6px"><div style="width:22px;height:22px;border-radius:50%;background:#FFD700;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:9px">W</div><div style="flex:1;background:#222;border-radius:8px;padding:6px 8px"><div style="color:#fff;font-size:11px;word-break:break-word">${c}</div></div></div>`).join('');$('hireName').innerText='@'+p.owner;
+if(posts.length>20){posts=posts.slice(0,20);toast('🧹 Cache limpo pra não travar')}
+}
 function doLike(){let p=posts[cur];p.liked=!p.liked;p.likes+=p.liked?1:-1;load()}
 function doSave(){posts[cur].saved=!posts[cur].saved;load();toast(posts[cur].saved?'⭐ Salvo':'Removido')}
-function doShare(){navigator.clipboard.writeText(location.href);toast('🔗 Link copiado!')}
+function doShare(){navigator.clipboard.writeText(location.href).then(()=>toast('🔗 Copiado!'))}
 function openHire(){$('mHire').classList.add('on')}
-function confirmHire(){closeAll();toast('💼 Pedido enviado!')}
+function confirmHire(){closeAll();toast('💼 Enviado!')}
 function openC(){$('mC').classList.add('on')}
-function sendC(){let i=$('cI');if(!i.value.trim())return;posts[cur].coms.push(i.value.trim());i.value='';load();toast('Enviado ✨')}
+function sendC(){let i=$('cI');if(!i.value.trim())return;posts[cur].coms.push(i.value.trim());if(posts[cur].coms.length>30)posts[cur].coms.shift();i.value='';load()}
 function setMode(m){
 mode=m;document.querySelectorAll('.mode').forEach(b=>b.classList.remove('on'));
-if(m==='foto'){$('modeFoto').classList.add('on');$('capBtn').innerText='📸';$('camStatus').innerText='📸 Modo Foto';$('capBtn').style.background='#FFD700';$('recTimer').style.display='none'}
-if(m==='video'){$('modeVideo').classList.add('on');$('capBtn').innerText='●';$('capBtn').style.background='#ff1a1a';$('camStatus').innerText='🎬 Vídeo até 1:30';}
-if(m==='live'){$('modeLive').classList.add('on');$('capBtn').innerText='🔴';$('camStatus').innerText='🔴 LIVE 30min/dia';checkLiveLimit()}
+if(m==='foto'){$('modeFoto').classList.add('on');$('capBtn').innerText='📸';$('camStatus').innerText='📸 Foto leve';$('capBtn').style.background='#FFD700';$('recTimer').style.display='none'}
+if(m==='video'){$('modeVideo').classList.add('on');$('capBtn').innerText='●';$('capBtn').style.background='#ff1a1a';$('camStatus').innerText='🎬 Até 1:30';}
+if(m==='live'){$('modeLive').classList.add('on');$('capBtn').innerText='🔴';$('camStatus').innerText='🔴 30min/dia';checkLiveLimit()}
 }
 function checkLiveLimit(){
 let today=new Date().toDateString();let last=localStorage.getItem('work_live_date');let used=localStorage.getItem('work_live_used');
-if(last===today&&used==='1'){ $('camStatus').innerText='❌ 1 LIVE por dia já feita';$('capBtn').style.opacity='.4';return false}
-else{$('capBtn').style.opacity='1';$('camStatus').innerText='🔴 LIVE disponível hoje';return true}
+if(last===today&&used==='1'){ $('camStatus').innerText='❌ 1 LIVE/dia feita';$('capBtn').style.opacity='.4';return false}
+else{$('capBtn').style.opacity='1';return true}
 }
-function openCam(){$('cam').style.display='flex';setMode('foto');navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{stream=s;$('camEl').srcObject=s;}).catch(()=>toast('❌ Permita câmera'))}
+async function openCam(){
+$('cam').style.display='flex';setMode('foto');
+try{
+stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:720},height:{ideal:1280},facingMode:'user'},audio:true});
+$('camEl').srcObject=stream;
+}catch(e){toast('❌ Permita câmera')}
+}
 function actionBtn(){if(mode==='foto')capFoto();if(mode==='video'){if(recorder&&recorder.state==='recording')stopVideo();else startVideo()}if(mode==='live'){if(liveTimer)stopLive();else startLiveRec()}}
-function capFoto(){let v=$('camEl');let c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);photo=c.toDataURL('image/jpeg',0.85);$('postBtn').style.display='block';$('camStatus').innerText='✅ Foto pronta!';toast('✅ Foto!')}
-function startVideo(){chunks=[];recorder=new MediaRecorder(stream,{mimeType:'video/webm'});recorder.ondataavailable=e=>chunks.push(e.data);recorder.onstop=()=>{videoBlob=new Blob(chunks,{type:'video/webm'});let url=URL.createObjectURL(videoBlob);photo=url;$('postBtn').style.display='block';$('camStatus').innerText='✅ Vídeo pronto!';toast('✅ Vídeo 1:30 gravado!')};recorder.start();recSec=0;$('recTimer').style.display='block';$('capBtn').innerText='■';recTimer=setInterval(()=>{recSec++;let m=Math.floor(recSec/60).toString().padStart(2,'0');let s=(recSec%60).toString().padStart(2,'0');$('recTime').innerText=`${m}:${s}`;if(recSec>=90)stopVideo()},1000);}
+function capFoto(){
+let v=$('camEl');if(!v.videoWidth)return toast('Aguarde câmera');
+let c=document.createElement('canvas');let maxW=720;let scale=maxW/v.videoWidth;c.width=maxW;c.height=v.videoHeight*scale;
+let ctx=c.getContext('2d');ctx.drawImage(v,0,0,c.width,c.height);
+photo=c.toDataURL('image/jpeg',0.6); // QUALIDADE 0.6 = LEVE, NÃO TRAVA
+$('postBtn').style.display='block';$('camStatus').innerText='✅ Foto leve pronta!';toast('✅ Foto 720p!')
+}
+function startVideo(){
+chunks=[];try{recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp8',videoBitsPerSecond:800000})}catch{recorder=new MediaRecorder(stream)}
+recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
+recorder.onstop=()=>{videoBlob=new Blob(chunks,{type:'video/webm'});photo=URL.createObjectURL(videoBlob);$('postBtn').style.display='block';$('camStatus').innerText='✅ Vídeo pronto!';toast('✅ Vídeo 1:30!')};
+recorder.start(500);recSec=0;$('recTimer').style.display='block';$('capBtn').innerText='■';
+recTimer=setInterval(()=>{recSec++;let m=Math.floor(recSec/60).toString().padStart(2,'0');let s=(recSec%60).toString().padStart(2,'0');$('recTime').innerText=`${m}:${s}`;if(recSec>=90)stopVideo()},1000);
+}
 function stopVideo(){if(recorder&&recorder.state==='recording')recorder.stop();if(recTimer)clearInterval(recTimer);$('capBtn').innerText='●';}
-function startLiveRec(){if(!checkLiveLimit())return toast('❌ Só 1 LIVE por dia! Volta amanhã');let today=new Date().toDateString();localStorage.setItem('work_live_date',today);toast('🔴 LIVE iniciada! 30min máx');liveSec=0;$('recTimer').style.display='block';$('capBtn').innerText='■ LIVE';liveTimer=setInterval(()=>{liveSec++;let m=Math.floor(liveSec/60).toString().padStart(2,'0');let s=(liveSec%60).toString().padStart(2,'0');$('recTime').innerText=`${m}:${s}`;$('liveT').innerText=`● ${m}:${s}`;if(liveSec>=1800){stopLive()}},1000);}
-function stopLive(){if(liveTimer)clearInterval(liveTimer);liveTimer=null;localStorage.setItem('work_live_used','1');localStorage.setItem('work_live_date',new Date().toDateString());$('recTimer').style.display='none';$('liveT').innerText='● Feita hoje';$('capBtn').innerText='🔴';toast('✅ LIVE de 30min encerrada! Volta amanhã')}
-function doPost(){if(!photo)return toast('Tire foto ou grave vídeo!');let desc=$('dI').value.trim()||(mode==='foto'?'📸 Foto':mode==='video'?'🎬 Vídeo 1:30':'🔴 LIVE 30min');if(mode==='video'&&videoBlob){let r=new FileReader();r.onload=e=>{posts.unshift({type:'video',img:e.target.result,desc:desc,owner:'você',likes:0,liked:false,saved:false,coms:[],data:e.target.result});$('dI').value='';closeCam();cur=0;load();toast('🎬 Vídeo postado!')};r.readAsDataURL(videoBlob);}else{posts.unshift({type:mode,img:photo,desc:desc,owner:'você',likes:0,liked:false,saved:false,coms:[],data:photo});$('dI').value='';closeCam();cur=0;load();toast(mode==='foto'?'📸 Foto postada!':'🔴 LIVE postada!')}}
-function startLive(){if(!checkLiveLimit())return toast('❌ Só 1 LIVE por dia!');openCam();setMode('live')}
-let sy=0;$('stage').addEventListener('touchstart',e=>sy=e.touches[0].clientY,{passive:true});
-$('stage').addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0){cur++;if(cur>=posts.length)cur=0}else{cur--;if(cur<0)cur=posts.length-1}load()}},{passive:true});
-load();
+function startLiveRec(){if(!checkLiveLimit())return toast('❌ 1 LIVE/dia!');toast('🔴 LIVE 30min iniciada!');liveSec=0;$('recTimer').style.display='block';$('capBtn').innerText='■ LIVE';liveTimer=setInterval(()=>{liveSec++;let m=Math.floor(liveSec/60).toString().padStart(2,'0');let s=(liveSec%60).toString().padStart(2,'0');$('recTime').innerText=`${m}:${s}`;$('liveT').innerText=`● ${m}:${s}`;if(liveSec>=1800)stopLive()},1000);}
+function stopLive(){if(liveTimer)clearInterval(liveTimer);liveTimer=null;localStorage.setItem('work_live_used','1');localStorage.setItem('work_live_date',new Date().toDateString());$('recTimer').style.display='none';$('liveT').innerText='● Feita';$('capBtn').innerText='🔴';toast('✅ LIVE encerrada!')}
+async function doPost(){
+if(isPosting)return;isPosting=true;
+if(!photo){isPosting=false;return toast('Tire foto/vídeo!')}
+let desc=$('dI').value.trim()||(mode==='foto'?'📸 Foto':mode==='video'?'🎬 Vídeo 1:30':'🔴 LIVE');
+if(mode==='video'&&videoBlob){
+let r=new FileReader();r.onload=e=>{
+let data=e.target.result;
+if(data.length>2500000){toast('❌ Vídeo muito grande! Max 2.5MB');isPosting=false;return}
+posts.unshift({type:'video',img:data,desc:desc,owner:'você',likes:0,liked:false,saved:false,coms:[],data:data});if(posts.length>20)posts.pop();$('dI').value='';closeCam();cur=0;load();toast('🎬 Postado sem travar!');isPosting=false;
+};r.readAsDataURL(videoBlob);
+}else{
+if(photo.length>2000000){toast('❌ Foto grande, comprimindo...');photo=photo.substring(0,1500000)}
+posts.unshift({type:mode,img:photo,desc:desc,owner:'você',likes:0,liked:false,saved:false,coms:[],data:photo});if(posts.length>20)posts.pop();$('dI').value='';closeCam();cur=0;load();toast('📸 Postado sem travar!');isPosting=false;
+}
+}
+function startLive(){if(!checkLiveLimit())return toast('❌ Só 1 LIVE/dia!');openCam();setMode('live')}
+let sy=0,canSwipe=true;
+$('stage').addEventListener('touchstart',e=>{sy=e.touches[0].clientY},{passive:true});
+$('stage').addEventListener('touchend',e=>{
+if(!canSwipe)return;let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>55){canSwipe=false;if(d>0){cur++;if(cur>=posts.length)cur=0}else{cur--;if(cur<0)cur=posts.length-1}load();setTimeout(()=>canSwipe=true,300)}
+},{passive:true});
+load();toast('⚡ Versão leve - sem travar!');
 </script>
 </body>
 </html>
