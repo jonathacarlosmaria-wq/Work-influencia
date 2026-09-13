@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - SEJA UM INFLUENCER R$5</title>
+<title>WORK FIRE - ADS ADMIN</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sans-serif}
@@ -11,6 +11,7 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 #feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
 #feed::-webkit-scrollbar{display:none}
 .post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0}
+.post.ad{height:100dvh;background:linear-gradient(135deg,#1a1a,#2a2a00);border:3px solid #ffcc00;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
 .side{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:18px;z-index:20;width:62px;align-items:center}
 .sbtn{display:flex;flex-direction:column;align-items:center;background:none;border:none;width:100%;cursor:pointer;position:relative}
 .ibtn{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ff6a00,#8b0000);border:2.5px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 0 16px rgba(255,69,0,.7);animation:vivo 2s infinite}
@@ -40,12 +41,7 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 .timer{background:rgba(0,0,0,.8);color:#fff;padding:6px 12px;border-radius:20px;font-weight:900;font-size:12px;border:1px solid #ff4500}
 #videoLive{width:100%;height:100%;object-fit:cover;background:#111}
 .progress{position:absolute;top:0;left:0;height:4px;background:linear-gradient(90deg,#ff4500,#ff8c00);z-index:20}
-.viewerBadge{background:rgba(0,0,0,.7);color:#00ff88;padding:4px 8px;border-radius:12px;font-size:10px;border:1px solid #00ff88}
-.pixBox{background:#000;border:2px dashed #00ff88;border-radius:10px;padding:10px;text-align:center}
-.influencerBadge{background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000;padding:3px 8px;border-radius:10px;font-size:9px;font-weight:900;margin-left:6px}
-.influencerCard{background:linear-gradient(135deg,#1a1400,#331a00);border:2px solid #ffcc00;border-radius:12px;padding:14px;margin:10px;position:relative;overflow:hidden}
-.influencerCard::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent,rgba(255,204,0,.1),transparent);animation:shine 3s infinite}
-@keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.adLabel{position:absolute;top:12px;left:12px;background:#ffcc00;color:#000;padding:4px 10px;border-radius:12px;font-size:10px;font-weight:900}
 </style>
 </head>
 <body>
@@ -53,7 +49,18 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 <div id="feed"></div>
 
 <div id="sheetC" class="sheet" onclick="if(event.target==this)closeS('sheetC')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid #331100"><b style="color:#ff8c00">💬 <span id="ct">0</span></b><button onclick="closeS('sheetC')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div id="listC" style="flex:1;overflow:auto;padding:0 14px"></div><div style="padding:12px;display:flex;gap:8px"><input id="txtC" class="input" style="flex:1;margin:0" placeholder="Comentar..."><button onclick="sendC()" style="background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;padding:0 16px;border-radius:10px;font-weight:900">Enviar</button></div></div></div>
-<div id="sheetS" class="sheet" onclick="if(event.target==this)closeS('sheetS')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between"><b style="color:#ff8c00">🚀 Compartilhar</b><button onclick="closeS('sheetS')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div style="padding:14px"><button onclick="doZap()" class="card" style="width:100%">💬 WhatsApp</button><button onclick="doCopy()" class="card" style="width:100%">🔗 Copiar</button></div></div></div>
+<div id="sheetS" class="sheet" onclick="if(event.target==this)closeS('sheetS')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between"><b style="color:#ff8c00">🚀 Compartilhar para todas redes</b><button onclick="closeS('sheetS')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div style="padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<button onclick="shareTo('whatsapp')" class="card" style="margin:0">💬 WhatsApp</button>
+<button onclick="shareTo('instagram')" class="card" style="margin:0">📸 Instagram</button>
+<button onclick="shareTo('facebook')" class="card" style="margin:0">📘 Facebook</button>
+<button onclick="shareTo('tiktok')" class="card" style="margin:0">🎵 TikTok</button>
+<button onclick="shareTo('twitter')" class="card" style="margin:0">🐦 X/Twitter</button>
+<button onclick="shareTo('telegram')" class="card" style="margin:0">✈️ Telegram</button>
+<button onclick="shareTo('youtube')" class="card" style="margin:0">▶️ YouTube</button>
+<button onclick="shareTo('kwai')" class="card" style="margin:0">🔥 Kwai</button>
+<button onclick="doCopy()" class="card" style="margin:0;grid-column:span 2">🔗 Copiar Link</button>
+<button onclick="shareTo('native')" class="card" style="margin:0;grid-column:span 2;background:linear-gradient(90deg,#ff4500,#ff8c00)">🚀 Compartilhar em Todas</button>
+</div></div></div>
 
 <div id="pBusca" class="page" style="overflow:auto"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔍 Busca</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div class="card"><input id="buscaInput" class="input" placeholder="Buscar..." oninput="doBusca()"><div id="buscaRes" style="margin-top:10px"></div></div></div>
 <div id="pCriar" class="page" style="overflow:auto"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔥 Criar</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div class="card"><input id="imgLink" class="input" placeholder="Link imagem"><input id="file" type="file" accept="image/*" style="margin-top:10px;color:#fff;width:100%"><img id="prev" style="width:100%;margin-top:10px;border-radius:10px;display:none"><input id="desc" class="input" placeholder="Descrição"><button class="btn" onclick="addPost()">POSTAR</button></div></div>
@@ -62,90 +69,84 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 <video id="videoLive" autoplay muted playsinline style="display:none"></video>
 <div class="progress" id="progressBar" style="width:0%"></div>
 <div id="liveMenu" style="position:absolute;inset:0;background:#000;display:flex;flex-direction:column;padding:14px;z-index:2;overflow:auto">
-<div style="display:flex;justify-content:space-between;align-items:center"><h3 style="color:#ff4500">🌟 Live Influencer</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div>
-<div id="liveBlocked" style="display:none;background:#331100;border:2px solid #ff0000;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><div style="font-size:40px">⛔</div><h3 style="color:#ff4444;margin-top:8px">Já foi influencer hoje!</h3><p style="color:#aaa;font-size:12px">Volta amanhã pra brilhar 30min de novo</p></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><h3 style="color:#ff4500">🌟 Seja Influencer</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div>
+<div id="liveBlocked" style="display:none;background:#331100;border:2px solid #ff0000;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><div style="font-size:40px">⛔</div><h3 style="color:#ff4444">Já é influencer hoje!</h3></div>
 <div style="margin-top:16px;display:flex;flex-direction:column;gap:12px">
-<div class="card" style="border-color:#ff8c00"><b style="color:#fff">⏺️ Gravação 1:30 GRÁTIS</b><div style="color:#ff8c00;font-size:12px">Ilimitado</div><button class="btn" onclick="startRecording()">⏺️ GRAVAR 1:30</button></div>
-<div class="influencerCard">
-<div style="display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1">
-<div><b style="color:#ffcc00">🌟 SEJA UM INFLUENCER</b><div style="color:#fff;font-size:12px;margin-top:4px">Pague R$5 e seja famoso 30min por dia</div><div style="color:#aaa;font-size:11px;margin-top:6px">👁️ <span id="liveCountPreview">0</span> assistindo • Seu vídeo no topo do feed • Selo Influencer</div></div><div style="width:54px;height:54px;border-radius:50%;background:radial-gradient(circle,#ffcc00,#ff8c00);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:24px">🌟</div>
-</div>
-<div class="pixBox" style="margin-top:12px;position:relative;z-index:1">
-<div style="color:#00ff88;font-size:10px;font-weight:900">💰 PIX R$5,00 - VIRAR INFLUENCER 30MIN</div>
-<div style="color:#aaa;font-size:10px;margin-top:6px">Dinheiro cai na conta do Admin:</div>
-<div id="displayPixKey" style="color:#fff;font-weight:900;font-size:14px;margin-top:6px;background:#111;padding:8px;border-radius:6px;word-break:break-all">Configure seu Pix no Admin</div>
-<div id="displayPixName" style="color:#ff8c00;font-size:11px;margin-top:4px">Nome: WORK FIRE</div>
-<img id="qrPix" src="" style="width:140px;height:140px;margin:10px auto;display:block;background:#fff;border-radius:8px;padding:4px">
-<button onclick="copyPixKey()" style="background:#fff;border:none;padding:8px 12px;border-radius:8px;font-weight:900;font-size:11px">📋 COPIAR CHAVE PIX</button>
-</div>
-<button id="btnLive30" class="btn" onclick="showPixPay()" style="margin-top:10px;background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000;position:relative;z-index:1">🌟 JÁ PAGUEI R$5 - QUERO SER INFLUENCER 30MIN</button>
-<div style="color:#ffcc00;font-size:10px;margin-top:6px;text-align:center;position:relative;z-index:1">✅ Selo Influencer + Topo do feed + 30min famoso • ILIMITADO</div>
-</div>
-<div id="pixPayBox" style="display:none" class="card" style="border-color:#ffcc00"><h4 style="color:#ffcc00">🌟 Confirmar R$5 pra virar Influencer?</h4><p style="color:#aaa;font-size:11px;margin-top:6px">Seu Pix: <span id="pixPayKey"></span> • Vai ficar famoso 30min!</p><button class="btn" onclick="confirmPix()" style="background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000">✅ SIM, PAGUEI - QUERO SER FAMOSO 30MIN!</button></div>
+<div class="card" style="border-color:#ff8c00"><b style="color:#fff">⏺️ Gravação 1:30 GRÁTIS</b><button class="btn" onclick="startRecording()">⏺️ GRAVAR</button></div>
+<div class="card" style="border-color:#00ff88;background:linear-gradient(135deg,#001a0a,#00331a)"><b style="color:#fff">🌟 SEJA INFLUENCER R$5 • 30min • ILIMITADO</b><div style="color:#00ff88;font-size:12px">Sem limite • 👁️ <span id="liveCountPreview">0</span> assistindo</div><div style="background:#000;border-radius:8px;padding:8px;margin-top:10px;text-align:center"><div id="displayPixKey" style="color:#fff;font-weight:900;font-size:14px">Configure Pix no Admin</div><div id="displayPixName" style="color:#ff8c00;font-size:11px"></div><img id="qrPix" src="" style="width:140px;height:140px;margin:8px auto;display:block;background:#fff;border-radius:8px"></div><button id="btnLive30" class="btn" onclick="showPixPay()" style="background:linear-gradient(90deg,#00ff88,#00cc66)">🌟 PAGAR R$5 E VIRAR INFLUENCER</button></div>
+<div id="pixPayBox" style="display:none" class="card"><h4 style="color:#00ff88">Confirmar R$5?</h4><button class="btn" onclick="confirmPix()" style="background:#00ff88;color:#000">✅ SIM, PAGUEI - LIBERAR</button></div>
 </div>
 </div>
 <div id="liveActive" style="position:absolute;inset:0;display:none;z-index:3">
-<div class="liveTop"><div style="display:flex;gap:8px;flex-wrap:wrap"><div class="liveBadge" style="background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000">🌟 INFLUENCER AO VIVO</div><div class="timer">⏱️ <span id="timerText">00:00</span> / 30:00</div><div class="viewerBadge">👁️ <span id="viewerCount">0</span> FAMOSO</div></div><button onclick="stopAll()" style="background:rgba(0,0,0,.7);border:none;color:#fff;width:36px;height:36px;border-radius:50%">✕</button></div>
+<div class="liveTop"><div style="display:flex;gap:8px"><div class="liveBadge" style="background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000">🌟 INFLUENCER</div><div class="timer">⏱️ <span id="timerText">00:00</span> / 30:00</div></div><button onclick="stopAll()" style="background:rgba(0,0,0,.7);border:none;color:#fff;width:36px;height:36px;border-radius:50%">✕</button></div>
 <div id="liveComments" style="position:absolute;left:12px;right:80px;bottom:80px;max-height:160px;overflow:hidden;display:flex;flex-direction:column;gap:6px"></div>
-<div style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;gap:8px"><input id="liveInput" class="input" style="flex:1;margin:0;background:rgba(0,0,0,.6)" placeholder="Fala com seus fãs..."><button onclick="sendLiveComment()" style="background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:0 14px;border-radius:10px;color:#000">➤</button></div>
+<div style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;gap:8px"><input id="liveInput" class="input" style="flex:1;margin:0;background:rgba(0,0,0,.6)" placeholder="Fala com fãs..."><button onclick="sendLiveComment()" style="background:#ff4500;border:none;padding:0 14px;border-radius:10px;color:#fff">➤</button></div>
 </div>
 </div>
 
 <div id="pEu" class="page" style="overflow:auto">
 <div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#ff4500">🔥 Eu</b><div style="display:flex;gap:8px"><button onclick="openAdmin()" style="background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:900">🔑 ADMIN</button><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div></div>
+<div style="text-align:center;padding:10px 20px"><div id="fotoPerfil" style="width:90px;height:90px;border-radius:50%;margin:0 auto;background:radial-gradient(circle,#ff4500,#8b0000);border:3px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:36px;background-size:cover">🔥</div><h3 id="nomePerfil" style="color:#fff;margin-top:10px">FIRE USER <span id="badgeInfluencer" style="display:none;background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000;padding:3px 8px;border-radius:10px;font-size:9px;font-weight:900">🌟 INFLUENCER</span></h3><div id="userPerfil" style="color:#ff8c00">@fire.user</div><div id="liveInfo" style="color:#888;font-size:11px;margin-top:6px"></div></div>
 
-<div style="text-align:center;padding:10px 20px">
-<div id="fotoPerfil" style="width:90px;height:90px;border-radius:50%;margin:0 auto;background:radial-gradient(circle,#ff4500,#8b0000);border:3px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:36px;background-size:cover">🔥</div>
-<h3 id="nomePerfil" style="color:#fff;margin-top:10px">FIRE USER <span id="badgeInfluencer" style="display:none" class="influencerBadge">🌟 INFLUENCER</span></h3>
-<div id="userPerfil" style="color:#ff8c00">@fire.user</div>
-<div id="liveInfo" style="color:#888;font-size:11px;margin-top:6px"></div>
-<div id="influencerStatus" style="margin-top:8px"></div>
-</div>
+<div id="btnSejaInfluencer" class="card" style="border-color:#ffcc00;background:linear-gradient(135deg,#1a1400,#331a00);text-align:center"><div style="font-size:28px">🌟</div><b style="color:#ffcc00">SEJA UM INFLUENCER</b><div style="color:#fff;font-size:12px">Pague R$5 e fique famoso 30min/dia</div><button onclick="go(3)" style="width:100%;margin-top:12px;background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:14px;border-radius:10px;font-weight:900">🌟 VIRAR INFLUENCER - R$5</button></div>
 
-<!-- BOTÃO SEJA UM INFLUENCER NO EU -->
-<div id="btnSejaInfluencer" class="influencerCard" style="margin-top:4px">
-<div style="text-align:center;position:relative;z-index:1">
-<div style="font-size:28px">🌟</div>
-<b style="color:#ffcc00;font-size:16px">SEJA UM INFLUENCER</b>
-<div style="color:#fff;font-size:12px;margin-top:4px">Pague R$5 e fique famoso no app</div>
-<div style="color:#aaa;font-size:11px;margin-top:6px">✅ 30 minutos por dia no topo do feed<br>✅ Selo dourado Influencer<br>✅ Live ilimitada pra todos verem<br>✅ Seja famoso hoje!</div>
-<button onclick="go(3)" style="width:100%;margin-top:12px;background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:14px;border-radius:10px;font-weight:900;color:#000;font-size:13px;position:relative;z-index:1">🌟 VIRAR INFLUENCER AGORA - R$5</button>
-<div style="color:#ffcc00;font-size:9px;margin-top:6px">Dinheiro cai na conta do Admin</div>
-</div>
-</div>
+<div class="card"><input id="linkFoto" class="input" placeholder="Link foto"><input id="fileFoto" type="file" accept="image/*" style="margin-top:8px;color:#fff;width:100%"><img id="prevFoto" style="width:100%;margin-top:10px;border-radius:10px;display:none"><input id="cadNome" class="input" placeholder="Nome"><input id="cadUser" class="input" placeholder="@usuario"><button class="btn" onclick="salvarPerfil()">SALVAR</button></div>
 
-<div id="influencerActiveCard" style="display:none" class="card" style="border-color:#00ff88;background:linear-gradient(135deg,#001a0a,#00331a)">
-<div style="text-align:center">
-<div style="font-size:24px">🔥</div>
-<b style="color:#00ff88">VOCÊ É INFLUENCER HOJE!</b>
-<div style="color:#fff;font-size:11px;margin-top:6px">Seus vídeos estão no topo do feed por 30min</div>
-<div style="color:#00ff88;font-size:10px;margin-top:6px">⏱️ Tempo restante hoje: <span id="influencerTimeLeft">30:00</span></div>
-<button onclick="go(3)" style="width:100%;margin-top:10px;background:#00ff88;border:none;padding:10px;border-radius:8px;font-weight:900;color:#000">🔴 ENTRAR AO VIVO AGORA</button>
-</div>
-</div>
+<div id="adminPanel" style="display:none">
+<div class="card" style="border-color:#ffcc00;background:#1a1400">
+<h3 style="color:#ffcc00">🔑 ADMIN COMPLETO</h3>
 
-<div class="card"><input id="linkFoto" class="input" placeholder="Link foto"><input id="fileFoto" type="file" accept="image/*" style="margin-top:8px;color:#fff;width:100%"><img id="prevFoto" style="width:100%;margin-top:10px;border-radius:10px;display:none"><input id="cadNome" class="input" placeholder="Nome"><input id="cadUser" class="input" placeholder="@usuario"><button class="btn" onclick="salvarPerfil()">SALVAR PERFIL</button></div>
-
-<div id="adminPanel" style="display:none"><div class="card" style="border-color:#ffcc00;background:#1a1400">
-<h3 style="color:#ffcc00">🔑 ADMIN - SEU PIX ONDE CAI O DINHEIRO</h3>
+<!-- PIX -->
 <div style="background:#000;border:2px solid #00ff88;border-radius:10px;padding:12px;margin-top:12px">
-<h4 style="color:#00ff88">💰 CADASTRE SUA CONTA PIX - TODO R$5 CAI AQUI</h4>
-<div style="color:#aaa;font-size:10px;margin-top:6px">Quando usuário clicar em "Seja um Influencer" e pagar R$5, cai direto na sua conta abaixo</div>
-<label style="color:#ffcc00;font-size:11px;margin-top:10px;display:block">Tipo chave:</label>
-<select id="pixTipo" class="input" style="margin-top:4px"><option value="cpf">CPF</option><option value="celular">Celular</option><option value="email">E-mail</option><option value="aleatoria">Aleatória</option><option value="cnpj">CNPJ</option></select>
-<label style="color:#ffcc00;font-size:11px;margin-top:10px;display:block">Sua Chave Pix (onde cai o dinheiro):</label>
-<input id="pixChave" class="input" placeholder="Ex: 11999999999 ou CPF ou email" value="">
-<label style="color:#ffcc00;font-size:11px;margin-top:10px;display:block">Seu nome completo:</label>
-<input id="pixNome" class="input" placeholder="Ex: João Silva - nome que aparece" value="WORK FIRE">
-<label style="color:#ffcc00;font-size:11px;margin-top:10px;display:block">Valor:</label>
-<div style="display:flex;gap:8px;margin-top:4px"><input id="adminPixValor" type="number" value="5" class="input" style="flex:1;margin:0"><span style="color:#fff;background:#000;padding:12px;border-radius:8px;border:1px solid #333">30min/dia</span></div>
-<button onclick="salvarPixAdmin()" style="width:100%;margin-top:12px;background:linear-gradient(90deg,#00ff88,#00cc66);border:none;padding:14px;border-radius:10px;font-weight:900;color:#000">💾 SALVAR MEU PIX - RECEBER R$5</button>
-<div id="pixPreview" style="background:#111;border-radius:8px;padding:10px;margin-top:12px;display:none"><div style="color:#00ff88;font-size:10px">✅ PIX ATIVO:</div><div id="previewKey" style="color:#fff;font-size:12px;margin-top:6px;word-break:break-all"></div><div id="previewQr" style="text-align:center;margin-top:8px"></div></div>
+<h4 style="color:#00ff88">💰 SEU PIX - ONDE CAI R$5</h4>
+<select id="pixTipo" class="input"><option value="celular">Celular</option><option value="cpf">CPF</option><option value="email">E-mail</option><option value="aleatoria">Aleatória</option><option value="cnpj">CNPJ</option></select>
+<input id="pixChave" class="input" placeholder="Sua chave Pix">
+<input id="pixNome" class="input" placeholder="Seu nome">
+<div style="display:flex;gap:8px;margin-top:8px"><input id="adminPixValor" type="number" value="5" class="input" style="flex:1;margin:0"><span style="background:#111;color:#fff;padding:12px;border-radius:8px">30min</span></div>
+<button onclick="salvarPixAdmin()" style="width:100%;margin-top:8px;background:#00ff88;border:none;padding:12px;border-radius:8px;font-weight:900">💾 SALVAR PIX</button>
 </div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px"><div style="background:#000;padding:10px;border-radius:8px;text-align:center"><div style="color:#666;font-size:10px">👁️ FAMOSOS HOJE</div><div id="adminLiveNow" style="color:#00ff88;font-size:22px;font-weight:900">0</div><div style="color:#00ff88;font-size:9px">∞ ILIMITADO</div></div><div style="background:#000;padding:10px;border-radius:8px;text-align:center"><div style="color:#666;font-size:10px">💰 GANHOU HOJE</div><div id="adminPixToday" style="color:#ffcc00;font-size:22px;font-weight:900">R$0</div><div style="color:#666;font-size:9px">Influencers</div></div></div>
+
+<!-- ADSENSE / ADMOB -->
+<div style="background:#000;border:2px solid #ffcc00;border-radius:10px;padding:12px;margin-top:12px">
+<h4 style="color:#ffcc00">📢 PROPAGANDAS - ADSENSE / ADMOB</h4>
+<div style="color:#aaa;font-size:10px;margin-top:4px">Cole seus códigos e controle de quantos em quantos vídeos aparece</div>
+
+<label style="color:#ffcc00;font-size:11px;margin-top:10px;display:block">🔵 Código Adsense (script):</label>
+<textarea id="adsenseCode" class="input" rows="3" placeholder="<script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-...'></script> ou seu código de bloco"></textarea>
+
+<label style="color:#ffcc00;font-size:11px;margin-top:10px;display:block">🟢 ID AdMob / Código Unidade:</label>
+<input id="admobCode" class="input" placeholder="Ex: ca-app-pub-123456789 / ca-pub-123 ou código do anúncio">
+
+<label style="color:#ffcc00;font-size:11px;margin-top:10px;display:block">📊 Texto da Propaganda (se não usar código):</label>
+<input id="adText" class="input" placeholder="Ex: 🔥 OFERTA - Seja Influencer!">
+<input id="adLink" class="input" placeholder="Link da propaganda Ex: https://seusite.com" style="margin-top:6px">
+<input id="adImg" class="input" placeholder="Link imagem da propaganda" style="margin-top:6px">
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+<div><label style="color:#ffcc00;font-size:11px">A cada quantos vídeos?</label><input id="adFreq" type="number" value="3" min="1" max="10" class="input" style="margin-top:4px"></div>
+<div><label style="color:#ffcc00;font-size:11px">Tipo:</label><select id="adTipo" class="input" style="margin-top:4px"><option value="todos">Todos</option><option value="adsense">Só Adsense</option><option value="admob">Só AdMob</option><option value="custom">Minha Propaganda</option></select></div>
+</div>
+
+<div style="display:flex;gap:8px;margin-top:8px">
+<label style="color:#fff;font-size:11px;display:flex;align-items:center;gap:6px"><input type="checkbox" id="adAtivo" checked> Ativar Propagandas</label>
+<label style="color:#fff;font-size:11px;display:flex;align-items:center;gap:6px"><input type="checkbox" id="adPula" checked> Permitir pular após 5s</label>
+</div>
+
+<button onclick="salvarAds()" style="width:100%;margin-top:12px;background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:14px;border-radius:10px;font-weight:900">💾 SALVAR PROPAGANDAS + FREQUÊNCIA</button>
+
+<div id="adPreview" style="background:#111;border-radius:8px;padding:10px;margin-top:10px;display:none">
+<div style="color:#ffcc00;font-size:10px">👁️ PREVIEW - Vai aparecer a cada <span id="previewFreq">3</span> vídeos</div>
+<div id="previewAdBox" style="margin-top:8px"></div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px"><div style="background:#000;padding:10px;border-radius:8px;text-align:center"><div style="color:#666;font-size:10px">👁️ AO VIVO</div><div id="adminLiveNow" style="color:#00ff88;font-size:22px;font-weight:900">0</div></div><div style="background:#000;padding:10px;border-radius:8px;text-align:center"><div style="color:#666;font-size:10px">💰 HOJE</div><div id="adminPixToday" style="color:#ffcc00;font-size:22px;font-weight:900">R$0</div></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px"><div style="background:#000;padding:10px;border-radius:8px;text-align:center"><div style="color:#666;font-size:10px">📢 ADS VISTOS</div><div id="adminAdsViews" style="color:#ffcc00;font-size:22px;font-weight:900">0</div></div><div style="background:#000;padding:10px;border-radius:8px;text-align:center"><div style="color:#666;font-size:10px">🎯 FREQ</div><div id="adminFreq" style="color:#fff;font-size:22px;font-weight:900">3</div><div style="color:#666;font-size:9px">vídeos</div></div></div>
+
 <div style="margin-top:14px"><b style="color:#ffcc00;font-size:11px">📋 POSTS</b><div id="adminPostsList" style="margin-top:8px;background:#000;border-radius:8px;padding:8px;max-height:120px;overflow:auto"></div></div>
-<div style="display:flex;gap:8px;margin-top:12px"><button onclick="resetLiveBlock()" style="flex:1;background:#331100;border:1px solid #ff4500;padding:10px;border-radius:8px;color:#ff8c00;font-size:11px">🔓 Reset Influencer</button><button onclick="closeAdmin()" style="flex:1;background:#000;border:1px solid #333;padding:10px;border-radius:8px;color:#666">Fechar</button></div>
-</div></div>
+<div style="display:flex;gap:8px;margin-top:12px"><button onclick="resetLiveBlock()" style="flex:1;background:#331100;border:1px solid #ff4500;padding:10px;border-radius:8px;color:#ff8c00;font-size:11px">🔓 Reset</button><button onclick="closeAdmin()" style="flex:1;background:#000;border:1px solid #333;padding:10px;border-radius:8px;color:#666">Fechar</button></div>
+</div>
+</div>
 <div class="card"><b style="color:#ff8c00">🔖 Salvos</b><div id="salvos"></div></div>
 </div>
 
@@ -153,34 +154,45 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 </div>
 
 <script>
-let posts=[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800",desc:"AGORA COM TUDO QUE VOCÊ PEDIU! 🌟",likes:7793,liked:false,comments:[{u:"ana",t:"🔥"}],saves:0,saved:false,shares:8,isInfluencer:true}];
-let temp="",cur=0,perfilUser={nome:"FIRE USER",user:"@fire.user",foto:"",isInfluencer:false},stream=null,recorder=null,chunks=[],timerInt=null,mode=null,time=0,limit=0,viewers=0,viewerInt=null;
-let config={pixValor:5,pixToday:0,liveNow:0,pixChave:"Configure no Admin",pixNome:"WORK FIRE",pixTipo:"email"};
+let posts=[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800",desc:"AGORA COM ADS + LAYOUT!",likes:7793,liked:false,comments:[{u:"ana",t:"🔥"}],saves:0,saved:false,shares:8,isInfluencer:true}];
+let temp="",cur=0,perfilUser={nome:"FIRE USER",user:"@fire.user",foto:""},stream=null,recorder=null,chunks=[],timerInt=null,mode=null,time=0,limit=0,viewers=0,viewerInt=null;
+let config={pixValor:5,pixToday:0,liveNow:0,pixChave:"Configure no Admin",pixNome:"WORK FIRE",pixTipo:"celular",ads:{adsense:"",admob:"",text:"🔥 Seja Influencer por R$5 - Fique famoso!",link:"",img:"",freq:3,tipo:"todos",ativo:true,pula:true,views:0}};
 try{let s=localStorage.getItem("WORK_FIRE_BASE_FOTO"); if(s) posts=JSON.parse(s);}catch(e){}
 try{let p=localStorage.getItem("PERFIL_FIRE_USER"); if(p) perfilUser=JSON.parse(p);}catch(e){}
-try{let c=localStorage.getItem("WORK_FIRE_CONFIG_V3"); if(c) config=JSON.parse(c);}catch(e){}
+try{let c=localStorage.getItem("WORK_FIRE_CONFIG_ADS"); if(c) config=JSON.parse(c);}catch(e){}
+
 function render(){
+let feedList=[]; let adCount=0;
 let sorted=[...posts].sort((a,b)=>(b.isInfluencer?1:0)-(a.isInfluencer?1:0));
-document.getElementById("feed").innerHTML=sorted.map((p,i)=>{
-let origIndex=posts.indexOf(p);
-return `<div class="post" style="background-image:url('${p.img}');${p.isInfluencer?'border:2px solid #ffcc00':''}"><div class="side"><button class="sbtn" onclick="doFire(${origIndex},this)"><div class="ibtn">🔥</div><div class="count">${p.likes}</div></button><button class="sbtn" onclick="doLike(${origIndex},this)"><div class="ibtn ${p.liked?'liked':''}">💖</div><div class="count">Curtir</div></button><button class="sbtn" onclick="openC(${origIndex},this)"><div class="ibtn">💬</div><div class="count">${p.comments.length}</div></button><button class="sbtn" onclick="openS(${origIndex},this)"><div class="ibtn">🚀</div><div class="count">${p.shares}</div></button><button class="sbtn" onclick="doSave(${origIndex},this)"><div class="ibtn ${p.saved?'saved':''}">🔖</div><div class="count">Salvar</div></button></div><div class="info" style="${p.isInfluencer?'border-color:#ffcc00;background:rgba(26,20,0,.9)':''}"><b style="color:${p.isInfluencer?'#ffcc00':'#ff8c00'}">@${p.owner} ${p.isInfluencer?'<span style="background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000;padding:2px 6px;border-radius:8px;font-size:9px">🌟 INFLUENCER</span>':''}</b><div>🔥 ${p.desc}</div>${p.isInfluencer?'<div style="color:#ffcc00;font-size:9px;margin-top:4px">⭐ NO TOPO - FAMOSO HOJE</div>':''}</div></div>`}).join("");
+sorted.forEach((p,idx)=>{
+feedList.push({type:"post",data:p,orig:posts.indexOf(p)});
+if(config.ads.ativo && (idx+1)%config.ads.freq===0){feedList.push({type:"ad"}); adCount++;}
+});
+
+document.getElementById("feed").innerHTML=feedList.map((item,i)=>{
+if(item.type==="ad"){
+let ad=config.ads;
+let adHtml="";
+if(ad.tipo==="adsense" && ad.adsense){adHtml=`<div style="background:#fff;padding:10px;border-radius:8px;width:90%;max-width:300px">${ad.adsense}</div>`;}
+else if(ad.tipo==="admob" && ad.admob){adHtml=`<div style="background:#fff;color:#000;padding:10px;border-radius:8px;width:90%">${ad.admob}<br><small>AdMob: ${ad.admob}</small></div>`;}
+else{adHtml=`${ad.img?`<img src="${ad.img}" style="width:90%;max-width:280px;border-radius:10px">`:''}<h3 style="color:#ffcc00;margin-top:12px">${ad.text}</h3>${ad.link?`<button onclick="window.open('${ad.link}','_blank')" style="margin-top:12px;background:#ffcc00;border:none;padding:10px 20px;border-radius:8px;font-weight:900">VER OFERTA</button>`:''}`;}
+return `<div class="post ad"><div class="adLabel">📢 ANÚNCIO - ${config.ads.freq} vídeos</div>${adHtml}<div style="margin-top:20px;color:#666;font-size:10px">Anúncio ${i} • ${ad.tipo.toUpperCase()}${ad.pula?'<br><button onclick="document.getElementById(\'feed\').scrollBy({top:window.innerHeight,behavior:\'smooth\'})" style="margin-top:10px;background:none;border:1px solid #666;color:#666;padding:6px 12px;border-radius:12px;font-size:10px">Pular em 5s</button>':''}</div></div>`;
+}else{
+let p=item.data; let orig=item.orig;
+return `<div class="post" style="background-image:url('${p.img}');${p.isInfluencer?'border:2px solid #ffcc00':''}"><div class="side"><button class="sbtn" onclick="doFire(${orig},this)"><div class="ibtn">🔥</div><div class="count">${p.likes}</div></button><button class="sbtn" onclick="doLike(${orig},this)"><div class="ibtn ${p.liked?'liked':''}">💖</div><div class="count">Curtir</div></button><button class="sbtn" onclick="openC(${orig},this)"><div class="ibtn">💬</div><div class="count">${p.comments.length}</div></button><button class="sbtn" onclick="openS(${orig},this)"><div class="ibtn">🚀</div><div class="count">${p.shares}</div></button><button class="sbtn" onclick="doSave(${orig},this)"><div class="ibtn ${p.saved?'saved':''}">🔖</div><div class="count">Salvar</div></button></div><div class="info"><b style="color:#ff8c00">@${p.owner}</b><div>🔥 ${p.desc}</div></div></div>`;
+}
+}).join("");
+
 document.getElementById("salvos").innerHTML=posts.filter(x=>x.saved).map(x=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${x.img}" style="width:50px;height:50px;border-radius:8px"><div style="color:#fff;font-size:12px">${x.desc}</div></div>`).join("")||"<div style='color:#666'>Nenhum</div>";
-document.getElementById("adminPixValor").value=config.pixValor;
-document.getElementById("pixChave").value=config.pixChave;
-document.getElementById("pixNome").value=config.pixNome;
-document.getElementById("pixTipo").value=config.pixTipo;
-document.getElementById("displayPixKey").innerText=config.pixChave;
-document.getElementById("displayPixName").innerText="Nome: "+config.pixNome;
-document.getElementById("pixPayKey").innerText=config.pixChave;
-document.getElementById("liveCountPreview").innerText=config.liveNow;
-document.getElementById("adminLiveNow").innerText=config.liveNow;
-document.getElementById("adminPixToday").innerText="R$"+config.pixToday;
-document.getElementById("adminPostsList").innerHTML=posts.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #222"><span style="color:#fff;font-size:11px">${i}: ${p.desc.slice(0,20)} ${p.isInfluencer?'🌟':''}</span><button onclick="delPost(${i})" style="background:#ff0000;border:none;color:#fff;padding:2px 6px;border-radius:4px">X</button></div>`).join("");
-if(config.pixChave && config.pixChave!=="Configure no Admin"){document.getElementById("qrPix").src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(config.pixChave+" R$"+config.pixValor);}
+document.getElementById("adminPixValor").value=config.pixValor; document.getElementById("pixChave").value=config.pixChave; document.getElementById("pixNome").value=config.pixNome; document.getElementById("pixTipo").value=config.pixTipo;
+document.getElementById("adsenseCode").value=config.ads.adsense; document.getElementById("admobCode").value=config.ads.admob; document.getElementById("adText").value=config.ads.text; document.getElementById("adLink").value=config.ads.link; document.getElementById("adImg").value=config.ads.img; document.getElementById("adFreq").value=config.ads.freq; document.getElementById("adTipo").value=config.ads.tipo; document.getElementById("adAtivo").checked=config.ads.ativo; document.getElementById("adPula").checked=config.ads.pula;
+document.getElementById("displayPixKey").innerText=config.pixChave; document.getElementById("displayPixName").innerText=config.pixNome; document.getElementById("liveCountPreview").innerText=config.liveNow; document.getElementById("adminLiveNow").innerText=config.liveNow; document.getElementById("adminPixToday").innerText="R$"+config.pixToday; document.getElementById("adminAdsViews").innerText=config.ads.views; document.getElementById("adminFreq").innerText=config.ads.freq; document.getElementById("previewFreq").innerText=config.ads.freq;
+document.getElementById("adminPostsList").innerHTML=posts.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #222"><span style="color:#fff;font-size:11px">${i}: ${p.desc.slice(0,18)}</span><button onclick="delPost(${i})" style="background:#ff0000;border:none;color:#fff;padding:2px 6px;border-radius:4px">X</button></div>`).join("");
+if(config.pixChave!=="Configure no Admin") document.getElementById("qrPix").src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(config.pixChave);
 atualizarPerfilTela(); checkLiveBlock();
 }
 function save(){localStorage.setItem("WORK_FIRE_BASE_FOTO",JSON.stringify(posts));}
-function saveConfig(){localStorage.setItem("WORK_FIRE_CONFIG_V3",JSON.stringify(config)); render();}
+function saveConfig(){localStorage.setItem("WORK_FIRE_CONFIG_ADS",JSON.stringify(config)); render();}
 function anim(b){let ib=b.querySelector('.ibtn'); ib.style.animation='none'; ib.offsetHeight; ib.style.animation='pop.35s ease, vivo 2s infinite.35s'; let br=document.createElement('div'); br.className='burst'; br.innerText=ib.innerText; b.appendChild(br); setTimeout(()=>br.remove(),800);}
 function doLike(i,b){anim(b); posts[i].liked=!posts[i].liked; if(posts[i].liked) posts[i].likes++; save(); render();}
 function doSave(i,b){anim(b); posts[i].saved=!posts[i].saved; save(); render();}
@@ -188,60 +200,46 @@ function doFire(i,b){anim(b); posts[i].likes+=3; save(); render();}
 function openC(i,b){anim(b); cur=i; document.getElementById("ct").innerText=posts[i].comments.length; document.getElementById("listC").innerHTML=posts[i].comments.map(c=>`<div style="padding:10px 0;border-bottom:1px solid #331100"><b style="color:#ff8c00">@${c.u}</b> <span style="color:#fff">${c.t}</span></div>`).join(""); document.getElementById("sheetC").classList.add("show");}
 function sendC(){let t=document.getElementById("txtC").value.trim(); if(!t)return; posts[cur].comments.push({u:"fire",t:t}); document.getElementById("txtC").value=""; save(); openC(cur); render();}
 function openS(i,b){anim(b); cur=i; document.getElementById("sheetS").classList.add("show");}
-function doZap(){window.open(`https://wa.me/?text=${encodeURIComponent(posts[cur].desc+" "+location.href)}`); posts[cur].shares++; save(); render(); closeS('sheetS');}
+function shareTo(net){
+let url=location.href; let text=posts[cur].desc+" - Work Fire 🔥"; let encUrl=encodeURIComponent(url); let encText=encodeURIComponent(text);
+let links={whatsapp:`https://wa.me/?text=${encText}%20${encUrl}`,facebook:`https://www.facebook.com/sharer/sharer.php?u=${encUrl}`,twitter:`https://twitter.com/intent/tweet?text=${encText}&url=${encUrl}`,telegram:`https://t.me/share/url?url=${encUrl}&text=${encText}`,instagram:`https://www.instagram.com/`,tiktok:`https://www.tiktok.com/`,youtube:`https://www.youtube.com/`,kwai:`https://www.kwai.com/`};
+if(net==="native" && navigator.share){navigator.share({title:"Work Fire",text:text,url:url});}else if(net==="native"){window.open(links.whatsapp,"_blank");}
+else if(links[net]){window.open(links[net],"_blank");} posts[cur].shares++; save(); render(); closeS('sheetS'); config.ads.views++; saveConfig();
+}
 function doCopy(){navigator.clipboard.writeText(location.href); posts[cur].shares++; save(); render(); closeS('sheetS');}
 function closeS(id){document.getElementById(id).classList.remove("show");}
-function addPost(){let l=document.getElementById("imgLink").value.trim()||temp; if(!l)return alert("Imagem!"); let d=document.getElementById("desc").value.trim()||"Fire!"; let isInf=perfilUser.isInfluencer||localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString(); posts.unshift({owner:perfilUser.user.replace('@','')||"fire",img:l,desc:d,likes:0,liked:false,comments:[],saves:0,saved:false,shares:0,isInfluencer:isInf}); save(); render(); closeAll(); go(0);}
+function addPost(){let l=document.getElementById("imgLink").value.trim()||temp; if(!l)return alert("Imagem!"); let d=document.getElementById("desc").value.trim()||"Fire!"; let isInf=localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString(); posts.unshift({owner:"fire.influencer",img:l,desc:d,likes:0,liked:false,comments:[],saves:0,saved:false,shares:0,isInfluencer:isInf}); save(); render(); closeAll(); go(0);}
 function go(n){document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); if(document.getElementById("n"+n))document.getElementById("n"+n).classList.add("on"); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); if(n==1)document.getElementById("pBusca").classList.add("show"); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==3)document.getElementById("pLive").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show");}
 function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); go(0);}
-function doBusca(){let q=document.getElementById("buscaInput").value.toLowerCase(); let r=posts.filter(p=>p.desc.toLowerCase().includes(q)); document.getElementById("buscaRes").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${p.img}" style="width:50px;height:50px;border-radius:8px"><div style="color:#fff;font-size:12px">${p.desc} ${p.isInfluencer?'🌟':''}</div></div>`).join("")||"<div style='color:#666'>Nada</div>";}
-function atualizarPerfilTela(){
-document.getElementById("nomePerfil").innerText=perfilUser.nome;
-document.getElementById("userPerfil").innerText=perfilUser.user;
-let fp=document.getElementById("fotoPerfil"); if(perfilUser.foto){fp.style.backgroundImage=`url('${perfilUser.foto}')`; fp.innerText="";}else{fp.style.backgroundImage="none"; fp.innerText="🔥";}
-let isInf=localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString();
-document.getElementById("badgeInfluencer").style.display=isInf?"inline-block":"none";
-document.getElementById("btnSejaInfluencer").style.display=isInf?"none":"block";
-document.getElementById("influencerActiveCard").style.display=isInf?"block":"none";
-document.getElementById("influencerStatus").innerHTML=isInf?'<div style="background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block">🌟 VOCÊ É INFLUENCER HOJE - FAMOSO!</div>':'<div style="color:#666;font-size:11px">Seja famoso hoje por R$5</div>';
-}
+function doBusca(){let q=document.getElementById("buscaInput").value.toLowerCase(); let r=posts.filter(p=>p.desc.toLowerCase().includes(q)); document.getElementById("buscaRes").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${p.img}" style="width:50px;height:50px;border-radius:8px"><div style="color:#fff;font-size:12px">${p.desc}</div></div>`).join("")||"<div style='color:#666'>Nada</div>";}
+function atualizarPerfilTela(){document.getElementById("nomePerfil").innerText=perfilUser.nome; document.getElementById("userPerfil").innerText=perfilUser.user; let fp=document.getElementById("fotoPerfil"); if(perfilUser.foto){fp.style.backgroundImage=`url('${perfilUser.foto}')`; fp.innerText="";}else{fp.style.backgroundImage="none"; fp.innerText="🔥";} let isInf=localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString(); document.getElementById("badgeInfluencer").style.display=isInf?"inline-block":"none"; document.getElementById("btnSejaInfluencer").style.display=isInf?"none":"block";}
 function salvarPerfil(){perfilUser.nome=document.getElementById("cadNome").value.trim()||perfilUser.nome; perfilUser.user=document.getElementById("cadUser").value.trim()||perfilUser.user; let link=document.getElementById("linkFoto").value.trim(); if(link)perfilUser.foto=link; if(window.tempFotoPerfil)perfilUser.foto=window.tempFotoPerfil; localStorage.setItem("PERFIL_FIRE_USER",JSON.stringify(perfilUser)); atualizarPerfilTela(); alert("Salvo!");}
-function openAdmin(){let s=prompt("🔑 Senha Admin:"); if(s==="fire123"||s==="admin"){document.getElementById("adminPanel").style.display="block"; alert("✅ Admin - Configure seu Pix pra receber R$5");}else if(s!==null) alert("Senha: fire123");}
+function openAdmin(){let s=prompt("🔑 Senha Admin:"); if(s==="fire123"||s==="admin"){document.getElementById("adminPanel").style.display="block";}else if(s!==null) alert("Senha: fire123");}
 function closeAdmin(){document.getElementById("adminPanel").style.display="none";}
-function salvarPixAdmin(){
-let chave=document.getElementById("pixChave").value.trim();
-let nome=document.getElementById("pixNome").value.trim()||"WORK FIRE";
-let tipo=document.getElementById("pixTipo").value;
-let valor=parseInt(document.getElementById("adminPixValor").value)||5;
-if(!chave){alert("❌ Coloque sua chave Pix onde vai cair o dinheiro!"); return;}
-config.pixChave=chave; config.pixNome=nome; config.pixTipo=tipo; config.pixValor=valor;
+function salvarPixAdmin(){let chave=document.getElementById("pixChave").value.trim(); let nome=document.getElementById("pixNome").value.trim()||"WORK FIRE"; let tipo=document.getElementById("pixTipo").value; let valor=parseInt(document.getElementById("adminPixValor").value)||5; if(!chave){alert("Coloque Pix!"); return;} config.pixChave=chave; config.pixNome=nome; config.pixTipo=tipo; config.pixValor=valor; saveConfig(); alert("✅ Pix salvo: "+chave);}
+function salvarAds(){
+config.ads.adsense=document.getElementById("adsenseCode").value.trim();
+config.ads.admob=document.getElementById("admobCode").value.trim();
+config.ads.text=document.getElementById("adText").value.trim()||"🔥 Propaganda";
+config.ads.link=document.getElementById("adLink").value.trim();
+config.ads.img=document.getElementById("adImg").value.trim();
+config.ads.freq=parseInt(document.getElementById("adFreq").value)||3;
+config.ads.tipo=document.getElementById("adTipo").value;
+config.ads.ativo=document.getElementById("adAtivo").checked;
+config.ads.pula=document.getElementById("adPula").checked;
 saveConfig();
-document.getElementById("pixPreview").style.display="block";
-document.getElementById("previewKey").innerText=tipo.toUpperCase()+": "+chave+" | "+nome+" | R$"+valor+" - Todo pagamento cai aqui!";
-document.getElementById("previewQr").innerHTML="<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+encodeURIComponent(chave)+"' style='background:#fff;padding:4px;border-radius:8px'>";
-alert("✅ SEU PIX SALVO! Todo R$5 de 'Seja um Influencer' vai cair em: "+chave+" ("+nome+")");
+document.getElementById("adPreview").style.display="block";
+document.getElementById("previewAdBox").innerHTML=config.ads.img?`<img src="${config.ads.img}" style="width:100%;border-radius:8px">`:"<div style='color:#fff'>"+config.ads.text+"</div>";
+alert("✅ Propagandas salvas! Vai aparecer a cada "+config.ads.freq+" vídeos - Tipo: "+config.ads.tipo);
 }
 function delPost(i){if(confirm("Apagar?")){posts.splice(i,1); save(); render();}}
-function resetLiveBlock(){localStorage.removeItem("LAST_LIVE_DATE"); perfilUser.isInfluencer=false; checkLiveBlock(); alert("🔓 Reset Influencer liberado");}
-function copyPixKey(){navigator.clipboard.writeText(config.pixChave); alert("✅ Pix copiado: "+config.pixChave+" - dinheiro cai na conta do Admin");}
-function checkLiveBlock(){
-let last=localStorage.getItem("LAST_LIVE_DATE"); let today=new Date().toDateString();
-let blocked=document.getElementById("liveBlocked"); let btn=document.getElementById("btnLive30");
-if(last===today){blocked.style.display="block"; btn.disabled=true; btn.style.opacity=".4"; btn.innerText="⛔ JÁ É INFLUENCER HOJE"; document.getElementById("liveInfo").innerText="🌟 Você é Influencer hoje!";}else{blocked.style.display="none"; btn.disabled=false; btn.style.opacity="1"; btn.innerText="🌟 JÁ PAGUEI R$"+config.pixValor+" - QUERO SER FAMOSO 30MIN"; document.getElementById("liveInfo").innerText="Seja Influencer por R$"+config.pixValor;}
-atualizarPerfilTela();
-}
-function showPixPay(){if(config.pixChave==="Configure no Admin"){alert("⛔ Admin ainda não configurou Pix! Vá em Eu > Admin e cadastre sua chave Pix"); return;} document.getElementById("pixPayBox").style.display="block";}
-function confirmPix(){
-let last=localStorage.getItem("LAST_LIVE_DATE"); if(last===new Date().toDateString()){alert("Você já é influencer hoje!"); return;}
-config.pixToday+=config.pixValor; config.liveNow=1; saveConfig();
-perfilUser.isInfluencer=true; localStorage.setItem("PERFIL_FIRE_USER",JSON.stringify(perfilUser));
-document.getElementById("pixPayBox").style.display="none";
-alert("🌟 PARABÉNS! Você agora é INFLUENCER por 30min! Seu vídeo vai pro topo do feed e R$"+config.pixValor+" caiu na conta: "+config.pixChave);
-startLive30();
-}
-async function startRecording(){mode="record"; limit=90; time=0; try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true}); let v=document.getElementById("videoLive"); v.srcObject=stream; v.style.display="block"; document.getElementById("liveMenu").style.display="none"; document.getElementById("liveActive").style.display="block"; chunks=[]; recorder=new MediaRecorder(stream); recorder.ondataavailable=e=>{if(e.data.size>0) chunks.push(e.data)}; recorder.onstop=()=>{let blob=new Blob(chunks,{type:"video/webm"}); let url=URL.createObjectURL(blob); let isInf=localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString(); posts.unshift({owner:perfilUser.user.replace('@','')||"fire",img:url,desc:"Gravação 1:30 🔥 "+(isInf?"🌟 INFLUENCER":""),likes:0,liked:false,comments:[],saves:0,saved:false,shares:0,isInfluencer:isInf}); save(); render(); alert("✅ Gravação salva!"); stopAll();}; recorder.start(); startTimer();}catch(e){alert("Permita câmera!");}}
-async function startLive30(){mode="live"; limit=1800; time=0; viewers=10; try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true}); let v=document.getElementById("videoLive"); v.srcObject=stream; v.style.display="block"; document.getElementById("liveMenu").style.display="none"; document.getElementById("liveActive").style.display="block"; localStorage.setItem("LAST_LIVE_DATE",new Date().toDateString()); config.liveNow=1; saveConfig(); addLiveComment("Sistema","🌟 NOVO INFLUENCER! @"+(perfilUser.user||"fire")+" pagou R$"+config.pixValor+" e tá famoso! Pix caiu em: "+config.pixNome); startTimer(); startViewers();}catch(e){alert("Permita câmera!");}}
-function startTimer(){clearInterval(timerInt); timerInt=setInterval(()=>{time++; let m=Math.floor(time/60).toString().padStart(2,'0'); let s=(time%60).toString().padStart(2,'0'); document.getElementById("timerText").innerText=m+":"+s; document.getElementById("influencerTimeLeft").innerText=(29-Math.floor(time/60)).toString().padStart(2,'0')+":"+((60-time%60)%60).toString().padStart(2,'0'); document.getElementById("progressBar").style.width=(time/limit*100)+"%"; if(time>=limit){if(mode==="record") recorder.stop(); else {alert("🌟 Seus 30min de fama acabaram! Volta amanhã como Influencer!"); stopAll();}}},1000);}
+function resetLiveBlock(){localStorage.removeItem("LAST_LIVE_DATE"); checkLiveBlock(); alert("Reset!");}
+function checkLiveBlock(){let last=localStorage.getItem("LAST_LIVE_DATE"); let today=new Date().toDateString(); let blocked=document.getElementById("liveBlocked"); let btn=document.getElementById("btnLive30"); if(last===today){blocked.style.display="block"; btn.disabled=true; btn.style.opacity=".4"; btn.innerText="⛔ JÁ É INFLUENCER"; document.getElementById("liveInfo").innerText="🌟 Influencer hoje!";}else{blocked.style.display="none"; btn.disabled=false; btn.style.opacity="1"; btn.innerText="🌟 JÁ PAGUEI R$"+config.pixValor+" - VIRAR INFLUENCER"; document.getElementById("liveInfo").innerText="Seja Influencer R$"+config.pixValor;} atualizarPerfilTela();}
+function showPixPay(){if(config.pixChave==="Configure no Admin"){alert("Admin configure Pix!"); return;} document.getElementById("pixPayBox").style.display="block";}
+function confirmPix(){let last=localStorage.getItem("LAST_LIVE_DATE"); if(last===new Date().toDateString()){alert("Já é influencer!"); return;} config.pixToday+=config.pixValor; saveConfig(); document.getElementById("pixPayBox").style.display="none"; startLive30();}
+async function startRecording(){mode="record"; limit=90; time=0; try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true}); let v=document.getElementById("videoLive"); v.srcObject=stream; v.style.display="block"; document.getElementById("liveMenu").style.display="none"; document.getElementById("liveActive").style.display="block"; chunks=[]; recorder=new MediaRecorder(stream); recorder.ondataavailable=e=>{if(e.data.size>0) chunks.push(e.data)}; recorder.onstop=()=>{let blob=new Blob(chunks,{type:"video/webm"}); let url=URL.createObjectURL(blob); let isInf=localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString(); posts.unshift({owner:perfilUser.user.replace('@','')||"fire",img:url,desc:"Gravação 1:30",likes:0,liked:false,comments:[],saves:0,saved:false,shares:0,isInfluencer:isInf}); save(); render(); alert("Salvo!"); stopAll();}; recorder.start(); startTimer();}catch(e){alert("Permita câmera!");}}
+async function startLive30(){mode="live"; limit=1800; time=0; viewers=10; try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true}); let v=document.getElementById("videoLive"); v.srcObject=stream; v.style.display="block"; document.getElementById("liveMenu").style.display="none"; document.getElementById("liveActive").style.display="block"; localStorage.setItem("LAST_LIVE_DATE",new Date().toDateString()); config.liveNow=1; saveConfig(); addLiveComment("Sistema","🌟 Influencer! R$"+config.pixValor+" em "+config.pixNome); startTimer(); startViewers();}catch(e){alert("Permita câmera!");}}
+function startTimer(){clearInterval(timerInt); timerInt=setInterval(()=>{time++; let m=Math.floor(time/60).toString().padStart(2,'0'); let s=(time%60).toString().padStart(2,'0'); document.getElementById("timerText").innerText=m+":"+s; document.getElementById("progressBar").style.width=(time/limit*100)+"%"; if(time>=limit){if(mode==="record") recorder.stop(); else {alert("30min acabou!"); stopAll();}}},1000);}
 function startViewers(){clearInterval(viewerInt); viewerInt=setInterval(()=>{if(mode!=="live") return; viewers+=Math.floor(Math.random()*5); document.getElementById("viewerCount").innerText=viewers; document.getElementById("liveCountPreview").innerText=viewers; document.getElementById("adminLiveNow").innerText=viewers;},2000);}
 function addLiveComment(u,t){let d=document.createElement("div"); d.style.cssText="background:rgba(0,0,0,.6);padding:6px 10px;border-radius:16px;color:#fff;font-size:12px;max-width:85%;margin-top:6px"; d.innerHTML=`<b style="color:#ffcc00">@${u}</b> ${t}`; document.getElementById("liveComments").appendChild(d);}
 function stopAll(){clearInterval(timerInt); clearInterval(viewerInt); if(recorder && recorder.state!=="inactive") recorder.stop(); if(stream){stream.getTracks().forEach(t=>t.stop()); stream=null;} config.liveNow=0; saveConfig(); document.getElementById("videoLive").srcObject=null; document.getElementById("videoLive").style.display="none"; document.getElementById("liveMenu").style.display="flex"; document.getElementById("liveActive").style.display="none"; document.getElementById("progressBar").style.width="0%"; document.getElementById("liveComments").innerHTML=""; document.getElementById("timerText").innerText="00:00"; checkLiveBlock();}
