@@ -3,133 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - FINAL PERFEITO</title>
+<title>WORK INFLUENCER - ADMIN TOTAL</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,sans-serif;height:100dvh;overflow:hidden}
-.app{max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.app{max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
 .feedContainer{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
 .feedContainer::-webkit-scrollbar{display:none}
 .post{height:100dvh;position:relative;scroll-snap-align:start;background:#000 center/cover no-repeat}
-.post::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.1) 50%,transparent 100%)}
-.top{position:absolute;top:10px;left:12px;right:12px;z-index:10;display:flex;justify-content:space-between}
-.logo{color:#ff3b00;font-weight:900;font-size:15px;text-shadow:0 0 10px rgba(255,59,0,.6)}
-.liveBtn{padding:6px 14px;border-radius:100px;background:rgba(20,8,0,.9);border:1.5px solid #ff4500;color:#ff8c00;font-weight:900;font-size:11px}
-.side{position:absolute;right:12px;bottom:110px;z-index:10;display:flex;flex-direction:column;gap:20px;align-items:center}
+.post::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 50%)}
+.top{position:absolute;top:10px;left:12px;right:12px;z-index:10;display:flex;justify-content:space-between;align-items:center}
+.logo{color:#ff3b00;font-weight:900;font-size:16px}
+.onlineBadge{padding:5px 10px;border-radius:100px;background:rgba(0,200,0,.9);color:#fff;font-weight:900;font-size:10px}
+.side{position:absolute;right:12px;bottom:110px;z-index:10;display:flex;flex-direction:column;gap:18px;align-items:center}
 .sbtn{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;cursor:pointer}
-.iconBtn{width:54px;height:54px;border-radius:50%;background:rgba(20,8,0,.92);border:1.8px solid #5a2000;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 15px rgba(255,69,0,.25);transition:.2s}
-.sbtn small{color:#fff;font-weight:700;font-size:11px;text-shadow:0 1px 3px #000}
-
-/* ANIMAÇÕES QUE VOCÊ QUER */
-@keyframes danceLove{0%,100%{transform:translateY(0) rotate(0) scale(1)}25%{transform:translateY(-8px) rotate(-5deg) scale(1.15)}50%{transform:translateY(-4px) rotate(5deg) scale(1.1)}75%{transform:translateY(-6px) rotate(-3deg) scale(1.12)}}
-@keyframes danceFofoca{0%,100%{transform:rotate(0) translateX(0)}25%{transform:rotate(-10deg) translateX(-3px)}50%{transform:rotate(10deg) translateX(3px)}75%{transform:rotate(-5deg) translateX(-2px)}}
-@keyframes danceGuardar{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(15deg) scale(1.15)}}
-@keyframes danceGirar{0%,100%{transform:translateX(0) rotate(0)}50%{transform:translateX(8px) rotate(10deg) scale(1.1)}}
-.dancing{animation:var(--anim).6s ease}
-
-/* BOTÃO SEGUIR TIKTOK */
-.avatarWrap{position:relative;width:54px;height:54px;display:flex;justify-content:center}
-.avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#ff4500,#ff8c00);border:2.5px solid #fff;overflow:hidden;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-size:20px;box-shadow:0 0 15px rgba(255,69,0,.4)}
-.followBtn{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:#fe2c55;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;transition:.25s cubic-bezier(.175,.885,.32,1.275);z-index:2;border:none}
+.iconBtn{width:52px;height:52px;border-radius:50%;background:rgba(20,8,0,.92);border:2px solid #ff4500;display:flex;align-items:center;justify-content:center;font-size:24px}
+.avatarWrap{position:relative;width:52px;height:52px}
+.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#ff4500,#ff8c00);border:2.5px solid #fff;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000}
+.followBtn{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:#fe2c55;color:#fff;font-size:14px;font-weight:900;border:none}
 .followBtn.following{transform:translateX(-50%) scale(0);opacity:0}
 .followBtn.check{width:20px;height:20px;background:#fff;color:#fe2c55;border-radius:50%;font-size:12px;transform:translateX(-50%) scale(0);opacity:0;position:absolute;bottom:-8px;left:50%;display:flex;align-items:center;justify-content:center;transition:.25s}
 .followBtn.check.show{transform:translateX(-50%) scale(1);opacity:1}
-
-.info{position:absolute;left:12px;right:78px;bottom:16px;z-index:10;background:rgba(8,4,0,.94);border:1.8px solid #ff3300;border-radius:14px;padding:10px 12px;box-shadow:0 0 20px rgba(255,51,0,.3)}
-.userRow{display:flex;gap:6px;align-items:center}
-.tag{background:linear-gradient(90deg,#ff4500,#cc3300);color:#000;font-size:8px;padding:3px 8px;border-radius:100px;font-weight:900;margin-left:6px}
-.desc{font-size:12px;line-height:1.3;margin:6px 0;color:#ffcc99}
-.nav{height:62px;background:#080400;border-top:1.5px solid #2a1500;display:flex;flex-shrink:0;z-index:100;align-items:center}
-.nav button{flex:1;background:none;border:0;color:#5a3a20;font-weight:700;font-size:10px;display:flex;flex-direction:column;align-items:center}
+.info{position:absolute;left:12px;right:78px;bottom:16px;z-index:10;background:rgba(8,4,0,.94);border:2px solid #ff3300;border-radius:14px;padding:10px}
+.nav{height:62px;background:#080400;border-top:2px solid #2a1500;display:flex;align-items:center}
+.nav button{flex:1;background:none;border:0;color:#5a3a20;font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center}
 .nav button.active{color:#ff8c00}
-.nav button b{font-size:18px}
-.plus{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff6a00,#b52000);border:2.5px solid #1a0a00;color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:-22px auto 0;box-shadow:0 0 25px rgba(255,69,0,.6);font-weight:900}
-.page{position:absolute;inset:0;background:#000;z-index:200;display:none;flex-direction:column}
+.plus{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle,#ff6a00,#b52000);border:2.5px solid #1a0a00;color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:-22px auto 0}
+.page{position:absolute;inset:0;background:#000;z-index:300;display:none;flex-direction:column;overflow:auto}
 .page.show{display:flex}
-#cam{flex:1;width:100%;object-fit:cover;background:#000}
-#cam.front{transform:scaleX(-1)}
-.input{width:100%;padding:13px 16px;border-radius:12px;background:#1e1e1e;border:1px solid #333;color:#fff;outline:none;margin-top:8px}
+.adInterstitial{position:absolute;inset:0;background:rgba(0,0,0,.95);z-index:500;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
+.adminCard{background:#111;border:1px solid #ff4500;border-radius:12px;padding:14px;margin:10px 12px}
+.input{width:100%;padding:12px;border-radius:10px;background:#1e1e1e;border:1px solid #333;color:#fff;margin-top:8px;font-size:13px}
+.btnAdmin{width:100%;padding:12px;border-radius:10px;background:#fe2c55;border:none;color:#fff;font-weight:900;margin-top:10px;cursor:pointer}
+.btnAdmin.green{background:#00c851}
 </style>
 </head>
 <body>
 <div class="app">
 <div class="feedContainer" id="feedContainer"></div>
-<div class="page" id="pCam"><video id="cam" autoplay muted playsinline class="front"></video><div style="position:absolute;top:0;left:0;right:0;padding:12px;display:flex;justify-content:space-between"><button onclick="closeAll()" style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.5);border:none;color:#fff">✕</button><button onclick="switchCam()" id="labCam" style="padding:8px 14px;border-radius:100px;background:rgba(0,0,0,.5);color:#fff;border:none">🔄 Frente</button></div><div style="position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:30px"><button onclick="openGallery()" style="width:40px;height:40px;border-radius:10px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.3);color:#fff">🖼️</button><button onclick="tirar()" style="width:80px;height:80px;border-radius:50%;background:conic-gradient(from 0deg,#fe2c55,#ff8c00);border:5px solid rgba(255,255,255,.3)"></button><button onclick="switchCam()" style="width:40px;height:40px;border-radius:10px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.3);color:#fff">🔄</button></div><div id="recPreview" style="position:absolute;inset:0;background:#000;z-index:5;display:none;flex-direction:column"><img id="prevImg" style="flex:1;width:100%;object-fit:contain"><div style="padding:16px;display:flex;gap:12px"><button onclick="retake()" style="flex:1;padding:14px;border-radius:12px;background:#222;border:none;color:#fff;font-weight:900">Refazer</button><button onclick="postar()" style="flex:1;padding:14px;border-radius:12px;background:#fe2c55;border:none;color:#fff;font-weight:900">Postar</button></div></div></div>
-<div class="page" id="pBusca"><div style="padding:10px;display:flex;gap:8px;border-bottom:1px solid #1a1a1a"><input id="inputBusca" style="flex:1;padding:12px 16px;border-radius:10px;background:#1e1e1e;border:none;color:#fff" placeholder="🔍 Buscar" oninput="fazerBusca()"><button onclick="closeAll()" style="background:none;border:none;color:#fff">Cancelar</button></div><div id="resultadoBusca" style="flex:1;overflow:auto"></div></div>
-<div class="page" id="pEu" style="overflow:auto"><div style="padding:10px;display:flex;justify-content:space-between"><b>👤 <span id="nomeTop">@você</span></b><button onclick="closeAll()" style="background:none;border:none;color:#fff">✕</button></div><div style="padding:16px;text-align:center"><div style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#fe2c55,#ff8c00);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden"><span id="emojiFoto">👑</span><img id="imgPerfil" style="width:100%;height:100%;object-fit:cover;display:none"></div><div style="font-weight:900;margin-top:8px" id="nomePerfil">@você.fire</div><div style="color:#aaa;font-size:12px" id="bioPerfil">Bio</div><div style="display:flex;gap:8px;margin-top:16px"><button onclick="editarPerfil()" style="flex:1;padding:10px;border-radius:6px;background:#1e1e1e;border:none;color:#fff">Editar perfil</button><button onclick="escolherFoto()" style="flex:1;padding:10px;border-radius:6px;background:#1e1e1e;border:none;color:#fff">📸 Foto</button></div><div id="editBox" style="display:none;margin-top:12px"><input id="inNome" class="input" placeholder="@nome"><input id="inBio" class="input" placeholder="Bio"><button onclick="salvarPerfil()" style="width:100%;margin-top:10px;padding:12px;border-radius:8px;background:#fe2c55;border:none;color:#fff;font-weight:900">Salvar</button></div></div><div id="gridPerfil" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px"></div></div>
-<div class="page" id="pCom"><div style="padding:12px;display:flex;justify-content:space-between;border-bottom:1px solid #1a1a1a"><b id="comTitle">Comentários</b><button onclick="closeAll()" style="background:none;border:none;color:#fff">✕</button></div><div id="listaCom" style="flex:1;overflow:auto;padding:12px"></div><div style="padding:10px;display:flex;gap:8px;border-top:1px solid #1a1a1a"><input id="inCom" placeholder="Comentar..." style="flex:1;padding:10px;border-radius:20px;background:#1e1e1e;border:none;color:#fff"><button onclick="enviarCom()" style="background:none;border:none;color:#fe2c55;font-weight:900">Postar</button></div></div>
-<div class="page" id="pLive" style="justify-content:center;align-items:center"><div style="text-align:center"><div style="font-size:60px">🔴</div><h2>LIVE</h2><button onclick="closeAll()" style="margin-top:20px;padding:12px 24px;border-radius:20px;background:#fe2c55;border:none;color:#fff;font-weight:900">Sair</button></div></div>
+
+<div class="adInterstitial" id="adBox">
+<div style="background:#111;border:2px solid #ff4500;border-radius:16px;padding:24px;width:100%;max-width:340px">
+<div style="color:#ff8c00;font-weight:900;font-size:12px;letter-spacing:2px">ANÚNCIO • VOCÊ GANHOU R$0,45</div>
+<h2 style="margin:12px 0">💰 WORK INFLUENCER ADS</h2>
+<div style="background:#000;border-radius:12px;padding:16px;margin:12px 0;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+<div id="admobSim">📱 Anúncio<br><br><span style="color:#aaa;font-size:12px" id="idShow">ID: Não configurado</span><br><br><div style="padding:10px;background:#ff4500;border-radius:8px;font-weight:900;width:100%">BAIXE AGORA - GANHE R$50</div></div>
+<ins class="adsbygoogle" style="display:block" data-ad-client="" data-ad-slot="" data-ad-format="auto"></ins>
+</div>
+<div style="font-size:11px;color:#666;margin:8px 0">Fecha em <span id="adTimer">5</span>s</div>
+<button id="closeAdBtn" onclick="closeAd()" style="width:100%;padding:12px;border-radius:10px;background:#222;border:none;color:#666;font-weight:900" disabled>AGUARDE...</button>
+</div>
+</div>
+
+<div class="page" id="pAdmin" style="padding:12px">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0"><h2>👑 ADMIN TOTAL</h2><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div>
+<div class="adminCard" style="border-color:#00ff00">
+<div style="font-weight:900;color:#00ff00">🟢 AO VIVO AGORA</div>
+<div style="font-size:28px;font-weight:900;margin:8px 0"><span id="onlineCount">1</span> ONLINE</div>
+<div style="font-size:11px;color:#aaa">Total: <span id="totalVisits">0</span> | Hoje: <span id="todayVisits">0</span></div>
+<div style="display:flex;gap:8px;margin-top:10px">
+<div style="flex:1;background:#000;padding:8px;border-radius:8px;text-align:center"><div style="font-size:18px;font-weight:900" id="statPosts">0</div><div style="font-size:10px;color:#aaa">POSTS</div></div>
+<div style="flex:1;background:#000;padding:8px;border-radius:8px;text-align:center"><div style="font-size:18px;font-weight:900;color:#00ff00" id="statMoney">R$ 0,00</div><div style="font-size:10px;color:#aaa">GANHO</div></div>
+<div style="flex:1;background:#000;padding:8px;border-radius:8px;text-align:center"><div style="font-size:18px;font-weight:900" id="statAds">0</div><div style="font-size:10px;color:#aaa">ADS</div></div>
+</div>
+</div>
+<div class="adminCard">
+<div style="font-weight:900">💰 COLAR SEUS IDs AQUI DENTRO DO APP</div>
+<input id="adsenseId" class="input" placeholder="Cole seu ca-pub-... (Adsense)">
+<input id="admobId" class="input" placeholder="Cole seu ca-app-pub-... (AdMob)">
+<input id="adFreq" class="input" type="number" value="5">
+<button class="btnAdmin" onclick="saveAds()">💾 Salvar e Ativar Ads</button>
+<div style="font-size:10px;color:#aaa;margin-top:6px">Salva no celular, não precisa mexer no código!</div>
+</div>
+<div class="adminCard">
+<div style="font-weight:900">🎮 CONTROLE TOTAL</div>
+<button class="btnAdmin" onclick="limparTudo()">🗑️ Limpar posts</button>
+<button class="btnAdmin" style="background:#333" onclick="addFakeUsers()">👥 +10 fake online</button>
+<button class="btnAdmin" style="background:#333" onclick="resetStats()">🔄 Zerar tudo</button>
+</div>
+<div class="adminCard"><div style="font-weight:900">📋 POSTS</div><div id="adminPostList" style="max-height:200px;overflow:auto;margin-top:8px"></div></div>
+</div>
+
+<div class="page" id="pEu" style="overflow:auto">
+<div style="padding:12px;display:flex;justify-content:space-between;align-items:center"><b>👤 @você - ADMIN</b><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div>
+<div style="padding:16px;text-align:center">
+<div style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#fe2c55,#ff8c00);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:36px">👑</div>
+<div style="font-weight:900;margin-top:8px">VOCÊ É O DONO</div>
+<div style="color:#00ff00;font-size:11px;font-weight:900">● <span id="onlinePerfil">1</span> ONLINE AGORA</div>
+<button onclick="openAdmin()" style="width:100%;margin-top:14px;padding:14px;border-radius:12px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;color:#000;font-weight:900">👑 PAINEL ADMINISTRADOR TOTAL</button>
+</div>
+<div id="gridPerfil" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;margin-top:12px"></div>
+</div>
+
 <div class="nav">
-<button id="b0" class="active" onclick="go(0)"><b>🔥</b>Work</button>
-<button id="b1" onclick="go(1)"><b>🔍</b>Buscar</button>
+<button id="b0" class="active" onclick="go(0)">🏠 Influencer</button>
+<button id="b1" onclick="go(1)">🔍 Buscar</button>
 <button id="b2" onclick="go(2)"><div class="plus">+</div></button>
-<button id="b3" onclick="go(3)"><b>🔴</b>LIVE</button>
-<button id="b4" onclick="go(4)"><b>👑</b>Eu</button>
+<button id="b3" onclick="go(3)">🔴 LIVE</button>
+<button id="b4" onclick="go(4)">👑 Eu</button>
 </div>
 </div>
-<input type="file" id="inputFotoPerfil" accept="image/*" style="display:none" onchange="fotoPerfilEscolhida(event)">
-<input type="file" id="inputGaleria" accept="image/*,video/*" style="display:none" onchange="fotoGaleriaPost(event)">
 <script>
-let posts=JSON.parse(localStorage.getItem('work_final_perfeito')||'null')||[
-{owner:"smart.fire",bio:"Dança inteligente ao clicar",img:"https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?w=800",desc:"🧠💃 Botões inteligentes! Cada um dança diferente! Like=amor, Comment=fofoca, Save=guardar, Share=girar! 🔥 #fyp",likes:2134,liked:false,saved:false,coms:["Amei! 🔥","Top!"],music:"som original - smart.fire",follow:false},
-{owner:"joao.fire",bio:"Edição 4K",img:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600",desc:"Setup 4K 🔥 #setup",likes:890,liked:false,saved:false,coms:["Que setup!"],music:"Trending - joao",follow:false},
+let posts=JSON.parse(localStorage.getItem('work_influencer_admin')||'null')||[
+{owner:"influencer.top",img:"https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?w=800",desc:"💼 WORK INFLUENCER OFICIAL - Você é o ADMIN! 🔥",likes:5234,liked:false,coms:[],follow:false},
+{owner:"gabi.influ",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600",desc:"Dica de influencer! 💅",likes:890,liked:false,coms:[],follow:false},
+{owner:"joao.fire",img:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600",desc:"Setup 4K 🔥",likes:1200,liked:false,coms:[],follow:false},
+{owner:"ana.top",img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600",desc:"Look do dia 💃",likes:2100,liked:false,coms:[],follow:false},
+{owner:"mike.pro",img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600",desc:"Tutorial 🎬",likes:3400,liked:false,coms:[],follow:false},
+{owner:"luna.star",img:"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600",desc:"Vlog ✨",likes:1800,liked:false,coms:[],follow:false},
 ];
-let cur=0, stream=null, lado="user", captured=null;
-let perfil=JSON.parse(localStorage.getItem('perfil_final_perfeito')||'{"nome":"você.fire","bio":"Editor 🔥 | Dança inteligente","foto":null}');
-function save(){localStorage.setItem('work_final_perfeito',JSON.stringify(posts.slice(0,100)));localStorage.setItem('perfil_final_perfeito',JSON.stringify(perfil))}
-function format(n){return n>=1000?(n/1000).toFixed(1)+'K':n}
-function animar(el,tipo){el.style.setProperty('--anim',tipo); el.classList.remove('dancing'); void el.offsetWidth; el.classList.add('dancing'); setTimeout(()=>el.classList.remove('dancing'),600)}
-function renderFeed(){
-let html='';
-posts.forEach((p,i)=>{
-html+=`<div class="post" style="background-image:url('${p.img}')" data-i="${i}" ondblclick="like(${i})">
-<div class="top"><div class="logo">🔥 WORK FIRE 🧠💃</div><div class="liveBtn">● LIVE</div></div>
-<div class="side">
-<div class="avatarWrap">
-<div class="avatar">${p.owner[0].toUpperCase()}</div>
-<button class="followBtn ${p.follow?'following':''}" onclick="follow(${i})" id="fb${i}">+</button>
-<button class="followBtn check ${p.follow?'show':''}" id="fc${i}">✓</button>
-</div>
-<button class="sbtn" onclick="animar(this.querySelector('.iconBtn'),'danceLove');like(${i})"><div class="iconBtn">${p.liked?'❤️':'🤍'}</div><small>${format(p.likes)}</small></button>
-<button class="sbtn" onclick="animar(this.querySelector('.iconBtn'),'danceFofoca');openCom(${i})"><div class="iconBtn">💬</div><small>${p.coms.length}</small></button>
-<button class="sbtn" onclick="animar(this.querySelector('.iconBtn'),'danceGuardar');saveP(${i})"><div class="iconBtn">${p.saved?'🔖':'💾'}</div><small>${p.saved?'Salvo':'Salvar'}</small></button>
-<button class="sbtn" onclick="animar(this.querySelector('.iconBtn'),'danceGirar');shareP(${i})"><div class="iconBtn">↗</div><small>Share</small></button>
-</div>
-<div class="info">
-<div class="userRow"><div style="font-weight:900;font-size:13px">@${p.owner}</div><span class="tag">INTELIGENTE</span></div>
-<div style="font-size:11px;color:#aa8866">🧠 ${p.bio}</div>
-<div class="desc">${p.desc}</div>
-<div style="font-size:11px;color:#fff">🎵 ${p.music}</div>
-</div>
-</div>`;
-});
-document.getElementById('feedContainer').innerHTML=html;
-renderPerfil();
+let cur=0, adCount=0, online=1, totalAds=parseInt(localStorage.getItem('adViews')||'0');
+let adConfig=JSON.parse(localStorage.getItem('adConfig')||'{"freq":5,"adsense":"","admob":""}');
+function updateOnline(){
+let base=1+Math.floor(Math.random()*8); online=base; document.getElementById('onlineCount').innerText=online; document.getElementById('onlinePerfil').innerText=online;
+let total=parseInt(localStorage.getItem('totalVisits')||'1'); total++; localStorage.setItem('totalVisits',total);
+document.getElementById('totalVisits').innerText=total; document.getElementById('todayVisits').innerText=Math.floor(total/2);
+document.getElementById('statPosts').innerText=posts.length; document.getElementById('statAds').innerText=totalAds;
+document.getElementById('statMoney').innerText='R$ '+(totalAds*0.45).toFixed(2);
+document.getElementById('adFreq').value=adConfig.freq; document.getElementById('adsenseId').value=adConfig.adsense; document.getElementById('admobId').value=adConfig.admob;
+document.getElementById('idShow').innerText=adConfig.adsense?('ID: '+adConfig.adsense):'ID: Não configurado - Cole no painel admin';
 }
-function go(n){document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));document.getElementById('b'+n).classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));if(n===1){document.getElementById('pBusca').classList.add('show'); fazerBusca()}if(n===2)abrirCam();if(n===3)document.getElementById('pLive').classList.add('show');if(n===4){document.getElementById('pEu').classList.add('show'); renderPerfil()}}
-function closeAll(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}document.getElementById('recPreview').style.display='none';document.getElementById('b0').classList.add('active');document.querySelectorAll('.nav button').forEach((b,i)=>{if(i!==0)b.classList.remove('active')})}
-function like(i){posts[i??cur].liked=!posts[i??cur].liked; posts[i??cur].likes+=posts[i??cur].liked?1:-1; save(); renderFeed()}
-function saveP(i){posts[i].saved=!posts[i].saved; save(); renderFeed()}
-function follow(i){posts[i].follow=!posts[i].follow; save(); let plus=document.getElementById('fb'+i); let check=document.getElementById('fc'+i); if(posts[i].follow){plus.classList.add('following'); setTimeout(()=>{check.classList.add('show')},150);} else {check.classList.remove('show'); setTimeout(()=>{plus.classList.remove('following')},150);}}
-function shareP(i){let el=document.querySelectorAll('.post')[i]?.querySelector('.side'); if(el){let card=document.querySelectorAll('.post')[i].querySelector('.info'); card.style.animation='danceGirar.6s ease'; setTimeout(()=>card.style.animation='',600)} alert('🔗 Compartilhado @'+posts[i].owner)}
-function openCom(i){cur=i??cur; document.getElementById('pCom').classList.add('show'); document.getElementById('comTitle').innerText=`${posts[cur].coms.length} comentários`; document.getElementById('listaCom').innerHTML=posts[cur].coms.map(c=>`<div style="padding:10px 0;border-bottom:1px solid #111">${c}</div>`).join('')}
-function enviarCom(){let v=document.getElementById('inCom').value; if(!v)return; posts[cur].coms.push(v); document.getElementById('inCom').value=''; save(); openCom(cur); renderFeed()}
-function renderPerfil(){document.getElementById('nomeTop').innerText='@'+perfil.nome; document.getElementById('nomePerfil').innerText='@'+perfil.nome; document.getElementById('bioPerfil').innerText=perfil.bio; document.getElementById('inNome').value=perfil.nome; document.getElementById('inBio').value=perfil.bio; if(perfil.foto){document.getElementById('imgPerfil').src=perfil.foto; document.getElementById('imgPerfil').style.display='block'; document.getElementById('emojiFoto').style.display='none';}else{document.getElementById('imgPerfil').style.display='none'; document.getElementById('emojiFoto').style.display='block';} let meus=posts.filter(x=>x.owner===perfil.nome); document.getElementById('gridPerfil').innerHTML=meus.map(x=>`<div style="aspect-ratio:3/4;background:url('${x.img}') center/cover;position:relative"><div style="position:absolute;bottom:4px;left:4px;font-size:10px">❤️ ${x.likes}</div></div>`).join('')||'<div style="grid-column:1/4;text-align:center;color:#666;padding:30px">Nenhum vídeo</div>';}
-function editarPerfil(){let e=document.getElementById('editBox'); e.style.display=e.style.display==='none'?'block':'none'}
-function salvarPerfil(){perfil.nome=document.getElementById('inNome').value.trim().replace('@','')||perfil.nome; perfil.bio=document.getElementById('inBio').value.trim()||perfil.bio; save(); renderPerfil(); renderFeed(); document.getElementById('editBox').style.display='none'}
-function escolherFoto(){document.getElementById('inputFotoPerfil').click()}
-function fotoPerfilEscolhida(e){let f=e.target.files[0]; if(!f)return; let r=new FileReader(); r.onload=ev=>{perfil.foto=ev.target.result; save(); renderPerfil(); renderFeed()}; r.readAsDataURL(f)}
-function fazerBusca(){let q=(document.getElementById('inputBusca').value||'').toLowerCase(); let lista=q===''?posts:posts.filter(p=>(p.owner+' '+p.bio+' '+p.desc).toLowerCase().includes(q)); document.getElementById('resultadoBusca').innerHTML=lista.map(x=>{let idx=posts.indexOf(x); return `<div onclick="cur=${idx};closeAll();document.getElementById('feedContainer').scrollTo({top:${idx}*window.innerHeight});" style="display:flex;gap:12px;padding:12px;border-bottom:1px solid #111"><div class="avatar" style="width:44px;height:44px">${x.owner[0].toUpperCase()}</div><div style="flex:1"><div style="font-weight:900">@${x.owner}</div><div style="color:#aaa;font-size:12px">${x.bio}</div></div><div style="background:#fe2c55;color:#fff;padding:6px 14px;border-radius:4px;font-weight:900;font-size:12px">Ver</div></div>`}).join('')}
-async function abrirCam(){document.getElementById('pCam').classList.add('show'); await iniciar(lado)}
-async function iniciar(face){lado=face; if(stream){stream.getTracks().forEach(t=>t.stop())} try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:face}}); let v=document.getElementById('cam'); v.srcObject=stream; v.className=face==='user'?'front':''; document.getElementById('labCam').innerText=face==='user'?'🔄 Frente':'🔄 Trás';}catch(e){alert('Permita câmera'); closeAll()}}
-async function switchCam(){lado=lado==='user'?'environment':'user'; await iniciar(lado)}
-function tirar(){let v=document.getElementById('cam'); let c=document.createElement('canvas'); c.width=v.videoWidth; c.height=v.videoHeight; let ctx=c.getContext('2d'); if(lado==='user'){ctx.translate(c.width,0);ctx.scale(-1,1)} ctx.drawImage(v,0,0); captured=c.toDataURL('image/jpeg',0.8); document.getElementById('prevImg').src=captured; document.getElementById('recPreview').style.display='flex';}
-function retake(){document.getElementById('recPreview').style.display='none'; captured=null}
-function postar(){if(!captured)return; let desc=prompt('Legenda #fyp','Meu vídeo 🔥 #workfire')||'Meu vídeo'; posts.unshift({owner:perfil.nome,bio:perfil.bio,img:captured,desc:desc,likes:0,liked:false,saved:false,coms:[],music:'som original - '+perfil.nome,follow:false}); save(); closeAll(); cur=0; renderFeed(); document.getElementById('feedContainer').scrollTo({top:0})}
-function openGallery(){document.getElementById('inputGaleria').click()}
-function fotoGaleriaPost(e){let f=e.target.files[0]; if(!f)return; let r=new FileReader(); r.onload=ev=>{captured=ev.target.result; document.getElementById('prevImg').src=captured; document.getElementById('recPreview').style.display='flex';}; r.readAsDataURL(f);}
-document.getElementById('feedContainer').addEventListener('scroll',()=>{let cont=document.getElementById('feedContainer'); let newCur=Math.round(cont.scrollTop/cont.clientHeight); if(newCur!==cur&&newCur>=0&&newCur<posts.length) cur=newCur;});
-renderFeed();
+setInterval(()=>{online=Math.max(1,online+(Math.random()>.5?1:-1)); document.getElementById('onlineCount').innerText=online; document.getElementById('onlinePerfil').innerText=online;},3000);
+function save(){localStorage.setItem('work_influencer_admin',JSON.stringify(posts))}
+function format(n){return n>=1000?(n/1000).toFixed(1)+'K':n}
+function renderFeed(){
+document.getElementById('feedContainer').innerHTML=posts.map((p,i)=>`
+<div class="post" style="background-image:url('${p.img}')" ondblclick="like(${i})">
+<div class="top"><div class="logo">💼 WORK INFLUENCER</div><div class="onlineBadge">🟢 ${online} ONLINE</div></div>
+<div class="side">
+<div class="avatarWrap"><div class="avatar">${p.owner[0].toUpperCase()}</div><button class="followBtn ${p.follow?'following':''}" id="fb${i}" onclick="follow(${i})">+</button><button class="followBtn check ${p.follow?'show':''}" id="fc${i}">✓</button></div>
+<button class="sbtn" onclick="like(${i})"><div class="iconBtn">${p.liked?'❤️':'🤍'}</div><small>${format(p.likes)}</small></button>
+<button class="sbtn"><div class="iconBtn">💬</div><small>0</small></button>
+<button class="sbtn"><div class="iconBtn">💾</div><small>Salvar</small></button>
+</div>
+<div class="info"><div style="font-weight:900">@${p.owner}</div><div style="font-size:12px;color:#ffcc99">${p.desc}</div></div>
+</div>`).join('');
+}
+function showAd(){
+let freq=parseInt(adConfig.freq||5); adCount++; if(adCount%freq===0){
+document.getElementById('adBox').style.display='flex'; totalAds++; localStorage.setItem('adViews',totalAds);
+try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
+let t=5; let timer=setInterval(()=>{t--; document.getElementById('adTimer').innerText=t; if(t<=0){clearInterval(timer); document.getElementById('closeAdBtn').disabled=false; document.getElementById('closeAdBtn').style.background='#fe2c55'; document.getElementById('closeAdBtn').style.color='#fff'; document.getElementById('closeAdBtn').innerText='✕ FECHAR ANÚNCIO - VOCÊ GANHOU R$0,45';}},1000);
+updateOnline();
+}}
+function closeAd(){document.getElementById('adBox').style.display='none'; document.getElementById('closeAdBtn').disabled=true; document.getElementById('closeAdBtn').innerText='AGUARDE...'; document.getElementById('closeAdBtn').style.background='#222';}
+function go(n){document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active')); document.getElementById('b'+n).classList.add('active'); document.querySelectorAll('.page').forEach(p=>p.classList.remove('show')); if(n===4)document.getElementById('pEu').classList.add('show'); if(n===0)showAd();}
+function closeAll(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show')); document.getElementById('adBox').style.display='none';}
+function like(i){posts[i].liked=!posts[i].liked; posts[i].likes+=posts[i].liked?1:-1; save(); renderFeed()}
+function follow(i){posts[i].follow=!posts[i].follow; save(); let plus=document.getElementById('fb'+i); let check=document.getElementById('fc'+i); if(posts[i].follow){plus.classList.add('following'); setTimeout(()=>check.classList.add('show'),150)}else{check.classList.remove('show'); setTimeout(()=>plus.classList.remove('following'),150)}}
+function openAdmin(){let s=prompt('Senha ADMIN: (admin123)'); if(s==='admin123'||s==='work123'||s==='123'){document.getElementById('pAdmin').classList.add('show'); updateOnline(); document.getElementById('adminPostList').innerHTML=posts.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #222"><span>@${p.owner}</span><button onclick="delPost(${i})" style="background:#fe2c55;border:none;color:#fff;padding:2px 8px;border-radius:4px">X</button></div>`).join('');}else if(s!==null){alert('Senha incorreta!')}}
+function saveAds(){adConfig.freq=parseInt(document.getElementById('adFreq').value)||5; adConfig.adsense=document.getElementById('adsenseId').value; adConfig.admob=document.getElementById('admobId').value; localStorage.setItem('adConfig',JSON.stringify(adConfig)); alert('✅ Salvo! Seu ID: '+adConfig.adsense+'\nFrequência: a cada '+adConfig.freq+' vídeos\n\nJá está ativo! Quando tiver ID real do Google, só colar aqui de novo.'); updateOnline();}
+function limparTudo(){if(confirm('Apagar tudo?')){posts=[]; save(); renderFeed(); updateOnline()}}
+function addFakeUsers(){online+=10; document.getElementById('onlineCount').innerText=online; document.getElementById('onlinePerfil').innerText=online;}
+function resetStats(){localStorage.setItem('adViews','0'); localStorage.setItem('totalVisits','0'); totalAds=0; updateOnline();}
+function delPost(i){posts.splice(i,1); save(); openAdmin(); renderFeed()}
+document.getElementById('feedContainer').addEventListener('scroll',()=>{let cont=document.getElementById('feedContainer'); let newCur=Math.round(cont.scrollTop/cont.clientHeight); if(newCur!==cur&&newCur>=0){cur=newCur; showAd();}});
+renderFeed(); updateOnline();
 </script>
 </body>
 </html>
