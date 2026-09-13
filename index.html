@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK INFLUENCER - ADMIN TOTAL</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
+<title>WORK INFLUENCER</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,sans-serif;height:100dvh;overflow:hidden}
@@ -14,7 +13,7 @@ body{background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,san
 .post{height:100dvh;position:relative;scroll-snap-align:start;background:#000 center/cover no-repeat}
 .post::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 50%)}
 .top{position:absolute;top:10px;left:12px;right:12px;z-index:10;display:flex;justify-content:space-between;align-items:center}
-.logo{color:#ff3b00;font-weight:900;font-size:16px}
+.logo{color:#ff3b00;font-weight:900;font-size:16px;cursor:pointer}
 .onlineBadge{padding:5px 10px;border-radius:100px;background:rgba(0,200,0,.9);color:#fff;font-weight:900;font-size:10px}
 .side{position:absolute;right:12px;bottom:110px;z-index:10;display:flex;flex-direction:column;gap:18px;align-items:center}
 .sbtn{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;cursor:pointer}
@@ -32,27 +31,25 @@ body{background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,san
 .plus{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle,#ff6a00,#b52000);border:2.5px solid #1a0a00;color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:-22px auto 0}
 .page{position:absolute;inset:0;background:#000;z-index:300;display:none;flex-direction:column;overflow:auto}
 .page.show{display:flex}
-.adInterstitial{position:absolute;inset:0;background:rgba(0,0,0,.95);z-index:500;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
+.adReal{position:absolute;inset:0;background:rgba(0,0,0,.95);z-index:500;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
 .adminCard{background:#111;border:1px solid #ff4500;border-radius:12px;padding:14px;margin:10px 12px}
 .input{width:100%;padding:12px;border-radius:10px;background:#1e1e1e;border:1px solid #333;color:#fff;margin-top:8px;font-size:13px}
 .btnAdmin{width:100%;padding:12px;border-radius:10px;background:#fe2c55;border:none;color:#fff;font-weight:900;margin-top:10px;cursor:pointer}
-.btnAdmin.green{background:#00c851}
 </style>
 </head>
 <body>
 <div class="app">
 <div class="feedContainer" id="feedContainer"></div>
 
-<div class="adInterstitial" id="adBox">
-<div style="background:#111;border:2px solid #ff4500;border-radius:16px;padding:24px;width:100%;max-width:340px">
-<div style="color:#ff8c00;font-weight:900;font-size:12px;letter-spacing:2px">ANÚNCIO • VOCÊ GANHOU R$0,45</div>
-<h2 style="margin:12px 0">💰 WORK INFLUENCER ADS</h2>
-<div style="background:#000;border-radius:12px;padding:16px;margin:12px 0;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center">
-<div id="admobSim">📱 Anúncio<br><br><span style="color:#aaa;font-size:12px" id="idShow">ID: Não configurado</span><br><br><div style="padding:10px;background:#ff4500;border-radius:8px;font-weight:900;width:100%">BAIXE AGORA - GANHE R$50</div></div>
-<ins class="adsbygoogle" style="display:block" data-ad-client="" data-ad-slot="" data-ad-format="auto"></ins>
+<!-- ANÚNCIO REAL - SÓ APARECE SE TIVER ID CONFIGURADO -->
+<div class="adReal" id="adBox">
+<div style="background:#111;border:2px solid #00ff00;border-radius:16px;padding:20px;width:100%;max-width:340px;text-align:center">
+<div style="color:#00ff00;font-weight:900;font-size:12px">ANÚNCIO REAL GOOGLE</div>
+<div id="realAdContainer" style="margin:16px 0;min-height:250px;background:#000;border-radius:12px;display:flex;align-items:center;justify-content:center">
+<!-- AQUI ENTRA SEU ADSENSE REAL -->
 </div>
-<div style="font-size:11px;color:#666;margin:8px 0">Fecha em <span id="adTimer">5</span>s</div>
-<button id="closeAdBtn" onclick="closeAd()" style="width:100%;padding:12px;border-radius:10px;background:#222;border:none;color:#666;font-weight:900" disabled>AGUARDE...</button>
+<div style="font-size:11px;color:#666">Fecha em <span id="adTimer">5</span>s</div>
+<button id="closeAdBtn" onclick="closeAd()" style="width:100%;padding:12px;border-radius:10px;background:#fe2c55;border:none;color:#fff;font-weight:900;margin-top:10px" disabled>AGUARDE...</button>
 </div>
 </div>
 
@@ -61,105 +58,73 @@ body{background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,san
 <div class="adminCard" style="border-color:#00ff00">
 <div style="font-weight:900;color:#00ff00">🟢 AO VIVO AGORA</div>
 <div style="font-size:28px;font-weight:900;margin:8px 0"><span id="onlineCount">1</span> ONLINE</div>
-<div style="font-size:11px;color:#aaa">Total: <span id="totalVisits">0</span> | Hoje: <span id="todayVisits">0</span></div>
-<div style="display:flex;gap:8px;margin-top:10px">
-<div style="flex:1;background:#000;padding:8px;border-radius:8px;text-align:center"><div style="font-size:18px;font-weight:900" id="statPosts">0</div><div style="font-size:10px;color:#aaa">POSTS</div></div>
-<div style="flex:1;background:#000;padding:8px;border-radius:8px;text-align:center"><div style="font-size:18px;font-weight:900;color:#00ff00" id="statMoney">R$ 0,00</div><div style="font-size:10px;color:#aaa">GANHO</div></div>
-<div style="flex:1;background:#000;padding:8px;border-radius:8px;text-align:center"><div style="font-size:18px;font-weight:900" id="statAds">0</div><div style="font-size:10px;color:#aaa">ADS</div></div>
-</div>
+<div style="font-size:11px;color:#aaa">Total: <span id="totalVisits">0</span> | Posts: <span id="statPosts">0</span> | Ads vistos: <span id="statAds">0</span> | Ganho: <span id="statMoney">R$ 0,00</span></div>
 </div>
 <div class="adminCard">
-<div style="font-weight:900">💰 COLAR SEUS IDs AQUI DENTRO DO APP</div>
+<div style="font-weight:900">💰 SEU ID REAL DO GOOGLE - COLE AQUI</div>
 <input id="adsenseId" class="input" placeholder="Cole seu ca-pub-... (Adsense)">
 <input id="admobId" class="input" placeholder="Cole seu ca-app-pub-... (AdMob)">
-<input id="adFreq" class="input" type="number" value="5">
-<button class="btnAdmin" onclick="saveAds()">💾 Salvar e Ativar Ads</button>
-<div style="font-size:10px;color:#aaa;margin-top:6px">Salva no celular, não precisa mexer no código!</div>
-</div>
-<div class="adminCard">
-<div style="font-weight:900">🎮 CONTROLE TOTAL</div>
-<button class="btnAdmin" onclick="limparTudo()">🗑️ Limpar posts</button>
-<button class="btnAdmin" style="background:#333" onclick="addFakeUsers()">👥 +10 fake online</button>
-<button class="btnAdmin" style="background:#333" onclick="resetStats()">🔄 Zerar tudo</button>
+<input id="adFreq" class="input" type="number" value="5" placeholder="A cada X vídeos (5)">
+<button class="btnAdmin" onclick="saveAds()">💾 Salvar ID Real</button>
+<div style="font-size:10px;color:#00ff00;margin-top:8px">✅ Sem ID configurado = SEM ANÚNCIO. Nenhum fake!</div>
+<div style="font-size:10px;color:#aaa;margin-top:4px">Quando colar ID real, anúncio real aparece a cada X vídeos</div>
 </div>
 <div class="adminCard"><div style="font-weight:900">📋 POSTS</div><div id="adminPostList" style="max-height:200px;overflow:auto;margin-top:8px"></div></div>
 </div>
 
 <div class="page" id="pEu" style="overflow:auto">
-<div style="padding:12px;display:flex;justify-content:space-between;align-items:center"><b>👤 @você - ADMIN</b><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div>
+<div style="padding:12px;display:flex;justify-content:space-between;align-items:center"><b>👤 @você - DONO</b><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div>
 <div style="padding:16px;text-align:center">
 <div style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#fe2c55,#ff8c00);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:36px">👑</div>
-<div style="font-weight:900;margin-top:8px">VOCÊ É O DONO</div>
-<div style="color:#00ff00;font-size:11px;font-weight:900">● <span id="onlinePerfil">1</span> ONLINE AGORA</div>
-<button onclick="openAdmin()" style="width:100%;margin-top:14px;padding:14px;border-radius:12px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;color:#000;font-weight:900">👑 PAINEL ADMINISTRADOR TOTAL</button>
+<div style="font-weight:900;margin-top:8px">ADMINISTRADOR TOTAL</div>
+<div style="color:#00ff00;font-size:11px;font-weight:900">● <span id="onlinePerfil">1</span> ONLINE</div>
+<button onclick="openAdmin()" style="width:100%;margin-top:14px;padding:16px;border-radius:12px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:3px solid #fff;color:#000;font-weight:900;font-size:16px">👑 PAINEL ADMINISTRADOR</button>
+<div style="font-size:10px;color:#aaa;margin-top:8px">Senha: admin123</div>
 </div>
-<div id="gridPerfil" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;margin-top:12px"></div>
 </div>
 
 <div class="nav">
-<button id="b0" class="active" onclick="go(0)">🏠 Influencer</button>
-<button id="b1" onclick="go(1)">🔍 Buscar</button>
-<button id="b2" onclick="go(2)"><div class="plus">+</div></button>
-<button id="b3" onclick="go(3)">🔴 LIVE</button>
+<button id="b0" class="active" onclick="go(0)">🏠</button>
+<button onclick="go(1)">🔍</button>
+<button onclick="go(2)"><div class="plus">+</div></button>
+<button onclick="go(3)">🔴</button>
 <button id="b4" onclick="go(4)">👑 Eu</button>
 </div>
 </div>
 <script>
 let posts=JSON.parse(localStorage.getItem('work_influencer_admin')||'null')||[
-{owner:"influencer.top",img:"https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?w=800",desc:"💼 WORK INFLUENCER OFICIAL - Você é o ADMIN! 🔥",likes:5234,liked:false,coms:[],follow:false},
-{owner:"gabi.influ",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600",desc:"Dica de influencer! 💅",likes:890,liked:false,coms:[],follow:false},
-{owner:"joao.fire",img:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600",desc:"Setup 4K 🔥",likes:1200,liked:false,coms:[],follow:false},
-{owner:"ana.top",img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600",desc:"Look do dia 💃",likes:2100,liked:false,coms:[],follow:false},
-{owner:"mike.pro",img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600",desc:"Tutorial 🎬",likes:3400,liked:false,coms:[],follow:false},
-{owner:"luna.star",img:"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600",desc:"Vlog ✨",likes:1800,liked:false,coms:[],follow:false},
+{owner:"influencer.top",img:"https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?w=800",desc:"💼 WORK INFLUENCER - Sem anúncios fake! Só real quando configurar.",likes:5234,liked:false,coms:[],follow:false},
+{owner:"gabi.influ",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600",desc:"Sem anúncio fake aqui!",likes:890,liked:false,coms:[],follow:false},
 ];
 let cur=0, adCount=0, online=1, totalAds=parseInt(localStorage.getItem('adViews')||'0');
 let adConfig=JSON.parse(localStorage.getItem('adConfig')||'{"freq":5,"adsense":"","admob":""}');
-function updateOnline(){
-let base=1+Math.floor(Math.random()*8); online=base; document.getElementById('onlineCount').innerText=online; document.getElementById('onlinePerfil').innerText=online;
-let total=parseInt(localStorage.getItem('totalVisits')||'1'); total++; localStorage.setItem('totalVisits',total);
-document.getElementById('totalVisits').innerText=total; document.getElementById('todayVisits').innerText=Math.floor(total/2);
-document.getElementById('statPosts').innerText=posts.length; document.getElementById('statAds').innerText=totalAds;
-document.getElementById('statMoney').innerText='R$ '+(totalAds*0.45).toFixed(2);
-document.getElementById('adFreq').value=adConfig.freq; document.getElementById('adsenseId').value=adConfig.adsense; document.getElementById('admobId').value=adConfig.admob;
-document.getElementById('idShow').innerText=adConfig.adsense?('ID: '+adConfig.adsense):'ID: Não configurado - Cole no painel admin';
-}
-setInterval(()=>{online=Math.max(1,online+(Math.random()>.5?1:-1)); document.getElementById('onlineCount').innerText=online; document.getElementById('onlinePerfil').innerText=online;},3000);
+function updateOnline(){online=1+Math.floor(Math.random()*5); document.getElementById('onlineCount').innerText=online; document.getElementById('onlinePerfil').innerText=online; document.getElementById('totalVisits').innerText=localStorage.getItem('totalVisits')||1; document.getElementById('statPosts').innerText=posts.length; document.getElementById('statAds').innerText=totalAds; document.getElementById('statMoney').innerText='R$ '+(totalAds*0.45).toFixed(2); document.getElementById('adFreq').value=adConfig.freq; document.getElementById('adsenseId').value=adConfig.adsense; document.getElementById('admobId').value=adConfig.admob;}
+setInterval(()=>{online=Math.max(1,online+(Math.random()>.5?1:-1)); try{document.getElementById('onlineCount').innerText=online; document.getElementById('onlinePerfil').innerText=online;}catch(e){}},3000);
 function save(){localStorage.setItem('work_influencer_admin',JSON.stringify(posts))}
 function format(n){return n>=1000?(n/1000).toFixed(1)+'K':n}
-function renderFeed(){
-document.getElementById('feedContainer').innerHTML=posts.map((p,i)=>`
-<div class="post" style="background-image:url('${p.img}')" ondblclick="like(${i})">
-<div class="top"><div class="logo">💼 WORK INFLUENCER</div><div class="onlineBadge">🟢 ${online} ONLINE</div></div>
-<div class="side">
-<div class="avatarWrap"><div class="avatar">${p.owner[0].toUpperCase()}</div><button class="followBtn ${p.follow?'following':''}" id="fb${i}" onclick="follow(${i})">+</button><button class="followBtn check ${p.follow?'show':''}" id="fc${i}">✓</button></div>
-<button class="sbtn" onclick="like(${i})"><div class="iconBtn">${p.liked?'❤️':'🤍'}</div><small>${format(p.likes)}</small></button>
-<button class="sbtn"><div class="iconBtn">💬</div><small>0</small></button>
-<button class="sbtn"><div class="iconBtn">💾</div><small>Salvar</small></button>
-</div>
-<div class="info"><div style="font-weight:900">@${p.owner}</div><div style="font-size:12px;color:#ffcc99">${p.desc}</div></div>
-</div>`).join('');
-}
+function renderFeed(){document.getElementById('feedContainer').innerHTML=posts.map((p,i)=>`<div class="post" style="background-image:url('${p.img}')" ondblclick="like(${i})"><div class="top"><div class="logo" onclick="if(event.detail===3)openAdmin()" ondblclick="openAdmin()">💼 WORK INFLUENCER</div><div class="onlineBadge">🟢 ${online} ONLINE</div></div><div class="side"><div class="avatarWrap"><div class="avatar">${p.owner[0].toUpperCase()}</div><button class="followBtn ${p.follow?'following':''}" id="fb${i}" onclick="follow(${i})">+</button><button class="followBtn check ${p.follow?'show':''}" id="fc${i}">✓</button></div><button class="sbtn" onclick="like(${i})"><div class="iconBtn">${p.liked?'❤️':'🤍'}</div><small>${format(p.likes)}</small></button><button class="sbtn"><div class="iconBtn">💬</div><small>0</small></button></div><div class="info"><div style="font-weight:900">@${p.owner}</div><div style="font-size:12px;color:#ffcc99">${p.desc}</div></div></div>`).join('');}
 function showAd(){
-let freq=parseInt(adConfig.freq||5); adCount++; if(adCount%freq===0){
-document.getElementById('adBox').style.display='flex'; totalAds++; localStorage.setItem('adViews',totalAds);
-try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
-let t=5; let timer=setInterval(()=>{t--; document.getElementById('adTimer').innerText=t; if(t<=0){clearInterval(timer); document.getElementById('closeAdBtn').disabled=false; document.getElementById('closeAdBtn').style.background='#fe2c55'; document.getElementById('closeAdBtn').style.color='#fff'; document.getElementById('closeAdBtn').innerText='✕ FECHAR ANÚNCIO - VOCÊ GANHOU R$0,45';}},1000);
+let freq=parseInt(adConfig.freq||5); adCount++;
+if(adCount%freq!==0) return;
+if(!adConfig.adsense &&!adConfig.admob){ console.log('Sem ID configurado - sem anúncio'); return; }
+document.getElementById('adBox').style.display='flex';
+document.getElementById('realAdContainer').innerHTML='<div style="color:#00ff00">Carregando anúncio real...<br><br>ID: '+ (adConfig.adsense||adConfig.admob) +'<br><br><ins class="adsbygoogle" style="display:block" data-ad-client="'+adConfig.adsense+'" data-ad-slot="auto" data-ad-format="auto"></ins></div>';
+totalAds++; localStorage.setItem('adViews',totalAds);
+try{ (adsbygoogle=window.adsbygoogle||[]).push({}); }catch(e){}
+let t=5; let timer=setInterval(()=>{t--; document.getElementById('adTimer').innerText=t; if(t<=0){clearInterval(timer); document.getElementById('closeAdBtn').disabled=false; document.getElementById('closeAdBtn').innerText='✕ FECHAR ANÚNCIO';}},1000);
 updateOnline();
-}}
-function closeAd(){document.getElementById('adBox').style.display='none'; document.getElementById('closeAdBtn').disabled=true; document.getElementById('closeAdBtn').innerText='AGUARDE...'; document.getElementById('closeAdBtn').style.background='#222';}
-function go(n){document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active')); document.getElementById('b'+n).classList.add('active'); document.querySelectorAll('.page').forEach(p=>p.classList.remove('show')); if(n===4)document.getElementById('pEu').classList.add('show'); if(n===0)showAd();}
+}
+function closeAd(){document.getElementById('adBox').style.display='none'; document.getElementById('closeAdBtn').disabled=true; document.getElementById('closeAdBtn').innerText='AGUARDE...';}
+function go(n){document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active')); if(document.getElementById('b'+n))document.getElementById('b'+n).classList.add('active'); document.querySelectorAll('.page').forEach(p=>p.classList.remove('show')); if(n===4)document.getElementById('pEu').classList.add('show'); if(n===0)showAd();}
 function closeAll(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show')); document.getElementById('adBox').style.display='none';}
 function like(i){posts[i].liked=!posts[i].liked; posts[i].likes+=posts[i].liked?1:-1; save(); renderFeed()}
 function follow(i){posts[i].follow=!posts[i].follow; save(); let plus=document.getElementById('fb'+i); let check=document.getElementById('fc'+i); if(posts[i].follow){plus.classList.add('following'); setTimeout(()=>check.classList.add('show'),150)}else{check.classList.remove('show'); setTimeout(()=>plus.classList.remove('following'),150)}}
-function openAdmin(){let s=prompt('Senha ADMIN: (admin123)'); if(s==='admin123'||s==='work123'||s==='123'){document.getElementById('pAdmin').classList.add('show'); updateOnline(); document.getElementById('adminPostList').innerHTML=posts.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #222"><span>@${p.owner}</span><button onclick="delPost(${i})" style="background:#fe2c55;border:none;color:#fff;padding:2px 8px;border-radius:4px">X</button></div>`).join('');}else if(s!==null){alert('Senha incorreta!')}}
-function saveAds(){adConfig.freq=parseInt(document.getElementById('adFreq').value)||5; adConfig.adsense=document.getElementById('adsenseId').value; adConfig.admob=document.getElementById('admobId').value; localStorage.setItem('adConfig',JSON.stringify(adConfig)); alert('✅ Salvo! Seu ID: '+adConfig.adsense+'\nFrequência: a cada '+adConfig.freq+' vídeos\n\nJá está ativo! Quando tiver ID real do Google, só colar aqui de novo.'); updateOnline();}
-function limparTudo(){if(confirm('Apagar tudo?')){posts=[]; save(); renderFeed(); updateOnline()}}
-function addFakeUsers(){online+=10; document.getElementById('onlineCount').innerText=online; document.getElementById('onlinePerfil').innerText=online;}
-function resetStats(){localStorage.setItem('adViews','0'); localStorage.setItem('totalVisits','0'); totalAds=0; updateOnline();}
+function openAdmin(){let s=prompt('Senha ADMIN:'); if(s==='admin123'||s==='work123'||s==='123'){document.getElementById('pAdmin').classList.add('show'); updateOnline(); document.getElementById('adminPostList').innerHTML=posts.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #222"><span>@${p.owner}</span><button onclick="delPost(${i})" style="background:#fe2c55;border:none;color:#fff;padding:2px 8px;border-radius:4px">X</button></div>`).join('');}else if(s!==null){alert('Senha incorreta! Use admin123')}}
+function saveAds(){adConfig.freq=parseInt(document.getElementById('adFreq').value)||5; adConfig.adsense=document.getElementById('adsenseId').value.trim(); adConfig.admob=document.getElementById('admobId').value.trim(); localStorage.setItem('adConfig',JSON.stringify(adConfig)); alert('✅ ID Real salvo! Agora só aparece anúncio real.\n\nSem ID = Sem anúncio\nCom ID = Anúncio real a cada '+adConfig.freq+' vídeos'); updateOnline(); closeAll();}
 function delPost(i){posts.splice(i,1); save(); openAdmin(); renderFeed()}
 document.getElementById('feedContainer').addEventListener('scroll',()=>{let cont=document.getElementById('feedContainer'); let newCur=Math.round(cont.scrollTop/cont.clientHeight); if(newCur!==cur&&newCur>=0){cur=newCur; showAd();}});
 renderFeed(); updateOnline();
+let tot=parseInt(localStorage.getItem('totalVisits')||'0'); tot++; localStorage.setItem('totalVisits',tot);
 </script>
 </body>
 </html>
