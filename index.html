@@ -109,3 +109,93 @@ render();
 </script>
 </body>
 </html>
+<!-- INICIO - COLE ISSO SUBSTITUINDO SEU <div id="pEu"> ATUAL -->
+<div id="pEu" class="page">
+<div style="display:flex;justify-content:space-between;padding:14px;align-items:center">
+<b style="color:#ff4500">🔥 Meu Perfil</b>
+<button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button>
+</div>
+
+<div style="text-align:center;padding:20px 14px">
+<div id="fotoPerfil" style="width:90px;height:90px;border-radius:50%;margin:0 auto;background:radial-gradient(circle,#ff4500,#8b0000);border:3px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden;background-size:cover;background-position:center">🔥</div>
+<h3 id="nomePerfil" style="color:#fff;margin-top:12px">FIRE USER</h3>
+<div id="userPerfil" style="color:#ff8c00;font-size:13px">@fire.user</div>
+<div id="bioPerfil" style="color:#aaa;font-size:12px;margin-top:6px">🔥 Work Fire Influencer</div>
+</div>
+
+<div class="card">
+<b style="color:#ff8c00">📸 Foto de Perfil</b>
+<input id="linkFoto" class="input" placeholder="Cole link da foto">
+<input id="fileFoto" type="file" accept="image/*" style="margin-top:10px;color:#fff;width:100%">
+<img id="prevFoto" style="width:100%;margin-top:10px;border-radius:12px;display:none;max-height:200px;object-fit:cover">
+</div>
+
+<div class="card">
+<b style="color:#ff8c00">👤 Cadastro</b>
+<input id="cadNome" class="input" placeholder="Seu nome">
+<input id="cadUser" class="input" placeholder="@seu usuario">
+<input id="cadBio" class="input" placeholder="Sua bio - ex: Influencer Fire">
+<button class="btn" onclick="salvarPerfil()">SALVAR PERFIL</button>
+</div>
+
+<div class="card">
+<b style="color:#ff8c00">🔖 Salvos</b>
+<div id="salvos"></div>
+</div>
+</div>
+<!-- FIM DO EU -->
+
+<script>
+// COLE ESSE JS JUNTO COM SEUS OUTROS SCRIPTS
+let perfilUser = {nome:"FIRE USER", user:"@fire.user", bio:"🔥 Work Fire Influencer", foto:""};
+try{let p=localStorage.getItem("PERFIL_FIRE_USER"); if(p) perfilUser=JSON.parse(p);}catch(e){}
+
+function atualizarPerfilTela(){
+document.getElementById("nomePerfil").innerText=perfilUser.nome;
+document.getElementById("userPerfil").innerText=perfilUser.user;
+document.getElementById("bioPerfil").innerText=perfilUser.bio;
+let fp=document.getElementById("fotoPerfil");
+if(perfilUser.foto){
+fp.style.backgroundImage=`url('${perfilUser.foto}')`;
+fp.innerText="";
+}else{
+fp.style.backgroundImage="none";
+fp.innerText="🔥";
+}
+}
+function salvarPerfil(){
+perfilUser.nome=document.getElementById("cadNome").value.trim()||perfilUser.nome;
+perfilUser.user=document.getElementById("cadUser").value.trim()||perfilUser.user;
+perfilUser.bio=document.getElementById("cadBio").value.trim()||perfilUser.bio;
+let link=document.getElementById("linkFoto").value.trim();
+if(link) perfilUser.foto=link;
+if(window.tempFotoPerfil) perfilUser.foto=window.tempFotoPerfil;
+localStorage.setItem("PERFIL_FIRE_USER",JSON.stringify(perfilUser));
+atualizarPerfilTela();
+alert("✅ Perfil salvo!");
+}
+let tempFotoPerfil="";
+document.getElementById("fileFoto")?.addEventListener("change",function(e){
+let r=new FileReader();
+r.onload=function(ev){
+window.tempFotoPerfil=ev.target.result;
+let pv=document.getElementById("prevFoto");
+pv.src=ev.target.result;
+pv.style.display="block";
+let fp=document.getElementById("fotoPerfil");
+fp.style.backgroundImage=`url('${ev.target.result}')`;
+fp.innerText="";
+};
+if(e.target.files[0]) r.readAsDataURL(e.target.files[0]);
+});
+document.getElementById("linkFoto")?.addEventListener("input",function(e){
+let v=e.target.value.trim();
+if(v){
+let pv=document.getElementById("prevFoto");
+pv.src=v;
+pv.style.display="block";
+}
+});
+// CHAMA AO ABRIR
+setTimeout(atualizarPerfilTela,500);
+</script>
