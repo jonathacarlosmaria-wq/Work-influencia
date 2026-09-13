@@ -3,30 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - LAYOUT TITULAR + CADASTRO</title>
+<title>WORK FIRE - TIKTOK LADO + APAGAR CADASTRO</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
 #app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative;overflow:hidden}
-#feed{flex:1;overflow-y:auto;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch}
+#feed{flex:1;overflow-y:auto;scroll-snap-type:y mandatory}
 #feed::-webkit-scrollbar{display:none}
-.post{height:100dvh;min-height:100dvh;width:100%;position:relative;scroll-snap-align:start;scroll-snap-stop:always;background:#111 center/cover no-repeat;flex-shrink:0}
-.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.3) 60%,rgba(0,0,0,.9) 100%);pointer-events:none;z-index:1}
-.sideL{position:absolute;left:8px;bottom:100px;z-index:5;display:flex;flex-direction:column;gap:14px}
-.sideR{position:absolute;right:8px;bottom:100px;z-index:5;display:flex;flex-direction:column;gap:14px}
-.b{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:62px}
-.i{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;backdrop-filter:blur(10px);border:1.5px solid rgba(255,255,255,.15);background:rgba(20,20,20,.7);color:#fff;transition:.2s}
-.i.fire{background:radial-gradient(circle at 30% 20%,#ff8a00,#ff4500 60%,#8b0000);border-color:#ff8c00;color:#fff}
-.i.fire.on{box-shadow:0 0 18px #ff4500;transform:scale(1.08)}
-.i.heart.on{background:#ff0040;border-color:#ff4a7a;color:#fff;transform:scale(1.08)}
-.i.save.on{background:#ffcc00;color:#000;border-color:#ffcc00}
-.c{color:#fff;font-size:9px;font-weight:700;margin-top:4px;text-shadow:0 1px 4px #000;text-align:center;line-height:11px}
-.info{position:absolute;left:76px;right:76px;bottom:82px;z-index:5;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.2);border-radius:12px;padding:9px 10px;backdrop-filter:blur(14px)}
+.post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0}
+.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.4) 70%,rgba(0,0,0,.9) 100%);pointer-events:none;z-index:1}
+/* TIKTOK LADO DIREITO - TODOS OS BOTÕES NO MESMO LADO */
+.sideTik{position:absolute;right:10px;bottom:110px;z-index:10;display:flex;flex-direction:column;gap:18px;align-items:center}
+.b{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:64px}
+.i{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;backdrop-filter:blur(10px);border:1.5px solid rgba(255,255,255,.18);background:rgba(25,25,25,.7);color:#fff;transition:.2s}
+.i.fire{background:radial-gradient(circle at 30% 20%,#ff8a00,#ff4500 60%,#8b0000);border-color:#ff8c00}
+.i.fire.on{box-shadow:0 0 20px #ff4500;transform:scale(1.1)}
+.i.heart.on{background:#ff0040;border-color:#ff4a7a;transform:scale(1.1)}
+.i.save.on{background:#ffcc00;color:#000}
+.c{color:#fff;font-size:10px;font-weight:700;margin-top:5px;text-shadow:0 1px 6px #000;text-align:center}
+.info{position:absolute;left:12px;right:86px;bottom:84px;z-index:10;background:rgba(0,0,0,.5);border:1px solid rgba(255,69,0,.2);border-radius:12px;padding:10px;backdrop-filter:blur(12px)}
 .info b{color:#fff;font-size:12px}
 .info div{color:#ddd;font-size:12px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.nav{height:68px;min-height:68px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30;flex-shrink:0}
-.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.45);font-size:9px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.nav{height:68px;min-height:68px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30}
+.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.45);font-size:9px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:3px}
 .nav button.on{color:#ff8c00}
 .nav button i{font-size:19px}
 .plus{width:50px;height:50px;border-radius:50%;background:radial-gradient(circle at 30% 20%,#ff8c00,#ff3300);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;margin-top:-24px;box-shadow:0 0 0 4px #000,0 6px 16px rgba(255,69,0,.5)}
@@ -35,9 +35,10 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 .card{background:rgba(25,12,0,.9);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
 .input{width:100%;padding:12px;background:#1e1100;border:1px solid rgba(255,69,0,.3);border-radius:10px;color:#fff;margin-top:8px;font-size:14px}
 .btn{width:100%;padding:13px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px;font-size:13px}
-.avatar{width:90px;height:90px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:34px;position:relative;cursor:pointer;box-shadow:0 0 18px rgba(255,69,0,.4)}
+.avatar{width:96px;height:96px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:36px;position:relative;cursor:pointer}
 .avatar img{width:100%;height:100%;object-fit:cover}
-.cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);color:#ffcc00;font-size:8px;font-weight:900;text-align:center;padding:4px}
+.cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);color:#ffcc00;font-size:8px;font-weight:900;text-align:center;padding:5px}
+.btnDel{width:100%;padding:10px;background:rgba(255,0,0,.15);border:1px solid rgba(255,0,0,.4);border-radius:10px;color:#ff5555;font-weight:900;margin-top:8px;font-size:11px}
 </style>
 </head>
 <body>
@@ -51,22 +52,25 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 <div id="pEu" class="page">
 <div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><div style="display:flex;gap:8px"><button onclick="abrirAdmin()" style="background:#ffcc00;border:none;padding:8px 14px;border-radius:20px;font-weight:900;font-size:11px;color:#000">ADMIN</button><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div></div>
 
-<!-- CADASTRO USUÁRIO - LAYOUT TITULAR MANTIDO -->
+<!-- CADASTRO COM APAGAR -->
 <div class="card" style="border:1.5px solid #ff8c00;text-align:center">
-<div style="color:#ff8c00;font-weight:900;font-size:13px;margin-bottom:8px">👤 MEU CADASTRO</div>
+<div style="color:#ff8c00;font-weight:900;font-size:13px">👤 MEU CADASTRO - TIKTOK</div>
+<div style="color:#666;font-size:9px;margin-bottom:8px">Foto + Nome/Apelido - Você pode apagar</div>
 <input id="fotoPerfil" type="file" accept="image/*" hidden onchange="trocarFoto(this)">
-<div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 TROCAR</div></div>
-<input id="nomeUser" class="input" placeholder="Seu @nome" style="text-align:center;font-weight:900;color:#ff8c00;border-color:#ff8c00" oninput="salvarNome()">
-<button class="btn" onclick="salvarNome()" style="background:#ff8c00;color:#000;padding:10px;font-size:12px">SALVAR NOME</button>
-<div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:700">@fire.user</div>
-<div style="color:#888;font-size:9px;margin-top:4px">Toque na foto para colocar sua foto</div>
+<div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 FOTO</div></div>
+<input id="nomeUser" class="input" placeholder="Seu nome ou apelido" style="text-align:center;font-weight:900;color:#ff8c00;border-color:#ff8c00" oninput="salvarNome()">
+<input id="apelidoUser" class="input" placeholder="Seu apelido (opcional)" style="text-align:center;color:#fff" oninput="salvarApelido()">
+<button class="btn" onclick="salvarTudo()" style="background:#ff8c00;color:#000">💾 SALVAR CADASTRO</button>
+<button class="btnDel" onclick="apagarCadastro()">🗑️ APAGAR MEU CADASTRO</button>
+<div id="nomeShow" style="color:#ff8c00;font-size:13px;margin-top:10px;font-weight:900">@fire.user</div>
+<div id="apelidoShow" style="color:#aaa;font-size:11px"></div>
 <div id="infoLive" style="color:#666;font-size:10px;margin-top:4px"></div>
 <div style="color:#333;font-size:8px;margin-top:4px">ID: <span id="uidShow"></span></div>
 </div>
 
 <div id="adminBox" style="display:none" class="card"><h4 style="color:#ffcc00">⚙️ Admin + Propaganda</h4><input id="pixChave" class="input" placeholder="Sua chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button><div style="height:1px;background:rgba(255,69,0,.2);margin:14px 0"></div><label style="color:#ffcc00;font-size:10px;font-weight:900">PROPAGANDA FEED</label><input id="adTxt" class="input" placeholder="Texto propaganda"><div style="display:flex;gap:8px;align-items:center;margin-top:8px"><input id="adFreq" type="number" value="3" class="input" style="margin:0;width:70px"><label style="color:#fff;font-size:11px"><input type="checkbox" id="adOn"> Ativar</label></div><button class="btn" style="background:#ffcc00;color:#000" onclick="salvarAd()">SALVAR PROPAGANDA</button></div>
-<div class="card"><b style="color:#ff8c00">🔖 Salvos</b><div id="listaSalvos" style="margin-top:8px"></div></div>
-<div class="card"><b style="color:#ff8c00">🎬 Meus vídeos</b><div id="meusVideos" style="margin-top:8px"></div></div>
+<div class="card"><b style="color:#ff8c00">🔖 Salvos</b><div id="listaSalvos"></div></div>
+<div class="card"><b style="color:#ff8c00">🎬 Meus vídeos</b><div id="meusVideos"></div></div>
 </div>
 
 <div class="nav">
@@ -82,34 +86,60 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 let uid=localStorage.getItem("uid")||"u_"+Math.random().toString(36).slice(2,7);localStorage.setItem("uid",uid);
 let userFoto=localStorage.getItem("userFoto")||"";
 let userNome=localStorage.getItem("userNome")||"fire.user";
-let posts=JSON.parse(localStorage.getItem("posts_final")||"null")||[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Layout titular mantido + cadastro 🔥",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:2,isTop:true}];
-let temp="",cfg=JSON.parse(localStorage.getItem("cfg_final")||"null")||{pixK:"Configure no Admin",adT:"",adF:3,adOn:false};
-function save(){localStorage.setItem("posts_final",JSON.stringify(posts));render();}
-function saveCfg(){localStorage.setItem("cfg_final",JSON.stringify(cfg));render();}
-function salvarNome(){let v=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase()||"fire.user";userNome=v;localStorage.setItem("userNome",v);document.getElementById("nomeShow").innerText="@"+v;render();}
+let userApelido=localStorage.getItem("userApelido")||"";
+let posts=JSON.parse(localStorage.getItem("posts_tiktok")||"null")||[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Botões estilo TikTok - tudo na direita 🔥",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:2,isTop:true}];
+let temp="",cfg=JSON.parse(localStorage.getItem("cfg_tiktok")||"null")||{pixK:"Configure no Admin",adT:"",adF:3,adOn:false};
+function save(){localStorage.setItem("posts_tiktok",JSON.stringify(posts));render();}
+function saveCfg(){localStorage.setItem("cfg_tiktok",JSON.stringify(cfg));render();}
+function salvarNome(){userNome=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase()||"fire.user";localStorage.setItem("userNome",userNome);}
+function salvarApelido(){userApelido=document.getElementById("apelidoUser").value.trim()||"";localStorage.setItem("userApelido",userApelido);}
+function salvarTudo(){salvarNome();salvarApelido();render();alert("✅ Cadastro salvo!");}
+function apagarCadastro(){
+if(!confirm("⚠️ Apagar seu cadastro?\n\nFoto, nome e apelido serão apagados.\nSeus vídeos continuam."))return;
+userFoto="";userNome="fire.user";userApelido="";
+localStorage.removeItem("userFoto");localStorage.removeItem("userNome");localStorage.removeItem("userApelido");
+document.getElementById("avatarBox").innerHTML="🔥";
+document.getElementById("nomeUser").value="";document.getElementById("apelidoUser").value="";
+render();alert("🗑️ Cadastro apagado!");
+}
 function trocarFoto(inp){let f=inp.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{userFoto=e.target.result;localStorage.setItem("userFoto",userFoto);document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;render();};r.readAsDataURL(f);}
 function render(){
 let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0));let feed=[];list.forEach((p,i)=>{feed.push(p);if(cfg.adOn&&cfg.adT&&(i+1)%cfg.adF===0)feed.push({ad:true});});
 document.getElementById("feed").innerHTML=feed.map(p=>{
 if(p.ad) return `<div class="post" style="background:linear-gradient(135deg,#1e1800,#332200);border:2px solid #ffcc00;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><span style="background:#ffcc00;color:#000;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:900">ANÚNCIO</span><b style="color:#ffcc00;font-size:16px;text-align:center;padding:0 20px">${cfg.adT}</b></div>`;
 let idx=posts.indexOf(p);let fired=p.firedBy.includes(uid),liked=p.likedBy.includes(uid),saved=p.saveBy.includes(uid);
-return `<div class="post" style="background-image:url('${p.img}')"><div class="sideL"><button class="b" onclick="fire(${idx})"><div class="i fire ${fired?'on':''}"><i class="fa-solid fa-fire"></i></div><div class="c">${p.firedBy.length}<br>Chamas</div></button><button class="b" onclick="like(${idx})"><div class="i heart ${liked?'on':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="c">${p.likedBy.length}<br>Curtir</div></button><button class="b" onclick="openC(${idx})"><div class="i"><i class="fa-regular fa-comment-dots"></i></div><div class="c">${p.com.length}<br>Comen</div></button></div><div class="sideR"><button class="b" onclick="shareP(${idx})"><div class="i"><i class="fa-solid fa-share"></i></div><div class="c">${p.sharedBy.length||p.share||0}<br>Compar</div></button><button class="b" onclick="saveP(${idx})"><div class="i save ${saved?'on':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="c">Salvar</div></button></div><div class="info"><b>@${p.owner}</b><div>${p.desc}</div></div></div>`;
+return `<div class="post" style="background-image:url('${p.img}')">
+<div class="sideTik">
+<button class="b" onclick="fire(${idx})"><div class="i fire ${fired?'on':''}"><i class="fa-solid fa-fire"></i></div><div class="c">${(p.firedBy.length||0).toLocaleString('pt-BR')}<br>Chamas</div></button>
+<button class="b" onclick="like(${idx})"><div class="i heart ${liked?'on':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="c">${p.likedBy.length}<br>Curtir</div></button>
+<button class="b" onclick="openC(${idx})"><div class="i"><i class="fa-regular fa-comment-dots"></i></div><div class="c">${p.com.length}<br>Comen</div></button>
+<button class="b" onclick="shareP(${idx})"><div class="i"><i class="fa-solid fa-share"></i></div><div class="c">${p.sharedBy.length||p.share||0}<br>Compar</div></button>
+<button class="b" onclick="saveP(${idx})"><div class="i save ${saved?'on':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="c">Salvar</div></button>
+</div>
+<div class="info"><b>@${p.owner}</b><div>${p.desc}</div></div></div>`;
 }).join("");
-document.getElementById("listaSalvos").innerHTML=posts.filter(p=>p.saveBy.includes(uid)).map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><img src="${p.img}" style="width:42px;height:42px;border-radius:8px;object-fit:cover"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Nenhum</div>";
-document.getElementById("meusVideos").innerHTML=posts.filter(p=>p.owner===userNome).map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><img src="${p.img}" style="width:42px;height:42px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Poste seu primeiro vídeo</div>";
-document.getElementById("pixKey").innerText=cfg.pixK;document.getElementById("pixChave").value=cfg.pixK!=="Configure no Admin"?cfg.pixK:"";document.getElementById("adTxt").value=cfg.adT;document.getElementById("adFreq").value=cfg.adF;document.getElementById("adOn").checked=cfg.adOn;document.getElementById("uidShow").innerText=uid;document.getElementById("nomeUser").value=userNome;document.getElementById("nomeShow").innerText="@"+userNome;if(userFoto)document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;checkLive();
+document.getElementById("listaSalvos").innerHTML=posts.filter(p=>p.saveBy.includes(uid)).map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><img src="${p.img}" style="width:42px;height:42px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Nenhum</div>";
+document.getElementById("meusVideos").innerHTML=posts.filter(p=>p.owner===userNome).map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><img src="${p.img}" style="width:42px;height:42px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Nenhum vídeo</div>";
+document.getElementById("pixKey").innerText=cfg.pixK;document.getElementById("pixChave").value=cfg.pixK!=="Configure no Admin"?cfg.pixK:"";document.getElementById("adTxt").value=cfg.adT;document.getElementById("adFreq").value=cfg.adF;document.getElementById("adOn").checked=cfg.adOn;
+document.getElementById("uidShow").innerText=uid;
+document.getElementById("nomeUser").value=userNome!=="fire.user"?userNome:"";
+document.getElementById("apelidoUser").value=userApelido;
+document.getElementById("nomeShow").innerText=userNome!=="fire.user"?"@"+userNome:"@fire.user";
+document.getElementById("apelidoShow").innerText=userApelido?`(${userApelido})`:"";
+if(userFoto)document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;
+checkLive();
 }
 function fire(i){let p=posts[i];if(p.firedBy.includes(uid))p.firedBy=p.firedBy.filter(x=>x!==uid);else p.firedBy.push(uid);save();}
 function like(i){let p=posts[i];if(p.likedBy.includes(uid))p.likedBy=p.likedBy.filter(x=>x!==uid);else p.likedBy.push(uid);save();}
 function saveP(i){let p=posts[i];if(p.saveBy.includes(uid))p.saveBy=p.saveBy.filter(x=>x!==uid);else p.saveBy.push(uid);save();}
-function openC(i){let t=prompt("Seu comentário:");if(t){posts[i].com.push({u:userNome,t:t});save();}}
+function openC(i){let t=prompt("Comentário:");if(t){posts[i].com.push({u:userNome,t:t});save();}}
 function shareP(i){if(!posts[i].sharedBy.includes(uid)){posts[i].sharedBy.push(uid);save();}window.open("https://wa.me/?text="+encodeURIComponent(location.href),"_blank");}
 function go(n){document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b"+n).classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n==1)document.getElementById("pBusca").classList.add("show");if(n==2)document.getElementById("pCriar").classList.add("show");if(n==3)document.getElementById("pLive").classList.add("show");if(n==4)document.getElementById("pEu").classList.add("show");}
 function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b0").classList.add("on");}
-function abrirAdmin(){let s=prompt("Senha Admin:");if(s==="fire123"){document.getElementById("adminBox").style.display="block";}else if(s)alert("Senha: fire123");}
+function abrirAdmin(){let s=prompt("Senha Admin:");if(s==="fire123")document.getElementById("adminBox").style.display="block";else if(s)alert("Senha: fire123");}
 function salvarPix(){let k=document.getElementById("pixChave").value.trim();if(!k)return alert("Digite Pix");cfg.pixK=k;saveCfg();alert("Pix salvo!");}
 function salvarAd(){cfg.adT=document.getElementById("adTxt").value.trim();cfg.adF=parseInt(document.getElementById("adFreq").value)||3;cfg.adOn=document.getElementById("adOn").checked;saveCfg();alert(cfg.adOn?"Propaganda ativada":"Desativada");}
-function checkLive(){let pago=localStorage.getItem("livePago")===new Date().toDateString();document.getElementById("liveBloq").style.display=pago?"none":"block";document.getElementById("liveOk").style.display=pago?"block":"none";document.getElementById("infoLive").innerText=pago?"✅ Live liberada":"🔒 Bloqueada";}
+function checkLive(){let pago=localStorage.getItem("livePago")===new Date().toDateString();document.getElementById("liveBloq").style.display=pago?"none":"block";document.getElementById("liveOk").style.display=pago?"block":"none";document.getElementById("infoLive").innerText=pago?"✅ Liberada":"🔒 Bloqueada";}
 function pagarPix(){localStorage.setItem("livePago",new Date().toDateString());checkLive();}
 function busca(){let q=document.getElementById("qBusca").value.toLowerCase();let r=posts.filter(p=>p.desc.toLowerCase().includes(q));document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:8px"><img src="${p.img}" style="width:40px;height:40px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555'>Nada</div>";}
 document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{temp=ev.target.result;document.getElementById("prev").src=temp;document.getElementById("prev").style.display="block";};r.readAsDataURL(f);});
