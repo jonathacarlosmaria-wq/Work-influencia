@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - 1 BOTÃO PROPAGANDAS</title>
+<title>WORK FIRE - LIVE PIX SÓ PAGO</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sans-serif}
@@ -11,7 +11,7 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 #feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
 #feed::-webkit-scrollbar{display:none}
 .post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0}
-.post.ad{height:100dvh;background:linear-gradient(135deg,#1a1a00,#332200);border:3px solid #ffcc00;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
+.post video{width:100%;height:100%;object-fit:cover}
 .side{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:18px;z-index:20;width:62px;align-items:center}
 .sbtn{display:flex;flex-direction:column;align-items:center;background:none;border:none;width:100%;cursor:pointer}
 .ibtn{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ff6a00,#8b0000);border:2.5px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 0 16px rgba(255,69,0,.7);animation:vivo 2s infinite}
@@ -33,9 +33,11 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 .liveTop{position:absolute;top:14px;left:12px;right:12px;display:flex;justify-content:space-between;z-index:10}
 .liveBadge{background:#ff0000;color:#fff;padding:6px 12px;border-radius:20px;font-weight:900;font-size:11px}
 .timer{background:rgba(0,0,0,.8);color:#fff;padding:6px 12px;border-radius:20px;font-weight:900;font-size:12px;border:1px solid #ff4500}
-#videoLive{width:100%;height:100%;object-fit:cover;background:#111}
+#videoLive,#videoCriar{width:100%;height:100%;object-fit:cover;background:#111}
 .progress{position:absolute;top:0;left:0;height:4px;background:linear-gradient(90deg,#ff4500,#ff8c00);z-index:20}
-.adLabel{position:absolute;top:12px;left:12px;background:#ffcc00;color:#000;padding:4px 10px;border-radius:12px;font-size:10px;font-weight:900}
+.camBtn{width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.6);border:2px solid #fff;color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center}
+.recBtn{width:78px;height:78px;border-radius:50%;background:#ff0000;border:5px solid #fff;box-shadow:0 0 20px rgba(255,0,0,.6)}
+.locked{position:absolute;inset:0;background:rgba(0,0,0,.92);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
 </style>
 </head>
 <body>
@@ -43,24 +45,81 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 <div id="feed"></div>
 
 <div id="sheetC" class="sheet" onclick="if(event.target==this)closeS('sheetC')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid #331100"><b style="color:#ff8c00">💬 <span id="ct">0</span></b><button onclick="closeS('sheetC')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div id="listC" style="flex:1;overflow:auto;padding:0 14px"></div><div style="padding:12px;display:flex;gap:8px"><input id="txtC" class="input" style="flex:1;margin:0" placeholder="Comentar..."><button onclick="sendC()" style="background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;padding:0 16px;border-radius:10px;font-weight:900">Enviar</button></div></div></div>
-<div id="sheetS" class="sheet" onclick="if(event.target==this)closeS('sheetS')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between"><b style="color:#ff8c00">🚀 Compartilhar</b><button onclick="closeS('sheetS')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div style="padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px"><button onclick="shareTo('whatsapp')" class="card" style="margin:0">💬 WhatsApp</button><button onclick="shareTo('instagram')" class="card" style="margin:0">📸 Instagram</button><button onclick="shareTo('facebook')" class="card" style="margin:0">📘 Facebook</button><button onclick="shareTo('tiktok')" class="card" style="margin:0">🎵 TikTok</button><button onclick="shareTo('native')" class="card" style="margin:0;grid-column:span 2;background:linear-gradient(90deg,#ff4500,#ff8c00)">🚀 Todas</button></div></div></div>
+<div id="sheetS" class="sheet" onclick="if(event.target==this)closeS('sheetS')"><div class="sheetBox"><div style="padding:14px;display:flex;justify-content:space-between"><b style="color:#ff8c00">🚀 Compartilhar</b><button onclick="closeS('sheetS')" style="background:none;border:none;color:#fff;font-size:20px">✕</button></div><div style="padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px"><button onclick="shareTo('whatsapp')" class="card" style="margin:0">💬 WhatsApp</button><button onclick="shareTo('facebook')" class="card" style="margin:0">📘 Facebook</button><button onclick="shareTo('native')" class="card" style="margin:0;grid-column:span 2;background:linear-gradient(90deg,#ff4500,#ff8c00)">🚀 Todas</button></div></div></div>
 
 <div id="pBusca" class="page" style="overflow:auto"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔍 Busca</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div class="card"><input id="buscaInput" class="input" placeholder="Buscar..." oninput="doBusca()"><div id="buscaRes" style="margin-top:10px"></div></div></div>
-<div id="pCriar" class="page" style="overflow:auto"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔥 Criar</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div class="card"><input id="imgLink" class="input" placeholder="Link imagem"><input id="file" type="file" accept="image/*" style="margin-top:10px;color:#fff;width:100%"><img id="prev" style="width:100%;margin-top:10px;border-radius:10px;display:none"><input id="desc" class="input" placeholder="Descrição"><button class="btn" onclick="addPost()">POSTAR</button></div></div>
 
+<div id="pCriar" class="page" style="background:#000">
+<div style="position:absolute;inset:0;background:#000;display:flex;flex-direction:column;z-index:1">
+<div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><h3 style="color:#ff4500">🔥 Criar - 1:30 GRÁTIS</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div>
+<div style="flex:1;position:relative;background:#111;overflow:hidden" id="criarCamArea">
+<video id="videoCriar" autoplay muted playsinline style="display:none"></video>
+<img id="prev" style="width:100%;height:100%;object-fit:cover;display:none">
+<div id="criarPlaceholder" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#666"><div style="font-size:50px">📸</div><div style="margin-top:10px">Foto ou Vídeo 1:30 GRÁTIS</div><div style="font-size:11px">Frente e Traseira</div></div>
+<div class="progress" id="progressCriar" style="width:0%"></div>
+<div style="position:absolute;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;align-items:center"><div style="background:rgba(0,0,0,.7);color:#00ff88;padding:6px 10px;border-radius:12px;font-size:11px;font-weight:900;border:1px solid #00ff88">⏱️ <span id="criarTimer">00:00</span> / 01:30 GRÁTIS</div><div style="display:flex;gap:8px"><button onclick="switchCamCriar()" class="camBtn">🔄</button><button onclick="stopCamCriar()" style="background:rgba(0,0,0,.6);border:2px solid #fff;color:#fff;width:36px;height:36px;border-radius:50%">✕</button></div></div>
+<div style="position:absolute;bottom:100px;left:0;right:0;display:flex;justify-content:center;gap:20px;align-items:center"><button onclick="openCamCriar('user')" class="camBtn" style="width:54px;height:54px">🤳</button><button id="btnRecCriar" onclick="toggleRecCriar()" class="recBtn"></button><button onclick="openCamCriar('environment')" class="camBtn" style="width:54px;height:54px">📷</button></div>
+<div style="position:absolute;bottom:20px;left:12px;right:12px;display:flex;gap:8px"><button onclick="takePhotoCriar()" style="flex:1;background:rgba(255,255,255,.2);border:2px solid #fff;color:#fff;padding:12px;border-radius:10px;font-weight:900">📸 FOTO</button><button onclick="openGalleryCriar()" style="flex:1;background:rgba(0,0,0,.5);border:1px solid #666;color:#fff;padding:12px;border-radius:10px">🖼️ GALERIA</button></div>
+</div>
+<div style="background:#140800;padding:12px;border-top:2px solid #ff4500"><input id="file" type="file" accept="image/*,video/*" style="display:none"><input id="imgLink" class="input" placeholder="Link imagem/vídeo" style="margin:0"><input id="desc" class="input" placeholder="Descrição 1:30..."><button class="btn" onclick="addPost()">🔥 POSTAR 1:30 GRÁTIS</button><div style="color:#00ff88;font-size:10px;text-align:center;margin-top:6px">✅ Todos vídeos 1:30 - Grátis - Frente/Traseira</div></div>
+</div>
+</div>
+
+<!-- LIVE - TRAVADO, SÓ PAGO -->
 <div id="pLive" class="page" style="background:#000">
 <video id="videoLive" autoplay muted playsinline style="display:none"></video>
 <div class="progress" id="progressBar" style="width:0%"></div>
+
+<!-- MENU LIVE -->
 <div id="liveMenu" style="position:absolute;inset:0;background:#000;display:flex;flex-direction:column;padding:14px;z-index:2;overflow:auto">
-<div style="display:flex;justify-content:space-between;align-items:center"><h3 style="color:#ff4500">🌟 Seja Influencer</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div>
-<div id="liveBlocked" style="display:none;background:#331100;border:2px solid #ff0000;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><h3 style="color:#ff4444">Já é influencer hoje!</h3></div>
-<div style="margin-top:16px;display:flex;flex-direction:column;gap:12px">
-<div class="card" style="border-color:#00ff88;background:linear-gradient(135deg,#001a0a,#00331a)"><b style="color:#fff">🌟 SEJA INFLUENCER R$5 • 30min • ILIMITADO</b><div style="color:#00ff88;font-size:12px">👁️ <span id="liveCountPreview">0</span> assistindo</div><div style="background:#000;border-radius:8px;padding:8px;margin-top:10px;text-align:center"><div id="displayPixKey" style="color:#fff;font-weight:900;font-size:14px">Configure Pix no Admin</div><div id="displayPixName" style="color:#ff8c00;font-size:11px"></div><img id="qrPix" src="" style="width:140px;height:140px;margin:8px auto;display:block;background:#fff;border-radius:8px"></div><button id="btnLive30" class="btn" onclick="showPixPay()" style="background:linear-gradient(90deg,#00ff88,#00cc66)">🌟 PAGAR R$5 E VIRAR INFLUENCER</button></div>
-<div id="pixPayBox" style="display:none" class="card"><button class="btn" onclick="confirmPix()" style="background:#00ff88;color:#000">✅ SIM, PAGUEI R$5</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><h3 style="color:#ff4500">🔴 Live Pix</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div>
+
+<!-- BLOQUEIO SE NÃO PAGOU HOJE -->
+<div id="livePayWall" style="background:linear-gradient(135deg,#1a1400,#331a00);border:3px solid #ffcc00;border-radius:16px;padding:20px;margin-top:20px;text-align:center">
+<div style="font-size:50px">🔒</div>
+<h2 style="color:#ffcc00;margin-top:10px">LIVE PIX BLOQUEADA</h2>
+<div style="color:#fff;font-size:13px;margin-top:8px">Você só pode usar Live Pix diária quando pagar o Pix</div>
+<div style="color:#aaa;font-size:11px;margin-top:10px">⏱️ Gravação 1:30 continua GRÁTIS no botão +<br>🔴 Live 30min só pra quem pagou R$5 hoje</div>
+
+<div style="background:#000;border:2px dashed #00ff88;border-radius:10px;padding:12px;margin-top:16px">
+<div style="color:#00ff88;font-size:10px;font-weight:900">💰 PIX R$5 - LIBERAR LIVE HOJE</div>
+<div id="displayPixKey" style="color:#fff;font-weight:900;font-size:14px;margin-top:6px;background:#111;padding:8px;border-radius:6px">Configure no Admin</div>
+<div id="displayPixName" style="color:#ff8c00;font-size:11px;margin-top:4px"></div>
+<img id="qrPix" src="" style="width:140px;height:140px;margin:10px auto;display:block;background:#fff;border-radius:8px">
+<button onclick="copyPix()" style="background:#fff;border:none;padding:8px 12px;border-radius:8px;font-weight:900;font-size:11px">📋 COPIAR PIX</button>
+</div>
+
+<button onclick="showPixPay()" style="width:100%;margin-top:16px;background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:16px;border-radius:12px;font-weight:900;color:#000;font-size:14px">💳 JÁ PAGUEI R$5 - LIBERAR MINHA LIVE 30MIN HOJE</button>
+<div style="color:#ffcc00;font-size:10px;margin-top:8px">Dinheiro cai na conta do Admin cadastrada</div>
+</div>
+
+<!-- QUANDO PAGOU - MOSTRA OPÇÕES -->
+<div id="livePaidMenu" style="display:none;margin-top:16px;flex-direction:column;gap:12px">
+<div style="background:linear-gradient(135deg,#001a0a,#00331a);border:2px solid #00ff88;border-radius:12px;padding:14px;text-align:center">
+<div style="font-size:30px">✅</div>
+<b style="color:#00ff88">LIVE PIX LIBERADA HOJE!</b>
+<div style="color:#fff;font-size:11px;margin-top:6px">Você pagou R$5 - pode fazer live 30min</div>
+<div style="color:#00ff88;font-size:10px;margin-top:6px">⏱️ Restante hoje: <span id="liveTimeLeft">30:00</span></div>
+</div>
+
+<div class="card" style="border-color:#00ff88">
+<b style="color:#fff">⏺️ Gravação 1:30 GRÁTIS (continua grátis)</b>
+<button class="btn" onclick="startRecording()" style="background:linear-gradient(90deg,#00ff88,#00cc66)">⏺️ GRAVAR 1:30 E POSTAR</button>
+<div style="display:flex;gap:8px;margin-top:8px"><button onclick="openCamLive('user')" style="flex:1;background:#111;border:1px solid #00ff88;color:#00ff88;padding:8px;border-radius:8px;font-size:11px">🤳 FRENTE</button><button onclick="openCamLive('environment')" style="flex:1;background:#111;border:1px solid #00ff88;color:#00ff88;padding:8px;border-radius:8px;font-size:11px">📷 TRÁS</button><button onclick="switchCamLive()" style="background:#00ff88;border:none;padding:8px;border-radius:8px">🔄</button></div>
+</div>
+
+<div class="card" style="border-color:#ffcc00;background:linear-gradient(135deg,#1a1400,#331a00)">
+<b style="color:#ffcc00">🔴 LIVE 30MIN - SÓ HOJE (PAGO)</b>
+<div style="color:#fff;font-size:11px;margin-top:4px">👁️ <span id="liveCountPreview">0</span> assistindo • Selo Influencer • Topo do feed</div>
+<button id="btnLive30" class="btn" onclick="startLive30()" style="background:linear-gradient(90deg,#ffcc00,#ff8c00)">🔴 ENTRAR AO VIVO 30MIN - PAGO HOJE</button>
+</div>
+
+<div id="pixPayBox" style="display:none" class="card" style="border-color:#00ff88"><h4 style="color:#00ff88">Confirmar pagamento R$5 de hoje?</h4><button class="btn" onclick="confirmPix()" style="background:#00ff88;color:#000">✅ SIM, PAGUEI R$5 HOJE - LIBERAR LIVE</button></div>
 </div>
 </div>
+
 <div id="liveActive" style="position:absolute;inset:0;display:none;z-index:3">
-<div class="liveTop"><div style="display:flex;gap:8px"><div class="liveBadge" style="background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000">🌟 INFLUENCER</div><div class="timer">⏱️ <span id="timerText">00:00</span> / 30:00</div></div><button onclick="stopAll()" style="background:rgba(0,0,0,.7);border:none;color:#fff;width:36px;height:36px;border-radius:50%">✕</button></div>
+<div class="liveTop"><div style="display:flex;gap:8px;align-items:center"><div class="liveBadge" style="background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000">🌟 LIVE PAGA</div><div class="timer">⏱️ <span id="timerText">00:00</span> / <span id="timerLimit">01:30</span></div><button onclick="switchCamLive()" class="camBtn" style="width:36px;height:36px">🔄</button></div><button onclick="stopAll()" style="background:rgba(0,0,0,.7);border:none;color:#fff;width:36px;height:36px;border-radius:50%">✕</button></div>
 <div id="liveComments" style="position:absolute;left:12px;right:80px;bottom:80px;max-height:160px;overflow:hidden;display:flex;flex-direction:column;gap:6px"></div>
 <div style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;gap:8px"><input id="liveInput" class="input" style="flex:1;margin:0;background:rgba(0,0,0,.6)" placeholder="Fala..."><button onclick="sendLiveComment()" style="background:#ff4500;border:none;padding:0 14px;border-radius:10px;color:#fff">➤</button></div>
 </div>
@@ -69,43 +128,9 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 <div id="pEu" class="page" style="overflow:auto">
 <div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#ff4500">🔥 Eu</b><div style="display:flex;gap:8px"><button onclick="openAdmin()" style="background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:900">🔑 ADMIN</button><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div></div>
 <div style="text-align:center;padding:10px 20px"><div id="fotoPerfil" style="width:90px;height:90px;border-radius:50%;margin:0 auto;background:radial-gradient(circle,#ff4500,#8b0000);border:3px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:36px;background-size:cover">🔥</div><h3 id="nomePerfil" style="color:#fff;margin-top:10px">FIRE USER <span id="badgeInfluencer" style="display:none;background:linear-gradient(90deg,#ffcc00,#ff8c00);color:#000;padding:3px 8px;border-radius:10px;font-size:9px;font-weight:900">🌟 INFLUENCER</span></h3><div id="userPerfil" style="color:#ff8c00">@fire.user</div><div id="liveInfo" style="color:#888;font-size:11px;margin-top:6px"></div></div>
-<div id="btnSejaInfluencer" class="card" style="border-color:#ffcc00;background:linear-gradient(135deg,#1a1400,#331a00);text-align:center"><b style="color:#ffcc00">🌟 SEJA UM INFLUENCER</b><button onclick="go(3)" style="width:100%;margin-top:12px;background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:14px;border-radius:10px;font-weight:900">🌟 VIRAR INFLUENCER - R$5</button></div>
+<div id="btnSejaInfluencer" class="card" style="border-color:#ffcc00;background:linear-gradient(135deg,#1a1400,#331a00);text-align:center"><b style="color:#ffcc00">🌟 SEJA UM INFLUENCER</b><div style="color:#fff;font-size:11px">Live Pix só quando pagar R$5</div><button onclick="go(3)" style="width:100%;margin-top:12px;background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:14px;border-radius:10px;font-weight:900">🌟 PAGAR R$5 E LIBERAR LIVE HOJE</button></div>
 <div class="card"><input id="linkFoto" class="input" placeholder="Link foto"><input id="fileFoto" type="file" accept="image/*" style="margin-top:8px;color:#fff;width:100%"><img id="prevFoto" style="width:100%;margin-top:10px;border-radius:10px;display:none"><input id="cadNome" class="input" placeholder="Nome"><input id="cadUser" class="input" placeholder="@usuario"><button class="btn" onclick="salvarPerfil()">SALVAR</button></div>
-
-<div id="adminPanel" style="display:none">
-<div class="card" style="border-color:#ffcc00;background:#1a1400">
-<h3 style="color:#ffcc00">🔑 ADMIN</h3>
-
-<div style="background:#000;border:2px solid #00ff88;border-radius:10px;padding:12px;margin-top:12px">
-<h4 style="color:#00ff88">💰 SEU PIX - ONDE CAI R$5</h4>
-<input id="pixChave" class="input" placeholder="Sua chave Pix">
-<input id="pixNome" class="input" placeholder="Seu nome">
-<input id="adminPixValor" type="number" value="5" class="input" style="margin-top:8px">
-<button onclick="salvarPixAdmin()" style="width:100%;margin-top:8px;background:#00ff88;border:none;padding:12px;border-radius:8px;font-weight:900">💾 SALVAR PIX</button>
-</div>
-
-<!-- SÓ 1 BOTÃO A MAIS: PROPAGANDAS -->
-<div style="background:#000;border:2px solid #ffcc00;border-radius:10px;padding:12px;margin-top:12px">
-<h4 style="color:#ffcc00">📢 PROPAGANDAS</h4>
-<div style="color:#aaa;font-size:10px;margin-top:4px">Só 1 opção a mais - fácil pra quando tiver Adsense/AdMob</div>
-
-<textarea id="adsenseCode" class="input" rows="2" placeholder="Cole código Adsense/AdMob aqui quando tiver (vazio por enquanto)"></textarea>
-<input id="adText" class="input" placeholder="Ou texto da sua propaganda (opcional)" style="margin-top:6px">
-
-<div style="display:flex;gap:8px;margin-top:10px;align-items:center;background:#111;padding:8px;border-radius:8px">
-<span style="color:#fff;font-size:11px">Mostrar a cada</span>
-<input id="adFreq" type="number" value="3" min="1" max="10" class="input" style="width:60px;margin:0;text-align:center;font-weight:900">
-<span style="color:#fff;font-size:11px">vídeos</span>
-<input type="checkbox" id="adAtivo" style="margin-left:auto">
-<span style="color:#fff;font-size:11px">Ativar</span>
-</div>
-
-<button onclick="salvarAds()" style="width:100%;margin-top:10px;background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:12px;border-radius:10px;font-weight:900">💾 SALVAR PROPAGANDA</button>
-</div>
-
-<div style="display:flex;gap:8px;margin-top:12px"><button onclick="resetLiveBlock()" style="flex:1;background:#331100;border:1px solid #ff4500;padding:10px;border-radius:8px;color:#ff8c00;font-size:11px">🔓 Reset</button><button onclick="closeAdmin()" style="flex:1;background:#000;border:1px solid #333;padding:10px;border-radius:8px;color:#666">Fechar</button></div>
-</div>
-</div>
+<div id="adminPanel" style="display:none"><div class="card" style="border-color:#ffcc00;background:#1a1400"><h3 style="color:#ffcc00">🔑 ADMIN</h3><div style="background:#000;border:2px solid #00ff88;border-radius:10px;padding:12px;margin-top:12px"><h4 style="color:#00ff88">💰 SEU PIX - ONDE CAI R$5</h4><input id="pixChave" class="input" placeholder="Sua chave Pix"><input id="pixNome" class="input" placeholder="Seu nome"><input id="adminPixValor" type="number" value="5" class="input" style="margin-top:8px"><button onclick="salvarPixAdmin()" style="width:100%;margin-top:8px;background:#00ff88;border:none;padding:12px;border-radius:8px;font-weight:900">💾 SALVAR PIX</button></div><div style="background:#000;border:2px solid #ffcc00;border-radius:10px;padding:12px;margin-top:12px"><h4 style="color:#ffcc00">📢 PROPAGANDAS</h4><textarea id="adsenseCode" class="input" rows="2" placeholder="Código Adsense/AdMob"></textarea><input id="adText" class="input" placeholder="Texto propaganda" style="margin-top:6px"><div style="display:flex;gap:8px;margin-top:10px;align-items:center;background:#111;padding:8px;border-radius:8px"><span style="color:#fff;font-size:11px">A cada</span><input id="adFreq" type="number" value="3" min="1" max="10" class="input" style="width:60px;margin:0;text-align:center;font-weight:900"><span style="color:#fff;font-size:11px">vídeos</span><input type="checkbox" id="adAtivo" style="margin-left:auto"><span style="color:#fff;font-size:11px">Ativar</span></div><button onclick="salvarAds()" style="width:100%;margin-top:10px;background:linear-gradient(90deg,#ffcc00,#ff8c00);border:none;padding:12px;border-radius:10px;font-weight:900">💾 SALVAR PROPAGANDA</button></div><div style="display:flex;gap:8px;margin-top:12px"><button onclick="resetLiveBlock()" style="flex:1;background:#331100;border:1px solid #ff4500;padding:10px;border-radius:8px;color:#ff8c00;font-size:11px">🔓 Reset Live Pix (libera pra testar)</button><button onclick="closeAdmin()" style="flex:1;background:#000;border:1px solid #333;padding:10px;border-radius:8px;color:#666">Fechar</button></div></div></div>
 <div class="card"><b style="color:#ff8c00">🔖 Salvos</b><div id="salvos"></div></div>
 </div>
 
@@ -113,8 +138,8 @@ html,body{height:100dvh;background:#000;overflow:hidden;font-family:system-ui,sa
 </div>
 
 <script>
-let posts=[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800",desc:"LAYOUT ORIGINAL!",likes:7793,liked:false,comments:[{u:"ana",t:"🔥"}],saves:0,saved:false,shares:8,isInfluencer:true}];
-let temp="",cur=0,perfilUser={nome:"FIRE USER",user:"@fire.user",foto:""},stream=null,recorder=null,chunks=[],timerInt=null,mode=null,time=0,limit=0,viewers=0,viewerInt=null;
+let posts=[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800",desc:"LAYOUT ORIGINAL 1:30!",likes:7793,liked:false,comments:[{u:"ana",t:"🔥"}],saves:0,saved:false,shares:8,isInfluencer:true,isVideo:false}];
+let temp="",tempVideo="",cur=0,perfilUser={nome:"FIRE USER",user:"@fire.user",foto:""},stream=null,streamCriar=null,recorder=null,chunks=[],timerInt=null,timerCriarInt=null,mode=null,time=0,limit=0,facingMode="user",facingCriar="user",isRecordingCriar=false;
 let config={pixValor:5,pixToday:0,liveNow:0,pixChave:"Configure no Admin",pixNome:"WORK FIRE",ads:{code:"",text:"",freq:3,ativo:false}};
 try{let s=localStorage.getItem("WORK_FIRE_BASE_FOTO"); if(s) posts=JSON.parse(s);}catch(e){}
 try{let p=localStorage.getItem("PERFIL_FIRE_USER"); if(p) perfilUser=JSON.parse(p);}catch(e){}
@@ -127,22 +152,19 @@ feedList.push({type:"post",data:p,orig:posts.indexOf(p)});
 if(config.ads.ativo && (idx+1)%config.ads.freq===0){feedList.push({type:"ad"});}
 });
 if(!config.ads.ativo) feedList=sorted.map(p=>({type:"post",data:p,orig:posts.indexOf(p)}));
-
 document.getElementById("feed").innerHTML=feedList.map(item=>{
-if(item.type==="ad"){
-return `<div class="post ad"><div class="adLabel">📢 ANÚNCIO - a cada ${config.ads.freq} vídeos</div><h3 style="color:#ffcc00">${config.ads.text||config.ads.code||"Sua propaganda aqui"}</h3><div style="margin-top:12px"><button onclick="document.getElementById('feed').scrollBy({top:window.innerHeight,behavior:'smooth'})" style="background:none;border:1px solid #666;color:#666;padding:6px 12px;border-radius:12px;font-size:10px">Pular</button></div></div>`;
-}else{
+if(item.type==="ad"){return `<div class="post ad"><div style="position:absolute;top:12px;left:12px;background:#ffcc00;color:#000;padding:4px 10px;border-radius:12px;font-size:10px;font-weight:900">📢 ANÚNCIO</div><h3 style="color:#ffcc00">${config.ads.text||config.ads.code||"Propaganda"}</h3></div>`;}
+else{
 let p=item.data; let orig=item.orig;
-return `<div class="post" style="background-image:url('${p.img}')"><div class="side"><button class="sbtn" onclick="doFire(${orig},this)"><div class="ibtn">🔥</div><div class="count">${p.likes}</div></button><button class="sbtn" onclick="doLike(${orig},this)"><div class="ibtn">💖</div><div class="count">Curtir</div></button><button class="sbtn" onclick="openC(${orig},this)"><div class="ibtn">💬</div><div class="count">${p.comments.length}</div></button><button class="sbtn" onclick="openS(${orig},this)"><div class="ibtn">🚀</div><div class="count">${p.shares}</div></button><button class="sbtn" onclick="doSave(${orig},this)"><div class="ibtn">🔖</div><div class="count">Salvar</div></button></div><div class="info"><b style="color:#ff8c00">@${p.owner}</b><div>🔥 ${p.desc}</div></div></div>`;
+let media = p.isVideo? `<video src="${p.img}" loop muted playsinline style="width:100%;height:100%;object-fit:cover" onclick="this.paused?this.play():this.pause()"></video>` : `<div style="width:100%;height:100%;background:#111 center/cover no-repeat;background-image:url('${p.img}')"></div>`;
+return `<div class="post">${media}<div class="side"><button class="sbtn" onclick="doFire(${orig},this)"><div class="ibtn">🔥</div><div class="count">${p.likes}</div></button><button class="sbtn" onclick="doLike(${orig},this)"><div class="ibtn">💖</div><div class="count">Curtir</div></button><button class="sbtn" onclick="openC(${orig},this)"><div class="ibtn">💬</div><div class="count">${p.comments.length}</div></button><button class="sbtn" onclick="openS(${orig},this)"><div class="ibtn">🚀</div><div class="count">${p.shares}</div></button><button class="sbtn" onclick="doSave(${orig},this)"><div class="ibtn">🔖</div><div class="count">Salvar</div></button></div><div class="info"><b style="color:#ff8c00">@${p.owner} ${p.isVideo?'⏱️ 01:30':''}</b><div>🔥 ${p.desc}</div></div></div>`;
 }
 }).join("");
-
 document.getElementById("salvos").innerHTML=posts.filter(x=>x.saved).map(x=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${x.img}" style="width:50px;height:50px;border-radius:8px"><div style="color:#fff;font-size:12px">${x.desc}</div></div>`).join("")||"<div style='color:#666'>Nenhum</div>";
-document.getElementById("adminPixValor").value=config.pixValor; document.getElementById("pixChave").value=config.pixChave; document.getElementById("pixNome").value=config.pixNome;
-document.getElementById("adsenseCode").value=config.ads.code; document.getElementById("adText").value=config.ads.text; document.getElementById("adFreq").value=config.ads.freq; document.getElementById("adAtivo").checked=config.ads.ativo;
-document.getElementById("displayPixKey").innerText=config.pixChave; document.getElementById("displayPixName").innerText=config.pixNome; document.getElementById("liveCountPreview").innerText=config.liveNow;
+document.getElementById("adminPixValor").value=config.pixValor; document.getElementById("pixChave").value=config.pixChave; document.getElementById("pixNome").value=config.pixNome; document.getElementById("adsenseCode").value=config.ads.code; document.getElementById("adText").value=config.ads.text; document.getElementById("adFreq").value=config.ads.freq; document.getElementById("adAtivo").checked=config.ads.ativo;
+document.getElementById("displayPixKey").innerText=config.pixChave; document.getElementById("displayPixName").innerText=config.pixNome;
 if(config.pixChave!=="Configure no Admin") document.getElementById("qrPix").src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(config.pixChave);
-atualizarPerfilTela(); checkLiveBlock();
+checkLiveBlock();
 }
 function save(){localStorage.setItem("WORK_FIRE_BASE_FOTO",JSON.stringify(posts));}
 function saveConfig(){localStorage.setItem("WORK_FIRE_SIMPLE_ADS",JSON.stringify(config)); render();}
@@ -153,31 +175,74 @@ function doFire(i,b){anim(b); posts[i].likes+=3; save(); render();}
 function openC(i,b){anim(b); cur=i; document.getElementById("ct").innerText=posts[i].comments.length; document.getElementById("listC").innerHTML=posts[i].comments.map(c=>`<div style="padding:10px 0;border-bottom:1px solid #331100"><b style="color:#ff8c00">@${c.u}</b> <span style="color:#fff">${c.t}</span></div>`).join(""); document.getElementById("sheetC").classList.add("show");}
 function sendC(){let t=document.getElementById("txtC").value.trim(); if(!t)return; posts[cur].comments.push({u:"fire",t:t}); document.getElementById("txtC").value=""; save(); openC(cur); render();}
 function openS(i,b){anim(b); cur=i; document.getElementById("sheetS").classList.add("show");}
-function shareTo(net){let url=location.href; let text=posts[cur].desc; let encUrl=encodeURIComponent(url); let encText=encodeURIComponent(text); let links={whatsapp:`https://wa.me/?text=${encText}%20${encUrl}`,facebook:`https://www.facebook.com/sharer/sharer.php?u=${encUrl}`,twitter:`https://twitter.com/intent/tweet?text=${encText}&url=${encUrl}`,telegram:`https://t.me/share/url?url=${encUrl}&text=${encText}`,instagram:`https://www.instagram.com/`}; if(net==="native" && navigator.share){navigator.share({title:"Work Fire",text:text,url:url});}else if(links[net]){window.open(links[net],"_blank");} posts[cur].shares++; save(); render(); closeS('sheetS');}
-function doCopy(){navigator.clipboard.writeText(location.href); posts[cur].shares++; save(); render(); closeS('sheetS');}
+function shareTo(net){let url=location.href; let text=posts[cur].desc; let encUrl=encodeURIComponent(url); let encText=encodeURIComponent(text); let links={whatsapp:`https://wa.me/?text=${encText}%20${encUrl}`,facebook:`https://www.facebook.com/sharer/sharer.php?u=${encUrl}`}; if(net==="native" && navigator.share){navigator.share({title:"Work Fire",text:text,url:url});}else if(links[net]){window.open(links[net],"_blank");} posts[cur].shares++; save(); render(); closeS('sheetS');}
 function closeS(id){document.getElementById(id).classList.remove("show");}
-function addPost(){let l=document.getElementById("imgLink").value.trim()||temp; if(!l)return alert("Imagem!"); let d=document.getElementById("desc").value.trim()||"Fire!"; let isInf=localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString(); posts.unshift({owner:"fire.influencer",img:l,desc:d,likes:0,liked:false,comments:[],saves:0,saved:false,shares:0,isInfluencer:isInf}); save(); render(); closeAll(); go(0);}
-function go(n){document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); if(document.getElementById("n"+n))document.getElementById("n"+n).classList.add("on"); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); if(n==1)document.getElementById("pBusca").classList.add("show"); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==3)document.getElementById("pLive").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show");}
-function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); go(0);}
+function addPost(){let l=document.getElementById("imgLink").value.trim()||temp||tempVideo; if(!l){alert("Grave 1:30 ou tire foto!"); return;} let d=document.getElementById("desc").value.trim()||"Vídeo 1:30 🔥"; let isVid = l.startsWith("blob:") || l.includes("video") || tempVideo===l; let isInf=localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString(); posts.unshift({owner:perfilUser.user.replace('@','')||"fire",img:l,desc:d,likes:0,liked:false,comments:[],saves:0,saved:false,shares:0,isInfluencer:isInf,isVideo:isVid}); save(); render(); closeAll(); go(0); temp=""; tempVideo=""; stopCamCriar();}
+async function openCamCriar(mode){facingCriar=mode; try{if(streamCriar) streamCriar.getTracks().forEach(t=>t.stop()); streamCriar=await navigator.mediaDevices.getUserMedia({video:{facingMode:mode},audio:true}); let v=document.getElementById("videoCriar"); v.srcObject=streamCriar; v.style.display="block"; document.getElementById("criarPlaceholder").style.display="none"; document.getElementById("prev").style.display="none";}catch(e){alert("Permita câmera!");}}
+function switchCamCriar(){facingCriar = facingCriar==="user"? "environment" : "user"; openCamCriar(facingCriar);}
+function stopCamCriar(){if(streamCriar){streamCriar.getTracks().forEach(t=>t.stop()); streamCriar=null;} document.getElementById("videoCriar").style.display="none"; document.getElementById("criarPlaceholder").style.display="flex"; clearInterval(timerCriarInt); document.getElementById("progressCriar").style.width="0%"; document.getElementById("criarTimer").innerText="00:00"; isRecordingCriar=false; document.getElementById("btnRecCriar").style.background="#ff0000";}
+async function toggleRecCriar(){if(!streamCriar){ await openCamCriar(facingCriar); return; } if(isRecordingCriar){ if(recorder) recorder.stop(); return; } chunks=[]; isRecordingCriar=true; recorder=new MediaRecorder(streamCriar); recorder.ondataavailable=e=>{if(e.data.size>0) chunks.push(e.data)}; recorder.onstop=()=>{let blob=new Blob(chunks,{type:"video/webm"}); let url=URL.createObjectURL(blob); tempVideo=url; temp=url; document.getElementById("prev").src=""; document.getElementById("prev").style.display="none"; let v=document.getElementById("videoCriar"); v.srcObject=null; v.style.display="none"; document.getElementById("criarPlaceholder").innerHTML=`<div style="font-size:50px">✅</div><div style="color:#00ff88;margin-top:10px">Vídeo 1:30 gravado!</div><video src="${url}" style="width:200px;margin-top:10px;border-radius:10px" controls loop></video>`; document.getElementById("criarPlaceholder").style.display="flex"; isRecordingCriar=false; document.getElementById("btnRecCriar").style.background="#ff0000"; clearInterval(timerCriarInt); document.getElementById("criarTimer").innerText="01:30"; document.getElementById("progressCriar").style.width="100%"; if(streamCriar){streamCriar.getTracks().forEach(t=>t.stop()); streamCriar=null;}}; recorder.start(); document.getElementById("btnRecCriar").style.background="#00ff88"; let t=0; clearInterval(timerCriarInt); timerCriarInt=setInterval(()=>{t++; let m=Math.floor(t/60).toString().padStart(2,'0'); let s=(t%60).toString().padStart(2,'0'); document.getElementById("criarTimer").innerText=m+":"+s; document.getElementById("progressCriar").style.width=(t/90*100)+"%"; if(t>=90){recorder.stop();}},1000);}
+function takePhotoCriar(){if(!streamCriar){alert("Abra câmera!"); return;} let v=document.getElementById("videoCriar"); let c=document.createElement("canvas"); c.width=v.videoWidth; c.height=v.videoHeight; c.getContext("2d").drawImage(v,0,0); let url=c.toDataURL("image/jpeg"); temp=url; tempVideo=""; document.getElementById("prev").src=url; document.getElementById("prev").style.display="block"; document.getElementById("videoCriar").style.display="none"; document.getElementById("criarPlaceholder").style.display="none"; if(streamCriar){streamCriar.getTracks().forEach(t=>t.stop()); streamCriar=null;} alert("📸 Foto "+(facingCriar==="user"?"frente":"traseira")+" tirada!");}
+function openGalleryCriar(){document.getElementById("file").click();}
+function go(n){document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); if(document.getElementById("n"+n))document.getElementById("n"+n).classList.add("on"); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); if(n==1)document.getElementById("pBusca").classList.add("show"); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==3)document.getElementById("pLive").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show"); if(n!==2) stopCamCriar();}
+function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); go(0); stopCamCriar(); stopAll();}
 function doBusca(){let q=document.getElementById("buscaInput").value.toLowerCase(); let r=posts.filter(p=>p.desc.toLowerCase().includes(q)); document.getElementById("buscaRes").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px"><img src="${p.img}" style="width:50px;height:50px;border-radius:8px"><div style="color:#fff;font-size:12px">${p.desc}</div></div>`).join("")||"<div style='color:#666'>Nada</div>";}
 function atualizarPerfilTela(){document.getElementById("nomePerfil").innerText=perfilUser.nome; document.getElementById("userPerfil").innerText=perfilUser.user; let fp=document.getElementById("fotoPerfil"); if(perfilUser.foto){fp.style.backgroundImage=`url('${perfilUser.foto}')`; fp.innerText="";}else{fp.style.backgroundImage="none"; fp.innerText="🔥";} let isInf=localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString(); document.getElementById("badgeInfluencer").style.display=isInf?"inline-block":"none"; document.getElementById("btnSejaInfluencer").style.display=isInf?"none":"block";}
 function salvarPerfil(){perfilUser.nome=document.getElementById("cadNome").value.trim()||perfilUser.nome; perfilUser.user=document.getElementById("cadUser").value.trim()||perfilUser.user; let link=document.getElementById("linkFoto").value.trim(); if(link)perfilUser.foto=link; if(window.tempFotoPerfil)perfilUser.foto=window.tempFotoPerfil; localStorage.setItem("PERFIL_FIRE_USER",JSON.stringify(perfilUser)); atualizarPerfilTela(); alert("Salvo!");}
 function openAdmin(){let s=prompt("🔑 Senha Admin:"); if(s==="fire123"||s==="admin"){document.getElementById("adminPanel").style.display="block";}else if(s!==null) alert("Senha: fire123");}
 function closeAdmin(){document.getElementById("adminPanel").style.display="none";}
 function salvarPixAdmin(){let chave=document.getElementById("pixChave").value.trim(); let nome=document.getElementById("pixNome").value.trim()||"WORK FIRE"; let valor=parseInt(document.getElementById("adminPixValor").value)||5; if(!chave){alert("Coloque Pix!"); return;} config.pixChave=chave; config.pixNome=nome; config.pixValor=valor; saveConfig(); alert("✅ Pix salvo");}
-function salvarAds(){config.ads.code=document.getElementById("adsenseCode").value.trim(); config.ads.text=document.getElementById("adText").value.trim(); config.ads.freq=parseInt(document.getElementById("adFreq").value)||3; config.ads.ativo=document.getElementById("adAtivo").checked; saveConfig(); if(config.ads.ativo){alert("✅ Propaganda ativada! A cada "+config.ads.freq+" vídeos");}else{alert("✅ Salvo - propaganda desligada (liga quando quiser)");}}
-function resetLiveBlock(){localStorage.removeItem("LAST_LIVE_DATE"); checkLiveBlock(); alert("Reset!");}
-function checkLiveBlock(){let last=localStorage.getItem("LAST_LIVE_DATE"); let today=new Date().toDateString(); let blocked=document.getElementById("liveBlocked"); let btn=document.getElementById("btnLive30"); if(last===today){blocked.style.display="block"; btn.disabled=true; btn.style.opacity=".4"; btn.innerText="⛔ JÁ É INFLUENCER"; document.getElementById("liveInfo").innerText="🌟 Influencer hoje!";}else{blocked.style.display="none"; btn.disabled=false; btn.style.opacity="1"; btn.innerText="🌟 JÁ PAGUEI R$"+config.pixValor+" - VIRAR INFLUENCER"; document.getElementById("liveInfo").innerText="Seja Influencer R$"+config.pixValor;} atualizarPerfilTela();}
+function salvarAds(){config.ads.code=document.getElementById("adsenseCode").value.trim(); config.ads.text=document.getElementById("adText").value.trim(); config.ads.freq=parseInt(document.getElementById("adFreq").value)||3; config.ads.ativo=document.getElementById("adAtivo").checked; saveConfig(); alert("✅ Propaganda a cada "+config.ads.freq);}
+function resetLiveBlock(){localStorage.removeItem("LAST_LIVE_DATE"); localStorage.removeItem("LIVE_PIX_PAID_DATE"); checkLiveBlock(); alert("🔓 Reset Live Pix! Agora precisa pagar de novo");}
+function copyPix(){navigator.clipboard.writeText(config.pixChave); alert("Pix copiado: "+config.pixChave);}
+
+function checkLiveBlock(){
+let paidDate=localStorage.getItem("LIVE_PIX_PAID_DATE");
+let today=new Date().toDateString();
+let payWall=document.getElementById("livePayWall");
+let paidMenu=document.getElementById("livePaidMenu");
+let badge=document.getElementById("badgeInfluencer");
+let btnInf=document.getElementById("btnSejaInfluencer");
+
+if(paidDate===today){
+payWall.style.display="none"; paidMenu.style.display="flex";
+badge.style.display="inline-block"; btnInf.style.display="none";
+document.getElementById("liveInfo").innerText="✅ Live Pix paga hoje - liberada 30min";
+document.getElementById("liveCountPreview").innerText=config.liveNow;
+}else{
+payWall.style.display="block"; paidMenu.style.display="none";
+badge.style.display="none"; btnInf.style.display="block";
+document.getElementById("liveInfo").innerText="🔒 Live Pix bloqueada - pague R$5 pra liberar hoje";
+}
+atualizarPerfilTela();
+}
 function showPixPay(){if(config.pixChave==="Configure no Admin"){alert("Admin configure Pix!"); return;} document.getElementById("pixPayBox").style.display="block";}
-function confirmPix(){let last=localStorage.getItem("LAST_LIVE_DATE"); if(last===new Date().toDateString()){alert("Já é influencer!"); return;} config.pixToday+=config.pixValor; saveConfig(); document.getElementById("pixPayBox").style.display="none"; startLive30();}
-async function startRecording(){mode="record"; limit=90; time=0; try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true}); let v=document.getElementById("videoLive"); v.srcObject=stream; v.style.display="block"; document.getElementById("liveMenu").style.display="none"; document.getElementById("liveActive").style.display="block"; chunks=[]; recorder=new MediaRecorder(stream); recorder.ondataavailable=e=>{if(e.data.size>0) chunks.push(e.data)}; recorder.onstop=()=>{let blob=new Blob(chunks,{type:"video/webm"}); let url=URL.createObjectURL(blob); let isInf=localStorage.getItem("LAST_LIVE_DATE")===new Date().toDateString(); posts.unshift({owner:perfilUser.user.replace('@','')||"fire",img:url,desc:"Gravação 1:30",likes:0,liked:false,comments:[],saves:0,saved:false,shares:0,isInfluencer:isInf}); save(); render(); alert("Salvo!"); stopAll();}; recorder.start(); startTimer();}catch(e){alert("Permita câmera!");}}
-async function startLive30(){mode="live"; limit=1800; time=0; viewers=10; try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true}); let v=document.getElementById("videoLive"); v.srcObject=stream; v.style.display="block"; document.getElementById("liveMenu").style.display="none"; document.getElementById("liveActive").style.display="block"; localStorage.setItem("LAST_LIVE_DATE",new Date().toDateString()); config.liveNow=1; saveConfig(); addLiveComment("Sistema","🌟 Influencer R$"+config.pixValor); startTimer(); startViewers();}catch(e){alert("Permita câmera!");}}
-function startTimer(){clearInterval(timerInt); timerInt=setInterval(()=>{time++; let m=Math.floor(time/60).toString().padStart(2,'0'); let s=(time%60).toString().padStart(2,'0'); document.getElementById("timerText").innerText=m+":"+s; document.getElementById("progressBar").style.width=(time/limit*100)+"%"; if(time>=limit){if(mode==="record") recorder.stop(); else {alert("30min acabou!"); stopAll();}}},1000);}
-function startViewers(){clearInterval(viewerInt); viewerInt=setInterval(()=>{if(mode!=="live") return; viewers+=Math.floor(Math.random()*5); document.getElementById("viewerCount").innerText=viewers; document.getElementById("liveCountPreview").innerText=viewers;},2000);}
+function confirmPix(){
+let today=new Date().toDateString();
+localStorage.setItem("LIVE_PIX_PAID_DATE",today);
+localStorage.setItem("LAST_LIVE_DATE",today);
+config.pixToday+=config.pixValor;
+saveConfig();
+document.getElementById("pixPayBox").style.display="none";
+alert("✅ PAGAMENTO CONFIRMADO R$"+config.pixValor+"! Live Pix liberada hoje! Dinheiro caiu em: "+config.pixChave+" ("+config.pixNome+")");
+checkLiveBlock();
+}
+
+async function openCamLive(mode){facingMode=mode; try{if(stream) stream.getTracks().forEach(t=>t.stop()); stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:mode},audio:true}); let v=document.getElementById("videoLive"); v.srcObject=stream; v.style.display="block"; document.getElementById("liveMenu").style.display="none"; document.getElementById("liveActive").style.display="block";}catch(e){alert("Permita câmera!");}}
+function switchCamLive(){facingMode=facingMode==="user"?"environment":"user"; openCamLive(facingMode);}
+async function startRecording(){
+let paidDate=localStorage.getItem("LIVE_PIX_PAID_DATE"); let today=new Date().toDateString();
+if(paidDate!==today){alert("🔒 Gravação 1:30? Use o botão + (é grátis). Live 30min só quem pagou R$5 hoje!"); return;}
+mode="record"; limit=90; time=0; try{if(!stream){stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facingMode},audio:true});} let v=document.getElementById("videoLive"); v.srcObject=stream; v.style.display="block"; document.getElementById("liveMenu").style.display="none"; document.getElementById("liveActive").style.display="block"; document.getElementById("timerLimit").innerText="01:30"; chunks=[]; recorder=new MediaRecorder(stream); recorder.ondataavailable=e=>{if(e.data.size>0) chunks.push(e.data)}; recorder.onstop=()=>{let blob=new Blob(chunks,{type:"video/webm"}); let url=URL.createObjectURL(blob); posts.unshift({owner:perfilUser.user.replace('@','')||"fire",img:url,desc:"Vídeo 1:30 grátis",likes:0,liked:false,comments:[],saves:0,saved:false,shares:0,isInfluencer:true,isVideo:true}); save(); render(); alert("✅ Vídeo 1:30 postado!"); stopAll();}; recorder.start(); startTimer();}catch(e){alert("Permita câmera!");}}
+async function startLive30(){
+let paidDate=localStorage.getItem("LIVE_PIX_PAID_DATE"); let today=new Date().toDateString();
+if(paidDate!==today){alert("🔒 Você só pode usar Live Pix diária quando pagar o Pix R$5! Pague e libere."); checkLiveBlock(); return;}
+mode="live"; limit=1800; time=0; try{if(stream) stream.getTracks().forEach(t=>t.stop()); stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facingMode},audio:true}); let v=document.getElementById("videoLive"); v.srcObject=stream; v.style.display="block"; document.getElementById("liveMenu").style.display="none"; document.getElementById("liveActive").style.display="block"; document.getElementById("timerLimit").innerText="30:00"; config.liveNow=1; saveConfig(); addLiveComment("Sistema","🌟 Live Pix paga hoje!"); startTimer();}catch(e){alert("Permita câmera!");}}
+function startTimer(){clearInterval(timerInt); timerInt=setInterval(()=>{time++; let m=Math.floor(time/60).toString().padStart(2,'0'); let s=(time%60).toString().padStart(2,'0'); document.getElementById("timerText").innerText=m+":"+s; let left=limit-time; let ml=Math.floor(left/60).toString().padStart(2,'0'); let sl=(left%60).toString().padStart(2,'0'); if(document.getElementById("liveTimeLeft")) document.getElementById("liveTimeLeft").innerText=ml+":"+sl; document.getElementById("progressBar").style.width=(time/limit*100)+"%"; if(time>=limit){if(mode==="record") recorder.stop(); else {alert("🔴 Live 30min acabou! Amanhã pague R$5 de novo."); stopAll();}}},1000);}
 function addLiveComment(u,t){let d=document.createElement("div"); d.style.cssText="background:rgba(0,0,0,.6);padding:6px 10px;border-radius:16px;color:#fff;font-size:12px;max-width:85%;margin-top:6px"; d.innerHTML=`<b style="color:#ffcc00">@${u}</b> ${t}`; document.getElementById("liveComments").appendChild(d);}
-function stopAll(){clearInterval(timerInt); clearInterval(viewerInt); if(recorder && recorder.state!=="inactive") recorder.stop(); if(stream){stream.getTracks().forEach(t=>t.stop()); stream=null;} config.liveNow=0; saveConfig(); document.getElementById("videoLive").srcObject=null; document.getElementById("videoLive").style.display="none"; document.getElementById("liveMenu").style.display="flex"; document.getElementById("liveActive").style.display="none"; document.getElementById("progressBar").style.width="0%"; document.getElementById("liveComments").innerHTML=""; document.getElementById("timerText").innerText="00:00"; checkLiveBlock();}
+function stopAll(){clearInterval(timerInt); if(recorder && recorder.state!=="inactive") recorder.stop(); if(stream){stream.getTracks().forEach(t=>t.stop()); stream=null;} config.liveNow=0; saveConfig(); document.getElementById("videoLive").srcObject=null; document.getElementById("videoLive").style.display="none"; document.getElementById("liveMenu").style.display="flex"; document.getElementById("liveActive").style.display="none"; document.getElementById("progressBar").style.width="0%"; document.getElementById("liveComments").innerHTML=""; document.getElementById("timerText").innerText="00:00"; checkLiveBlock();}
 function sendLiveComment(){let inp=document.getElementById("liveInput"); let t=inp.value.trim(); if(!t)return; addLiveComment(perfilUser.user.replace('@','')||"voce",t); inp.value="";}
-document.getElementById("file").addEventListener("change",e=>{let r=new FileReader();r.onload=ev=>{temp=ev.target.result;document.getElementById("prev").src=temp;document.getElementById("prev").style.display="block";}; if(e.target.files[0])r.readAsDataURL(e.target.files[0]);});
+document.getElementById("file").addEventListener("change",e=>{let file=e.target.files[0]; if(!file) return; let r=new FileReader(); r.onload=ev=>{if(file.type.startsWith("video")){tempVideo=ev.target.result; temp=ev.target.result; document.getElementById("criarPlaceholder").innerHTML=`<video src="${ev.target.result}" style="width:100%;height:100%;object-fit:cover" controls></video>`; document.getElementById("criarPlaceholder").style.display="flex"; document.getElementById("videoCriar").style.display="none"; document.getElementById("prev").style.display="none";}else{temp=ev.target.result; document.getElementById("prev").src=temp; document.getElementById("prev").style.display="block"; document.getElementById("criarPlaceholder").style.display="none"; document.getElementById("videoCriar").style.display="none";}}; r.readAsDataURL(file);});
 document.getElementById("fileFoto").addEventListener("change",e=>{let r=new FileReader();r.onload=ev=>{window.tempFotoPerfil=ev.target.result;document.getElementById("prevFoto").src=ev.target.result;document.getElementById("prevFoto").style.display="block";document.getElementById("fotoPerfil").style.backgroundImage=`url('${ev.target.result}')`;document.getElementById("fotoPerfil").innerText="";}; if(e.target.files[0])r.readAsDataURL(e.target.files[0]);});
 render();
 </script>
