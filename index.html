@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - GRAVAÇÃO 1:30 + CÂMERAS</title>
+<title>WORK FIRE - LIVE COMENTÁRIOS AO VIVO</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
 <style>
@@ -36,20 +36,36 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 .card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
 .input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px;font-size:13px}
 .btn{width:100%;padding:12px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px;font-size:12px;cursor:pointer}
-.btnRec{background:linear-gradient(90deg,#ff0000,#cc0000);color:#fff;animation:pulse 1s infinite}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
 .avatar{width:88px;height:88px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;cursor:pointer}
 .avatar img{width:100%;height:100%;object-fit:cover}
 .cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.78);color:#ffcc00;font-size:7px;font-weight:900;text-align:center;padding:4px}
 .btnDel{background:rgba(255,0,0,.12);border:1px solid rgba(255,0,0,.35);color:#ff4444;width:100%;padding:11px;border-radius:10px;font-weight:900;margin-top:8px;font-size:11px}
-.camBox{position:relative;width:100%;height:56vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff4500;margin-top:10px}
-.camBox video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
-.camBox video.back{transform:scaleX(1)}
-.timer{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(255,0,0,.85);color:#fff;padding:5px 14px;border-radius:20px;font-weight:900;font-size:13px;letter-spacing:1px;z-index:5}
+.camBox{position:relative;width:100%;height:50vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff4500;margin-top:10px}
+.camBox video{width:100%;height:100%;object-fit:cover}
+.timer{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(255,0,0,.85);color:#fff;padding:5px 14px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}
 .ctrlCam{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:18px;z-index:5}
-.circ{width:68px;height:68px;border-radius:50%;border:4px solid #fff;background:#ff0000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;cursor:pointer;box-shadow:0 0 0 4px rgba(255,0,0,.3)}
+.circ{width:68px;height:68px;border-radius:50%;border:4px solid #fff;background:#ff0000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;cursor:pointer}
 .circ.stop{background:#fff;color:#ff0000;border-color:#ff0000}
 .switchCam{width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.6);border:1.5px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}
+
+/* LIVE COMENTÁRIOS AO VIVO */
+.liveStage{position:relative;width:100%;height:58vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff0000}
+.liveStage video{width:100%;height:100%;object-fit:cover}
+.liveTag{position:absolute;top:10px;left:10px;background:#ff0000;color:#fff;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:900;display:flex;align-items:center;gap:6px;z-index:5;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.6}}
+.liveTag::before{content:'';width:8px;height:8px;background:#fff;border-radius:50%}
+.viewers{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800;z-index:5}
+.chatLive{position:absolute;left:8px;right:76px;bottom:70px;z-index:6;max-height:34vh;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
+.chatLive::-webkit-scrollbar{display:none}
+.msgLive{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(8px);padding:6px 10px;border-radius:16px;display:flex;gap:6px;align-items:flex-start;max-width:92%;animation:slideIn.3s}
+@keyframes slideIn{from{transform:translateX(-20px);opacity:0}to{transform:translateX(0);opacity:1}}
+.msgLive b{color:#ffcc00;font-size:11px;white-space:nowrap}
+.msgLive span{color:#fff;font-size:11px;word-break:break-word}
+.msgLive.system{border-color:#ff4500;background:rgba(255,69,0,.2)}
+.msgLive.system b{color:#ff8c00}
+.liveInputBar{position:absolute;bottom:8px;left:8px;right:8px;z-index:7;display:flex;gap:6px}
+.liveInputBar input{flex:1;padding:10px 14px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;color:#fff;font-size:13px;backdrop-filter:blur(10px)}
+.liveInputBar button{width:42px;height:42px;border-radius:50%;border:none;background:#ff4500;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px}
 .adBox{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a0a0a,#1a1200);padding:20px}
 .labelAd{background:#ffcc00;color:#000;padding:3px 10px;border-radius:12px;font-size:9px;font-weight:900;margin-bottom:10px}
 </style>
@@ -57,76 +73,62 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 <body>
 <div id="app">
 <div id="feed"></div>
-
 <div id="pBusca" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Busca</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card"><input id="qBusca" class="input" placeholder="Buscar..." oninput="busca()"><div id="rBusca" style="margin-top:10px"></div></div></div>
 
-<!-- CRIAR COM GRAVAÇÃO 1:30 + FRENTE/TRÁS -->
 <div id="pCriar" class="page">
-<div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><h3 style="color:#ff4500">📹 Gravar 1:30</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div>
-
+<div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">📹 Gravar 1:30</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div>
 <div class="card" style="border-color:#ff4500">
-<div style="display:flex;gap:8px;margin-bottom:8px">
-<button onclick="startCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px"><i class="fa-solid fa-user"></i> FRENTE</button>
-<button onclick="startCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px"><i class="fa-solid fa-camera"></i> TRÁS</button>
-<button onclick="switchCam()" class="btn" style="flex:1;margin:0;background:#ff8c00;color:#000;font-size:11px"><i class="fa-solid fa-rotate"></i> TROCAR</button>
-</div>
-
-<div class="camBox" id="camBox" style="display:none">
-<div id="timer" class="timer">00:00 / 01:30</div>
-<video id="camVideo" autoplay muted playsinline></video>
-<div class="ctrlCam">
-<div class="switchCam" onclick="switchCam()"><i class="fa-solid fa-rotate"></i></div>
-<div id="btnRec" class="circ" onclick="toggleRec()"><i class="fa-solid fa-circle"></i></div>
-<div class="switchCam" onclick="stopCam()"><i class="fa-solid fa-xmark"></i></div>
-</div>
-</div>
-
-<div id="camOff" style="text-align:center;padding:20px;background:#111;border-radius:12px;border:1px dashed #ff4500">
-<i class="fa-solid fa-video" style="font-size:32px;color:#ff4500"></i>
-<div style="color:#fff;font-size:12px;margin-top:8px;font-weight:900">Grave vídeo até 1:30</div>
-<div style="color:#888;font-size:10px;margin-top:4px">Use câmera frente ou trás</div>
-<button class="btn" onclick="startCam('user')" style="margin-top:12px"><i class="fa-solid fa-video"></i> ABRIR CÂMERA</button>
-</div>
-
+<div style="display:flex;gap:8px"><button onclick="startCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px"><i class="fa-solid fa-user"></i> FRENTE</button><button onclick="startCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px"><i class="fa-solid fa-camera"></i> TRÁS</button><button onclick="switchCam()" class="btn" style="flex:1;margin:0;background:#ff8c00;color:#000;font-size:11px"><i class="fa-solid fa-rotate"></i> TROCAR</button></div>
+<div class="camBox" id="camBox" style="display:none"><div id="timer" class="timer">00:00 / 01:30</div><video id="camVideo" autoplay muted playsinline></video><div class="ctrlCam"><div class="switchCam" onclick="switchCam()"><i class="fa-solid fa-rotate"></i></div><div id="btnRec" class="circ" onclick="toggleRec()"><i class="fa-solid fa-circle"></i></div><div class="switchCam" onclick="stopCam()"><i class="fa-solid fa-xmark"></i></div></div></div>
+<div id="camOff" style="text-align:center;padding:20px;background:#111;border-radius:12px;border:1px dashed #ff4500;margin-top:10px"><i class="fa-solid fa-video" style="font-size:32px;color:#ff4500"></i><div style="color:#fff;font-size:12px;margin-top:8px;font-weight:900">Grave até 1:30</div><button class="btn" onclick="startCam('user')" style="margin-top:12px"><i class="fa-solid fa-video"></i> ABRIR CÂMERA</button></div>
 <video id="previewVideo" style="width:100%;margin-top:10px;border-radius:12px;display:none" controls playsinline loop></video>
-
-<div style="height:1px;background:rgba(255,69,0,.2);margin:14px 0"></div>
-
-<label style="color:#666;font-size:10px">OU ESCOLHER DA GALERIA</label>
-<input id="file" type="file" accept="image/*,video/*" style="color:#fff;width:100%;margin-top:6px">
-<img id="prev" style="width:100%;margin-top:10px;border-radius:12px;display:none">
-
-<input id="desc" class="input" placeholder="Legenda do vídeo...">
-<button class="btn" onclick="postar()"><i class="fa-solid fa-fire"></i> POSTAR VÍDEO</button>
+<input id="file" type="file" accept="image/*,video/*" style="color:#fff;width:100%;margin-top:10px"><img id="prev" style="width:100%;margin-top:10px;border-radius:12px;display:none"><input id="desc" class="input" placeholder="Legenda..."><button class="btn" onclick="postar()">POSTAR</button>
 </div>
 </div>
 
-<div id="pLive" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Live</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div id="liveBloq" class="card" style="text-align:center;border-color:#ffcc00"><b style="color:#ffcc00">Live R$5/dia</b><div id="pixKey" style="background:#000;padding:10px;border-radius:8px;margin:10px 0;font-size:11px;color:#fff;word-break:break-all">Configure</div><button class="btn" style="background:#ffcc00;color:#000" onclick="pagarPix()">JÁ PAGUEI</button></div><div id="liveOk" class="card" style="display:none;border-color:#00ff88;text-align:center"><b style="color:#00ff88">✅ Liberada</b></div></div>
+<!-- LIVE COM COMENTÁRIOS AO VIVO -->
+<div id="pLive" class="page">
+<div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><h3 style="color:#ff4500">🔴 Live ao Vivo</h3><button onclick="closeAll();stopLive()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div>
+
+<div id="liveBloq" class="card" style="text-align:center;border-color:#ffcc00"><b style="color:#ffcc00">Live R$5/dia</b><div id="pixKey" style="background:#000;padding:10px;border-radius:8px;margin:10px 0;font-size:11px;color:#fff;word-break:break-all">Configure</div><button class="btn" style="background:#ffcc00;color:#000" onclick="pagarPix()">JÁ PAGUEI - LIBERAR LIVE</button></div>
+
+<div id="liveOk" style="display:none;flex-direction:column;gap:10px;padding:10px">
+<div id="liveStartBox" class="card" style="text-align:center;border-color:#ff0000">
+<div style="color:#ff0000;font-weight:900"><i class="fa-solid fa-tower-broadcast"></i> INICIAR LIVE</div>
+<div style="color:#888;font-size:10px;margin-top:4px">Comentários ao vivo liberados para todos</div>
+<button class="btn" style="background:#ff0000;color:#fff" onclick="startLive()"><i class="fa-solid fa-circle"></i> COMEÇAR LIVE AGORA</button>
+<div style="display:flex;gap:8px;margin-top:8px"><button onclick="startLiveCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff0000;font-size:11px">FRENTE</button><button onclick="startLiveCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff0000;font-size:11px">TRÁS</button></div>
+</div>
+
+<div id="liveStageBox" class="card" style="display:none;padding:6px;border-color:#ff0000">
+<div class="liveStage">
+<video id="liveVideo" autoplay muted playsinline></video>
+<div class="liveTag">AO VIVO</div>
+<div class="viewers"><i class="fa-solid fa-eye"></i> <span id="viewCount">1</span></div>
+<div id="chatLive" class="chatLive"></div>
+<div class="liveInputBar">
+<input id="liveInput" placeholder="Comentar ao vivo..." onkeypress="if(event.key==='Enter')sendLiveMsg()">
+<button onclick="sendLiveMsg()"><i class="fa-solid fa-paper-plane"></i></button>
+</div>
+</div>
+<div style="display:flex;gap:8px;margin-top:8px">
+<button class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff0000;font-size:11px" onclick="switchLiveCam()"><i class="fa-solid fa-rotate"></i> TROCAR CÂMERA</button>
+<button class="btn" style="flex:1;margin:0;background:#fff;color:#ff0000;font-size:11px" onclick="stopLive()"><i class="fa-solid fa-stop"></i> ENCERRAR LIVE</button>
+</div>
+<div style="color:#888;font-size:9px;text-align:center;margin-top:6px">🔴 Todo mundo pode comentar ao vivo</div>
+</div>
+
+<div class="card" style="border-color:#00ff88">
+<b style="color:#00ff88;font-size:11px">💬 ÚLTIMOS COMENTÁRIOS DA LIVE</b>
+<div id="liveHistory" style="margin-top:8px;max-height:140px;overflow-y:auto"></div>
+</div>
+</div>
+</div>
 
 <div id="pEu" class="page">
 <div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><div style="display:flex;gap:8px"><button onclick="abrirAdmin()" style="background:#ffcc00;border:none;padding:8px 14px;border-radius:20px;font-weight:900;font-size:11px;color:#000">ADMIN</button><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div></div>
-<div class="card" style="border:1.5px solid #ff8c00;text-align:center">
-<div style="color:#ff8c00;font-weight:900;font-size:13px">👤 MEU CADASTRO</div>
-<input id="fotoPerfil" type="file" accept="image/*" hidden onchange="trocarFoto(this)">
-<div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 FOTO</div></div>
-<input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00">
-<input id="apelidoUser" class="input" placeholder="Apelido (opcional)" style="text-align:center">
-<button class="btn" onclick="salvarTudo()">💾 SALVAR</button>
-<button class="btnDel" onclick="apagarCadastro()">🗑️ APAGAR CADASTRO</button>
-<div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:900"></div>
-<div id="apelidoShow" style="color:#aaa;font-size:11px"></div>
-<div style="color:#333;font-size:8px;margin-top:4px">ID: <span id="uidShow"></span></div>
-</div>
-<div id="adminBox" style="display:none">
-<div class="card" style="border-color:#ffcc00">
-<h4 style="color:#ffcc00">💰 PROPAGANDA ADSENSE+ADMOB</h4>
-<input id="adsenseCode" class="input" placeholder="ca-pub-XXX"><textarea id="adsenseSlot" class="input" placeholder="Código bloco adsense" style="height:60px;font-size:11px"></textarea>
-<input id="admobId" class="input" placeholder="ca-app-pub-XXX/YYY"><input id="adTxt" class="input" placeholder="Texto propaganda">
-<div style="display:flex;gap:8px;margin-top:10px"><input id="adFreq" type="number" value="3" min="1" max="10" class="input" style="margin:0;width:60px;text-align:center"><select id="adTipo" class="input" style="margin:0"><option value="mix">Mix</option><option value="adsense">Adsense</option><option value="admob">AdMob</option><option value="texto">Texto</option></select><label style="color:#fff;font-size:11px"><input type="checkbox" id="adOn"> Ativar</label></div>
-<button class="btn" style="background:#ffcc00;color:#000" onclick="salvarAds()">SALVAR PROPAGANDA</button>
-</div>
-<div class="card"><h4 style="color:#ff8c00">⚙️ Pix Live</h4><input id="pixChave" class="input" placeholder="Chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button></div>
-</div>
+<div class="card" style="border:1.5px solid #ff8c00;text-align:center"><div style="color:#ff8c00;font-weight:900;font-size:13px">👤 MEU CADASTRO</div><input id="fotoPerfil" type="file" accept="image/*" hidden onchange="trocarFoto(this)"><div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 FOTO</div></div><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00"><input id="apelidoUser" class="input" placeholder="Apelido (opcional)" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button><button class="btnDel" onclick="apagarCadastro()">🗑️ APAGAR CADASTRO</button><div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:900"></div><div id="apelidoShow" style="color:#aaa;font-size:11px"></div><div style="color:#333;font-size:8px;margin-top:4px">ID: <span id="uidShow"></span></div></div>
+<div id="adminBox" style="display:none"><div class="card" style="border-color:#ffcc00"><h4 style="color:#ffcc00">💰 PROPAGANDA</h4><input id="adsenseCode" class="input" placeholder="ca-pub-XXX"><textarea id="adsenseSlot" class="input" placeholder="Código bloco adsense" style="height:60px;font-size:11px"></textarea><input id="admobId" class="input" placeholder="ca-app-pub-XXX/YYY"><input id="adTxt" class="input" placeholder="Texto propaganda"><div style="display:flex;gap:8px;margin-top:10px"><input id="adFreq" type="number" value="3" min="1" max="10" class="input" style="margin:0;width:60px;text-align:center"><select id="adTipo" class="input" style="margin:0"><option value="mix">Mix</option><option value="adsense">Adsense</option><option value="admob">AdMob</option><option value="texto">Texto</option></select><label style="color:#fff;font-size:11px"><input type="checkbox" id="adOn"> Ativar</label></div><button class="btn" style="background:#ffcc00;color:#000" onclick="salvarAds()">SALVAR PROPAGANDA</button></div><div class="card"><h4 style="color:#ff8c00">⚙️ Pix Live</h4><input id="pixChave" class="input" placeholder="Chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button></div></div>
 <div class="card"><b style="color:#ff8c00">🔖 Salvos</b><div id="listaSalvos"></div></div>
 <div class="card"><b style="color:#ff8c00">🎬 Meus vídeos</b><div id="meusVideos"></div></div>
 </div>
@@ -143,75 +145,83 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 <script>
 let uid=localStorage.getItem("uid")||"u_"+Math.random().toString(36).slice(2,7);localStorage.setItem("uid",uid);
 let userFoto=localStorage.getItem("userFoto")||"",userNome=localStorage.getItem("userNome")||"",userApelido=localStorage.getItem("userApelido")||"";
-let posts=JSON.parse(localStorage.getItem("posts_video130")||"null")||[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Agora grava vídeo 1:30 frente e trás 🔥",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true,type:"img"}];
-let temp="",tempType="img",cfg=JSON.parse(localStorage.getItem("cfg_video130")||"null")||{pixK:"Configure",adT:"🔥 Oferta!",adF:3,adOn:false,adsense:"",slot:"",admob:"",tipo:"mix"};
-// CÂMERA
+let posts=JSON.parse(localStorage.getItem("posts_liveChat")||"null")||[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Live com comentários ao vivo agora! 🔴💬",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true,type:"img"}];
+let temp="",tempType="img",cfg=JSON.parse(localStorage.getItem("cfg_liveChat")||"null")||{pixK:"Configure",adT:"🔥 Oferta!",adF:3,adOn:false,adsense:"",slot:"",admob:"",tipo:"mix"};
+let liveMsgs=JSON.parse(localStorage.getItem("liveMsgs")||"[]");
 let stream=null,recorder=null,chunks=[],recording=false,timerInt=null,sec=0,facing="user";
-async function startCam(mode){
-facing=mode||facing;
-try{
-if(stream)stream.getTracks().forEach(t=>t.stop());
-stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:true});
-let v=document.getElementById("camVideo");
-v.srcObject=stream;
-if(facing==="user")v.classList.remove("back"); else v.classList.add("back");
-document.getElementById("camBox").style.display="block";
-document.getElementById("camOff").style.display="none";
-}catch(e){alert("Erro câmera: "+e.message+"\nUse HTTPS");}
-}
-function stopCam(){
-if(stream)stream.getTracks().forEach(t=>t.stop());
-stream=null;
-document.getElementById("camBox").style.display="none";
-document.getElementById("camOff").style.display="block";
-stopTimer();
-if(recording)stopRec();
-}
+let liveStream=null,liveFacing="user",viewInt=null;
+// FEED CÂMERA POST
+async function startCam(mode){facing=mode||facing;try{if(stream)stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:true});let v=document.getElementById("camVideo");v.srcObject=stream;document.getElementById("camBox").style.display="block";document.getElementById("camOff").style.display="none";}catch(e){alert("Erro: "+e.message);}}
+function stopCam(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;document.getElementById("camBox").style.display="none";document.getElementById("camOff").style.display="block";stopTimer();if(recording)stopRec();}
 function switchCam(){startCam(facing==="user"?"environment":"user");}
 function toggleRec(){if(!recording)startRec();else stopRec();}
-function startRec(){
-if(!stream){alert("Abra a câmera primeiro");return;}
-chunks=[];recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9'});
-recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data);};
-recorder.onstop=()=>{
-let blob=new Blob(chunks,{type:'video/webm'});
-let url=URL.createObjectURL(blob);
-temp=url;tempType="video";tempBlob=blob;
-let pv=document.getElementById("previewVideo");
-pv.src=url;pv.style.display="block";
-document.getElementById("prev").style.display="none";
-};
-recorder.start();recording=true;
-document.getElementById("btnRec").classList.add("stop");document.getElementById("btnRec").innerHTML='<i class="fa-solid fa-stop"></i>';
-document.getElementById("btnRec").classList.add("btnRec");
-sec=0;startTimer();
-}
-function stopRec(){
-if(recorder&&recording){recorder.stop();recording=false;document.getElementById("btnRec").classList.remove("stop","btnRec");document.getElementById("btnRec").innerHTML='<i class="fa-solid fa-circle"></i>';stopTimer();}
-}
-function startTimer(){
-stopTimer();sec=0;
-timerInt=setInterval(()=>{
-sec++;
-let m=String(Math.floor(sec/60)).padStart(2,'0');let s=String(sec%60).padStart(2,'0');
-document.getElementById("timer").innerText=`${m}:${s} / 01:30`;
-document.getElementById("timer").style.background=sec>=80?'#ff0000':'rgba(255,0,0,.85)';
-if(sec>=90){stopRec();document.getElementById("timer").innerText="01:30 - LIMITE!";alert("⏱️ Limite 1:30 atingido! Vídeo salvo.");}
-},1000);
-}
+function startRec(){if(!stream){alert("Abra câmera");return;}chunks=[];recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9'});recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data);};recorder.onstop=()=>{let blob=new Blob(chunks,{type:'video/webm'});let url=URL.createObjectURL(blob);temp=url;tempType="video";let pv=document.getElementById("previewVideo");pv.src=url;pv.style.display="block";document.getElementById("prev").style.display="none";};recorder.start();recording=true;document.getElementById("btnRec").classList.add("stop");document.getElementById("btnRec").innerHTML='<i class="fa-solid fa-stop"></i>';sec=0;startTimer();}
+function stopRec(){if(recorder&&recording){recorder.stop();recording=false;document.getElementById("btnRec").classList.remove("stop");document.getElementById("btnRec").innerHTML='<i class="fa-solid fa-circle"></i>';stopTimer();}}
+function startTimer(){stopTimer();timerInt=setInterval(()=>{sec++;let m=String(Math.floor(sec/60)).padStart(2,'0');let s=String(sec%60).padStart(2,'0');document.getElementById("timer").innerText=`${m}:${s} / 01:30`;if(sec>=90){stopRec();alert("⏱️ 1:30 atingido!");}},1000);}
 function stopTimer(){if(timerInt){clearInterval(timerInt);timerInt=null;}}
 
-let tempBlob=null;
-function save(){localStorage.setItem("posts_video130",JSON.stringify(posts));render();}
-function saveCfg(){localStorage.setItem("cfg_video130",JSON.stringify(cfg));render();}
+// LIVE COM COMENTÁRIOS AO VIVO
+async function startLiveCam(mode){liveFacing=mode||liveFacing;try{if(liveStream)liveStream.getTracks().forEach(t=>t.stop());liveStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:liveFacing,width:{ideal:1280},height:{ideal:720}},audio:true});document.getElementById("liveVideo").srcObject=liveStream;}catch(e){alert("Erro live: "+e.message);}}
+function switchLiveCam(){startLiveCam(liveFacing==="user"?"environment":"user");}
+function startLive(){
+if(!userNome){alert("Faça cadastro em Eu primeiro!");go(4);return;}
+startLiveCam(liveFacing);
+document.getElementById("liveStartBox").style.display="none";
+document.getElementById("liveStageBox").style.display="block";
+addLiveMsg("SISTEMA",`🔴 @${userNome} começou a live!`,true);
+addLiveMsg("SISTEMA",`💬 Comentários ao vivo liberados!`,true);
+let views=1;
+viewInt=setInterval(()=>{views+=Math.floor(Math.random()*3);document.getElementById("viewCount").innerText=views;},3000);
+document.getElementById("liveInput").focus();
+}
+function stopLive(){
+if(liveStream)liveStream.getTracks().forEach(t=>t.stop());liveStream=null;
+if(viewInt){clearInterval(viewInt);viewInt=null;}
+document.getElementById("liveStartBox").style.display="block";
+document.getElementById("liveStageBox").style.display="none";
+addLiveMsg("SISTEMA",`🔴 Live encerrada por @${userNome||"host"}`,true);
+}
+function sendLiveMsg(){
+let inp=document.getElementById("liveInput");let txt=inp.value.trim();if(!txt)return;
+let nome=userNome||"anon";
+addLiveMsg(nome,txt,false);
+inp.value="";
+// Simula outras pessoas comentando
+if(Math.random()>0.5){
+setTimeout(()=>{
+let bots=["Maria","João","Ana","Pedro","fire.fan"];
+let msgs=["🔥🔥🔥","Top demais!","Amei!","Manda salve!","Muito bom!","👏👏👏","❤️❤️"];
+let b=bots[Math.floor(Math.random()*bots.length)];
+let m=msgs[Math.floor(Math.random()*msgs.length)];
+addLiveMsg(b,m,false);
+},800+Math.random()*2000);
+}
+}
+function addLiveMsg(user,text,isSystem){
+let obj={user:user,text:text,time:Date.now(),isSystem:isSystem};
+liveMsgs.push(obj);
+if(liveMsgs.length>80)liveMsgs.shift();
+localStorage.setItem("liveMsgs",JSON.stringify(liveMsgs));
+renderLiveChat();
+}
+function renderLiveChat(){
+let chat=document.getElementById("chatLive");
+let hist=document.getElementById("liveHistory");
+if(!chat)return;
+chat.innerHTML=liveMsgs.slice(-12).map(m=>`<div class="msgLive ${m.isSystem?'system':''}"><b>@${m.user}:</b><span>${m.text}</span></div>`).join("");
+chat.scrollTop=chat.scrollHeight;
+if(hist)hist.innerHTML=liveMsgs.slice(-20).reverse().map(m=>`<div style="padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:11px"><b style="color:${m.isSystem?'#ff8c00':'#ffcc00'}">@${m.user}</b> <span style="color:#fff">${m.text}</span><span style="color:#555;font-size:9px"> ${new Date(m.time).toLocaleTimeString()}</span></div>`).join("");
+}
+function save(){localStorage.setItem("posts_liveChat",JSON.stringify(posts));render();}
+function saveCfg(){localStorage.setItem("cfg_liveChat",JSON.stringify(cfg));render();}
 function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase();let a=document.getElementById("apelidoUser").value.trim();if(!n){alert("Digite seu nome");return;}userNome=n;userApelido=a;localStorage.setItem("userNome",n);localStorage.setItem("userApelido",a);render();alert("✅ Salvo @"+n);}
 function apagarCadastro(){if(!confirm("Apagar cadastro?"))return;userFoto="";userNome="";userApelido="";localStorage.removeItem("userFoto");localStorage.removeItem("userNome");localStorage.removeItem("userApelido");document.getElementById("avatarBox").innerHTML="🔥";document.getElementById("nomeUser").value="";document.getElementById("apelidoUser").value="";render();alert("🗑️ Apagado");}
 function trocarFoto(inp){let f=inp.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{userFoto=e.target.result;localStorage.setItem("userFoto",userFoto);document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;render();};r.readAsDataURL(f);}
-function salvarAds(){cfg.adsense=document.getElementById("adsenseCode").value.trim();cfg.slot=document.getElementById("adsenseSlot").value.trim();cfg.admob=document.getElementById("admobId").value.trim();cfg.adT=document.getElementById("adTxt").value.trim()||"🔥 Promo!";cfg.adF=parseInt(document.getElementById("adFreq").value)||3;cfg.tipo=document.getElementById("adTipo").value;cfg.adOn=document.getElementById("adOn").checked;saveCfg();alert(`✅ Propaganda a cada ${cfg.adF} vídeos - ${cfg.adOn?'ATIVA':'DESATIVADA'}`);}
+function salvarAds(){cfg.adsense=document.getElementById("adsenseCode").value.trim();cfg.slot=document.getElementById("adsenseSlot").value.trim();cfg.admob=document.getElementById("admobId").value.trim();cfg.adT=document.getElementById("adTxt").value.trim()||"🔥 Promo!";cfg.adF=parseInt(document.getElementById("adFreq").value)||3;cfg.tipo=document.getElementById("adTipo").value;cfg.adOn=document.getElementById("adOn").checked;saveCfg();alert(`✅ Propaganda a cada ${cfg.adF} vídeos`);}
 function render(){
 let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0));let feed=[];list.forEach((p,i)=>{feed.push(p);if(cfg.adOn&&(i+1)%cfg.adF===0)feed.push({ad:true});});
 document.getElementById("feed").innerHTML=feed.map(p=>{
-if(p.ad){return `<div class="post"><div class="adBox"><span class="labelAd">PUBLICIDADE</span><b style="color:#ffcc00;font-size:18px;text-align:center;padding:0 20px">${cfg.adT}</b></div></div>`;}
+if(p.ad){return `<div class="post"><div class="adBox"><span class="labelAd">PUBLICIDADE</span><b style="color:#ffcc00;font-size:18px">${cfg.adT}</b></div></div>`;}
 let idx=posts.indexOf(p);let fired=p.firedBy.includes(uid),liked=p.likedBy.includes(uid),saved=p.saveBy.includes(uid);
 let media=p.type==="video"?`<video src="${p.img}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video>`:`<div style="width:100%;height:100%;background:url('${p.img}') center/cover no-repeat"></div>`;
 return `<div class="post">${media}<div class="rightBar"><button class="btnTik" onclick="fire(${idx})"><div class="iconTik fire ${fired?'on':''}"><i class="fa-solid fa-fire"></i></div><div class="txtTik">${p.firedBy.length}<br>Chamas</div></button><button class="btnTik" onclick="like(${idx})"><div class="iconTik heart ${liked?'on':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="txtTik">${p.likedBy.length}<br>Curtir</div></button><button class="btnTik" onclick="openC(${idx})"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">${p.com.length}<br>Comen</div></button><button class="btnTik" onclick="shareP(${idx})"><div class="iconTik"><i class="fa-solid fa-share"></i></div><div class="txtTik">${p.sharedBy.length||p.share||0}<br>Compar</div></button><button class="btnTik" onclick="saveP(${idx})"><div class="iconTik save ${saved?'on':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="txtTik">Salvar</div></button></div><div class="info"><b>@${p.owner}</b> ${p.type==="video"?'🎥':''}<div>${p.desc}</div></div></div>`;
@@ -220,34 +230,22 @@ document.getElementById("listaSalvos").innerHTML=posts.filter(p=>p.saveBy.includ
 let meus=posts.filter(p=>p.owner===(userNome||"")&&p.owner!=="fire.influencer");document.getElementById("meusVideos").innerHTML=meus.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px">${p.type==="video"?`<video src="${p.img}" style="width:42px;height:42px;border-radius:8px"></video>`:`<img src="${p.img}" style="width:42px;height:42px;border-radius:8px">`}<div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555;font-size:11px'>Nenhum</div>";
 document.getElementById("pixKey").innerText=cfg.pixK;document.getElementById("pixChave").value=cfg.pixK!=="Configure"?cfg.pixK:"";document.getElementById("adsenseCode").value=cfg.adsense;document.getElementById("adsenseSlot").value=cfg.slot;document.getElementById("admobId").value=cfg.admob;document.getElementById("adTxt").value=cfg.adT;document.getElementById("adFreq").value=cfg.adF;document.getElementById("adTipo").value=cfg.tipo;document.getElementById("adOn").checked=cfg.adOn;
 document.getElementById("uidShow").innerText=uid;document.getElementById("nomeUser").value=userNome;document.getElementById("apelidoUser").value=userApelido;document.getElementById("nomeShow").innerText=userNome?"@"+userNome:"@fire.user";document.getElementById("apelidoShow").innerText=userApelido?`(${userApelido})`:"";if(userFoto)document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;else document.getElementById("avatarBox").innerHTML="🔥";
+renderLiveChat();checkLive();
 }
 function fire(i){let p=posts[i];if(p.firedBy.includes(uid))p.firedBy=p.firedBy.filter(x=>x!==uid);else p.firedBy.push(uid);save();}
 function like(i){let p=posts[i];if(p.likedBy.includes(uid))p.likedBy=p.likedBy.filter(x=>x!==uid);else p.likedBy.push(uid);save();}
 function saveP(i){let p=posts[i];if(p.saveBy.includes(uid))p.saveBy=p.saveBy.filter(x=>x!==uid);else p.saveBy.push(uid);save();}
 function openC(i){let t=prompt("Comentário:");if(t){posts[i].com.push({u:userNome||"anon",t:t});save();}}
 function shareP(i){if(!posts[i].sharedBy.includes(uid)){posts[i].sharedBy.push(uid);save();}window.open("https://wa.me/?text="+encodeURIComponent(location.href),"_blank");}
-function go(n){if(n!==2)stopCam();document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b"+n).classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n==1)document.getElementById("pBusca").classList.add("show");if(n==2)document.getElementById("pCriar").classList.add("show");if(n==3)document.getElementById("pLive").classList.add("show");if(n==4)document.getElementById("pEu").classList.add("show");}
-function closeAll(){stopCam();document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b0").classList.add("on");}
+function go(n){if(n!==2)stopCam();if(n!==3)stopLive();document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b"+n).classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n==1)document.getElementById("pBusca").classList.add("show");if(n==2)document.getElementById("pCriar").classList.add("show");if(n==3)document.getElementById("pLive").classList.add("show");if(n==4)document.getElementById("pEu").classList.add("show");}
+function closeAll(){stopCam();stopLive();document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b0").classList.add("on");}
 function abrirAdmin(){let s=prompt("Senha Admin:");if(s==="fire123")document.getElementById("adminBox").style.display="block";else if(s)alert("Senha: fire123");}
 function salvarPix(){let k=document.getElementById("pixChave").value.trim();if(!k)return alert("Digite Pix");cfg.pixK=k;saveCfg();alert("Pix salvo!");}
-function pagarPix(){localStorage.setItem("livePago",new Date().toDateString());render();alert("✅ Liberada!");}
+function checkLive(){let pago=localStorage.getItem("livePago")===new Date().toDateString();document.getElementById("liveBloq").style.display=pago?"none":"block";document.getElementById("liveOk").style.display=pago?"flex":"none";}
+function pagarPix(){localStorage.setItem("livePago",new Date().toDateString());checkLive();}
 function busca(){let q=document.getElementById("qBusca").value.toLowerCase();let r=posts.filter(p=>p.desc.toLowerCase().includes(q));document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:8px"><img src="${p.img}" style="width:40px;height:40px;border-radius:8px"><div style="color:#fff;font-size:11px">${p.desc}</div></div>`).join("")||"<div style='color:#555'>Nada</div>";}
-document.getElementById("file").addEventListener("change",e=>{
-let f=e.target.files[0];if(!f)return;
-let r=new FileReader();
-r.onload=ev=>{
-if(f.type.startsWith("video")){temp=ev.target.result;tempType="video";document.getElementById("previewVideo").src=temp;document.getElementById("previewVideo").style.display="block";document.getElementById("prev").style.display="none";}
-else{temp=ev.target.result;tempType="img";document.getElementById("prev").src=temp;document.getElementById("prev").style.display="block";document.getElementById("previewVideo").style.display="none";}
-};
-r.readAsDataURL(f);
-});
-function postar(){
-let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";
-if(!temp){alert("Grave ou escolha um vídeo!");return;}
-if(!userNome){alert("Faça cadastro em Eu!");go(4);return;}
-posts.unshift({owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:tempType});
-temp="";tempType="img";document.getElementById("prev").style.display="none";document.getElementById("previewVideo").style.display="none";document.getElementById("desc").value="";save();closeAll();stopCam();
-}
+document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{if(f.type.startsWith("video")){temp=ev.target.result;tempType="video";document.getElementById("previewVideo").src=temp;document.getElementById("previewVideo").style.display="block";document.getElementById("prev").style.display="none";}else{temp=ev.target.result;tempType="img";document.getElementById("prev").src=temp;document.getElementById("prev").style.display="block";document.getElementById("previewVideo").style.display="none";}};r.readAsDataURL(f);});
+function postar(){let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";if(!temp){alert("Grave ou escolha vídeo!");return;}if(!userNome){alert("Faça cadastro em Eu!");go(4);return;}posts.unshift({owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:tempType});temp="";tempType="img";document.getElementById("prev").style.display="none";document.getElementById("previewVideo").style.display="none";document.getElementById("desc").value="";save();closeAll();stopCam();}
 render();
 </script>
 </body>
