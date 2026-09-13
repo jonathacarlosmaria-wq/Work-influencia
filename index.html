@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>WORK FIRE - 4 BOTÕES</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#000;overflow:hidden}
+#app{width:100%;max-width:420px;height:100dvh;margin:0 auto;display:flex;flex-direction:column;background:#000;position:relative}
+#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
+#feed::-webkit-scrollbar{display:none}
+.post{height:100%;min-height:100%;position:relative;scroll-snap-align:start;background-color:#111;background-size:cover;background-position:center}
+.top{position:absolute;top:14px;left:12px;right:12px;display:flex;justify-content:space-between;z-index:5}
+.logo{color:#ff4500;font-weight:900;font-size:18px;text-shadow:0 0 10px #ff4500}
+.badge{background:linear-gradient(90deg,#ff4500,#ff8c00);color:#000;padding:6px 14px;border-radius:20px;font-weight:900;font-size:11px}
+.side{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:16px;z-index:5;align-items:center}
+.sbtn{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer}
+.ibtn{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle,#ff4500,#8b0000);border:2px solid #ff8c00;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 12px rgba(255,69,0,.7)}
+.count{color:#fff;font-size:11px;font-weight:700;text-shadow:0 1px 2px #000}
+.info{position:absolute;left:12px;right:76px;bottom:85px;background:rgba(10,0,0,.88);border:2px solid #ff3300;border-radius:14px;padding:10px 12px;z-index:5}
+.nav{height:68px;min-height:68px;background:#080300;border-top:2px solid #ff4500;display:flex;align-items:center;justify-content:space-around;z-index:20;flex-shrink:0}
+.nav button{flex:1;background:none;border:none;color:#6b3a10;font-size:10px;font-weight:800;display:flex;flex-direction:column;align-items:center}
+.nav button.on{color:#ff8c00}
+.plus{width:62px;height:62px;border-radius:50%;background:radial-gradient(circle,#ff6a00,#ff0000);border:3px solid #fff;color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;margin-top:-26px;box-shadow:0 0 20px #ff4500}
+.page{position:absolute;inset:0;background:#000;z-index:30;display:none;flex-direction:column;overflow:auto}
+.page.show{display:flex}
+.card{background:#140800;border:2px solid #ff4500;border-radius:12px;padding:14px;margin:10px}
+.input{width:100%;padding:12px;background:#1a0a00;border:1.5px solid #ff4500;border-radius:10px;color:#fff;margin-top:8px}
+.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:10px;color:#000;font-weight:900;margin-top:10px}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="feed"></div>
+
+<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3>🔥 Criar</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div class="card"><input id="imgLink" class="input" placeholder="Link imagem"><input id="file" type="file" accept="image/*" style="margin-top:10px;color:#fff"><img id="prev" style="width:100%;margin-top:10px;border-radius:10px;display:none"><input id="desc" class="input" placeholder="Descrição"><button class="btn" onclick="addPost()">POSTAR</button></div></div>
+<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><b>🔥 PERFIL</b><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div style="text-align:center;padding:16px"><div id="foto" style="width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#ff4500,#8b0000);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px">🔥</div><div id="nome" style="font-weight:900;margin-top:8px">FIRE ADMIN</div><div id="user" style="color:#aaa;font-size:12px">@fire</div></div><div class="card"><input id="cNome" class="input" placeholder="Nome"><input id="cUser" class="input" placeholder="@usuario"><input id="cFoto" class="input" placeholder="Link foto"><button class="btn" onclick="savePerfil()">SALVAR</button></div><div class="card"><button onclick="openAdmin()" style="width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:3px solid #fff;border-radius:12px;color:#000;font-weight:900">👑 ADMIN</button></div></div>
+<div id="pAdmin" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3>ADMIN</h3><button onclick="closeAll()" style="background:none;border:none;color:#fff;font-size:22px">✕</button></div><div class="card"><div>🟢 <span id="on1">1</span> ONLINE | Posts: <span id="sPost">0</span></div></div></div>
+
+<div class="nav">
+<button id="n0" class="on" onclick="go(0)"><span style="font-size:20px">🏠</span><span>Inicio</span></button>
+<button onclick="go(1)"><span style="font-size:20px">🔍</span><span>Busca</span></button>
+<button onclick="go(2)"><div class="plus">+</div></button>
+<button onclick="go(3)"><span style="font-size:20px">🔴</span><span>Live</span></button>
+<button id="n4" onclick="go(4)"><span style="font-size:20px">🔥</span><span>Eu</span></button>
+</div>
+</div>
+<script>
+let perfil={nome:"FIRE ADMIN",user:"@fire",foto:""};
+let posts=[{owner:"fire.influencer",img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800",desc:"🔥 AGORA COM 4 BOTÕES LATERAIS!",likes:7777,comments:432,shares:128}];
+let temp="";
+try{let p=localStorage.getItem("perfil_fire_4btn");if(p)perfil=JSON.parse(p);let po=localStorage.getItem("posts_fire_4btn");if(po)posts=JSON.parse(po);}catch(e){}
+
+function render(){
+let f=document.getElementById("feed");
+f.innerHTML=posts.map((p,i)=>`
+<div class="post" style="background-image:url('${p.img}')">
+<div class="top"><div class="logo">🔥 WORK FIRE</div><div class="badge">🔥 1 FIRE ONLINE</div></div>
+
+<div class="side">
+<button class="sbtn" onclick="like(${i})">
+<div class="ibtn">🔥</div>
+<span class="count">${p.likes}</span>
+</button>
+
+<button class="sbtn" onclick="like(${i})">
+<div class="ibtn">💖</div>
+<span class="count">Curtir</span>
+</button>
+
+<button class="sbtn" onclick="alert('💬 Comentários em breve!')">
+<div class="ibtn">💬</div>
+<span class="count">${p.comments||0}</span>
+</button>
+
+<button class="sbtn" onclick="alert('🚀 Compartilhar!')">
+<div class="ibtn">🚀</div>
+<span class="count">${p.shares||0}</span>
+</button>
+
+<button class="sbtn" onclick="alert('🔖 Salvo!')">
+<div class="ibtn">🔖</div>
+<span class="count">Salvar</span>
+</button>
+</div>
+
+<div class="info"><b style="color:#ff8c00">@${p.owner}</b><div style="font-size:13px;margin-top:4px;color:#fff">${p.desc}</div></div>
+</div>`).join("");
+try{document.getElementById("sPost").innerText=posts.length;document.getElementById("nome").innerText=perfil.nome;document.getElementById("user").innerText=perfil.user;document.getElementById("cNome").value=perfil.nome;document.getElementById("cUser").value=perfil.user;document.getElementById("cFoto").value=perfil.foto||"";if(perfil.foto){document.getElementById("foto").innerHTML=`<img src="${perfil.foto}" style="width:100%;height:100%;border-radius:50%;object-fit:cover">`;}
+}catch(e){}
+}
+function savePerfil(){perfil.nome=document.getElementById("cNome").value||"FIRE ADMIN";perfil.user=document.getElementById("cUser").value||"@fire";perfil.foto=document.getElementById("cFoto").value||"";localStorage.setItem("perfil_fire_4btn",JSON.stringify(perfil));render();alert("Salvo");closeAll();}
+function addPost(){let link=document.getElementById("imgLink").value.trim()||temp;let d=document.getElementById("desc").value.trim()||"🔥 Fire";if(!link){alert("Imagem");return;}posts.unshift({owner:perfil.user.replace("@",""),img:link,desc:d,likes:0,comments:0,shares:0});localStorage.setItem("posts_fire_4btn",JSON.stringify(posts));render();closeAll();go(0);}
+function like(i){posts[i].likes++;localStorage.setItem("posts_fire_4btn",JSON.stringify(posts));render();}
+function go(n){document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));if(document.getElementById("n"+n))document.getElementById("n"+n).classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n===2)document.getElementById("pCriar").classList.add("show");if(n===4)document.getElementById("pEu").classList.add("show");}
+function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));}
+function openAdmin(){let s=prompt("Senha:");if(s==="admin123")document.getElementById("pAdmin").classList.add("show");}
+document.getElementById("file").addEventListener("change",function(e){let r=new FileReader();r.onload=function(ev){temp=ev.target.result;let p=document.getElementById("prev");p.src=temp;p.style.display="block";};if(e.target.files[0])r.readAsDataURL(e.target.files[0]);});
+render();
+</script>
+</body>
+</html>
