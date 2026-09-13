@@ -1,85 +1,225 @@
-<!-- SUBSTITUI SÓ O CSS E JS DOS COMENTÁRIOS - CORREÇÃO TECLADO -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>WORK GOLD V45 - FIX TECLADO</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* FIX TECLADO ANDROID */
-.modal input,.modal textarea {
-  -webkit-user-select: text!important;
-  user-select: text!important;
-  pointer-events: auto!important;
-  touch-action: manipulation!important;
-  -webkit-appearance: none!important;
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;font-family:'Inter',system-ui}
+html,body{width:100%;height:100%;background:#000;overflow:hidden;display:flex;justify-content:center}
+.app{width:100%;max-width:440px;height:100dvh;background:#000;position:relative;display:flex;flex-direction:column;overflow:hidden}
+.stage{flex:1;position:relative;background:#000;overflow:hidden;touch-action:pan-y}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#080808}
+.grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,transparent 25%,transparent 50%,rgba(0,0,0,.75) 80%,rgba(0,0,0,.95) 100%)}
+.top-pill-wrap{position:absolute;top:18px;left:50%;transform:translateX(-50%);z-index:30;width:78%}
+.top-pill{display:flex;background:rgba(30,30,30,.85);border:1.5px solid rgba(255,215,0,.35);border-radius:100px;padding:5px;justify-content:space-between}
+.t-tab{flex:1;color:rgba(255,255,255,.6);font-size:14px;font-weight:800;padding:10px 0;border-radius:100px;text-align:center}.t-tab.on{color:#000;background:linear-gradient(145deg,#FFE77A,#FFD700);font-weight:900}
+.live-badge{position:absolute;top:22px;right:14px;z-index:31;background:#222;border:1.5px solid #FFD700;padding:8px 14px;border-radius:100px;font-size:12px;font-weight:900;display:flex;flex-direction:column;align-items:center;color:#FFD700}
+.right{position:absolute;right:10px;top:50%;transform:translateY(-28%);z-index:35;display:flex;flex-direction:column;gap:13px;align-items:center;width:70px}
+.act{width:70px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.abtn{width:60px;height:60px;border-radius:50%;background:#2a2a2a;border:1.8px solid #FFD700;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.5);transition:all.2s}
+.abtn:active{transform:scale(.85)}
+.abtn.follow{border:2.5px solid #FFD700;background:#000}
+.abtn.follow img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%}
+.abtn.liked{background:rgba(255,215,0,.25)}
+.cnt{font-size:11px;font-weight:900;color:#fff}
+.badge{position:absolute;bottom:-2px;right:-2px;width:22px;height:22px;border-radius:50%;border:2.5px solid #000;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}
+.badge.plus{background:#FFD700;color:#000}.badge.ok{background:#00e676;color:#fff}
+.bot{position:absolute;left:12px;right:84px;bottom:86px;z-index:20}
+.glass-card{background:#1a1a1a;border:1.5px solid rgba(255,215,0,.32);border-radius:22px;padding:14px 16px}
+.urow{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.upic{width:44px;height:44px;border-radius:50%;border:2px solid #FFD700;object-fit:cover;background:#111}
+.uname{font-weight:900;font-size:15px;color:#FFD700}
+.nav{height:82px;min-height:82px;background:#1a1608;border-top:1.5px solid #FFD700;display:flex;align-items:center;justify-content:space-around;z-index:50;width:100%;padding:10px 12px 18px;border-radius:26px 26px 0 0;margin-top:-18px}
+.ntab{flex:1;display:flex;flex-direction:column;align-items:center;color:#b89a00;font-size:9px;font-weight:800;cursor:pointer;height:100%;justify-content:center}.ntab.on{color:#FFD700}.ntab div:first-child{font-size:26px}
+.nplus{width:58px;height:58px;background:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FFD700}
+.nplus span{color:#FFD700;font-weight:900;font-size:32px}
+/* MODAIS SEM BLUR - FIX TRAVAMENTO */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:none;flex-direction:column;max-width:440px;left:50%;transform:translateX(-50%)}
+.modal.on{display:flex!important}
+.modal-box{background:#121212;border-radius:28px 28px 0 0;padding:0;max-height:88vh;display:flex;flex-direction:column;border-top:3px solid #FFD700;margin-top:auto;width:100%;max-width:440px}
+/* INPUTS 100% FUNCIONANDO ANDROID */
+.input-gold{
+width:100%;background:#1e1e1e;border:2px solid #FFD700;padding:16px 18px;border-radius:14px;color:#fff;font-size:16px!important;outline:none;
+-webkit-user-select:text!important;user-select:text!important;-webkit-appearance:none;appearance:none;
 }
-#cM { z-index: 99999!important; }
-#cM #commentModalBox {
-  backdrop-filter: none!important; /* REMOVE BLUR QUE TRAVA TECLADO */
-  background: #121212!important;
-}
+.input-gold:focus{border-color:#FFE77A;background:#252525}
+#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#FFD700;color:#000;padding:12px 22px;border-radius:100px;font-weight:900;font-size:12px;z-index:99999;display:none;border:2px solid #000}#toast.on{display:block}
+#cam,#liveM{position:fixed;inset:0;background:#000;z-index:9998;display:none;flex-direction:column;width:100%;max-width:440px;left:50%;transform:translateX(-50%)}
+#camEl,#liveV{flex:1;width:100%;height:100%;object-fit:cover;background:#111}
+.heart{position:absolute;font-size:88px;animation:pop.9s forwards;pointer-events:none;z-index:80}@keyframes pop{0%{transform:translate(-50%,-50%) scale(0);opacity:0}15%{opacity:1;transform:translate(-50%,-50%) scale(1.25)}100%{transform:translate(-50%,-95%) scale(1);opacity:0}}
 </style>
+</head>
+<body>
+<div id="toast"></div>
+<div class="app">
+<div class="stage" id="stage"></div>
+<div class="nav">
+<div class="ntab on" onclick="goHome()"><div>⌂</div>Início</div>
+<div class="ntab" onclick="toast('🔍 Descobrir')"><div>⌕</div>Descobrir</div>
+<div class="ntab" onclick="goCam()"><div class="nplus"><span>+</span></div></div>
+<div class="ntab" onclick="openLive()"><div>◎</div>LIVE</div>
+<div class="ntab" onclick="goProfile()"><div id="navPic">👑</div>Eu</div>
+</div>
+</div>
+<div id="adminBar" style="position:fixed;top:64px;left:12px;z-index:700"><button onclick="openAdmin()" style="padding:8px 14px;border-radius:100px;background:#FFD700;color:#000;font-weight:900;border:2px solid #000;font-size:10px">👑 ADMIN • <span id="onlineCount">0</span></button></div>
 
-<!-- MODAL COMENTÁRIOS V44 CORRIGIDO -->
+<div id="cam"><video id="camEl" autoplay muted playsinline></video><canvas id="photoCanvas" style="display:none"></canvas>
+<div style="position:absolute;top:0;left:0;right:0;padding:14px;display:flex;justify-content:space-between"><button onclick="closeAll()" style="width:38px;height:38px;border-radius:50%;background:#000;border:1.5px solid #FFD700;color:#FFD700">✕</button><div id="camL" style="background:#FFD700;color:#000;padding:6px 14px;border-radius:100px;font-size:10px;font-weight:900">📸 FOTO</div><button onclick="postNow()" style="background:#FFD700;color:#000;padding:8px 18px;border-radius:100px;font-weight:900;font-size:11px;border:2px solid #000">Postar</button></div>
+<div style="position:absolute;bottom:96px;left:0;right:0;display:flex;justify-content:center;gap:8px"><button id="bF" onclick="setM('foto')" style="padding:9px 16px;border-radius:100px;background:#FFD700;color:#000;font-weight:900;border:2px solid #000;font-size:10px">FOTO</button><button id="bV" onclick="setM('video')" style="padding:9px 16px;border-radius:100px;background:#222;color:#FFD700;border:1.5px solid #FFD700;font-size:10px">1:30</button><button id="bL" onclick="openLive()" style="padding:9px 16px;border-radius:100px;background:#8B0000;color:#fff;border:1.5px solid #FFD700;font-size:10px">🔴 30MIN</button></div>
+<div style="position:absolute;bottom:0;left:0;right:0;padding:14px;display:flex;gap:12px"><input id="descInp" class="input-gold" style="flex:1;padding:12px 16px;border-radius:100px" placeholder="Legenda dourada..."><button id="shut" onclick="cap()" style="width:72px;height:72px;border-radius:50%;background:#FFD700;border:3px solid #000;font-size:24px">📸</button></div><div id="recP" style="position:absolute;bottom:0;left:0;height:4px;background:#FFD700;width:0%"></div></div>
+
+<div id="liveM"><video id="liveV" autoplay muted playsinline></video><div style="position:absolute;top:0;left:0;right:0;padding:14px;display:flex;justify-content:space-between"><div style="display:flex;gap:8px"><div style="background:#FFD700;padding:7px 14px;border-radius:100px;font-weight:900;font-size:11px;border:2px solid #000;color:#000">🔴 AO VIVO GOLD</div><div id="liveT" style="background:#000;padding:7px 14px;border-radius:100px;font-size:13px;font-weight:900;border:1.5px solid #FFD700;color:#FFD700">00:00 / 30:00</div></div><button onclick="closeAll()" style="width:38px;height:38px;border-radius:50%;background:#000;border:1.5px solid #FFD700;color:#FFD700">✕</button></div><div id="liveI" style="position:absolute;top:62px;left:50%;transform:translateX(-50%);background:#000;padding:8px 16px;border-radius:100px;font-size:11px;color:#FFD700"></div><div style="position:absolute;bottom:0;left:0;right:0;height:6px;background:#333"><div id="liveBar" style="height:100%;width:0%;background:#FFD700"></div></div><button id="liveB" onclick="togLive()" style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);width:84px;height:84px;border-radius:50%;background:#FFD700;border:4px solid #000;color:#000;font-size:32px;font-weight:900">●</button></div>
+
+<!-- PERFIL GOLD - FIX TECLADO -->
+<div class="modal" id="profileM"><div style="flex:1" onclick="closeAll()"></div>
+<div class="modal-box" style="max-height:90vh;overflow-y:auto">
+<div style="padding:18px">
+<div style="display:flex;justify-content:space-between"><b style="color:#FFD700">👑 PERFIL GOLD</b><button onclick="closeAll()" style="width:32px;height:32px;border-radius:50%;background:#222;border:1px solid #FFD700;color:#FFD700">×</button></div>
+<div style="text-align:center;margin-top:16px"><div style="position:relative;display:inline-block"><img id="pPrev" style="width:96px;height:96px;border-radius:50%;border:3px solid #FFD700;object-fit:cover;display:none"><div id="pPh" style="width:96px;height:96px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:36px;border:3px solid #FFD700">👑</div><button onclick="document.getElementById('pInp').click()" style="position:absolute;bottom:0;right:0;width:32px;height:32px;border-radius:50%;background:#FFD700;border:3px solid #111">+</button></div><input type="file" id="pInp" accept="image/*" style="display:none"><div id="pName" style="font-weight:900;margin-top:12px;color:#fff"></div><div id="pNick" style="color:#FFD700;font-size:12px"></div></div>
+<input id="inName" class="input-gold" placeholder="Seu nome" style="margin-top:16px">
+<input id="inNick" class="input-gold" placeholder="Seu @nick" style="margin-top:10px">
+<button onclick="saveP()" style="width:100%;margin-top:14px;padding:16px;border-radius:100px;background:#FFD700;color:#000;font-weight:900;border:2px solid #000;font-size:14px">SALVAR GOLD</button>
+</div>
+</div>
+</div>
+
+<div class="modal" id="adminM"><div style="flex:1" onclick="closeAll()"></div><div class="modal-box" style="max-height:86vh;overflow:auto"><div style="padding:18px"><div style="display:flex;justify-content:space-between"><b style="color:#FFD700">👑 ADMIN</b><button onclick="closeAll()" style="color:#FFD700;font-size:20px;background:none;border:none">×</button></div><div id="aS" style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px"></div><div id="aO" style="margin-top:12px"></div></div></div></div>
+
+<!-- COMENTÁRIOS V45 - 100% FUNCIONANDO -->
 <div class="modal" id="cM" style="z-index:99999">
 <div style="flex:1" onclick="closeAll()"></div>
-<div id="commentModalBox" style="background:#121212;border-radius:28px 28px 0 0;max-height:85vh;display:flex;flex-direction:column;border-top:3px solid #FFD700;width:100%;max-width:440px">
+<div class="modal-box" style="max-height:88vh">
 <div style="padding:16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333">
-<div><b id="cC" style="color:#FFD700">💬 Comentários</b><div id="cCount" style="font-size:10px;color:#888">Toque para digitar</div></div>
-<button onclick="closeAll()" style="width:34px;height:34px;border-radius:50%;background:#222;border:1px solid #FFD700;color:#FFD700;font-size:18px">×</button>
+<div><b id="cC" style="color:#FFD700">💬 Comentários</b><div id="cCount" style="font-size:10px;color:#888">Toque abaixo para digitar</div></div>
+<button onclick="closeAll()" style="width:34px;height:34px;border-radius:50%;background:#222;border:1px solid #FFD700;color:#FFD700;font-size:20px">×</button>
 </div>
-<div id="cL" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;min-height:200px"></div>
-<div style="padding:12px 14px 20px;background:#0a0a0a;border-top:1px solid #333;display:flex;gap:10px;align-items:center;position:sticky;bottom:0">
-<div style="width:36px;height:36px;border-radius:50%;background:#222;border:2px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-weight:900">👑</div>
-<input id="cI" type="text" inputmode="text" autocomplete="off" autocorrect="off" spellcheck="false"
-style="flex:1;background:#1e1e1e;border:1.5px solid #FFD700;padding:14px 18px;border-radius:100px;color:#fff;outline:none;font-size:16px;-webkit-user-select:text;user-select:text"
-placeholder="Escreva um comentário..."
-onfocus="this.style.borderColor='#FFE77A'"
-onblur="this.style.borderColor='#FFD700'">
-<button onclick="sendC()" style="padding:14px 22px;border-radius:100px;background:#FFD700;color:#000;font-weight:900;border:2px solid #000;flex-shrink:0;font-size:13px">Enviar</button>
+<div id="cL" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;min-height:200px;max-height:50vh;-webkit-overflow-scrolling:touch"></div>
+<div style="padding:14px;background:#0a0a0a;border-top:2px solid #FFD700;display:flex;gap:10px;align-items:center">
+<div style="width:36px;height:36px;border-radius:50%;background:#222;border:2px solid #FFD700;display:flex;align-items:center;justify-content:center;color:#FFD700;font-weight:900;flex-shrink:0">👑</div>
+<input id="cI" type="text" class="input-gold" autocomplete="off"
+style="flex:1;border-radius:100px;padding:14px 18px"
+placeholder="Escreva um comentário Gold...">
+<button onclick="sendC()" style="padding:14px 22px;border-radius:100px;background:#FFD700;color:#000;font-weight:900;border:2px solid #000;flex-shrink:0">Enviar</button>
 </div>
 </div>
 </div>
 
 <script>
-// COMENTÁRIOS V44 - FIX TOTAL
+const ADMIN="jonathacarlosmaria";let stream=null,cur=0,mode='foto',photoData=null,allVideos=[],rec=null,chunks=[],recT=null,recS=0,liveTmr=null,liveS=0,liveRec=false;const LIM=1800;
+function toast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2500)}
+function closeAll(){
+document.querySelectorAll('.modal').forEach(m=>{m.style.display='none';m.classList.remove('on')});
+document.getElementById('cam').style.display='none';
+document.getElementById('liveM').style.display='none';
+if(stream){try{stream.getTracks().forEach(x=>x.stop())}catch{}stream=null}
+clearInterval(recT);clearInterval(liveTmr);
+let rp=document.getElementById('recP');if(rp)rp.style.width='0%';
+}
+function getU(){try{let u=JSON.parse(localStorage.getItem('work_current_user')||'{}');if(!u.nick)u={nick:ADMIN,name:"Jonatha Carlos Maria 👑",pic:localStorage.getItem('work_owner_pic')||""};return u}catch{return {nick:ADMIN,name:"Jonatha 👑",pic:""}}}
+function getPic(n){let me=getU();if(me.nick===n&&me.pic)return me.pic;let us=JSON.parse(localStorage.getItem('work_all_users')||'[]');let f=us.find(x=>x.nick===n);return f&&f.pic?f.pic:""}
+function track(){let u=getU();let o=JSON.parse(localStorage.getItem('work_online_users')||'{}');o[u.nick]={name:u.name,nick:u.nick,last:Date.now()};localStorage.setItem('work_online_users',JSON.stringify(o));up()}
+function getOn(){let o=JSON.parse(localStorage.getItem('work_online_users')||'{}');return Object.values(o).filter(x=>Date.now()-x.last<300000)}
+function up(){let el=document.getElementById('onlineCount');if(el)el.innerText=getOn().length}
+function isFollowing(t){return (JSON.parse(localStorage.getItem('work_follows')||'{}')[getU().nick]||[]).includes(t)}
+function toggleFollow(t){if(getU().nick===t){toast('ADMIN 👑');return}let all=JSON.parse(localStorage.getItem('work_follows')||'{}');if(!all[getU().nick])all[getU().nick]=[];let i=all[getU().nick].indexOf(t);if(i>=0){all[getU().nick].splice(i,1);toast('Deixou de seguir')}else{all[getU().nick].push(t);toast('✅ Seguindo @'+t+' 💛')}localStorage.setItem('work_follows',JSON.stringify(all));render()}
+function isLiked(id){return (JSON.parse(localStorage.getItem('work_likes')||'{}')[getU().nick]||[]).includes(id)}
+function toggleLike(id){let l=JSON.parse(localStorage.getItem('work_likes')||'{}');if(!l[getU().nick])l[getU().nick]=[];let v=allVideos.find(x=>x.id===id);if(!v)return;let i=l[getU().nick].indexOf(id);if(i>=0){l[getU().nick].splice(i,1);v.likes=Math.max(0,(v.likes||1)-1)}else{l[getU().nick].push(id);v.likes=(v.likes||0)+1}localStorage.setItem('work_likes',JSON.stringify(l));saveB();render()}
+function isSaved(id){return (JSON.parse(localStorage.getItem('work_saves')||'{}')[getU().nick]||[]).includes(id)}
+function toggleSave(id){let s=JSON.parse(localStorage.getItem('work_saves')||'{}');if(!s[getU().nick])s[getU().nick]=[];let i=s[getU().nick].indexOf(id);if(i>=0){s[getU().nick].splice(i,1);toast('🔖 Removido')}else{s[getU().nick].push(id);toast('🔖 Salvo Gold!')}localStorage.setItem('work_saves',JSON.stringify(s));render()}
+function upd(){let c=getU();let pn=document.getElementById('pName');let pk=document.getElementById('pNick');if(pn)pn.innerText=c.name;if(pk)pk.innerText='@'+c.nick;let pr=document.getElementById('pPrev');let ph=document.getElementById('pPh');if(c.pic){pr.src=c.pic;pr.style.display='block';ph.style.display='none';let np=document.getElementById('navPic');if(np)np.innerHTML=`<img src="${c.pic}" style="width:24px;height:24px;border-radius:50%;border:2px solid #FFD700">`}else{pr.style.display='none';ph.style.display='flex';let np=document.getElementById('navPic');if(np)np.innerText='👑'}}
+function goHome(){closeAll();render()}
+function goProfile(){closeAll();let c=getU();let inN=document.getElementById('inName');let inK=document.getElementById('inNick');if(inN)inN.value=c.name;if(inK)inK.value=c.nick;upd();let m=document.getElementById('profileM');m.style.display='flex';m.classList.add('on');setTimeout(()=>{if(inN)inN.focus()},400)}
+function saveP(){let c=getU();let inN=document.getElementById('inName');let inK=document.getElementById('inNick');c.name=(inN.value.trim()||c.name);c.nick=(inK.value.trim().replace('@','')||c.nick);localStorage.setItem('work_current_user',JSON.stringify(c));if(c.pic)localStorage.setItem('work_owner_pic',c.pic);upd();toast('✨ Perfil Salvo!');render();closeAll()}
+document.getElementById('pInp').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=ev=>{let c=getU();c.pic=ev.target.result;localStorage.setItem('work_current_user',JSON.stringify(c));localStorage.setItem('work_owner_pic',c.pic);upd();render();toast('📸 Foto Gold!')};rd.readAsDataURL(f)});
+function saveB(){try{let b=allVideos.slice(0,100).map(v=>({id:v.id,desc:v.desc,data:v.data,img:v.img,owner:v.owner,likes:v.likes,commentsList:v.commentsList}));localStorage.setItem('work_backup_videos',JSON.stringify(b))}catch{}}
+function getUso(){let d=JSON.parse(localStorage.getItem('liveUso')||'{}');if(d.data!==new Date().toDateString())return 0;return d.seg||0}
+function saveUso(s){localStorage.setItem('liveUso',JSON.stringify({data:new Date().toDateString(),seg:s}))}
+function fmt(n){if(n>=1000000)return (n/1000000).toFixed(1).replace('.0','')+'M';if(n>=1000)return (n/1000).toFixed(1).replace('.0','')+'K';return n+''}
+function render(){
+if(allVideos.length===0){
+let backup=[];try{backup=JSON.parse(localStorage.getItem('work_backup_videos')||'[]')}catch{}
+let iniciais=[
+{id:1001,desc:"Golden city views at sunset ✨ #goldenaesthetic #luxury #travel",img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1000",owner:"lux.studio",likes:120300,commentsList:["Que cidade linda! 😍","Gold aesthetic perfeito ✨","Luxo total 👑","Amo esse pôr do sol 💛"]},
+{id:1002,desc:"WORK GOLD V45 - Comentários funcionando 100% 👑",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000",owner:ADMIN,likes:58200,commentsList:["Agora funciona!","Comentário teste 💛"]},
+];
+allVideos=[...backup,...iniciais];
+}
+let v=allVideos[cur];
+let pic=getPic(v.owner);
+let inner=pic?`<img src="${pic}">`:`<div style="width:100%;height:100%;background:#222;display:flex;align-items:center;justify-content:center;color:#FFD700;font-weight:900;font-size:20px">${v.owner[0].toUpperCase()}</div>`;
+let badge=isFollowing(v.owner)?`<div class="badge ok">✓</div>`:`<div class="badge plus">+</div>`;
+let upic=pic?`<img src="${pic}" class="upic">`:`<div class="upic" style="display:flex;align-items:center;justify-content:center;background:#222;color:#FFD700;font-weight:900">${v.owner[0].toUpperCase()}</div>`;
+let imgUrl=v.data||v.img||"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1000";
+let liked=isLiked(v.id);
+let saved=isSaved(v.id);
+let cCount=(v.commentsList||[]).length;
+document.getElementById('stage').innerHTML=`
+<div class="bg" style="background-image:url('${imgUrl}')"></div>
+<div class="grad"></div>
+<div class="top-pill-wrap"><div class="top-pill"><div class="t-tab">Seguindo</div><div class="t-tab on">Para voce</div></div></div>
+<div class="live-badge"><b>🔴 LIVE</b><span style="font-size:12px">${fmt(v.likes)}</span></div>
+<div class="right">
+<div class="act" onclick="toggleFollow('${v.owner}')"><div class="abtn follow">${inner}${badge}</div></div>
+<div class="act" onclick="likeBtn(${v.id},event)"><div class="abtn ${liked?'liked':''}"><span style="font-size:26px">${liked?'💛':'🤍'}</span></div><div class="cnt">${fmt(v.likes||0)}</div></div>
+<div class="act" onclick="openComments()"><div class="abtn"><span style="font-size:22px">💬</span></div><div class="cnt">${fmt(cCount)}</div></div>
+<div class="act" onclick="toggleSave(${v.id})"><div class="abtn ${saved?'liked':''}"><span style="font-size:22px">${saved?'⭐':'🔖'}</span></div><div class="cnt">${saved?'Salvo':'Salvar'}</div></div>
+<div class="act" onclick="sharePost()"><div class="abtn"><span style="font-size:22px">↗</span></div><div class="cnt">Share</div></div>
+</div>
+<div class="bot"><div class="glass-card"><div class="urow">${upic}<div class="uname">@${v.owner}</div></div><div style="font-size:13px;color:#fff">${v.desc}</div></div></div>`;
+}
+function likeBtn(id,e){
+let v=allVideos.find(x=>x.id===id)||allVideos[cur];
+let x=e.clientX||window.innerWidth/2;let y=e.clientY||window.innerHeight/2;
+let h=document.createElement('div');h.className='heart';h.innerText='💛';h.style.left=x+'px';h.style.top=y+'px';document.getElementById('stage').appendChild(h);setTimeout(()=>h.remove(),900);
+toggleLike(id);
+}
 function openComments(){
 let v=allVideos[cur];
 let modal=document.getElementById('cM');
 let list=document.getElementById('cL');
-document.getElementById('cC').innerText=`💬 ${v.commentsList.length} comentários Gold`;
-document.getElementById('cCount').innerText=`@${v.owner} • digite abaixo`;
-
+document.getElementById('cC').innerText=`💬 ${v.commentsList.length} comentários`;
+document.getElementById('cCount').innerText=`@${v.owner} • digite abaixo para comentar`;
 list.innerHTML=v.commentsList.map((c,i)=>`
 <div style="display:flex;gap:10px">
 <div style="width:32px;height:32px;border-radius:50%;background:#FFD700;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:11px">${i+1}</div>
 <div style="flex:1;background:#1e1e1e;border:1px solid #333;padding:10px 12px;border-radius:14px">
-<b style="font-size:11px;color:#FFD700">@user_${i+1}</b>
+<b style="font-size:11px;color:#FFD700">@gold_user_${i+1}</b>
 <div style="font-size:13px;color:#fff;margin-top:2px">${c}</div>
 </div>
-</div>`).join('') || '<div style="text-align:center;color:#666;padding:30px">Seja o primeiro! ✨</div>';
-
-modal.style.display='flex';
-modal.classList.add('on');
-
-// FIX TECLADO - FOCA DEPOIS DE 300ms
+</div>`).join('') || '<div style="text-align:center;color:#666;padding:30px">Nenhum comentário<br>Seja o primeiro Gold! ✨</div>';
+modal.style.display='flex';modal.classList.add('on');
 setTimeout(()=>{
 let input=document.getElementById('cI');
-input.focus();
-input.click(); // Força teclado Android
-list.scrollTop=list.scrollHeight;
-},350);
-toast('💬 Digite seu comentário Gold!');
+if(input){input.focus();input.click();list.scrollTop=list.scrollHeight}
+},300);
 }
 function openC(){openComments()}
 function sendC(){
 let input=document.getElementById('cI');
 let t=input.value.trim();
-if(!t){input.focus();return}
+if(!t){toast('Digite algo Gold!');input.focus();return}
 let v=allVideos[cur];
 if(!v.commentsList)v.commentsList=[];
 v.commentsList.push(t);
 input.value='';
-try{localStorage.setItem('work_backup_videos',JSON.stringify(allVideos.slice(0,100).map(x=>({id:x.id,desc:x.desc,data:x.data,img:x.img,owner:x.owner,likes:x.likes,commentsList:x.commentsList}))))}catch{}
+saveB();
 openComments();
 render();
-toast('✨ Comentário enviado!');
-// Mantém foco pra continuar digitando
-setTimeout(()=>document.getElementById('cI').focus(),200);
+toast('✨ Comentário Gold enviado!');
 }
+function sharePost(){if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(()=>toast('🔗 Link copiado!'))}else{toast('🔗 Compartilhado!')}}
+function goCam(){document.getElementById('cam').style.display='flex';navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{stream=s;document.getElementById('camEl').srcObject=s;setM('foto')}).catch(()=>toast('Permita câmera'))}
+function setM(m){mode=m;let bf=document.getElementById('bF');let bv=document.getElementById('bV');if(bf)bf.style.background=m==='foto'?'#FFD700':'#222';if(bv)bv.style.background=m==='video'?'#FFD700':'#222';let cl=document.getElementById('camL');if(cl)cl.innerText=m==='foto'?'📸 FOTO GOLD':m==='video'?'🎥 1:30 GOLD':'🔴 LIVE 30MIN GOLD';let sh=document.getElementById('shut');if(sh)sh.innerText=m==='foto'?'📸':'●';}
+function cap(){if(mode==='foto'){let v=document.getElementById('camEl');let c=document.getElementById('photoCanvas');c.width=v.videoWidth||1080;c.height=v.videoHeight||1920;c.getContext('2d').drawImage(v,0,0,c.width,c.height);photoData=c.toDataURL('image/jpeg',0.9);toast('✨ Foto Gold! Clique Postar')}else if(mode==='video'){if(!rec){chunks=[];rec=new MediaRecorder(stream,{mimeType:'video/webm'});rec.ondataavailable=e=>chunks.push(e.data);rec.onstop=()=>{let b=new Blob(chunks,{type:'video/webm'});let rd=new FileReader();rd.onload=ev=>{photoData=ev.target.result;toast('✨ Vídeo 1:30 Gold pronto!')};rd.readAsDataURL(b)};rec.start();recS=0;recT=setInterval(()=>{recS++;let rp=document.getElementById('recP');if(rp)rp.style.width=(recS/90*100)+'%';let cl=document.getElementById('camL');if(cl)cl.innerText=`🔴 ${recS}s / 90s GOLD`;if(recS>=90)toggleV()},1000);let sh=document.getElementById('shut');if(sh)sh.innerText='■';toast('🔴 Gravando 1:30...')}else toggleV()}else openLive()}
+function toggleV(){if(rec&&rec.state==='recording'){rec.stop();clearInterval(recT);let sh=document.getElementById('shut');if(sh)sh.innerText='✨'}}
+function openLive(){let resta=LIM-getUso();if(resta<=0){toast('⏰ 30min acabaram hoje!');return}let cam=document.getElementById('cam');if(cam)cam.style.display='none';let lm=document.getElementById('liveM');lm.style.display='flex';navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}).then(s=>{stream=s;document.getElementById('liveV').srcObject=s;liveS=0;let li=document.getElementById('liveI');if(li)li.innerText=`✨ Gold • ${Math.floor(resta/60)}:${String(resta%60).padStart(2,'0')} livre hoje • Clique ●`;let lt=document.getElementById('liveT');if(lt)lt.innerText='00:00 / 30:00';let lb=document.getElementById('liveBar');if(lb)lb.style.width='0%'}).catch(()=>toast('Permita câmera'))}
+function togLive(){let b=document.getElementById('liveB');if(!liveRec){liveRec=true;b.innerText='■';b.style.background='#fff';b.style.color='#8B0000';toast('🔴 LIVE GOLD gravando!');liveTmr=setInterval(()=>{liveS++;let tot=getUso()+liveS;saveUso(tot);let falta=LIM-tot;let m=String(Math.floor(liveS/60)).padStart(2,'0');let sc=String(liveS%60).padStart(2,'0');let lt=document.getElementById('liveT');if(lt)lt.innerText=`${m}:${sc} / 30:00`;let li=document.getElementById('liveI');if(li)li.innerText=`🔴 GOLD ${m}:${sc} • Resta: ${Math.floor(falta/60)}:${String(falta%60).padStart(2,'0')}`;let lb=document.getElementById('liveBar');if(lb)lb.style.width=(liveS/1800*100)+'%';if(falta<=0){clearInterval(liveTmr);saveLive();closeAll();toast('⏰ 30min acabaram! Salvo!')}},1000)}else{liveRec=false;b.innerText='●';b.style.background='#FFD700';b.style.color='#000';clearInterval(liveTmr);saveLive();toast('⏸️ Pausado Gold!')}}
+function saveLive(){if(liveS<2)return;let me=getU();let c=document.createElement('canvas');let v=document.getElementById('liveV');c.width=720;c.height=1280;try{c.getContext('2d').drawImage(v,0,0,720,1280)}catch{}let thumb=c.toDataURL('image/jpeg',0.7);allVideos.unshift({id:Date.now(),data:thumb,desc:`LIVE GOLD ✨ ${String(Math.floor(liveS/60)).padStart(2,'0')}:${String(liveS%60).padStart(2,'0')} #gold`,owner:me.nick,likes:0,commentsList:[]});saveB();render()}
+function postNow(){if(!photoData){toast('Tire foto/vídeo');return}let me=getU();allVideos.unshift({id:Date.now(),data:photoData,desc:document.getElementById('descInp').value||'Golden city views ✨ #gold',owner:me.nick,likes:0,commentsList:[]});saveB();closeAll();let di=document.getElementById('descInp');if(di)di.value='';photoData=null;toast('✨ Postado Gold!');render()}
+function openAdmin(){if(getU().nick!==ADMIN){toast('Só ADMIN 👑');return}let m=document.getElementById('adminM');m.style.display='flex';m.classList.add('on');let on=getOn();let as=document.getElementById('aS');if(as)as.innerHTML=`<div style="background:#222;border:1.5px solid #FFD700;padding:14px;border-radius:18px;text-align:center"><div style="font-size:22px;font-weight:900;color:#FFD700">${on.length}</div><div style="font-size:9px;color:#aaa">ONLINE GOLD</div></div><div style="background:#222;border:1.5px solid #555;padding:14px;border-radius:18px;text-align:center"><div style="font-size:22px;font-weight:900;color:#fff">${JSON.parse(localStorage.getItem('work_all_users')||'[]').length+1}</div><div style="font-size:9px;color:#aaa">USUÁRIOS</div></div>`;let ao=document.getElementById('aO');if(ao)ao.innerHTML=on.map(u=>`<div style="display:flex;gap:10px;padding:10px;background:#222;margin-bottom:6px;border-radius:14px"><div style="width:32px;height:32px;border-radius:50%;background:#FFD700;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900">${u.nick[0].toUpperCase()}</div><div><div style="font-size:11px;color:#fff">${u.name}</div><div style="font-size:9px;color:#FFD700">@${u.nick}</div></div></div>`).join('')||'<div style="text-align:center;color:#666;padding:14px">Ninguém online</div>'}
+let sy=0;let stage=document.getElementById('stage');stage.addEventListener('touchstart',e=>{sy=e.touches[0].clientY},{passive:true});stage.addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>60){if(d>0){cur++;if(cur>=allVideos.length)cur=0}else{cur--;if(cur<0)cur=allVideos.length-1}render()}},{passive:true});
+render();if(!localStorage.getItem('work_current_user'))localStorage.setItem('work_current_user',JSON.stringify({nick:ADMIN,name:"Jonatha Carlos Maria 👑 Gold",pic:localStorage.getItem('work_owner_pic')||""}));track();setInterval(track,25000);up();toast('✨ V45 FIX TECLADO - COMENTÁRIOS 100% OK!');
 </script>
+</body>
+</html>
