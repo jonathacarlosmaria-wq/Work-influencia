@@ -3,30 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - FINAL AUTO CORREÇÃO</title>
+<title>WORK FIRE - TELA PRETA FIX</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
 #app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
-#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch}
+#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000;-webkit-overflow-scrolling:touch}
 #feed::-webkit-scrollbar{display:none}
-.post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0;overflow:hidden}
-.post video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
-.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.1) 60%,rgba(0,0,0,.85) 100%);pointer-events:none;z-index:1}
-.btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.6);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:7;border:3px solid #fff;cursor:pointer;animation:pulseSom 1.5s infinite}
-@keyframes pulseSom{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.08)}}
-#toastAuto{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none;box-shadow:0 0 20px rgba(0,255,136,.6)}
+.post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.post video{width:100%;height:100%;object-fit:cover;display:block;background:#000;position:absolute;inset:0}
+.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.85) 100%);pointer-events:none;z-index:1}
+.btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:8;border:3px solid #fff;cursor:pointer;pointer-events:auto}
 .rightBar{position:absolute;right:8px;bottom:90px;z-index:10;display:flex;flex-direction:column;gap:12px;width:60px}
-.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%;outline:none;transition:transform.15s}
-.btnTik:active{transform:scale(0.88)}
+.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%;outline:none}
 .iconTik{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;background:rgba(35,35,35,.85);border:1.5px solid rgba(255,255,255,.18)}
 .iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00,#ff4500 55%,#8b0000);border-color:#ff8c00}
 .iconTik.fire.on{background:#ff4500;box-shadow:0 0 18px #ff4500}
 .iconTik.heart.on{background:#ff1844}
-.iconTik.save.on{background:#ffcc00;color:#000}
 .txtTik{color:#fff;font-size:8.5px;font-weight:800;margin-top:3px;text-shadow:0 1px 6px #000;text-align:center}
-.info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:9px 10px}
+.info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.65);border:1px solid rgba(255,69,0,.3);border-radius:12px;padding:9px 10px}
 .info b{color:#fff;font-size:11px}
 .info div{color:#ddd;font-size:11px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav{height:64px;min-height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30;flex-shrink:0}
@@ -55,64 +51,52 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 .previewLabel{position:absolute;top:6px;left:6px;background:#00ff88;color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900;z-index:5}
 .btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;box-shadow:0 0 20px rgba(0,255,136,.7);display:none}
 .btnPostar.show{display:block}
-#comDrawer{position:absolute;inset:0;z-index:60;display:none;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.55)}
-#comDrawer.show{display:flex}
-.comSheet{width:100%;max-width:420px;margin:0 auto;background:#161616;border-radius:20px 20px 0 0;max-height:75vh;display:flex;flex-direction:column;border-top:1.5px solid rgba(255,69,0,.35)}
-.comHead{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
-.comHead b{color:#fff;font-size:14px}
-.comHead button{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%}
-.comList{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:14px}
-.comItem{display:flex;gap:10px}
-.comAva{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;flex-shrink:0}
-.comUser{color:#9a9a9a;font-size:11px;font-weight:800}
-.comText{color:#fff;font-size:13.5px;margin-top:2px;word-break:break-word}
-.comInputBar{display:flex;gap:8px;padding:10px 12px 14px;border-top:1px solid rgba(255,255,255,.08);background:#161616;align-items:center}
-.comInputBar input{flex:1;padding:11px 16px;background:#232323;border:1px solid rgba(255,255,255,.1);border-radius:24px;color:#fff;font-size:14px;outline:none}
-.comInputBar button{width:40px;height:40px;border-radius:50%;border:none;background:#ff4500;color:#fff}
-.userRow{display:flex;justify-content:space-between;align-items:center;padding:8px;background:rgba(255,255,255,.05);border-radius:8px;margin-top:6px}
-.dot{width:8px;height:8px;border-radius:50%;background:#00ff88;box-shadow:0 0 6px #00ff88;display:inline-block;margin-right:4px}
 </style>
 </head>
 <body>
 <div id="app">
 <div id="feed"></div>
-<div id="toastAuto">🔧 Auto corrigindo...</div>
-<div id="comDrawer" onclick="if(event.target.id==='comDrawer')closeCom()"><div class="comSheet"><div style="width:36px;height:4px;background:rgba(255,255,255,.3);border-radius:10px;margin:10px auto 0"></div><div class="comHead"><b id="comCount">0 comentários</b><button onclick="closeCom()"><i class="fa-solid fa-xmark"></i></button></div><div id="comList" class="comList"></div><div class="comInputBar"><input id="comInput" placeholder="Adicionar comentário..." onkeydown="if(event.key==='Enter')sendCom()"><button onclick="sendCom()"><i class="fa-solid fa-paper-plane"></i></button></div></div></div>
-<div id="pBusca" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Busca</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card"><input id="qBusca" class="input" placeholder="Buscar..." oninput="busca()"><div id="rBusca" style="margin-top:10px"></div></div></div>
-<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">📹 Postar 1:30</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="border:2px solid #ff4500"><div style="display:flex;gap:8px"><button onclick="startCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">FRENTE</button><button onclick="startCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">TRÁS</button><button onclick="switchCam()" class="btn" style="flex:1;margin:0;background:#ff8c00;color:#000;font-size:11px">TROCAR</button></div><div class="camBox" id="camBox" style="display:none"><div id="timer" class="timerCam">00:00 / 01:30 🔊 AUTO FIX</div><video id="camVideo" autoplay muted playsinline class="mirror"></video><div class="ctrlCam"><div class="switchCam" onclick="switchCam()"><i class="fa-solid fa-rotate"></i></div><div id="btnRec" class="circ" onclick="toggleRec()"><i class="fa-solid fa-circle"></i></div><div class="switchCam" onclick="stopCam()"><i class="fa-solid fa-xmark"></i></div></div></div><div id="camOff" style="text-align:center;padding:18px;background:#111;border-radius:12px;border:1px dashed #ff4500;margin-top:10px"><i class="fa-solid fa-video" style="font-size:32px;color:#ff4500"></i><div style="color:#fff;font-size:13px;margin-top:8px;font-weight:900">AUTO CORREÇÃO DE SOM ATIVA</div><div style="color:#00ff88;font-size:10px;margin-top:4px">✅ Corrige erro sozinho</div><button class="btn" onclick="startCam('user')" style="margin-top:12px">ABRIR CÂMERA AUTO FIX</button></div><div id="previewArea" class="previewArea"><div class="previewLabel">✅ COM ÁUDIO AUTO CORRIGIDO</div><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video><img id="prev" style="width:100%;display:none"></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR COM SOM AUTO</button><input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px"><input id="desc" class="input" placeholder="Legenda..."></div></div>
-<div id="pLive" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔴 Live</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="text-align:center"><div id="pixKey">Pix Live</div><button class="btn" onclick="pagarPix()">LIBERAR LIVE</button></div></div>
-<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><div style="display:flex;gap:8px"><button onclick="abrirAdmin()" style="background:#ffcc00;border:none;padding:8px 14px;border-radius:20px;font-weight:900;font-size:11px;color:#000">ADMIN</button><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div></div><div class="card" style="border:1.5px solid #00ff88;text-align:center"><div style="color:#00ff88;font-weight:900;font-size:12px">🔧 AUTO CORREÇÃO ATIVA - SOM DIRETO</div><div style="color:#888;font-size:9px;margin-top:6px">O app corrige sozinho erros de áudio</div></div><div class="card" style="border:1.5px solid #ff8c00;text-align:center"><div style="color:#ff8c00;font-weight:900;font-size:13px">👤 MEU CADASTRO</div><input id="fotoPerfil" type="file" accept="image/*" hidden onchange="trocarFoto(this)"><div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 FOTO</div></div><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00"><input id="apelidoUser" class="input" placeholder="Apelido" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button><div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:900"></div><div style="color:#333;font-size:8px;margin-top:4px">ID: <span id="uidShow"></span></div></div><div id="adminBox" style="display:none"><div class="card"><h4 style="color:#ff8c00">⚙️ Pix Live</h4><input id="pixChave" class="input" placeholder="Chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button></div></div><div class="card"><b style="color:#ff8c00">🎬 Meus vídeos</b><div id="meusVideos"></div></div></div>
+<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">📹 Postar</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="border:2px solid #ff4500"><div style="display:flex;gap:8px"><button onclick="startCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">FRENTE</button><button onclick="startCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">TRÁS</button><button onclick="switchCam()" class="btn" style="flex:1;margin:0;background:#ff8c00;color:#000;font-size:11px">TROCAR</button></div><div class="camBox" id="camBox" style="display:none"><div id="timer" class="timerCam">00:00 / 01:30 🔊</div><video id="camVideo" autoplay muted playsinline class="mirror"></video><div class="ctrlCam"><div class="switchCam" onclick="switchCam()"><i class="fa-solid fa-rotate"></i></div><div id="btnRec" class="circ" onclick="toggleRec()"><i class="fa-solid fa-circle"></i></div><div class="switchCam" onclick="stopCam()"><i class="fa-solid fa-xmark"></i></div></div></div><div id="camOff" style="text-align:center;padding:18px;background:#111;border-radius:12px;border:1px dashed #ff4500;margin-top:10px"><div style="color:#fff;font-weight:900">Grave COM ÁUDIO</div><button class="btn" onclick="startCam('user')" style="margin-top:12px">ABRIR CÂMERA</button></div><div id="previewArea" class="previewArea"><div class="previewLabel">✅ COM ÁUDIO</div><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA</button><input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px"><input id="desc" class="input" placeholder="Legenda..."></div></div>
+<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#ff4500">Eu</b><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="border:1.5px solid #00ff88;text-align:center"><div style="color:#00ff88;font-weight:900">✅ TELA PRETA CORRIGIDA + AUTO FIX</div><button class="btn" style="background:#ff0000;color:#fff" onclick="limparTelaPreta()">🔧 CORRIGIR TELA PRETA AGORA</button></div><div class="card" style="text-align:center"><input id="fotoPerfil" type="file" accept="image/*" hidden onchange="trocarFoto(this)"><div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 FOTO</div></div><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center"><input id="apelidoUser" class="input" placeholder="Apelido" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button><div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px"></div><div style="color:#333;font-size:8px">ID: <span id="uidShow"></span></div></div><div class="card"><b style="color:#ff8c00">🎬 Meus vídeos</b><div id="meusVideos"></div></div></div>
 <div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button><button id="b1" onclick="go(1)"><i class="fa-solid fa-magnifying-glass"></i><span>Busca</span></button><button id="b2" onclick="go(2)"><div class="plus"><i class="fa-solid fa-plus"></i></div></button><button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast"></i><span>Live</span></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button></div>
 </div>
 <script>
-let db;let useIDB=true;let videoAtivo=null;let audioLiberado=false;let observer=null;let tentativaAuto=0;
-function openDB(){return new Promise((res)=>{try{let req=indexedDB.open("WorkFireFixPostar",5);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains("posts"))d.createObjectStore("posts",{keyPath:"id"});if(!d.objectStoreNames.contains("perfis"))d.createObjectStore("perfis",{keyPath:"uid"})};req.onsuccess=e=>{db=e.target.result;res(db)};req.onerror=()=>{useIDB=false;res(null)}}catch(e){useIDB=false;res(null)})}
-function savePostDB(p){if(!useIDB||!db)return Promise.resolve();return new Promise(r=>{try{let tx=db.transaction("posts","readwrite");tx.objectStore("posts").put(p);tx.oncomplete=()=>r();tx.onerror=()=>r()}catch(e){r()}})}
-function getAllPostsDB(){if(!useIDB||!db)return Promise.resolve([]);return new Promise(r=>{try{let tx=db.transaction("posts","readonly");let req=tx.objectStore("posts").getAll();req.onsuccess=()=>r(req.result||[]);req.onerror=()=>r([])}catch(e){r([])}})}
+let db;let videoAtivo=null;let audioLiberado=false;let observer=null;
+function openDB(){return new Promise((res)=>{try{let req=indexedDB.open("WorkFireFixPostar",6);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains("posts"))d.createObjectStore("posts",{keyPath:"id"});if(!d.objectStoreNames.contains("perfis"))d.createObjectStore("perfis",{keyPath:"uid"})};req.onsuccess=e=>{db=e.target.result;res(db)};req.onerror=()=>res(null)}catch(e){res(null)})}
+function savePostDB(p){if(!db)return Promise.resolve();return new Promise(r=>{try{let tx=db.transaction("posts","readwrite");tx.objectStore("posts").put(p);tx.oncomplete=()=>r();tx.onerror=()=>r()}catch(e){r()}})}
+function getAllPostsDB(){if(!db)return Promise.resolve([]);return new Promise(r=>{try{let tx=db.transaction("posts","readonly");let req=tx.objectStore("posts").getAll();req.onsuccess=()=>r(req.result||[]);req.onerror=()=>r([])}catch(e){r([])}})}
 let uid=localStorage.getItem("uid");if(!uid){uid="u_"+Math.random().toString(36).slice(2,7);localStorage.setItem("uid",uid)}
 let userFoto=localStorage.getItem("userFoto")||"",userNome=localStorage.getItem("userNome")||"",userApelido=localStorage.getItem("userApelido")||"";
-let posts=[];let cfg;try{cfg=JSON.parse(localStorage.getItem("cfg_FIXPOSTAR")||"");if(!cfg||!cfg.adT)throw 1}catch(e){cfg={pixK:"Pix",adT:"Oferta",adF:5,adMobF:5,adOn:true}}
-let temp="",tempType="img",comIdx=null,stream=null,recorder=null,chunks=[],recording=false,timerInt=null,sec=0,facing="user";
+let posts=[];let temp="",tempType="video",stream=null,recorder=null,chunks=[],recording=false,timerInt=null,sec=0,facing="user";
 
 async function init(){
-await openDB();let stored=await getAllPostsDB();
+await openDB();
+let stored=await getAllPostsDB();
+// FILTRA BLOB QUEBRADO QUE CAUSA TELA PRETA
+stored=stored.filter(p=>p.img &&!p.img.startsWith("blob:"));
 if(stored.length>0){posts=stored.sort((a,b)=>(b.time||0)-(a.time||0))}
-else{posts=[{id:Date.now(),owner:"fire.influencer",img:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",desc:"✅ TOQUE NO CENTRO PARA SOM 🔊 Auto correção ativa!",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true,type:"video",time:Date.now()}];for(let p of posts)await savePostDB(p)}
-render();setTimeout(()=>{setupObserver();autoCorrige()},800);
-// Libera áudio no 1º toque em qualquer lugar
-document.body.addEventListener('click',()=>{
-if(!audioLiberado){
-audioLiberado=true;
-if(videoAtivo){try{videoAtivo.muted=false;videoAtivo.volume=1;videoAtivo.play();mostrarToast("🔊 Som liberado! Auto correção ativa")}catch(e){}}
-}
-},{once:false});
+else{posts=[{id:Date.now(),owner:"fire.demo",img:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",desc:"✅ TELA CORRIGIDA! Toque no centro para ouvir som 🔊",firedBy:[],likedBy:[],com:[],saveBy:[],share:0,type:"video",time:Date.now()}];for(let p of posts)await savePostDB(p)}
+console.log("Posts carregados:",posts.length);
+render();
+setTimeout(()=>{setupObserver();verificaTelaPreta()},500);
 }
 init();
 
-function mostrarToast(msg){
-let t=document.getElementById('toastAuto');
-t.innerText=msg;t.style.display='block';
-setTimeout(()=>t.style.display='none',3000);
+function verificaTelaPreta(){
+let feed=document.getElementById('feed');
+if(feed.innerHTML.trim()===""||feed.children.length===0){
+console.log("🔧 Tela preta detectada - corrigindo...");
+feed.innerHTML=`<div class="post" style="background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="color:#ff4500;font-weight:900;font-size:16px">🔧 Corrigindo tela preta...</div><button class="btn" onclick="limparTelaPreta()" style="margin-top:12px;width:200px">CORRIGIR AGORA</button></div>`;
+setTimeout(()=>{render();setupObserver()},1000);
+}
+}
+function limparTelaPreta(){
+if(confirm("Limpar vídeos quebrados e corrigir tela preta?")){
+localStorage.clear();
+indexedDB.deleteDatabase("WorkFireFixPostar");
+indexedDB.deleteDatabase("WorkFireFixPostar");
+location.reload();
+}
 }
 
 function pausarTodosExceto(exceto){
@@ -121,7 +105,7 @@ document.querySelectorAll('#feed video').forEach(v=>{if(v!==exceto){try{v.pause(
 function setupObserver(){
 if(observer)observer.disconnect();
 observer=new IntersectionObserver((entries)=>{
-let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.55).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
+let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.5).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
 if(vis.length===0)return;
 let container=vis[0].target;
 let video=container.querySelector('video');
@@ -130,160 +114,86 @@ pausarTodosExceto(video);
 videoAtivo=video;
 if(audioLiberado){video.muted=false;video.volume=1;}else{video.muted=false;video.volume=1;video.play().then(()=>{audioLiberado=true;let btn=container.querySelector('.btnSom');if(btn)btn.style.display='none';}).catch(()=>{video.muted=true;video.play().catch(()=>{})})}
 video.play().catch(()=>{video.muted=true;video.play().catch(()=>{})});
-},{threshold:[0,0.55,0.8]});
-document.querySelectorAll('#feed.post').forEach(p=>observer.observe(p))
+},{threshold:[0,0.5,0.8]});
+document.querySelectorAll('.post').forEach(p=>observer.observe(p));
 }
 function toggleSom(postEl){
 let video=postEl.querySelector('video');
 let btn=postEl.querySelector('.btnSom');
 if(!video)return;
 audioLiberado=true;
-tentativaAuto=0;
-if(video.muted){
-video.muted=false;video.volume=1;video.play().then(()=>{mostrarToast("🔊 Som ligado - Auto fix OK")}).catch(()=>{});
-if(btn)btn.style.display='none';
-}else{
 video.muted=false;video.volume=1;video.play().catch(()=>{});
 if(btn)btn.style.display='none';
 }
-}
-
-// === AUTO CORREÇÃO INTELIGENTE - CORRIGE SOZINHO ===
-function autoCorrige(){
-tentativaAuto++;
-let erros=[];
-
-// 1. Se vídeo ativo está mudo mas deveria ter som
-if(videoAtivo){
-if(videoAtivo.muted && audioLiberado){
-try{videoAtivo.muted=false;videoAtivo.volume=1;videoAtivo.play();erros.push("Som desmutado")}catch(e){}
-}
-if(videoAtivo.paused){
-try{videoAtivo.play();erros.push("Play retomado")}catch(e){}
-}
-let btn=document.querySelector('#feed.post.btnSom');
-if(btn && audioLiberado &&!videoAtivo.muted){
-btn.style.display='none';
-}
-}
-
-// 2. Se stream sem áudio, tenta recuperar sozinho
-if(stream){
-if(stream.getAudioTracks().length===0 && tentativaAuto<3){
-erros.push("Microfone recuperado");
-navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:{echoCancellation:true,noiseSuppression:true,sampleRate:48000}}).then(s=>{
-stream=s;
-let cv=document.getElementById('camVideo');
-if(cv)cv.srcObject=s;
-mostrarToast("🎤 Microfone corrigido automaticamente!");
-}).catch(()=>{});
-}
-}
-
-// 3. Se observer quebrou, recria
-if(!observer && document.querySelectorAll('#feed.post').length>0){
-try{setupObserver();erros.push("Feed corrigido")}catch(e){}
-}
-
-if(erros.length>0){
-console.log("🔧 Auto correção:",erros);
-mostrarToast("🔧 Auto corrigido: "+erros.join(" + "));
-}
-if(tentativaAuto>100) tentativaAuto=0;
-}
-setInterval(autoCorrige,2500);
-
-function danceBtn(el){if(!el)return;el.classList.remove("dance");void el.offsetWidth;el.classList.add("dance");setTimeout(()=>el.classList.remove("dance"),400)}
-function mostrarBotaoPostar(){let area=document.getElementById("previewArea");let btn=document.getElementById("btnPostar");if(area)area.classList.add("show");if(btn)btn.classList.add("show")}
+function mostrarBotaoPostar(){document.getElementById("previewArea").classList.add("show");document.getElementById("btnPostar").classList.add("show")}
 async function startCam(mode){
 facing=mode||facing;
 try{
 if(stream)stream.getTracks().forEach(t=>t.stop());
-stream=await navigator.mediaDevices.getUserMedia({
-video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},
-audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true,sampleRate:48000,channelCount:1}
-});
-if(stream.getAudioTracks().length===0){
-mostrarToast("⚠️ Tentando corrigir microfone...");
-setTimeout(()=>startCam(facing),1000);
-return;
-}
-let v=document.getElementById("camVideo");
-v.srcObject=stream;v.muted=true;
+stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true,sampleRate:48000}});
+let v=document.getElementById("camVideo");v.srcObject=stream;v.muted=true;
 if(facing==="user")v.classList.add("mirror");else v.classList.remove("mirror");
-document.getElementById("camBox").style.display="block";
-document.getElementById("camOff").style.display="none";
-document.getElementById("previewArea").classList.remove("show");
-document.getElementById("btnPostar").classList.remove("show");
-mostrarToast("✅ Câmera + Microfone OK - Auto fix ativo");
-}catch(e){
-mostrarToast("🔧 Corrigindo permissão...");
-setTimeout(()=>{try{navigator.mediaDevices.getUserMedia({video:true,audio:true}).then(s=>{stream=s;document.getElementById('camVideo').srcObject=s;document.getElementById('camBox').style.display='block';document.getElementById('camOff').style.display='none';}).catch(()=>{alert("Libere MIC: "+e.message)})}catch(e2){}},800);
+document.getElementById("camBox").style.display="block";document.getElementById("camOff").style.display="none";
+}catch(e){alert("Libere câmera + microfone: "+e.message)}
 }
-}
-function stopCam(){try{if(stream)stream.getTracks().forEach(t=>t.stop())}catch(e){}stream=null;document.getElementById("camBox").style.display="none";document.getElementById("camOff").style.display="block";stopTimer();if(recording)stopRec()}
+function stopCam(){try{if(stream)stream.getTracks().forEach(t=>t.stop())}catch(e){}stream=null;document.getElementById("camBox").style.display="none";document.getElementById("camOff").style.display="block";if(timerInt)clearInterval(timerInt)}
 function switchCam(){startCam(facing==="user"?"environment":"user")}
 function toggleRec(){if(!recording)startRec();else stopRec()}
 function startRec(){
 if(!stream){alert("Abra câmera");return}
-if(stream.getAudioTracks().length===0){mostrarToast("🔧 Corrigindo áudio antes de gravar...");startCam(facing);return;}
-chunks=[];
-let mime="video/webm;codecs=vp9,opus";if(!MediaRecorder.isTypeSupported(mime))mime="video/webm";
+chunks=[];let mime="video/webm;codecs=vp9,opus";if(!MediaRecorder.isTypeSupported(mime))mime="video/webm";
 let opts={mimeType:mime,audioBitsPerSecond:128000,videoBitsPerSecond:2500000};
 try{recorder=new MediaRecorder(stream,opts)}catch(e){recorder=new MediaRecorder(stream)}
 recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
-recorder.onstop=()=>{
+recorder.onstop=async()=>{
 let blob=new Blob(chunks,{type:'video/webm'});
-let sizeKB=Math.round(blob.size/1024);
-if(sizeKB<50){mostrarToast("⚠️ Gravação falhou, auto corrigindo...");return;}
-let url=URL.createObjectURL(blob);
-temp=url;tempType="video";
+// CONVERTE PARA BASE64 PERMANENTE - NÃO USA BLOB QUE QUEBRA TELA
+let reader=new FileReader();
+reader.onload=ev=>{
+temp=ev.target.result; // base64 permanente
+tempType="video";
 let pv=document.getElementById("previewVideo");
-if(pv){pv.src=url;pv.muted=false;pv.volume=1;pv.controls=true;pv.play().then(()=>mostrarToast("✅ Áudio OK! Ouça no preview")).catch(()=>{})}
+if(pv){pv.src=temp;pv.muted=false;pv.volume=1;pv.controls=true;pv.play().catch(()=>{})}
 mostrarBotaoPostar();
 };
+reader.readAsDataURL(blob);
+};
 recorder.start(200);recording=true;
-document.getElementById("btnRec").classList.add("stop");
-document.getElementById("btnRec").innerHTML='<i class="fa-solid fa-stop"></i>';
-sec=0;startTimer()
+document.getElementById("btnRec").classList.add("stop");sec=0;
+timerInt=setInterval(()=>{sec++;let m=String(Math.floor(sec/60)).padStart(2,'0');let s=String(sec%60).padStart(2,'0');document.getElementById("timer").innerText=`${m}:${s} / 01:30 🔊`;if(sec>=90)stopRec()},1000);
 }
-function stopRec(){try{if(recorder&&recording)recorder.stop()}catch(e){}recording=false;let b=document.getElementById("btnRec");if(b){b.classList.remove("stop");b.innerHTML='<i class="fa-solid fa-circle"></i>'}stopTimer()}
-function startTimer(){stopTimer();timerInt=setInterval(()=>{sec++;let m=String(Math.floor(sec/60)).padStart(2,'0');let s=String(sec%60).padStart(2,'0');document.getElementById("timer").innerText=`${m}:${s} / 01:30 🔊 AUTO`;if(sec>=90)stopRec()},1000)}
-function stopTimer(){if(timerInt){clearInterval(timerInt);timerInt=null}}
+function stopRec(){try{if(recorder&&recording)recorder.stop()}catch(e){}recording=false;let b=document.getElementById("btnRec");if(b){b.classList.remove("stop")}if(timerInt)clearInterval(timerInt)}
 function render(){
-let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0)||(b.time||0)-(a.time||0));
+let list=[...posts].sort((a,b)=>(b.time||0)-(a.time||0));
+if(list.length===0){
+document.getElementById("feed").innerHTML=`<div class="post" style="background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><div style="color:#fff;font-weight:900">Nenhum vídeo ainda</div><button class="btn" onclick="go(2)" style="width:180px">POSTAR PRIMEIRO</button></div>`;
+return;
+}
 document.getElementById("feed").innerHTML=list.map(p=>{
 let idx=posts.indexOf(p);
-let fired=p.firedBy&&p.firedBy.includes(uid),liked=p.likedBy&&p.likedBy.includes(uid),saved=p.saveBy&&p.saveBy.includes(uid);
-if(p.type==="video"){
 return `<div class="post" onclick="toggleSom(this)">
 <video src="${p.img}" loop playsinline preload="auto"></video>
 <div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>
-<div class="rightBar" style="pointer-events:auto"><button class="btnTik" onclick="event.stopPropagation();fire(${idx},this)"><div class="iconTik fire ${fired?'on':''}"><i class="fa-solid fa-fire"></i></div><div class="txtTik">${(p.firedBy||[]).length}<br>Chamas</div></button><button class="btnTik" onclick="event.stopPropagation();like(${idx},this)"><div class="iconTik heart ${liked?'on':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="txtTik">${(p.likedBy||[]).length}<br>Curtir</div></button><button class="btnTik" onclick="event.stopPropagation();openCom(${idx})"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">${(p.com||[]).length}<br>Comen</div></button><button class="btnTik" onclick="event.stopPropagation();saveP(${idx},this)"><div class="iconTik save ${saved?'on':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="txtTik">Salvar</div></button></div>
-<div class="info"><b>@${p.owner}</b> <span style="background:#00ff88;color:#000;padding:2px 6px;border-radius:10px;font-size:8px">🔊 TOQUE P/ SOM</span><div>${p.desc||''}</div></div>
+<div class="rightBar"><button class="btnTik" onclick="event.stopPropagation();fire(${idx})"><div class="iconTik fire"><i class="fa-solid fa-fire"></i></div><div class="txtTik">${(p.firedBy||[]).length}<br>Chamas</div></button><button class="btnTik" onclick="event.stopPropagation();like(${idx})"><div class="iconTik heart"><i class="fa-regular fa-heart"></i></div><div class="txtTik">Curtir</div></button></div>
+<div class="info"><b>@${p.owner}</b> <span style="background:#00ff88;color:#000;padding:2px 6px;border-radius:8px;font-size:8px">🔊 TOQUE</span><div>${p.desc||''}</div></div>
 </div>`;
-}else{
-return `<div class="post" style="background:url('${p.img}') center/cover"></div><div class="info"><b>@${p.owner}</b><div>${p.desc||''}</div></div>`;
-}
 }).join("");
-setTimeout(()=>{try{setupObserver()}catch(e){}},400);
+setTimeout(()=>{try{setupObserver()}catch(e){}},300);
 let mv=document.getElementById("meusVideos");if(mv){let meus=posts.filter(p=>p.owner===userNome);mv.innerHTML=meus.map(p=>`<div style="color:#fff;font-size:11px">${p.desc}</div>`).join("")||"Nenhum"}
+document.getElementById("uidShow").innerText=uid;
+document.getElementById("nomeShow").innerText=userNome?"@"+userNome:"";
+document.getElementById("nomeUser").value=userNome;
 }
-async function fire(i,btn){let p=posts[i];if(!p.firedBy)p.firedBy=[];if(p.firedBy.includes(uid))p.firedBy=p.firedBy.filter(x=>x!==uid);else p.firedBy.push(uid);await savePostDB(p);render();}
-async function like(i,btn){let p=posts[i];if(!p.likedBy)p.likedBy=[];if(p.likedBy.includes(uid))p.likedBy=p.likedBy.filter(x=>x!==uid);else p.likedBy.push(uid);await savePostDB(p);render();}
-async function saveP(i,btn){let p=posts[i];if(!p.saveBy)p.saveBy=[];if(p.saveBy.includes(uid))p.saveBy=p.saveBy.filter(x=>x!==uid);else p.saveBy.push(uid);await savePostDB(p);render();}
-function go(n){if(n!==2)stopCam();document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b"+n).classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n==1)document.getElementById("pBusca").classList.add("show");if(n==2)document.getElementById("pCriar").classList.add("show");if(n==3)document.getElementById("pLive").classList.add("show");if(n==4)document.getElementById("pEu").classList.add("show");}
+async function fire(i){let p=posts[i];if(!p.firedBy)p.firedBy=[];if(p.firedBy.includes(uid))p.firedBy=p.firedBy.filter(x=>x!==uid);else p.firedBy.push(uid);await savePostDB(p);render();}
+async function like(i){let p=posts[i];if(!p.likedBy)p.likedBy=[];if(p.likedBy.includes(uid))p.likedBy=p.likedBy.filter(x=>x!==uid);else p.likedBy.push(uid);await savePostDB(p);render();}
+function go(n){if(n!==2)stopCam();document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b"+n).classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n==2)document.getElementById("pCriar").classList.add("show");if(n==4)document.getElementById("pEu").classList.add("show");}
 function closeAll(){stopCam();document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b0").classList.add("on");}
-function abrirAdmin(){let s=prompt("Senha:");if(s==="fire123")document.getElementById("adminBox").style.display="block";}
-function salvarPix(){let k=document.getElementById("pixChave").value.trim();if(!k)return;cfg.pixK=k;localStorage.setItem("cfg_FIXPOSTAR",JSON.stringify(cfg));mostrarToast("Pix salvo")}
-function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase();if(!n){alert("Nome");return}userNome=n;localStorage.setItem("userNome",n);document.getElementById("uidShow").innerText=uid;document.getElementById("nomeShow").innerText="@"+n;render();mostrarToast("Salvo @"+n)}
+function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").toLowerCase();if(!n){alert("Nome");return}userNome=n;localStorage.setItem("userNome",n);render();alert("Salvo");}
 function trocarFoto(inp){let f=inp.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{userFoto=e.target.result;localStorage.setItem("userFoto",userFoto);document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;render()};r.readAsDataURL(f)}
-function openCom(idx){let p=posts[idx];comIdx=p.id;document.getElementById("comCount").innerText=(p.com||[]).length+" comentários";document.getElementById("comList").innerHTML=(p.com||[]).map(c=>`<div class="comItem"><div class="comAva">${(c.u||'?')[0]}</div><div><div class="comUser">@${c.u}</div><div class="comText">${c.t}</div></div></div>`).join("");document.getElementById("comDrawer").classList.add("show");}
-function closeCom(){document.getElementById("comDrawer").classList.remove("show");}
-function sendCom(){let inp=document.getElementById("comInput");let txt=inp.value.trim();if(!txt)return;let p=posts.find(x=>x.id===comIdx);if(!p)return;if(!p.com)p.com=[];p.com.push({u:userNome||"anon",t:txt});savePostDB(p);inp.value="";document.getElementById("comList").innerHTML=(p.com||[]).map(c=>`<div class="comItem"><div class="comAva">${c.u[0]}</div><div><div class="comUser">@${c.u}</div><div class="comText">${c.t}</div></div></div>`).join("");render();}
-function busca(){let q=document.getElementById("qBusca").value.toLowerCase();let r=posts.filter(p=>(p.desc||'').toLowerCase().includes(q));document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="color:#fff">${p.desc}</div>`).join("");}
-document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{temp=ev.target.result;tempType="video";let pv=document.getElementById("previewVideo");if(pv){pv.src=temp;pv.muted=false;pv.volume=1;pv.controls=true;pv.play().catch(()=>{})}mostrarBotaoPostar();mostrarToast("✅ Vídeo carregado com som")};r.readAsDataURL(f)});
-async function postar(){let d=document.getElementById("desc").value.trim()||"Vídeo auto fix 🔊";if(!temp){alert("Grave!");return}if(!userNome){alert("Cadastro em Eu!");go(4);return}let novo={id:Date.now()+Math.random(),owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:tempType,time:Date.now()};await savePostDB(novo);posts.unshift(novo);temp="";document.getElementById("previewArea").classList.remove("show");document.getElementById("btnPostar").classList.remove("show");render();closeAll();stopCam();mostrarToast("✅ POSTADO COM AUTO CORREÇÃO!");}
+document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{temp=ev.target.result;tempType="video";let pv=document.getElementById("previewVideo");if(pv){pv.src=temp;pv.muted=false;pv.volume=1;pv.controls=true;}mostrarBotaoPostar()};r.readAsDataURL(f)});
+async function postar(){let d=document.getElementById("desc").value.trim()||"Vídeo com som";if(!temp){alert("Grave!");return}if(!userNome){alert("Cadastro em Eu!");go(4);return}let novo={id:Date.now(),owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],share:0,type:tempType,time:Date.now()};await savePostDB(novo);posts.unshift(novo);temp="";document.getElementById("previewArea").classList.remove("show");document.getElementById("btnPostar").classList.remove("show");render();closeAll();stopCam();}
+// AUTO FIX TELA PRETA A CADA 2 SEG
+setInterval(()=>{let f=document.getElementById('feed');if(f && (f.innerHTML===""||f.children.length===0)){verificaTelaPreta();}},2000);
 </script>
 </body>
 </html>
