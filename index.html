@@ -1,3 +1,22 @@
+
+<script>
+// AUTO CORREÇÃO DE TELA PRETA - BLOBS QUEBRADOS
+(async function(){
+if(location.search.includes('limpar=1')){
+localStorage.clear();
+try{
+let dbs=await indexedDB.databases();
+dbs.forEach(db=>indexedDB.deleteDatabase(db.name));
+}catch(e){
+indexedDB.deleteDatabase("WorkFireFixPostar");
+indexedDB.deleteDatabase("WorkFire");
+}
+alert("✅ Blobs quebrados limpos! Tela voltará ao normal");
+location.href=location.pathname;
+}
+})();
+</script>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
