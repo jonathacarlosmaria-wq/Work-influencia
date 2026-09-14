@@ -1,114 +1,66 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - RESTAURADO + BOTAO SOM</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Só adicione isso no seu CSS original, sem tirar nada: -->
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
-#app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
-#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch}
-#feed::-webkit-scrollbar{display:none}
-.post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0;overflow:hidden}
-.post video{width:100%;height:100%;object-fit:cover;display:block}
-.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.9) 100%);pointer-events:none;z-index:1}
-.rightBar{position:absolute;right:8px;bottom:90px;z-index:10;display:flex;flex-direction:column;gap:11px;width:60px}
-.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%;outline:none}
-.btnTik:active{transform:scale(0.88)}
-.iconTik{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;background:rgba(35,35,35,.85);border:1.5px solid rgba(255,255,255,.18)}
-.iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00,#ff4500 55%,#8b0000);border-color:#ff8c00}
-.iconTik.fire.on{background:#ff4500;box-shadow:0 0 18px #ff4500}
-.iconTik.heart.on{background:#ff1844}
-.iconTik.save.on{background:#ffcc00;color:#000}
-.iconTik.share.on{background:#00ff88;color:#000;box-shadow:0 0 12px #00ff88}
 .iconTik.audio{background:rgba(0,0,0,.7);border:2px solid #fff}
 .iconTik.audio.on{background:#00ff88;color:#000;border-color:#00ff88;box-shadow:0 0 18px #00ff88}
-.txtTik{color:#fff;font-size:8.5px;font-weight:800;margin-top:3px;text-shadow:0 1px 6px #000;text-align:center}
-.info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:9px 10px}
-.info b{color:#fff;font-size:11px}
-.info div{color:#ddd;font-size:11px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nav{height:64px;min-height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30;flex-shrink:0}
-.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:8.5px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:2px}
-.nav button.on{color:#ff8c00}
-.nav button i{font-size:18px}
-.plus{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:-20px;box-shadow:0 0 0 4px #000}
-.page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto;padding-bottom:70px}
-.page.show{display:flex}
-.card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
-.input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px;font-size:13px}
-.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px;font-size:13px;cursor:pointer}
-.avatar{width:88px;height:88px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;cursor:pointer}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.78);color:#ffcc00;font-size:7px;font-weight:900;text-align:center;padding:4px}
-.btnDel{background:rgba(255,0,0,.12);border:1px solid rgba(255,0,0,.35);color:#ff4444;width:100%;padding:11px;border-radius:10px;font-weight:900;margin-top:8px;font-size:11px}
-.camBox{position:relative;width:100%;height:45vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff4500;margin-top:10px}
-.camBox video{width:100%;height:100%;object-fit:cover}
-.camBox video.mirror{transform:scaleX(-1)}
-.timerCam{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(255,0,0,.9);color:#fff;padding:5px 14px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}
-.ctrlCam{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:20px;z-index:5;align-items:center}
-.circ{width:70px;height:70px;border-radius:50%;border:4px solid #fff;background:#ff0000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;cursor:pointer}
-.circ.stop{background:#fff;color:#ff0000}
-.previewArea{display:none;margin-top:10px;border:3px solid #00ff88;border-radius:14px;overflow:hidden;background:#000;position:relative}
-.previewArea.show{display:block}
-.previewLabel{position:absolute;top:6px;left:6px;background:#00ff88;color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900;z-index:5}
-.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;box-shadow:0 0 20px rgba(0,255,136,.7);display:none}
-.btnPostar.show{display:block}
-#comDrawer,#shareDrawer{position:absolute;inset:0;z-index:60;display:none;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.55)}
-#comDrawer.show,#shareDrawer.show{display:flex}
-.comSheet{width:100%;max-width:420px;margin:0 auto;background:#161616;border-radius:20px 20px 0 0;max-height:75vh;display:flex;flex-direction:column;border-top:1.5px solid rgba(255,69,0,.35)}
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:20px;font-weight:900;font-size:12px;z-index:99}
 </style>
-</head>
-<body>
-<div id="app">
-<div id="feed"></div>
-<div id="comDrawer" onclick="if(event.target.id==='comDrawer')closeCom()"><div class="comSheet"><div style="width:36px;height:4px;background:rgba(255,255,255,.3);border-radius:10px;margin:10px auto 0"></div><div style="display:flex;justify-content:space-between;padding:12px"><b id="comCount" style="color:#fff">0 comentarios</b><button onclick="closeCom()" style="background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%">X</button></div><div id="comList" style="flex:1;overflow-y:auto;padding:12px"></div><div style="display:flex;gap:8px;padding:10px"><input id="comInput" style="flex:1;padding:11px;background:#232323;border:1px solid rgba(255,255,255,.1);border-radius:24px;color:#fff" placeholder="Comentar..." onkeydown="if(event.key==='Enter')sendCom()"><button onclick="sendCom()" style="width:40px;height:40px;border-radius:50%;border:none;background:#ff4500;color:#fff">></button></div></div></div>
-<div id="shareDrawer" onclick="if(event.target.id==='shareDrawer')closeShare()"><div class="comSheet" style="padding:16px"><b style="color:#fff">Compartilhar</b><div style="display:flex;gap:12px;margin-top:18px;justify-content:space-around"><button onclick="shareWhats()" style="width:56px;height:56px;border-radius:50%;background:#25D366;border:none;color:#fff;font-size:26px"><i class="fa-brands fa-whatsapp"></i></button><button onclick="shareCopy()" style="width:56px;height:56px;border-radius:50%;background:#333;border:none;color:#fff"><i class="fa-solid fa-link"></i></button><button onclick="shareSystem()" style="width:56px;height:56px;border-radius:50%;background:#ff4500;border:none;color:#fff"><i class="fa-solid fa-share-nodes"></i></button></div><button onclick="closeShare()" style="width:100%;padding:14px;margin-top:18px;background:rgba(255,255,255,.08);border:none;border-radius:12px;color:#fff;font-weight:900">Fechar</button></div></div>
-<div id="pBusca" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Busca</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">X</button></div><div class="card"><input id="qBusca" class="input" placeholder="Buscar..." oninput="busca()"><div id="rBusca" style="margin-top:10px"></div></div></div>
-<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Postar 1:30</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">X</button></div><div class="card" style="border:2px solid #ff4500"><div style="display:flex;gap:8px"><button onclick="startCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">FRENTE</button><button onclick="startCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">TRAS</button><button onclick="switchCam()" class="btn" style="flex:1;margin:0;background:#ff8c00;color:#000;font-size:11px">TROCAR</button></div><div class="camBox" id="camBox" style="display:none"><div id="timer" class="timerCam">00:00 / 01:30</div><video id="camVideo" autoplay muted playsinline class="mirror"></video><div class="ctrlCam"><div id="btnRec" class="circ" onclick="toggleRec()"><i class="fa-solid fa-circle"></i></div></div></div><div id="camOff" style="text-align:center;padding:18px;background:#111;border-radius:12px;border:1px dashed #ff4500;margin-top:10px"><i class="fa-solid fa-video" style="font-size:32px;color:#ff4500"></i><div style="color:#fff;font-size:13px;margin-top:8px;font-weight:900">Grave com SOM!</div><button class="btn" onclick="startCam('user')" style="margin-top:12px">ABRIR CAMERA</button></div><div id="previewArea" class="previewArea"><div class="previewLabel">GRAVADO COM SOM - PRONTO</div><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video><img id="prev" style="width:100%;display:none"></div><button id="btnPostar" class="btnPostar" onclick="postar()">POSTAR AGORA</button><input id="file" type="file" accept="image/*,video/*" style="color:#fff;width:100%;margin-top:12px"><input id="desc" class="input" placeholder="Legenda..."></div></div>
-<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#ff4500">Eu</b><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">X</button></div><div class="card" style="border:1.5px solid #00ff88;text-align:center"><div style="color:#00ff88;font-weight:900;font-size:12px">RESTAURADO + SOM FIXO LATERAL + SOM ÚNICO</div></div><div class="card" style="text-align:center"><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center"><button class="btn" onclick="salvarTudo()">SALVAR</button><div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px"></div><div style="color:#333;font-size:8px">ID: <span id="uidShow"></span></div></div><div class="card"><b style="color:#ff8c00">Meus videos</b><div id="meusVideos"></div></div></div>
-<div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button><button id="b1" onclick="go(1)"><i class="fa-solid fa-magnifying-glass"></i><span>Busca</span></button><button id="b2" onclick="go(2)"><div class="plus"><i class="fa-solid fa-plus"></i></div></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button></div>
+
+<!-- No seu render(), na rightBar, ADICIONE como PRIMEIRO botão, mantendo os outros: -->
+<div class="rightBar">
+  <!-- BOTAO ADICIONADO - NÃO TIRA OS OUTROS -->
+  <button class="btnTik" onclick="toggleAudio(this)">
+    <div class="iconTik audio"><i class="fa-solid fa-volume-xmark"></i></div>
+    <div class="txtTik">Som<br>OFF</div>
+  </button>
+
+  <!-- SEUS BOTOES ORIGINAIS MANTIDOS -->
+  <button class="btnTik" onclick="fire(...)">Chamas</button>
+  <button class="btnTik" onclick="like(...)">Curtir</button>
+  <button class="btnTik" onclick="openCom(...)">Comen</button>
+  <button class="btnTik" onclick="shareP(...)">Compar</button>
+  <button class="btnTik" onclick="saveP(...)">Salvar</button>
 </div>
+
 <script>
-let db;function openDB(){return new Promise((res)=>{let req=indexedDB.open("WorkFireRestaurado",12);req.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains("posts"))d.createObjectStore("posts",{keyPath:"id"})};req.onsuccess=e=>{db=e.target.result;res(db)};req.onerror=()=>res(null)})}
-function savePostDB(p){if(!db)return Promise.resolve();return new Promise(r=>{let tx=db.transaction("posts","readwrite");tx.objectStore("posts").put(p);tx.oncomplete=()=>r()})}
-function getAllPostsDB(){if(!db)return Promise.resolve([]);return new Promise(r=>{let tx=db.transaction("posts","readonly");let req=tx.objectStore("posts").getAll();req.onsuccess=()=>r(req.result||[])})}
-let uid=localStorage.getItem("uid")||"u_"+Math.random().toString(36).slice(2,7);localStorage.setItem("uid",uid);
-let userNome=localStorage.getItem("userNome")||"";let posts=[];let temp="",tempType="img",comIdx=null;let stream=null,recorder=null,chunks=[];let recording=false,timerInt=null,sec=0,facing="user";
-let videoAtivo=null;let audioOn=false;let observer=null;let shareIdx=null;
-async function init(){await openDB();let stored=await getAllPostsDB();if(stored.length>0){posts=stored.sort((a,b)=>(b.time||0)-(a.time||0))}else{posts=[{id:Date.now(),owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Restaurado! Botão som fixo lateral adicionado!",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],isTop:true,type:"img",time:Date.now()},{id:Date.now()+1,owner:"teste",img:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",desc:"Teste video com som unico",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],isTop:false,type:"video",time:Date.now()}];for(let p of posts)await savePostDB(p)}render();setTimeout(setupObserver,600)}init();
-function pausarTodosExceto(exceto){document.querySelectorAll('#feed video').forEach(v=>{if(v!==exceto){v.pause();v.muted=true;}})}
-function setupObserver(){if(observer) observer.disconnect();observer=new IntersectionObserver((entries)=>{let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.8).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(vis.length===0) return;let v=vis[0].target.querySelector('video');if(!v) return;pausarTodosExceto(v);videoAtivo=v;if(audioOn){v.muted=false;v.volume=1;}else{v.muted=true;}v.play().catch(()=>{});atualizarBotoes();},{threshold:[0,0.8,1]});document.querySelectorAll('.post').forEach(p=>observer.observe(p));}
-function atualizarBotoes(){document.querySelectorAll('.post').forEach(post=>{let v=post.querySelector('video');let b=post.querySelector('.iconTik.audio');if(!b) return;if(v&&v===videoAtivo&&!v.muted&&!v.paused&&audioOn){b.classList.add('on');b.innerHTML='<i class="fa-solid fa-volume-high"></i>';b.nextElementSibling.innerHTML='Som<br>ON';}else{b.classList.remove('on');b.innerHTML='<i class="fa-solid fa-volume-xmark"></i>';b.nextElementSibling.innerHTML='Som<br>OFF';}})}
-function toggleAudio(btnEl){let post=btnEl.closest('.post');let video=post.querySelector('video');if(!video){let t=document.createElement("div");t.innerText="Foto sem som";t.className="toast";document.body.appendChild(t);setTimeout(()=>t.remove(),2000);return;}pausarTodosExceto(video);let icon=btnEl.querySelector('.iconTik.audio');if(video.muted){video.muted=false;video.volume=1;video.play().catch(()=>{});videoAtivo=video;audioOn=true;icon.classList.add('on');icon.innerHTML='<i class="fa-solid fa-volume-high"></i>';btnEl.querySelector('.txtTik').innerHTML='Som<br>ON';}else{video.muted=true;audioOn=false;icon.classList.remove('on');icon.innerHTML='<i class="fa-solid fa-volume-xmark"></i>';btnEl.querySelector('.txtTik').innerHTML='Som<br>OFF';}atualizarBotoes();}
-function mostrarBotaoPostar(){document.getElementById("previewArea").classList.add("show");document.getElementById("btnPostar").classList.add("show")}
-function closeShare(){document.getElementById("shareDrawer").style.display="none";document.getElementById("shareDrawer").classList.remove("show")}
-async function shareP(i){shareIdx=i;let p=posts[i];if(!p.sharedBy)p.sharedBy=[];if(!p.sharedBy.includes(uid))p.sharedBy.push(uid);await savePostDB(p);render();document.getElementById("shareDrawer").style.display="flex";document.getElementById("shareDrawer").classList.add("show")}
-function shareWhats(){window.open("https://wa.me/?text="+encodeURIComponent(location.href),"_blank");closeShare()}
-function shareCopy(){navigator.clipboard.writeText(location.href);closeShare()}
-function shareSystem(){if(navigator.share)navigator.share({url:location.href}).catch(()=>shareCopy());else shareCopy()}
-async function startCam(mode){facing=mode||facing;try{if(stream)stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});let v=document.getElementById("camVideo");v.srcObject=stream;if(facing==="user")v.classList.add("mirror");else v.classList.remove("mirror");document.getElementById("camBox").style.display="block";document.getElementById("camOff").style.display="none";document.getElementById("previewArea").classList.remove("show");document.getElementById("btnPostar").classList.remove("show")}catch(e){alert("Camera precisa HTTPS e microfone: "+e.message)}}
-function stopCam(){try{if(stream)stream.getTracks().forEach(t=>t.stop())}catch(e){}stream=null;document.getElementById("camBox").style.display="none";document.getElementById("camOff").style.display="block";if(timerInt){clearInterval(timerInt);timerInt=null}if(recording)stopRec()}
-function switchCam(){startCam(facing==="user"?"environment":"user")}
-function toggleRec(){if(!recording)startRec();else stopRec()}
-function startRec(){if(!stream){alert("Abra camera");return}chunks=[];let mime="video/webm;codecs=vp9,opus";if(!MediaRecorder.isTypeSupported(mime))mime="video/webm";try{recorder=new MediaRecorder(stream,{mimeType:mime,audioBitsPerSecond:128000,videoBitsPerSecond:2500000})}catch(e){recorder=new MediaRecorder(stream)}recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};recorder.onstop=()=>{let blob=new Blob(chunks,{type:'video/webm'});let url=URL.createObjectURL(blob);temp=url;tempType="video";let pv=document.getElementById("previewVideo");if(pv){pv.src=url;pv.muted=false;pv.volume=1}let pr=document.getElementById("prev");if(pr)pr.style.display="none";mostrarBotaoPostar()};recorder.start(200);recording=true;document.getElementById("btnRec").classList.add("stop");document.getElementById("btnRec").innerHTML='<i class="fa-solid fa-stop"></i>';sec=0;timerInt=setInterval(()=>{sec++;let m=String(Math.floor(sec/60)).padStart(2,'0');let s=String(sec%60).padStart(2,'0');document.getElementById("timer").innerText=m+":"+s+" / 01:30";if(sec>=90)stopRec()},1000)}
-function stopRec(){try{if(recorder&&recording)recorder.stop()}catch(e){}recording=false;let b=document.getElementById("btnRec");if(b){b.classList.remove("stop");b.innerHTML='<i class="fa-solid fa-circle"></i>'}if(timerInt){clearInterval(timerInt);timerInt=null}}
-function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").toLowerCase();if(!n){alert("Digite nome");return}userNome=n;localStorage.setItem("userNome",n);render();alert("Salvo @"+n)}
-function openCom(idx){let p=posts[idx];if(!p)return;comIdx=p.id;document.getElementById("comCount").innerText=(p.com?p.com.length:0)+" comentarios";let list=document.getElementById("comList");list.innerHTML=(p.com||[]).map(c=>'<div style="color:#fff;font-size:12px;margin-top:6px"><b>@'+c.u+'</b> '+c.t+'</div>').join("")||"<div style='color:#555'>Sem comentarios</div>";document.getElementById("comDrawer").classList.add("show")}
-function closeCom(){document.getElementById("comDrawer").classList.remove("show");comIdx=null}
-async function sendCom(){let inp=document.getElementById("comInput");let txt=inp.value.trim();if(!txt||comIdx===null)return;let p=posts.find(x=>x.id===comIdx);if(!p)return;if(!p.com)p.com=[];p.com.push({u:userNome||"anon",t:txt,time:Date.now()});await savePostDB(p);inp.value="";render();openCom(posts.indexOf(p))}
-function render(){let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0)||(b.time||0)-(a.time||0));document.getElementById("feed").innerHTML=list.map((p)=>{let idx=posts.indexOf(p);let fired=p.firedBy&&p.firedBy.includes(uid);let liked=p.likedBy&&p.likedBy.includes(uid);let saved=p.saveBy&&p.saveBy.includes(uid);let shared=p.sharedBy&&p.sharedBy.includes(uid);let media="";if(p.type==="video"){media='<video src="'+p.img+'" loop playsinline muted preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>'}else{media='<div style="width:100%;height:100%;background:url(\''+p.img+'\') center/cover no-repeat"></div>'}return '<div class="post">'+media+'<div class="rightBar"><button class="btnTik" onclick="toggleAudio(this)"><div class="iconTik audio"><i class="fa-solid fa-volume-xmark"></i></div><div class="txtTik">Som<br>OFF</div></button><button class="btnTik" onclick="fire('+idx+',this)"><div class="iconTik fire '+(fired?'on':'')+'"><i class="fa-solid fa-fire"></i></div><div class="txtTik">'+(p.firedBy?p.firedBy.length:0)+'<br>Chamas</div></button><button class="btnTik" onclick="like('+idx+',this)"><div class="iconTik heart '+(liked?'on':'')+'"><i class="'+(liked?'fa-solid':'fa-regular')+' fa-heart"></i></div><div class="txtTik">'+(p.likedBy?p.likedBy.length:0)+'<br>Curtir</div></button><button class="btnTik" onclick="openCom('+idx+')"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">'+(p.com?p.com.length:0)+'<br>Comen</div></button><button class="btnTik" onclick="shareP('+idx+',this)"><div class="iconTik share '+(shared?'on':'')+'"><i class="fa-solid fa-share"></i></div><div class="txtTik">'+(p.sharedBy?p.sharedBy.length:0)+'<br>Compar</div></button><button class="btnTik" onclick="saveP('+idx+',this)"><div class="iconTik save '+(saved?'on':'')+'"><i class="'+(saved?'fa-solid':'fa-regular')+' fa-bookmark"></i></div><div class="txtTik">Salvar</div></button></div><div class="info"><b>@'+p.owner+'</b> '+(p.type==="video"?'<span style="background:'+(audioOn?'#00ff88':'#333')+';color:'+(audioOn?'#000':'#fff')+';padding:2px 6px;border-radius:10px;font-size:8px">'+(audioOn?'🔊 SOM ON':'🔇 TOQUE 🔊')+'</span>':'')+'<div>'+(p.desc||'')+'</div></div></div>'}).join("");document.getElementById("uidShow").innerText=uid;document.getElementById("nomeUser").value=userNome;document.getElementById("nomeShow").innerText=userNome?"@"+userNome:"@fire.user";let meus=posts.filter(p=>p.owner===(userNome||"")&&p.owner!=="fire.influencer");document.getElementById("meusVideos").innerHTML=meus.map(p=>'<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.04);padding:6px;border-radius:8px"><div style="width:42px;height:42px;border-radius:8px;background:url(\''+p.img+'\') center/cover"></div><div style="color:#fff;font-size:11px">'+(p.desc||'').slice(0,40)+'</div></div>').join("")||"<div style='color:#555'>Nenhum</div>";setTimeout(()=>{try{setupObserver()}catch(e){}},200)}
-async function fire(i){let p=posts[i];if(!p.firedBy)p.firedBy=[];if(p.firedBy.includes(uid))p.firedBy=p.firedBy.filter(x=>x!==uid);else p.firedBy.push(uid);await savePostDB(p);render()}
-async function like(i){let p=posts[i];if(!p.likedBy)p.likedBy=[];if(p.likedBy.includes(uid))p.likedBy=p.likedBy.filter(x=>x!==uid);else p.likedBy.push(uid);await savePostDB(p);render()}
-async function saveP(i){let p=posts[i];if(!p.saveBy)p.saveBy=[];if(p.saveBy.includes(uid))p.saveBy=p.saveBy.filter(x=>x!==uid);else p.saveBy.push(uid);await savePostDB(p);render()}
-function go(n){if(n!==2)stopCam();document.getElementById("comDrawer").classList.remove("show");document.getElementById("shareDrawer").style.display="none";document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b"+n).classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));if(n==1)document.getElementById("pBusca").classList.add("show");if(n==2)document.getElementById("pCriar").classList.add("show");if(n==4)document.getElementById("pEu").classList.add("show")}
-function closeAll(){stopCam();document.getElementById("comDrawer").classList.remove("show");document.getElementById("shareDrawer").style.display="none";document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));document.getElementById("b0").classList.add("on")}
-function busca(){let q=document.getElementById("qBusca").value.toLowerCase();let r=posts.filter(p=>(p.desc||'').toLowerCase().includes(q)||(p.owner||'').toLowerCase().includes(q));document.getElementById("rBusca").innerHTML=r.map(p=>'<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:8px"><div style="width:40px;height:40px;border-radius:8px;background:url(\''+p.img+'\') center/cover"></div><div style="color:#fff;font-size:11px">'+p.desc+'</div></div>').join("")||"<div style='color:#555'>Nada</div>"}
-document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{if(f.type.startsWith("video")){temp=ev.target.result;tempType="video";let pv=document.getElementById("previewVideo");if(pv){pv.src=temp;pv.muted=false;pv.volume=1}let pr=document.getElementById("prev");if(pr)pr.style.display="none";mostrarBotaoPostar()}else{temp=ev.target.result;tempType="img";let pr=document.getElementById("prev");if(pr){pr.src=temp;pr.style.display="block"}mostrarBotaoPostar()}};r.readAsDataURL(f)})
-async function postar(){let d=document.getElementById("desc").value.trim()||"Meu video FIRE!";if(!temp){alert("Grave video!");return}if(!userNome){alert("Cadastro em Eu!");go(4);return}let novo={id:Date.now()+Math.random(),owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:tempType,time:Date.now()};await savePostDB(novo);posts.unshift(novo);temp="";document.getElementById("previewArea").classList.remove("show");document.getElementById("btnPostar").classList.remove("show");render();closeAll();stopCam();alert("Video com audio postado!")}
-document.getElementById('feed').addEventListener('scroll',()=>{document.querySelectorAll('#feed video').forEach(v=>{if(v!==videoAtivo){v.pause();v.muted=true}})}, {passive:true});
+// FUNCOES ADICIONADAS - CORRIGEM SOM MISTURANDO, MANTEM LAYOUT
+let videoAtivo=null;let audioOn=false;let observer=null;
+function pausarTodosExceto(exceto){
+  document.querySelectorAll('#feed video').forEach(v=>{
+    if(v!==exceto){v.pause();v.muted=true;}
+  });
+}
+function setupObserver(){
+  if(observer) observer.disconnect();
+  observer=new IntersectionObserver((entries)=>{
+    let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.8)
+   .sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
+    if(vis.length===0) return;
+    let video=vis[0].target.querySelector('video');
+    if(!video) return;
+    pausarTodosExceto(video);
+    videoAtivo=video;
+    video.muted=!audioOn;
+    if(audioOn) video.volume=1;
+    video.play().catch(()=>{});
+  },{threshold:[0,0.8,1]});
+  document.querySelectorAll('.post').forEach(p=>observer.observe(p));
+}
+function toggleAudio(btnEl){
+  let post=btnEl.closest('.post');
+  let video=post.querySelector('video');
+  if(!video) return;
+  pausarTodosExceto(video);
+  let icon=btnEl.querySelector('.iconTik.audio');
+  if(video.muted){
+    video.muted=false;video.volume=1;video.play();videoAtivo=video;audioOn=true;
+    icon.classList.add('on');icon.innerHTML='<i class="fa-solid fa-volume-high"></i>';
+  }else{
+    video.muted=true;audioOn=false;
+    icon.classList.remove('on');icon.innerHTML='<i class="fa-solid fa-volume-xmark"></i>';
+  }
+}
+document.getElementById('feed').addEventListener('scroll',()=>{
+  document.querySelectorAll('#feed video').forEach(v=>{
+    if(v!==videoAtivo){v.pause();v.muted=true}
+  });
+},{passive:true});
 </script>
-</body>
-</html>
