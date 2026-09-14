@@ -147,4 +147,4 @@ document.getElementById("file").addEventListener("change",e=>{let f=e.target.fil
 async function postar(){let d=document.getElementById("desc").value.trim()||"Meu vídeo 1:30 🔥"; if(!temp){alert("Grave vídeo ou escolha arquivo!"); return;} if(!userNome){alert("Faça cadastro em Eu!"); go(4); return;} let novo={id:Date.now()+Math.random(),owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:tempType,time:Date.now()}; await savePostDB(novo); posts.unshift(novo); temp=""; document.getElementById("previewArea").classList.remove("show"); document.getElementById("prev").style.display="none"; document.getElementById("previewVideo").style.display="none"; document.getElementById("btnPostar").classList.remove("show"); document.getElementById("desc").value=""; document.getElementById("file").value=""; render(); closeAll(); stopCam(); alert("✅ Vídeo postado!");}
 </script>
 </body>
-</html>
+</html> 
