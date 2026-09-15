@@ -8,6 +8,16 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
+#splash{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity.9s ease}
+#splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#splash::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.15),rgba(0,0,0,.85))}
+.s-content{position:relative;z-index:3;text-align:center}
+.s-content h1{font-size:52px;font-weight:900;letter-spacing:-2px;text-shadow:0 0 15px #ff4500,0 0 40px #f00;animation:flicker.15s infinite alternate}
+@keyframes flicker{0%{text-shadow:0 0 15px #ff4500}100%{text-shadow:0 0 30px #ff4500,0 0 70px #f00}}
+.sub{color:#ff8c00;font-weight:900;letter-spacing:6px;font-size:11px;margin-top:10px}
+#loader{width:160px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin:24px auto 0;overflow:hidden}
+#loader div{width:0;height:100%;background:linear-gradient(90deg,#ff2a00,#ffae00);animation:load 5s linear forwards}
+@keyframes load{to{width:100%}}
 #app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
 #feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
 #feed::-webkit-scrollbar{display:none}
@@ -92,6 +102,16 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 </style>
 </head>
 <body>
+<div id="splash">
+  <video autoplay muted loop playsinline poster="fire_small.jpg">
+    <source src="generated_video_b695ae2e.mp4" type="video/mp4">
+  </video>
+  <div class="s-content">
+    <h1>work influencer</h1>
+    <div class="sub">🔥 CARREGANDO</div>
+    <div id="loader"><div></div></div>
+  </div>
+</div>
 <div id="app">
 <div id="feed"></div>
 <div id="toast">🔊 Só 1 áudio por vez</div>
@@ -104,6 +124,7 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 <div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button><button id="b1" onclick="go(1)"><i class="fa-solid fa-magnifying-glass"></i><span>Busca</span></button><button id="b2" onclick="go(2)"><div class="plus"><i class="fa-solid fa-plus"></i></div></button><button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast"></i><span>Live</span></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button></div>
 </div>
 <script>
+setTimeout(()=>{let s=document.getElementById('splash'); if(s){s.style.opacity='0'; setTimeout(()=>s.remove(),900);}},5000);
 let db; let useIDB=true;
 function openDB(){return new Promise((res)=>{try{let req=indexedDB.open("WorkFireFixPostar",3); req.onupgradeneeded=e=>{let d=e.target.result; if(!d.objectStoreNames.contains("posts")) d.createObjectStore("posts",{keyPath:"id"}); if(!d.objectStoreNames.contains("perfis")) d.createObjectStore("perfis",{keyPath:"uid"});}; req.onsuccess=e=>{db=e.target.result; res(db);}; req.onerror=()=>{useIDB=false; res(null);};}catch(e){useIDB=false; res(null);}});}
 function savePostDB(p){if(!useIDB||!db) return Promise.resolve(); return new Promise(r=>{try{let tx=db.transaction("posts","readwrite"); tx.objectStore("posts").put(p); tx.oncomplete=()=>r(); tx.onerror=()=>r();}catch(e){r();}});}
