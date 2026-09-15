@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>work influencer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:system-ui;overflow:hidden}
+
+/* ABERTURA FOGO REAL */
+#splash{position:fixed;inset:0;z-index:99999;background:#000 url('fogo.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;transition:opacity .9s}
+#splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#splash::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.2))}
+.splash-content{position:relative;z-index:2;text-align:center}
+.splash-content h1{font-size:44px;font-weight:900;text-shadow:0 0 15px #ff4500,0 0 35px #ff0000;animation:flicker .12s infinite alternate}
+@keyframes flicker{0%{text-shadow:0 0 10px #ff4500}100%{text-shadow:0 0 30px #ff4500,0 0 60px #f00}}
+#loader{width:140px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin:20px auto 0;overflow:hidden}
+#loader div{height:100%;width:0;background:linear-gradient(90deg,#ff3300,#ffae00);animation:load 3.2s linear forwards}
+@keyframes load{to{width:100%}}
+.sub{color:#ff8c00;font-size:11px;font-weight:900;letter-spacing:6px;margin-top:10px}
+</style>
+</head>
+<body>
+
+<!-- TELA DE ABERTURA -->
+<div id="splash">
+  <video autoplay muted loop playsinline>
+    <source src="fogo.mp4" type="video/mp4">
+  </video>
+  <div class="splash-content">
+    <h1>work influencer</h1>
+    <div class="sub">CARREGANDO 🔥</div>
+    <div id="loader"><div></div></div>
+  </div>
+</div>
+
+<!-- SEU APP AQUI (mantém seu código atual do feed) -->
+<div id="app">
+  <!-- COLE SEU FEED TIKTOK AQUI DENTRO -->
+</div>
+
+<script>
+// Some abertura após 3.2s
+setTimeout(()=>{
+  let s=document.getElementById('splash');
+  s.style.opacity='0';
+  setTimeout(()=>s.remove(),900);
+},3200);
+
+// Mantém sua lógica de: 1 áudio por vez + marca d'água work influencer
+document.addEventListener('play', function(e){
+  if(e.target.tagName==='VIDEO' || e.target.tagName==='AUDIO'){
+    document.querySelectorAll('video,audio').forEach(a=>{ if(a!==e.target) a.pause(); });
+  }
+}, true);
+</script>
+</body>
+</html>
