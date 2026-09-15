@@ -1,59 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>work influencer</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#fff;font-family:system-ui;overflow:hidden}
-
-/* ABERTURA FOGO REAL */
-#splash{position:fixed;inset:0;z-index:99999;background:#000 url('fogo.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;transition:opacity .9s}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto}
+body{background:#000;color:#fff;overflow:hidden;overscroll-behavior:none}
+/* ABERTURA VÍDEO FOGO REAL */
+#splash{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .9s ease}
 #splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#splash::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.2))}
-.splash-content{position:relative;z-index:2;text-align:center}
-.splash-content h1{font-size:44px;font-weight:900;text-shadow:0 0 15px #ff4500,0 0 35px #ff0000;animation:flicker .12s infinite alternate}
-@keyframes flicker{0%{text-shadow:0 0 10px #ff4500}100%{text-shadow:0 0 30px #ff4500,0 0 60px #f00}}
-#loader{width:140px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin:20px auto 0;overflow:hidden}
-#loader div{height:100%;width:0;background:linear-gradient(90deg,#ff3300,#ffae00);animation:load 3.2s linear forwards}
+#splash::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.1),rgba(0,0,0,.85))}
+.s-content{position:relative;z-index:3;text-align:center;animation:up .8s ease}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.s-content h1{font-size:52px;font-weight:900;letter-spacing:-2px;text-shadow:0 0 15px #ff4500,0 0 40px #ff0000,0 4px 20px #000}
+.sub{color:#ff8c00;font-weight:900;letter-spacing:6px;font-size:11px;margin-top:10px;text-shadow:0 2px 10px #000}
+#loader{width:160px;height:3px;background:rgba(255,255,255,.18);border-radius:10px;margin:26px auto 0;overflow:hidden}
+#loader div{width:0;height:100%;background:linear-gradient(90deg,#ff2a00,#ffb700);box-shadow:0 0 10px #ff4500;animation:load 3.2s linear forwards}
 @keyframes load{to{width:100%}}
-.sub{color:#ff8c00;font-size:11px;font-weight:900;letter-spacing:6px;margin-top:10px}
+/* APP */
+#app{height:100dvh;display:flex;flex-direction:column;background:#000}
+header{height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid #1a1a1a;background:#000;z-index:10}
+header b{font-size:18px;letter-spacing:-0.5px}
+.feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000;-webkit-overflow-scrolling:touch}
+.item{height:100dvh;scroll-snap-align:start;position:relative;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.item video{width:100%;height:100%;object-fit:cover;background:#111}
+.wm{position:absolute;top:12px;left:12px;z-index:5;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);padding:4px 9px;border-radius:6px;font-size:10px;font-weight:800;letter-spacing:1.2px;border:1px solid rgba(255,255,255,.1)}
+.actions{position:absolute;right:10px;bottom:100px;z-index:6;display:flex;flex-direction:column;gap:16px;align-items:center}
+.act{display:flex;flex-direction:column;align-items:center;gap:4px}
+.act button{width:48px;height:48px;border-radius:50%;border:none;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);color:#fff;font-size:22px}
+.act span{font-size:10px;font-weight:700;opacity:.8}
+.info{position:absolute;left:12px;bottom:100px;right:70px;z-index:6}
+.info b{font-size:14px}
+.info p{font-size:12px;opacity:.7;margin-top:2px}
+.bottom{height:56px;display:flex;gap:8px;align-items:center;padding:8px 10px;background:#000;border-top:1px solid #1f1f1f}
+.bottom input{flex:1;background:#121212;border:1px solid #222;border-radius:22px;padding:11px 14px;color:#fff;outline:none}
+.bottom button{background:#fff;color:#000;border:none;border-radius:22px;padding:11px 18px;font-weight:900}
 </style>
 </head>
 <body>
 
-<!-- TELA DE ABERTURA -->
+<!-- ABERTURA COM VÍDEO FOGO REAL -->
 <div id="splash">
-  <video autoplay muted loop playsinline>
-    <source src="fogo.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline poster="fire_small.jpg">
+    <source src="generated_video_b695ae2e.mp4" type="video/mp4">
   </video>
-  <div class="splash-content">
+  <div class="s-content">
     <h1>work influencer</h1>
-    <div class="sub">CARREGANDO 🔥</div>
+    <div class="sub">🔥 ENTRANDO NO APP</div>
     <div id="loader"><div></div></div>
   </div>
 </div>
 
-<!-- SEU APP AQUI (mantém seu código atual do feed) -->
 <div id="app">
-  <!-- COLE SEU FEED TIKTOK AQUI DENTRO -->
+  <header><b>work influencer</b><span style="font-size:11px;opacity:.5">AO VIVO 🔥</span></header>
+  <div class="feed" id="feed"></div>
+  <div class="bottom">
+    <input id="urlIn" placeholder="Cole link do vídeo ou MP4...">
+    <button onclick="addVideo()">Postar</button>
+  </div>
 </div>
 
 <script>
-// Some abertura após 3.2s
-setTimeout(()=>{
-  let s=document.getElementById('splash');
-  s.style.opacity='0';
-  setTimeout(()=>s.remove(),900);
-},3200);
-
-// Mantém sua lógica de: 1 áudio por vez + marca d'água work influencer
-document.addEventListener('play', function(e){
-  if(e.target.tagName==='VIDEO' || e.target.tagName==='AUDIO'){
-    document.querySelectorAll('video,audio').forEach(a=>{ if(a!==e.target) a.pause(); });
+const feed=document.getElementById('feed');
+let videos=JSON.parse(localStorage.getItem('wi_videos_v3')||'[]');
+if(videos.length===0){
+  videos=[
+    {url:'https://www.w3schools.com/html/mov_bbb.mp4',user:'@work_influencer',desc:'Bem-vindo ao work influencer 🔥'},
+  ];
+}
+function render(){
+  feed.innerHTML='';
+  videos.forEach((v,i)=>{
+    const d=document.createElement('div');d.className='item';
+    d.innerHTML=`
+      <video src="${v.url}" loop playsinline preload="metadata" onclick="this.paused?this.play():this.pause()"></video>
+      <div class="wm">work influencer</div>
+      <div class="info"><b>${v.user||'@usuario'}</b><p>${v.desc||'work influencer 🔥'}</p></div>
+      <div class="actions">
+        <div class="act"><button onclick="like(this)">❤️</button><span>Curtir</span></div>
+        <div class="act"><button onclick="shareVid(${i})">↗️</button><span>Share</span></div>
+        <div class="act"><button onclick="delVid(${i})">🗑️</button><span>Apagar</span></div>
+      </div>`;
+    feed.appendChild(d);
+  });
+  // Só 1 toca por vez
+  feed.querySelectorAll('video').forEach(v=>{
+    v.addEventListener('play',()=>{feed.querySelectorAll('video').forEach(o=>{if(o!==v) o.pause();})});
+  });
+  // Auto play primeiro
+  setTimeout(()=>{const first=feed.querySelector('video');if(first) first.play().catch(()=>{});},800);
+}
+function addVideo(){
+  const url=document.getElementById('urlIn').value.trim();
+  if(!url) return alert('Cole um link MP4');
+  videos.unshift({url,user:'@voce',desc:'Meu vídeo work influencer 🔥',id:Date.now()});
+  localStorage.setItem('wi_videos_v3',JSON.stringify(videos));
+  document.getElementById('urlIn').value=''; render();
+}
+function delVid(i){
+  if(!confirm('Apagar esse vídeo?')) return;
+  videos.splice(i,1);
+  localStorage.setItem('wi_videos_v3',JSON.stringify(videos));
+  render();
+}
+function shareVid(i){
+  const url=videos[i].url;
+  const text=`Olha meu vídeo no work influencer 🔥 ${url}`;
+  if(navigator.share){navigator.share({title:'work influencer',text,url}).catch(()=>{});}
+  else{
+    // Menu compartilhar
+    const w=`https://wa.me/?text=${encodeURIComponent(text)}`;
+    const f=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    if(confirm('Compartilhar no WhatsApp? OK = WhatsApp / Cancel = Copiar link')) window.open(w,'_blank');
+    else {navigator.clipboard.writeText(url); alert('Link copiado! Cole no Instagram, Facebook, WhatsApp');}
   }
-}, true);
+}
+function like(btn){btn.textContent=btn.textContent==='❤️'?'💖':'❤️'; btn.style.transform='scale(1.3)'; setTimeout(()=>btn.style.transform='scale(1)',200);}
+
+// Some abertura após 3.2s
+setTimeout(()=>{const s=document.getElementById('splash'); if(s){s.style.opacity='0'; setTimeout(()=>s.remove(),900);}},3200);
+
+render();
 </script>
 </body>
 </html>
