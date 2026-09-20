@@ -3,9 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - GLOBAL</title>
+<title>WORK FIRE - GLOBAL FIREBASE</title>
+<script type="module">
+// FIREBASE GLOBAL - TODOS VEEM TODOS
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// 👇 COLA SEU firebaseConfig AQUI DO SEU PROJETO
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO",
+  storageBucket: "SEU_PROJETO.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abc"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+window.dbFire = db;
+window.fireFuncs = { collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc, updateDoc, arrayUnion, arrayRemove };
+console.log("🔥 FIREBASE GLOBAL ATIVO - TODOS VEEM TODOS");
+</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+/* SEU CSS BASE VERDADEIRO INTACTO */
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
 #app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column}
@@ -14,103 +36,59 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 .post.live-post{border:3px solid #ff0000}
 .post video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .watermark{position:absolute;left:10px;top:14px;z-index:9;background:rgba(0,0,0,.35);padding:4px 10px;border-radius:20px;color:#fff;font-size:8px;font-weight:900}
-.info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border-radius:12px;padding:9px 10px;color:#fff}
-.nav{height:64px;background:#0a0700;display:flex;align-items:center;justify-content:space-around;color:#fff}
+.info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border-radius:12px;padding:9px 10px}
+.nav{height:64px;background:#0a0700;display:flex;align-items:center;justify-content:space-around}
 .btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px}
 </style>
-<script type="module">
-// FIREBASE GLOBAL - CONFIG REAL
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc, updateDoc, arrayUnion, arrayRemove, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAdr--djcqvYFaZX7CmgzIDBJl1JJww54w",
-  authDomain: "work-influencia.firebaseapp.com",
-  projectId: "work-influencia",
-  storageBucket: "work-influencia.firebasestorage.app",
-  messagingSenderId: "184507137189",
-  appId: "1:184507137189:web:f5607b39b2f8be2045214c",
-  measurementId: "G-0LBD6K4X5C"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const storage = getStorage(app);
-window.dbFire = db;
-window.storage = storage;
-window.fireFuncs = { collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc, updateDoc, arrayUnion, arrayRemove, serverTimestamp, ref, uploadBytes, getDownloadURL };
-console.log("🔥 FIREBASE GLOBAL ATIVO");
-</script>
 </head>
 <body>
 <div id="app">
-<div id="feed"><div style="color:#fff;padding:50px;text-align:center">Carregando feed GLOBAL... 🔥</div></div>
-
-<div style="position:fixed;bottom:70px;left:10px;right:10px;z-index:20;display:flex;gap:10px">
-<input id="desc" placeholder="Legenda..." style="flex:1;padding:12px;border-radius:10px;border:none">
-<input type="file" id="fileInput" accept="video/*,image/*" style="display:none">
-<button class="btn" style="width:auto;margin:0;padding:12px 20px" onclick="document.getElementById('fileInput').click()">📹</button>
-<button class="btn" style="width:auto;margin:0" onclick="postarGlobal()">POSTAR GLOBAL</button>
-</div>
-
-<div class="nav"><button onclick="location.reload()" style="background:none;border:none;color:#fff">Inicio</button><button onclick="document.getElementById('fileInput').click()" style="background:none;border:none;color:#fff;font-size:20px">+</button><button style="background:none;border:none;color:#fff">🔴 Live</button></div>
+<div id="feed"></div>
+<div id="pCriar"><button class="btn" onclick="postarGlobal()">POSTAR GLOBAL - TODOS VEEM</button></div>
+<div class="nav"><button onclick="go(0)">Inicio</button><button onclick="go(2)">+</button><button onclick="go(3)">Live</button></div>
 </div>
 
 <script type="module">
+// LÓGICA GLOBAL
 let posts = [];
-let tempFile = null;
-let userNome = localStorage.getItem("userNome") || "jonatha_" + Math.random().toString(36).slice(2,4);
-
-document.getElementById('fileInput').addEventListener('change', e => {
-  tempFile = e.target.files[0];
-  alert("Arquivo pronto: " + tempFile.name + " - Agora clica em POSTAR GLOBAL");
-});
+let userNome = localStorage.getItem("userNome") || "anon_"+Math.random().toString(36).slice(2,5);
 
 function escutaGlobal(){
   const q = window.fireFuncs.query(window.fireFuncs.collection(window.dbFire, "posts"), window.fireFuncs.orderBy("time","desc"));
   window.fireFuncs.onSnapshot(q, (snap)=>{
     posts = [];
-    snap.forEach(d=>{ posts.push({id:d.id,...d.data()}) });
+    snap.forEach(d=>{ posts.push({id:d.id, ...d.data()}) });
     renderGlobal();
   });
 }
 
-window.postarGlobal = async () => {
-  if(!tempFile){ alert("Escolhe um vídeo/foto primeiro no botão 📹"); return; }
-  const btn = document.querySelector('button[onclick="postarGlobal()"]');
-  btn.innerText = "ENVIANDO...";
-
-  try {
-    const storageRef = window.fireFuncs.ref(window.storage, 'posts/' + Date.now() + '_' + tempFile.name);
-    await window.fireFuncs.uploadBytes(storageRef, tempFile);
-    const url = await window.fireFuncs.getDownloadURL(storageRef);
-
-    await window.fireFuncs.addDoc(window.fireFuncs.collection(window.dbFire, "posts"), {
-      owner: userNome,
-      img: url,
-      tipo: tempFile.type.startsWith('video')? 'video' : 'image',
-      desc: document.getElementById("desc").value || "Meu vídeo global 🔥 #workinfluencia",
-      time: Date.now(),
-      likedBy: [],
-      com: []
-    });
-    alert("✅ POSTADO GLOBAL! Todo mundo já vê!");
-    document.getElementById("desc").value = "";
-    tempFile = null;
-  } catch(e){ alert("Erro: " + e.message) }
-  btn.innerText = "POSTAR GLOBAL";
+async function postarGlobal(){
+  // pega seu vídeo temp que já está gravado
+  if(!window.tempVideo){ alert("Grave um vídeo antes!"); return; }
+  await window.fireFuncs.addDoc(window.fireFuncs.collection(window.dbFire, "posts"), {
+    owner: userNome,
+    img: window.tempVideo, // base64 do vídeo
+    desc: document.getElementById("desc").value || "Meu vídeo global 🔥",
+    time: Date.now(),
+    isLive: false,
+    liveAtivo: false,
+    firedBy: [], likedBy: [], com: []
+  });
+  alert("✅ POSTADO GLOBAL! Todo mundo vai ver!");
 }
 
 function renderGlobal(){
-  const feed = document.getElementById("feed");
-  if(posts.length === 0){ feed.innerHTML = "<div style='color:#fff;padding:80px 20px;text-align:center'>Nenhum post ainda.<br>Seja o primeiro! 👇</div>"; return; }
-  feed.innerHTML = posts.map(p=>{
-    let media = p.tipo === 'video'? `<video src="${p.img}" loop muted autoplay playsinline onclick="this.paused?this.play():this.pause()"></video>` : `<div style="width:100%;height:100%;background:url('${p.img}') center/cover"></div>`;
-    return `<div class="post">${media}<div class="watermark">work influencer • GLOBAL</div><div class="info"><b>@${p.owner}</b><div>${p.desc}</div><div style="margin-top:5px">❤️ ${p.likedBy?.length||0}</div></div></div>`;
+  document.getElementById("feed").innerHTML = posts.map(p=>{
+    let isLive = p.isLive && p.liveAtivo;
+    if(isLive){
+      return `<div class="post live-post"><div style="width:100%;height:100%;background:radial-gradient(circle,#440000,#000);display:flex;align-items:center;justify-content:center;flex-direction:column"><div style="background:#ff0000;color:#fff;padding:8px 16px;border-radius:20px;font-weight:900">🔴 AO VIVO</div><div style="color:#fff;margin-top:10px">@${p.owner}</div></div><div class="info"><b>@${p.owner}</b> 🔴 AO VIVO AGORA<div>${p.desc}</div></div></div>`;
+    }
+    let media = p.img && p.img.startsWith("data:video") ? `<video src="${p.img}" loop muted autoplay playsinline></video>` : `<div style="width:100%;height:100%;background:url('${p.img}') center/cover"></div>`;
+    return `<div class="post">${media}<div class="watermark">work influencer • GLOBAL</div><div class="info"><b>@${p.owner}</b><div>${p.desc}</div></div></div>`;
   }).join("");
 }
 
+window.postarGlobal = postarGlobal;
 escutaGlobal();
 </script>
 </body>
