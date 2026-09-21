@@ -3,80 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WORK FIRE - LIVE REAL</title>
-<script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+<title>WORK FIRE - LIVE REAL FUNCIONANDO</title>
+<script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
 <style>
 body{margin:0;background:#000;color:#fff;font-family:sans-serif;text-align:center;padding:10px}
-#liveVideo{width:100%;max-width:400px;height:60vh;background:#111;border:2px solid red;border-radius:12px;margin:10px auto;display:block}
-button{padding:14px;margin:6px;border:none;border-radius:10px;font-weight:900;width:90%;max-width:300px}
-.btn-live{background:red;color:#fff}
-.btn-watch{background:#222;color:#fff;border:1px solid red}
-input{padding:12px;border-radius:8px;border:1px solid #ff8c00;background:#111;color:#fff;width:90%;max-width:300px}
+#liveVideo{width:100%;max-width:400px;height:60vh;background:#111;border:3px solid red;border-radius:14px;margin:10px auto;display:block}
+button{padding:15px;margin:6px;border:none;border-radius:12px;font-weight:900;width:90%;max-width:320px;cursor:pointer}
+.btn-live{background:linear-gradient(90deg,red,orange);color:#fff}
+.btn-watch{background:#222;color:#fff;border:1.5px solid red}
+input{padding:12px;border-radius:10px;border:1px solid orange;background:#111;color:#fff;width:90%;max-width:300px;margin:8px}
+#meuID{background:#111;border:1px dashed orange;padding:8px;border-radius:8px;margin:10px auto;max-width:400px;font-size:12px;word-break:break-all}
 </style>
 </head>
 <body>
 <h3>🔴 WORK FIRE - LIVE REAL</h3>
+<div id="meuID">Gerando seu ID...</div>
 <input id="nomeUser" placeholder="Seu @ nome">
 <br>
-<button onclick="salvar()" style="background:#ff8c00;width:200px">SALVAR</button>
-<video id="liveVideo" autoplay playsinline></video>
-<p id="status">Canal: live1</p>
-<button class="btn-live" onclick="startLive()">COMEÇAR LIVE</button>
-<button class="btn-watch" onclick="assistir()">ASSISTIR LIVE</button>
-<button onclick="parar()" style="background:#fff;color:red;width:200px">ENCERRAR</button>
+<button onclick="salvar()" style="background:orange;width:180px">SALVAR</button>
+<video id="liveVideo" autoplay playsinline muted></video>
+<p id="status">Canal: live1 - Aguardando</p>
+
+<input id="idRemoto" placeholder="ID da live pra assistir (cole aqui)">
+<br>
+<button class="btn-live" onclick="startLive()">🔴 COMEÇAR MINHA LIVE</button>
+<button class="btn-watch" onclick="assistir()">👁️ ASSISTIR LIVE DO ID</button>
+<button onclick="parar()" style="background:#fff;color:red;width:150px">ENCERRAR</button>
+<br><br>
+<div style="background:#111;padding:10px;border-radius:8px;max-width:400px;margin:0 auto;text-align:left;font-size:11px">
+<b>Como usar LIVE REAL:</b><br>
+1. Salva seu @ nome<br>
+2. Clica COMEÇAR LIVE - seu ID aparece em cima<br>
+3. Manda seu ID pro amigo colar no campo e clicar ASSISTIR<br>
+4. LIVE REAL instantânea, sem token, sem expirar!
+</div>
 
 <script>
-const APP_ID = "d0ae591e4a4f446b85e9b1dde0ff1fed";
-const CHANNEL = "live1";
-const TOKEN = "007eJxTYJBPdvBYfnHm08OF0rIPX83be+TyqYcMf1LECj/fUM+VXr5MgSHFIDHV1NIw1STRJM3ExCzJwjTVMskwJSXVIC3NMC01ZVn1hqyGQEYG1eenGBkZIBDEZ2PwySxLVTBkYAAAYUQjGA==";
+let peer=null, localStream=null, meuID="", userNome=localStorage.getItem("userNome")||"";
+document.getElementById("nomeUser").value=userNome;
+let videoEl=document.getElementById("liveVideo");
+let statusEl=document.getElementById("status");
 
-let client = null;
-let localVideo = null;
-let localAudio = null;
-let userNome = localStorage.getItem("userNome") || "";
-document.getElementById("nomeUser").value = userNome;
+function initPeer(){
+  peer=new Peer();
+  peer.on('open', id=>{
+    meuID=id;
+    document.getElementById("meuID").innerHTML="SEU ID DE LIVE: <b style='color:#00ff88'>"+id+"</b><br><small>Copia e manda pra quem vai assistir</small>";
+    statusEl.innerText="Pronto @"+(userNome||"")+" - ID: "+id;
+  });
+  peer.on('call', async call=>{
+    let stream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+    localStream=stream;
+    videoEl.srcObject=stream;
+    call.answer(stream);
+    statusEl.innerText="🔴 AO VIVO - Alguém assistindo!";
+  });
+}
+initPeer();
 
 function salvar(){
-  let n = document.getElementById("nomeUser").value.trim();
+  let n=document.getElementById("nomeUser").value.trim().toLowerCase();
   if(!n){alert("Digite nome");return;}
-  userNome = n;
-  localStorage.setItem("userNome", n);
-  document.getElementById("status").innerText = "Salvo @"+n;
+  userNome=n; localStorage.setItem("userNome",n);
+  statusEl.innerText="Salvo @"+n+" - ID: "+meuID;
+  alert("Salvo @"+n);
 }
 
 async function startLive(){
-  if(!userNome){alert("Salve nome");return;}
+  if(!userNome){alert("Salva nome");return;}
   try{
-    client = AgoraRTC.createClient({mode:"live",codec:"vp8"});
-    await client.setClientRole("host");
-    await client.join(APP_ID, CHANNEL, TOKEN, null);
-    localAudio = await AgoraRTC.createMicrophoneAudioTrack();
-    localVideo = await AgoraRTC.createCameraVideoTrack();
-    localVideo.play(document.getElementById("liveVideo"));
-    await client.publish([localAudio, localVideo]);
-    document.getElementById("status").innerText = "🔴 AO VIVO canal "+CHANNEL;
-  }catch(e){alert(e.message);}
+    localStream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+    videoEl.srcObject=localStream;
+    videoEl.muted=true;
+    statusEl.innerText="🔴 AO VIVO! Seu ID: "+meuID+" - Manda pros outros assistirem";
+    alert("🔴 LIVE INICIADA!\n\nSeu ID: "+meuID+"\n\nManda esse ID pra quem quiser assistir colar no campo de baixo.");
+  }catch(e){alert("Erro camera: "+e.message);}
 }
 
 async function assistir(){
+  let remoteID=document.getElementById("idRemoto").value.trim();
+  if(!remoteID){alert("Cole o ID da live que você quer assistir");return;}
   try{
-    client = AgoraRTC.createClient({mode:"live",codec:"vp8"});
-    await client.setClientRole("audience");
-    await client.join(APP_ID, CHANNEL, TOKEN, null);
-    client.on("user-published", async (user, type)=>{
-      await client.subscribe(user, type);
-      if(type=="video") user.videoTrack.play(document.getElementById("liveVideo"));
-      if(type=="audio") user.audioTrack.play();
+    statusEl.innerText="Conectando na live "+remoteID+"...";
+    let stream=await navigator.mediaDevices.getUserMedia({video:false,audio:true}).catch(()=>null);
+    let call=peer.call(remoteID, stream || new MediaStream());
+    call.on('stream', remoteStream=>{
+      videoEl.srcObject=remoteStream;
+      videoEl.muted=false;
+      statusEl.innerText="👁️ ASSISTINDO LIVE de "+remoteID;
     });
-    document.getElementById("status").innerText = "Conectado no "+CHANNEL;
+    call.on('error', e=>alert("Erro: "+e));
   }catch(e){alert(e.message);}
 }
 
-async function parar(){
-  if(localVideo) localVideo.close();
-  if(localAudio) localAudio.close();
-  if(client) await client.leave();
-  document.getElementById("status").innerText = "Encerrado";
+function parar(){
+  if(localStream){localStream.getTracks().forEach(t=>t.stop());}
+  videoEl.srcObject=null;
+  statusEl.innerText="Live encerrada";
 }
 </script>
 </body>
