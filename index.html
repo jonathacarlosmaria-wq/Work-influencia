@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WORK FIRE - LIVE REAL</title>
+<script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+<style>
+body{margin:0;background:#000;color:#fff;font-family:sans-serif;text-align:center;padding:10px}
+#liveVideo{width:100%;max-width:400px;height:60vh;background:#111;border:2px solid red;border-radius:12px;margin:10px auto;display:block}
+button{padding:14px;margin:6px;border:none;border-radius:10px;font-weight:900;width:90%;max-width:300px}
+.btn-live{background:red;color:#fff}
+.btn-watch{background:#222;color:#fff;border:1px solid red}
+input{padding:12px;border-radius:8px;border:1px solid #ff8c00;background:#111;color:#fff;width:90%;max-width:300px}
+</style>
+</head>
+<body>
+<h3>🔴 WORK FIRE - LIVE REAL</h3>
+<input id="nomeUser" placeholder="Seu @ nome">
+<br>
+<button onclick="salvar()" style="background:#ff8c00;width:200px">SALVAR</button>
+<video id="liveVideo" autoplay playsinline></video>
+<p id="status">Canal: live1</p>
+<button class="btn-live" onclick="startLive()">COMEÇAR LIVE</button>
+<button class="btn-watch" onclick="assistir()">ASSISTIR LIVE</button>
+<button onclick="parar()" style="background:#fff;color:red;width:200px">ENCERRAR</button>
+
+<script>
+const APP_ID = "d0ae591e4a4f446b85e9b1dde0ff1fed";
+const CHANNEL = "live1";
+const TOKEN = "007eJxTYJBPdvBYfnHm08OF0rIPX83be+TyqYcMf1LECj/fUM+VXr5MgSHFIDHV1NIw1STRJM3ExCzJwjTVMskwJSXVIC3NMC01ZVn1hqyGQEYG1eenGBkZIBDEZ2PwySxLVTBkYAAAYUQjGA==";
+
+let client = null;
+let localVideo = null;
+let localAudio = null;
+let userNome = localStorage.getItem("userNome") || "";
+document.getElementById("nomeUser").value = userNome;
+
+function salvar(){
+  let n = document.getElementById("nomeUser").value.trim();
+  if(!n){alert("Digite nome");return;}
+  userNome = n;
+  localStorage.setItem("userNome", n);
+  document.getElementById("status").innerText = "Salvo @"+n;
+}
+
+async function startLive(){
+  if(!userNome){alert("Salve nome");return;}
+  try{
+    client = AgoraRTC.createClient({mode:"live",codec:"vp8"});
+    await client.setClientRole("host");
+    await client.join(APP_ID, CHANNEL, TOKEN, null);
+    localAudio = await AgoraRTC.createMicrophoneAudioTrack();
+    localVideo = await AgoraRTC.createCameraVideoTrack();
+    localVideo.play(document.getElementById("liveVideo"));
+    await client.publish([localAudio, localVideo]);
+    document.getElementById("status").innerText = "🔴 AO VIVO canal "+CHANNEL;
+  }catch(e){alert(e.message);}
+}
+
+async function assistir(){
+  try{
+    client = AgoraRTC.createClient({mode:"live",codec:"vp8"});
+    await client.setClientRole("audience");
+    await client.join(APP_ID, CHANNEL, TOKEN, null);
+    client.on("user-published", async (user, type)=>{
+      await client.subscribe(user, type);
+      if(type=="video") user.videoTrack.play(document.getElementById("liveVideo"));
+      if(type=="audio") user.audioTrack.play();
+    });
+    document.getElementById("status").innerText = "Conectado no "+CHANNEL;
+  }catch(e){alert(e.message);}
+}
+
+async function parar(){
+  if(localVideo) localVideo.close();
+  if(localAudio) localAudio.close();
+  if(client) await client.leave();
+  document.getElementById("status").innerText = "Encerrado";
+}
+</script>
+</body>
+</html>
