@@ -6,34 +6,112 @@
 <title>WORK FIRE - LIVE REAL AGORA</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
-<style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}#splash{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity.9s ease}#splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.s-content{position:relative;z-index:3;text-align:center}.s-content h1{font-size:52px;font-weight:900;letter-spacing:-2px;text-shadow:0 0 15px #ff4500,0 0 40px #f00}.sub{color:#ff8c00;font-weight:900;letter-spacing:6px;font-size:11px;margin-top:10px}#loader{width:160px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin:24px auto 0;overflow:hidden}#loader div{width:0;height:100%;background:linear-gradient(90deg,#ff2a00,#ffae00);animation:load 5s linear forwards}@keyframes load{to{width:100%}}#app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}#feed::-webkit-scrollbar{display:none}.post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0;overflow:hidden}.post video{width:100%;height:100%;object-fit:cover;display:block;background:#000;position:absolute;inset:0}.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.9) 100%);pointer-events:none;z-index:1}.btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:8;border:3px solid #fff}.watermark{position:absolute;left:10px;top:14px;z-index:9;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:20px;color:rgba(255,255,255,.75);font-size:8.5px;font-weight:900;letter-spacing:1.2px;text-transform:lowercase;backdrop-filter:blur(2px)}.rightBar{position:absolute;right:8px;bottom:90px;z-index:10;display:flex;flex-direction:column;gap:12px;width:60px}.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%}.iconTik{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;background:rgba(35,35,35,.85);border:1.5px solid rgba(255,255,255,.18)}.iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00,#ff4500 55%,#8b0000)}.iconTik.fire.on{background:#ff4500;box-shadow:0 0 18px #ff4500}.iconTik.heart.on{background:#ff1844}.iconTik.save.on{background:#ffcc00;color:#000}.txtTik{color:#fff;font-size:8.5px;font-weight:800;margin-top:3px;text-shadow:0 1px 6px #000;text-align:center}.info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:9px 10px}.info b{color:#fff;font-size:11px}.info div{color:#ddd;font-size:11px;margin-top:2px}.nav{height:64px;min-height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30;flex-shrink:0}.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:8.5px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:2px}.nav button.on{color:#ff8c00}.nav button i{font-size:18px}.plus{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:-20px;box-shadow:0 0 0 4px #000}.page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto;padding-bottom:70px}.page.show{display:flex}.card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}.input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px;font-size:13px}.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px;font-size:13px;cursor:pointer}.avatar{width:88px;height:88px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;cursor:pointer}.avatar img{width:100%;height:100%;object-fit:cover}.cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.78);color:#ffcc00;font-size:7px;font-weight:900;text-align:center;padding:4px}.camBox{position:relative;width:100%;height:45vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff4500;margin-top:10px}.camBox video{width:100%;height:100%;object-fit:cover}.camBox video.mirror{transform:scaleX(-1)}.timerCam{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(255,0,0,.9);color:#fff;padding:5px 14px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}.ctrlCam{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:20px;z-index:5;align-items:center}.circ{width:70px;height:70px;border-radius:50%;border:4px solid #fff;background:#ff0000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;cursor:pointer}.circ.stop{background:#fff;color:#ff0000}.switchCam{width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.65);border:1.5px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}.liveStage{position:relative;width:100%;height:52vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff0000}.liveStage video{width:100%;height:100%;object-fit:cover}.liveStage video.mirror{transform:scaleX(-1)}.liveTag{position:absolute;top:10px;left:10px;background:#ff0000;color:#fff;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:900;z-index:5}.liveTimer{position:absolute;top:46px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);border:1.5px solid #ff0000;color:#fff;padding:6px 16px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}.progressLive{position:absolute;bottom:0;left:0;height:4px;background:linear-gradient(90deg,#ff0000,#ff8c00);z-index:8}#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none}
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:sans-serif}
+#splash{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .9s}
+.s-content{text-align:center;z-index:3;position:relative}
+.s-content h1{font-size:52px;font-weight:900;color:#fff;text-shadow:0 0 15px #ff4500,0 0 40px red}
+.sub{color:#ff8c00;font-weight:900;letter-spacing:6px;font-size:11px;margin-top:10px}
+#loader{width:160px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin:24px auto 0;overflow:hidden}
+#loader div{width:0;height:100%;background:linear-gradient(90deg,#ff2a00,#ffae00);animation:load 5s linear forwards}
+@keyframes load{to{width:100%}}
+#app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
+#feed{flex:1;overflow-y:auto;background:#000}
+.post{height:100dvh;width:100%;position:relative;background:#111 center/cover no-repeat}
+.watermark{position:absolute;left:10px;top:14px;z-index:9;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:20px;color:rgba(255,255,255,.75);font-size:8.5px;font-weight:900}
+.info{position:absolute;left:10px;right:10px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:9px 10px}
+.info b{color:#fff;font-size:11px}
+.nav{height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30}
+.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:8.5px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:2px}
+.nav button.on{color:#ff8c00}
+.nav button i{font-size:18px}
+.page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto;padding-bottom:70px}
+.page.show{display:flex}
+.card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
+.input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px}
+.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px;cursor:pointer}
+.liveStage{position:relative;width:100%;height:52vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff0000}
+.liveStage video{width:100%;height:100%;object-fit:cover}
+.liveTag{position:absolute;top:10px;left:10px;background:#ff0000;color:#fff;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:900}
+.liveTimer{position:absolute;top:46px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);border:1.5px solid #ff0000;color:#fff;padding:6px 16px;border-radius:20px;font-weight:900;font-size:13px}
+.progressLive{position:absolute;bottom:0;left:0;height:4px;background:linear-gradient(90deg,#ff0000,#ff8c00)}
+#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none}
 </style>
 </head>
 <body>
-<div id="splash"><div class="s-content"><h1>work influencer</h1><div class="sub">🔥 LIVE REAL AGORA</div><div id="loader"><div></div></div></div></div>
+<div id="splash">
+  <div class="s-content">
+    <h1>work influencer</h1>
+    <div class="sub">🔥 LIVE REAL AGORA</div>
+    <div id="loader"><div></div></div>
+  </div>
+</div>
 <div id="app">
-<div id="feed"></div>
-<div id="toast"></div>
-<div id="pLive" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔴 Live Real</h3><button onclick="closeAll();stopLive()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div id="liveBloq" class="card" style="text-align:center;border:2px solid #ffcc00"><div style="background:#ffcc00;color:#000;padding:6px;border-radius:8px;font-weight:900;font-size:12px">🔒 LIVE REAL AGORA - 30MIN</div><button class="btn" style="background:#ffcc00;color:#000" onclick="pagarPix()">✅ JÁ PAGUEI - LIBERAR</button><button class="btn" style="background:#222;color:#fff;border:1px solid #ff0000" onclick="assistirLiveReal()">👁️ ASSISTIR LIVE (audiência)</button></div><div id="liveOk" style="display:none;flex-direction:column;padding:10px"><div id="liveStartBox" class="card" style="text-align:center;border:2px solid #ff0000"><div style="color:#ff0000;font-weight:900">SUA LIVE - CANAL live1</div><button class="btn" style="background:#ff0000;color:#fff;margin-top:10px" onclick="startLive()">COMEÇAR LIVE REAL</button></div><div id="liveStageBox" class="card" style="display:none;padding:6px;border:2px solid #ff0000"><div class="liveStage"><video id="liveVideo" autoplay muted playsinline class="mirror"></video><div class="liveTag">AO VIVO REAL</div><div id="liveTimer" class="liveTimer"><span id="liveTimeLeft">30:00</span></div><div class="progressLive" id="progressLive" style="width:100%"></div></div><button class="btn" style="background:#fff;color:#ff0000" onclick="stopLive()">ENCERRAR</button></div></div></div>
-<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#ff4500">Eu</b><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="text-align:center"><input id="nomeUser" class="input" placeholder="Seu nome"><button class="btn" onclick="salvarTudo()">SALVAR</button></div></div>
-<div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button><button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast"></i><span>Live</span></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button></div>
+  <div id="feed"></div>
+  <div id="toast"></div>
+  <div id="pLive" class="page">
+    <div style="display:flex;justify-content:space-between;padding:14px">
+      <h3 style="color:#ff4500">🔴 Live Real</h3>
+      <button onclick="closeAll();stopLive()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button>
+    </div>
+    <div id="liveBloq" class="card" style="text-align:center;border:2px solid #ffcc00">
+      <div style="background:#ffcc00;color:#000;padding:6px;border-radius:8px;font-weight:900">🔒 LIVE REAL - 30MIN</div>
+      <button class="btn" style="background:#ffcc00;color:#000" onclick="pagarPix()">✅ JÁ PAGUEI - LIBERAR</button>
+      <button class="btn" style="background:#222;color:#fff;border:1px solid #ff0000" onclick="assistirLiveReal()">👁️ ASSISTIR LIVE</button>
+    </div>
+    <div id="liveOk" style="display:none;flex-direction:column;padding:10px">
+      <div id="liveStartBox" class="card" style="text-align:center;border:2px solid #ff0000">
+        <div style="color:#ff0000;font-weight:900">CANAL: live1 - AGORA REAL</div>
+        <button class="btn" style="background:#ff0000;color:#fff" onclick="startLive()">COMEÇAR LIVE REAL</button>
+      </div>
+      <div id="liveStageBox" class="card" style="display:none;padding:6px;border:2px solid #ff0000">
+        <div class="liveStage">
+          <video id="liveVideo" autoplay muted playsinline></video>
+          <div class="liveTag">AO VIVO REAL</div>
+          <div id="liveTimer" class="liveTimer"><span id="liveTimeLeft">30:00</span></div>
+          <div class="progressLive" id="progressLive" style="width:100%"></div>
+        </div>
+        <button class="btn" style="background:#fff;color:#ff0000" onclick="stopLive()">ENCERRAR</button>
+      </div>
+    </div>
+  </div>
+  <div id="pEu" class="page">
+    <div style="display:flex;justify-content:space-between;padding:14px">
+      <b style="color:#ff4500">Eu</b>
+      <button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button>
+    </div>
+    <div class="card" style="text-align:center">
+      <input id="nomeUser" class="input" placeholder="Seu nome">
+      <button class="btn" onclick="salvarTudo()">SALVAR NOME</button>
+    </div>
+  </div>
+  <div class="nav">
+    <button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button>
+    <button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast"></i><span>Live</span></button>
+    <button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button>
+  </div>
 </div>
 <script>
-setTimeout(()=>{document.getElementById('splash').style.opacity='0'; setTimeout(()=>document.getElementById('splash').remove(),900);},3000);
+setTimeout(()=>{let s=document.getElementById('splash');if(s){s.style.opacity='0';setTimeout(()=>s.remove(),900);}},3000);
 let uid=localStorage.getItem("uid")||"u_"+Math.random().toString(36).slice(2,5);localStorage.setItem("uid",uid);
-let userNome=localStorage.getItem("userNome")||"";let posts=[{id:1,owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Live Real Ativa!"}];
-const AGORA_APP_ID="d0ae591e4a4f446b85e9b1dde0ff1fed";const AGORA_CHANNEL="live1";const AGORA_TOKEN_TEMP="007eJxTYJBPdvBYfnHm08OF0rIPX83be+TyqYcMf1LECj/fUM+VXr5MgSHFIDHV1NIw1STRJM3ExCzJwjTVMskwJSXVIC3NMC01ZVn1hqyGQEYG1eenGBkZIBDEZ2PwySxLVTBkYAAAYUQjGA==";
-let agoraClient=null,agoraLocalVideo=null,agoraLocalAudio=null,liveTimerInt=null,liveSec=0;const LIVE_DURATION=1800;
+let userNome=localStorage.getItem("userNome")||"";
+let posts=[{id:1,owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"Live Real Ativa - Canal live1"}];
+const AGORA_APP_ID="d0ae591e4a4f446b85e9b1dde0ff1fed";
+const AGORA_CHANNEL="live1";
+const AGORA_TOKEN="007eJxTYJBPdvBYfnHm08OF0rIPX83be+TyqYcMf1LECj/fUM+VXr5MgSHFIDHV1NIw1STRJM3ExCzJwjTVMskwJSXVIC3NMC01ZVn1hqyGQEYG1eenGBkZIBDEZ2PwySxLVTBkYAAAYUQjGA==";
+let agoraClient=null,agoraLocalVideo=null,agoraLocalAudio=null,liveTimerInt=null,liveSec=0;
+const LIVE_DURATION=1800;
 function toast(m){let t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
 function render(){document.getElementById("feed").innerHTML=posts.map(p=>`<div class="post" style="background:url('${p.img}') center/cover"><div class="watermark">work influencer</div><div class="info"><b>@${p.owner}</b><div>${p.desc}</div></div></div>`).join("");}
 render();
-function salvarTudo(){let n=document.getElementById("nomeUser").value.trim();if(!n)return alert("nome");userNome=n;localStorage.setItem("userNome",n);alert("Salvo @"+n);checkLive();}
+function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().toLowerCase();if(!n)return alert("Digite nome");userNome=n;localStorage.setItem("userNome",n);alert("Salvo @"+n);checkLive();}
 function checkLive(){let pago=localStorage.getItem("livePago")==new Date().toDateString();document.getElementById("liveBloq").style.display=!pago?"block":"none";document.getElementById("liveOk").style.display=pago?"flex":"none";}
-function pagarPix(){localStorage.setItem("livePago",new Date().toDateString());checkLive();alert("Liberado!");}
-async function startLive(){try{agoraClient=AgoraRTC.createClient({mode:"live",codec:"vp8"});await agoraClient.setClientRole("host");await agoraClient.join(AGORA_APP_ID,AGORA_CHANNEL,AGORA_TOKEN_TEMP,null);agoraLocalAudio=await AgoraRTC.createMicrophoneAudioTrack();agoraLocalVideo=await AgoraRTC.createCameraVideoTrack();agoraLocalVideo.play(document.getElementById("liveVideo"));await agoraClient.publish([agoraLocalAudio,agoraLocalVideo]);document.getElementById("liveStartBox").style.display="none";document.getElementById("liveStageBox").style.display="block";toast("🔴 AO VIVO!");liveSec=0;liveTimerInt=setInterval(()=>{liveSec++;let rest=LIVE_DURATION-liveSec;let m=String(Math.floor(rest/60)).padStart(2,'0');let s=String(rest%60).padStart(2,'0');document.getElementById("liveTimeLeft").innerText=m+":"+s;document.getElementById("progressLive").style.width=(rest/LIVE_DURATION*100)+"%";if(rest<=0)stopLive();},1000);}catch(e){alert("Erro: "+e.message);}}
+function pagarPix(){localStorage.setItem("livePago",new Date().toDateString());checkLive();alert("Liberado 30min!");}
+async function startLive(){if(!userNome){alert("Vai em Eu e salva nome!");go(4);return;}try{agoraClient=AgoraRTC.createClient({mode:"live",codec:"vp8"});await agoraClient.setClientRole("host");await agoraClient.join(AGORA_APP_ID,AGORA_CHANNEL,AGORA_TOKEN,null);agoraLocalAudio=await AgoraRTC.createMicrophoneAudioTrack();agoraLocalVideo=await AgoraRTC.createCameraVideoTrack();agoraLocalVideo.play(document.getElementById("liveVideo"));await agoraClient.publish([agoraLocalAudio,agoraLocalVideo]);document.getElementById("liveStartBox").style.display="none";document.getElementById("liveStageBox").style.display="block";toast("🔴 AO VIVO no canal live1!");liveSec=0;liveTimerInt=setInterval(()=>{liveSec++;let rest=LIVE_DURATION-liveSec;let m=String(Math.floor(rest/60)).padStart(2,'0');let s=String(rest%60).padStart(2,'0');document.getElementById("liveTimeLeft").innerText=m+":"+s;document.getElementById("progressLive").style.width=(rest/LIVE_DURATION*100)+"%";if(rest<=0)stopLive();},1000);}catch(e){alert("Erro Agora: "+e.message);}}
 async function stopLive(){try{if(agoraLocalVideo)agoraLocalVideo.close();if(agoraLocalAudio)agoraLocalAudio.close();if(agoraClient)await agoraClient.leave();}catch(e){}document.getElementById("liveStartBox").style.display="block";document.getElementById("liveStageBox").style.display="none";clearInterval(liveTimerInt);}
-async function assistirLiveReal(){try{toast("Entrando como audiência...");agoraClient=AgoraRTC.createClient({mode:"live",codec:"vp8"});await agoraClient.setClientRole("audience");await agoraClient.join(AGORA_APP_ID,AGORA_CHANNEL,AGORA_TOKEN_TEMP,null);agoraClient.on("user-published",async(user,mediaType)=>{await agoraClient.subscribe(user,mediaType);if(mediaType=="video"){user.videoTrack.play(document.getElementById("liveVideo"));document.getElementById("liveStartBox").style.display="none";document.getElementById("liveStageBox").style.display="block";}if(mediaType=="audio")user.audioTrack.play();});toast("Aguardando host entrar em live1...");}catch(e){alert(e.message);}}
-function go(n){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));if(n==0){document.getElementById("b0").classList.add("on");}if(n==3){document.getElementById("pLive").classList.add("show");document.getElementById("b3").classList.add("on");checkLive();}if(n==4){document.getElementById("pEu").classList.add("show");document.getElementById("b4").classList.add("on");}}
+async function assistirLiveReal(){try{toast("Entrando como audiência...");agoraClient=AgoraRTC.createClient({mode:"live",codec:"vp8"});await agoraClient.setClientRole("audience");await agoraClient.join(AGORA_APP_ID,AGORA_CHANNEL,AGORA_TOKEN,null);agoraClient.on("user-published",async(user,mediaType)=>{await agoraClient.subscribe(user,mediaType);if(mediaType=="video"){user.videoTrack.play(document.getElementById("liveVideo"));document.getElementById("liveStartBox").style.display="none";document.getElementById("liveStageBox").style.display="block";}if(mediaType=="audio")user.audioTrack.play();});toast("Conectado no canal live1 - aguardando host");}catch(e){alert(e.message);}}
+function go(n){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));if(n==0)document.getElementById("b0").classList.add("on");if(n==3){document.getElementById("pLive").classList.add("show");document.getElementById("b3").classList.add("on");checkLive();}if(n==4){document.getElementById("pEu").classList.add("show");document.getElementById("b4").classList.add("on");}}
 function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.getElementById("b0").classList.add("on");}
 </script>
 </body>
