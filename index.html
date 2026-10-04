@@ -2,310 +2,108 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - WORK INFLUENCER WATERMARK</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>WORK FIRE - Global</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
+<script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
-#splash{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity.9s ease}
-#splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#splash::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.15),rgba(0,0,0,.85))}
-.s-content{position:relative;z-index:3;text-align:center}
-.s-content h1{font-size:52px;font-weight:900;letter-spacing:-2px;text-shadow:0 0 15px #ff4500,0 0 40px #f00;animation:flicker.15s infinite alternate}
-@keyframes flicker{0%{text-shadow:0 0 15px #ff4500}100%{text-shadow:0 0 30px #ff4500,0 0 70px #f00}}
-.sub{color:#ff8c00;font-weight:900;letter-spacing:6px;font-size:11px;margin-top:10px}
-#loader{width:160px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin:24px auto 0;overflow:hidden}
-#loader div{width:0;height:100%;background:linear-gradient(90deg,#ff2a00,#ffae00);animation:load 5s linear forwards}
-@keyframes load{to{width:100%}}
-#app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
-#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
-#feed::-webkit-scrollbar{display:none}
-.post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0;overflow:hidden}
-.post video{width:100%;height:100%;object-fit:cover;display:block;background:#000;position:absolute;inset:0}
-.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.9) 100%);pointer-events:none;z-index:1}
-.btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:8;border:3px solid #fff;cursor:pointer}
-.watermark{position:absolute;left:10px;top:14px;z-index:9;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:20px;color:rgba(255,255,255,.75);font-size:8.5px;font-weight:900;letter-spacing:1.2px;text-transform:lowercase;pointer-events:none;backdrop-filter:blur(2px)}
-#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none}
-.rightBar{position:absolute;right:8px;bottom:90px;z-index:10;display:flex;flex-direction:column;gap:12px;width:60px}
-.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%;outline:none;transition:transform.15s}
-.btnTik:active{transform:scale(0.88)}
-.btnTik.dance{animation:dance.4s ease}
-@keyframes dance{0%{transform:scale(1)}30%{transform:scale(1.25) rotate(-6deg)}60%{transform:scale(1.3) rotate(6deg)}100%{transform:scale(1)}}
-.iconTik{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;background:rgba(35,35,35,.85);border:1.5px solid rgba(255,255,255,.18)}
-.iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00,#ff4500 55%,#8b0000);border-color:#ff8c00}
-.iconTik.fire.on{background:#ff4500;box-shadow:0 0 18px #ff4500}
-.iconTik.heart.on{background:#ff1844}
-.iconTik.save.on{background:#ffcc00;color:#000}
-.txtTik{color:#fff;font-size:8.5px;font-weight:800;margin-top:3px;text-shadow:0 1px 6px #000;text-align:center}
-.info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:9px 10px}
-.info b{color:#fff;font-size:11px}
-.info div{color:#ddd;font-size:11px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nav{height:64px;min-height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30;flex-shrink:0}
-.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:8.5px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:2px}
-.nav button.on{color:#ff8c00}
-.nav button i{font-size:18px}
-.plus{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:-20px;box-shadow:0 0 0 4px #000}
-.page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto;padding-bottom:70px}
-.page.show{display:flex}
-.card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
-.input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px;font-size:13px}
-.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px;font-size:13px;cursor:pointer}
-.avatar{width:88px;height:88px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;cursor:pointer}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.78);color:#ffcc00;font-size:7px;font-weight:900;text-align:center;padding:4px}
-.btnDel{background:rgba(255,0,0,.12);border:1px solid rgba(255,0,0,.35);color:#ff4444;width:100%;padding:11px;border-radius:10px;font-weight:900;margin-top:8px;font-size:11px}
-.camBox{position:relative;width:100%;height:45vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff4500;margin-top:10px}
-.camBox video{width:100%;height:100%;object-fit:cover}
-.camBox video.mirror{transform:scaleX(-1)}
-.timerCam{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(255,0,0,.9);color:#fff;padding:5px 14px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}
-.ctrlCam{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:20px;z-index:5;align-items:center}
-.circ{width:70px;height:70px;border-radius:50%;border:4px solid #fff;background:#ff0000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;cursor:pointer}
-.circ.stop{background:#fff;color:#ff0000}
-.switchCam{width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.65);border:1.5px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}
-.previewArea{display:none;margin-top:10px;border:3px solid #00ff88;border-radius:14px;overflow:hidden;background:#000;position:relative}
-.previewArea.show{display:block}
-.previewLabel{position:absolute;top:6px;left:6px;background:#00ff88;color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900;z-index:5}
-.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;box-shadow:0 0 20px rgba(0,255,136,.7);display:none;animation:blinkPostar 1s infinite}
-.btnPostar.show{display:block}
-@keyframes blinkPostar{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
-#comDrawer{position:absolute;inset:0;z-index:60;display:none;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.55)}
-#comDrawer.show{display:flex}
-.comSheet{width:100%;max-width:420px;margin:0 auto;background:#161616;border-radius:20px 20px 0 0;max-height:75vh;display:flex;flex-direction:column;border-top:1.5px solid rgba(255,69,0,.35)}
-.comHead{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
-.comHead b{color:#fff;font-size:14px}
-.comHead button{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%}
-.comList{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:14px}
-.comItem{display:flex;gap:10px}
-.comAva{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;flex-shrink:0}
-.comUser{color:#9a9a9a;font-size:11px;font-weight:800}
-.comText{color:#fff;font-size:13.5px;margin-top:2px;word-break:break-word}
-.comInputBar{display:flex;gap:8px;padding:10px 12px 14px;border-top:1px solid rgba(255,255,255,.08);background:#161616;align-items:center}
-.comInputBar input{flex:1;padding:11px 16px;background:#232323;border:1px solid rgba(255,255,255,.1);border-radius:24px;color:#fff;font-size:14px;outline:none}
-.comInputBar button{width:40px;height:40px;border-radius:50%;border:none;background:#ff4500;color:#fff}
-.liveStage{position:relative;width:100%;height:52vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff0000}
-.liveStage video{width:100%;height:100%;object-fit:cover}
-.liveStage video.mirror{transform:scaleX(-1)}
-.liveTag{position:absolute;top:10px;left:10px;background:#ff0000;color:#fff;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:900;z-index:5}
-.liveTimer{position:absolute;top:46px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);border:1.5px solid #ff0000;color:#fff;padding:6px 16px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}
-.progressLive{position:absolute;bottom:0;left:0;height:4px;background:linear-gradient(90deg,#ff0000,#ff8c00);z-index:8}
-.userRow{display:flex;justify-content:space-between;align-items:center;padding:8px;background:rgba(255,255,255,.05);border-radius:8px;margin-top:6px}
-.dot{width:8px;height:8px;border-radius:50%;background:#00ff88;box-shadow:0 0 6px #00ff88;display:inline-block;margin-right:4px}
-#shareDrawer{position:absolute;inset:0;z-index:70;display:none;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6)}
-#shareDrawer.show{display:flex}
-.shareSheet{width:100%;max-width:420px;margin:0 auto;background:#1a1a1a;border-radius:22px 22px 0 0;padding:12px 16px 20px;border-top:2px solid rgba(255,140,0,.4)}
-.shareGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
-.shareOpt{border:none;background:none;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
-.shareIcon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff}
-.shareOpt span{color:#fff;font-size:10px;font-weight:700}
-.btnApagarMeu{background:#ff0000;border:none;color:#fff;padding:6px 10px;border-radius:12px;font-size:10px;font-weight:900;cursor:pointer}
-.pixBox{background:#fff;border-radius:16px;padding:14px;margin:12px 0;text-align:center}
-#qrcode{display:flex;justify-content:center;margin:10px auto}
-.pixKeyBox{background:#000;padding:10px;border-radius:8px;margin:10px 0;font-size:10px;color:#00ff88;word-break:break-all;border:1px dashed #00ff88;text-align:left;max-height:80px;overflow:auto}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:Arial,sans-serif;overflow:hidden;height:100vh}
+.feed{height:100vh;width:100vw;overflow-y:scroll;scroll-snap-type:y mandatory}
+.post{height:100vh;width:100vw;position:relative;scroll-snap-align:start;background:#111;display:flex;align-items:center;justify-content:center}
+.post video,.post img{width:100%;height:100%;object-fit:cover}
+.post-info{position:absolute;bottom:90px;left:12px;right:80px;z-index:2;text-shadow:0 2px 8px #000}
+.actions{position:absolute;right:10px;bottom:120px;display:flex;flex-direction:column;gap:18px}
+.act{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px}
+.nav{position:fixed;bottom:0;left:0;right:0;height:68px;background:#000;border-top:1px solid #222;display:flex;justify-content:space-around;align-items:center;z-index:10}
+.nav button{background:none;border:none;color:#fff;font-size:11px;opacity:.6}
+.nav button.active{opacity:1}
+#uploadModal{position:fixed;inset:0;background:#000;z-index:20;display:none;flex-direction:column;padding:18px}
+#uploadModal.show{display:flex}
+.btn{padding:14px;border:none;border-radius:12px;font-weight:900;cursor:pointer}
+.btn-fire{background:#FE2C55;color:#fff;width:100%}
+input,textarea{width:100%;background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:12px;color:#fff;margin:6px 0}
+.progress{height:6px;background:#222;border-radius:10px;margin:8px 0}
+.progress div{height:100%;background:#FE2C55;width:0%}
+.live-badge{position:absolute;top:14px;left:12px;background:#FE2C55;padding:4px 10px;border-radius:6px;font-weight:900;font-size:12px}
 </style>
 </head>
 <body>
-<div id="splash">
-  <video autoplay muted loop playsinline poster="fire_small.jpg">
-    <source src="generated_video_b695ae2e.mp4" type="video/mp4">
-  </video>
-  <div class="s-content">
-    <h1>work influencer</h1>
-    <div class="sub">🔥 CARREGANDO</div>
-    <div id="loader"><div></div></div>
-  </div>
+<div class="feed" id="feed"></div>
+<div class="nav">
+<button class="active" onclick="document.getElementById('feed').scrollTo(0,0)">🏠<br>Inicio</button>
+<button onclick="document.getElementById('liveArea').style.display='block'">🔴<br>LIVE</button>
+<button onclick="document.getElementById('uploadModal').classList.add('show')" style="background:#fff;color:#000;width:44px;height:30px;border-radius:8px;font-size:22px;font-weight:900;opacity:1">+</button>
+<button>📦<br>Pedidos</button>
+<button>👤<br>Perfil</button>
 </div>
-<div id="app">
-<div id="feed"></div>
-<div id="toast">🔊 Só 1 áudio por vez</div>
-<div id="shareDrawer" onclick="if(event.target.id==='shareDrawer')closeShare()"><div class="shareSheet"><div style="width:36px;height:4px;background:rgba(255,255,255,.3);border-radius:10px;margin:0 auto 10px"></div><div style="display:flex;justify-content:space-between;align-items:center"><b style="color:#fff;font-size:14px">Compartilhar</b><button onclick="closeShare()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="shareGrid"><button class="shareOpt" onclick="shareWhats()"><div class="shareIcon" style="background:#25D366"><i class="fa-brands fa-whatsapp"></i></div><span>WhatsApp</span></button><button class="shareOpt" onclick="shareFace()"><div class="shareIcon" style="background:#1877F2"><i class="fa-brands fa-facebook"></i></div><span>Facebook</span></button><button class="shareOpt" onclick="shareInsta()"><div class="shareIcon" style="background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)"><i class="fa-brands fa-instagram"></i></div><span>Instagram</span></button><button class="shareOpt" onclick="shareCopy()"><div class="shareIcon" style="background:#333"><i class="fa-solid fa-link"></i></div><span>Copiar Link</span></button></div></div></div>
-<div id="comDrawer" onclick="if(event.target.id==='comDrawer')closeCom()"><div class="comSheet"><div style="width:36px;height:4px;background:rgba(255,255,255,.3);border-radius:10px;margin:10px auto 0"></div><div class="comHead"><b id="comCount">0 comentários</b><button onclick="closeCom()"><i class="fa-solid fa-xmark"></i></button></div><div id="comList" class="comList"></div><div class="comInputBar"><input id="comInput" placeholder="Adicionar comentário..." onkeydown="if(event.key==='Enter')sendCom()"><button onclick="sendCom()"><i class="fa-solid fa-paper-plane"></i></button></div></div></div>
-<div id="pBusca" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Busca</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card"><input id="qBusca" class="input" placeholder="Buscar..." oninput="busca()"><div id="rBusca" style="margin-top:10px"></div></div></div>
-<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">📹 Postar 1:30</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="border:2px solid #ff4500"><div style="display:flex;gap:8px"><button onclick="startCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">FRENTE</button><button onclick="startCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">TRÁS</button><button onclick="switchCam()" class="btn" style="flex:1;margin:0;background:#ff8c00;color:#000;font-size:11px">TROCAR</button></div><div class="camBox" id="camBox" style="display:none"><div id="timer" class="timerCam">00:00 / 01:30 🔊</div><video id="camVideo" autoplay muted playsinline class="mirror"></video><div class="ctrlCam"><div class="switchCam" onclick="switchCam()"><i class="fa-solid fa-rotate"></i></div><div id="btnRec" class="circ" onclick="toggleRec()"><i class="fa-solid fa-circle"></i></div><div class="switchCam" onclick="stopCam()"><i class="fa-solid fa-xmark"></i></div></div></div><div id="camOff" style="text-align:center;padding:18px;background:#111;border-radius:12px;border:1px dashed #ff4500;margin-top:10px"><i class="fa-solid fa-video" style="font-size:32px;color:#ff4500"></i><div style="color:#fff;font-size:13px;margin-top:8px;font-weight:900">Grave seu vídeo 1:30!</div><button class="btn" onclick="startCam('user')" style="margin-top:12px">ABRIR CÂMERA COM ÁUDIO</button></div><div id="previewArea" class="previewArea"><div class="previewLabel">✅ COM ÁUDIO - PRONTO</div><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video><img id="prev" style="width:100%;display:none"></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA</button><input id="file" type="file" accept="image/*,video/*" style="color:#fff;width:100%;margin-top:12px"><input id="desc" class="input" placeholder="Legenda..."></div></div>
-<div id="pLive" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔴 Live Pix R$5</h3><button onclick="closeAll();stopLive()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div>
-<div id="liveBloq" class="card" style="text-align:center;border:2px solid #00ff88">
-<div style="background:#00ff88;color:#000;padding:8px;border-radius:8px;font-weight:900;font-size:13px">🔒 LIBERAR LIVE - R$ 5,00</div>
-<div class="pixBox">
-<div style="color:#000;font-weight:900;font-size:12px">📱 QR CODE PIX - R$5,00</div>
-<div id="qrcode"></div>
-<div style="color:#000;font-size:11px;font-weight:700">jonathacarlosmaria@gmail.com</div>
-<div style="color:#ff0000;font-weight:900;font-size:14px;margin-top:6px">R$ 5,00</div>
+<div id="uploadModal">
+<h2>Novo Fire 🔥</h2>
+<input type="file" id="fileInp" accept="video/*,image/*">
+<div class="progress"><div id="prog"></div></div>
+<textarea id="descInp" placeholder="Legenda #workfire"></textarea>
+<input id="ownerInp" placeholder="Seu @nome">
+<button class="btn btn-fire" onclick="uploadGlobal()">POSTAR GLOBAL 🌍</button>
+<button class="btn" style="background:#222;margin-top:10px" onclick="document.getElementById('uploadModal').classList.remove('show')">Cancelar</button>
+<p id="statusUp" style="margin-top:10px;opacity:.7;font-size:13px"></p>
 </div>
-<div style="background:#000;border:1px dashed #ff8c00;padding:10px;border-radius:10px;margin:8px 0;text-align:left">
-<div style="color:#ff8c00;font-size:9px;font-weight:900">🆔 APARELHO:</div>
-<div id="deviceShow" style="color:#fff;font-size:11px;font-weight:900"></div>
-<div style="color:#ff8c00;font-size:9px;font-weight:900;margin-top:8px">🔑 CÓDIGO NA DESCRIÇÃO DO PIX:</div>
-<div id="txidShow" style="color:#00ff88;font-size:18px;font-weight:900;letter-spacing:2px;background:#111;padding:6px;border-radius:6px;text-align:center;margin-top:4px"></div>
+<div id="liveArea" style="display:none;position:fixed;inset:0;background:#000;z-index:15">
+<video id="liveVideo" autoplay playsinline muted style="width:100%;height:100%;object-fit:cover"></video>
+<div style="position:absolute;top:16px;left:12px;right:12px;display:flex;justify-content:space-between">
+<div class="live-badge">AO VIVO GLOBAL</div>
+<button onclick="document.getElementById('liveArea').style.display='none'" style="background:rgba(0,0,0,.6);border:none;color:#fff;padding:8px 14px;border-radius:20px">✕</button>
 </div>
-<div style="text-align:left;color:#ffcc00;font-size:10px;font-weight:900;margin-top:8px">COPIA E COLA:</div>
-<div id="pixCopiaCola" class="pixKeyBox">Gerando...</div>
-<button class="btn" style="background:#fff;color:#000;border:2px solid #00ff88" onclick="copiarPix()">📋 COPIAR PIX</button>
-<div id="statusPix" style="background:rgba(255,0,0,.15);border:1px solid #ff4444;padding:10px;border-radius:10px;margin-top:10px;color:#ff4444;font-size:11px;font-weight:900">⛔ NÃO PAGO - AGUARDANDO PAGAMENTO</div>
-<button class="btn" style="background:#222;color:#fff;border:1px solid #00ff88" onclick="solicitarLiberacao()">📤 JÁ FIZ O PIX - SOLICITAR LIBERAÇÃO</button>
-<div style="color:#888;font-size:8px;margin-top:6px">Após pagar, clique acima. Só libera quando eu aprovar no ADMIN.</div>
+<div style="position:absolute;bottom:88px;left:0;right:0;padding:12px;display:flex;gap:8px">
+<button class="btn btn-fire" onclick="startLive()" style="flex:1">COMEÇAR LIVE</button>
+<button class="btn" onclick="watchLives()" style="flex:1;background:#25F4EE;color:#000">VER LIVES</button>
 </div>
-<div id="livePendente" class="card" style="display:none;text-align:center;border:2px solid #ffcc00">
-<div style="background:#ffcc00;color:#000;padding:8px;border-radius:8px;font-weight:900">⏳ AGUARDANDO CONFIRMAÇÃO</div>
-<div style="color:#fff;font-size:12px;margin-top:10px">Seu pagamento está em análise.</div>
-<div id="pendenteTxid" style="color:#00ff88;font-weight:900;margin-top:8px"></div>
-<div style="color:#888;font-size:9px;margin-top:8px">Assim que eu conferir R$5 no banco com seu código, libero no ADMIN.</div>
-</div>
-<div id="liveUsada" class="card" style="display:none;text-align:center;border:2px solid #ff4444"><b style="color:#ff4444">⛔ Já usou hoje!</b><div id="proximaLive" style="color:#ff8c00;font-size:12px;font-weight:900;margin-top:8px"></div></div>
-<div id="liveOk" style="display:none;flex-direction:column;padding:10px"><div style="background:#00ff88;color:#000;padding:8px;border-radius:8px;text-align:center;font-weight:900;font-size:11px">✅ LIVE APROVADA - 30 MIN</div><div id="liveStartBox" class="card" style="text-align:center;border:2px solid #ff0000"><div style="color:#00ff00;font-weight:900">LIBERADA PELO ADMIN ✅</div><div style="display:flex;gap:8px;margin-top:12px"><button onclick="startLiveCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff0000;font-size:11px">FRENTE</button><button onclick="startLiveCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff0000;font-size:11px">TRÁS</button></div><button class="btn" style="background:#ff0000;color:#fff;margin-top:10px" onclick="startLive()">COMEÇAR LIVE 30MIN</button></div><div id="liveStageBox" class="card" style="display:none;padding:6px;border:2px solid #ff0000"><div class="liveStage"><video id="liveVideo" autoplay muted playsinline class="mirror"></video><div class="liveTag">AO VIVO • 30MIN</div><div id="liveTimer" class="liveTimer"><span id="liveTimeLeft">30:00</span> restantes</div><div class="progressLive" id="progressLive" style="width:100%"></div></div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff0000;font-size:11px" onclick="switchLiveCam()">TROCAR</button><button class="btn" style="flex:1;margin:0;background:#fff;color:#ff0000;font-size:11px" onclick="stopLive()">ENCERRAR</button></div></div></div></div>
-<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><div style="display:flex;gap:8px"><button onclick="abrirAdmin()" style="background:#ffcc00;border:none;padding:8px 14px;border-radius:20px;font-weight:900;font-size:11px;color:#000">ADMIN</button><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div></div><div class="card" style="border:1.5px solid #00ff88;text-align:center"><div style="color:#00ff88;font-weight:900;font-size:12px">✅ WORK INFLUENCER</div><div style="color:#888;font-size:9px;margin-top:4px">ID Celular: <span id="deviceEu"></span></div></div><div class="card" style="border:1.5px solid #ff8c00;text-align:center"><div style="color:#ff8c00;font-weight:900;font-size:13px">👤 MEU CADASTRO</div><input id="fotoPerfil" type="file" accept="image/*" hidden onchange="trocarFoto(this)"><div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 FOTO</div></div><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00"><input id="apelidoUser" class="input" placeholder="Apelido" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button><button class="btnDel" onclick="apagarCadastro()">🗑️ APAGAR</button><div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:900"></div><div style="color:#333;font-size:8px;margin-top:4px">ID: <span id="uidShow"></span></div></div><div id="adminBox" style="display:none">
-<div class="card" style="border:2px solid #00ff88"><h4 style="color:#00ff88">✅ APROVAR PAGAMENTOS R$5 - SÓ AQUI LIBERA</h4><div id="listaPedidos" style="max-height:350px;overflow-y:auto"></div><button class="btn" style="background:#00ff88;color:#000" onclick="listarPedidos()">🔄 VER PEDIDOS</button></div>
-<div class="card" style="border:2px solid #ffcc00"><h4 style="color:#ffcc00">💰 ADS</h4><input id="adTxt" class="input" placeholder="Texto"><input id="adFreq" type="number" value="5" class="input"><label style="color:#fff;font-size:9px"><input type="checkbox" id="adOn" checked> ADSENSE</label><button class="btn" style="background:#ffcc00;color:#000" onclick="salvarAd()">SALVAR</button></div><div class="card" style="border:2px solid #ff8c00"><h4 style="color:#ff8c00">⚙️ Pix</h4><input id="pixChave" class="input" placeholder="Chave Pix"><button class="btn" style="background:#00ff88;color:#000" onclick="salvarPix()">SALVAR PIX</button></div></div><div class="card"><b style="color:#ff8c00">🔖 Salvos</b><div id="listaSalvos"></div></div><div class="card"><b style="color:#ff8c00">🎬 Meus vídeos</b><div id="meusVideos"></div></div></div>
-<div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button><button id="b1" onclick="go(1)"><i class="fa-solid fa-magnifying-glass"></i><span>Busca</span></button><button id="b2" onclick="go(2)"><div class="plus"><i class="fa-solid fa-plus"></i></div></button><button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast"></i><span>Live</span></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button></div>
 </div>
 <script>
-setTimeout(()=>{let s=document.getElementById('splash'); if(s){s.style.opacity='0'; setTimeout(()=>s.remove(),900);}},5000);
-let db; let useIDB=true;
-function openDB(){return new Promise((res)=>{try{let req=indexedDB.open("WorkFireFixPostar",3); req.onupgradeneeded=e=>{let d=e.target.result; if(!d.objectStoreNames.contains("posts")) d.createObjectStore("posts",{keyPath:"id"}); if(!d.objectStoreNames.contains("perfis")) d.createObjectStore("perfis",{keyPath:"uid"});}; req.onsuccess=e=>{db=e.target.result; res(db);}; req.onerror=()=>{useIDB=false; res(null);};}catch(e){useIDB=false; res(null);}});}
-function savePostDB(p){if(!useIDB||!db) return Promise.resolve(); return new Promise(r=>{try{let tx=db.transaction("posts","readwrite"); tx.objectStore("posts").put(p); tx.oncomplete=()=>r(); tx.onerror=()=>r();}catch(e){r();}});}
-function getAllPostsDB(){if(!useIDB||!db) return Promise.resolve([]); return new Promise(r=>{try{let tx=db.transaction("posts","readonly"); let req=tx.objectStore("posts").getAll(); req.onsuccess=()=>r(req.result||[]); req.onerror=()=>r([]);}catch(e){r([]);}});}
-function deletePostDB(id){if(!db) return; try{let tx=db.transaction("posts","readwrite"); tx.objectStore("posts").delete(id);}catch(e){}}
-function savePerfilDB(perfil){if(!db) return; try{let tx=db.transaction("perfis","readwrite"); tx.objectStore("perfis").put(perfil);}catch(e){}}
-let uid=localStorage.getItem("uid"); if(!uid){uid="u_"+Math.random().toString(36).slice(2,7); localStorage.setItem("uid",uid);}
-function getDeviceID(){let dID=localStorage.getItem("deviceID_fixo"); if(!dID){let fp=navigator.userAgent+screen.width+screen.height+navigator.language; let hash=0; for(let i=0;i<fp.length;i++){hash=((hash<<5)-hash)+fp.charCodeAt(i); hash|=0;} dID="DEV_"+Math.abs(hash).toString(36).toUpperCase()+"_"+Math.random().toString(36).slice(2,6).toUpperCase(); localStorage.setItem("deviceID_fixo", dID);} return dID;}
-let deviceID=getDeviceID();
-function getTxidHoje(){let hoje=new Date().toDateString(); let key="txid_"+deviceID+"_"+hoje; let tx=localStorage.getItem(key); if(!tx){tx="WF5"+deviceID.slice(-4)+Math.random().toString(36).slice(2,5).toUpperCase(); localStorage.setItem(key, tx);} return tx;}
-let userFoto=localStorage.getItem("userFoto")||"",userNome=localStorage.getItem("userNome")||"",userApelido=localStorage.getItem("userApelido")||"";
-let posts=[]; let cfg; try{cfg=JSON.parse(localStorage.getItem("cfg_FIXPOSTAR")||""); if(!cfg||!cfg.adT) throw 1;}catch(e){cfg={pixK:"jonathacarlosmaria@gmail.com",adT:"🔥 Oferta!",adF:5,adMobF:5,adOn:true};}
-let temp="",tempType="img",comIdx=null,shareIdx=null,stream=null,recorder=null,chunks=[],recording=false,timerInt=null,sec=0,facing="user",liveStream=null,liveFacing="user",liveTimerInt=null,liveSec=0; const LIVE_DURATION=30*60;
-let videoAtivo=null;let observer=null; let pixPayload="";
-const SECRET_ADMIN="FIRE_JONATHA_2025_SECRET"; // CHAVE SECRETA PRA GERAR APROVAÇÃO
-
-function makeHash(device,date){return btoa(device+"|"+date+"|"+SECRET_ADMIN).slice(0,20);}
-function crc16(payload){let crc=0xFFFF; for(let i=0;i<payload.length;i++){crc^=payload.charCodeAt(i)<<8; for(let j=0;j<8;j++){if(crc&0x8000) crc=(crc<<1)^0x1021; else crc<<=1; crc&=0xFFFF;}} return crc.toString(16).toUpperCase().padStart(4,'0');}
-function genPix(){
-let key=cfg.pixK||"jonathacarlosmaria@gmail.com"; let name="JONATHA C MARIA"; let city="SAO PAULO"; let amount="5.00"; let txid=getTxidHoje();
-function fmt(id,val){let l=String(val.length).padStart(2,'0'); return id+l+val;}
-let gui=fmt("00","br.gov.bcb.pix")+fmt("01",key); let merchant=fmt("26",gui);
-let payload="000201"+"010212"+merchant+"52040000"+"5303986"+fmt("54",amount)+"5802BR"+fmt("59",name)+fmt("60",city)+fmt("62",fmt("05",txid))+"6304";
-let crc=crc16(payload); pixPayload=payload+crc;
-document.getElementById("pixCopiaCola").innerText=pixPayload;
-document.getElementById("pixKey").innerText=key;
-document.getElementById("txidShow").innerText=txid;
-document.getElementById("deviceShow").innerText=deviceID;
-document.getElementById("deviceEu").innerText=deviceID;
-let qr=document.getElementById("qrcode"); if(qr){qr.innerHTML=""; new QRCode(qr,{text:pixPayload,width:200,height:200,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});}
+const SUPABASE_URL='https://rxrjdfwxqbjjfflqpydm.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4cmpkZnd4cWJqamZmbHFweWRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExNDg1MTksImV4cCI6MjEwNjcyNDUxOX0.HNJ0nJ_XJHNmjyWxhd7MyS2IrCLlWB85rIVKQqQrsQU';
+const supabaseClient=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+async function loadPosts(){
+let {data}=await supabaseClient.from('posts').select('*').order('time',{ascending:false}).limit(50);
+let feed=document.getElementById('feed'); feed.innerHTML='';
+if(!data||data.length==0){feed.innerHTML='<div class=post style=flex-direction:column><h1 style=font-size:60px>🔥</h1><p>Seja o primeiro!</p><button class="btn btn-fire" style="margin-top:20px;width:auto;padding:10px 24px" onclick="document.getElementById(\'uploadModal\').classList.add(\'show\')">POSTAR</button></div>';return;}
+data.forEach(p=>{
+let isV=p.img.includes('.mp4')||p.img.includes('video');
+let el=document.createElement('div'); el.className='post';
+el.innerHTML=(isV?`<video src="${p.img}" loop autoplay muted playsinline></video>`:`<img src="${p.img}">`)+`<div class=post-info><h3>@${p.owner}</h3><p>${p.desc||''}</p><p style="font-size:11px;opacity:.6">🌍 Global</p></div><div class=actions><div class=act>❤️</div><div class=act>💬</div><div class=act>↗️</div></div>`;
+feed.appendChild(el);
+});
 }
-function copiarPix(){navigator.clipboard.writeText(pixPayload).then(()=>toast("✅ PIX copiado!")).catch(()=>{prompt("Copie:",pixPayload);});}
-function toast(m){let t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
-function pausarTodosExceto(exceto){document.querySelectorAll('#feed video').forEach(v=>{if(v!==exceto){try{v.pause();v.muted=true;}catch(e){}}});}
-function setupObserver(){if(observer)observer.disconnect();observer=new IntersectionObserver((entries)=>{let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.7).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(!vis.length)return;let container=vis[0].target;let video=container.querySelector('video');if(!video||video===videoAtivo)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().then(()=>{let b=container.querySelector('.btnSom');if(b)b.style.display='none';}).catch(()=>{video.muted=true;video.play().catch(()=>{});});},{threshold:[0,0.7,1]});document.querySelectorAll('.post').forEach(p=>observer.observe(p));}
-function toggleSom(postEl){let video=postEl.querySelector('video');let btn=postEl.querySelector('.btnSom');if(!video)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().catch(()=>{});if(btn)btn.style.display='none';toast("🔊 Só esse toca");}
-async function init(){await openDB(); let stored=await getAllPostsDB(); if(stored.length>0){posts=stored.sort((a,b)=>(b.time||0)-(a.time||0));}else{posts=[{id:Date.now(),owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"✅ POSTAR fixo!",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true,type:"img",time:Date.now()}]; for(let p of posts) await savePostDB(p);} render(); setTimeout(()=>{setupObserver(); genPix();},800);}init();
-function danceBtn(el){if(!el) return; el.classList.remove("dance"); void el.offsetWidth; el.classList.add("dance"); setTimeout(()=>el.classList.remove("dance"),400);}
-function mostrarBotaoPostar(){let area=document.getElementById("previewArea"); let btn=document.getElementById("btnPostar"); if(area) area.classList.add("show"); if(btn) btn.classList.add("show");}
-async function startCam(mode){facing=mode||facing; try{if(stream) stream.getTracks().forEach(t=>t.stop()); stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:{echoCancellation:true,noiseSuppression:true}}); let v=document.getElementById("camVideo"); v.srcObject=stream; if(facing==="user") v.classList.add("mirror"); else v.classList.remove("mirror"); document.getElementById("camBox").style.display="block"; document.getElementById("camOff").style.display="none"; document.getElementById("previewArea").classList.remove("show"); document.getElementById("btnPostar").classList.remove("show");}catch(e){alert("Câmera precisa HTTPS: "+e.message);}}
-function stopCam(){try{if(stream) stream.getTracks().forEach(t=>t.stop());}catch(e){} stream=null; document.getElementById("camBox").style.display="none"; document.getElementById("camOff").style.display="block"; stopTimer(); if(recording) stopRec();}
-function switchCam(){startCam(facing==="user"?"environment":"user");}
-function toggleRec(){if(!recording) startRec(); else stopRec();}
-function startRec(){if(!stream){alert("Abra câmera");return;} chunks=[]; let mime="video/webm"; try{if(MediaRecorder.isTypeSupported("video/webm;codecs=vp9")) mime="video/webm;codecs=vp9";}catch(e){} try{recorder=new MediaRecorder(stream,{mimeType:mime});}catch(e){recorder=new MediaRecorder(stream);} recorder.ondataavailable=e=>{if(e.data.size>0) chunks.push(e.data);}; recorder.onstop=()=>{let blob=new Blob(chunks,{type:'video/webm'}); let url=URL.createObjectURL(blob); temp=url; tempType="video"; let pv=document.getElementById("previewVideo"); if(pv){pv.src=url;pv.muted=false;pv.volume=1;} let pr=document.getElementById("prev"); if(pr) pr.style.display="none"; mostrarBotaoPostar();}; recorder.start(200); recording=true; document.getElementById("btnRec").classList.add("stop"); document.getElementById("btnRec").innerHTML='<i class="fa-solid fa-stop"></i>'; sec=0; startTimer();}
-function stopRec(){try{if(recorder&&recording) recorder.stop();}catch(e){} recording=false; let b=document.getElementById("btnRec"); if(b){b.classList.remove("stop"); b.innerHTML='<i class="fa-solid fa-circle"></i>';} stopTimer();}
-function startTimer(){stopTimer(); timerInt=setInterval(()=>{sec++; let m=String(Math.floor(sec/60)).padStart(2,'0'); let s=String(sec%60).padStart(2,'0'); document.getElementById("timer").innerText=`${m}:${s} / 01:30 🔊`; if(sec>=90) stopRec();},1000);}
-function stopTimer(){if(timerInt){clearInterval(timerInt); timerInt=null;}}
-async function startLiveCam(mode){liveFacing=mode||liveFacing; try{if(liveStream) liveStream.getTracks().forEach(t=>t.stop()); liveStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:liveFacing,width:{ideal:1280},height:{ideal:720}},audio:true}); let v=document.getElementById("liveVideo"); v.srcObject=liveStream; if(liveFacing==="user") v.classList.add("mirror"); else v.classList.remove("mirror");}catch(e){alert("Erro live: "+e.message);}}
-function switchLiveCam(){startLiveCam(liveFacing==="user"?"environment":"user");}
-function startLive(){
-let hoje=new Date().toDateString();
-let hashEsperado=makeHash(deviceID,hoje);
-let hashSalvo=localStorage.getItem("liveHash_"+deviceID+"_"+hoje);
-if(hashSalvo!==hashEsperado){alert("⛔ NÃO APROVADO PELO ADMIN! Faça PIX e aguarde aprovação."); return;}
-let fezKey="liveFeita_"+deviceID+"_"+hoje;
-if(localStorage.getItem(fezKey)=="1"){alert("⛔ Esse celular já usou Live hoje!"); return;}
-startLiveCam(liveFacing); document.getElementById("liveStartBox").style.display="none"; document.getElementById("liveStageBox").style.display="block"; liveSec=0; liveTimerInt=setInterval(()=>{liveSec++; let rest=LIVE_DURATION-liveSec; if(rest<0) rest=0; let m=String(Math.floor(rest/60)).padStart(2,'0'); let s=String(rest%60).padStart(2,'0'); document.getElementById("liveTimeLeft").innerText=`${m}:${s}`; document.getElementById("progressLive").style.width=((LIVE_DURATION-liveSec)/LIVE_DURATION*100)+"%"; if(liveSec>=LIVE_DURATION){stopLive(true); alert("30min acabou!");}},1000);
+async function uploadGlobal(){
+let file=document.getElementById('fileInp').files[0]; let desc=document.getElementById('descInp').value; let owner=document.getElementById('ownerInp').value||'anon';
+if(!file){alert('Escolha video');return;}
+document.getElementById('prog').style.width='30%'; document.getElementById('statusUp').innerText='Enviando...';
+try{
+let name=Date.now()+'_'+file.name.replace(/[^a-z0-9.]/gi,'_');
+let {error}=await supabaseClient.storage.from('videos').upload(name,file); if(error) throw error;
+document.getElementById('prog').style.width='70%';
+let {data}=supabaseClient.storage.from('videos').getPublicUrl(name);
+await supabaseClient.from('posts').insert([{id:Date.now().toString(),owner,img:data.publicUrl,desc,time:Date.now()}]);
+document.getElementById('prog').style.width='100%'; document.getElementById('statusUp').innerText='POSTADO! 🌍';
+setTimeout(()=>{document.getElementById('uploadModal').classList.remove('show'); loadPosts(); document.getElementById('prog').style.width='0%';},1000);
+}catch(e){alert('Erro: '+e.message);}
 }
-function stopLive(auto=false){try{if(liveStream) liveStream.getTracks().forEach(t=>t.stop());}catch(e){} liveStream=null; if(liveTimerInt){clearInterval(liveTimerInt); liveTimerInt=null;} if(!auto){document.getElementById("liveStartBox").style.display="block"; document.getElementById("liveStageBox").style.display="none";} if(liveSec>10){let hoje=new Date().toDateString(); localStorage.setItem("liveFeita_"+deviceID+"_"+hoje,"1");} liveSec=0; checkLive();}
-function saveCfg(){localStorage.setItem("cfg_FIXPOSTAR",JSON.stringify(cfg)); genPix(); render();}
-function checkLive(){
-let hoje=new Date().toDateString();
-let hashEsperado=makeHash(deviceID,hoje);
-let hashSalvo=localStorage.getItem("liveHash_"+deviceID+"_"+hoje);
-let pago=hashSalvo===hashEsperado;
-let fez=localStorage.getItem("liveFeita_"+deviceID+"_"+hoje)=="1";
-let pendente=localStorage.getItem("pedido_"+deviceID+"_"+hoje)=="PENDENTE";
-document.getElementById("liveBloq").style.display=(!pago &&!pendente)?"block":"none";
-document.getElementById("livePendente").style.display=(pendente &&!pago)?"block":"none";
-document.getElementById("liveOk").style.display=(pago &&!fez)?"flex":"none";
-document.getElementById("liveUsada").style.display=(pago && fez)?"block":"none";
-if(fez){
-let amanha=new Date(); amanha.setDate(amanha.getDate()+1); amanha.setHours(0,0,0,0);
-let diff=amanha-Date.now(); let h=Math.floor(diff/3600000); let m=Math.floor((diff%3600000)/60000);
-document.getElementById("proximaLive").innerText=`Próxima em ${h}h ${m}min - Celular ${deviceID.slice(-4)}`;
+let peer=null;
+async function startLive(){
+let stream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+document.getElementById('liveVideo').srcObject=stream;
+peer=new Peer('workfire_'+Date.now());
+peer.on('open',async id=>{await supabaseClient.from('lives').upsert({device:id,owner:document.getElementById('ownerInp').value||'jonatha',active:true,startedAt:Date.now()}); alert('LIVE ATIVA ID: '+id);});
+peer.on('call',c=>c.answer(stream));
 }
-let st=document.getElementById("statusPix"); if(st){st.innerText=pago?"✅ APROVADO PELO ADMIN":pendente?"⏳ AGUARDANDO APROVAÇÃO DO ADMIN":"⛔ NÃO PAGO - SÓ LIBERA APÓS APROVAÇÃO"; st.style.color=pago?"#00ff88":pendente?"#ffcc00":"#ff4444";}
-let pt=document.getElementById("pendenteTxid"); if(pt) pt.innerText=getTxidHoje();
+async function watchLives(){
+let {data}=await supabaseClient.from('lives').select('*').eq('active',true);
+if(!data||data.length==0){alert('Sem lives');return;}
+let t=prompt('Lives:\n'+data.map(l=>l.device+' '+l.owner).join('\n')+'\nID:'); if(!t) return;
+if(!peer) peer=new Peer();
+peer.on('open',()=>{let call=peer.call(t.trim(),new MediaStream()); call.on('stream',s=>document.getElementById('liveVideo').srcObject=s);});
 }
-function solicitarLiberacao(){
-let hoje=new Date().toDateString();
-let txid=getTxidHoje();
-if(!confirm(`Solicitar liberação?\n\nTXID: ${txid}\nAparelho: ${deviceID}\n\nVocê fez PIX R$5 para ${cfg.pixK} com descrição ${txid}?`))return;
-let pendentes=JSON.parse(localStorage.getItem("pedidos_live")||"[]");
-pendentes.push({device:deviceID, uid:uid, nome:userNome||uid, txid:txid, data:hoje, hora:new Date().toLocaleString(), status:"PENDENTE"});
-localStorage.setItem("pedidos_live", JSON.stringify(pendentes));
-localStorage.setItem("pedido_"+deviceID+"_"+hoje, "PENDENTE");
-checkLive();
-alert(`✅ Pedido enviado! TXID ${txid}\nAgora aguarde eu aprovar no ADMIN. Não entra sem eu liberar.`);
-}
-function listarPedidos(){
-let p=JSON.parse(localStorage.getItem("pedidos_live")||"[]");
-let hoje=new Date().toDateString();
-let hojeOnly=p.filter(x=>x.data===hoje);
-document.getElementById("listaPedidos").innerHTML=hojeOnly.slice().reverse().map(x=>`
-<div class="userRow">
-<div style="color:#fff;font-size:10px;text-align:left">@${x.nome}<br><span style="color:#00ff88;font-weight:900">${x.txid}</span><br><span style="color:#888">${x.device} | ${x.hora}</span></div>
-<div style="display:flex;flex-direction:column;gap:4px">
-<button onclick="aprovarLive('${x.device}','${x.data}')" style="background:#00ff88;border:none;color:#000;padding:8px 12px;border-radius:10px;font-size:9px;font-weight:900">✅ APROVAR R$5</button>
-<button onclick="reprovarLive('${x.device}','${x.data}')" style="background:#ff4444;border:none;color:#fff;padding:5px 10px;border-radius:10px;font-size:8px">REPROVAR</button>
-</div>
-</div>`).join("")||"<div style='color:#555'>Nenhum pedido hoje</div>";
-}
-function aprovarLive(device, data){
-let hash=makeHash(device,data);
-localStorage.setItem("liveHash_"+device+"_"+data, hash);
-localStorage.removeItem("pedido_"+device+"_"+data);
-toast("✅ APROVADO! "+device.slice(-4));
-listarPedidos(); checkLive();
-}
-function reprovarLive(device, data){
-if(!confirm("Reprovar?"))return;
-localStorage.removeItem("liveHash_"+device+"_"+data);
-localStorage.removeItem("pedido_"+device+"_"+data);
-let p=JSON.parse(localStorage.getItem("pedidos_live")||"[]"); p=p.filter(x=>!(x.device===device && x.data===data)); localStorage.setItem("pedidos_live", JSON.stringify(p));
-listarPedidos(); checkLive(); toast("Reprovado");
-}
-
-// Resto igual
-function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase(); let a=document.getElementById("apelidoUser").value.trim(); if(!n){alert("Digite nome"); return;} userNome=n; userApelido=a; localStorage.setItem("userNome",n); localStorage.setItem("userApelido",a); render(); alert("✅ @"+n);}
-function apagarCadastro(){if(!confirm("Apagar?"))return; userFoto=""; userNome=""; userApelido=""; localStorage.removeItem("userFoto"); localStorage.removeItem("userNome"); localStorage.removeItem("userApelido"); document.getElementById("avatarBox").innerHTML="🔥"; document.getElementById("nomeUser").value=""; document.getElementById("apelidoUser").value=""; render();}
-function trocarFoto(inp){let f=inp.files[0]; if(!f) return; let r=new FileReader(); r.onload=e=>{userFoto=e.target.result; localStorage.setItem("userFoto",userFoto); document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;}; r.readAsDataURL(f);}
-function openCom(idx){let p=posts[idx]; if(!p) return; comIdx=p.id; document.getElementById("comCount").innerText=(p.com?p.com.length:0)+" comentários"; renderComList(); document.getElementById("comDrawer").classList.add("show");}
-function closeCom(){document.getElementById("comDrawer").classList.remove("show"); comIdx=null;}
-function renderComList(){let el=document.getElementById("comList"); let p=posts.find(x=>x.id===comIdx); if(!p){el.innerHTML=""; return;} if(!p.com||p.com.length===0){el.innerHTML=`<div style="text-align:center;padding:40px 20px;color:#666">Nenhum comentário</div>`; return;} el.innerHTML=p.com.slice().reverse().map(c=>`<div class="comItem"><div class="comAva">${(c.u||'?').charAt(0).toUpperCase()}</div><div><div class="comUser">@${c.u}</div><div class="comText">${(c.t||'').replace(/</g,"&lt;")}</div></div></div>`).join("");}
-async function sendCom(){let inp=document.getElementById("comInput"); let txt=inp.value.trim(); if(!txt||comIdx===null) return; if(!userNome){alert("Cadastro em Eu!"); go(4); closeCom(); return;} let p=posts.find(x=>x.id===comIdx); if(!p) return; if(!p.com) p.com=[]; p.com.push({u:userNome,t:txt,time:Date.now()}); await savePostDB(p); inp.value=""; renderComList(); render();}
-function render(){let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0)||(b.time||0)-(a.time||0)); let feed=[]; list.forEach((p,i)=>{feed.push(p);}); document.getElementById("feed").innerHTML=feed.map(p=>{let idx=posts.indexOf(p); let fired=p.firedBy&&p.firedBy.includes(uid), liked=p.likedBy&&p.likedBy.includes(uid), saved=p.saveBy&&p.saveBy.includes(uid); let media=p.type==="video"?`<video src="${p.img}" loop playsinline preload="metadata" muted></video><div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>`:`<div style="width:100%;height:100%;background:url('${p.img}') center/cover no-repeat"></div>`; return `<div class="post" onclick="toggleSom(this)">${media}<div class="watermark">work influencer</div><div class="rightBar"><button class="btnTik" onclick="event.stopPropagation();fire(${idx},this)"><div class="iconTik fire ${fired?'on':''}"><i class="fa-solid fa-fire"></i></div><div class="txtTik">${p.firedBy?p.firedBy.length:0}<br>Chamas</div></button><button class="btnTik" onclick="event.stopPropagation();like(${idx},this)"><div class="iconTik heart ${liked?'on':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="txtTik">${p.likedBy?p.likedBy.length:0}<br>Curtir</div></button><button class="btnTik" onclick="event.stopPropagation();openCom(${idx}); danceBtn(this)"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">${p.com?p.com.length:0}<br>Comen</div></button><button class="btnTik" onclick="event.stopPropagation();openShare(${idx},this)"><div class="iconTik"><i class="fa-solid fa-share"></i></div><div class="txtTik">${p.sharedBy?p.sharedBy.length:p.share||0}<br>Compar</div></button><button class="btnTik" onclick="event.stopPropagation();saveP(${idx},this)"><div class="iconTik save ${saved?'on':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="txtTik">Salvar</div></button></div><div class="info"><b>@${p.owner}</b> 🔊 Toque centro<div>${p.desc||''}</div></div></div>`;}).join(""); setTimeout(()=>setupObserver(),300); document.getElementById("pixKey").innerText=cfg.pixK; document.getElementById("pixChave").value=cfg.pixK; document.getElementById("uidShow").innerText=uid; document.getElementById("nomeUser").value=userNome; document.getElementById("apelidoUser").value=userApelido; document.getElementById("nomeShow").innerText=userNome?"@"+userNome:"@fire.user"; if(userFoto) document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`; else document.getElementById("avatarBox").innerHTML="🔥"; checkLive();}
-async function fire(i,btn){danceBtn(btn); let p=posts[i]; if(!p.firedBy) p.firedBy=[]; if(p.firedBy.includes(uid)) p.firedBy=p.firedBy.filter(x=>x!==uid); else p.firedBy.push(uid); await savePostDB(p); render();}
-async function like(i,btn){danceBtn(btn); let p=posts[i]; if(!p.likedBy) p.likedBy=[]; if(p.likedBy.includes(uid)) p.likedBy=p.likedBy.filter(x=>x!==uid); else p.likedBy.push(uid); await savePostDB(p); render();}
-async function saveP(i,btn){danceBtn(btn); let p=posts[i]; if(!p.saveBy) p.saveBy=[]; if(p.saveBy.includes(uid)) p.saveBy=p.saveBy.filter(x=>x!==uid); else p.saveBy.push(uid); await savePostDB(p); render();}
-function openShare(i,btn){danceBtn(btn); shareIdx=i; document.getElementById("shareDrawer").classList.add("show");}
-function closeShare(){document.getElementById("shareDrawer").classList.remove("show");}
-async function registrarShare(){let p=posts[shareIdx]; if(!p) return; if(!p.sharedBy) p.sharedBy=[]; if(!p.sharedBy.includes(uid)) p.sharedBy.push(uid); await savePostDB(p); render();}
-function shareWhats(){registrarShare(); let url=location.href; window.open("https://wa.me/?text="+encodeURIComponent("🔥 Olha esse vídeo no WORK FIRE: "+url),"_blank"); closeShare(); toast("WhatsApp aberto");}
-function shareFace(){registrarShare(); let url=location.href; window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url),"_blank"); closeShare(); toast("Facebook aberto");}
-function shareInsta(){registrarShare(); let url=location.href; navigator.clipboard.writeText(url).then(()=>{toast("Link copiado!");}).catch(()=>{toast("Link: "+url);}); window.open("https://www.instagram.com/","_blank"); closeShare();}
-function shareCopy(){registrarShare(); let url=location.href; navigator.clipboard.writeText(url).then(()=>toast("✅ Link copiado!")).catch(()=>{prompt("Copie:",url);}); closeShare();}
-async function apagarMeuPost(id){if(!confirm("Apagar?")) return; deletePostDB(id); let idStr=String(id); posts=posts.filter(x=>String(x.id)!==idStr && x.id!=id); render(); toast("🗑️ Apagado!");}
-function go(n){if(n!==2) stopCam(); if(n!==3) stopLive(); document.querySelectorAll('#feed video').forEach(v=>{try{v.pause();v.muted=true;}catch(e){}});videoAtivo=null; closeCom(); closeShare(); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b"+n).classList.add("on"); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); if(n==1) document.getElementById("pBusca").classList.add("show"); if(n==2) document.getElementById("pCriar").classList.add("show"); if(n==3){document.getElementById("pLive").classList.add("show"); setTimeout(genPix,300);} if(n==4){document.getElementById("pEu").classList.add("show"); setTimeout(()=>{listarPedidos();},200);} }
-function closeAll(){stopCam(); stopLive(); document.querySelectorAll('#feed video').forEach(v=>{try{v.pause();v.muted=true;}catch(e){}});videoAtivo=null; closeCom(); closeShare(); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b0").classList.add("on"); setTimeout(()=>setupObserver(),300);}
-function abrirAdmin(){let s=prompt("Senha Admin:"); if(s==="fire123"){document.getElementById("adminBox").style.display="block"; listarPedidos();} else if(s) alert("Senha: fire123");}
-function salvarPix(){let k=document.getElementById("pixChave").value.trim(); if(!k) return alert("Digite Pix"); cfg.pixK=k; localStorage.setItem("cfg_FIXPOSTAR",JSON.stringify(cfg)); genPix(); render(); alert("Pix salvo!");}
-function salvarAd(){cfg.adT=document.getElementById("adTxt").value.trim()||"Oferta!"; cfg.adF=parseInt(document.getElementById("adFreq").value)||5; cfg.adOn=document.getElementById("adOn").checked; localStorage.setItem("cfg_FIXPOSTAR",JSON.stringify(cfg)); render(); alert(`Adsense ${cfg.adF}`);}
-function busca(){let q=document.getElementById("qBusca").value.toLowerCase(); let r=posts.filter(p=>(p.desc||'').toLowerCase().includes(q)||(p.owner||'').toLowerCase().includes(q)); document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:8px"><div style="width:40px;height:40px;border-radius:8px;background:url('${p.img}') center/cover"></div><div style="color:#fff;font-size:11px">${p.desc||''}</div></div>`).join("")||"<div style='color:#555'>Nada</div>";}
-document.getElementById("file").addEventListener("change",e=>{let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=ev=>{if(f.type.startsWith("video")){temp=ev.target.result; tempType="video"; let pv=document.getElementById("previewVideo"); if(pv){pv.src=temp;pv.muted=false;pv.volume=1;} let pr=document.getElementById("prev"); if(pr) pr.style.display="none"; mostrarBotaoPostar();}else{temp=ev.target.result; tempType="img"; let pr=document.getElementById("prev"); if(pr){pr.src=temp; pr.style.display="block";} let pv=document.getElementById("previewVideo"); if(pv) pv.style.display="block"; mostrarBotaoPostar();}}; r.readAsDataURL(f);});
-async function postar(){let d=document.getElementById("desc").value.trim()||"Meu vídeo 1:30 🔥"; if(!temp){alert("Grave vídeo ou escolha arquivo!"); return;} if(!userNome){alert("Faça cadastro em Eu!"); go(4); return;} let novo={id:Date.now()+Math.random(),owner:userNome,img:temp,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:tempType,time:Date.now()}; await savePostDB(novo); posts.unshift(novo); temp=""; document.getElementById("previewArea").classList.remove("show"); document.getElementById("prev").style.display="none"; document.getElementById("previewVideo").style.display="none"; document.getElementById("btnPostar").classList.remove("show"); document.getElementById("desc").value=""; document.getElementById("file").value=""; render(); closeAll(); stopCam(); alert("✅ Postado!");}
+loadPosts();
+supabaseClient.channel('posts').on('postgres_changes',{event:'*',schema:'public',table:'posts'},()=>loadPosts()).subscribe();
 </script>
 </body>
 </html>
