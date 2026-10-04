@@ -3,110 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
 <title>Work Influência</title>
-<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  /* TRAVA O ESTICAR E CORTAR EM TODO CELULAR */
-  html{overscroll-behavior:none;height:100%}
-  body{
-    overscroll-behavior:none;
-    overscroll-behavior-y:contain;
-    position:fixed;
-    overflow:hidden;
-    width:100%;
-    height:100%;
-    height:100dvh;
-    background:#000;
-    font-family:Arial,sans-serif;
-    padding-top:env(safe-area-inset-top);
-    padding-bottom:env(safe-area-inset-bottom);
-  }
-  #app{
-    width:100%;
-    height:100vh;
-    height:100dvh;
-    height:-webkit-fill-available;
-    overflow-y:auto;
-    overflow-x:hidden;
-    -webkit-overflow-scrolling:touch;
-    overscroll-behavior-y:contain;
-    background:#000;
-  }
- .feed{padding:10px}
- .video-card{background:#111;border-radius:12px;margin-bottom:15px;overflow:hidden}
- .video-card video{width:100%;max-height:70dvh;object-fit:cover;display:block}
- .info{padding:10px;color:#fff}
- .btn-post{position:fixed;bottom:20px;bottom:calc(20px + env(safe-area-inset-bottom));right:20px;background:#ff0050;color:#fff;border:none;width:60px;height:60px;border-radius:50%;font-size:30px;z-index:99}
- .online-bar{position:sticky;top:0;background:#000;color:#0f0;text-align:center;padding:5px;font-size:12px;z-index:10}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:100%;height:100%;background:#000;overscroll-behavior:none}
+  body{position:fixed;overflow:hidden;height:100dvh}
+  #app{width:100%;height:100dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;background:#000}
+ .feed{padding:10px;padding-bottom:100px}
+ .video-card{background:#1a1a1a;border-radius:12px;margin-bottom:15px;overflow:hidden}
+ .video-card video{width:100%;max-height:65vh;object-fit:contain;background:#000}
+ .info{padding:10px;color:#fff;display:flex;justify-content:space-between}
+ .btn{position:fixed;bottom:30px;right:20px;background:#ff0050;color:#fff;border:none;width:65px;height:65px;border-radius:50%;font-size:35px;z-index:999}
 </style>
 </head>
 <body>
 <div id="app">
-  <div class="online-bar">🔴 <span id="onlineCount">1</span> pessoas online espalhando vídeos - P2P ILIMITADO</div>
-  <div class="feed" id="feed"></div>
-  <button class="btn-post" onclick="document.getElementById('fileInput').click()">+</button>
-  <input type="file" id="fileInput" accept="video/*" capture style="display:none" onchange="handleVideo(this)">
+  <div id="feed" class="feed"></div>
+  <button class="btn" onclick="document.getElementById('file').click()">+</button>
+  <input type="file" id="file" accept="video/*" style="display:none">
 </div>
-
 <script>
-// BANCO LOCAL ILIMITADO
-const dbName = "workDB";
-let db;
-const request = indexedDB.open(dbName,1);
-request.onupgradeneeded = e=>{e.target.result.createObjectStore("videos",{keyPath:"id"})};
-request.onsuccess = e=>{db=e.target.result;carregarVideosLocais()};
+const feed = document.getElementById('feed');
+const fileInput = document.getElementById('file');
 
-// P2P ILIMITADO - OPÇÃO 1
-const gun = Gun(['https://gun-manhattan.herokuapp.com/gun','https://peer.wall.dev/gun']);
-const feedP2P = gun.get('work-influencia-v1-ILIMITADO');
-let online = 1;
+// CARREGA VIDEOS SALVOS
+let videos = JSON.parse(localStorage.getItem('work_videos')||'[]');
+videos.forEach(v=>mostrar(v));
 
-feedP2P.map().on((data,id)=>{
-  if(!data ||!data.url) return;
-  if(!document.getElementById(id)){
-    adicionarNaTela(data,id);
-    salvarLocal(data,id);
-  }
-});
-
-gun.get('online').map().on(()=>{online++; document.getElementById('onlineCount').innerText=online});
-
-function handleVideo(input){
-  const file = input.files[0];
+fileInput.onchange = e=>{
+  const file = e.target.files[0];
   if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e=>{
-    const id = 'v_'+Date.now();
-    const obj = {id:id, url:e.target.result, likes:0, time:Date.now()};
-    adicionarNaTela(obj,id);
-    salvarLocal(obj,id);
-    feedP2P.get(id).put(obj); // ESPALHA PRA TODOS ONLINE
-  };
-  reader.readAsDataURL(file);
-}
+  const url = URL.createObjectURL(file);
+  const obj = {url:url, id:Date.now()};
+  videos.unshift(obj);
+  // salva só referencia, não o video inteiro pra não pesar
+  try{localStorage.setItem('work_videos',JSON.stringify(videos.slice(0,50)))}catch(e){}
+  mostrar(obj);
+};
 
-function adicionarNaTela(obj,id){
-  const feed = document.getElementById('feed');
-  const div = document.createElement('div');
-  div.className='video-card'; div.id=id;
-  div.innerHTML=`<video src="${obj.url}" controls playsinline></video><div class="info">❤️ ${obj.likes} - Ilimitado P2P</div>`;
-  feed.prepend(div);
+function mostrar(obj){
+  const d = document.createElement('div');
+  d.className='video-card';
+  d.innerHTML=`<video src="${obj.url}" controls playsinline></video><div class="info"><span>Work Influência</span><span>❤️</span></div>`;
+  feed.prepend(d);
 }
-
-function salvarLocal(obj,id){
-  const tx = db.transaction("videos","readwrite");
-  tx.objectStore("videos").put(obj);
-}
-function carregarVideosLocais(){
-  const tx = db.transaction("videos","readonly");
-  tx.objectStore("videos").getAll().onsuccess = e=>{
-    e.target.result.forEach(v=>adicionarNaTela(v,v.id));
-  };
-}
-console.log("✅ APP PERFEITO - SEM CORTAR, SEM ESTICAR, P2P ILIMITADO ATIVO");
+console.log("OK - sem tela preta");
 </script>
 </body>
 </html>
