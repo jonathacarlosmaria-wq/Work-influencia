@@ -2,119 +2,124 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Work Influência</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
-html{background:#000}
+*{margin:0;padding:0;box-sizing:border-box}
+html{overscroll-behavior:none;background:#000}
 body{
-  background:#000;
-  width:100%;
-  min-height:100vh;
-  min-height:100dvh;
-  overscroll-behavior-y:contain; /* CORRIGE O ESTICAR */
+  background:#000;width:100%;height:100%;
+  height:100dvh; /* CORREÇÃO DO CORTE */
+  overscroll-behavior:none;
+  overscroll-behavior-y:contain; /* CORREÇÃO DO ESTICAR */
+  position:fixed;overflow:hidden;
+  font-family:Arial,sans-serif
 }
 #app{
-  width:100%;
-  max-width:500px;
-  margin:0 auto;
-  background:#000;
-  min-height:100vh;
-  min-height:100dvh;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-  position:relative;
+  width:100%;height:100vh;height:100dvh;
+  height:-webkit-fill-available;
+  overflow:hidden;position:relative;
+  background:#000;max-width:500px;margin:0 auto;
 }
-.header{
-  position:sticky;top:0;z-index:100;
-  background:#000;color:#fff;
-  padding:12px;text-align:center;
-  border-bottom:1px solid #222;
-  padding-top:calc(12px + env(safe-area-inset-top));
+.video-container{
+  width:100%;height:100vh;height:100dvh;
+  position:relative;background:#000;
 }
-.feed{padding:10px;padding-bottom:100px}
-.card{
-  background:#121212;border-radius:16px;
-  margin-bottom:16px;overflow:hidden;
-  border:1px solid #222;
+.video-container img,.video-container video{
+  width:100%;height:100%;object-fit:cover;display:block;
 }
-.card video{
-  width:100%;
-  height:auto;
-  max-height:70vh;
-  display:block;
-  background:#000;
+/* BOTOES LATERAIS IGUAL SEU PRINT */
+.side-actions{
+  position:absolute;right:12px;bottom:110px;
+  display:flex;flex-direction:column;gap:16px;z-index:10;
 }
-.card.info{padding:12px;color:#fff;display:flex;justify-content:space-between;align-items:center}
-.btn-post{
-  position:fixed;bottom:25px;right:20px;
-  bottom:calc(25px + env(safe-area-inset-bottom));
-  width:64px;height:64px;border-radius:50%;
-  background:#ff004f;color:#fff;border:none;
-  font-size:36px;z-index:999;
-  box-shadow:0 4px 15px rgba(255,0,79,0.4);
+.action{ display:flex;flex-direction:column;align-items:center;color:#fff;font-size:11px;gap:4px}
+.action-btn{
+  width:54px;height:54px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;border:none;
 }
-.empty{color:#666;text-align:center;padding:60px 20px}
+.fire{background:#ff4500;box-shadow:0 0 15px #ff4500}
+.heart{background:#ff1744}
+.gray{background:rgba(40,40,40,0.9);border:1px solid rgba(255,255,255,0.2)}
+/* LEGENDA IGUAL SEU PRINT */
+.caption{
+  position:absolute;left:10px;bottom:85px;
+  background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);
+  padding:10px 14px;border-radius:12px;max-width:72%;
+  color:#fff;
+}
+.caption b{font-size:14px}
+.caption p{font-size:13px;opacity:0.9;margin-top:2px}
+/* RODAPE IGUAL SEU PRINT */
+.bottom-nav{
+  position:absolute;bottom:0;left:0;right:0;
+  height:70px;background:#0f0f0f;
+  border-top:1px solid #ff004f22;
+  display:flex;justify-content:space-around;align-items:center;
+  padding-bottom:env(safe-area-inset-bottom);z-index:20;
+}
+.nav-item{color:#777;text-align:center;font-size:11px}
+.nav-item.active{color:#ff6a00}
+.nav-item.icon{font-size:22px;display:block}
+.center-plus{
+  width:58px;height:58px;background:#ff3b30;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:32px;color:#fff;border:3px solid #000;
+  margin-top:-20px;
+}
 </style>
 </head>
 <body>
 <div id="app">
-  <div class="header">🔥 Work Influência - ILIMITADO</div>
-  <div class="feed" id="feed">
-    <div class="empty" id="empty">
-      Nenhum vídeo ainda<br><br>Clique no + para postar seu primeiro vídeo<br>ILIMITADO e GRÁTIS
+  <div class="video-container">
+    <!-- SEU VIDEO/FOTO -->
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600" id="mainMedia">
+
+    <div class="side-actions">
+      <div class="action"><button class="action-btn fire">🔥</button><span>1<br>Chamas</span></div>
+      <div class="action"><button class="action-btn heart">❤</button><span>1<br>Curtir</span></div>
+      <div class="action"><button class="action-btn gray">💬</button><span>1<br>Comen</span></div>
+      <div class="action"><button class="action-btn gray">↪</button><span>1<br>Compar</span></div>
+      <div class="action"><button class="action-btn gray">🔖</button><span>Salvar</span></div>
+    </div>
+
+    <div class="caption">
+      <b>@fire.influencer</b>
+      <p>🔥 POSTAR fixo - nunca some!</p>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-item active"><span class="icon">🏠</span>Inicio</div>
+      <div class="nav-item"><span class="icon">🔍</span>Busca</div>
+      <div class="center-plus" onclick="document.getElementById('file').click()">+</div>
+      <div class="nav-item"><span class="icon">📡</span>Live</div>
+      <div class="nav-item"><span class="icon">👤</span>Eu</div>
     </div>
   </div>
-  <button class="btn-post" onclick="document.getElementById('file').click()">+</button>
-  <input type="file" id="file" accept="video/*" style="display:none">
 </div>
+<input type="file" id="file" accept="video/*,image/*" style="display:none">
 
 <script>
-const feed = document.getElementById('feed');
-const fileInput = document.getElementById('file');
-const empty = document.getElementById('empty');
-
-function mostrarVideo(url){
-  if(empty) empty.style.display='none';
-  const div = document.createElement('div');
-  div.className='card';
-  div.innerHTML = `
-    <video src="${url}" controls playsinline loop></video>
-    <div class="info">
-      <span>@voce • agora</span>
-      <span>❤️ Curtir</span>
-    </div>
-  `;
-  feed.prepend(div);
-}
-
-fileInput.addEventListener('change', function(){
-  const file = this.files[0];
+document.getElementById('file').onchange = e=>{
+  const file = e.target.files[0];
   if(!file) return;
   const url = URL.createObjectURL(file);
-  mostrarVideo(url);
-  // Salva temporariamente
-  this.value='';
-});
-
-// IMPEDE O ESTICAR E CORTAR
-document.addEventListener('touchmove', function(e){
-  if(e.touches.length > 1) e.preventDefault();
-}, {passive:false});
-
-let lastY=0;
-document.getElementById('app').addEventListener('touchstart', e=>{lastY=e.touches[0].clientY});
-document.getElementById('app').addEventListener('touchmove', e=>{
-  const el = document.getElementById('app');
-  const curY = e.touches[0].clientY;
-  const isAtTop = el.scrollTop <= 0;
-  const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight -1;
-  if((isAtTop && curY > lastY) || (isAtBottom && curY < lastY)){
-    e.preventDefault();
+  const media = document.getElementById('mainMedia');
+  if(file.type.startsWith('video')){
+    const v = document.createElement('video');
+    v.src=url; v.autoplay=true; v.loop=true; v.muted=true; v.playsInline=true;
+    v.style.cssText="width:100%;height:100%;object-fit:cover";
+    media.replaceWith(v);
+  } else {
+    media.src=url;
   }
-}, {passive:false});
-
-console.log("APP OK - SEM CORTAR, SEM ESTICAR, SEM TELA PRETA");
+};
+// trava o esticar
+document.addEventListener('touchmove', e=>{
+  const app=document.getElementById('app');
+  if(app.scrollTop<=0) e.preventDefault();
+},{passive:false});
 </script>
 </body>
 </html>
