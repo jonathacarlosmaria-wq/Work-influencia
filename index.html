@@ -2,52 +2,119 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Work Influência</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{width:100%;height:100%;background:#000;overscroll-behavior:none}
-  body{position:fixed;overflow:hidden;height:100dvh}
-  #app{width:100%;height:100dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;background:#000}
- .feed{padding:10px;padding-bottom:100px}
- .video-card{background:#1a1a1a;border-radius:12px;margin-bottom:15px;overflow:hidden}
- .video-card video{width:100%;max-height:65vh;object-fit:contain;background:#000}
- .info{padding:10px;color:#fff;display:flex;justify-content:space-between}
- .btn{position:fixed;bottom:30px;right:20px;background:#ff0050;color:#fff;border:none;width:65px;height:65px;border-radius:50%;font-size:35px;z-index:999}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+html{background:#000}
+body{
+  background:#000;
+  width:100%;
+  min-height:100vh;
+  min-height:100dvh;
+  overscroll-behavior-y:contain; /* CORRIGE O ESTICAR */
+}
+#app{
+  width:100%;
+  max-width:500px;
+  margin:0 auto;
+  background:#000;
+  min-height:100vh;
+  min-height:100dvh;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  position:relative;
+}
+.header{
+  position:sticky;top:0;z-index:100;
+  background:#000;color:#fff;
+  padding:12px;text-align:center;
+  border-bottom:1px solid #222;
+  padding-top:calc(12px + env(safe-area-inset-top));
+}
+.feed{padding:10px;padding-bottom:100px}
+.card{
+  background:#121212;border-radius:16px;
+  margin-bottom:16px;overflow:hidden;
+  border:1px solid #222;
+}
+.card video{
+  width:100%;
+  height:auto;
+  max-height:70vh;
+  display:block;
+  background:#000;
+}
+.card.info{padding:12px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.btn-post{
+  position:fixed;bottom:25px;right:20px;
+  bottom:calc(25px + env(safe-area-inset-bottom));
+  width:64px;height:64px;border-radius:50%;
+  background:#ff004f;color:#fff;border:none;
+  font-size:36px;z-index:999;
+  box-shadow:0 4px 15px rgba(255,0,79,0.4);
+}
+.empty{color:#666;text-align:center;padding:60px 20px}
 </style>
 </head>
 <body>
 <div id="app">
-  <div id="feed" class="feed"></div>
-  <button class="btn" onclick="document.getElementById('file').click()">+</button>
+  <div class="header">🔥 Work Influência - ILIMITADO</div>
+  <div class="feed" id="feed">
+    <div class="empty" id="empty">
+      Nenhum vídeo ainda<br><br>Clique no + para postar seu primeiro vídeo<br>ILIMITADO e GRÁTIS
+    </div>
+  </div>
+  <button class="btn-post" onclick="document.getElementById('file').click()">+</button>
   <input type="file" id="file" accept="video/*" style="display:none">
 </div>
+
 <script>
 const feed = document.getElementById('feed');
 const fileInput = document.getElementById('file');
+const empty = document.getElementById('empty');
 
-// CARREGA VIDEOS SALVOS
-let videos = JSON.parse(localStorage.getItem('work_videos')||'[]');
-videos.forEach(v=>mostrar(v));
+function mostrarVideo(url){
+  if(empty) empty.style.display='none';
+  const div = document.createElement('div');
+  div.className='card';
+  div.innerHTML = `
+    <video src="${url}" controls playsinline loop></video>
+    <div class="info">
+      <span>@voce • agora</span>
+      <span>❤️ Curtir</span>
+    </div>
+  `;
+  feed.prepend(div);
+}
 
-fileInput.onchange = e=>{
-  const file = e.target.files[0];
+fileInput.addEventListener('change', function(){
+  const file = this.files[0];
   if(!file) return;
   const url = URL.createObjectURL(file);
-  const obj = {url:url, id:Date.now()};
-  videos.unshift(obj);
-  // salva só referencia, não o video inteiro pra não pesar
-  try{localStorage.setItem('work_videos',JSON.stringify(videos.slice(0,50)))}catch(e){}
-  mostrar(obj);
-};
+  mostrarVideo(url);
+  // Salva temporariamente
+  this.value='';
+});
 
-function mostrar(obj){
-  const d = document.createElement('div');
-  d.className='video-card';
-  d.innerHTML=`<video src="${obj.url}" controls playsinline></video><div class="info"><span>Work Influência</span><span>❤️</span></div>`;
-  feed.prepend(d);
-}
-console.log("OK - sem tela preta");
+// IMPEDE O ESTICAR E CORTAR
+document.addEventListener('touchmove', function(e){
+  if(e.touches.length > 1) e.preventDefault();
+}, {passive:false});
+
+let lastY=0;
+document.getElementById('app').addEventListener('touchstart', e=>{lastY=e.touches[0].clientY});
+document.getElementById('app').addEventListener('touchmove', e=>{
+  const el = document.getElementById('app');
+  const curY = e.touches[0].clientY;
+  const isAtTop = el.scrollTop <= 0;
+  const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight -1;
+  if((isAtTop && curY > lastY) || (isAtBottom && curY < lastY)){
+    e.preventDefault();
+  }
+}, {passive:false});
+
+console.log("APP OK - SEM CORTAR, SEM ESTICAR, SEM TELA PRETA");
 </script>
 </body>
 </html>
