@@ -2,51 +2,51 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>WORK FIRE - FINAL 150MB CORRIGIDO</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<!-- TODO SEU CSS IGUAL -->
+<style>/* seu CSS igual - mantive tudo */*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}#app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}#feed::-webkit-scrollbar{display:none}.post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0;overflow:hidden}.post video{width:100%;height:100%;object-fit:cover;display:block;background:#000;position:absolute;inset:0}.btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:8;border:3px solid #fff;cursor:pointer}#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none}.nav{height:64px;min-height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30;flex-shrink:0}.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:8.5px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:2px}.nav button.on{color:#ff8c00}.page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto;padding-bottom:70px}.page.show{display:flex}.card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}.input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px;font-size:13px}.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px;font-size:13px;cursor:pointer}.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;display:none}.btnPostar.show{display:block}.previewArea{display:none;margin-top:10px;border:3px solid #00ff88;border-radius:14px;overflow:hidden;background:#000;position:relative}.previewArea.show{display:block}</style>
 </head>
 <body>
-<!-- SEU BODY IGUAL -->
-
+<div id="app"><div id="feed"></div><div id="toast"></div>
+<div id="pCriar" class="page show"><div class="card" style="border:2px solid #ff4500">
+<input id="file" type="file" accept="video/*"><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:none" controls></video>
+<div id="previewArea" class="previewArea"></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA 150MB</button>
+<input id="desc" class="input" placeholder="Legenda..."></div></div>
+<div class="nav"><button onclick="go(0)">Inicio</button></div></div>
 <script>
-// CONFIG
 const SUPABASE_URL='https://rjrjdfwxqbjjfflqpydm.supabase.co';
 const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4cmpkZnd4cWJqamZmbHFweWRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExNDg1MTksImV4cCI6MjEwNjcyNDUxOX0.HNJ0nJ_XJHNmjyWxhd7MyS2IrCLlWB85rIVKQqQrsQU';
 const supa=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
-
-// SEU CODIGO TODO IGUAL, SÓ TROCA A FUNÇÃO POSTAR:
-
+let tempFileObj=null,temp="",userNome=localStorage.getItem("userNome")||"teste";
+function toast(m){let t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
+document.getElementById("file").addEventListener("change", e=>{
+ let f=e.target.files[0]; if(!f) return;
+ tempFileObj=f; let url=URL.createObjectURL(f);
+ document.getElementById("previewVideo").src=url; document.getElementById("previewVideo").style.display='block';
+ document.getElementById("btnPostar").classList.add("show");
+});
 async function postar(){
  let d=document.getElementById("desc").value.trim()||"Meu vídeo 1:30 🔥";
- if(!tempFileObj &&!temp){alert("Escolhe vídeo!"); return;}
- if(!userNome){alert("Cadastre em Eu!"); go(4); return;}
+ if(!tempFileObj){alert("Escolhe vídeo!"); return;}
  let btn=document.getElementById("btnPostar");
  let fileToUpload=tempFileObj;
- if(!fileToUpload){
-   let res=await fetch(temp); let blob=await res.blob();
-   fileToUpload=new File([blob],"post_"+Date.now()+".webm",{type:blob.type||"video/webm"});
- }
- if(fileToUpload.size > 157286400){ alert("Max 150MB"); return; }
+ if(fileToUpload.size > 150*1024*1024){ alert("Max 150MB"); return; }
  if(btn){ btn.innerText="⏳ ENVIANDO 150MB..."; btn.disabled=true; }
  try{
    let nome=Date.now()+"_"+fileToUpload.name.replace(/\s/g,"_").replace(/[^a-zA-Z0-9._-]/g,"");
-   // SDK OFICIAL - NÃO DÁ FAILED TO FETCH
-   let {data, error} = await supa.storage.from("videos").upload(nome, fileToUpload, {
-     cacheControl:"3600", upsert:false, contentType: fileToUpload.type
-   });
+   toast("⏳ Subindo "+(fileToUpload.size/1024/1024).toFixed(1)+"MB...");
+   let {data, error} = await supa.storage.from("videos").upload(nome, fileToUpload, {cacheControl:"3600", upsert:false, contentType: fileToUpload.type || "video/mp4"});
    if(error) throw error;
-   let {data:pub}=supa.storage.from("videos").getPublicUrl(nome);
-   let {data:inserted, error:dbErr}=await supa.from("posts").insert([{video_url:pub.publicUrl, username:userNome, description:d, likes:0}]).select().single();
+   let {data:pub} = supa.storage.from("videos").getPublicUrl(nome);
+   let publicUrl = pub.publicUrl;
+   let {data:inserted, error:dbErr}=await supa.from("posts").insert([{video_url:publicUrl,username:userNome,description:d,likes:0}]).select().single();
    if(dbErr) throw dbErr;
-   toast("✅ POSTADO 150MB!");
-   location.reload();
+   toast("✅ POSTADO 150MB!"); location.reload();
  }catch(e){
-   console.error(e);
-   alert("Erro: "+e.message+"\nVerifique bucket PUBLIC e policies");
+   console.error(e); alert("Erro: "+e.message);
  }finally{
    if(btn){ btn.innerText="🚀 POSTAR AGORA 150MB"; btn.disabled=false; }
  }
