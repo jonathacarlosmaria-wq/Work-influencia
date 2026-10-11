@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - FINAL 150MB OFICIAL TODOS BOTOES</title>
+<title>WORK FIRE - FINAL 150MB OFICIAL LAYOUT GUARDADO</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -14,40 +14,80 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 #splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #splash::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.15),rgba(0,0,0,.85))}
 .s-content{position:relative;z-index:3;text-align:center}
-.s-content h1{font-size:52px;font-weight:900;letter-spacing:-2px;text-shadow:0 0 15px #ff4500,0 0 40px #f00}
+.s-content h1{font-size:52px;font-weight:900;letter-spacing:-2px;text-shadow:0 0 15px #ff4500,0 0 40px #f00;animation:flicker.15s infinite alternate}
+@keyframes flicker{0%{text-shadow:0 0 15px #ff4500}100%{text-shadow:0 0 30px #ff4500,0 0 70px #f00}}
 .sub{color:#ff8c00;font-weight:900;letter-spacing:6px;font-size:11px;margin-top:10px}
 #loader{width:160px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin:24px auto 0;overflow:hidden}
 #loader div{width:0;height:100%;background:linear-gradient(90deg,#ff2a00,#ffae00);animation:load 5s linear forwards}
 @keyframes load{to{width:100%}}
 #app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
 #feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
+#feed::-webkit-scrollbar{display:none}
 .post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111 center/cover no-repeat;flex-shrink:0;overflow:hidden}
 .post video{width:100%;height:100%;object-fit:cover;display:block;background:#000;position:absolute;inset:0}
-.btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:8;border:3px solid #fff}
-.watermark{position:absolute;left:10px;top:14px;z-index:9;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:20px;color:rgba(255,255,255,.75);font-size:8.5px;font-weight:900}
+.post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.9) 100%);pointer-events:none;z-index:1}
+.btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:8;border:3px solid #fff;cursor:pointer}
+.watermark{position:absolute;left:10px;top:14px;z-index:9;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:20px;color:rgba(255,255,255,.75);font-size:8.5px;font-weight:900;letter-spacing:1.2px;text-transform:lowercase;pointer-events:none;backdrop-filter:blur(2px)}
 #toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none}
 .rightBar{position:absolute;right:8px;bottom:90px;z-index:10;display:flex;flex-direction:column;gap:12px;width:60px}
-.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%}
+.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%;outline:none;transition:transform.15s}
+.btnTik:active{transform:scale(0.88)}
+.btnTik.dance{animation:dance.4s ease}
+@keyframes dance{0%{transform:scale(1)}30%{transform:scale(1.25) rotate(-6deg)}60%{transform:scale(1.3) rotate(6deg)}100%{transform:scale(1)}}
 .iconTik{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;background:rgba(35,35,35,.85);border:1.5px solid rgba(255,255,255,.18)}
-.iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00,#ff4500 55%,#8b0000)}
-.iconTik.fire.on{background:#ff4500}
+.iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00,#ff4500 55%,#8b0000);border-color:#ff8c00}
+.iconTik.fire.on{background:#ff4500;box-shadow:0 0 18px #ff4500}
 .iconTik.heart.on{background:#ff1844}
 .iconTik.save.on{background:#ffcc00;color:#000}
-.txtTik{color:#fff;font-size:8.5px;font-weight:800;margin-top:3px;text-align:center}
+.txtTik{color:#fff;font-size:8.5px;font-weight:800;margin-top:3px;text-shadow:0 1px 6px #000;text-align:center}
 .info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:9px 10px}
-.nav{height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30}
+.info b{color:#fff;font-size:11px}
+.info div{color:#ddd;font-size:11px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{height:64px;min-height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30;flex-shrink:0}
 .nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:8.5px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:2px}
 .nav button.on{color:#ff8c00}
-.plus{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:-20px}
+.nav button i{font-size:18px}
+.plus{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:-20px;box-shadow:0 0 0 4px #000}
 .page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto;padding-bottom:70px}
 .page.show{display:flex}
 .card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
-.input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px}
-.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px;cursor:pointer}
-.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;display:none}
-.btnPostar.show{display:block}
-.previewArea{display:none;margin-top:10px;border:3px solid #00ff88;border-radius:14px;overflow:hidden;position:relative}
+.input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px;font-size:13px}
+.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px;font-size:13px;cursor:pointer}
+.avatar{width:88px;height:88px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;cursor:pointer}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.78);color:#ffcc00;font-size:7px;font-weight:900;text-align:center;padding:4px}
+.camBox{position:relative;width:100%;height:45vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff4500;margin-top:10px}
+.camBox video{width:100%;height:100%;object-fit:cover}
+.camBox video.mirror{transform:scaleX(-1)}
+.timerCam{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(255,0,0,.9);color:#fff;padding:5px 14px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}
+.ctrlCam{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:20px;z-index:5;align-items:center}
+.circ{width:70px;height:70px;border-radius:50%;border:4px solid #fff;background:#ff0000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;cursor:pointer}
+.circ.stop{background:#fff;color:#ff0000}
+.switchCam{width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.65);border:1.5px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}
+.previewArea{display:none;margin-top:10px;border:3px solid #00ff88;border-radius:14px;overflow:hidden;background:#000;position:relative}
 .previewArea.show{display:block}
+.previewLabel{position:absolute;top:6px;left:6px;background:#00ff88;color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900;z-index:5}
+.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;box-shadow:0 0 20px rgba(0,255,136,.7);display:none;animation:blinkPostar 1s infinite}
+.btnPostar.show{display:block}
+@keyframes blinkPostar{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+#comDrawer{position:absolute;inset:0;z-index:60;display:none;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.55)}
+#comDrawer.show{display:flex}
+.comSheet{width:100%;max-width:420px;margin:0 auto;background:#161616;border-radius:20px 20px 0 0;max-height:75vh;display:flex;flex-direction:column;border-top:1.5px solid rgba(255,69,0,.35)}
+.comHead{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.comHead b{color:#fff;font-size:14px}
+.comHead button{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%}
+.comList{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:14px}
+#shareDrawer{position:absolute;inset:0;z-index:70;display:none;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6)}
+#shareDrawer.show{display:flex}
+.shareSheet{width:100%;max-width:420px;margin:0 auto;background:#1a1a1a;border-radius:22px 22px 0 0;padding:12px 16px 20px;border-top:2px solid rgba(255,140,0,.4)}
+.shareGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
+.pixBox{background:#fff;border-radius:16px;padding:14px;margin:12px 0;text-align:center}
+#qrcode{display:flex;justify-content:center;margin:10px auto}
+.pixKeyBox{background:#000;padding:10px;border-radius:8px;margin:10px 0;font-size:10px;color:#00ff88;word-break:break-all;border:1px dashed #00ff88;text-align:left;max-height:80px;overflow:auto}
+.liveStage{position:relative;width:100%;height:52vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff0000}
+.liveStage video{width:100%;height:100%;object-fit:cover}
+.liveTag{position:absolute;top:10px;left:10px;background:#ff0000;color:#fff;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:900;z-index:5}
+.userRow{display:flex;justify-content:space-between;align-items:center;padding:8px;background:rgba(255,255,255,.05);border-radius:8px;margin-top:6px}
 </style>
 </head>
 <body>
@@ -55,38 +95,76 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 <div id="app">
 <div id="feed"></div>
 <div id="toast"></div>
-<div id="pCriar" class="page"><div class="card"><div id="previewArea" class="previewArea"><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover" controls></video></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA 150MB</button><input id="file" type="file" accept="video/*"><input id="desc" class="input" placeholder="Legenda..."><input id="nomeUser" class="input" placeholder="Seu @nome"></div></div>
-<div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i>Inicio</button><button onclick="go(2)"><div class="plus">+</div></button><button onclick="go(4)"><i class="fa-solid fa-user"></i>Eu</button></div>
+<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">📹 Postar 1:30 - 150MB</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="border:2px solid #ff4500"><div class="camBox" id="camBox" style="display:none"><div id="timer" class="timerCam">00:00 / 01:30 🔊</div><video id="camVideo" autoplay muted playsinline class="mirror"></video><div class="ctrlCam"><div class="switchCam" onclick="switchCam()"><i class="fa-solid fa-rotate"></i></div><div id="btnRec" class="circ" onclick="toggleRec()"><i class="fa-solid fa-circle"></i></div><div class="switchCam" onclick="stopCam()"><i class="fa-solid fa-xmark"></i></div></div></div><div id="camOff" style="text-align:center;padding:18px;background:#111;border-radius:12px;border:1px dashed #ff4500;margin-top:10px"><i class="fa-solid fa-video" style="font-size:32px;color:#ff4500"></i><div style="color:#fff;font-size:13px;margin-top:8px;font-weight:900">Grave 1:30 ou escolha da galeria 150MB!</div><button class="btn" onclick="startCam('user')" style="margin-top:12px">ABRIR CÂMERA</button></div><div id="previewArea" class="previewArea"><div class="previewLabel">✅ 150MB - PRONTO</div><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA 150MB</button><input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px"><input id="desc" class="input" placeholder="Legenda..."></div></div>
+<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#ff4500">Eu</b><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="text-align:center"><div class="avatar"><div id="avatarBox">🔥</div></div><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button><div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px"></div><div id="uidShow" style="color:#333;font-size:8px"></div></div></div>
+<div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button><button id="b1" onclick="go(1)"><i class="fa-solid fa-magnifying-glass"></i><span>Busca</span></button><button id="b2" onclick="go(2)"><div class="plus"><i class="fa-solid fa-plus"></i></div></button><button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast"></i><span>Live</span></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button></div>
 </div>
 <script>
 const SUPABASE_URL='https://rjrjdfwxqbjjfflqpydm.supabase.co';
 const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4cmpkZnd4cWJqamZmbHFweWRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExNDg1MTksImV4cCI6MjEwNjcyNDUxOX0.HNJ0nJ_XJHNmjyWxhd7MyS2IrCLlWB85rIVKQqQrsQU';
 const supa=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
-let userNome=localStorage.getItem("userNome")||"",tempFileObj=null;
+setTimeout(()=>{let s=document.getElementById('splash'); if(s){s.style.opacity='0'; setTimeout(()=>s.remove(),900);}},5000);
+let uid=localStorage.getItem("uid"); if(!uid){uid="u_"+Math.random().toString(36).slice(2,7); localStorage.setItem("uid",uid);}
+let userNome=localStorage.getItem("userNome")||"",posts=[],tempFileObj=null,temp="",videoAtivo=null,observer=null;
+let stream=null,recorder=null,chunks=[],recording=false,timerInt=null,sec=0,facing="user";
 function toast(m){let t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
-async function postar(){
- let d=document.getElementById("desc").value||"Meu vídeo";
- if(!tempFileObj){alert("Escolhe vídeo");return;}
- let btn=document.getElementById("btnPostar");
- btn.innerText="⏳ ENVIANDO..."; btn.disabled=true;
+function pausarTodosExceto(exceto){document.querySelectorAll('#feed video').forEach(v=>{if(v!==exceto){try{v.pause();v.muted=true;}catch(e){}}});}
+function setupObserver(){if(observer)observer.disconnect();observer=new IntersectionObserver((entries)=>{let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.7).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(!vis.length)return;let container=vis[0].target;let video=container.querySelector('video');if(!video||video===videoAtivo)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().then(()=>{let b=container.querySelector('.btnSom');if(b)b.style.display='none';}).catch(()=>{video.muted=true;video.play().catch(()=>{});});},{threshold:[0,0.7,1]});document.querySelectorAll('.post').forEach(p=>observer.observe(p));}
+function toggleSom(postEl){let video=postEl.querySelector('video');let btn=postEl.querySelector('.btnSom');if(!video)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().catch(()=>{});if(btn)btn.style.display='none';}
+async function init(){
  try{
-   let nome=Date.now()+"_"+tempFileObj.name.replace(/\s/g,"_");
-   let {error}=await supa.storage.from("videos").upload(nome,tempFileObj,{contentType:tempFileObj.type});
-   if(error) throw error;
-   let {data:pub}=supa.storage.from("videos").getPublicUrl(nome);
-   await supa.from("posts").insert([{video_url:pub.publicUrl,username:userNome||"anon",description:d}]);
-   toast("✅ POSTADO!"); location.reload();
- }catch(e){alert("Erro: "+e.message);} finally{btn.innerText="🚀 POSTAR AGORA 150MB"; btn.disabled=false;}
+   let {data,error}=await supa.from("posts").select("*").order("created_at",{ascending:false}).limit(50);
+   if(!error && data && data.length>0){ posts=data.map(r=>({id:r.id,owner:r.username||"fire.user",img:r.video_url,desc:r.description||"",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:"video",time:new Date(r.created_at).getTime(),supaId:r.id,likes:r.likes||0})); }
+   else{ posts=[{id:Date.now(),owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"✅ App voltou! Posta seu vídeo!",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true,type:"img",time:Date.now()}]; }
+ }catch(e){ posts=[{id:Date.now(),owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"🔥 Bem-vindo!",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true,type:"img",time:Date.now()}]; }
+ render(); setTimeout(()=>setupObserver(),800);
+}init();
+function render(){
+ let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0)||(b.time||0)-(a.time||0));
+ document.getElementById("feed").innerHTML=list.map(p=>{
+   let idx=posts.indexOf(p);
+   let media=p.type==="video"?`<video src="${p.img}" loop playsinline preload="metadata" muted></video><div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>`:`<div style="width:100%;height:100%;background:url('${p.img}') center/cover no-repeat"></div>`;
+   return `<div class="post" onclick="toggleSom(this)">${media}<div class="watermark">work influencer</div><div class="rightBar"><button class="btnTik" onclick="event.stopPropagation();fire(${idx},this)"><div class="iconTik fire"><i class="fa-solid fa-fire"></i></div><div class="txtTik">${p.likes||0}<br>Chamas</div></button><button class="btnTik" onclick="event.stopPropagation();like(${idx},this)"><div class="iconTik heart"><i class="fa-regular fa-heart"></i></div><div class="txtTik">Curtir</div></button><button class="btnTik"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">Comen</div></button><button class="btnTik"><div class="iconTik"><i class="fa-solid fa-share"></i></div><div class="txtTik">Compar</div></button><button class="btnTik"><div class="iconTik save"><i class="fa-regular fa-bookmark"></i></div><div class="txtTik">Salvar</div></button></div><div class="info"><b>@${p.owner}</b><div>${p.desc||''}</div></div></div>`;
+ }).join("");
+ setTimeout(()=>setupObserver(),300);
+ document.getElementById("uidShow").innerText=uid;
 }
-document.getElementById("file").addEventListener("change",e=>{
- let f=e.target.files[0]; tempFileObj=f;
+function fire(i,btn){let p=posts[i]; if(!p.firedBy) p.firedBy=[]; if(p.firedBy.includes(uid)) p.firedBy=p.firedBy.filter(x=>x!==uid); else p.firedBy.push(uid); render();}
+function like(i,btn){render();}
+async function startCam(mode){facing=mode||facing; try{if(stream) stream.getTracks().forEach(t=>t.stop()); stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing},audio:true}); let v=document.getElementById("camVideo"); v.srcObject=stream; if(facing==="user") v.classList.add("mirror"); else v.classList.remove("mirror"); document.getElementById("camBox").style.display="block";}catch(e){alert("Câmera: "+e.message);}}
+function stopCam(){try{if(stream) stream.getTracks().forEach(t=>t.stop());}catch(e){} stream=null; document.getElementById("camBox").style.display="none";}
+function switchCam(){startCam(facing==="user"?"environment":"user");}
+function toggleRec(){}
+function go(n){if(n!==2) stopCam(); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b"+n).classList.add("on"); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); if(n==2) document.getElementById("pCriar").classList.add("show"); if(n==4) document.getElementById("pEu").classList.add("show");}
+function closeAll(){stopCam(); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b0").classList.add("on");}
+function salvarTudo(){let n=document.getElementById("nomeUser").value.trim(); if(!n){alert("nome");return;} userNome=n; localStorage.setItem("userNome",n); render(); alert("Salvo");}
+document.getElementById("file").addEventListener("change", e=>{
+ let f=e.target.files[0]; if(!f) return;
+ if(f.size>150*1024*1024){ alert("Max 150MB"); return; }
+ tempFileObj=f;
  let url=URL.createObjectURL(f);
- document.getElementById("previewVideo").src=url;
- document.getElementById("previewArea").classList.add("show");
- document.getElementById("btnPostar").classList.add("show");
+ let v=document.getElementById("previewVideo"); v.src=url; document.getElementById("previewArea").classList.add("show"); document.getElementById("btnPostar").classList.add("show");
 });
-function go(n){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); if(n==2) document.getElementById("pCriar").classList.add("show");}
-setTimeout(()=>{let s=document.getElementById('splash'); if(s){s.style.opacity='0'; setTimeout(()=>s.remove(),900);}},4000);
+async function postar(){
+ let d=document.getElementById("desc").value.trim()||"Meu vídeo 1:30 🔥";
+ if(!tempFileObj){alert("Escolhe vídeo!"); return;}
+ if(!userNome){alert("Cadastre em Eu!"); go(4); return;}
+ let btn=document.getElementById("btnPostar");
+ let fileToUpload=tempFileObj;
+ if(btn){ btn.innerText="⏳ ENVIANDO 150MB..."; btn.disabled=true; }
+ try{
+   let nome=Date.now()+"_"+fileToUpload.name.replace(/\s/g,"_").replace(/[^a-zA-Z0-9._-]/g,"");
+   toast("⏳ Subindo "+(fileToUpload.size/1024/1024).toFixed(1)+"MB...");
+   let {data, error} = await supa.storage.from("videos").upload(nome, fileToUpload, {cacheControl:"3600", upsert:false, contentType: fileToUpload.type || "video/mp4"});
+   if(error) throw error;
+   let {data:pub} = supa.storage.from("videos").getPublicUrl(nome);
+   let publicUrl = pub.publicUrl;
+   let {data:inserted, error:dbErr}=await supa.from("posts").insert([{video_url:publicUrl,username:userNome,description:d,likes:0}]).select().single();
+   if(dbErr) throw dbErr;
+   toast("✅ POSTADO!"); location.reload();
+ }catch(e){ alert("Erro: "+e.message); }
+ finally{ if(btn){ btn.innerText="🚀 POSTAR AGORA 150MB"; btn.disabled=false; } }
+}
 </script>
 </body>
 </html>
