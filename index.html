@@ -70,196 +70,96 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 .btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;box-shadow:0 0 20px rgba(0,255,136,.7);display:none;animation:blinkPostar 1s infinite}
 .btnPostar.show{display:block}
 @keyframes blinkPostar{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
-#comDrawer{position:absolute;inset:0;z-index:60;display:none;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.55)}
-#comDrawer.show{display:flex}
-.comSheet{width:100%;max-width:420px;margin:0 auto;background:#161616;border-radius:20px 20px 0 0;max-height:75vh;display:flex;flex-direction:column;border-top:1.5px solid rgba(255,69,0,.35)}
-.comHead{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
-.comHead b{color:#fff;font-size:14px}
-.comHead button{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%}
-.comList{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:14px}
-.comItem{display:flex;gap:10px}
-.comAva{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;flex-shrink:0}
-.comUser{color:#9a9a9a;font-size:11px;font-weight:800}
-.comText{color:#fff;font-size:13.5px;margin-top:2px;word-break:break-word}
-.comInputBar{display:flex;gap:8px;padding:10px 12px 14px;border-top:1px solid rgba(255,255,255,.08);background:#161616;align-items:center}
-.comInputBar input{flex:1;padding:11px 16px;background:#232323;border:1px solid rgba(255,255,255,.1);border-radius:24px;color:#fff;font-size:14px;outline:none}
-.comInputBar button{width:40px;height:40px;border-radius:50%;border:none;background:#ff4500;color:#fff}
-.liveStage{position:relative;width:100%;height:52vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff0000}
-.liveStage video{width:100%;height:100%;object-fit:cover}
-.liveStage video.mirror{transform:scaleX(-1)}
-.liveTag{position:absolute;top:10px;left:10px;background:#ff0000;color:#fff;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:900;z-index:5}
-.liveTimer{position:absolute;top:46px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);border:1.5px solid #ff0000;color:#fff;padding:6px 16px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}
-.progressLive{position:absolute;bottom:0;left:0;height:4px;background:linear-gradient(90deg,#ff0000,#ff8c00);z-index:8}
-.userRow{display:flex;justify-content:space-between;align-items:center;padding:8px;background:rgba(255,255,255,.05);border-radius:8px;margin-top:6px}
-#shareDrawer{position:absolute;inset:0;z-index:70;display:none;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6)}
-#shareDrawer.show{display:flex}
-.shareSheet{width:100%;max-width:420px;margin:0 auto;background:#1a1a1a;border-radius:22px 22px 0 0;padding:12px 16px 20px;border-top:2px solid rgba(255,140,0,.4)}
-.shareGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
-.shareOpt{border:none;background:none;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
-.shareIcon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff}
-.shareOpt span{color:#fff;font-size:10px;font-weight:700}
-.pixBox{background:#fff;border-radius:16px;padding:14px;margin:12px 0;text-align:center}
-#qrcode{display:flex;justify-content:center;margin:10px auto}
-.pixKeyBox{background:#000;padding:10px;border-radius:8px;margin:10px 0;font-size:10px;color:#00ff88;word-break:break-all;border:1px dashed #00ff88;text-align:left;max-height:80px;overflow:auto}
 </style>
 </head>
 <body>
-<div id="splash"><video autoplay muted loop playsinline><source src="https://videos.pexels.com/video-files/3191572/3191572-uhd_2560_1440_25fps.mp4" type="video/mp4"></video><div class="s-content"><h1>work influencer</h1><div class="sub">🔥 CARREGANDO</div><div id="loader"><div></div></div></div></div>
 <div id="app">
 <div id="feed"></div>
 <div id="toast"></div>
-<div id="shareDrawer" onclick="if(event.target.id==='shareDrawer')closeShare()"><div class="shareSheet"><div style="width:36px;height:4px;background:rgba(255,255,255,.3);border-radius:10px;margin:0 auto 10px"></div><div style="display:flex;justify-content:space-between;align-items:center"><b style="color:#fff;font-size:14px">Compartilhar</b><button onclick="closeShare()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="shareGrid"><button class="shareOpt" onclick="shareWhats()"><div class="shareIcon" style="background:#25D366"><i class="fa-brands fa-whatsapp"></i></div><span>WhatsApp</span></button><button class="shareOpt" onclick="shareFace()"><div class="shareIcon" style="background:#1877F2"><i class="fa-brands fa-facebook"></i></div><span>Facebook</span></button><button class="shareOpt" onclick="shareInsta()"><div class="shareIcon" style="background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)"><i class="fa-brands fa-instagram"></i></div><span>Instagram</span></button><button class="shareOpt" onclick="shareCopy()"><div class="shareIcon" style="background:#333"><i class="fa-solid fa-link"></i></div><span>Copiar Link</span></button></div></div></div>
-<div id="comDrawer" onclick="if(event.target.id==='comDrawer')closeCom()"><div class="comSheet"><div style="width:36px;height:4px;background:rgba(255,255,255,.3);border-radius:10px;margin:10px auto 0"></div><div class="comHead"><b id="comCount">0 comentários</b><button onclick="closeCom()"><i class="fa-solid fa-xmark"></i></button></div><div id="comList" class="comList"></div><div class="comInputBar"><input id="comInput" placeholder="Adicionar comentário..." onkeydown="if(event.key==='Enter')sendCom()"><button onclick="sendCom()"><i class="fa-solid fa-paper-plane"></i></button></div></div></div>
-<div id="pBusca" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">Busca</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card"><input id="qBusca" class="input" placeholder="Buscar..." oninput="busca()"><div id="rBusca" style="margin-top:10px"></div></div></div>
-<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">📹 Postar 1:30 - 150MB</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="border:2px solid #ff4500"><div style="display:flex;gap:8px"><button onclick="startCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">FRENTE</button><button onclick="startCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff8c00;font-size:11px">TRÁS</button><button onclick="switchCam()" class="btn" style="flex:1;margin:0;background:#ff8c00;color:#000;font-size:11px">TROCAR</button></div><div class="camBox" id="camBox" style="display:none"><div id="timer" class="timerCam">00:00 / 01:30 🔊</div><video id="camVideo" autoplay muted playsinline class="mirror"></video><div class="ctrlCam"><div class="switchCam" onclick="switchCam()"><i class="fa-solid fa-rotate"></i></div><div id="btnRec" class="circ" onclick="toggleRec()"><i class="fa-solid fa-circle"></i></div><div class="switchCam" onclick="stopCam()"><i class="fa-solid fa-xmark"></i></div></div></div><div id="camOff" style="text-align:center;padding:18px;background:#111;border-radius:12px;border:1px dashed #ff4500;margin-top:10px"><i class="fa-solid fa-video" style="font-size:32px;color:#ff4500"></i><div style="color:#fff;font-size:13px;margin-top:8px;font-weight:900">Grave 1:30 ou escolha da galeria 150MB!</div><button class="btn" onclick="startCam('user')" style="margin-top:12px">ABRIR CÂMERA COM ÁUDIO</button></div><div id="previewArea" class="previewArea"><div class="previewLabel">✅ 150MB - PRONTO</div><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA 150MB</button><input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px"><div style="color:#00ff88;font-size:10px;margin-top:6px">✅ TikTok: scroll snap + autoplay + 150MB + 1:30</div><input id="desc" class="input" placeholder="Legenda..."></div></div>
-<div id="pLive" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">🔴 Live Pix R$5 + Chat</h3><button onclick="closeAll();stopLive()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div>
-<div id="liveBloq" class="card" style="text-align:center;border:2px solid #00ff88"><div style="background:#00ff88;color:#000;padding:8px;border-radius:8px;font-weight:900">🔒 LIBERAR LIVE - R$ 5,00</div><div class="pixBox"><div style="color:#000;font-weight:900;font-size:12px">📱 QR CODE PIX - R$5,00</div><div id="qrcode"></div><div style="color:#000;font-size:11px;font-weight:700">jonathacarlosmaria@gmail.com</div><div style="color:#ff0000;font-weight:900;font-size:14px;margin-top:6px">R$ 5,00</div></div><div style="background:#000;border:1px dashed #ff8c00;padding:10px;border-radius:10px;margin:8px 0;text-align:left"><div style="color:#ff8c00;font-size:9px;font-weight:900">🆔 APARELHO FIXO:</div><div id="deviceShow" style="color:#fff;font-size:11px;font-weight:900"></div><div style="color:#ff8c00;font-size:9px;font-weight:900;margin-top:8px">🔑 CÓDIGO:</div><div id="txidShow" style="color:#00ff88;font-size:18px;font-weight:900;letter-spacing:2px;background:#111;padding:6px;border-radius:6px;text-align:center;margin-top:4px"></div></div><div style="text-align:left;color:#ffcc00;font-size:10px;font-weight:900;margin-top:8px">COPIA E COLA:</div><div id="pixCopiaCola" class="pixKeyBox">Gerando...</div><button class="btn" style="background:#fff;color:#000;border:2px solid #00ff88" onclick="copiarPix()">📋 COPIAR PIX</button><div id="statusPix" style="background:rgba(255,0,0,.15);border:1px solid #ff4444;padding:10px;border-radius:10px;margin-top:10px;color:#ff4444;font-size:11px;font-weight:900">⛔ NÃO PAGO</div><button class="btn" style="background:#222;color:#fff;border:1px solid #00ff88" onclick="solicitarLiberacao()">📤 JÁ FIZ O PIX</button></div>
-<div id="livePendente" class="card" style="display:none;text-align:center;border:2px solid #ffcc00"><div style="background:#ffcc00;color:#000;padding:8px;border-radius:8px;font-weight:900">⏳ AGUARDANDO CONFIRMAÇÃO</div><div id="pendenteTxid" style="color:#00ff88;font-weight:900;margin-top:8px"></div></div>
-<div id="liveUsada" class="card" style="display:none;text-align:center;border:2px solid #ff4444"><b style="color:#ff4444">⛔ Já usou hoje!</b><div id="proximaLive" style="color:#ff8c00;font-size:12px;font-weight:900;margin-top:8px"></div></div>
-<div id="liveOk" style="display:none;flex-direction:column;padding:10px"><div style="background:#00ff88;color:#000;padding:8px;border-radius:8px;text-align:center;font-weight:900;font-size:11px">✅ LIVE APROVADA - 30 MIN + CHAT</div><div id="liveStartBox" class="card" style="text-align:center;border:2px solid #ff0000"><div style="color:#00ff00;font-weight:900">LIBERADA PELO ADMIN ✅</div><div style="display:flex;gap:8px;margin-top:12px"><button onclick="startLiveCam('user')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff0000;font-size:11px">FRENTE</button><button onclick="startLiveCam('environment')" class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff0000;font-size:11px">TRÁS</button></div><button class="btn" style="background:#ff0000;color:#fff;margin-top:10px" onclick="startLive()">COMEÇAR LIVE 30MIN</button></div><div id="liveStageBox" class="card" style="display:none;padding:6px;border:2px solid #ff0000"><div class="liveStage"><video id="liveVideo" autoplay muted playsinline class="mirror"></video><div class="liveTag">AO VIVO • 30MIN</div><div id="liveTimer" class="liveTimer"><span id="liveTimeLeft">30:00</span> restantes</div><div class="progressLive" id="progressLive" style="width:100%"></div><div id="liveChatList" style="position:absolute;bottom:50px;left:8px;right:8px;max-height:45%;overflow-y:auto;display:flex;flex-direction:column;gap:6px;z-index:9;pointer-events:none"></div><div style="position:absolute;bottom:8px;left:8px;right:8px;z-index:10;display:flex;gap:6px"><input id="liveChatInput" placeholder="Comentar na live..." style="flex:1;padding:8px 12px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.3);border-radius:20px;color:#fff;font-size:12px;outline:none" onkeydown="if(event.key==='Enter')sendLiveChat()"><button onclick="sendLiveChat()" style="width:36px;height:36px;border-radius:50%;border:none;background:#ff0000;color:#fff"><i class="fa-solid fa-paper-plane"></i></button></div></div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" style="flex:1;margin:0;background:#222;color:#fff;border:1px solid #ff0000;font-size:11px" onclick="switchLiveCam()">TROCAR</button><button class="btn" style="flex:1;margin:0;background:#fff;color:#ff0000;font-size:11px" onclick="stopLive()">ENCERRAR LIVE</button></div></div></div></div>
-<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><div style="display:flex;gap:8px"><button onclick="abrirAdmin()" style="background:#ffcc00;border:none;padding:8px 14px;border-radius:20px;font-weight:900;font-size:11px;color:#000">ADMIN</button><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div></div><div class="card" style="border:1.5px solid #ff8c00;text-align:center"><div class="avatar" onclick="document.getElementById('fotoPerfil').click()"><div id="avatarBox">🔥</div><div class="cam">📷 FOTO</div></div><input id="fotoPerfil" type="file" accept="image/*" hidden onchange="trocarFoto(this)"><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00"><input id="apelidoUser" class="input" placeholder="Apelido" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button><div id="nomeShow" style="color:#ff8c00;font-size:12px;margin-top:8px;font-weight:900"></div><div style="color:#333;font-size:8px;margin-top:4px">ID: <span id="uidShow"></span> | <span id="deviceEu"></span></div></div>
-<div id="adminBox" style="display:none">
-<div class="card" style="border:2px solid #00ff88"><h4 style="color:#00ff88">✅ APROVAR PAGAMENTOS R$5</h4><div id="listaPedidos" style="max-height:250px;overflow-y:auto"></div><button class="btn" style="background:#00ff88;color:#000" onclick="listarPedidos()">🔄 VER PEDIDOS</button></div>
-<div class="card" style="border:2px solid #ffcc00"><h4 style="color:#ffcc00">🔴 LIVES ATIVAS</h4><div id="listaLivesAtivas"></div><button class="btn" style="background:#ff0000;color:#fff" onclick="listarLivesAtivas()">🔄 VER LIVES</button></div>
-<div class="card" style="border:2px solid #ff8c00"><h4 style="color:#ff8c00">👥 USUÁRIOS</h4><div id="listaUsuarios" style="max-height:300px;overflow-y:auto"></div><button class="btn" style="background:#ff8c00;color:#000" onclick="listarUsuarios()">🔄 VER USUÁRIOS</button></div>
-<div class="card" style="border:2px solid #ff4444"><h4 style="color:#ff4444">🎬 TODAS POSTAGENS</h4><div id="listaTodasPostagens" style="max-height:400px;overflow-y:auto"></div><button class="btn" style="background:#ff4444;color:#fff" onclick="listarTodasPostagens()">🔄 VER POSTAGENS</button></div>
-</div>
-<div class="card"><b style="color:#ff8c00">🎬 Meus vídeos</b><div id="meusVideos"></div></div>
-</div>
+<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">📹 Postar 1:30 - 150MB</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="border:2px solid #ff4500"><div id="previewArea" class="previewArea"><div class="previewLabel">✅ 150MB - PRONTO</div><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA 150MB</button><input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px"><input id="desc" class="input" placeholder="Legenda..."></div></div>
+<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="text-align:center"><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button></div></div>
 <div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button><button id="b1" onclick="go(1)"><i class="fa-solid fa-magnifying-glass"></i><span>Busca</span></button><button id="b2" onclick="go(2)"><div class="plus"><i class="fa-solid fa-plus"></i></div></button><button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast"></i><span>Live</span></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button></div>
 </div>
 <script>
 const SUPABASE_URL='https://rjrjdfwxqbjjfflqpydm.supabase.co';
 const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4cmpkZnd4cWJqamZmbHFweWRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExNDg1MTksImV4cCI6MjEwNjcyNDUxOX0.HNJ0nJ_XJHNmjyWxhd7MyS2IrCLlWB85rIVKQqQrsQU';
 const supa=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
-setTimeout(()=>{let s=document.getElementById('splash'); if(s){s.style.opacity='0'; setTimeout(()=>s.remove(),900);}},5000);
+const FIREBASE_URL = "https://work-influencer-default-rtdb.firebaseio.com/posts.json";
 let uid=localStorage.getItem("uid"); if(!uid){uid="u_"+Math.random().toString(36).slice(2,7); localStorage.setItem("uid",uid);}
-function getDeviceID(){let saved=localStorage.getItem("deviceID_fixo_v2_FINAL"); if(saved) return saved; let fp=navigator.userAgent+"|"+screen.width+"x"+screen.height+"|"+navigator.language; let hash=0; for(let i=0;i<fp.length;i++){hash=((hash<<5)-hash)+fp.charCodeAt(i); hash|=0;} let base="DEV_"+Math.abs(hash).toString(36).toUpperCase(); localStorage.setItem("deviceID_fixo_v2_FINAL",base); return base;}
-let deviceID=getDeviceID();
-function getTxidHoje(){let hoje=new Date().toDateString(); let key="txid_"+deviceID+"_"+hoje; let tx=localStorage.getItem(key); if(!tx){tx="WF5"+deviceID.slice(-4)+Math.random().toString(36).slice(2,5).toUpperCase(); localStorage.setItem(key, tx);} return tx;}
-let userFoto=localStorage.getItem("userFoto")||"",userNome=localStorage.getItem("userNome")||"",userApelido=localStorage.getItem("userApelido")||"";
-let posts=[]; let cfg={pixK:"jonathacarlosmaria@gmail.com"};
-let temp="",tempFileObj=null,comIdx=null,shareIdx=null,stream=null,recorder=null,chunks=[],recording=false,timerInt=null,sec=0,facing="user",liveStream=null,liveFacing="user",liveTimerInt=null,liveSec=0; const LIVE_DURATION=30*60;
-let videoAtivo=null,observer=null,pixPayload="",liveChatChannel=null;
-const SECRET_ADMIN="FIRE_JONATHA_2025_SECRET";
-function makeHash(device,date){return btoa(device+"|"+date+"|"+SECRET_ADMIN).slice(0,20);}
-function crc16(payload){let crc=0xFFFF; for(let i=0;i<payload.length;i++){crc^=payload.charCodeAt(i)<<8; for(let j=0;j<8;j++){if(crc&0x8000) crc=(crc<<1)^0x1021; else crc<<=1; crc&=0xFFFF;}} return crc.toString(16).toUpperCase().padStart(4,'0');}
-function genPix(){let key=cfg.pixK; let name="JONATHA C MARIA"; let city="SAO PAULO"; let amount="5.00"; let txid=getTxidHoje(); function fmt(id,val){let l=String(val.length).padStart(2,'0'); return id+l+val;} let gui=fmt("00","br.gov.bcb.pix")+fmt("01",key); let merchant=fmt("26",gui); let payload="000201"+"010212"+merchant+"52040000"+"5303986"+fmt("54",amount)+"5802BR"+fmt("59",name)+fmt("60",city)+fmt("62",fmt("05",txid))+"6304"; let crc=crc16(payload); pixPayload=payload+crc; document.getElementById("pixCopiaCola").innerText=pixPayload; document.getElementById("txidShow").innerText=txid; document.getElementById("deviceShow").innerText=deviceID; let dEu=document.getElementById("deviceEu"); if(dEu) dEu.innerText=deviceID; let qr=document.getElementById("qrcode"); if(qr){qr.innerHTML=""; new QRCode(qr,{text:pixPayload,width:200,height:200,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});}}
-function copiarPix(){navigator.clipboard.writeText(pixPayload).then(()=>toast("✅ PIX copiado!")).catch(()=>{prompt("Copie:",pixPayload);});}
-function toast(m){let t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
+let userNome=localStorage.getItem("userNome")||"", posts=[], tempFileObj=null, videoAtivo=null, observer=null;
+function toast(m){let t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',3500);}
 function pausarTodosExceto(exceto){document.querySelectorAll('#feed video').forEach(v=>{if(v!==exceto){try{v.pause();v.muted=true;}catch(e){}}});}
-function setupObserver(){if(observer)observer.disconnect();observer=new IntersectionObserver((entries)=>{let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.7).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(!vis.length)return;let container=vis[0].target;let video=container.querySelector('video');if(!video||video===videoAtivo)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().then(()=>{let b=container.querySelector('.btnSom');if(b)b.style.display='none';}).catch(()=>{video.muted=true;video.play().catch(()=>{});});},{threshold:[0,0.7,1]});document.querySelectorAll('.post').forEach(p=>observer.observe(p));}
-function toggleSom(postEl){let video=postEl.querySelector('video');let btn=postEl.querySelector('.btnSom');if(!video)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().catch(()=>{});if(btn)btn.style.display='none';}
-function checarDuracao(file){return new Promise((resolve)=>{let v=document.createElement("video");v.preload="metadata";v.onloadedmetadata=()=>{resolve(v.duration);URL.revokeObjectURL(v.src);};v.onerror=()=>resolve(0);v.src=URL.createObjectURL(file);});}
+function setupObserver(){if(observer)observer.disconnect();observer=new IntersectionObserver((entries)=>{let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.7);if(!vis.length)return;let video=vis[0].target.querySelector('video');if(!video||video===videoAtivo)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().catch(()=>{video.muted=true;video.play();});},{threshold:[0.7]});document.querySelectorAll('.post').forEach(p=>observer.observe(p));}
+function toggleSom(el){let v=el.querySelector('video');if(!v)return;pausarTodosExceto(v);videoAtivo=v;v.muted=false;v.volume=1;v.play();}
 async function init(){
- try{
-   let {data,error}=await supa.from("posts").select("*").order("created_at",{ascending:false}).limit(50);
-   if(!error && data && data.length>0){ posts=data.map(r=>({id:r.id,owner:r.username||"fire.user",img:r.video_url,desc:r.description||r.desc||"",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:"video",time:new Date(r.created_at).getTime(),supaId:r.id,likes:r.likes||0})); }
-   else{ posts=[{id:Date.now(),owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"✅ App TikTok - Poste seu vídeo!",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true,type:"img",time:Date.now()}]; }
- }catch(e){ posts=[{id:Date.now(),owner:"fire.influencer",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700",desc:"🔥 Bem-vindo!",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:1,isTop:true,type:"img",time:Date.now()}]; }
- render(); setTimeout(()=>{setupObserver(); genPix();},800);
-}init();
-function danceBtn(el){if(!el) return; el.classList.remove("dance"); void el.offsetWidth; el.classList.add("dance"); setTimeout(()=>el.classList.remove("dance"),400);}
-async function startCam(mode){facing=mode||facing; try{if(stream) stream.getTracks().forEach(t=>t.stop()); stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:{echoCancellation:true,noiseSuppression:true}}); let v=document.getElementById("camVideo"); v.srcObject=stream; if(facing==="user") v.classList.add("mirror"); else v.classList.remove("mirror"); document.getElementById("camBox").style.display="block"; document.getElementById("camOff").style.display="none"; document.getElementById("previewArea").classList.remove("show"); document.getElementById("btnPostar").classList.remove("show");}catch(e){alert("Câmera: "+e.message);}}
-function stopCam(){try{if(stream) stream.getTracks().forEach(t=>t.stop());}catch(e){} stream=null; document.getElementById("camBox").style.display="none"; document.getElementById("camOff").style.display="block"; stopTimer(); if(recording) stopRec();}
-function switchCam(){startCam(facing==="user"?"environment":"user");}
-function toggleRec(){if(!recording) startRec(); else stopRec();}
-function startRec(){if(!stream){alert("Abra câmera");return;} chunks=[]; let mime="video/webm"; try{if(MediaRecorder.isTypeSupported("video/webm;codecs=vp9")) mime="video/webm;codecs=vp9";}catch(e){} try{recorder=new MediaRecorder(stream,{mimeType:mime});}catch(e){recorder=new MediaRecorder(stream);} recorder.ondataavailable=e=>{if(e.data.size>0) chunks.push(e.data);}; recorder.onstop=()=>{let blob=new Blob(chunks,{type:'video/webm'}); let url=URL.createObjectURL(blob); temp=url; tempFileObj=new File([blob], "video_"+Date.now()+".webm",{type:"video/webm"}); let pv=document.getElementById("previewVideo"); if(pv){pv.src=url;pv.muted=false;pv.volume=1;} document.getElementById("previewArea").classList.add("show"); document.getElementById("btnPostar").classList.add("show");}; recorder.start(200); recording=true; document.getElementById("btnRec").classList.add("stop"); document.getElementById("btnRec").innerHTML='<i class="fa-solid fa-stop"></i>'; sec=0; startTimer();}
-function stopRec(){try{if(recorder&&recording) recorder.stop();}catch(e){} recording=false; let b=document.getElementById("btnRec"); if(b){b.classList.remove("stop"); b.innerHTML='<i class="fa-solid fa-circle"></i>';} stopTimer();}
-function startTimer(){stopTimer(); timerInt=setInterval(()=>{sec++; let m=String(Math.floor(sec/60)).padStart(2,'0'); let s=String(sec%60).padStart(2,'0'); document.getElementById("timer").innerText=`${m}:${s} / 01:30 🔊`; if(sec>=90) stopRec();},1000);}
-function stopTimer(){if(timerInt){clearInterval(timerInt); timerInt=null;}}
-async function render(){
- let htmlLive="";
- try{ let {data:livesAtivas}=await supa.from("lives").select("*").eq("is_active",true).order("started_at",{ascending:false}).limit(5); if(livesAtivas && livesAtivas.length>0){ htmlLive=livesAtivas.map(l=>`<div class="post" style="height:32vh;min-height:220px;background:linear-gradient(135deg,#2a0000,#800000);display:flex;align-items:center;justify-content:center;border-bottom:3px solid #ff0000;scroll-snap-align:start"><div style="text-align:center"><div style="background:#ff0000;color:#fff;padding:6px 14px;border-radius:20px;font-weight:900;font-size:11px;display:inline-block">🔴 AO VIVO AGORA</div><div style="color:#fff;font-weight:900;margin-top:10px;font-size:16px">@${l.username}</div></div></div>`).join(""); } }catch(e){}
- let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0)||(b.time||0)-(a.time||0));
- document.getElementById("feed").innerHTML=htmlLive+list.map(p=>{
-   let idx=posts.indexOf(p); let fired=p.firedBy&&p.firedBy.includes(uid), liked=p.likedBy&&p.likedBy.includes(uid), saved=p.saveBy&&p.saveBy.includes(uid);
-   let isMe=p.owner===userNome;
-   let media=p.type==="video"?`<video src="${p.img}" loop playsinline preload="metadata" muted></video><div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>`:`<div style="width:100%;height:100%;background:url('${p.img}') center/cover no-repeat"></div>`;
-   return `<div class="post" onclick="toggleSom(this)">${media}<div class="watermark">work influencer</div><div class="rightBar"><button class="btnTik" onclick="event.stopPropagation();fire(${idx},this)"><div class="iconTik fire ${fired?'on':''}"><i class="fa-solid fa-fire"></i></div><div class="txtTik">${p.likes||0}<br>Chamas</div></button><button class="btnTik" onclick="event.stopPropagation();like(${idx},this)"><div class="iconTik heart ${liked?'on':''}"><i class="${liked?'fa-solid':'fa-regular'} fa-heart"></i></div><div class="txtTik">${p.likedBy?p.likedBy.length:0}<br>Curtir</div></button><button class="btnTik" onclick="event.stopPropagation();openCom(${p.id})"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">${p.com?p.com.length:0}<br>Comen</div></button><button class="btnTik" onclick="event.stopPropagation();openShare(${idx},this)"><div class="iconTik"><i class="fa-solid fa-share"></i></div><div class="txtTik">${p.sharedBy?p.sharedBy.length:p.share||0}<br>Compar</div></button><button class="btnTik" onclick="event.stopPropagation();saveP(${idx},this)"><div class="iconTik save ${saved?'on':''}"><i class="${saved?'fa-solid':'fa-regular'} fa-bookmark"></i></div><div class="txtTik">Salvar</div></button></div><div class="info"><b>@${p.owner}</b> ${isMe?'<span style="color:#ff4444;font-size:9px">[SEU]</span>':''}<div>${p.desc||''}</div>${isMe?`<button onclick="event.stopPropagation();apagarMeuPost(${p.supaId||p.id})" style="margin-top:6px;background:#ff0000;border:none;color:#fff;padding:5px 10px;border-radius:6px;font-size:9px;font-weight:900">🗑️ APAGAR MEU</button>`:''}</div></div>`;
- }).join("")||`<div style="height:100dvh;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff"><b>Nenhum vídeo</b></div>`;
- setTimeout(()=>setupObserver(),300);
- document.getElementById("uidShow").innerText=uid; let nu=document.getElementById("nomeUser"); if(nu) nu.value=userNome; let ns=document.getElementById("nomeShow"); if(ns) ns.innerText=userNome?"@"+userNome:"@fire.user"; let av=document.getElementById("avatarBox"); if(av){if(userFoto) av.innerHTML=`<img src="${userFoto}">`; else av.innerHTML="🔥";} checkLive(); renderMeusVideos();
+  try{
+    let {data,error}=await supa.from("posts").select("*").order("created_at",{ascending:false}).limit(50);
+    if(!error && data && data.length>0){ posts=data.map(r=>({id:r.id,owner:r.username,img:r.video_url,desc:r.description||"",type:"video",time:new Date(r.created_at).getTime(),supaId:r.id})); }
+    else {
+      // fallback Firebase pra todos verem se Supabase vazio
+      let res = await fetch(FIREBASE_URL);
+      let fbData = await res.json();
+      if(fbData && Object.keys(fbData).length>0){
+        posts = Object.values(fbData).reverse().map(p=>({id:p.id,owner:p.owner,img:p.video_url,desc:p.desc||"",type:"video",time:p.time,supaId:p.id}));
+      }
+    }
+  }catch(e){ console.log(e); }
+  render();
 }
-async function fire(i,btn){danceBtn(btn); let p=posts[i]; if(!p.firedBy) p.firedBy=[]; if(p.firedBy.includes(uid)) p.firedBy=p.firedBy.filter(x=>x!==uid); else p.firedBy.push(uid); if(p.supaId){try{await supa.from("posts").update({likes:p.firedBy.length}).eq("id",p.supaId);}catch(e){}} render();}
-async function like(i,btn){danceBtn(btn); let p=posts[i]; if(!p.likedBy) p.likedBy=[]; if(p.likedBy.includes(uid)) p.likedBy=p.likedBy.filter(x=>x!==uid); else p.likedBy.push(uid); render();}
-async function saveP(i,btn){danceBtn(btn); let p=posts[i]; if(!p.saveBy) p.saveBy=[]; if(p.saveBy.includes(uid)) p.saveBy=p.saveBy.filter(x=>x!==uid); else p.saveBy.push(uid); render();}
-function openCom(id){let p=posts.find(x=>x.id===id); if(!p) return; comIdx=p.id; document.getElementById("comCount").innerText=(p.com?p.com.length:0)+" comentários"; renderComList(); document.getElementById("comDrawer").classList.add("show");}
-function closeCom(){document.getElementById("comDrawer").classList.remove("show"); comIdx=null;}
-function renderComList(){let el=document.getElementById("comList"); let p=posts.find(x=>x.id===comIdx); if(!p){el.innerHTML=""; return;} if(!p.com||p.com.length===0){el.innerHTML=`<div style="text-align:center;padding:40px 20px;color:#666">Nenhum comentário</div>`; return;} el.innerHTML=p.com.slice().reverse().map(c=>`<div class="comItem"><div class="comAva">${(c.u||'?').charAt(0).toUpperCase()}</div><div><div class="comUser">@${c.u}</div><div class="comText">${(c.t||'').replace(/</g,"&lt;")}</div></div></div>`).join("");}
-async function sendCom(){let inp=document.getElementById("comInput"); let txt=inp.value.trim(); if(!txt||comIdx===null) return; if(!userNome){alert("Cadastro em Eu!"); go(4); closeCom(); return;} let p=posts.find(x=>x.id===comIdx); if(!p) return; if(!p.com) p.com=[]; p.com.push({u:userNome,t:txt,time:Date.now()}); inp.value=""; renderComList(); render();}
-function openShare(i,btn){danceBtn(btn); shareIdx=i; document.getElementById("shareDrawer").classList.add("show");}
-function closeShare(){document.getElementById("shareDrawer").classList.remove("show");}
-function shareWhats(){window.open("https://wa.me/?text="+encodeURIComponent("🔥 Olha: "+location.href),"_blank"); closeShare();}
-function shareFace(){window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href),"_blank"); closeShare();}
-function shareInsta(){navigator.clipboard.writeText(location.href).then(()=>toast("Link copiado!")).catch(()=>{}); window.open("https://www.instagram.com/","_blank"); closeShare();}
-function shareCopy(){navigator.clipboard.writeText(location.href).then(()=>toast("✅ Link copiado!")).catch(()=>{prompt("Copie:",location.href);}); closeShare();}
-function go(n){if(n!==2) stopCam(); document.querySelectorAll('#feed video').forEach(v=>{try{v.pause();v.muted=true;}catch(e){}});videoAtivo=null; document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b"+n).classList.add("on"); document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); if(n==1) document.getElementById("pBusca").classList.add("show"); if(n==2) document.getElementById("pCriar").classList.add("show"); if(n==3){document.getElementById("pLive").classList.add("show"); setTimeout(()=>genPix(),300);} if(n==4) document.getElementById("pEu").classList.add("show"); }
-function closeAll(){stopCam(); document.querySelectorAll('#feed video').forEach(v=>{try{v.pause();v.muted=true;}catch(e){}});videoAtivo=null; document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b0").classList.add("on"); setTimeout(()=>setupObserver(),300);}
-function abrirAdmin(){let s=prompt("Senha Admin:"); if(s==="fire123"){document.getElementById("adminBox").style.display="block";} else if(s) alert("Senha: fire123");}
-function busca(){let q=document.getElementById("qBusca").value.toLowerCase(); let r=posts.filter(p=>(p.desc||'').toLowerCase().includes(q)||(p.owner||'').toLowerCase().includes(q)); document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:8px"><div style="width:40px;height:40px;border-radius:8px;background:url('${p.img}') center/cover"></div><div style="color:#fff;font-size:11px">${p.desc||''}</div></div>`).join("")||"<div style='color:#555'>Nada</div>";}
+function render(){
+  document.getElementById("feed").innerHTML=posts.map(p=>{let media=`<video src="${p.img}" loop playsinline preload="metadata" muted></video><div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>`;return `<div class="post" onclick="toggleSom(this)">${media}<div class="watermark">work influencer</div><div class="info"><b>@${p.owner}</b><div>${p.desc||''}</div></div></div>`;}).join("");
+  setTimeout(()=>setupObserver(),600);
+}
+init();
 document.getElementById("file").addEventListener("change", async e=>{
- let f=e.target.files[0]; if(!f) return;
- if(f.size > 150*1024*1024){ alert("❌ Máximo 150MB! Esse tem "+(f.size/1024/1024).toFixed(1)+"MB"); e.target.value=""; return; }
- let dur=await checarDuracao(f);
- if(dur>92){ alert("❌ Duração "+Math.floor(dur)+"s - máximo 1:30!"); e.target.value=""; return; }
- tempFileObj=f;
- let r=new FileReader();
- r.onload=ev=>{
-   temp=ev.target.result;
-   let pv=document.getElementById("previewVideo");
-   if(pv){ pv.src=temp; pv.muted=false; pv.volume=1; }
-   document.getElementById("previewArea").classList.add("show");
-   document.getElementById("btnPostar").classList.add("show");
-   toast(`✅ ${Math.floor(dur)}s - ${(f.size/1024/1024).toFixed(1)}MB - pronto!`);
- };
- r.readAsDataURL(f);
+  let f=e.target.files[0]; if(!f)return;
+  if(f.size>150*1024*1024){alert("Max 150MB");return;}
+  tempFileObj=f;
+  let url=URL.createObjectURL(f);
+  document.getElementById("previewVideo").src=url;
+  document.getElementById("previewArea").classList.add("show");
+  document.getElementById("btnPostar").classList.add("show");
 });
-// FUNCAO POSTAR CORRIGIDA - TIKTOK + 150MB + SEM FAILED TO FETCH
 async function postar(){
- let d=document.getElementById("desc").value.trim()||"Meu vídeo 1:30 🔥";
- if(!tempFileObj &&!temp){alert("Escolhe vídeo!"); return;}
- if(!userNome){alert("Cadastre em Eu!"); go(4); return;}
- let btn=document.getElementById("btnPostar");
- let fileToUpload=tempFileObj;
- if(!fileToUpload){
-   let res=await fetch(temp); let blob=await res.blob();
-   fileToUpload=new File([blob],"post_"+Date.now()+".webm",{type:blob.type});
- }
- if(fileToUpload.size > 150*1024*1024){ alert("Max 150MB"); return; }
- if(btn){ btn.innerText="⏳ ENVIANDO 150MB..."; btn.disabled=true; }
- try{
-   let nome=Date.now()+"_"+fileToUpload.name.replace(/\s/g,"_").replace(/[^a-zA-Z0-9._-]/g,"");
-   toast("⏳ Subindo "+(fileToUpload.size/1024/1024).toFixed(1)+"MB...");
-   let {data, error} = await supa.storage.from("videos").upload(nome, fileToUpload, {cacheControl:"3600", upsert:false, contentType: fileToUpload.type || "video/mp4"});
-   if(error) throw error;
-   let {data:pub} = supa.storage.from("videos").getPublicUrl(nome);
-   let publicUrl = pub.publicUrl;
-   let {data:inserted, error:dbErr}=await supa.from("posts").insert([{video_url:publicUrl,username:userNome,description:d,likes:0}]).select().single();
-   if(dbErr) throw dbErr;
-   posts.unshift({id:inserted.id,owner:userNome,img:publicUrl,desc:d,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:"video",time:Date.now(),supaId:inserted.id,likes:0});
-   temp=""; tempFileObj=null;
-   document.getElementById("previewArea").classList.remove("show");
-   document.getElementById("btnPostar").classList.remove("show");
-   document.getElementById("desc").value="";
-   document.getElementById("file").value="";
-   render(); closeAll(); stopCam(); toast("✅ POSTADO 150MB!");
- }catch(e){
-   console.error(e); alert("Erro 150MB: "+e.message);
- }finally{
-   if(btn){ btn.innerText="🚀 POSTAR AGORA 150MB"; btn.disabled=false; }
- }
+  let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";
+  if(!tempFileObj){alert("Escolhe vídeo!");return;}
+  if(!userNome){alert("Vai em Eu e cadastra nome!");go(4);return;}
+  let btn=document.getElementById("btnPostar");
+  btn.innerText="⏳ ENVIANDO..."; btn.disabled=true;
+  try{
+    // TENTATIVA 1 - SUPABASE (seu oficial)
+    let nome=Date.now()+"_"+tempFileObj.name.replace(/\s/g,"_");
+    toast("⏳ Tentativa 1 - Supabase...");
+    let {data, error} = await supa.storage.from("videos").upload(nome, tempFileObj, {upsert:false});
+    if(error) throw error;
+    let {data:pub} = supa.storage.from("videos").getPublicUrl(nome);
+    let publicUrl = pub.publicUrl;
+    let {data:inserted} = await supa.from("posts").insert([{video_url:publicUrl,username:userNome,description:d}]).select().single();
+    toast("✅ POSTADO SUPABASE - TODOS VÊEM!");
+    // salva também no Firebase backup pra garantir visibilidade
+    await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify({id:inserted.id,owner:userNome,video_url:publicUrl,desc:d,time:Date.now()}),headers:{"Content-Type":"application/json"}});
+    setTimeout(()=>location.reload(),1500);
+  }catch(e){
+    console.log("Supabase falhou, tentando Firebase+0x0.st", e);
+    try{
+      toast("⏳ Tentativa 2 - 0x0.st + Firebase (todos veem)...");
+      let fd=new FormData(); fd.append("file", tempFileObj);
+      let res=await fetch("https://0x0.st",{method:"POST",body:fd});
+      let url2=(await res.text()).trim();
+      if(!url2.startsWith("http")) throw new Error(url2);
+      await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify({id:Date.now(),owner:userNome,video_url:url2,desc:d,time:Date.now()}),headers:{"Content-Type":"application/json"}});
+      // tenta também salvar no Supabase com URL externa
+      try{ await supa.from("posts").insert([{video_url:url2,username:userNome,description:d}]).select(); }catch(_){}
+      toast("✅ POSTADO! TODOS VÊEM! "+url2);
+      setTimeout(()=>location.reload(),1500);
+    }catch(e2){
+      alert("Erro final: "+e.message+" | "+e2.message);
+    }
+  }finally{ btn.innerText="🚀 POSTAR AGORA 150MB"; btn.disabled=false; }
 }
-function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").replace(/\s/g,"").toLowerCase(); let a=document.getElementById("apelidoUser").value.trim(); if(!n){alert("Digite nome"); return;} userNome=n; userApelido=a; localStorage.setItem("userNome",n); localStorage.setItem("userApelido",a); render(); alert("✅ @"+n);}
-function trocarFoto(inp){let f=inp.files[0]; if(!f) return; let r=new FileReader(); r.onload=e=>{userFoto=e.target.result; localStorage.setItem("userFoto",userFoto); document.getElementById("avatarBox").innerHTML=`<img src="${userFoto}">`;}; r.readAsDataURL(f);}
-function checkLive(){let hoje=new Date().toDateString(); let hashEsperado=makeHash(deviceID,hoje); let hashSalvo=localStorage.getItem("liveHash_"+deviceID+"_"+hoje); let pago=hashSalvo===hashEsperado; let fez=localStorage.getItem("liveFeita_"+deviceID+"_"+hoje)=="1"; let pendente=localStorage.getItem("pedido_"+deviceID+"_"+hoje)=="PENDENTE"; let b=document.getElementById("liveBloq"); if(b) b.style.display=(!pago &&!pendente)?"block":"none"; let p=document.getElementById("livePendente"); if(p) p.style.display=(pendente &&!pago)?"block":"none"; let ok=document.getElementById("liveOk"); if(ok) ok.style.display=(pago &&!fez)?"flex":"none"; let us=document.getElementById("liveUsada"); if(us) us.style.display=(pago && fez)?"block":"none"; let st=document.getElementById("statusPix"); if(st){st.innerText=pago?"✅ APROVADO":pendente?"⏳ AGUARDANDO":"⛔ NÃO PAGO";}}
-function solicitarLiberacao(){let hoje=new Date().toDateString(); let txid=getTxidHoje(); if(!confirm(`Solicitar? ${txid}`))return; let pendentes=JSON.parse(localStorage.getItem("pedidos_live")||"[]"); pendentes.push({device:deviceID, uid:uid, nome:userNome||uid, txid:txid, data:hoje}); localStorage.setItem("pedidos_live", JSON.stringify(pendentes)); localStorage.setItem("pedido_"+deviceID+"_"+hoje, "PENDENTE"); checkLive(); alert(`✅ Pedido ${txid} enviado!`);}
-function listarPedidos(){let p=JSON.parse(localStorage.getItem("pedidos_live")||"[]"); let hoje=new Date().toDateString(); let hojeOnly=p.filter(x=>x.data===hoje); document.getElementById("listaPedidos").innerHTML=hojeOnly.slice().reverse().map(x=>`<div class="userRow"><div style="color:#fff;font-size:10px">@${x.nome}<br><span style="color:#00ff88">${x.txid}</span></div><button onclick="aprovarLive('${x.device}','${x.data}')" style="background:#00ff88;border:none;color:#000;padding:8px 12px;border-radius:10px;font-size:9px">✅ APROVAR</button></div>`).join("")||"Nenhum pedido";}
-function aprovarLive(device, data){let hash=makeHash(device,data); localStorage.setItem("liveHash_"+device+"_"+data, hash); localStorage.removeItem("pedido_"+device+"_"+data); toast("✅ APROVADO!"); listarPedidos(); checkLive();}
-async function listarLivesAtivas(){let {data}=await supa.from("lives").select("*").eq("is_active",true).order("started_at",{ascending:false}); document.getElementById("listaLivesAtivas").innerHTML=(data||[]).map(l=>`<div class="userRow"><div style="color:#fff;font-size:10px">🔴 @${l.username}</div></div>`).join("")||"Nenhuma";}
-async function listarUsuarios(){ let {data}=await supa.from("posts").select("username").limit(100); let unicos=[...new Set((data||[]).map(d=>d.username))]; document.getElementById("listaUsuarios").innerHTML=unicos.map(u=>`<div class="userRow"><div style="color:#fff">@${u}</div></div>`).join("")||"Nenhum"; }
-async function listarTodasPostagens(){ let {data}=await supa.from("posts").select("*").order("created_at",{ascending:false}).limit(30); document.getElementById("listaTodasPostagens").innerHTML=(data||[]).map(p=>`<div class="userRow"><div style="color:#ff8c00">@${p.username}</div></div>`).join("")||"Nenhuma"; }
-function renderMeusVideos(){ let meus=posts.filter(p=>p.owner===userNome); document.getElementById("meusVideos").innerHTML=meus.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:8px"><div style="flex:1;color:#fff;font-size:10px">${(p.desc||'').slice(0,40)}</div></div>`).join("")||"Nenhum"; }
+function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").toLowerCase(); if(!n)return alert("Nome"); userNome=n; localStorage.setItem("userNome",n); toast("Salvo @"+n); closeAll();}
+function go(n){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b"+n)?.classList.add("on"); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show");}
+function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b0").classList.add("on");}
 </script>
 </body>
 </html>
