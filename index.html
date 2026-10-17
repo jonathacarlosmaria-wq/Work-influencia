@@ -28,134 +28,97 @@ html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-
 .post::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.9) 100%);pointer-events:none;z-index:1}
 .btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:8;border:3px solid #fff;cursor:pointer}
 .watermark{position:absolute;left:10px;top:14px;z-index:9;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:20px;color:rgba(255,255,255,.75);font-size:8.5px;font-weight:900;letter-spacing:1.2px;text-transform:lowercase;pointer-events:none;backdrop-filter:blur(2px)}
-#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none}
+#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none;max-width:90%}
 .rightBar{position:absolute;right:8px;bottom:90px;z-index:10;display:flex;flex-direction:column;gap:12px;width:60px}
 .btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%;outline:none;transition:transform.15s}
 .btnTik:active{transform:scale(0.88)}
-.btnTik.dance{animation:dance.4s ease}
-@keyframes dance{0%{transform:scale(1)}30%{transform:scale(1.25) rotate(-6deg)}60%{transform:scale(1.3) rotate(6deg)}100%{transform:scale(1)}}
 .iconTik{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;background:rgba(35,35,35,.85);border:1.5px solid rgba(255,255,255,.18)}
 .iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00,#ff4500 55%,#8b0000);border-color:#ff8c00}
-.iconTik.fire.on{background:#ff4500;box-shadow:0 0 18px #ff4500}
-.iconTik.heart.on{background:#ff1844}
-.iconTik.save.on{background:#ffcc00;color:#000}
 .txtTik{color:#fff;font-size:8.5px;font-weight:800;margin-top:3px;text-shadow:0 1px 6px #000;text-align:center}
 .info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:9px 10px}
-.info b{color:#fff;font-size:11px}
-.info div{color:#ddd;font-size:11px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nav{height:64px;min-height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30;flex-shrink:0}
+.nav{height:64px;min-height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30}
 .nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:8.5px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:2px}
 .nav button.on{color:#ff8c00}
-.nav button i{font-size:18px}
 .plus{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:-20px;box-shadow:0 0 0 4px #000}
 .page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto;padding-bottom:70px}
 .page.show{display:flex}
 .card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
 .input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px;font-size:13px}
 .btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px;font-size:13px;cursor:pointer}
-.avatar{width:88px;height:88px;border-radius:50%;border:3px solid #ff8c00;background:radial-gradient(circle at 30% 30%,#ff7a00,#7a0000);margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;cursor:pointer}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.cam{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.78);color:#ffcc00;font-size:7px;font-weight:900;text-align:center;padding:4px}
-.camBox{position:relative;width:100%;height:45vh;background:#000;border-radius:14px;overflow:hidden;border:2px solid #ff4500;margin-top:10px}
-.camBox video{width:100%;height:100%;object-fit:cover}
-.camBox video.mirror{transform:scaleX(-1)}
-.timerCam{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(255,0,0,.9);color:#fff;padding:5px 14px;border-radius:20px;font-weight:900;font-size:13px;z-index:5}
-.ctrlCam{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:20px;z-index:5;align-items:center}
-.circ{width:70px;height:70px;border-radius:50%;border:4px solid #fff;background:#ff0000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;cursor:pointer}
-.circ.stop{background:#fff;color:#ff0000}
-.switchCam{width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.65);border:1.5px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}
 .previewArea{display:none;margin-top:10px;border:3px solid #00ff88;border-radius:14px;overflow:hidden;background:#000;position:relative}
 .previewArea.show{display:block}
 .previewLabel{position:absolute;top:6px;left:6px;background:#00ff88;color:#000;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900;z-index:5}
-.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;box-shadow:0 0 20px rgba(0,255,136,.7);display:none;animation:blinkPostar 1s infinite}
+.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;display:none}
 .btnPostar.show{display:block}
-@keyframes blinkPostar{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
 </style>
 </head>
 <body>
 <div id="app">
 <div id="feed"></div>
 <div id="toast"></div>
-<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff4500">📹 Postar 1:30 - 150MB</h3><button onclick="closeAll();stopCam()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="border:2px solid #ff4500"><div id="previewArea" class="previewArea"><div class="previewLabel">✅ 150MB - PRONTO</div><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA 150MB</button><input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px"><input id="desc" class="input" placeholder="Legenda..."></div></div>
-<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px;align-items:center"><b style="color:#ff4500">Eu</b><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="text-align:center"><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button></div></div>
-<div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button><button id="b1" onclick="go(1)"><i class="fa-solid fa-magnifying-glass"></i><span>Busca</span></button><button id="b2" onclick="go(2)"><div class="plus"><i class="fa-solid fa-plus"></i></div></button><button id="b3" onclick="go(3)"><i class="fa-solid fa-tower-broadcast"></i><span>Live</span></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button></div>
+<div id="pCriar" class="page">
+<div class="card" style="border:2px solid #ff4500">
+<div id="previewArea" class="previewArea"><div class="previewLabel">✅ 150MB - PRONTO</div><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video></div>
+<button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA 150MB</button>
+<input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px">
+<input id="desc" class="input" placeholder="Legenda...">
+<div id="statusUpload" style="color:#ffae00;font-size:11px;margin-top:8px;font-weight:800"></div>
+</div>
+</div>
+<div id="pEu" class="page"><div class="card" style="text-align:center"><input id="nomeUser" class="input" placeholder="Seu nome" style="text-align:center;font-weight:900;color:#ff8c00"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button></div></div>
+<div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i><span>Inicio</span></button><button id="b2" onclick="go(2)"><div class="plus"><i class="fa-solid fa-plus"></i></div></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i><span>Eu</span></button></div>
 </div>
 <script>
 const SUPABASE_URL='https://rjrjdfwxqbjjfflqpydm.supabase.co';
 const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4cmpkZnd4cWJqamZmbHFweWRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExNDg1MTksImV4cCI6MjEwNjcyNDUxOX0.HNJ0nJ_XJHNmjyWxhd7MyS2IrCLlWB85rIVKQqQrsQU';
 const supa=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
-const FIREBASE_URL = "https://work-influencer-default-rtdb.firebaseio.com/posts.json";
+const FIREBASE_URL="https://work-influencer-default-rtdb.firebaseio.com/posts.json";
 let uid=localStorage.getItem("uid"); if(!uid){uid="u_"+Math.random().toString(36).slice(2,7); localStorage.setItem("uid",uid);}
 let userNome=localStorage.getItem("userNome")||"", posts=[], tempFileObj=null, videoAtivo=null, observer=null;
 function toast(m){let t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',3500);}
 function pausarTodosExceto(exceto){document.querySelectorAll('#feed video').forEach(v=>{if(v!==exceto){try{v.pause();v.muted=true;}catch(e){}}});}
 function setupObserver(){if(observer)observer.disconnect();observer=new IntersectionObserver((entries)=>{let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.7);if(!vis.length)return;let video=vis[0].target.querySelector('video');if(!video||video===videoAtivo)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().catch(()=>{video.muted=true;video.play();});},{threshold:[0.7]});document.querySelectorAll('.post').forEach(p=>observer.observe(p));}
 function toggleSom(el){let v=el.querySelector('video');if(!v)return;pausarTodosExceto(v);videoAtivo=v;v.muted=false;v.volume=1;v.play();}
-async function init(){
-  try{
-    let {data,error}=await supa.from("posts").select("*").order("created_at",{ascending:false}).limit(50);
-    if(!error && data && data.length>0){ posts=data.map(r=>({id:r.id,owner:r.username,img:r.video_url,desc:r.description||"",type:"video",time:new Date(r.created_at).getTime(),supaId:r.id})); }
-    else {
-      // fallback Firebase pra todos verem se Supabase vazio
-      let res = await fetch(FIREBASE_URL);
-      let fbData = await res.json();
-      if(fbData && Object.keys(fbData).length>0){
-        posts = Object.values(fbData).reverse().map(p=>({id:p.id,owner:p.owner,img:p.video_url,desc:p.desc||"",type:"video",time:p.time,supaId:p.id}));
-      }
-    }
-  }catch(e){ console.log(e); }
-  render();
-}
-function render(){
-  document.getElementById("feed").innerHTML=posts.map(p=>{let media=`<video src="${p.img}" loop playsinline preload="metadata" muted></video><div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>`;return `<div class="post" onclick="toggleSom(this)">${media}<div class="watermark">work influencer</div><div class="info"><b>@${p.owner}</b><div>${p.desc||''}</div></div></div>`;}).join("");
-  setTimeout(()=>setupObserver(),600);
-}
+function checarDuracao(file){return new Promise((resolve)=>{let v=document.createElement("video");v.preload="metadata";v.onloadedmetadata=()=>{resolve(v.duration);URL.revokeObjectURL(v.src);};v.onerror=()=>resolve(0);v.src=URL.createObjectURL(file);});}
+async function init(){try{let {data}=await supa.from("posts").select("*").order("created_at",{ascending:false}).limit(50); if(data&&data.length>0){posts=data.map(r=>({id:r.id,owner:r.username,img:r.video_url,desc:r.description||"",type:"video",time:new Date(r.created_at).getTime(),supaId:r.id}));}else{let resFb=await fetch(FIREBASE_URL); let fbData=await resFb.json(); if(fbData) posts=Object.values(fbData).reverse().map(p=>({id:p.id,owner:p.owner,img:p.video_url,desc:p.desc||"",type:"video",time:p.time}));}}catch(e){} render();}
+function render(){document.getElementById("feed").innerHTML=posts.map(p=>{let media=`<video src="${p.img}" loop playsinline preload="metadata" muted></video><div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>`;return `<div class="post" onclick="toggleSom(this)">${media}<div class="info"><b>@${p.owner}</b><div>${p.desc||''}</div></div></div>`;}).join(""); setTimeout(()=>setupObserver(),600);}
 init();
-document.getElementById("file").addEventListener("change", async e=>{
-  let f=e.target.files[0]; if(!f)return;
-  if(f.size>150*1024*1024){alert("Max 150MB");return;}
-  tempFileObj=f;
-  let url=URL.createObjectURL(f);
-  document.getElementById("previewVideo").src=url;
-  document.getElementById("previewArea").classList.add("show");
-  document.getElementById("btnPostar").classList.add("show");
-});
+document.getElementById("file").addEventListener("change", async e=>{let f=e.target.files[0]; if(!f)return; if(f.size>150*1024*1024){alert("Max 150MB");return;} let dur=await checarDuracao(f); if(dur>92){alert("Max 1:30");return;} tempFileObj=f; let url=URL.createObjectURL(f); document.getElementById("previewVideo").src=url; document.getElementById("previewArea").classList.add("show"); document.getElementById("btnPostar").classList.add("show"); document.getElementById("statusUpload").innerText=`✅ ${dur.toFixed(1)}s - ${(f.size/1024/1024).toFixed(1)}MB pronto!`;});
 async function postar(){
-  let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";
-  if(!tempFileObj){alert("Escolhe vídeo!");return;}
-  if(!userNome){alert("Vai em Eu e cadastra nome!");go(4);return;}
-  let btn=document.getElementById("btnPostar");
-  btn.innerText="⏳ ENVIANDO..."; btn.disabled=true;
-  try{
-    // TENTATIVA 1 - SUPABASE (seu oficial)
-    let nome=Date.now()+"_"+tempFileObj.name.replace(/\s/g,"_");
-    toast("⏳ Tentativa 1 - Supabase...");
-    let {data, error} = await supa.storage.from("videos").upload(nome, tempFileObj, {upsert:false});
-    if(error) throw error;
-    let {data:pub} = supa.storage.from("videos").getPublicUrl(nome);
-    let publicUrl = pub.publicUrl;
-    let {data:inserted} = await supa.from("posts").insert([{video_url:publicUrl,username:userNome,description:d}]).select().single();
-    toast("✅ POSTADO SUPABASE - TODOS VÊEM!");
-    // salva também no Firebase backup pra garantir visibilidade
-    await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify({id:inserted.id,owner:userNome,video_url:publicUrl,desc:d,time:Date.now()}),headers:{"Content-Type":"application/json"}});
-    setTimeout(()=>location.reload(),1500);
-  }catch(e){
-    console.log("Supabase falhou, tentando Firebase+0x0.st", e);
-    try{
-      toast("⏳ Tentativa 2 - 0x0.st + Firebase (todos veem)...");
-      let fd=new FormData(); fd.append("file", tempFileObj);
-      let res=await fetch("https://0x0.st",{method:"POST",body:fd});
-      let url2=(await res.text()).trim();
-      if(!url2.startsWith("http")) throw new Error(url2);
-      await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify({id:Date.now(),owner:userNome,video_url:url2,desc:d,time:Date.now()}),headers:{"Content-Type":"application/json"}});
-      // tenta também salvar no Supabase com URL externa
-      try{ await supa.from("posts").insert([{video_url:url2,username:userNome,description:d}]).select(); }catch(_){}
-      toast("✅ POSTADO! TODOS VÊEM! "+url2);
-      setTimeout(()=>location.reload(),1500);
-    }catch(e2){
-      alert("Erro final: "+e.message+" | "+e2.message);
-    }
-  }finally{ btn.innerText="🚀 POSTAR AGORA 150MB"; btn.disabled=false; }
+ let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";
+ if(!tempFileObj){alert("Escolhe vídeo!");return;}
+ if(!userNome){alert("Cadastra nome em Eu!");go(4);return;}
+ let btn=document.getElementById("btnPostar"); let statusEl=document.getElementById("statusUpload");
+ btn.innerText="⏳ ENVIANDO..."; btn.disabled=true; if(statusEl) statusEl.innerText="⏳ Tentando Supabase...";
+ try{
+   let nome=Date.now()+"_"+tempFileObj.name.replace(/\s/g,"_");
+   let {data, error}=await supa.storage.from("videos").upload(nome,tempFileObj,{upsert:false});
+   if(error) throw error;
+   let {data:pub}=supa.storage.from("videos").getPublicUrl(nome); let publicUrl=pub.publicUrl;
+   let {data:inserted}=await supa.from("posts").insert([{video_url:publicUrl,username:userNome,description:d}]).select().single();
+   try{await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify({id:inserted.id,owner:userNome,video_url:publicUrl,desc:d,time:Date.now()}),headers:{"Content-Type":"application/json"}});}catch(e){}
+   toast("✅ POSTADO - TODOS VÊEM!"); setTimeout(()=>location.reload(),1500);
+ }catch(e){
+   try{
+     if(statusEl) statusEl.innerText="Supabase bloqueou, tentando 0x0.st...";
+     toast("⏳ Tentando 0x0.st (funciona no github.io)...");
+     let fd=new FormData(); fd.append("file",tempFileObj);
+     let res2=await fetch("https://0x0.st",{method:"POST",body:fd});
+     let url2=(await res2.text()).trim(); if(!url2.startsWith("http")) throw new Error(url2);
+     await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify({id:Date.now(),owner:userNome,video_url:url2,desc:d,time:Date.now()}),headers:{"Content-Type":"application/json"}});
+     try{await supa.from("posts").insert([{video_url:url2,username:userNome,description:d}]);}catch(_){}
+     toast("✅ POSTADO VIA 0x0.st - TODOS VÊEM!"); setTimeout(()=>location.reload(),1500);
+   }catch(e2){
+     try{
+       let fd3=new FormData(); fd3.append("file",tempFileObj);
+       let res3=await fetch("https://corsproxy.io/?https://file.io",{method:"POST",body:fd3});
+       let j3=await res3.json(); if(!j3.success) throw new Error(j3.message);
+       let url3=j3.link;
+       await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify({id:Date.now(),owner:userNome,video_url:url3,desc:d,time:Date.now()}),headers:{"Content-Type":"application/json"}});
+       toast("✅ POSTADO PROXY - TODOS VÊEM!"); setTimeout(()=>location.reload(),1500);
+     }catch(e3){alert("Erro: "+e.message+" | "+e2.message+" | "+e3.message);}
+   }
+ }finally{btn.innerText="🚀 POSTAR AGORA 150MB"; btn.disabled=false;}
 }
 function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").toLowerCase(); if(!n)return alert("Nome"); userNome=n; localStorage.setItem("userNome",n); toast("Salvo @"+n); closeAll();}
 function go(n){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b"+n)?.classList.add("on"); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show");}
