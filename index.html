@@ -3,26 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - CORRIGIDO TESTE - GITHUB.IO OK</title>
+<title>WORK INFLUENCER - OFICIAL LARANJA CORRIGIDO</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
 #splash{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity.9s ease}
 #splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .s-content{position:relative;z-index:3;text-align:center}
-.s-content h1{font-size:52px;font-weight:900;text-shadow:0 0 15px #ff4500,0 0 40px #f00;color:#fff}
-.sub{color:#00ff88;font-weight:900;letter-spacing:6px;font-size:11px;margin-top:10px}
+.s-content h1{font-size:54px;font-weight:900;text-shadow:0 0 15px #ff4500,0 0 40px #f00;color:#fff}
+.sub{color:#ff8c00;font-weight:900;letter-spacing:6px;font-size:11px;margin-top:10px}
 #loader{width:160px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin:24px auto 0;overflow:hidden}
-#loader div{width:0;height:100%;background:linear-gradient(90deg,#00ff88,#00ff44);animation:load 5s linear forwards}
+#loader div{width:0;height:100%;background:linear-gradient(90deg,#ff2a00,#ffae00);animation:load 5s linear forwards}
 @keyframes load{to{width:100%}}
 #app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
 #feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
-#feed::-webkit-scrollbar{display:none}
 .post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111;overflow:hidden}
 .post video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;background:#000}
 .btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:8;border:3px solid #fff}
 .watermark{position:absolute;left:10px;top:14px;z-index:9;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:20px;color:rgba(255,255,255,.75);font-size:8.5px;font-weight:900}
-#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none;max-width:90%}
+#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#ff8c00;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none;max-width:90%}
 .rightBar{position:absolute;right:8px;bottom:90px;z-index:10;display:flex;flex-direction:column;gap:12px;width:60px}
 .btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%}
 .iconTik{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;background:rgba(35,35,35,.85);border:1.5px solid rgba(255,255,255,.18)}
@@ -31,36 +30,36 @@
 .info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:9px 10px;color:#fff}
 .nav{height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30}
 .nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:8.5px;font-weight:800;display:flex;flex-direction:column;align-items:center}
-.nav button.on{color:#00ff88}
-.plus{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#00ff88,#00ff44);border:2.5px solid #fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:-20px}
+.nav button.on{color:#ff8c00}
+.plus{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:-20px}
 .page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto;padding-bottom:70px}
 .page.show{display:flex}
 .card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
 .input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px}
-.btn{width:100%;padding:14px;background:linear-gradient(90deg,#00ff88,#00ff44);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px}
-.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;display:none}
+.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px}
+.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:3px solid #fff;border-radius:14px;color:#fff;font-weight:900;font-size:16px;margin-top:10px;display:none}
 .btnPostar.show{display:block}
-.previewArea{display:none;margin-top:10px;border:3px solid #00ff88;border-radius:14px;overflow:hidden;position:relative}
+.previewArea{display:none;margin-top:10px;border:3px solid #ff4500;border-radius:14px;overflow:hidden;position:relative}
 .previewArea.show{display:block}
 </style>
 </head>
 <body>
-<div id="splash"><video autoplay muted loop playsinline><source src="https://videos.pexels.com/video-files/3191572/3191572-uhd_2560_1440_25fps.mp4" type="video/mp4"></video><div class="s-content"><h1>work influencer</h1><div class="sub">✅ CORRIGIDO - GITHUB.IO OK</div><div id="loader"><div></div></div></div></div>
+<div id="splash"><video autoplay muted loop playsinline><source src="https://videos.pexels.com/video-files/3191572/3191572-uhd_2560_1440_25fps.mp4" type="video/mp4"></video><div class="s-content"><h1>work influencer</h1><div class="sub">🔥 OFICIAL LARANJA - CORRIGIDO</div><div id="loader"><div></div></div></div></div>
 <div id="app">
 <div id="feed"></div>
 <div id="toast"></div>
 <div id="pCriar" class="page">
-<div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#00ff88">📹 TESTE CORRIGIDO - SEM FAILED</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div>
-<div class="card" style="border:2px solid #00ff88">
-<div id="previewArea" class="previewArea"><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover" controls></video><div id="durInfo" style="position:absolute;top:8px;left:8px;background:#00ff88;color:#000;padding:4px 8px;border-radius:8px;font-size:10px;font-weight:900"></div></div>
-<button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR - TESTE GITHUB.IO</button>
+<div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#ff8c00">🔥 POSTAR OFICIAL - CORRIGIDO</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div>
+<div class="card" style="border:2px solid #ff4500">
+<div id="previewArea" class="previewArea"><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover" controls></video><div id="durInfo" style="position:absolute;top:8px;left:8px;background:#ff4500;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px;font-weight:900"></div></div>
+<button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR AGORA - OFICIAL 🔥</button>
 <input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px">
-<input id="desc" class="input" placeholder="Legenda do vídeo teste...">
-<div style="color:#00ff88;font-size:10px;margin-top:8px">✅ CORRIGIDO: file.io + 0x0.st - funciona no github.io - SEM Failed to fetch</div>
+<input id="desc" class="input" placeholder="Legenda fogo...">
+<div style="color:#ff8c00;font-size:10px;margin-top:8px">✅ OFICIAL LARANJA CORRIGIDO: corsproxy + file.io + 0x0.st + Firebase - TODOS VEEM</div>
 <div id="statusUpload" style="color:#ffae00;font-size:11px;margin-top:10px;font-weight:800"></div>
 </div>
 </div>
-<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#00ff88">Eu</b><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="text-align:center"><input id="nomeUser" class="input" placeholder="Seu @nome" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR @NOME</button><div id="nomeShow" style="color:#00ff88;margin-top:8px"></div></div></div>
+<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#ff4500">Eu</b><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="text-align:center"><input id="nomeUser" class="input" placeholder="Seu @nome" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR @NOME</button><div id="nomeShow" style="color:#ff8c00;margin-top:8px"></div></div></div>
 <div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i>Inicio</button><button onclick="go(2)"><div class="plus">+</div></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i>Eu</button></div>
 </div>
 <script>
@@ -72,25 +71,22 @@ function pausarTodosExceto(exceto){document.querySelectorAll('#feed video').forE
 function setupObserver(){if(observer)observer.disconnect();observer=new IntersectionObserver((entries)=>{let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.7);if(!vis.length)return;let video=vis[0].target.querySelector('video');if(!video||video===videoAtivo)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().catch(()=>{video.muted=true;video.play();});},{threshold:[0.7]});document.querySelectorAll('.post').forEach(p=>observer.observe(p));}
 function toggleSom(el){let v=el.querySelector('video');if(!v)return;pausarTodosExceto(v);videoAtivo=v;v.muted=false;v.volume=1;v.play();}
 function checarDuracao(file){return new Promise(r=>{let v=document.createElement("video");v.preload="metadata";v.onloadedmetadata=()=>{r(v.duration);URL.revokeObjectURL(v.src);};v.onerror=()=>r(0);v.src=URL.createObjectURL(file);});}
-setTimeout(()=>{let s=document.getElementById('splash');if(s){s.style.opacity='0';setTimeout(()=>s.remove(),900);}},2500);
+setTimeout(()=>{let s=document.getElementById('splash');if(s){s.style.opacity='0';setTimeout(()=>s.remove(),900);}},2800);
 async function init(){
   try{let res=await fetch(FIREBASE_URL);let data=await res.json();if(data&&Object.keys(data).length>0){posts=Object.values(data).reverse().map(p=>({id:p.id,owner:p.owner||"fire.user",img:p.video_url||p.img,desc:p.desc||"",type:"video",time:p.time||Date.now()}));}}catch(e){}
-  if(posts.length==0){posts=[{id:1,owner:"fire.teste",img:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",desc:"✅ VIDEO TESTE CORRIGIDO! Agora funciona no github.io sem Failed to fetch! Poste seu 1000154641.mp4 🔥",type:"video",time:Date.now(),isTop:true},{id:2,owner:"jonatha",img:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",desc:"Teste 2 - Scroll igual TikTok!",type:"video",time:Date.now()-1000}];}
+  if(posts.length==0){posts=[{id:1,owner:"fire.oficial",img:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",desc:"🔥 VIDEO TESTE OFICIAL LARANJA CORRIGIDO! SEM Failed to fetch! Poste seu 1000154641.mp4 e TODOS vão ver! 🔥",type:"video",time:Date.now(),isTop:true},{id:2,owner:"work.fire",img:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",desc:"Teste oficial 2 - layout laranja fogo 🔥",type:"video",time:Date.now()-1000}];}
   render();
 }
 function render(){
   let list=[...posts].sort((a,b)=>(b.isTop?1:0)-(a.isTop?1:0));
-  document.getElementById("feed").innerHTML=list.map(p=>{
-    let media=`<video src="${p.img}" loop playsinline preload="metadata" muted></video><div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>`;
-    return `<div class="post" onclick="toggleSom(this)">${media}<div class="watermark">work influencer</div><div class="rightBar"><button class="btnTik"><div class="iconTik fire"><i class="fa-solid fa-fire"></i></div><div class="txtTik">Chamas</div></button><button class="btnTik"><div class="iconTik"><i class="fa-regular fa-heart"></i></div><div class="txtTik">Curtir</div></button><button class="btnTik"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">Comen</div></button><button class="btnTik"><div class="iconTik"><i class="fa-solid fa-share"></i></div><div class="txtTik">Compar</div></button></div><div class="info"><b>@${p.owner}</b><div>${p.desc||''}</div></div></div>`;
-  }).join("");
-  setTimeout(()=>setupObserver(),600);
+  document.getElementById("feed").innerHTML=list.map(p=>{let media=`<video src="${p.img}" loop playsinline preload="metadata" muted></video><div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>`;return `<div class="post" onclick="toggleSom(this)">${media}<div class="watermark">work influencer</div><div class="rightBar"><button class="btnTik"><div class="iconTik fire"><i class="fa-solid fa-fire"></i></div><div class="txtTik">Chamas</div></button><button class="btnTik"><div class="iconTik"><i class="fa-regular fa-heart"></i></div><div class="txtTik">Curtir</div></button><button class="btnTik"><div class="iconTik"><i class="fa-regular fa-comment-dots"></i></div><div class="txtTik">Comen</div></button><button class="btnTik"><div class="iconTik"><i class="fa-solid fa-share"></i></div><div class="txtTik">Compar</div></button></div><div class="info"><b>@${p.owner}</b><div>${p.desc||''}</div></div></div>`;}).join("");
+  setTimeout(()=>setupObserver(),700);
   document.getElementById("nomeShow").innerText=userNome?"@"+userNome:"";
 }
 init();
 document.getElementById("file").addEventListener("change", async e=>{
   let f=e.target.files[0]; if(!f)return;
-  if(f.size>100*1024*1024){alert("Max 100MB file.io"); return;}
+  if(f.size>100*1024*1024){alert("Max 100MB"); return;}
   let dur=await checarDuracao(f);
   document.getElementById("durInfo").innerText=dur.toFixed(1)+"s / 90s";
   if(dur>92){alert("Max 1:30"); return;}
@@ -102,39 +98,47 @@ document.getElementById("file").addEventListener("change", async e=>{
   document.getElementById("statusUpload").innerText="✅ Pronto: "+(f.size/1024/1024).toFixed(1)+"MB - "+dur.toFixed(1)+"s";
 });
 async function postar(){
-  let d=document.getElementById("desc").value.trim()||"Meu vídeo teste 🔥";
+  let d=document.getElementById("desc").value.trim()||"Meu vídeo fogo oficial 🔥";
   if(!tempFileObj){alert("Escolhe vídeo!"); return;}
   if(!userNome){alert("Vai em Eu e cadastra @nome!"); go(4); return;}
   let btn=document.getElementById("btnPostar");
   let status=document.getElementById("statusUpload");
-  btn.innerText="⏳ ENVIANDO..."; btn.disabled=true;
-  status.innerText="⏳ Subindo file.io...";
+  btn.innerText="⏳ POSTANDO OFICIAL..."; btn.disabled=true;
+  status.innerText="⏳ Corrigindo Failed to fetch com proxy...";
   try{
     let fd=new FormData(); fd.append("file",tempFileObj);
-    toast("⏳ Enviando file.io...");
-    let res=await fetch("https://file.io",{method:"POST",body:fd});
+    toast("⏳ Tentativa 1 - file.io + proxy...");
+    let res=await fetch("https://corsproxy.io/?https://file.io",{method:"POST",body:fd});
     let j=await res.json();
-    if(!j.success) throw new Error(j.message||"file.io erro");
+    if(!j.success) throw new Error("file.io via proxy falhou");
     let videoUrl=j.link;
-    status.innerText="✅ Vídeo: "+videoUrl+" Salvando...";
-    toast("⏳ Salvando no feed...");
     let novo={id:Date.now(),owner:userNome,video_url:videoUrl,desc:d,time:Date.now()};
     await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify(novo),headers:{"Content-Type":"application/json"}});
-    toast("✅ POSTADO! TODOS VÃO VER!");
+    toast("✅ POSTADO OFICIAL LARANJA! TODOS VÃO VER!");
     setTimeout(()=>location.reload(),2000);
   }catch(e){
     try{
-      toast("⏳ Tentando 0x0.st...");
       let fd2=new FormData(); fd2.append("file",tempFileObj);
       let res2=await fetch("https://0x0.st",{method:"POST",body:fd2});
       let url2=(await res2.text()).trim();
       if(!url2.startsWith("http")) throw new Error(url2);
       let novo2={id:Date.now(),owner:userNome,video_url:url2,desc:d,time:Date.now()};
       await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify(novo2),headers:{"Content-Type":"application/json"}});
-      toast("✅ POSTADO 0x0.st! "+url2);
+      toast("✅ POSTADO OFICIAL! "+url2);
       setTimeout(()=>location.reload(),2000);
-    }catch(e2){alert("Erro: "+e.message+" | "+e2.message); status.innerText="❌ Erro: "+e.message;}
-  }finally{btn.innerText="🚀 POSTAR - TESTE GITHUB.IO"; btn.disabled=false;}
+    }catch(e2){
+      try{
+        let fd3=new FormData(); fd3.append("reqtype","fileupload"); fd3.append("fileToUpload",tempFileObj);
+        let res3=await fetch("https://corsproxy.io/?https://catbox.moe/user/api.php",{method:"POST",body:fd3});
+        let url3=(await res3.text()).trim();
+        if(!url3.startsWith("http")) throw new Error(url3);
+        let novo3={id:Date.now(),owner:userNome,video_url:url3,desc:d,time:Date.now()};
+        await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify(novo3),headers:{"Content-Type":"application/json"}});
+        toast("✅ POSTADO CATBOX PROXY! TODOS VEEM!");
+        setTimeout(()=>location.reload(),2000);
+      }catch(e3){alert("ERRO: "+e.message+" | "+e2.message+" | "+e3.message); status.innerText="❌ Erro: "+e3.message;}
+    }
+  }finally{btn.innerText="🚀 POSTAR AGORA - OFICIAL 🔥"; btn.disabled=false;}
 }
 function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").toLowerCase(); if(!n)return alert("Digite @nome"); userNome=n; localStorage.setItem("userNome",n); render(); toast("Salvo @"+n); closeAll();}
 function go(n){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b"+n)?.classList.add("on"); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show");}
