@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Work Influencer FIRE - 100MB 🔥</title>
+<title>Work Influencer FIRE 🔥</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,Arial;overflow:hidden}
@@ -34,165 +34,74 @@ body{background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,Ari
 <body>
 <div id="toast"></div>
 <div id="feed"><div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:.5;gap:10px"><div style="font-size:48px">🔥</div>Carregando vídeos FIRE...</div></div>
-<button id="uploadBtn" onclick="abrirModal()">+ Postar 100MB</button>
-
+<button id="uploadBtn" onclick="abrirModal()">+ Postar</button>
 <div id="modal">
   <div class="card">
     <h2>🔥 Postar Vídeo</h2>
-    <span class="badge">✅ 100MB - PRONTO</span>
-    <p style="font-size:11px;opacity:.6;margin-bottom:6px">Grave até 1:30 ou escolha da galeria - Máx 100MB</p>
+    <span class="badge">✅ PRONTO</span>
+    <p style="font-size:11px;opacity:.6;margin-bottom:6px">Grave até 1:30 ou escolha da galeria!</p>
     <input type="file" id="fileInput" accept="video/*">
     <input type="text" id="userInput" placeholder="Seu @">
     <textarea id="descInput" placeholder="Legenda #work" rows="2"></textarea>
     <div id="progressBar"><div id="progressFill"></div></div>
-    <button id="btnPostar" onclick="postarWorkFire100()">🚀 ENVIAR 100MB</button>
+    <button id="btnPostar" onclick="postarWorkFire100()">🚀 POSTAR AGORA</button>
     <button onclick="fecharModal()" style="background:#2a2a2a">Cancelar</button>
-    <p id="status">TikTok: scroll snap + autoplay + 100MB + 1:30</p>
+    <p id="status"></p>
   </div>
 </div>
-
 <script>
 const CLOUD_NAME = "zptwxcio";
 const UPLOAD_PRESET = "work_fire";
 const FIREBASE_URL = "https://work-influencia-default-rtdb.firebaseio.com/posts.json";
 let tempFileObj = null;
-
 document.getElementById("fileInput").addEventListener("change", e=>{
   tempFileObj = e.target.files[0];
   if(!tempFileObj) return;
   let mb = (tempFileObj.size/1024/1024).toFixed(2);
   document.getElementById("progressBar").style.display="block";
   document.getElementById("progressFill").style.width="100%";
-  
   if(tempFileObj.size > 100*1024*1024){
-    document.getElementById("status").innerHTML = `❌ <b>${mb}MB muito grande!</b> Limite 100MB no plano grátis. Escolha menor.`;
+    document.getElementById("status").innerHTML = `❌ <b>${mb}MB muito grande!</b> Escolha menor.`;
     document.getElementById("progressFill").style.background="#ff0000";
-    tempFileObj = null;
-    return;
+    tempFileObj = null; return;
   }
-  document.getElementById("status").innerHTML = `✅ Pronto: <b>${tempFileObj.name}</b> - ${mb}MB / 100MB`;
-  document.getElementById("progressFill").style.width="100%";
+  document.getElementById("status").innerHTML = `✅ Pronto: <b>${tempFileObj.name}</b> - ${mb}MB`;
   document.getElementById("progressFill").style.background="#00ff88";
 });
-
-function toast(m){
-  let t=document.getElementById("toast");
-  t.innerText=m;
-  t.style.display="block";
-  setTimeout(()=>t.style.display="none",4000);
-}
+function toast(m){let t=document.getElementById("toast");t.innerText=m;t.style.display="block";setTimeout(()=>t.style.display="none",4000);}
 function abrirModal(){document.getElementById("modal").classList.add("show")}
 function fecharModal(){document.getElementById("modal").classList.remove("show")}
-
 async function carregarFeed(){
   try{
     let res = await fetch(FIREBASE_URL);
     let data = await res.json();
     let feed = document.getElementById("feed");
     feed.innerHTML="";
-    if(!data){
-      feed.innerHTML='<div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:.6;gap:10px"><span style="font-size:50px">🔥</span>Nenhum vídeo ainda<br>Seja o primeiro a postar 100MB!</div>';
-      return;
-    }
+    if(!data){feed.innerHTML='<div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:.6"><span style="font-size:50px">🔥</span>Nenhum vídeo<br>Seja o primeiro!</div>';return;}
     let posts = Object.values(data).reverse();
     posts.forEach(p=>{
       let div=document.createElement("div");
       div.className="post";
-      div.innerHTML=`<video src="${p.video_url}" loop autoplay muted playsinline onclick="this.muted=false; this.paused?this.play():this.pause()"></video><div class="info"><h3>@${p.owner||'anonimo'}</h3><p>${p.desc||''}</p></div><div class="actions"><button>❤️</button><button>💬</button><button>↗️</button></div>`;
+      div.innerHTML=`<video src="${p.video_url}" loop autoplay muted playsinline onclick="this.muted=false;this.paused?this.play():this.pause()"></video><div class="info"><h3>@${p.owner||'anonimo'}</h3><p>${p.desc||''}</p></div><div class="actions"><button>❤️</button><button>💬</button><button>↗️</button></div>`;
       feed.appendChild(div);
     });
-  }catch(e){console.log("Erro feed",e)}
+  }catch(e){}
 }
-
 function postarWorkFire100(){
   let user = document.getElementById("userInput").value || localStorage.getItem("work_user") || "Anonimo";
   localStorage.setItem("work_user", user);
   let desc = document.getElementById("descInput").value;
   let status = document.getElementById("status");
   let btn = document.getElementById("btnPostar");
-  let progressBar = document.getElementById("progressBar");
   let progressFill = document.getElementById("progressFill");
-
-  if(!tempFileObj){
-    toast("❌ Escolhe o vídeo primeiro!");
-    return;
-  }
-
-  btn.disabled = true;
-  btn.innerText = "⏳ ENVIANDO 100MB...";
-  progressBar.style.display="block";
-  progressFill.style.width="0%";
-  progressFill.style.background="linear-gradient(90deg,#ff0050,#ff8c00)";
-  status.innerText = "⏳ 0% - Conectando no Cloudinary...";
-
-  let fd = new FormData();
-  fd.append("file", tempFileObj);
-  fd.append("upload_preset", UPLOAD_PRESET);
-  fd.append("folder", "work_fire");
-
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`);
-
-  xhr.upload.onprogress = (e)=>{
-    if(e.lengthComputable){
-      let pct = Math.round((e.loaded/e.total)*100);
-      progressFill.style.width = pct+"%";
-      status.innerHTML = `⏳ Subindo <b>${pct}%</b> - ${(e.loaded/1024/1024).toFixed(1)}MB / ${(e.total/1024/1024).toFixed(1)}MB`;
-      btn.innerText = `⏳ ${pct}% ENVIANDO...`;
-    }
-  };
-
-  xhr.onload = async ()=>{
-    if(xhr.status >= 200 && xhr.status < 300){
-      try{
-        let data = JSON.parse(xhr.responseText);
-        progressFill.style.width="100%";
-        progressFill.style.background="#00ff88";
-        status.innerText = "✅ 100MB no Cloudinary! Salvando no feed...";
-        await fetch(FIREBASE_URL,{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({owner:user, video_url:data.secure_url, public_id:data.public_id, desc:desc, time:Date.now(), likes:0})
-        });
-        toast("🔥 100MB POSTADO! TODO MUNDO VÊ!");
-        fecharModal();
-        btn.disabled = false;
-        btn.innerText = "🚀 ENVIAR 100MB";
-        tempFileObj = null;
-        document.getElementById("descInput").value="";
-        status.innerText="Pronto!";
-        progressBar.style.display="none";
-        carregarFeed();
-      }catch(err){
-        status.innerText = "❌ Erro ao salvar feed: "+err.message;
-        btn.disabled = false;
-      }
-    } else {
-      let err = xhr.responseText;
-      console.error(err);
-      progressFill.style.background="#ff0000";
-      if(err.includes("unsigned") || err.includes("preset") || err.includes("Invalid")){
-        toast("❌ PRESET work_fire precisa ser UNSIGNED!");
-        status.innerHTML = "❌ Erro preset: Vai no Cloudinary > Settings > Upload > Upload presets > work_fire > <b>Signing Mode = Unsigned</b> + Save";
-      } else {
-        status.innerText = "❌ Erro Cloudinary: "+err.slice(0,200);
-      }
-      btn.disabled = false;
-      btn.innerText = "TENTAR DE NOVO";
-    }
-  };
-
-  xhr.onerror = ()=>{
-    progressFill.style.background="#ff0000";
-    toast("❌ Falha de rede");
-    status.innerHTML = "❌ Failed to fetch = Internet fraca ou vídeo >100MB. <b>Use Wi-Fi e vídeo até 100MB</b>";
-    btn.disabled = false;
-    btn.innerText = "TENTAR DE NOVO";
-  };
-
-  xhr.send(fd);
+  if(!tempFileObj){toast("❌ Escolhe o vídeo!");return;}
+  btn.disabled=true; btn.innerText="⏳ ENVIANDO..."; document.getElementById("progressBar").style.display="block"; progressFill.style.width="0%"; status.innerText="⏳ 0% - Conectando...";
+  let fd = new FormData(); fd.append("file", tempFileObj); fd.append("upload_preset", UPLOAD_PRESET); fd.append("folder", "work_fire");
+  let xhr = new XMLHttpRequest(); xhr.open("POST", `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`);
+  xhr.upload.onprogress = (e)=>{ if(e.lengthComputable){ let pct=Math.round((e.loaded/e.total)*100); progressFill.style.width=pct+"%"; status.innerHTML=`⏳ Subindo <b>${pct}%</b>`; btn.innerText=`⏳ ${pct}% ENVIANDO...`; } };
+  xhr.onload = async ()=>{ if(xhr.status>=200 && xhr.status<300){ let data=JSON.parse(xhr.responseText); status.innerText="✅ Salvando..."; await fetch(FIREBASE_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({owner:user,video_url:data.secure_url,desc:desc,time:Date.now()})}); toast("🔥 POSTADO!"); fecharModal(); btn.disabled=false; btn.innerText="🚀 POSTAR AGORA"; tempFileObj=null; carregarFeed(); } else { status.innerText="❌ Erro: "+xhr.responseText.slice(0,150); btn.disabled=false; btn.innerText="TENTAR DE NOVO"; } };
+  xhr.onerror = ()=>{ status.innerText="❌ Falha de rede - use Wi-Fi"; btn.disabled=false; }; xhr.send(fd);
 }
-
 carregarFeed();
 </script>
 </body>
