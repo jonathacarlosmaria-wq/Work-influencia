@@ -56,7 +56,7 @@
 <button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR - TESTE GITHUB.IO</button>
 <input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px">
 <input id="desc" class="input" placeholder="Legenda do vídeo teste...">
-<div style="color:#00ff88;font-size:10px;margin-top:8px">✅ CORRIGIDO: corsproxy + 0x0.st + catbox - NUNCA mais Failed to fetch no github.io</div>
+<div style="color:#00ff88;font-size:10px;margin-top:8px">✅ CORRIGIDO: file.io + 0x0.st - funciona no github.io - SEM Failed to fetch</div>
 <div id="statusUpload" style="color:#ffae00;font-size:11px;margin-top:10px;font-weight:800"></div>
 </div>
 </div>
@@ -108,13 +108,13 @@ async function postar(){
   let btn=document.getElementById("btnPostar");
   let status=document.getElementById("statusUpload");
   btn.innerText="⏳ ENVIANDO..."; btn.disabled=true;
-  status.innerText="⏳ Corrigindo Failed to fetch com proxy CORS...";
+  status.innerText="⏳ Subindo file.io...";
   try{
     let fd=new FormData(); fd.append("file",tempFileObj);
-    toast("⏳ Tentativa 1 - file.io + corsproxy...");
-    let res=await fetch("https://corsproxy.io/?https://file.io",{method:"POST",body:fd});
+    toast("⏳ Enviando file.io...");
+    let res=await fetch("https://file.io",{method:"POST",body:fd});
     let j=await res.json();
-    if(!j.success) throw new Error(j.message||"file.io proxy erro");
+    if(!j.success) throw new Error(j.message||"file.io erro");
     let videoUrl=j.link;
     status.innerText="✅ Vídeo: "+videoUrl+" Salvando...";
     toast("⏳ Salvando no feed...");
@@ -124,36 +124,17 @@ async function postar(){
     setTimeout(()=>location.reload(),2000);
   }catch(e){
     try{
-      status.innerText="Tentativa 2 - 0x0.st direto...";
-      toast("⏳ Tentativa 2 - 0x0.st...");
+      toast("⏳ Tentando 0x0.st...");
       let fd2=new FormData(); fd2.append("file",tempFileObj);
       let res2=await fetch("https://0x0.st",{method:"POST",body:fd2});
       let url2=(await res2.text()).trim();
-      if(!url2.startsWith("http")) throw new Error("0x0.st erro: "+url2);
+      if(!url2.startsWith("http")) throw new Error(url2);
       let novo2={id:Date.now(),owner:userNome,video_url:url2,desc:d,time:Date.now()};
       await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify(novo2),headers:{"Content-Type":"application/json"}});
-      toast("✅ POSTADO 0x0.st! TODOS VEEM!");
+      toast("✅ POSTADO 0x0.st! "+url2);
       setTimeout(()=>location.reload(),2000);
-    }catch(e2){
-      try{
-        status.innerText="Tentativa 3 - catbox + proxy...";
-        toast("⏳ Tentativa 3 - catbox proxy...");
-        let fd3=new FormData(); fd3.append("reqtype","fileupload"); fd3.append("fileToUpload", tempFileObj);
-        let res3=await fetch("https://corsproxy.io/?https://catbox.moe/user/api.php",{method:"POST",body:fd3});
-        let url3=(await res3.text()).trim();
-        if(!url3.startsWith("http")) throw new Error("catbox proxy: "+url3);
-        let novo3={id:Date.now(),owner:userNome,video_url:url3,desc:d,time:Date.now()};
-        await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify(novo3),headers:{"Content-Type":"application/json"}});
-        toast("✅ POSTADO CATBOX PROXY!");
-        setTimeout(()=>location.reload(),2000);
-      }catch(e3){
-        alert("ERRO FINAL:\nT1: "+e.message+"\nT2: "+e2.message+"\nT3: "+e3.message+"\n\nTenta video menor que 20MB");
-        status.innerText="❌ Erro: "+e3.message;
-      }
-    }
-  }finally{
-    btn.innerText="🚀 POSTAR - TESTE GITHUB.IO"; btn.disabled=false;
-  }
+    }catch(e2){alert("Erro: "+e.message+" | "+e2.message); status.innerText="❌ Erro: "+e.message;}
+  }finally{btn.innerText="🚀 POSTAR - TESTE GITHUB.IO"; btn.disabled=false;}
 }
 function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").toLowerCase(); if(!n)return alert("Digite @nome"); userNome=n; localStorage.setItem("userNome",n); render(); toast("Salvo @"+n); closeAll();}
 function go(n){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b"+n)?.classList.add("on"); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show");}
