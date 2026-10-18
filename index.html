@@ -2,93 +2,123 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work Influencer FIRE 🔥</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>WORK FIRE - FINAL OFICIAL CORRIGIDO - SEM FAILED FETCH</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#fff;font-family:Arial;overflow:hidden}
-#feed{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory}
-.post{height:100vh;position:relative;scroll-snap-align:start;background:#000}
-.post video{width:100%;height:100%;object-fit:cover}
-.info{position:absolute;bottom:90px;left:12px;right:70px;text-shadow:0 2px 5px #000}
-.info h3{font-size:18px}
-.info p{font-size:14px;opacity:.9}
-.actions{position:absolute;right:10px;bottom:120px;display:flex;flex-direction:column;gap:22px;text-align:center}
-.actions button{background:none;border:none;color:#fff;font-size:32px}
-#uploadBtn{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#ff0050;color:#fff;border:none;padding:16px 45px;border-radius:30px;font-weight:bold;font-size:16px;z-index:10}
-#modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:20;display:none;align-items:center;justify-content:center;padding:20px}
-#modal.show{display:flex}
-.card{background:#111;padding:22px;border-radius:18px;width:100%;max-width:360px}
-.card input,.card textarea{width:100%;margin:8px 0;padding:13px;border-radius:12px;border:none;background:#222;color:#fff}
-.card button{width:100%;padding:13px;border:none;border-radius:12px;background:#ff0050;color:#fff;font-weight:bold;margin-top:8px}
-#toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:12px 22px;border-radius:25px;display:none;z-index:30;font-weight:bold}
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100dvh;background:#000;overflow:hidden;font-family:-apple-system,sans-serif}
+#splash{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity.9s ease}
+#splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#app{width:100%;max-width:420px;height:100dvh;margin:0 auto;background:#000;display:flex;flex-direction:column;position:relative}
+#feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000}
+#feed::-webkit-scrollbar{display:none}
+.post{height:100dvh;width:100%;position:relative;scroll-snap-align:start;background:#111;overflow:hidden}
+.post video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;background:#000}
+.btnSom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:8;border:3px solid #fff}
+.watermark{position:absolute;left:10px;top:14px;z-index:9;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:20px;color:rgba(255,255,255,.75);font-size:8.5px;font-weight:900}
+#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#00ff88;color:#000;padding:10px 18px;border-radius:24px;font-weight:900;font-size:11px;z-index:9999;display:none;max-width:90%}
+.rightBar{position:absolute;right:8px;bottom:90px;z-index:10;display:flex;flex-direction:column;gap:12px;width:60px}
+.btnTik{border:none;background:none;display:flex;flex-direction:column;align-items:center;cursor:pointer;width:100%}
+.iconTik{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;background:rgba(35,35,35,.85);border:1.5px solid rgba(255,255,255,.18)}
+.iconTik.fire{background:radial-gradient(circle at 30% 25%,#ff8c00,#ff4500 55%,#8b0000)}
+.txtTik{color:#fff;font-size:8.5px;font-weight:800;margin-top:3px}
+.info{position:absolute;left:10px;right:76px;bottom:82px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:9px 10px;color:#fff}
+.nav{height:64px;background:#0a0700;border-top:1.5px solid rgba(255,69,0,.35);display:flex;align-items:center;justify-content:space-around;z-index:30}
+.nav button{flex:1;background:none;border:none;color:rgba(255,255,255,.5);font-size:8.5px;font-weight:800;display:flex;flex-direction:column;align-items:center}
+.nav button.on{color:#ff8c00}
+.plus{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ff2200);border:2.5px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:-20px;box-shadow:0 0 0 4px #000}
+.page{position:absolute;inset:0;background:#000;z-index:20;display:none;flex-direction:column;overflow-y:auto;padding-bottom:70px}
+.page.show{display:flex}
+.card{background:rgba(25,12,0,.92);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:12px;margin:10px}
+.input{width:100%;padding:11px;background:#1e1100;border:1px solid rgba(255,69,0,.32);border-radius:10px;color:#fff;margin-top:7px}
+.btn{width:100%;padding:14px;background:linear-gradient(90deg,#ff4500,#ff8c00);border:none;border-radius:12px;color:#000;font-weight:900;margin-top:10px}
+.previewArea{display:none;margin-top:10px;border:3px solid #00ff88;border-radius:14px;overflow:hidden;position:relative}
+.previewArea.show{display:block}
+.btnPostar{width:100%;padding:18px;background:linear-gradient(90deg,#00ff88,#00ff44);border:3px solid #fff;border-radius:14px;color:#000;font-weight:900;font-size:16px;margin-top:10px;display:none}
+.btnPostar.show{display:block}
 </style>
 </head>
 <body>
-<div id="toast"></div>
+<div id="app">
 <div id="feed"></div>
-<button id="uploadBtn" onclick="abrirModal()">+ Postar</button>
-<div id="modal">
-<div class="card">
-<h2>🔥 Novo Vídeo</h2>
-<input type="file" id="fileInput" accept="video/*">
-<input type="text" id="userInput" placeholder="Seu @">
-<textarea id="descInput" placeholder="Legenda #work"></textarea>
-<button onclick="postarWorkFire()">POSTAR AGORA</button>
-<button onclick="fecharModal()" style="background:#333">Cancelar</button>
-<p id="status" style="margin-top:10px;font-size:11px;opacity:.6"></p>
-</div>
+<div id="toast"></div>
+<div id="pCriar" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><h3 style="color:#00ff88">📹 CORRIGIDO - TODOS VÊEM</h3><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="border:2px solid #00ff88"><div id="previewArea" class="previewArea"><video id="previewVideo" style="width:100%;height:40vh;object-fit:cover" controls></video></div><button id="btnPostar" class="btnPostar" onclick="postar()">🚀 POSTAR - TODOS VÊEM</button><input id="file" type="file" accept="video/*" style="color:#fff;width:100%;margin-top:12px"><input id="desc" class="input" placeholder="Legenda..."><div id="statusUpload" style="color:#ffae00;font-size:11px;margin-top:8px;font-weight:800"></div></div></div>
+<div id="pEu" class="page"><div style="display:flex;justify-content:space-between;padding:14px"><b style="color:#ff8c00">Eu</b><button onclick="closeAll()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div><div class="card" style="text-align:center"><input id="nomeUser" class="input" placeholder="Seu @nome" style="text-align:center"><button class="btn" onclick="salvarTudo()">💾 SALVAR</button></div></div>
+<div class="nav"><button id="b0" class="on" onclick="go(0)"><i class="fa-solid fa-house"></i>Inicio</button><button onclick="go(2)"><div class="plus">+</div></button><button id="b4" onclick="go(4)"><i class="fa-solid fa-user"></i>Eu</button></div>
 </div>
 <script>
-const CLOUD_NAME = "zptwxcio";
-const UPLOAD_PRESET = "work_fire";
-const FIREBASE_URL = "https://work-influencia-default-rtdb.firebaseio.com/posts.json";
-let tempFileObj = null;
-document.getElementById("fileInput").addEventListener("change", e=>{
-tempFileObj = e.target.files[0];
-document.getElementById("status").innerText = `OK: ${tempFileObj.name} ${(tempFileObj.size/1024/1024).toFixed(2)} MB`;
-});
-function toast(m){let t=document.getElementById("toast");t.innerText=m;t.style.display="block";setTimeout(()=>t.style.display="none",3500);}
-function abrirModal(){document.getElementById("modal").classList.add("show")}
-function fecharModal(){document.getElementById("modal").classList.remove("show")}
-async function carregarFeed(){
-try{
-let res = await fetch(FIREBASE_URL);
-let data = await res.json();
-let feed = document.getElementById("feed");
-feed.innerHTML="";
-if(!data){feed.innerHTML='<div style="height:100vh;display:flex;align-items:center;justify-content:center;opacity:.5">Nenhum vídeo ainda. Seja o primeiro! 🔥</div>';return;}
-let posts = Object.values(data).reverse();
-posts.forEach(p=>{
-let div=document.createElement("div");
-div.className="post";
-div.innerHTML=`<video src="${p.video_url}" loop autoplay muted playsinline onclick="this.muted=false;this.paused?this.play():this.pause()"></video><div class="info"><h3>@${p.owner||'anonimo'}</h3><p>${p.desc||''}</p></div><div class="actions"><button>❤️<br><span style="font-size:12px">${p.likes||0}</span></button><button>💬</button><button>↗️</button></div>`;
-feed.appendChild(div);
-});
-}catch(e){console.log(e)}
+const SUPABASE_URL='https://rjrjdfwxqbjjfflqpydm.supabase.co';
+const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4cmpkZnd4cWJqamZmbHFweWRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExNDg1MTksImV4cCI6MjEwNjcyNDUxOX0.HNJ0nJ_XJHNmjyWxhd7MyS2IrCLlWB85rIVKQqQrsQU';
+const supa=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
+const FIREBASE_URL='https://work-influencer-default-rtdb.firebaseio.com/posts.json';
+let uid=localStorage.getItem("uid"); if(!uid){uid="u_"+Math.random().toString(36).slice(2,7); localStorage.setItem("uid",uid);}
+let userNome=localStorage.getItem("userNome")||"", posts=[], tempFileObj=null, videoAtivo=null, observer=null;
+function toast(m){let t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',4000);}
+function pausarTodosExceto(exceto){document.querySelectorAll('#feed video').forEach(v=>{if(v!==exceto){try{v.pause();v.muted=true;}catch(e){}}});}
+function setupObserver(){if(observer)observer.disconnect();observer=new IntersectionObserver((entries)=>{let vis=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>=0.7);if(!vis.length)return;let video=vis[0].target.querySelector('video');if(!video||video===videoAtivo)return;pausarTodosExceto(video);videoAtivo=video;video.muted=false;video.volume=1;video.play().catch(()=>{video.muted=true;video.play();});},{threshold:[0.7]});document.querySelectorAll('.post').forEach(p=>observer.observe(p));}
+function toggleSom(el){let v=el.querySelector('video');if(!v)return;pausarTodosExceto(v);videoAtivo=v;v.muted=false;v.volume=1;v.play();}
+function checarDuracao(file){return new Promise(r=>{let v=document.createElement("video");v.preload="metadata";v.onloadedmetadata=()=>{r(v.duration);URL.revokeObjectURL(v.src);};v.onerror=()=>r(0);v.src=URL.createObjectURL(file);});}
+async function init(){
+  try{
+    let {data}=await supa.from("posts").select("*").order("created_at",{ascending:false}).limit(50);
+    if(data&&data.length>0){posts=data.map(r=>({id:r.id,owner:r.username,img:r.video_url,desc:r.description||"",type:"video",time:new Date(r.created_at).getTime()}));}
+    else{let resFb=await fetch(FIREBASE_URL); let fbData=await resFb.json(); if(fbData) posts=Object.values(fbData).reverse().map(p=>({id:p.id,owner:p.owner,img:p.video_url,desc:p.desc||"",type:"video",time:p.time}));}
+  }catch(e){}
+  render();
 }
-async function postarWorkFire(){
-let user = document.getElementById("userInput").value || localStorage.getItem("work_user") || "Anonimo";
-localStorage.setItem("work_user", user);
-if(!tempFileObj) return toast("❌ Escolhe o vídeo!");
-document.getElementById("status").innerText = "⏳ Subindo pro Cloudinary...";
-toast("⏳ Enviando... aguarde");
-try{
-let fd = new FormData();
-fd.append("file", tempFileObj);
-fd.append("upload_preset", UPLOAD_PRESET);
-fd.append("folder", "work_fire");
-let res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`,{method:"POST",body:fd});
-if(!res.ok){let txt=await res.text();throw new Error(txt);}
-let data = await res.json();
-let videoUrl = data.secure_url;
-document.getElementById("status").innerText = "✅ No Cloudinary! Salvando feed...";
-await fetch(FIREBASE_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({owner:user,video_url:videoUrl,public_id:data.public_id,desc:document.getElementById("descInput").value,time:Date.now(),likes:0})});
-toast("🔥 POSTADO! TODO MUNDO VÊ!");
-fecharModal(); carregarFeed();
-}catch(e){console.error(e);document.getElementById("status").innerText="❌ "+e.message;toast("❌ Erro: "+e.message.slice(0,100));}
+function render(){
+  document.getElementById("feed").innerHTML=posts.map(p=>{let media=`<video src="${p.img}" loop playsinline preload="metadata" muted></video><div class="btnSom"><i class="fa-solid fa-volume-xmark"></i></div>`;return `<div class="post" onclick="toggleSom(this)">${media}<div class="watermark">work influencer</div><div class="info"><b>@${p.owner}</b><div>${p.desc||''}</div></div></div>`;}).join("")||`<div style="height:100dvh;display:flex;align-items:center;justify-content:center;color:#fff">Nenhum vídeo - Poste o primeiro!</div>`;
+  setTimeout(()=>setupObserver(),600);
 }
-carregarFeed();
+init();
+document.getElementById("file").addEventListener("change", async e=>{
+  let f=e.target.files[0]; if(!f)return;
+  if(f.size>150*1024*1024){alert("Max 150MB");return;}
+  let dur=await checarDuracao(f); if(dur>92){alert("Max 1:30");return;}
+  tempFileObj=f;
+  let url=URL.createObjectURL(f);
+  document.getElementById("previewVideo").src=url;
+  document.getElementById("previewArea").classList.add("show");
+  document.getElementById("btnPostar").classList.add("show");
+  document.getElementById("statusUpload").innerText=`✅ ${dur.toFixed(1)}s - ${(f.size/1024/1024).toFixed(1)}MB pronto!`;
+});
+async function postar(){
+  let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";
+  if(!tempFileObj){alert("Escolhe vídeo!");return;}
+  if(!userNome){alert("Cadastra @nome em Eu!");go(4);return;}
+  let btn=document.getElementById("btnPostar"); let statusEl=document.getElementById("statusUpload");
+  btn.innerText="⏳ ENVIANDO..."; btn.disabled=true;
+  if(statusEl) statusEl.innerText="⏳ Subindo via 0x0.st (funciona no github.io)...";
+  try{
+    toast("⏳ Enviando via 0x0.st - funciona no github.io...");
+    let fd=new FormData(); fd.append("file",tempFileObj);
+    let res=await fetch("https://0x0.st",{method:"POST",body:fd});
+    let urlVideo=(await res.text()).trim();
+    if(!urlVideo.startsWith("http")) throw new Error(urlVideo);
+    if(statusEl) statusEl.innerText="✅ Vídeo subido: "+urlVideo+" Salvando...";
+    toast("✅ Vídeo subido! Salvando pra todos verem...");
+    try{await supa.from("posts").insert([{video_url:urlVideo,username:userNome,description:d,likes:0}]);}catch(e){console.log(e);}
+    await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify({id:Date.now(),owner:userNome,video_url:urlVideo,desc:d,time:Date.now()}),headers:{"Content-Type":"application/json"}});
+    toast("✅ POSTADO! TODOS VÊEM! "+urlVideo);
+    setTimeout(()=>location.reload(),1500);
+  }catch(e){
+    console.log("0x0.st falhou",e);
+    try{
+      let fd2=new FormData(); fd2.append("file",tempFileObj);
+      let res2=await fetch("https://corsproxy.io/?https://file.io",{method:"POST",body:fd2});
+      let j2=await res2.json(); if(!j2.success) throw new Error(j2.message);
+      let url2=j2.link;
+      await fetch(FIREBASE_URL,{method:"POST",body:JSON.stringify({id:Date.now(),owner:userNome,video_url:url2,desc:d,time:Date.now()}),headers:{"Content-Type":"application/json"}});
+      try{await supa.from("posts").insert([{video_url:url2,username:userNome,description:d,likes:0}]);}catch(_){}
+      toast("✅ POSTADO PROXY - TODOS VÊEM!"); setTimeout(()=>location.reload(),1500);
+    }catch(e2){alert("Erro: "+e.message+" | "+e2.message);}
+  }finally{btn.innerText="🚀 POSTAR - TODOS VÊEM"; btn.disabled=false;}
+}
+function salvarTudo(){let n=document.getElementById("nomeUser").value.trim().replace(/@/g,"").toLowerCase(); if(!n)return alert("Nome"); userNome=n; localStorage.setItem("userNome",n); toast("Salvo @"+n); closeAll();}
+function go(n){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b"+n)?.classList.add("on"); if(n==2)document.getElementById("pCriar").classList.add("show"); if(n==4)document.getElementById("pEu").classList.add("show");}
+function closeAll(){document.querySelectorAll(".page").forEach(p=>p.classList.remove("show")); document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on")); document.getElementById("b0").classList.add("on");}
 </script>
 </body>
 </html>
