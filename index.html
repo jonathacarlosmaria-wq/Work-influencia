@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>WORK FIRE - FINAL FIXED CLOUDINARY</title>
+<title>WORK INFLUENCER - OFICIAL FINAL</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -157,7 +157,7 @@ async function init(){
    posts=data.map(r=>({id:r.id,owner:r.username||"fire.user",img:r.video_url,desc:r.desc||"",firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:r.video_url.match(/\.(jpg|png|jpeg|webp)$/i)?"img":"video",time:new Date(r.created_at).getTime(),supaId:r.id,likes:r.likes||0}));
  }catch(e){ posts=[]; }
  render(); setTimeout(()=>{setupObserver(); genPix();},800);
- try{ supa.channel('posts-live').on('postgres_changes',{event:'INSERT',schema:'public',table:'posts'},payload=>{ let r=payload.new; if(!posts.find(p=>p.supaId===r.id)){let novo={id:r.id,owner:r.username,img:r.video_url,desc:r.desc,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:r.video_url.match(/\.(jpg|png|jpeg|webp)$/i)?"img":"video",time:new Date(r.created_at).getTime(),supaId:r.id,likes:r.likes||0}; posts.unshift(novo); render(); toast("🎬 Novo!");}}).subscribe(); }catch(e){}
+ try{ supa.channel('posts-live').on('postgres_changes',{event:'INSERT',schema:'public',table:'posts'},payload=>{ let r=payload.new; if(!posts.find(p=>p.supaId===r.id)){let novo={id:r.id,owner:r.username,img:r.video_url,desc:r.desc,firedBy:[],likedBy:[],com:[],saveBy:[],sharedBy:[],share:0,isTop:false,type:r.video_url.match(/\.(jpg|jpeg|png|webp)$/i)?"img":"video",time:new Date(r.created_at).getTime(),supaId:r.id,likes:r.likes||0}; posts.unshift(novo); render(); toast("🎬 Novo!");}}).subscribe(); }catch(e){}
 }init();
 function danceBtn(el){if(!el) return; el.classList.remove("dance"); void el.offsetWidth; el.classList.add("dance"); setTimeout(()=>el.classList.remove("dance"),400);}
 function mostrarBotaoPostar(){document.getElementById("previewArea").classList.add("show"); document.getElementById("btnPostar").classList.add("show");}
@@ -214,13 +214,11 @@ function closeAll(){stopCam(); stopLive(); document.querySelectorAll('#feed vide
 function abrirAdmin(){let s=prompt("Senha Admin:"); if(s==="fire123"){document.getElementById("adminBox").style.display="block"; listarPedidos(); listarLivesAtivas(); listarUsuarios(); listarTodasPostagens(); listarChatLive();} else if(s) alert("Senha: fire123");}
 function busca(){let q=document.getElementById("qBusca").value.toLowerCase(); let r=posts.filter(p=>(p.desc||'').toLowerCase().includes(q)||(p.owner||'').toLowerCase().includes(q)); document.getElementById("rBusca").innerHTML=r.map(p=>`<div style="display:flex;gap:8px;margin-top:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:8px"><div style="width:40px;height:40px;border-radius:8px;background:url('${p.img}') center/cover"></div><div style="color:#fff;font-size:11px">${p.desc||''}</div></div>`).join("")||"<div style='color:#555'>Nada</div>";}
 
-// FILE INPUT COM PREVIEW SEGURO (createObjectURL)
 document.getElementById("file").addEventListener("change",e=>{
   let f=e.target.files[0]; if(!f) return;
   if(f.size>100*1024*1024){ alert("Máx 100MB!"); e.target.value=""; return; }
   tempFileObj=f;
   let url=URL.createObjectURL(f);
-  let pv=document.getElementById("previewVideo");
   let area=document.getElementById("previewArea");
   if(f.type.startsWith("image/")){
     area.innerHTML=`<div class="previewLabel">✅ IMAGEM PRONTA</div><img src="${url}" style="width:100%;max-height:40vh;object-fit:contain;display:block">`;
@@ -228,13 +226,13 @@ document.getElementById("file").addEventListener("change",e=>{
     area.innerHTML=`<div class="previewLabel">✅ VÍDEO COM ÁUDIO</div><video id="previewVideo" src="${url}" style="width:100%;height:40vh;object-fit:cover;display:block" controls playsinline loop></video>`;
   }
   mostrarBotaoPostar();
-  document.getElementById("statusCloud").innerText=`✅ Arquivo: ${f.name} - ${(f.size/1024/1024).toFixed(2)}MB - Preset work_fire OK!`;
+  document.getElementById("statusCloud").innerText=`✅ ${f.name} - ${(f.size/1024/1024).toFixed(2)}MB - work_fire OK! DESLIGUE VPN E USE WI-FI`;
 });
 
-// ============ POSTAR FINAL CORRIGIDO - CLOUDINARY work_fire UNSIGNED ============
+// POSTAR FINAL - FIX Failed to fetch = VPN
 async function postar(){
  let d=document.getElementById("desc").value.trim()||"Meu vídeo 🔥";
- if(!tempFileObj){ toast("❌ Grave ou escolha um arquivo!"); return; }
+ if(!tempFileObj){ toast("❌ Grave ou escolha arquivo!"); return; }
  if(!userNome){ toast("❌ Cadastre seu @ em Eu!"); go(4); return; }
  let btn=document.getElementById("btnPostar"); let statusEl=document.getElementById("statusCloud"); let bar=document.getElementById("progressBar"); let fill=document.getElementById("progressFill");
  if(btn){ btn.disabled=true; btn.innerText="⏳ ENVIANDO..."; }
@@ -244,11 +242,10 @@ async function postar(){
    let cloudUrl = await new Promise((resolve, reject)=>{
      let fd=new FormData(); fd.append("file", fileToUpload); fd.append("upload_preset", UPLOAD_PRESET); fd.append("folder","work_fire");
      let xhr=new XMLHttpRequest();
-     // AUTO = ACEITA FOTO E VÍDEO - ERA ESSE O ERRO ANTES
      xhr.open("POST", `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`);
      xhr.upload.onprogress = (e)=>{ if(e.lengthComputable){ let pct=Math.round(e.loaded/e.total*100); if(fill) fill.style.width=pct+"%"; if(statusEl) statusEl.innerText=`⏳ Subindo ${pct}%`; if(btn) btn.innerText=`⏳ ${pct}%`; } };
      xhr.onload = ()=>{ if(xhr.status>=200 && xhr.status<300){ try{ let j=JSON.parse(xhr.responseText); resolve(j.secure_url); }catch(err){ reject(new Error("Erro parse")); } } else { reject(new Error("Cloudinary: "+xhr.responseText.slice(0,200))); } };
-     xhr.onerror = ()=> reject(new Error("Falha de rede - use Wi-Fi"));
+     xhr.onerror = ()=> reject(new Error("Failed to fetch - DESLIGUE VPN E USE WI-FI!"));
      xhr.send(fd);
    });
    if(statusEl) statusEl.innerText="✅ Cloudinary OK! Salvando...";
@@ -259,8 +256,9 @@ async function postar(){
    render(); closeAll(); stopCam(); toast("🔥 POSTADO! TODO MUNDO VÊ!");
  }catch(e){
    console.error(e);
-   if(statusEl) statusEl.innerText="❌ "+e.message;
-   toast("❌ "+e.message.slice(0,90));
+   let msg = e.message.includes("Failed to fetch") ? "❌ DESLIGUE VPN E USE WI-FI!" : "❌ "+e.message;
+   if(statusEl) statusEl.innerText=msg;
+   toast(msg.slice(0,90));
    if(btn){ btn.disabled=false; btn.innerText="🚀 TENTAR DE NOVO"; }
    return;
  }
